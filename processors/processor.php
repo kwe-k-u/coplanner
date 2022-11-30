@@ -15,4 +15,6 @@
 
 
 	include_once(__DIR__."/sub_system/auth.php");
+	include_once(__DIR__."/sub_system/campaign.php");
+	include_once(__DIR__."/sub_system/private_tour.php");
 ?>

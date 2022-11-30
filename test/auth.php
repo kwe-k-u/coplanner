@@ -130,20 +130,6 @@
 
 
 
-		function url_params(key){
-			url = window.location.search.substr(1);
-			params = url.split("&");
-			params.forEach(element => {
-				pair = element.split("=");
-				element_key = pair[0];
-				if(element_key= key){
-					value = pair[1];
-				}
-			});
-
-			return value;
-		}
-
 		function logout(){
 			send_request(
 				"POST",
@@ -158,14 +144,30 @@
 
 		function send_request(type, endpoint, data, onFinish){
 			const xhttp = new XMLHttpRequest();
-		xhttp.open(type, endpoint);
-		xhttp.onreadystatechange = function (){
-			if (xhttp.readyState == XMLHttpRequest.DONE){
-				onFinish(xhttp.response);
+			xhttp.open(type, endpoint);
+			xhttp.onreadystatechange = function (){
+				if (xhttp.readyState == XMLHttpRequest.DONE){
+					onFinish(xhttp.response);
+				}
 			}
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send(data);
 		}
-		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send(data);
+
+
+
+		function url_params(key){
+			url = window.location.search.substr(1);
+			params = url.split("&");
+			params.forEach(element => {
+				pair = element.split("=");
+				element_key = pair[0];
+				if(element_key= key){
+					value = pair[1];
+				}
+			});
+
+			return value;
 		}
 	</script>
 

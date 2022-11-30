@@ -78,6 +78,14 @@ ob_start();
 		return isset($_SESSION["account_id"]);
 	}
 
+
+	function get_session_user_id(){
+		if(isset($_SESSION["user_id"])){
+			return $_SESSION["user_id"];
+		}
+		return false;
+	}
+
 	// /**Returns the type of entity account a user has (curator, etc). Returns false if none exists*/
 	// function get_session_account_type(){
 	// 	if(isset($_SESSION["account"])){

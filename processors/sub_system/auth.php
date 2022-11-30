@@ -3,7 +3,7 @@
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 
-	function main(){
+	function auth(){
 		$request = $_SERVER["REQUEST_METHOD"];
 
 		if ($request == "POST"){
@@ -19,6 +19,7 @@
 					$result = log_in_user($email,$password);
 					// var_dump($result);
 					if($result){
+						record_user_login($result["user_id"]);
 						//check if user has special permissions
 						if(isset($result["curator_id"])){
 							session_log_in_advanced($result["user_id"],'$result["media_location"]',$result["role"],$result["curator_id"]);
@@ -84,9 +85,9 @@
 					break;
 
 				default:
-					echo "No implementation for <action>";
-					die();
-			}
+					echo "No implementation for <". $_POST["action"] .">";
+				}
+				die();
 
 
 		}else{
@@ -97,5 +98,5 @@
 		die();
 	}
 
-	main();
+	// auth();
 ?>

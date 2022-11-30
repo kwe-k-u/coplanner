@@ -57,5 +57,10 @@ use Kreait\Firebase\Auth;
 		return $user->create_curator_account($curator_id,$curator_name,$logo_id);
 	}
 
+	function record_user_login($user_id){
+		$user = new auth_class();
+		return $user->record_user_login($user_id);
+	}
+
 
 ?>
