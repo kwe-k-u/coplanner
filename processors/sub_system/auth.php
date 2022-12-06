@@ -70,7 +70,7 @@
 								//add user to curator management
 								add_curator_manager($curator_id,$user_id);
 								//TODO include national identification
-								break;
+								die();
 
 							default:
 								ECHO $_POST["type"];
@@ -82,7 +82,36 @@
 
 				case "logout":
 					session_log_out();
-					break;
+					die();
+				case 'request_password_reset':
+					$email = $_POST["email"];
+					//delete all expired links for the email
+					remove_expired_tokens();
+					$token = get_password_token($email);
+					echo $token;
+					die();
+				case "change_password":
+					$token = $_POST["token"];
+					$new_password = encrypt($_POST["password"]);
+
+					//remove expired tokens
+					remove_expired_tokens();
+					//check if token exists and hasn't expired
+					$verify = verify_reset_token($token);
+
+					//if its valid, change password and remove token
+					if($verify){
+						$success = change_user_password($token, $new_password);
+						if($success){
+							remove_used_password_token($token);
+							echo "Password change successful. Login with your new password";
+						}else {
+							echo "Password change failed.";
+						}
+					}else {
+						echo "The token has expired. Request a new token to be sent";
+					}
+					die();
 
 				default:
 					echo "No implementation for <". $_POST["action"] .">";

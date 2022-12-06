@@ -1,10 +1,7 @@
 <?php
 
-use GrahamCampbell\ResultType\Success;
-use Kreait\Firebase\Auth;
-
 	require_once(__DIR__. "/../classes/auth_class.php");
-
+	require_once(__DIR__."/../utils/core.php");
 
 	//Creates a user account with the information passed and returns the new user id. False if an error occurs
 	function sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country,$profile_image){
@@ -40,6 +37,41 @@ use Kreait\Firebase\Auth;
 
 
 
+	function get_password_token($email){
+		$auth = new auth_class();
+		$token = $auth->get_password_token($email);
+		if($token){
+			$token = $token["token"];
+		}else{
+			$token = generate_id();
+			$user = $auth->get_user_by_email($email)["user_id"];
+			$auth->create_password_reset_token($token,$user);
+		}
+		return $token;
+	}
+
+
+	function verify_reset_token($token){
+		$auth = new auth_class();
+		$result = $auth->verify_reset_token($token);
+
+		if ($result){
+			return $result["token"] === $token;
+		}
+		return false;
+	}
+
+
+
+
+	function change_user_password($token,$password){
+		$auth = new auth_class();
+		return $auth->change_user_password($token,$password);
+	}
+
+
+
+
 
 	function create_email_verification_token($token,$user_id){
 		$user = new auth_class();
@@ -52,6 +84,8 @@ use Kreait\Firebase\Auth;
 		return $user->add_curator_manager($curator_id, $user_id, $privilege);
 	}
 
+
+
 	function create_curator_account($curator_id,$curator_name,$logo_id){
 		$user = new auth_class();
 		return $user->create_curator_account($curator_id,$curator_name,$logo_id);
@@ -62,5 +96,16 @@ use Kreait\Firebase\Auth;
 		return $user->record_user_login($user_id);
 	}
 
+
+
+	function remove_used_password_token($token){
+		$auth = new auth_class();
+		return $auth->remove_used_password_token($token);
+	}
+
+	function remove_expired_tokens(){
+		$auth = new auth_class();
+		return $auth->remove_expired_tokens();
+	}
 
 ?>

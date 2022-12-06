@@ -53,5 +53,5 @@
 		}
 	}
 
-	private_tour();
+	// private_tour();
 ?>

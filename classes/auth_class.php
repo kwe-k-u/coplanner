@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__."/../utils/db_class.php");
+	require_once(__DIR__."/../utils/core.php");
 
 	class auth_class extends db_connection{
 
@@ -28,6 +29,26 @@
 			WHERE admin_manager.user_id = '$user_id'";
 			return $this->db_fetch_one($sql);
 		}
+
+
+		function get_password_token($email){
+			$sql = "SELECT `token` FROM `forgot_password_token`
+			JOIN `users` on users.user_id = forgot_password_token.user_id
+			WHERE users.email = '$email'
+			 AND forgot_password_token.expiry_date < CURRENT_TIMESTAMP";
+			return $this->db_fetch_one($sql);
+		}
+
+		function get_user_by_email($email){
+			$sql = "SELECT * FROM `users` WHERE `email` = '$email'";
+			return $this->db_fetch_one($sql);
+		}
+
+		function verify_reset_token($token){
+			$sql = "SELECT * FROM `forgot_password_token` WHERE `token`='$token'";
+			return $this->db_fetch_one($sql);
+		}
+
 
 
 		//===================================== INSERT =========================================
@@ -76,13 +97,13 @@
 			return $this->db_query($sql);
 		}
 
-		function create_password_reset_token($token,$user_id,$expiry){
+		function create_password_reset_token($token,$user_id){
 			$sql = "INSERT INTO `forgot_password_token`(`token`,`user_id`,`expiry_date`)
-			VALUE ('$token','$user_id','$expiry')";
+			VALUE ('$token','$user_id',now() + INTERVAL 4 HOUR)";
 			return $this->db_query($sql);
 		}
 
-		function create_email_verification_token($token,$user_id){
+		function create_email_verification_token($token, $user_id){
 			$sql = "INSERT INTO `email_verification`(`token`,`user_id`)
 			VALUE ('$token','$user_id')";
 			return $this->db_query($sql);
@@ -104,6 +125,15 @@
 			return $this->db_query($sql);
 		}
 
+		function change_user_password($token,$password){
+			$sql = "UPDATE `users`
+				inner join forgot_password_token on users.user_id = forgot_password_token.user_id
+				SET users.password ='$password'
+				where forgot_password_token.token = '$token'";
+				// return $sql;
+			return $this->db_query($sql);
+		}
+
 
 
 		//================================ DELETE =============================================
@@ -113,11 +143,16 @@
 		}
 
 
-		function remove_forgot_password_token($token){
-			$sql = "REMOVE FROM `forgot_password_token` WHERE `token` = '$token'";
+		function remove_used_password_token($token){
+			$sql = "DELETE FROM `forgot_password_token` WHERE `token` = '$token'";
 			return $this->db_query($sql);
 		}
 
+
+		function remove_expired_tokens(){
+			$sql = "REMOVE FROM `forgot_password_token` WHERE `expiry_date` < CURRENT_TIMESTAMP";
+			return $this->db_query($sql);
+		}
 
 	}
 ?>
