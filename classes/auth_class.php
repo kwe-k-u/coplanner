@@ -39,6 +39,12 @@
 			return $this->db_fetch_one($sql);
 		}
 
+		function is_user_a_collaborator($user_id){
+			$sql = "SELECT * FROM `curator_manager` WHERE
+			`user_id`='$user_id'";
+			return $this->db_fetch_one($sql);
+		}
+
 		function get_user_by_email($email){
 			$sql = "SELECT * FROM `users` WHERE `email` = '$email'";
 			return $this->db_fetch_one($sql);
@@ -46,6 +52,18 @@
 
 		function verify_reset_token($token){
 			$sql = "SELECT * FROM `forgot_password_token` WHERE `token`='$token'";
+			return $this->db_fetch_one($sql);
+		}
+
+
+		function get_curator_collaborators($curator_id){
+			$sql = "SELECT * FROM `curator_manager`
+			WHERE `curator_id`='$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_curator_invite_by_email($email){
+			$sql = "SELECT * FROM `curator_manager_invite`";
 			return $this->db_fetch_one($sql);
 		}
 
@@ -72,6 +90,13 @@
 		function add_curator_manager($curator_id, $user_id, $privilege){
 			$sql = "INSERT INTO `curator_manager`(`curator_id`, `user_id`,`privilege`)
 			VALUES ('$curator_id', '$user_id', '$privilege')";
+			return $this->db_query($sql);
+		}
+
+
+		function invite_curator_manager($curator_id,$email, $privilege){
+			$sql = "INSERT INTO `curator_manager_invite` (`curator_id`, `email_address`, `privilege`,`invite_expiry`)
+			VALUE ('$curator_id','$email','$privilege',now() + INTERVAL 24 HOUR)";
 			return $this->db_query($sql);
 		}
 
@@ -154,5 +179,20 @@
 			return $this->db_query($sql);
 		}
 
+		function remove_expired_curator_invites(){
+			$sql = "REMOVE FROM `curator_manager_invite` WHERE `invite_expiry` < CURRENT_TIMESTAMP";
+			return $this->db_query($sql);
+		}
+
+		function remove_curator_invite($email){
+			$sql = "DELETE FROM `curator_manager_invite` WHERE `email_address`='$email'";
+			return $this->db_query($sql);
+		}
+
+		function remove_curator_collaborator($user_id,$curator_id){
+			$sql = "DELETE FROM `curator_manager`
+			WHERE `user_id` = '$user_id' AND  `curator_id`='$curator_id'";
+			return $this->db_query($sql);
+		}
 	}
 ?>

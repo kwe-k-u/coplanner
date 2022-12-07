@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__. "/../utils/core.php");
+	require_once(__DIR__."/../controllers/auth_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +68,42 @@
 	</form>
 
 
+
+	<h4>Curator add collaborator</h4>
+	<form onsubmit="invite_curator(this)">
+
+		<?php
+			$curator_id = $_SESSION["account_id"];
+			echo "<input type='hidden' name='curator_id' value='$curator_id'>";
+		?>
+		<label >Email</label>
+		<input type="email" name="email"><br>
+		<label >Privilege</label>
+		<select name="privilege">
+			<option value="admin">Admin</option>
+			<option value="edit">Edit</option>
+			<option value="view">View</option>
+		</select><br>
+
+		<button type="submit">Invite</button>
+	</form>
+
+
+	<h4>Curator remove collaborator</h4>
+	<ol>
+		<?php
+			$curator_id = $_SESSION["account_id"];
+			$collaborators = get_curator_collaborators($curator_id);
+			foreach ($collaborators as $pers) {
+				$c = $pers["user_id"];
+				echo "<li>".$c
+				."<button onclick='remove_curator(\"$curator_id\",\"$c\")'>Remove</button>".
+				"</li>";
+			}
+		?>
+	</ol>
+
+
 	<script>
 
 		function login(form){
@@ -127,6 +164,43 @@
 			return image_name;
 		}
 
+
+		function invite_curator(form){
+			event.preventDefault();
+			var email = form.email.value;
+			var curator_id = form.curator_id.value;
+			var privilege = form.privilege.value;
+
+			var payload = "action=invite_curator_collaborator";
+			payload +="&email="+email;
+			payload +="&curator_id="+curator_id;
+			payload +="&privilege="+privilege;
+
+			send_request(
+				"POST",
+				"../processors/processor.php",
+				payload,
+				(response)=>{
+					alert(response);
+				}
+			);
+		}
+
+
+		function remove_curator(curator,user_id){
+			var payload = "action=remove_curator_collaborator";
+			payload +="&curator_id="+curator;
+			payload+="&user_id="+user_id;
+
+			send_request(
+				"POST",
+				"../processors/processor.php",
+				payload,
+				(response)=>{
+					window.location.reload();
+				}
+			)
+		}
 
 
 

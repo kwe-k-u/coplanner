@@ -96,7 +96,6 @@
 				"../processors/processor.php",
 				payload,
 				(response)=>{
-					alert(response);
 					window.location.reload();
 				}
 			);
@@ -113,7 +112,6 @@
 				"../processors/processor.php",
 				payload,
 				(response)=>{
-					alert(response);
 					window.location.reload();
 				}
 			);
@@ -129,7 +127,6 @@
 				"../processors/processor.php",
 				payload,
 				(response)=>{
-					alert(response);
 					window.location.reload();
 				}
 			);
@@ -146,7 +143,6 @@
 				"../processors/processor.php",
 				payload,
 				(response)=>{
-					alert(response);
 					window.location.reload();
 				}
 			);

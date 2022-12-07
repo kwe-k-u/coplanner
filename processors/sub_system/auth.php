@@ -57,6 +57,18 @@
 					create_email_verification_token($email_token,$user_id);
 					//TODO send email verification
 
+					//check if a curator invite link has been sent and add them
+					$collaborator_invite = get_curator_invite_by_email($email);
+					if($collaborator_invite){
+						$user_id = get_user_by_email($email)["user_id"];
+						$curator_id = $collaborator_invite["curator_id"];
+						$privilege = $collaborator_invite["privilege"];
+						add_curator_manager($curator_id,$user_id,$privilege);
+						remove_curator_invite($email);
+						remove_expired_curator_invites();
+						//TODO send email letting them know addition was successful
+					}
+
 
 					if(isset($_POST["type"])){
 						switch($_POST["type"]){
@@ -112,7 +124,37 @@
 						echo "The token has expired. Request a new token to be sent";
 					}
 					die();
+				case "invite_curator_collaborator":
+					$email = $_POST["email"];
+					$curator_id = $_POST["curator_id"];
+					$privilege = $_POST["privilege"];
 
+					$user = get_user_by_email($email);
+					if ($user){//user exists
+						$is_collaborator = is_user_a_collaborator($user["user_id"]);
+						if($is_collaborator){
+							//send error saying user is a collaborator
+							echo "user is a registered collaborator and can't manage several accounts";
+						}else {
+							//add the managers
+							add_curator_manager($curator_id,$user["user_id"],$privilege);
+							echo "Added <$email> as collaborator";
+							//TODO send email
+						}
+
+					}else {//user doesn't exist
+						//create invite entry
+						invite_curator_manager($curator_id,$email,$privilege);
+						echo "Invite sent to <$email>";
+						//TODO Send email to notify
+
+					}
+					die();
+				case "remove_curator_collaborator":
+					$curator_id = $_POST["curator_id"];
+					$user_id = $_POST["user_id"];
+					remove_curator_collaborator($user_id,$curator_id);
+					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";
 				}
@@ -127,5 +169,5 @@
 		die();
 	}
 
-	// auth();
+	auth();
 ?>

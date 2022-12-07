@@ -35,6 +35,10 @@
 	}
 
 
+	function get_user_by_email($email){
+		$auth = new auth_class();
+		return $auth->get_user_by_email($email);
+	}
 
 
 	function get_password_token($email){
@@ -51,6 +55,12 @@
 	}
 
 
+	function is_user_a_collaborator($user_id){
+		$auth = new auth_class();
+		return $auth->is_user_a_collaborator($user_id);
+	}
+
+
 	function verify_reset_token($token){
 		$auth = new auth_class();
 		$result = $auth->verify_reset_token($token);
@@ -59,6 +69,17 @@
 			return $result["token"] === $token;
 		}
 		return false;
+	}
+
+
+	function get_curator_collaborators($curator_id){
+		$auth = new auth_class();
+		return $auth->get_curator_collaborators($curator_id);
+	}
+
+	function get_curator_invite_by_email($email){
+		$auth = new auth_class();
+		return $auth->get_curator_invite_by_email($email);
 	}
 
 
@@ -84,6 +105,10 @@
 		return $user->add_curator_manager($curator_id, $user_id, $privilege);
 	}
 
+	function invite_curator_manager($curator_id,$email, $privilege){
+		$user = new auth_class();
+		return $user->invite_curator_manager($curator_id,$email, $privilege);
+	}
 
 
 	function create_curator_account($curator_id,$curator_name,$logo_id){
@@ -106,6 +131,22 @@
 	function remove_expired_tokens(){
 		$auth = new auth_class();
 		return $auth->remove_expired_tokens();
+	}
+
+	function remove_expired_curator_invites(){
+		$auth = new auth_class();
+		return $auth->remove_expired_curator_invites();
+	}
+
+	function remove_curator_invite($email){
+		$auth = new auth_class();
+		return $auth->remove_curator_invite($email);
+	}
+
+
+	function remove_curator_collaborator($user_id,$curator_id){
+		$auth = new auth_class();
+		return $auth->remove_curator_collaborator($user_id,$curator_id);
 	}
 
 ?>
