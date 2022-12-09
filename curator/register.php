@@ -8,6 +8,8 @@
     <title>easygo - curator signup</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- easygo css -->
     <link rel="stylesheet" href="../assets/css/general.css">
 </head>
@@ -37,10 +39,16 @@
                     <input type="text" placeholder="Telephone">
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Password">
+                    <div class="password-input-container">
+                        <input type="password" placeholder="Password">
+                        <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
+                    </div>
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Confirm-password">
+                <div class="password-input-container">
+                        <input type="password" placeholder="Confirm Password">
+                        <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
+                    </div>
                 </div>
                 <div class="input-field">
                     <small class="input-title">Company profile</small>

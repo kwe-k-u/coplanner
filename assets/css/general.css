@@ -1,7 +1,7 @@
-/***** IMPORTS *****/
+/******************** IMPORTS ********************/
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-/***** GLOBAL VARIABLES *****/
+/******************** GLOBAL VARIABLES ********************/
 :root {
   /** typography **/
   --primary-font-family: "Roboto", sans-serif;
@@ -28,7 +28,7 @@
 
 
 
-/***** DEFAULT STYLING *****/
+/******************** DEFAULT STYLING ********************/
 /** body **/
 body{
     font-family: var(--primary-font-family);
@@ -57,15 +57,41 @@ a{
     font-weight: bold;
 }
 
+/** other styles **/
+i{
+    pointer-events: none;
+}
 
 
-/***** CLASS AND ID based stylilng *****/
+
+/******************** CLASS AND ID based stylilng ********************/
+
+/** buttons **/
 .easy-go-btn-1{
     border: none;
     padding: 0.75rem 1rem;
     background-color: var(--easy-go-blue);
     color: white;
     border-radius: 5px;
+}
+.easy-go-btn-2{
+    border: none;
+    padding: 0.75rem 1rem;
+    background-color: var(--easy-go-orange);
+    color: white;
+    border-radius: 5px;
+}
+
+
+/** form inputs **/
+.toggle-password-show{
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 
 
@@ -143,4 +169,8 @@ a{
     font-size: var(--font-size-4);
     text-decoration: none;
     margin-top: 0.5rem;
+}
+
+.form-page-main form .password-input-container{
+ position: relative;
 }
