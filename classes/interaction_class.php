@@ -18,6 +18,12 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_campaign_trips($campaign_id){
+			$sql = "SELECT * FROM `campaign_trips` WHERE
+			`campaign_id`='$campaign_id' AND `publish_state`='published'";
+			return $this->db_fetch_all($sql);
+		}
+
 		function is_user_following_curator($user_id,$curator_id){
 			$sql = "SELECT * FROM `user_following`
 			WHERE `user_id` = '$user_id' AND `curator_id` = '$curator_id'";

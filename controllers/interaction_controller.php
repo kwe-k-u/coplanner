@@ -13,6 +13,12 @@
 	}
 
 
+	function get_campaign_trips($campaign_id){
+		$inte = new interaction_class();
+		return $inte->get_campaign_trips($campaign_id);
+	}
+
+
 	function is_user_following_curator($user_id, $curator_id){
 		$inte = new interaction_class();
 		$res = $inte->is_user_following_curator($user_id,$curator_id);

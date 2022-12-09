@@ -122,6 +122,10 @@ ob_start();
 		return date("Y-m-d HH:mm");
 	}
 
+	function format_string_as_date_fn($date_str){
+		return (new DateTime($date_str))->format('d M Y');
+	}
+
 	function generate_id(){
 		return encrypt(get_current_date().time() . random_bytes((55)));
 	}
