@@ -19,7 +19,7 @@
     <!-- main content start -->
     <main class="form-page-main container">
         <div class="img-container d-none d-lg-block">
-            <img src="../assets/images/svgs/register.svg" alt="register image">
+            <img src="../assets/images/svgs/login.svg" alt="register image">
         </div>
         <div class="form-container">
             <form>
@@ -30,36 +30,20 @@
                     <p class="instruction">Please enter your login credentials</p>
                 </div>
                 <div class="input-field">
-                    <input type="text" placeholder="Full Name">
-                </div>
-                <div class="input-field">
                     <input type="text" placeholder="Email">
-                </div>
-                <div class="input-field">
-                    <input type="text" placeholder="Telephone">
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
                         <input type="password" placeholder="Password">
                         <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
                     </div>
-                </div>
-                <div class="input-field">
-                    <div class="password-input-container">
-                        <input type="password" placeholder="Confirm Password">
-                        <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
+                    <div class="text-end">
+                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-2)"  href="#">Forgot Password?</a>
                     </div>
                 </div>
-                <div class="input-field">
-                    <small class="input-title">Company profile</small>
-                    <input type="text" placeholder="Company-profile">
-                </div>
-                <div class="agreement-check">
-                    <input type="checkbox"><span>By creating an account, you agree to the terms and conditions</span>
-                </div>
                 <div class="input-field button-container">
-                    <button class="easygo-btn-1" type="submit">Register</button>
-                    <a href="./login.php">already have an account ?</a>
+                    <button class="easygo-btn-1" type="submit">Login</button>
+                    <a href="./register.php">Create an account</a>
                 </div>
             </form>
         </div>

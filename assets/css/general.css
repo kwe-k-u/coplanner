@@ -20,10 +20,11 @@
   --font-weight-3: 400;
 
   /** colors **/
-  --easy-go-blue: #2b65b1;
-  --easy-go-orange: #ffa500;
-  --easy-go-gray-1: rgba(204, 204, 204, 0.812);
-  --easy-go-gray-2: #FAFAFA;
+  --easygo-blue: #2b65b1;
+  --easygo-orange: #ffa500;
+  --easygo-gray-1: rgba(204, 204, 204, 0.812);
+  --easygo-gray-2: #A0A0A0;
+  --easygo-gray-3: #FAFAFA;
 }
 
 
@@ -53,8 +54,8 @@ h3 {
 
 /** anchor element **/
 a{
-    color: var(--easy-go-blue) !important;
-    font-weight: bold;
+    color: var(--easygo-blue);
+    text-decoration: none !important;
 }
 
 /** other styles **/
@@ -67,17 +68,17 @@ i{
 /******************** CLASS AND ID based stylilng ********************/
 
 /** buttons **/
-.easy-go-btn-1{
+.easygo-btn-1{
     border: none;
     padding: 0.75rem 1rem;
-    background-color: var(--easy-go-blue);
+    background-color: var(--easygo-blue);
     color: white;
     border-radius: 5px;
 }
-.easy-go-btn-2{
+.easygo-btn-2{
     border: none;
     padding: 0.75rem 1rem;
-    background-color: var(--easy-go-orange);
+    background-color: var(--easygo-orange);
     color: white;
     border-radius: 5px;
 }
@@ -136,10 +137,10 @@ i{
 .form-page-main form input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: solid 1px var(--easy-go-gray-1);
+  border: solid 1px var(--easygo-gray-1);
   border-radius: 5px;
   outline: none;
-  background-color: var(--easy-go-gray-2);
+  background-color: var(--easygo-gray-3);
   font-size: var(--font-size-4);
 }
 
@@ -169,6 +170,7 @@ i{
     font-size: var(--font-size-4);
     text-decoration: none;
     margin-top: 0.5rem;
+    font-weight: bold;
 }
 
 .form-page-main form .password-input-container{
