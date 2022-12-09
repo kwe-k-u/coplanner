@@ -60,6 +60,8 @@
 
     <!-- Bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- easygo js -->
+    <script src="../assets/js/general.js"></script>
 </body>
 
 </html>

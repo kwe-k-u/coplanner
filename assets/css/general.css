@@ -71,7 +71,7 @@ a{
 
 /** styling for form pages (pages that only have forms on them) **/
 .form-page-main {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -88,7 +88,7 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     font-size: var(--font-size-3);
 }
 
@@ -114,6 +114,7 @@ a{
   border-radius: 5px;
   outline: none;
   background-color: var(--easy-go-gray-2);
+  font-size: var(--font-size-4);
 }
 
 .form-page-main form .agreement-check{
