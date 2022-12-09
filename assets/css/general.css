@@ -35,23 +35,6 @@ body{
     font-family: var(--primary-font-family);
 }
 
-/** headers **/
-/* h1,
-h2,
-h3 {
-  font-weight: var(--font-weight-1);
-}
-
-h1 {
-  font-size: var(--header-size-1);
-}
-h2 {
-  font-size: var(--header-size-2);
-}
-h3 {
-  font-size: var(--header-size-3) !important;
-} */
-
 /** anchor element **/
 a{
     color: var(--easygo-blue);
@@ -93,6 +76,7 @@ i{
     border: none;
     background-color: transparent;
     outline: none;
+    color: var(--easygo-gray-2);
 }
 
 
