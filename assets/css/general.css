@@ -1,0 +1,145 @@
+/***** IMPORTS *****/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/***** GLOBAL VARIABLES *****/
+:root {
+  /** typography **/
+  --primary-font-family: "Roboto", sans-serif;
+
+  --header-size-1: 96px;
+  --header-size-2: 64px;
+  --header-size-3: 48px;
+  --header-weight-1: 400;
+
+  --font-size-1: 24px;
+  --font-size-2: 20px;
+  --font-size-3: 16px;
+  --font-size-4: 12px;
+  --font-weight-1: 700;
+  --font-weight-2: 500;
+  --font-weight-3: 400;
+
+  /** colors **/
+  --easy-go-blue: #2b65b1;
+  --easy-go-orange: #ffa500;
+  --easy-go-gray-1: rgba(204, 204, 204, 0.812);
+  --easy-go-gray-2: #FAFAFA;
+}
+
+
+
+/***** DEFAULT STYLING *****/
+/** body **/
+body{
+    font-family: var(--primary-font-family);
+}
+
+/** headers **/
+/* h1,
+h2,
+h3 {
+  font-weight: var(--font-weight-1);
+}
+
+h1 {
+  font-size: var(--header-size-1);
+}
+h2 {
+  font-size: var(--header-size-2);
+}
+h3 {
+  font-size: var(--header-size-3) !important;
+} */
+
+/** anchor element **/
+a{
+    color: var(--easy-go-blue) !important;
+    font-weight: bold;
+}
+
+
+
+/***** CLASS AND ID based stylilng *****/
+.easy-go-btn-1{
+    border: none;
+    padding: 0.75rem 1rem;
+    background-color: var(--easy-go-blue);
+    color: white;
+    border-radius: 5px;
+}
+
+
+/** styling for form pages (pages that only have forms on them) **/
+.form-page-main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.form-page-main .form-container,
+.form-page-main .img-container {
+  flex: 1 1 50%;
+}
+
+.form-page-main .form-container .form-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--font-size-3);
+}
+
+.form-page-main form {
+  width: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-page-main form .input-field{
+    margin: 0.5rem 0rem;
+}
+
+.form-page-main form .input-title{
+    font-weight: var(--font-weight-1);
+}
+
+.form-page-main form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: solid 1px var(--easy-go-gray-1);
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--easy-go-gray-2);
+}
+
+.form-page-main form .agreement-check{
+    display: flex;
+    gap: 3px;
+    font-size: var(--font-size-4);
+    margin-top: 1rem;
+}
+
+.form-page-main form .agreement-check input{
+    width: auto;
+}
+
+.form-page-main form .agreement-check span{
+    flex: 1;
+}
+
+.form-page-main form .button-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.form-page-main form .button-container a{
+    text-align: center;
+    font-size: var(--font-size-4);
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
