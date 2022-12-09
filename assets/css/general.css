@@ -105,25 +105,31 @@ i{
   gap: 4rem;
 }
 
-.form-page-main .form-container,
-.form-page-main .img-container {
-  flex: 1 1 50%;
-}
-
-.form-page-main .form-container .form-header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    font-size: var(--font-size-3);
-}
 
 .form-page-main form {
   width: 100%;
   padding: 2rem 4rem;
   display: flex;
   flex-direction: column;
+}
+
+.form-page-main .form-container .form-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--font-size-3);
+}
+
+.form-page-main .form-container,
+.form-page-main .img-container {
+  flex: 1 1 50%;
+}
+
+.form-page-main .img-container img{
+  width: 100%;
+  object-fit: cover;
 }
 
 .form-page-main form .input-field{
