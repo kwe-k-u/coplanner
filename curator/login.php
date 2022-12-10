@@ -35,10 +35,10 @@
                 <div class="input-field">
                     <div class="password-input-container">
                         <input type="password" placeholder="Password">
-                        <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
+                        <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                     <div class="text-end">
-                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-2)"  href="#">Forgot Password?</a>
+                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-1)"  href="#">Forgot Password?</a>
                     </div>
                 </div>
                 <div class="input-field button-container">
@@ -52,6 +52,8 @@
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- JQuery js -->
+    <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
 </body>

@@ -1,36 +1,51 @@
-////////////////////// SELECTORS //////////////////////
-let passwordToggles;
+// ////////////////////// SELECTORS //////////////////////
+// let passwordToggles;
 
+// window.addEventListener("load", init);
 
-window.addEventListener("load", init);
+// ////////////////////// FUNCTIONS //////////////////////
+// // initialization function
+// function init(){
+//     // ASSIGNING VARIABLES
+//     passwordToggles = document.querySelectorAll(".toggle-password-show");
 
+//     // EVENT LISTENERS
+//     passwordToggles.forEach(function(passwordToggle){
+//         passwordToggle.addEventListener("click", togglePasswordShow);
+//     })
 
+// }
 
-////////////////////// FUNCTIONS //////////////////////
-// initialization function
-function init(){
-    // ASSIGNING VARIABLES
-    passwordToggles = document.querySelectorAll(".toggle-password-show");
+// // toggle password function
+// function togglePasswordShow(event){
+//     let target = event.target;
+//     let parent = target.parentElement;
+//     let passInput = parent.querySelector("input");
 
-    // EVENT LISTENERS
-    passwordToggles.forEach(function(passwordToggle){
-        passwordToggle.addEventListener("click", togglePasswordShow);
-    })
+//     if(passInput.type === "password"){
+//         passInput.type = "text";
+//         target.innerHTML = "<i class='fa-sharp fa-solid fa-eye-slash'></i>"
+//     }
+//     else{
+//         passInput.type = "password";
+//         target.innerHTML = "<i class='fa-solid fa-eye'></i>"
+//     }
+// }
 
-}
+/*************** SELECTORS ****************/
+$(document).ready(function () {
+  $(".toggle-password-show").click(togglePasswordShow);
+});
 
-// toggle password function
-function togglePasswordShow(event){
-    let target = event.target;
-    let parent = target.parentElement;
-    let passInput = parent.querySelector("input");
-    
-    if(passInput.type === "password"){
-        passInput.type = "text";
-        target.innerHTML = "<i class='fa-sharp fa-solid fa-eye-slash'></i>"
-    }
-    else{
-        passInput.type = "password";
-        target.innerHTML = "<i class='fa-solid fa-eye'></i>"
-    }
+/*************** FUNCTIONS ****************/
+function togglePasswordShow() {
+  let passInput = $(this).parent().children("input");
+
+  if (passInput.attr("type") === "password") {
+    passInput.attr("type", "text");
+    $(this).html("<i class='fa-solid fa-eye'></i>");
+  } else {
+    passInput.attr("type", "password");
+    $(this).html("<i class='fa-sharp fa-solid fa-eye-slash'></i>");
+  }
 }

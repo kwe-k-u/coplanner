@@ -41,18 +41,30 @@
                 <div class="input-field">
                     <div class="password-input-container">
                         <input type="password" placeholder="Password">
-                        <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
+                        <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
                         <input type="password" placeholder="Confirm Password">
-                        <button type="button" class="toggle-password-show"><i class="fa-solid fa-eye"></i></button>
+                        <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field">
                     <small class="input-title">Company profile</small>
-                    <input type="text" placeholder="Company-profile">
+                    <div class="d-flex">
+                        <div class="dropdown">
+                            <a style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px;" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana
+                            </a>
+                            <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
+                                <li><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
+                                <li><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
+                                <li><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
+                            </ul>
+                        </div>
+                        <input class="rounded-end rounded-0" type="text" placeholder="Company-profile">
+                    </div>
                 </div>
                 <div class="agreement-check">
                     <input type="checkbox"><span>By creating an account, you agree to the terms and conditions</span>
@@ -68,6 +80,8 @@
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- JQuery js -->
+    <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
 </body>

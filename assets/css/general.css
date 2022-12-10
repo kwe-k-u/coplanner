@@ -22,8 +22,8 @@
   /** colors **/
   --easygo-blue: #2b65b1;
   --easygo-orange: #ffa500;
-  --easygo-gray-1: rgba(204, 204, 204, 0.812);
-  --easygo-gray-2: #A0A0A0;
+  --easygo-gray-1: #A0A0A0;
+  --easygo-gray-2: rgba(204, 204, 204, 0.812);
   --easygo-gray-3: #FAFAFA;
 }
 
@@ -76,7 +76,7 @@ i{
     border: none;
     background-color: transparent;
     outline: none;
-    color: var(--easygo-gray-2);
+    color: var(--easygo-gray-1);
 }
 
 
@@ -127,7 +127,7 @@ i{
 .form-page-main form input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: solid 1px var(--easygo-gray-1);
+  border: solid 1px var(--easygo-gray-2);
   border-radius: 5px;
   outline: none;
   background-color: var(--easygo-gray-3);
