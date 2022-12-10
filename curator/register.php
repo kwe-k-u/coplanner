@@ -27,7 +27,7 @@
                     <div class="logo">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
-                    <p class="instruction">Please enter your login credentials</p>
+                    <p class="instruction">Please enter your credentials</p>
                 </div>
                 <div class="input-field">
                     <input type="text" placeholder="Full Name">
@@ -54,7 +54,7 @@
                     <small class="input-title">Company profile</small>
                     <div class="d-flex">
                         <div class="dropdown">
-                            <a style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px;" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana
                             </a>
                             <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
