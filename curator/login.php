@@ -21,7 +21,7 @@
         <div class="img-container d-none d-lg-block">
             <img src="../assets/images/svgs/login.svg" alt="register image">
         </div>
-        <div class="form-container">
+        <div class="form-container container">
             <form>
                 <div class="form-header">
                     <div class="logo">

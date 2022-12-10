@@ -92,7 +92,6 @@ i{
 
 .form-page-main form {
   width: 100%;
-  padding: 2rem 4rem;
   display: flex;
   flex-direction: column;
 }
