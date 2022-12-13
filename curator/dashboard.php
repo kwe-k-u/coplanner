@@ -17,16 +17,18 @@
 
 <body>
     <!-- ============================== -->
-    <!-- main-wrapper [start] -->
+    <!-- dashboard-wrapper [start] -->
     <div class="main-wrapper">
         <header class="dashboard-header">
             <div class="logo logo-medium">
                 <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
             </div>
-            <div>Dashboard</div>
+            <div class="dashboard-title">Dashboard</div>
             <div class="right-sec">
                 <form id="dashboard-search">
-                    <input class="bg-gray-3" type="text" placeholder="search">
+                    <div class="form-input-field">
+                        <input type="text" placeholder="search">
+                    </div>
                 </form>
                 <div class="balance d-flex flex-column justify-content-center">
                     <h4 class="m-0 easygo-fs-3 easygo-fw-1">GHC 500</h4>
@@ -72,8 +74,11 @@
                     <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
                 </ul>
             </aside>
+            <div class="main-content p-lg-5">
+
+            </div>
         </main>
-        <!-- main-content [end] -->
+        <!-- dashboard-content [end] -->
         <!-- ============================== -->
     </div>
     <!-- main-wrapper [end] -->
