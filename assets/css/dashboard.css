@@ -4,7 +4,6 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 /********** header **********/
@@ -83,4 +82,19 @@
 
 .row {
   margin: 0;
+}
+
+/** form styles **/
+.item-pad-list{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.item-pad{
+  padding: 0.3rem 0.7rem !important;
+  font-size: var(--font-size-5);
+  background-color: var(--easygo-blue);
+  color: white;
+  border-radius: 50px;
 }

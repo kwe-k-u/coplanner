@@ -27,7 +27,7 @@
             <div class="right-sec">
                 <form id="dashboard-search">
                     <div class="form-input-field">
-                        <input type="text" placeholder="search">
+                        <input class="p-2" type="text" placeholder="&#128269;search">
                     </div>
                 </form>
                 <div class="balance d-flex flex-column justify-content-center">
@@ -48,7 +48,7 @@
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <aside class="sidebar d-flex flex-column justify-content-between">
+            <aside class="sidebar d-lg-flex d-none flex-column justify-content-between">
                 <ul class="main-list">
                     <li>
                         <div class="slide-down-menu">
@@ -146,12 +146,16 @@
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div class="form-input-field">
-                                    <input type="text" placeholder="Activities">
-                                    <button type="button" class="add-item btn"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> Add Another</button>
+                                    <input id="activity-input" type="text" placeholder="Activities">
+                                    <button data-sender="activity-input" data-target="activity-list" type="button" class="pad-item-add btn"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> Add Another</button>
+                                    <div id="activity-list" class="item-pad-list">
+                                    </div>
                                 </div>
                                 <div class="form-input-field">
-                                    <input type="text" placeholder="Locations">
-                                    <button type="button" class="add-item btn"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> Add Another</button>
+                                    <input id="location-input" type="text" placeholder="Locations">
+                                    <button data-sender="location-input" data-target="location-list" type="button" class="pad-item-add btn"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> Add Another</button>
+                                    <div id="location-list" class="item-pad-list">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,13 +166,13 @@
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div class="row">
-                                    <div class="col-lg-6 ps-0">
+                                    <div class="col-lg-6 pb-3 p-0 pe-lg-1">
                                         <div class="form-input-field">
                                             <h6 class="easygo-fs-4 text-gray-1">Start Date</h6>
                                             <input type="text" placeholder="dd/mm/yyyy">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 pe-0">
+                                    <div class="col-lg-6 pb-3 p-0 ps-lg-1">
                                         <div class="form-input-field">
                                             <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
                                             <input type="text" placeholder="dd/mm/yyyy">
@@ -176,7 +180,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6 ps-0">
+                                    <div class="col-lg-6 p-0 pe-lg-1 pb-3">
                                         <div class="form-input-field">
                                             <h6 class="easygo-fs-4 text-gray-1">Fee</h6>
                                             <div class="d-flex">
@@ -198,7 +202,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 pe-0">
+                                    <div class="col-lg-6 pb-3 p-0 ps-lg-1">
                                         <div class="form-input-field">
                                             <h6 class="easygo-fs-4 text-gray-1">Seats</h6>
                                             <input type="text">
@@ -206,6 +210,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
+                            <input class="easygo-btn-2" type="reset">
+                            <input class="easygo-btn-1" type="submit">
                         </div>
                     </form>
                 </section>

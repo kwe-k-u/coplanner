@@ -8,6 +8,9 @@ $(document).ready(function () {
   $(".file-input input[type=file]").click(function (event) {
     event.stopPropagation();
   }); // preventing click event from bubbling
+  $(".pad-item-add").click(padListAdd);
+
+  // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
 });
@@ -17,6 +20,17 @@ $(document).ready(function () {
 // toggle slide menu
 function toggleSlideMenu(){
   $(this).parent().children(".slide-down-sub-menu").slideToggle();
+}
+// to add item to item pad list
+function padListAdd(){
+  let inputClass = $(this).attr("data-sender");
+  let padListClass = $(this).attr("data-target");
+  let item = $(`#${inputClass}`).val();
+  $(`#${inputClass}`).val("");
+
+  if(item){
+    $(`#${padListClass}`).append(`<div class="item-pad">${item}</div>`);
+  }
 }
 
 //--- [form] functions ---//
