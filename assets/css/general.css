@@ -1,0 +1,256 @@
+/******************** IMPORTS ********************/
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/******************** GLOBAL VARIABLES ********************/
+:root {
+  /** typography **/
+  --primary-font-family: "Roboto", sans-serif;
+
+  --header-size-1: 96px;
+  --header-size-2: 64px;
+  --header-size-3: 48px;
+  --header-weight-1: 400;
+
+  --font-size-1: 24px;
+  --font-size-2: 20px;
+  --font-size-3: 16px;
+  --font-size-4: 12px;
+  --font-weight-1: 700;
+  --font-weight-2: 500;
+  --font-weight-3: 400;
+
+  /** colors **/
+  --easygo-blue: #2b65b1;
+  --easygo-orange: #ffa500;
+  --easygo-gray-1: #a0a0a0;
+  --easygo-gray-2: rgba(204, 204, 204, 0.812);
+  --easygo-gray-3: #fafafa;
+}
+
+/******************** DEFAULT STYLING ********************/
+/** body **/
+body {
+  font-family: var(--primary-font-family);
+}
+
+/** anchor element **/
+a {
+  color: var(--easygo-blue);
+  text-decoration: none !important;
+}
+
+/** other styles **/
+i {
+  pointer-events: none;
+}
+
+/******************** UTILITY CLASSES ********************/
+/** typography **/
+.text-gray-1 {
+  color: var(--easygo-gray-1);
+}
+.text-gray-2 {
+  color: var(--easygo-gray-1);
+}
+.text-gray-3 {
+  color: var(--easygo-gray-1);
+}
+
+.easygo-fs-1{
+  font-size: var(--font-size-1)  
+}
+.easygo-fs-2{
+  font-size: var(--font-size-2)  
+}
+.easygo-fs-3{
+  font-size: var(--font-size-3)  
+}
+.easygo-fs-4{
+  font-size: var(--font-size-4)  
+}
+
+/** forms **/
+form .inline-inputs{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+form .inline-inputs > *{
+  flex: 1;
+}
+
+
+
+/******************** CLASS AND ID based stylilng ********************/
+
+/** buttons **/
+.easygo-btn-1 {
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: var(--easygo-blue);
+  color: white;
+  border-radius: 5px;
+}
+.easygo-btn-2 {
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: var(--easygo-orange);
+  color: white;
+  border-radius: 5px;
+}
+
+/** form inputs **/
+.toggle-password-show {
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: var(--easygo-gray-1);
+}
+
+/** styling for form pages (pages that only have forms on them) **/
+.form-page-main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.form-page-main .form-container {
+  position: relative;
+  padding: 0;
+}
+
+.form-page-main form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-page-main .form-container .form-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--font-size-3);
+}
+
+.form-page-main .form-container,
+.form-page-main .img-container {
+  flex: 1 1 50%;
+}
+
+
+.form-page-main .img-container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.form-page-main form .input-field {
+  margin: 0.5rem 0rem;
+}
+
+.form-page-main form .input-title {
+  font-weight: var(--font-weight-1);
+}
+
+.form-page-main form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: solid 1px var(--easygo-gray-2);
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--easygo-gray-3);
+  font-size: var(--font-size-4);
+}
+
+.form-page-main form .agreement-check {
+  display: flex;
+  gap: 3px;
+  font-size: var(--font-size-4);
+  margin-top: 1rem;
+}
+
+.form-page-main form .agreement-check input {
+  width: auto;
+}
+
+.form-page-main form .agreement-check span {
+  flex: 1;
+}
+
+.form-page-main form .button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.form-page-main form .button-container a {
+  text-align: center;
+  font-size: var(--font-size-4);
+  text-decoration: none;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.form-page-main form .password-input-container {
+  position: relative;
+}
+
+/** styles for id upload form types **/
+.file-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border: dashed 1px var(--easygo-gray-2);
+  background-color: var(--easygo-gray-3);
+  border-radius: 0.5rem;
+  padding: 1.5rem 0rem;
+  font-size: var(--font-size-4);
+  cursor: pointer;
+}
+
+.file-input input {
+  display: none;
+}
+
+.file-input .upload-symbol {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--easygo-gray-2);
+}
+
+.file-input a {
+  color: var(--easygo-blue) !important;
+  font-weight: var(--font-weight-1);
+}
+
+.file-input .upload-symbol img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+/******************** MORE SPECIFIC STYLES (PAGE SPECIFIC) ********************/
+#register-form-1{
+  transition: all 0.5s linear;
+}
+#register-form-2{
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s linear;
+}
