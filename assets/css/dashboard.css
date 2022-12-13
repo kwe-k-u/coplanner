@@ -1,0 +1,79 @@
+/********** main-wrapper **********/
+.main-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/********** header **********/
+.dashboard-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0px 4px 24px rgba(188, 188, 188, 0.13);
+}
+
+.dashboard-header .right-sec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: solid 1px var(--easygo-gray-2);
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--easygo-gray-3);
+  font-size: var(--font-size-4);
+}
+
+/********** header **********/
+
+/********** sidebar **********/
+.dashboard-content {
+  flex-grow: 1;
+}
+
+.sidebar {
+  width: 200px;
+  border-right: 1px solid var(--easygo-gray-2);
+  height: 100%;
+  padding: 1rem 0;
+  padding-left: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 0.5rem 0rem;
+}
+
+.sidebar ul a {
+  color: var(--easygo-gray-1);
+  display: flex;
+  gap: 0.7rem;
+}
+
+.sidebar .main-list {
+  font-size: 15px;
+  font-weight: var(--font-weight-2);
+}
+
+.sidebar .main-list li {
+  width: 100%;
+}
+
+.sidebar .sub-menu {
+  font-size: var(--font-size-4);
+  padding-left: 2rem;
+}

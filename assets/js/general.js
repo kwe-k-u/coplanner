@@ -1,6 +1,8 @@
 /*************** SELECTORS ****************/
 $(document).ready(function () {
   // -- Adding Listeners -- //
+  // utility listeners
+  $(".slide-down-menu .slide-down-btn").click(toggleSlideMenu);
   $(".toggle-password-show").click(togglePasswordShow); // password toggle
   $(".file-input").click(triggerFileUpload); // file upload
   $(".file-input input[type=file]").click(function (event) {
@@ -11,6 +13,11 @@ $(document).ready(function () {
 });
 
 /*************** FUNCTIONS ****************/
+//--- [utility] functions --//
+// toggle slide menu
+function toggleSlideMenu(){
+  $(this).parent().children(".slide-down-sub-menu").slideToggle();
+}
 
 //--- [form] functions ---//
 // to toggle password show
