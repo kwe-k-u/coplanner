@@ -48,7 +48,7 @@
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <aside class="sidebar">
+            <aside class="sidebar d-flex flex-column justify-content-between">
                 <ul class="main-list">
                     <li>
                         <div class="slide-down-menu">
@@ -73,11 +73,21 @@
                     <li><a href="#"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
                     <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
                 </ul>
+                <div class="py-4 border-top">
+                    <a class="text-gray-1 easygo-fs-4" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
+                </div>
             </aside>
-            <div class="main-content container py-5">
+            <div class="main-content container">
                 <section class="create-trip">
+                    <div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
+                        <div>
+                            <h5 class="title">Create a trip</h5>
+                            <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Create Trip</small>
+                        </div>
+                        <button class="easygo-btn-2">Preview</button>
+                    </div>
                     <form>
-                        <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
+                        <div class="row border-1 border-bottom py-4 pe-lg-5">
                             <div class="col-lg-5">
                                 <h3 class="easygo-fs-3 easygo-fw-1">Header</h3>
                                 <p class="text-gray-1 easygo-fs-5">set a cover photo and title for trip</p>
