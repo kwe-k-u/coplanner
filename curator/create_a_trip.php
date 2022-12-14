@@ -27,7 +27,7 @@
             <div class="right-sec">
                 <form id="dashboard-search">
                     <div class="form-input-field">
-                        <input class="p-2" type="text" placeholder="&#128269;search">
+                        <input class="p-2" type="text" placeholder="search">
                     </div>
                 </form>
                 <div class="balance d-flex flex-column justify-content-center">
