@@ -135,17 +135,16 @@ i {
   outline: none;
   border: none;
   background-color: transparent;
-  display: flex;
-  flex-direction: column;
   cursor: pointer;
   gap: 5px;
 }
 
-.burger-btn > span{
+.burger-btn > div{
   width: 2rem;
   padding: 0.1rem;
   background-color: white;
   border-radius: 50px;
+  margin: 0.1rem 0rem;
 }
 
 /** forms **/
@@ -375,6 +374,7 @@ form .inline-inputs > * {
 /** slide down menus **/
 .slide-down-btn .arrow{
   transition: all 0.3s;
+  display: inline-block;
 }
 
 .slide-down-btn.open .arrow{

@@ -49,9 +49,9 @@
             <div class="nav-menu-title bg-blue text-white easygo-fw-1 py-3 ps-3 d-flex justify-content-between">
                 <h6 class="m-0">Dashboard</h6>
                 <button data-target="dashboard-menu" class="burger-btn slide-down-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </button>
             </div>
             <div id="dashboard-menu" class="slide-down-sub-menu">
@@ -59,7 +59,7 @@
                     <li>
                         <div class="slide-down-menu">
                             <a data-target="dashboard-submenu" class="slide-down-btn" href="#">
-                                <img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard</a>
+                                <img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
                             <ul id="dashboard-submenu" class="sub-menu slide-down-sub-menu">
                                 <li><a href="#">Trips</a></li>
                                 <li><a href="#">Finance</a></li>
@@ -80,7 +80,7 @@
                 <ul class="main-list slide-down">
                     <li>
                         <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu-sb" class="slide-down-btn" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard</a>
+                            <a data-target="dashboard-submenu-sb" class="slide-down-btn" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
                             <ul id="dashboard-submenu-sb" class="sub-menu slide-down-sub-menu">
                                 <li><a href="#">Trips</a></li>
                                 <li><a href="#">Finance</a></li>

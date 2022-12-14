@@ -49,9 +49,9 @@
             <div class="nav-menu-title bg-blue text-white easygo-fw-1 py-3 ps-3 d-flex justify-content-between">
                 <h6 class="m-0">Dashboard</h6>
                 <button data-target="dashboard-menu" class="burger-btn slide-down-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </button>
             </div>
             <div id="dashboard-menu" class="slide-down-sub-menu">
