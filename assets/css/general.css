@@ -143,8 +143,9 @@ i {
 
 .burger-btn > span{
   width: 2rem;
-  height: 0.2rem;
+  padding: 0.1rem;
   background-color: white;
+  border-radius: 50px;
 }
 
 /** forms **/
@@ -372,6 +373,14 @@ form .inline-inputs > * {
 }
 
 /** slide down menus **/
+.slide-down-btn .arrow{
+  transition: all 0.3s;
+}
+
+.slide-down-btn.open .arrow{
+  transform: rotateX(180deg);
+}
+
 .slide-down-sub-menu{
   display: none;
 }

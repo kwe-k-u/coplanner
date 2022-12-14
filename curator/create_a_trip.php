@@ -59,7 +59,7 @@
                     <li>
                         <div class="slide-down-menu">
                             <a data-target="dashboard-submenu" class="slide-down-btn" href="#">
-                                <img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard</a>
+                                <img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
                             <ul id="dashboard-submenu" class="sub-menu slide-down-sub-menu">
                                 <li><a href="#">Trips</a></li>
                                 <li><a href="#">Finance</a></li>
@@ -80,7 +80,7 @@
                 <ul class="main-list slide-down">
                     <li>
                         <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu-sb" class="slide-down-btn" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard</a>
+                            <a data-target="dashboard-submenu-sb" class="slide-down-btn" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
                             <ul id="dashboard-submenu-sb" class="sub-menu slide-down-sub-menu">
                                 <li><a href="#">Trips</a></li>
                                 <li><a href="#">Finance</a></li>
@@ -147,13 +147,13 @@
                             </div>
                             <div class="col-lg-7">
                                 <div>
-                                    <div class="file-input">
+                                    <div data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <input accept=".png, .jpg, .jpeg, .svg" type="file">
+                                        <!-- <input accept=".png, .jpg, .jpeg, .svg" type="file"> -->
                                     </div>
                                 </div>
                             </div>
@@ -253,7 +253,7 @@
             <div class="modal-content p-5">
 
                 <form>
-                    <div>
+                    <div class="px-2">
                         <h5 class="mb-2">Upload Image</h5>
 
                         <div>
@@ -270,7 +270,7 @@
 
                     <div class="row my-5">
                         <h5 class="mb-2">Recent uploads</h5>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 pb-3">
                             <div class="container bg-gray-3 border rounded">
                                 <div class="img-grid-1">
                                     <div class="grid-item">
@@ -292,7 +292,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 pb-3">
                             <div class="container bg-gray-3 border rounded">
                                 <div class="img-grid-1">
                                     <div class="grid-item">
@@ -314,7 +314,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 pb-3">
                             <div class="container bg-gray-3 border rounded">
                                 <div class="img-grid-1">
                                     <div class="grid-item">

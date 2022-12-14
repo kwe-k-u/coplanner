@@ -21,6 +21,7 @@ $(document).ready(function () {
 function toggleSlideMenu(){
   let target = $(this).attr("data-target");
   $(`#${target}`).slideToggle();
+  $(this).toggleClass("open");
 }
 // to add item to item pad list
 function padListAdd(){
