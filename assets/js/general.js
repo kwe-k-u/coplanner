@@ -2,7 +2,7 @@
 $(document).ready(function () {
   // -- Adding Listeners -- //
   // utility listeners
-  $(".slide-down-menu .slide-down-btn").click(toggleSlideMenu);
+  $(".slide-down-btn").click(toggleSlideMenu);
   $(".toggle-password-show").click(togglePasswordShow); // password toggle
   $(".file-input").click(triggerFileUpload); // file upload
   $(".file-input input[type=file]").click(function (event) {
@@ -19,7 +19,8 @@ $(document).ready(function () {
 //--- [utility] functions --//
 // toggle slide menu
 function toggleSlideMenu(){
-  $(this).parent().children(".slide-down-sub-menu").slideToggle();
+  let target = $(this).attr("data-target");
+  $(`#${target}`).slideToggle();
 }
 // to add item to item pad list
 function padListAdd(){

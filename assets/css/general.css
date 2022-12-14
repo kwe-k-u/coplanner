@@ -99,6 +99,12 @@ i {
 }
 
 /** background colors **/
+.bg-blue{
+  background-color: var(--easygo-blue);
+}
+.bg-orange{
+  background-color: var(--easygo-orange);
+}
 .bg-gray-1 {
   background-color: var(--easygo-gray-1);
 }
@@ -107,6 +113,38 @@ i {
 }
 .bg-gray-3 {
   background-color: var(--easygo-gray-3);
+}
+
+/** buttons **/
+.easygo-btn-1 {
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: var(--easygo-blue);
+  color: white;
+  border-radius: 5px;
+}
+.easygo-btn-2 {
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: var(--easygo-orange);
+  color: white;
+  border-radius: 5px;
+}
+
+.burger-btn{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.burger-btn > span{
+  width: 2rem;
+  height: 0.2rem;
+  background-color: white;
 }
 
 /** forms **/
@@ -166,23 +204,6 @@ form .inline-inputs > * {
 }
 
 /******************** CLASS AND ID based stylilng ********************/
-
-/** buttons **/
-.easygo-btn-1 {
-  border: none;
-  padding: 0.75rem 1rem;
-  background-color: var(--easygo-blue);
-  color: white;
-  border-radius: 5px;
-}
-.easygo-btn-2 {
-  border: none;
-  padding: 0.75rem 1rem;
-  background-color: var(--easygo-orange);
-  color: white;
-  border-radius: 5px;
-}
-
 
 /** form inputs **/
 .toggle-password-show {
