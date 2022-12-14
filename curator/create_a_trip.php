@@ -113,13 +113,13 @@
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div>
-                                    <div class="file-input">
+                                    <div data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <input accept=".png, .jpg, .jpeg, .svg" type="file">
+                                        <!-- <input accept=".png, .jpg, .jpeg, .svg" type="file"> -->
                                     </div>
                                 </div>
                                 <div class="form-input-field">
@@ -242,6 +242,116 @@
         <!-- ============================== -->
     </div>
     <!-- main-wrapper [end] -->
+    <!-- ============================== -->
+
+
+
+    <!-- ============================== -->
+    <!-- Upload image modal [start] -->
+    <div class="modal fade" id="upload-img-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content p-5">
+
+                <form>
+                    <div>
+                        <h5 class="mb-2">Upload Image</h5>
+
+                        <div>
+                            <div class="file-input py-5">
+                                <div class="upload-symbol">
+                                    <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
+                                </div>
+                                <a>Click to upload or drag and drop</a>
+                                <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                <input accept=".png, .jpg, .jpeg, .svg" type="file">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-5">
+                        <h5 class="mb-2">Recent uploads</h5>
+                        <div class="col-lg-4">
+                            <div class="container bg-gray-3 border rounded">
+                                <div class="img-grid-1">
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                </div>
+                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                    <span class="easygo-fs-5">Boti Falls</span>
+                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="container bg-gray-3 border rounded">
+                                <div class="img-grid-1">
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                </div>
+                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                    <span class="easygo-fs-5">Boti Falls</span>
+                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="container bg-gray-3 border rounded">
+                                <div class="img-grid-1">
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                </div>
+                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                    <span class="easygo-fs-5">Boti Falls</span>
+                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                        <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5" data-bs-dismiss="modal">Close</button>
+                        <button style="width: 5rem;" type="button " class="easygo-btn-1 py-2 easygo-fs-5">Upload</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- Upload image modal [end] -->
+    <!-- ============================== -->
+
+
     <!-- ============================== -->
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
