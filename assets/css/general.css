@@ -24,6 +24,7 @@
   /** colors **/
   --easygo-blue: #2b65b1;
   --easygo-orange: #ffa500;
+  --easygo-red: #ff2600;
   --easygo-gray-1: #a0a0a0;
   --easygo-gray-2: rgba(204, 204, 204, 0.812);
   --easygo-gray-3: #fafafa;
@@ -58,6 +59,9 @@ i {
 }
 .text-orange {
   color: var(--easygo-orange);
+}
+.text-red {
+  color: var(--easygo-red);
 }
 .text-gray-1 {
   color: var(--easygo-gray-1);
@@ -99,10 +103,10 @@ i {
 }
 
 /** background colors **/
-.bg-blue{
+.bg-blue {
   background-color: var(--easygo-blue);
 }
-.bg-orange{
+.bg-orange {
   background-color: var(--easygo-orange);
 }
 .bg-gray-1 {
@@ -130,8 +134,15 @@ i {
   color: white;
   border-radius: 5px;
 }
+.easygo-btn-3 {
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: var(--easygo-red);
+  color: white;
+  border-radius: 5px;
+}
 
-.burger-btn{
+.burger-btn {
   outline: none;
   border: none;
   background-color: transparent;
@@ -139,7 +150,7 @@ i {
   gap: 5px;
 }
 
-.burger-btn > div{
+.burger-btn > div {
   width: 2rem;
   padding: 0.1rem;
   background-color: white;
@@ -190,21 +201,21 @@ form .inline-inputs > * {
 }
 
 /** user icon styles **/
-.user-icon{
+.user-icon {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.user-icon img{
+.user-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 /** image layouts **/
-.img-grid-1{
+.img-grid-1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 5rem 5rem;
@@ -212,19 +223,19 @@ form .inline-inputs > * {
   gap: 0.5rem;
 }
 
-.img-grid-1 .grid-item{
+.img-grid-1 .grid-item {
   border-radius: 5px;
   overflow: hidden;
 }
 
-.img-grid-1 .grid-item:nth-child(3){
+.img-grid-1 .grid-item:nth-child(3) {
   grid-row: span 2;
 }
-.img-grid-1 .grid-item:nth-child(4){
+.img-grid-1 .grid-item:nth-child(4) {
   grid-column: span 2;
 }
 
-.img-grid-1 img{
+.img-grid-1 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -243,7 +254,6 @@ form .inline-inputs > * {
   outline: none;
   color: var(--easygo-gray-1);
 }
-
 
 /** styling for form pages (pages that only have forms on them) **/
 .form-page-main {
@@ -372,22 +382,18 @@ form .inline-inputs > * {
 }
 
 /** slide down menus **/
-.slide-down-btn .arrow{
+.slide-down-btn .arrow {
   transition: all 0.3s;
   display: inline-block;
 }
 
-.slide-down-btn.open .arrow{
+.slide-down-btn.open .arrow {
   transform: rotateX(180deg);
 }
 
-.slide-down-sub-menu{
+.slide-down-sub-menu {
   display: none;
 }
-
-
-
-
 
 /******************** MORE SPECIFIC STYLES (PAGE SPECIFIC) ********************/
 #register-form-1 {
