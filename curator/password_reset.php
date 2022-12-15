@@ -43,7 +43,7 @@
                 </div> -->
                 <div class="input-field button-container">
                     <button class="easygo-btn-1" type="submit">Reset Password</button>
-                    <!-- <a href="./register.php">Create an account</a> -->
+                    <a href="./register.php">Create an account</a>
                 </div>
             </form>
         </div>
