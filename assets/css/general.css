@@ -54,7 +54,7 @@ i {
 /******************** UTILITY CLASSES ********************/
 /** typography **/
 .text-blue {
-  color: var(--easygo-blue);
+  color: var(--easygo-blue) !important;
 }
 .text-orange {
   color: var(--easygo-orange);

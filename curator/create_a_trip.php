@@ -80,7 +80,7 @@
                 <ul class="main-list slide-down">
                     <li>
                         <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu-sb" class="slide-down-btn" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
+                            <a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);"  href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
                             <ul id="dashboard-submenu-sb" class="sub-menu slide-down-sub-menu">
                                 <li><a href="#">Trips</a></li>
                                 <li><a href="#">Finance</a></li>
