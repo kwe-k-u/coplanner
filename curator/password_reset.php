@@ -32,15 +32,6 @@
                 <div class="input-field">
                     <input type="text" placeholder="Email">
                 </div>
-                <!-- <div class="input-field">
-                    <div class="password-input-container">
-                        <input type="password" placeholder="Password">
-                        <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
-                    </div>
-                    <div class="text-end">
-                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-1)"  href="#">Forgot Password?</a>
-                    </div>
-                </div> -->
                 <div class="input-field button-container">
                     <button class="easygo-btn-1" type="submit">Reset Password</button>
                     <a href="./register.php">Create an account</a>
