@@ -80,7 +80,7 @@
                 <ul class="main-list slide-down">
                     <li>
                         <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);"  href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
+                            <a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
                             <ul id="dashboard-submenu-sb" class="sub-menu slide-down-sub-menu">
                                 <li><a href="#">Trips</a></li>
                                 <li><a href="#">Finance</a></li>
@@ -188,13 +188,13 @@
                                     <div class="col-lg-6 pb-3 p-0 pe-lg-1">
                                         <div class="form-input-field">
                                             <h6 class="easygo-fs-4 text-gray-1">Start Date</h6>
-                                            <input type="text" placeholder="dd/mm/yyyy">
+                                            <input class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="dd/mm/yyyy">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 pb-3 p-0 ps-lg-1">
                                         <div class="form-input-field">
                                             <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
-                                            <input type="text" placeholder="dd/mm/yyyy">
+                                            <input class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="dd/mm/yyyy">
                                         </div>
                                     </div>
                                 </div>
@@ -205,12 +205,11 @@
                                             <div class="d-flex">
                                                 <div class="dropdown">
                                                     <a style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        &#8373;
+                                                        GHS
                                                     </a>
                                                     <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
-                                                        <li><span class="text-blue">&#36;</span> US dollar</li>
-                                                        <li><span class="text-blue">&pound;</span> Pound</li>
-                                                        <li><span class="text-blue">&yen;</span> Yen</li>
+                                                        <li>GHS</li>
+                                                        <li>USD</li>
                                                     </ul>
                                                 </div>
                                                 <input class="rounded-end rounded-0" type="text" placeholder="Fee">
@@ -232,7 +231,7 @@
                         </div>
                         <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
                             <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel">
-                            <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" type="submit">
+                            <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" type="submit" value="Create Trip">
                         </div>
                     </form>
                 </section>
