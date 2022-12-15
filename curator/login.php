@@ -38,7 +38,7 @@
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                     <div class="text-end">
-                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-1)"  href="#">Forgot Password?</a>
+                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-1)"  href="password_reset.php">Forgot Password?</a>
                     </div>
                 </div>
                 <div class="input-field button-container">
