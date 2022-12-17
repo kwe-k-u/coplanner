@@ -1,0 +1,25 @@
+/* * styling for various sections of home page **/
+.intro, .get-started, .about-us{
+    min-height: 100vh;
+}
+
+.intro{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro .intro-card{
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 3rem;
+    margin: 0rem 1rem;
+}
+
+.get-started, .about-us{
+    display: flex;
+    align-items: center;
+}

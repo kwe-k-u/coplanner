@@ -13,6 +13,7 @@ $(document).ready(function () {
   // form listeners
   $(".date-input").focus(changeToDate);
   $(".date-input").blur(changeToText);
+  $(".select-menu-1").click(openSelectMenu);
 
   // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
@@ -72,6 +73,16 @@ function changeToText(){
     let splitStr = value.split("-");
     $(this).val(splitStr.reverse().join("-"));
   }
+}
+
+// to open select menu
+function openSelectMenu(event){
+  $(this).children(".options").slideToggle();
+  if(event.target.classList.contains("option")){
+    $(this).find(".select-menu-value").text(event.target.textContent);
+    $(this).find(".value").val(event.target.textContent);
+    console.log($(this).find(".value").val());
+  } 
 }
 
 // to move to next form
