@@ -1,16 +1,43 @@
 /*************** SELECTORS ****************/
 $(document).ready(function () {
   // -- Adding Listeners -- //
+  // utility listeners
+  $(".slide-down-btn").click(toggleSlideMenu);
   $(".toggle-password-show").click(togglePasswordShow); // password toggle
   $(".file-input").click(triggerFileUpload); // file upload
   $(".file-input input[type=file]").click(function (event) {
     event.stopPropagation();
   }); // preventing click event from bubbling
+  $(".pad-item-add").click(padListAdd);
+  
+  // form listeners
+  $(".date-input").focus(changeToDate);
+  $(".date-input").blur(changeToText);
+
+  // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
 });
 
 /*************** FUNCTIONS ****************/
+//--- [utility] functions --//
+// toggle slide menu
+function toggleSlideMenu(){
+  let target = $(this).attr("data-target");
+  $(`#${target}`).slideToggle();
+  $(this).toggleClass("open");
+}
+// to add item to item pad list
+function padListAdd(){
+  let inputClass = $(this).attr("data-sender");
+  let padListClass = $(this).attr("data-target");
+  let item = $(`#${inputClass}`).val();
+  $(`#${inputClass}`).val("");
+
+  if(item){
+    $(`#${padListClass}`).append(`<div class="item-pad">${item}</div>`);
+  }
+}
 
 //--- [form] functions ---//
 // to toggle password show
@@ -29,6 +56,22 @@ function togglePasswordShow() {
 // to trigger file uploadd
 function triggerFileUpload() {
   $(this).children("input[type=file]").trigger("click");
+}
+
+// to change date fields from type "text" to type "date"
+function changeToDate(){
+  $(this).attr("type", "date");
+}
+// to change type back to "text"
+function changeToText(){
+  $(this).attr("type", "text");
+
+  let value = $(this).val();
+
+  if(value){
+    let splitStr = value.split("-");
+    $(this).val(splitStr.reverse().join("-"));
+  }
 }
 
 // to move to next form

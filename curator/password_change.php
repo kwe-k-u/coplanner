@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - curator signup</title>
+    <title>easygo - curator change password</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -27,23 +27,22 @@
                     <div class="logo">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
-                    <p class="instruction">Please enter your login credentials</p>
-                </div>
-                <div class="input-field">
-                    <input type="text" placeholder="Email">
+                    <p class="instruction">Please enter your new password</p>
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input type="password" placeholder="Password">
+                        <input type="password" placeholder="New Password">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
-                    <div class="text-end">
-                        <a style="font-size: var(--font-size-4); color: var(--easygo-gray-1)"  href="password_reset.php">Forgot Password?</a>
+                </div>
+                <div class="input-field">
+                    <div class="password-input-container">
+                        <input type="password" placeholder="Confirm Password">
+                        <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field button-container">
-                    <button class="easygo-btn-1" type="submit">Login</button>
-                    <a href="./register.php">Create an account</a>
+                    <button class="easygo-btn-1" type="submit">Set New Password</button>
                 </div>
             </form>
         </div>
