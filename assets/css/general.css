@@ -40,6 +40,11 @@
   --logo-small: 4rem;
   --logo-medium: 6rem;
   --logo-large: 8rem;
+
+  /** transition times **/
+  --trans-time-1: 0.3s;
+  --trans-time-2: 0.7;
+  --trans-time-3: 1s;
 }
 
 /******************** DEFAULT STYLING ********************/
@@ -461,6 +466,31 @@ form .inline-inputs > * {
 .stacked-imgs img:nth-child(1) {
   transform: translate(2rem, -2rem);
 }
+
+
+
+
+
+/******************** Effects ********************/
+/** hover effects **/
+.text-hover-blue{
+  transition: all var(--trans-time-1);
+}
+.text-hover-blue:hover{
+  color: var(--easygo-blue) !important;
+}
+
+.text-hover-orange{
+  transition: all var(--trans-time-1);
+}
+.text-hover-orange:hover{
+  color: var(--easygo-orange) !important;
+}
+
+
+
+
+
 
 /******************** CLASS AND ID based stylilng ********************/
 
