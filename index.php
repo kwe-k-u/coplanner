@@ -19,7 +19,7 @@
 
     <!-- main content start -->
     <div class="main-wrapper">
-        <nav class="navbar navbar-expand-sm fixed-top" style="backdrop-filter: blur(20px);">
+        <nav class="navbar navbar-expand-md fixed-top" style="backdrop-filter: blur(20px);">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./">
                     <img class="logo-medium" src="./assets/images/svgs/logo.svg" alt="">
@@ -471,12 +471,12 @@
                         </div>
                         <div class="grid-item">
                             <div class="row h-100">
-                                <div class="col-lg-6">
+                                <div class="col-6">
                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
                                         <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-6">
                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
                                         <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
                                     </div>
@@ -526,17 +526,17 @@
                     <div class="col-lg-3 py-3">
                         <h5 class="easygo-fw-2">Trip Curators</h5>
                         <div class="d-flex flex-column">
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Become a curator</a>
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Value added services</a>
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
+                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Become a curator</a>
+                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Value added services</a>
+                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
                         </div>
                     </div>
                     <div class="col-lg-3 py-3">
                         <h5 class="easygo-fw-2">About us</h5>
                         <div class="d-flex flex-column">
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Privacy policy</a>
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Meet the team</a>
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Careers</a>
+                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Privacy policy</a>
+                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Meet the team</a>
+                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Careers</a>
                         </div>
                     </div>
                 </div>
@@ -551,6 +551,7 @@
     <script src="./assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="./assets/js/general.js"></script>
+    <script src="./assets/js/home.js"></script>
 </body>
 
 </html>
