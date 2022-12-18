@@ -157,6 +157,16 @@ i {
 }
 
 /** buttons **/
+.easygo-btn-1,
+.easygo-btn-2,
+.easygo-btn-3,
+.easygo-btn-4,
+.easygo-btn-5{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .easygo-btn-1 {
   border: none;
   padding: 0.75rem 1rem;
@@ -399,6 +409,13 @@ form .inline-inputs > * {
 }
 .grid-2 .grid-item:nth-child(5) {
   grid-column: span 3;
+}
+
+/** media query for grid-layouts **/
+@media only screen and (max-width: 768px) {
+  .grid-1 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /** image layouts **/

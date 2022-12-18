@@ -137,7 +137,7 @@
                             <div class="container d-flex flex-column gap-4">
                                 <h1>Find the Best Trip For You And Your Family</h1>
                                 <p>We use top trip curator services to create new adventure for you and your loved ones. You’ll explore top destinations and popular tourists attraction centers in the whole of Ghana. Let’s create memories for you and your family. We also offer private tour services so you can customize your trip to your taste.</p>
-                                <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" style="border-radius: 50px; word-spacing: 5px; letter-spacing: 3px;">Get started</button>
+                                <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" style="border-radius: 50px; word-spacing: 5px;">Get started</button>
                             </div>
                         </div>
                     </div>
@@ -325,7 +325,7 @@
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- view trips section [start] -->
-            <section class="view-trips bg-blue text-white my-5">
+            <section class="view-trips bg-blue text-white" style="margin: 10rem 0rem;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -337,7 +337,7 @@
                             <div class="container-fluid">
                                 <h1>Let’s create a memorable trip for you and your loved ones</h1>
                                 <p>Plan a trip with your loved ones.. Enjoy a weekend with your friends and family, we’ll help you plan the perfect weekend trip. You’ll choose from our numerous trip locations filled with fun activities and sites.</p>
-                                <button type="button" class="easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5">View Trips</button>
+                                <button type="button" class="easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5" style="border-radius: 50px; word-spacing: 5px;">View Trips</button>
 
                             </div>
                         </div>
@@ -412,7 +412,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
-                            <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded text-white p-5" data-bs-ride="carousel">
+                            <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded text-white" style="padding: 4rem 2rem;" data-bs-ride="carousel">
                                 <div class="carousel-indicators">
                                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -508,7 +508,7 @@
         </main>
         <footer class="easygo-footer-1 mt-5 bg-blue px-3 py-5 text-white">
             <div class="container">
-                <div class="row">
+                <div class="row text-center text-lg-start">
                     <div class="col-lg-3">
                         <div>
                             <img src="./assets/images/svgs/logo.svg" alt="easygo logo">
