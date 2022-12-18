@@ -56,6 +56,8 @@
                 </div>
         </nav>
         <main>
+            <!--- ================================ -->
+            <!--- introduction section [start] -->
             <section class="intro">
                 <div class="intro-card text-center text-white" style="backdrop-filter: blur(20px);">
                     <h1>You don't need to hassle to have a fun trip</h1>
@@ -70,7 +72,7 @@
                                 <h6 class="text-black easygo-fs-4">Location</h6>
                                 <div class="select-menu-1">
                                     <div>
-                                        <span class="select-menu-value">Select</span>
+                                        <a href="javascript:void(0);" class="select-menu-value text-gray-1">Select</a>
                                     </div>
                                     <ul class="options">
                                         <li class="option">Location 1</li>
@@ -85,7 +87,7 @@
                                 <h6 class="text-black easygo-fs-4">Choose Date</h6>
                                 <div class="select-menu-1">
                                     <div>
-                                        <span class="select-menu-value">Select</span>
+                                        <a href="javascript:void(0);" class="select-menu-value text-gray-1">Select</a>
                                     </div>
                                     <ul class="options">
                                         <li class="option">Location 1</li>
@@ -100,7 +102,7 @@
                                 <h6 class="text-black easygo-fs-4">Curator</h6>
                                 <div class="select-menu-1">
                                     <div>
-                                        <span class="select-menu-value">Select</span>
+                                        <a href="javascript:void(0);" class="select-menu-value text-gray-1">Select</a>
                                     </div>
                                     <ul class="options">
                                         <li class="option">Location 1</li>
@@ -117,7 +119,11 @@
                 </div>
                 <img src="./assets/images/others/background.jpg" alt="background-image" class="background-img">
             </section>
-            <section class="get-started">
+            <!--- introduction section [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- get started section [start] -->
+            <section class="get-started my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -137,7 +143,11 @@
                     </div>
                 </div>
             </section>
-            <section class="suggested-locations">
+            <!--- get started [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- suggested locations section [start] -->
+            <section class="suggested-locations my-5">
                 <div class="container">
                     <div>
                         <h5 class="text-orange">Locations</h5>
@@ -285,7 +295,11 @@
                     </div>
                 </div>
             </section>
-            <section class="about-us">
+            <!--- suggested locations section [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- about us section [start] -->
+            <section class="about-us my-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
@@ -307,6 +321,10 @@
                     </div>
                 </div>
             </section>
+            <!--- about us section [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- view trips section [start] -->
             <section class="view-trips bg-blue text-white my-5">
                 <div class="container">
                     <div class="row">
@@ -326,7 +344,11 @@
                     </div>
                 </div>
             </section>
-            <section class="news-blog">
+            <!--- view trips section [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- news-blot section [start] -->
+            <section class="news-blog my-5">
                 <div class="container">
                     <h3 class="text-center easygo-fs-1">Our News Blog</h3>
                     <p class="text-center">Get up to date news about new, recurring trips and also the latest updates about trip locations</p>
@@ -376,6 +398,10 @@
                     </div>
                 </div>
             </section>
+            <!--- news-blog section [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- testimonies section [start] -->
             <section class="testimonies my-5">
                 <div class="container py-5">
                     <div class="row">
@@ -423,7 +449,11 @@
                     </div>
                 </div>
             </section>
-            <section class="gallery">
+            <!--- testimonies section [end] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- gallery section [start] -->
+            <section class="gallery my-5">
                 <div class="container">
                     <h1>Destination Gallery</h1>
                     <div class="grid-2">
@@ -458,7 +488,11 @@
                     <div style="text-align: right" class="my-3"><a class="text-black" href="javascript:void(0)">View Gallery</a></div>
                 </div>
             </section>
-            <section class="nl-subscribe">
+            <!--- gallery section [wns] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!--- News letter section [start] -->
+            <section class="nl-subscribe my-5">
                 <div class="container">
                     <form class="nl-subscription-form py-5">
                         <h4 class="title text-white">subscribe to our newsletter to get the latest information about trips directly from email</h4>
@@ -469,6 +503,8 @@
                     </form>
                 </div>
             </section>
+            <!--- News Letter section [end] -->
+            <!--- ================================ -->
         </main>
         <footer class="easygo-footer-1 mt-5 bg-blue px-3 py-5 text-white">
             <div class="container">

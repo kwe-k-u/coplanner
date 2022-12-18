@@ -14,6 +14,7 @@ $(document).ready(function () {
   $(".date-input").focus(changeToDate);
   $(".date-input").blur(changeToText);
   $(".select-menu-1").click(openSelectMenu);
+  $(".select-menu-1").focusout(closeSelectMenu);
 
   // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
@@ -77,12 +78,17 @@ function changeToText(){
 
 // to open select menu
 function openSelectMenu(event){
-  $(this).children(".options").slideToggle();
   if(event.target.classList.contains("option")){
     $(this).find(".select-menu-value").text(event.target.textContent);
     $(this).find(".value").val(event.target.textContent);
-    console.log($(this).find(".value").val());
+    $(this).children(".options").slideUp();
   } 
+  else{
+    $(this).children(".options").slideDown();
+  }
+}
+function closeSelectMenu(event){
+  $(this).children(".options").slideUp();
 }
 
 // to move to next form
