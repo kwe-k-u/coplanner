@@ -31,6 +31,11 @@
   --easygo-gray-2: rgba(204, 204, 204, 0.812);
   --easygo-gray-3: #fafafa;
 
+  /** border radii **/
+  --easygo-br-1: 10px;
+  --easygo-br-2: 50px;
+  --easygo-br-3: 100px;
+
   /** logo sizes **/
   --logo-small: 4rem;
   --logo-medium: 6rem;
@@ -280,6 +285,47 @@ form .inline-inputs > * {
 .select-menu-1 .options li:hover {
   background-color: var(--easygo-orange);
   color: white;
+}
+
+.nl-subscription-form{
+  display: flex;
+  text-align: center;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: var(--easygo-blue);
+  border-radius: var(--easygo-br-1);
+}
+
+.nl-subscription-form .title{
+  text-transform: capitalize;
+}
+
+.nl-subscription-form .input-field{
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--easygo-br-1);
+  overflow: hidden;
+}
+
+.nl-subscription-form .input-field input,
+.nl-subscription-form .input-field button{
+  padding: 1rem;
+}
+
+.nl-subscription-form .input-field input{
+  flex-basis: 70%;
+  border: none;
+  outline: none;
+
+}
+.nl-subscription-form .input-field button{
+  flex-basis: 30%;
+  border: none;
+  outline: none;
 }
 
 /** logo sizes **/
