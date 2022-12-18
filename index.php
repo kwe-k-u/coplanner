@@ -306,15 +306,15 @@
                 </div>
             </div>
         </section>
-        <section class="view-trips bg-blue text-white">
+        <section class="view-trips bg-blue text-white my-5">
             <div class="container">
-                <div class="d-flex justify-content-center">
-                    <div>
-                        <div class="container-fluid px-5 h-100 position-relative">
-                            <img class="img-fluid h-100" src="./assets/images/others/background.jpg" alt="background image">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="container-fluid px-5 position-relative h-100">
+                            <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid" src="./assets/images/others/background.jpg" alt="background image">
                         </div>
                     </div>
-                    <div class="py-5">
+                    <div class="col-lg-6 py-5">
                         <div class="container-fluid">
                             <h1>Let’s create a memorable trip for you and your loved ones</h1>
                             <p>Plan a trip with your loved ones.. Enjoy a weekend with your friends and family, we’ll help you plan the perfect weekend trip. You’ll choose from our numerous trip locations filled with fun activities and sites.</p>
