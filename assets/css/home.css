@@ -1,5 +1,5 @@
 /* * styling for various sections of home page **/
-.intro, .get-started, .about-us{
+.intro, .get-started, .about-us, .gallery{
     min-height: 100vh;
 }
 

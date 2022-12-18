@@ -319,7 +319,138 @@
                             <h1>Let’s create a memorable trip for you and your loved ones</h1>
                             <p>Plan a trip with your loved ones.. Enjoy a weekend with your friends and family, we’ll help you plan the perfect weekend trip. You’ll choose from our numerous trip locations filled with fun activities and sites.</p>
                             <button type="button" class="easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5">View Trips</button>
-                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="news-blog">
+            <div class="container">
+                <h3 class="text-center easygo-fs-1">Our News Blog</h3>
+                <p class="text-center">Get up to date news about new, recurring trips and also the latest updates about trip locations</p>
+                <div class="grid-1" style="min-height: 80vh;">
+                    <div class="grid-item">
+                        <div class="d-flex flex-column">
+                            <img class="img-fluid" src="./assets/images/others/background.jpg" alt="scenery">
+                            <div>
+                                <h6 class="border-3 border-bottom py-3 easygo-fs-1">Breath-taking view of the kwame Nkrumah park in Ghana</h6>
+                                <p class="easygo-fs-2">
+                                    Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones. Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones. Dummy Text. We use top trip curator services to create new adventure for you and your loved ones.
+                                </p>
+                                <p>
+                                    <a href="javascript:void(0);" class="text-orange">Read more</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex grid-item gap-1">
+                        <div class="h-100" style="flex: 1 2 50%;">
+                            <img class="img-fluid h-100" src="./assets/images/others/background.jpg" alt="scenery">
+                        </div>
+                        <div style="flex: 2 1 50%;">
+                            <h6 class="border-3 border-bottom py-3 easygo-fs-1">Breath-taking view of the kwame Nkrumah park in Ghana</h6>
+                            <p class="easygo-fs-2">
+                                Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
+                            </p>
+                            <p>
+                                <a href="javascript:void(0);" class="text-orange">Read more</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex grid-item gap-1">
+                        <div class="h-100" style="flex: 1 2 50%;">
+                            <img class="img-fluid h-100" src="./assets/images/others/background.jpg" alt="scenery">
+                        </div>
+                        <div style="flex: 2 1 50%;">
+                            <h6 class="border-3 border-bottom py-3 easygo-fs-1">Breath-taking view of the kwame Nkrumah park in Ghana</h6>
+                            <p class="easygo-fs-2">
+                                Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
+                            </p>
+                            <p>
+                                <a href="javascript:void(0);" class="text-orange">Read more</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="testimonies my-5">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="container d-flex flex-column gap-4">
+                            <h5 class="text-orange">Testimonies</h5>
+                            <h1>What Our Customers Say About Us</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded text-white p-5" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div>
+                                        <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
+                                        <p>
+                                            EasyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity. EasyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div>
+                                        <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
+                                        <p>
+                                            EasyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity. EasyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div>
+                                        <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
+                                        <p>
+                                            EasyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity. EasyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery">
+            <div class="container">
+                <h1>Destination Gallery</h1>
+                <div class="grid-2">
+                    <div class="grid-item">
+                        <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                    </div>
+                    <div class="grid-item">
+                        <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                    </div>
+                    <div class="grid-item">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div style="border-radius: 10px; overflow: hidden;">
+                                    <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div style="border-radius: 10px; overflow: hidden;">
+                                    <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
