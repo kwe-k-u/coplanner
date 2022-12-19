@@ -323,7 +323,7 @@ form .inline-inputs > * {
   flex-direction: column;
   padding: 2rem;
   background-color: var(--easygo-blue);
-  border-radius: var(--easygo-br-1);
+  border-radius: var(--easygo-br-3);
 }
 
 .nl-subscription-form .title {
@@ -336,7 +336,7 @@ form .inline-inputs > * {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--easygo-br-1);
+  border-radius: var(--easygo-br-3);
   overflow: hidden;
 }
 
@@ -713,26 +713,19 @@ form .inline-inputs > * {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
 }
 
-.trip-card-h{
-  flex-direction: row !important;
-}
-
-/* .trip-card-h img{
-  flex: 1;
-}
-.trip-card-h .trip-card-body{
-  flex: 1;
-} */
-
 .trip-card img {
   width: 100%;
-  height: 100%;
+  height: 418px;
   object-fit: cover;
 }
 
 .trip-card-body,
 .trip-card-footer {
   padding: 1rem;
+}
+
+.trip-card-header{
+  border-bottom: solid 2px var(--easygo-gray-1);
 }
 
 .trip-card .trip-card-body .trip-card-header {

@@ -40,6 +40,8 @@
                     </div>
                     <div>
                         <div class="row">
+                            <!--- ================================ -->
+                            <!-- trip card horizontal [start] -->
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
@@ -47,30 +49,48 @@
                                             <img src="../assets/images/others/background.jpg" class="img-fluid" alt="trip card image">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
                                         <div>
-                                            <div class="trip-card-header">
-                                                <div class="title">
-                                                    <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                                    <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
+                                            <div>
+                                                <div class="trip-card-header border-0">
+                                                    <div class="title">
+                                                        <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
+                                                        <div class="easygo-fs-4 mb-1">Curated by easygo events</div>
+                                                        <div class="d-flex justify-content-start align-items-center gap-2">
+                                                            <div class="stars">
+                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                            </div>
+                                                            <span class="easygo-fs-6 text-gray-1">4 star rating</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="location easygo-fs-4">
-                                                    Accra Ghana
+                                                <div class="trip-card-content py-1">
+                                                    Bunso Eco Park Tour Is a day fun trip with a power pack activities that we are going to start it from Accra to Eastern Region (BUNSO ECO PARK and ASENAMA WATERFALLS). See the best of what Accra has to offer in just one day with this private tour.
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
                                                 </div>
                                             </div>
-                                            <div class="trip-card-content">
-                                                Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
+                                            <div class="trip-card-footer p-0">
+                                                <p>
+                                                    <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
+                                                </p>
+                                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
                                             </div>
-                                        </div>
-                                        <div class="trip-card-footer">
-                                            <p>
-                                                <span class="easygo-h2">$30</span><span class="easygo-fs-1">/Person</span>
-                                            </p>
-                                            <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- trip card horizontal [end] -->
+                            <!--- ================================ -->
+                            <!--- ================================ -->
+                            <!-- trip card horizontal [start] -->
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
@@ -78,30 +98,48 @@
                                             <img src="../assets/images/others/background.jpg" class="img-fluid" alt="trip card image">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
                                         <div>
-                                            <div class="trip-card-header">
-                                                <div class="title">
-                                                    <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                                    <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
+                                            <div>
+                                                <div class="trip-card-header border-0">
+                                                    <div class="title">
+                                                        <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
+                                                        <div class="easygo-fs-4 mb-1">Curated by easygo events</div>
+                                                        <div class="d-flex justify-content-start align-items-center gap-2">
+                                                            <div class="stars">
+                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                            </div>
+                                                            <span class="easygo-fs-6 text-gray-1">4 star rating</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="location easygo-fs-4">
-                                                    Accra Ghana
+                                                <div class="trip-card-content py-1">
+                                                    Bunso Eco Park Tour Is a day fun trip with a power pack activities that we are going to start it from Accra to Eastern Region (BUNSO ECO PARK and ASENAMA WATERFALLS). See the best of what Accra has to offer in just one day with this private tour.
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
                                                 </div>
                                             </div>
-                                            <div class="trip-card-content">
-                                                Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
+                                            <div class="trip-card-footer p-0">
+                                                <p>
+                                                    <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
+                                                </p>
+                                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
                                             </div>
-                                        </div>
-                                        <div class="trip-card-footer">
-                                            <p>
-                                                <span class="easygo-h2">$30</span><span class="easygo-fs-1">/Person</span>
-                                            </p>
-                                            <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- trip card horizontal [end] -->
+                            <!--- ================================ -->
+                            <!--- ================================ -->
+                            <!-- trip card horizontal [start] -->
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
@@ -109,30 +147,46 @@
                                             <img src="../assets/images/others/background.jpg" class="img-fluid" alt="trip card image">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
                                         <div>
-                                            <div class="trip-card-header">
-                                                <div class="title">
-                                                    <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                                    <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
+                                            <div>
+                                                <div class="trip-card-header border-0">
+                                                    <div class="title">
+                                                        <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
+                                                        <div class="easygo-fs-4 mb-1">Curated by easygo events</div>
+                                                        <div class="d-flex justify-content-start align-items-center gap-2">
+                                                            <div class="stars">
+                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                            </div>
+                                                            <span class="easygo-fs-6 text-gray-1">4 star rating</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="location easygo-fs-4">
-                                                    Accra Ghana
+                                                <div class="trip-card-content py-1">
+                                                    Bunso Eco Park Tour Is a day fun trip with a power pack activities that we are going to start it from Accra to Eastern Region (BUNSO ECO PARK and ASENAMA WATERFALLS). See the best of what Accra has to offer in just one day with this private tour.
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
+                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
                                                 </div>
                                             </div>
-                                            <div class="trip-card-content">
-                                                Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
+                                            <div class="trip-card-footer p-0">
+                                                <p>
+                                                    <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
+                                                </p>
+                                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
                                             </div>
-                                        </div>
-                                        <div class="trip-card-footer">
-                                            <p>
-                                                <span class="easygo-h2">$30</span><span class="easygo-fs-1">/Person</span>
-                                            </p>
-                                            <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- trip card horizontal [end] -->
+                            <!--- ================================ -->
                         </div>
                         <div class="py-5 text-center">
                             <div class="d-flex justify-content-center mb-3">
@@ -165,7 +219,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
+                                    <button class="easygo-btn-1 w-100 ">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +241,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
+                                    <button class="easygo-btn-1 w-100 ">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +263,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
+                                    <button class="easygo-btn-1 w-100 ">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -231,7 +285,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
+                                    <button class="easygo-btn-1 w-100 ">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -253,7 +307,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
+                                    <button class="easygo-btn-1 w-100 ">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +329,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
+                                    <button class="easygo-btn-1 w-100 ">View trip</button>
                                 </div>
                             </div>
                         </div>
