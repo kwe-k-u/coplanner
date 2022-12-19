@@ -33,9 +33,12 @@
   --easygo-black: #000000;
 
   /** border radii **/
-  --easygo-br-1: 10px;
+  --easygo-br-3: 10px;
   --easygo-br-2: 50px;
-  --easygo-br-3: 100px;
+  --easygo-br-1: 100px;
+
+  /** box shadows **/
+  --box-shadow-1: 0px 0px 40px rgba(0, 0, 0, 0.1);
 
   /** logo sizes **/
   --logo-small: 4rem;
@@ -89,6 +92,16 @@ i {
 }
 .text-gray-3 {
   color: var(--easygo-gray-1);
+}
+
+.easygo-h1 {
+  font-size: var(--header-size-1);
+}
+.easygo-h2 {
+  font-size: var(--header-size-2);
+}
+.easygo-h3 {
+  font-size: var(--header-size-3);
 }
 
 .easygo-fs-1 {
@@ -167,7 +180,7 @@ i {
 .easygo-btn-2,
 .easygo-btn-3,
 .easygo-btn-4,
-.easygo-btn-5{
+.easygo-btn-5 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,7 +316,7 @@ form .inline-inputs > * {
   color: white;
 }
 
-.nl-subscription-form{
+.nl-subscription-form {
   display: flex;
   text-align: center;
   gap: 1rem;
@@ -313,11 +326,11 @@ form .inline-inputs > * {
   border-radius: var(--easygo-br-1);
 }
 
-.nl-subscription-form .title{
+.nl-subscription-form .title {
   text-transform: capitalize;
 }
 
-.nl-subscription-form .input-field{
+.nl-subscription-form .input-field {
   width: 70%;
   margin: auto;
   display: flex;
@@ -328,17 +341,16 @@ form .inline-inputs > * {
 }
 
 .nl-subscription-form .input-field input,
-.nl-subscription-form .input-field button{
+.nl-subscription-form .input-field button {
   padding: 1rem;
 }
 
-.nl-subscription-form .input-field input{
+.nl-subscription-form .input-field input {
   flex-basis: 70%;
   border: none;
   outline: none;
-
 }
-.nl-subscription-form .input-field button{
+.nl-subscription-form .input-field button {
   flex-basis: 30%;
   border: none;
   outline: none;
@@ -401,7 +413,6 @@ form .inline-inputs > * {
   gap: 1rem;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
-
 }
 
 .grid-2 .grid-item {
@@ -425,7 +436,7 @@ form .inline-inputs > * {
     grid-template-columns: 1fr;
   }
 
-  .grid-2{
+  .grid-2 {
     grid-template-rows: 1fr 1fr 1fr;
   }
 }
@@ -475,27 +486,42 @@ form .inline-inputs > * {
 }
 
 /**navbar themes **/
-.easygo-nav-white{
+.easygo-nav-white {
   background-color: white;
   color: var(--easygo-black);
+  box-shadow: var(--box-shadow-1);
 }
 
-.easygo-nav-white a{
+.easygo-nav-white a {
   color: var(--easygo-black);
 }
 
-
 /** border colors **/
-.border-blue{
+.border-blue {
   border-color: var(--easygo-blue);
 }
-.border-orange{
+.border-orange {
   border-color: var(--easygo-orange);
 }
 
+/** border radii **/
+.easygo-rounded-1{
+  border-radius: var(--easygo-br-1)
+}
+.easygo-rounded-2{
+  border-radius: var(--easygo-br-2)
+}
+.easygo-rounded-3{
+  border-radius: var(--easygo-br-3)
+}
+
+/** box shadows **/
+.box-shadow-1{
+  box-shadow: var(--box-shadow-1);
+}
 
 /** carousel **/
-.easygo-carousel-indicators button{
+.easygo-carousel-indicators button {
   width: 1rem !important;
   height: 1rem !important;
   border: solid 1px var(--easygo-orange) !important;
@@ -503,34 +529,26 @@ form .inline-inputs > * {
   border-radius: 50%;
 }
 
-.easygo-carousel-indicators button.active{
+.easygo-carousel-indicators button.active {
   border-color: white !important;
   background-color: var(--easygo-orange) !important;
 }
 
-
-
-
 /******************** Effects ********************/
 /** hover effects **/
-.text-hover-blue{
+.text-hover-blue {
   transition: all var(--trans-time-1);
 }
-.text-hover-blue:hover{
+.text-hover-blue:hover {
   color: var(--easygo-blue) !important;
 }
 
-.text-hover-orange{
+.text-hover-orange {
   transition: all var(--trans-time-1);
 }
-.text-hover-orange:hover{
+.text-hover-orange:hover {
   color: var(--easygo-orange) !important;
 }
-
-
-
-
-
 
 /******************** CLASS AND ID based stylilng ********************/
 
@@ -694,6 +712,17 @@ form .inline-inputs > * {
   overflow: hidden;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.05);
 }
+
+.trip-card-h{
+  flex-direction: row !important;
+}
+
+/* .trip-card-h img{
+  flex: 1;
+}
+.trip-card-h .trip-card-body{
+  flex: 1;
+} */
 
 .trip-card img {
   width: 100%;
