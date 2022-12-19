@@ -1,6 +1,10 @@
 /* * styling for various sections of home page **/
-.intro, .get-started, .about-us, .gallery{
+.intro, .get-started, .about-us{
     min-height: 100vh;
+}
+
+.gallery{
+    min-height: 50vh;
 }
 
 .intro{
@@ -14,7 +18,7 @@
     max-width: 900px;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
     padding: 3rem;
     margin: 0rem 1rem;
 }

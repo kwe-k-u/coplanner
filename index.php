@@ -19,7 +19,7 @@
 
     <!-- main content start -->
     <div class="main-wrapper">
-        <nav class="navbar navbar-expand-md fixed-top" style="backdrop-filter: blur(20px);">
+        <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./">
                     <img class="logo-medium" src="./assets/images/svgs/logo.svg" alt="">
@@ -33,24 +33,24 @@
                             <a class="nav-link text-blue" href="javascript:void(0)">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="javascript:void(0)">Trips</a>
+                            <a class="nav-link" href="javascript:void(0)">Trips</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="javascript:void(0)">Blog</a>
+                            <a class="nav-link" href="javascript:void(0)">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="javascript:void(0)">Curators</a>
+                            <a class="nav-link" href="javascript:void(0)">Curators</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="javascript:void(0)">About</a>
+                            <a class="nav-link" href="javascript:void(0)">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="javascript:void(0)">Contact </a>
+                            <a class="nav-link" href="javascript:void(0)">Contact </a>
                         </li>
                     </ul>
                     <div class="d-flex gap-4">
-                        <a href="javascript:void(0)" class="easygo-btn-4">Login</a>
-                        <a href="javascript:void(0)" class="easygo-btn-5">Create Account</a>
+                        <a href="javascript:void(0)" class="easygo-btn-4 border-blue text-blue">Login</a>
+                        <a href="javascript:void(0)" class="easygo-btn-5 bg-blue text-white">Create Account</a>
                         </form>
                     </div>
                 </div>
@@ -58,13 +58,18 @@
         <main>
             <!--- ================================ -->
             <!--- introduction section [start] -->
-            <section class="intro">
+            <section class="intro py-5">
                 <div class="intro-card text-center text-white" style="backdrop-filter: blur(20px);">
-                    <h1>You don't need to hassle to have a fun trip</h1>
-                    <p>easyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.</p>
+                    <h1>
+                        You don't need to hassle to have a fun trip
+                        <img src="./assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
+                    </h1>
+                    <p>
+                        easyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.
+                    </p>
                     <div class="d-flex gap-3 justify-content-center">
                         <button class="easygo-btn-5">Book Now</button>
-                        <button class="easygo-btn-4">Photo Gallery</button>
+                        <button class="easygo-btn-4">Photo Gallery &nbsp; <img src="./assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow"></button>
                     </div>
                     <form class="d-block d-lg-flex m-auto easygo-fs-5">
                         <div class="bg-white d-block d-lg-flex justify-content-center gap-4  p-3">
@@ -114,7 +119,10 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="bg-blue text-white d-flex justify-content-center align-items-center p-4" href="#">Find Trip</a>
+                        <a class="bg-blue text-white d-flex flex-column justify-content-center align-items-center p-4" href="#">
+                            <img src="./assets/images/svgs/paper_plane_white.svg" alt="white paper plane">
+                            Find Trip
+                        </a>
                     </form>
                 </div>
                 <img src="./assets/images/others/background.jpg" alt="background-image" class="background-img">
@@ -413,7 +421,7 @@
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
                             <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded text-white" style="padding: 4rem 2rem;" data-bs-ride="carousel">
-                                <div class="carousel-indicators">
+                                <div class="carousel-indicators easygo-carousel-indicators">
                                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -458,34 +466,34 @@
                     <h1>Destination Gallery</h1>
                     <div class="grid-2">
                         <div class="grid-item">
-                            <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                            <img src="./assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                            <img src="./assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                            <img src="./assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                            <img src="./assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
                             <div class="row h-100">
                                 <div class="col-6">
                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                        <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                                        <img src="./assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                        <img src="./assets/images/others/background.jpg" alt="scenery" class="img-fluid h-100">
+                                        <img src="./assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                                     </div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div style="text-align: right" class="my-3"><a class="text-black" href="javascript:void(0)">View Gallery</a></div>
+                    <div style="text-align: right" class="my-3"><a class="text-black easygo-fs-2" href="javascript:void(0)">View Gallery &nbsp; <img src="./assets/images/svgs/arrow_45deg_black.svg" alt=" black 45 degree arrow"></a></div>
                 </div>
             </section>
             <!--- gallery section [wns] -->
@@ -510,33 +518,33 @@
             <div class="container">
                 <div class="row text-center text-lg-start">
                     <div class="col-lg-3">
-                        <div>
-                            <img src="./assets/images/svgs/logo.svg" alt="easygo logo">
+                        <div class="d-flex justify-content-center flex-column align-items-center gap-1">
+                            <img class="logo-medium" src="./assets/images/svgs/logo_round.svg" alt="easygo logo">
                             <h6>Trip Curating Service</h6>
                         </div>
                     </div>
                     <div class="col-lg-3 py-3">
                         <h5 class="easygo-fw-2">Trip Goers</h5>
                         <div class="d-flex flex-column">
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Home</a>
-                            <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">FAQ'S</a>
-                            <a class="text-white easygo-fs-4 " href="javascript:void(0)">Report Spam</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Home</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">FAQ'S</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Report Spam</a>
                         </div>
                     </div>
                     <div class="col-lg-3 py-3">
                         <h5 class="easygo-fw-2">Trip Curators</h5>
                         <div class="d-flex flex-column">
-                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Become a curator</a>
-                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Value added services</a>
-                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Become a curator</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Value added services</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
                         </div>
                     </div>
                     <div class="col-lg-3 py-3">
                         <h5 class="easygo-fw-2">About us</h5>
                         <div class="d-flex flex-column">
-                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Privacy policy</a>
-                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Meet the team</a>
-                            <a class="text-white easygo-fs-4text-hover-orange" href="javascript:void(0)">Careers</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Privacy policy</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Meet the team</a>
+                            <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Careers</a>
                         </div>
                     </div>
                 </div>
