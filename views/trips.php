@@ -165,8 +165,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <h3>$1,200</h3>
-                                    <button class="easygo-btn-1">View trip</button>
+                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -188,8 +187,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <h3>$1,200</h3>
-                                    <button class="easygo-btn-1">View trip</button>
+                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -211,8 +209,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <h3>$1,200</h3>
-                                    <button class="easygo-btn-1">View trip</button>
+                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -234,8 +231,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <h3>$1,200</h3>
-                                    <button class="easygo-btn-1">View trip</button>
+                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -257,8 +253,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <h3>$1,200</h3>
-                                    <button class="easygo-btn-1">View trip</button>
+                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
                                 </div>
                             </div>
                         </div>
@@ -280,8 +275,7 @@
                                     </div>
                                 </div>
                                 <div class="trip-card-footer">
-                                    <h3>$1,200</h3>
-                                    <button class="easygo-btn-1">View trip</button>
+                                    <button class="easygo-btn-1 w-100 easygo-rounded-2">View trip</button>
                                 </div>
                             </div>
                         </div>
