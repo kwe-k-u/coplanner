@@ -34,7 +34,7 @@
             <!--- image display section [start] -->
             <section class="image-display">
                 <div class="container">
-                    <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded overflow-hidden" data-bs-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade rounded overflow-hidden" data-bs-ride="carousel">
                         <div class="carousel-indicators easygo-carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -42,18 +42,18 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <div style="max-height: 350px;">
-                                    <img class="h-100" src="../assets/images/others/background.jpg" alt="carousel image">
+                                <div style="max-height: 400px;">
+                                    <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
                                 </div>
                             </div>
                             <div class="carousel-item active">
-                                <div style="max-height: 350px;">
-                                    <img class="h-100" src="../assets/images/others/background.jpg" alt="carousel image">
+                                <div style="max-height: 400px;">
+                                    <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
                                 </div>
                             </div>
                             <div class="carousel-item active">
-                                <div style="max-height: 350px;">
-                                    <img class="h-100" src="../assets/images/others/background.jpg" alt="carousel image">
+                                <div style="max-height: 400px;">
+                                    <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
                                 </div>
                             </div>
                         </div>
@@ -138,24 +138,24 @@
                                             <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                         <div class="grid-item">
-                                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                            <img src="../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                         <div class="grid-item">
-                                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                            <img src="../assets/images/others/scenery2.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                         <div class="grid-item">
-                                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                            <img src="../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                         <div class="grid-item">
                                             <div class="row h-100">
                                                 <div class="col-6">
                                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                                        <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                                        <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                                        <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                                        <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
                                                     </div>
 
                                                 </div>
@@ -261,6 +261,11 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="warning mt-5 d-flex align-items-center gap-3">
+                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
+                                <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
+                                <a class="easygo-btn-1" href="javascript:void(0)">Click here</a>
                             </div>
                         </div>
                         <!--- itineries [end] -->

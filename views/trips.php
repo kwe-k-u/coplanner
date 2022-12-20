@@ -46,7 +46,7 @@
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
                                         <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/background.jpg" class="img-fluid h-100" alt="trip card image">
+                                            <img src="../assets/images/others/scenery2.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -95,7 +95,7 @@
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
                                         <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/background.jpg" class="img-fluid h-100" alt="trip card image">
+                                            <img src="../assets/images/others/tour3.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -144,7 +144,7 @@
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
                                         <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/background.jpg" class="img-fluid h-100" alt="trip card image">
+                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -203,7 +203,7 @@
                     <div class="row my-3">
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/tour1.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -225,7 +225,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/tour2.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -247,7 +247,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/tour3.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -269,7 +269,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/scenery1.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -291,7 +291,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/scenery2.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">

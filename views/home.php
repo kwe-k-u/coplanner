@@ -96,7 +96,7 @@
                         </a>
                     </form>
                 </div>
-                <img src="../assets/images/others/background.jpg" alt="background-image" class="background-img">
+                <img src="../assets/images/others/scenery2.jpg" alt="background-image" class="background-img">
             </section>
             <!--- introduction section [end] -->
             <!--- ================================ -->
@@ -108,7 +108,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <div class="stacked-imgs">
-                                    <img src="../assets/images/others/background.jpg" alt="scenery">
+                                    <img src="../assets/images/others/tour2.jpg" alt="scenery">
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 p-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/scenery2.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -158,7 +158,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 p-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/tour1.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -181,7 +181,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 p-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/scenery2.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -204,7 +204,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 p-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/tour3.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -227,7 +227,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6 p-3">
                             <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
+                                <img src="../assets/images/others/tour2.jpg" alt="trip card image">
                                 <div class="trip-card-body">
                                     <div class="trip-card-header">
                                         <div class="title">
@@ -284,7 +284,7 @@
                         <div class="col-lg-6">
                             <div>
                                 <div class="stacked-imgs">
-                                    <img src="../assets/images/others/background.jpg" alt="scenery">
+                                    <img src="../assets/images/others/tour1.jpg" alt="scenery">
                                 </div>
                             </div>
                         </div>
@@ -437,22 +437,22 @@
                     <h1>Destination Gallery</h1>
                     <div class="grid-2">
                         <div class="grid-item">
-                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                            <img src="../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                            <img src="../assets/images/others/scenery2.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                            <img src="../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                            <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
                             <div class="row h-100">
                                 <div class="col-6">
                                     <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                        <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                        <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
                                     </div>
                                 </div>
                                 <div class="col-6">
