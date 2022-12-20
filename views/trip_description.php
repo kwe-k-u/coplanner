@@ -410,6 +410,114 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="reviews-and-adds">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="user-reviews">
+                                                <h5 class="mb-3 easygo-fw-2">User Reviews</h5>
+                                                <div class="reviews">
+                                                    <!--- ================================ -->
+                                                    <!--- single review [start] -->
+                                                    <div class="review my-4">
+                                                        <div class="d-flex gap-3">
+                                                            <div style="width: 5rem; height: 5rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
+                                                            </div>
+                                                            <div>
+                                                                <h6>Victor Ciemerie</h6>
+                                                                <small class="text-gray-1 easygo-fs-6">3 days ago</small>
+                                                                <div class="stars">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-text py-2">
+                                                            Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, condimentum. eget Metus, eget pulvinar volutpat elementum, condimentum.
+                                                        </div>
+                                                    </div>
+                                                    <!--- single review [end] -->
+                                                    <!--- ================================ -->
+                                                    <!--- ================================ -->
+                                                    <!--- single review [start] -->
+                                                    <div class="review my-4">
+                                                        <div class="d-flex gap-3">
+                                                            <div style="width: 5rem; height: 5rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
+                                                            </div>
+                                                            <div>
+                                                                <h6>Victor Ciemerie</h6>
+                                                                <small class="text-gray-1 easygo-fs-6">3 days ago</small>
+                                                                <div class="stars">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-text py-2">
+                                                            Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, condimentum. eget Metus, eget pulvinar volutpat elementum, condimentum.
+                                                        </div>
+                                                    </div>
+                                                    <!--- single review [end] -->
+                                                    <!--- ================================ -->
+                                                    <!--- ================================ -->
+                                                    <!--- single review [start] -->
+                                                    <div class="review my-4">
+                                                        <div class="d-flex gap-3">
+                                                            <div style="width: 5rem; height: 5rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
+                                                            </div>
+                                                            <div>
+                                                                <h6>Victor Ciemerie</h6>
+                                                                <small class="text-gray-1 easygo-fs-6">3 days ago</small>
+                                                                <div class="stars">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-text py-2">
+                                                            Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, condimentum. eget Metus, eget pulvinar volutpat elementum, condimentum.
+                                                        </div>
+                                                    </div>
+                                                    <!--- single review [end] -->
+                                                    <!--- ================================ -->
+                                                    <!--- ================================ -->
+                                                    <!--- single review [start] -->
+                                                    <div class="review my-4">
+                                                        <div class="d-flex gap-3">
+                                                            <div style="width: 5rem; height: 5rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
+                                                            </div>
+                                                            <div>
+                                                                <h6>Victor Ciemerie</h6>
+                                                                <small class="text-gray-1 easygo-fs-6">3 days ago</small>
+                                                                <div class="stars">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="review-text py-2">
+                                                            Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, condimentum. eget Metus, eget pulvinar volutpat elementum, condimentum.
+                                                        </div>
+                                                    </div>
+                                                    <!--- single review [end] -->
+                                                    <!--- ================================ -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--- reviews [end] -->
