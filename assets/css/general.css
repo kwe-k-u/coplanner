@@ -196,7 +196,7 @@ i {
   border-radius: 5px;
 }
 
-.easygo-btn-1:hover{
+.easygo-btn-1:hover {
   color: var(--easygo-orange);
 }
 
@@ -512,19 +512,38 @@ form .inline-inputs > * {
 }
 
 /** border radii **/
-.easygo-rounded-1{
-  border-radius: var(--easygo-br-1)
+.easygo-rounded-1 {
+  border-radius: var(--easygo-br-1);
 }
-.easygo-rounded-2{
-  border-radius: var(--easygo-br-2)
+.easygo-rounded-2 {
+  border-radius: var(--easygo-br-2);
 }
-.easygo-rounded-3{
-  border-radius: var(--easygo-br-3)
+.easygo-rounded-3 {
+  border-radius: var(--easygo-br-3);
 }
 
 /** box shadows **/
-.box-shadow-1{
+.box-shadow-1 {
   box-shadow: var(--box-shadow-1);
+}
+
+/** lists **/
+.easygo-list-1 li,
+.easygo-list-2 li {
+  padding: 0.5rem 0rem;
+}
+
+.easygo-list-1 li::marker,
+.easygo-list-2 li::marker {
+  font-size: 1.5rem;
+}
+
+.easygo-list-1 li::marker {
+  color: var(--easygo-blue);
+}
+
+.easygo-list-2 li::marker {
+  color: var(--easygo-orange);
 }
 
 /** carousel **/
@@ -540,6 +559,54 @@ form .inline-inputs > * {
   border-color: white !important;
   background-color: var(--easygo-orange) !important;
 }
+
+/** rating bars **/
+.l5-rating-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.l5-rating-bar .bar {
+  height: 0.7rem;
+  flex: 1;
+  background-color: white;
+  position: relative;
+}
+
+.l5-rating-bar .bar,
+.l5-rating-bar .bar .bar-inner {
+  border-radius: var(--easygo-br-1);
+}
+
+.l5-rating-bar .bar .bar-inner {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background-color: var(--easygo-orange);
+}
+
+.l5-rating-bar.l1 .bar-inner{
+  width: 20%;
+}
+.l5-rating-bar.l2 .bar-inner{
+  width: 40%;
+}
+.l5-rating-bar.l3 .bar-inner{
+  width: 60%;
+}
+.l5-rating-bar.l4 .bar-inner{
+  width: 80%;
+}
+.l5-rating-bar.l5 .bar-inner{
+  width: 100%;
+}
+
+
+
+
+
+
 
 /******************** Effects ********************/
 /** hover effects **/
@@ -731,7 +798,7 @@ form .inline-inputs > * {
   padding: 1rem;
 }
 
-.trip-card-header{
+.trip-card-header {
   border-bottom: solid 2px var(--easygo-gray-1);
 }
 

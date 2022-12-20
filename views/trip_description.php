@@ -27,7 +27,7 @@
         <!-- navbar [end] -->
         <!--- ================================ -->
         <main>
-            <div class="container" style="margin-top: 10rem;">
+            <div class="container mb-4" style="margin-top: 10rem;">
                 <a href="./trips.php">Trips</a> > Trip Details
             </div>
             <!--- ================================ -->
@@ -176,13 +176,32 @@
                                 <div class="itinery-item py-3">
                                     <div class="row">
                                         <div class="col-1">
+                                            <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle border d-flex justify-content-center align-items-center">
+                                                <img src="../assets/images/svgs/path_orange.svg" alt="path image">
+                                            </div>
+                                        </div>
+                                        <div class="col-11">
+                                            <div>
+                                                <h6 class="easygo-fw-2 easygo-fs-1">Starting Point</h6>
+                                                <div class="text-gray-1 easygo-fs-2">
+                                                    <p>
+                                                        We’ll get picked up from your apartments or hotels room
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="itinery-item py-3">
+                                    <div class="row">
+                                        <div class="col-1">
                                             <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
                                                 1
                                             </div>
                                         </div>
                                         <div class="col-11">
                                             <div>
-                                                <h6 class="easygo-fw-1 easygo-fs-1">Kwame Nkrumah Memorial Park</h6>
+                                                <h6 class="easygo-fw-2 easygo-fs-1">Kwame Nkrumah Memorial Park</h6>
                                                 <div class="text-gray-1 easygo-fs-2">
                                                     <p>
                                                         Travellers will get to learn about the history of Ghana's independent leader and first President Dr. Kwame Nkrumah. Gate Fee included.
@@ -199,15 +218,37 @@
                                     <div class="row">
                                         <div class="col-1">
                                             <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                1
+                                                2
                                             </div>
                                         </div>
                                         <div class="col-11">
                                             <div>
-                                                <h6 class="easygo-fw-1 easygo-fs-1">Kwame Nkrumah Memorial Park</h6>
+                                                <h6 class="easygo-fw-2 easygo-fs-1">Bunsco Eco Park</h6>
                                                 <div class="text-gray-1 easygo-fs-2">
                                                     <p>
-                                                        Travellers will get to learn about the history of Ghana's independent leader and first President Dr. Kwame Nkrumah. Gate Fee included.
+                                                        Travellers arrives at Bunsco Eco Park, explore vast gardens and different wildlifes. Gate Fee included.
+                                                    </p>
+                                                    <p>
+                                                        Duration: 1.5 hours
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="itinery-item py-3">
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
+                                                3
+                                            </div>
+                                        </div>
+                                        <div class="col-11">
+                                            <div>
+                                                <h6 class="easygo-fw-2 easygo-fs-1">Makola Market</h6>
+                                                <div class="text-gray-1 easygo-fs-2">
+                                                    <p>
+                                                        Travellers will get to explore one of Ghana's bustling open air market and also learn about the day to day life of buyers and sellers
                                                     </p>
                                                     <p>
                                                         Duration: 30 minutes
@@ -221,15 +262,15 @@
                                     <div class="row">
                                         <div class="col-1">
                                             <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                1
+                                                4
                                             </div>
                                         </div>
                                         <div class="col-11">
                                             <div>
-                                                <h6 class="easygo-fw-1 easygo-fs-1">Kwame Nkrumah Memorial Park</h6>
+                                                <h6 class="easygo-fw-2 easygo-fs-1">Asenama Waterfalls</h6>
                                                 <div class="text-gray-1 easygo-fs-2">
                                                     <p>
-                                                        Travellers will get to learn about the history of Ghana's independent leader and first President Dr. Kwame Nkrumah. Gate Fee included.
+                                                        Travellers arrives Asenama waterfalls, experience the beauty of nature, take photos and take a swim if they wish to. Gate Fee included.
                                                     </p>
                                                     <p>
                                                         Duration: 30 minutes
@@ -242,19 +283,16 @@
                                 <div class="itinery-item py-3">
                                     <div class="row">
                                         <div class="col-1">
-                                            <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                1
+                                            <div style="width: 4rem; height: 4rem;" class="easygo-fs-1 rounded-circle border d-flex justify-content-center align-items-center">
+                                                <img src="../assets/images/svgs/path_orange.svg" alt="path image">
                                             </div>
                                         </div>
                                         <div class="col-11">
                                             <div>
-                                                <h6 class="easygo-fw-1 easygo-fs-1">Kwame Nkrumah Memorial Park</h6>
+                                                <h6 class="easygo-fw-2 easygo-fs-1">Return back to the starting point</h6>
                                                 <div class="text-gray-1 easygo-fs-2">
                                                     <p>
-                                                        Travellers will get to learn about the history of Ghana's independent leader and first President Dr. Kwame Nkrumah. Gate Fee included.
-                                                    </p>
-                                                    <p>
-                                                        Duration: 30 minutes
+                                                        Returns to original depature point
                                                     </p>
                                                 </div>
                                             </div>
@@ -270,8 +308,112 @@
                         </div>
                         <!--- itineries [end] -->
                         <!--- ================================ -->
-                        <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-tab">Activities</div>
-                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">Reviews</div>
+                        <!--- ================================ -->
+                        <!--- activities [start] -->
+                        <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-tab">
+                            <div class="py-5">
+                                <h3>Activities included in trip:</h3>
+                                <ul class="easygo-list-2">
+                                    <li>Canopy Walk</li>
+                                    <li>Ziplining</li>
+                                    <li>Nature Tour</li>
+                                    <li>Forest Hicking</li>
+                                    <li>Visit to Asenama Waterfalls</li>
+                                    <li>Visit to Makola Market</li>
+                                    <li>Visit to Bunso Eco Park</li>
+                                    <li>Board Games</li>
+                                    <li>Horse Riding</li>
+                                </ul>
+                            </div>
+                            <div class="warning mt-5 d-flex align-items-center gap-3">
+                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
+                                <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
+                                <a class="easygo-btn-1" href="javascript:void(0)">Click here</a>
+                            </div>
+                        </div>
+                        <!--- activities [end] -->
+                        <!--- ================================ -->
+                        <!--- ================================ -->
+                        <!--- reviews [start] -->
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="py-5">
+                                <div>
+                                    <h5 class="easygo-fw-1 easygo-fs-1">Customer reviews from past trips</h5>
+                                    <div class="easygo-fs-2 my-1">Curated by easygo events</div>
+                                    <div class="d-flex justify-content-start align-items-center gap-2">
+                                        <div class="stars">
+                                            <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                        </div>
+                                        <span class="easygo-fs-6 text-gray-1">4 star rating</span>
+                                    </div>
+                                </div>
+                                <div class="bg-blue p-5 text-white my-3">
+                                    <div class="row">
+                                        <div class="col-lg-6 d-flex align-items-center">
+                                            <div>
+                                                <p><span class="easygo-h3">4.0</span>/5</p>
+                                                <p>Based on 150 customer reviews</p>
+                                                <div class="stars">
+                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="py-3">
+                                                <div class="l5-rating-bar l5">
+                                                    <span class="text">5 star</span>
+                                                    <div class="bar">
+                                                        <div class="bar-inner bg-orange"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="py-3">
+                                                <div class="l5-rating-bar l4">
+                                                    <span class="text">4 star</span>
+                                                    <div class="bar">
+                                                        <div class="bar-inner bg-orange"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="py-3">
+                                                <div class="l5-rating-bar l3">
+                                                    <span class="text">3 star</span>
+                                                    <div class="bar">
+                                                        <div class="bar-inner bg-orange"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="py-3">
+                                                <div class="l5-rating-bar l2">
+                                                    <span class="text">2 star</span>
+                                                    <div class="bar">
+                                                        <div class="bar-inner bg-orange"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="py-3">
+                                                <div class="l5-rating-bar l1">
+                                                    <span class="text">1 star</span>
+                                                    <div class="bar">
+                                                        <div class="bar-inner bg-orange"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--- reviews [end] -->
+                        <!--- ================================ -->
                     </div>
                 </div>
             </section>
