@@ -135,9 +135,6 @@
                                     <h1>Destination Gallery</h1>
                                     <div class="grid-2">
                                         <div class="grid-item">
-                                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
-                                        </div>
-                                        <div class="grid-item">
                                             <img src="../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                         <div class="grid-item">
@@ -147,19 +144,13 @@
                                             <img src="../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                         <div class="grid-item">
-                                            <div class="row h-100">
-                                                <div class="col-6">
-                                                    <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                                        <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                                        <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                                            <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                                         </div>
                                     </div>
                                 </div>

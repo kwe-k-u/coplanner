@@ -415,7 +415,7 @@ form .inline-inputs > * {
 
 .grid-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 200px 200px 200px;
   gap: 1rem;
   grid-auto-columns: 1fr;
@@ -427,13 +427,22 @@ form .inline-inputs > * {
   overflow: hidden;
 }
 
-.grid-2 .grid-item:nth-child(3) {
-  grid-row: span 2;
-}
-.grid-2 .grid-item:nth-child(4) {
+.grid-2 .grid-item:nth-child(1),
+.grid-2 .grid-item:nth-child(2) {
   grid-column: span 2;
 }
+
+.grid-2 .grid-item:nth-child(3) {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+.grid-2 .grid-item:nth-child(4) {
+  grid-column: span 4;
+}
 .grid-2 .grid-item:nth-child(5) {
+  grid-column: span 3;
+}
+.grid-2 .grid-item:nth-child(6) {
   grid-column: span 3;
 }
 
@@ -586,27 +595,21 @@ form .inline-inputs > * {
   background-color: var(--easygo-orange);
 }
 
-.l5-rating-bar.l1 .bar-inner{
+.l5-rating-bar.l1 .bar-inner {
   width: 20%;
 }
-.l5-rating-bar.l2 .bar-inner{
+.l5-rating-bar.l2 .bar-inner {
   width: 40%;
 }
-.l5-rating-bar.l3 .bar-inner{
+.l5-rating-bar.l3 .bar-inner {
   width: 60%;
 }
-.l5-rating-bar.l4 .bar-inner{
+.l5-rating-bar.l4 .bar-inner {
   width: 80%;
 }
-.l5-rating-bar.l5 .bar-inner{
+.l5-rating-bar.l5 .bar-inner {
   width: 100%;
 }
-
-
-
-
-
-
 
 /******************** Effects ********************/
 /** hover effects **/

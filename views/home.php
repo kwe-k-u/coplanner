@@ -449,19 +449,10 @@
                             <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                         <div class="grid-item">
-                            <div class="row h-100">
-                                <div class="col-6">
-                                    <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                        <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div style="border-radius: 10px; overflow: hidden;" class="h-100">
-                                        <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
-                                    </div>
-
-                                </div>
-                            </div>
+                            <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
+                        </div>
+                        <div class="grid-item">
+                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                     </div>
                     <div style="text-align: right" class="my-3"><a class="text-black easygo-fs-2" href="javascript:void(0)">View Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_black.svg" alt=" black 45 degree arrow"></a></div>
