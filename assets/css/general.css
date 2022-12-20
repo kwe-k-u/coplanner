@@ -184,6 +184,8 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: var(--trans-time-1);
 }
 
 .easygo-btn-1 {
@@ -193,6 +195,11 @@ i {
   color: white;
   border-radius: 5px;
 }
+
+.easygo-btn-1:hover{
+  color: var(--easygo-orange);
+}
+
 .easygo-btn-2 {
   border: none;
   padding: 0.75rem 1rem;
@@ -498,7 +505,7 @@ form .inline-inputs > * {
 
 /** border colors **/
 .border-blue {
-  border-color: var(--easygo-blue);
+  border-color: var(--easygo-blue) !important;
 }
 .border-orange {
   border-color: var(--easygo-orange);

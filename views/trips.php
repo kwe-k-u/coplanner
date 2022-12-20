@@ -45,8 +45,8 @@
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
-                                        <div class="rounded overflow-hidden" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/background.jpg" class="img-fluid" alt="trip card image">
+                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
+                                            <img src="../assets/images/others/background.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -81,7 +81,7 @@
                                                 <p>
                                                     <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
                                                 </p>
-                                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
+                                                <a href="./trip_description.php" class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</a>
                                             </div>
                                         </div>
                                     </div>
@@ -94,8 +94,8 @@
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
-                                        <div class="rounded overflow-hidden" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/background.jpg" class="img-fluid" alt="trip card image">
+                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
+                                            <img src="../assets/images/others/background.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -130,7 +130,7 @@
                                                 <p>
                                                     <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
                                                 </p>
-                                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
+                                                <a href="./trip_description.php" class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</a>
                                             </div>
                                         </div>
                                     </div>
@@ -143,8 +143,8 @@
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
                                     <div class="col-md-6">
-                                        <div class="rounded overflow-hidden" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/background.jpg" class="img-fluid" alt="trip card image">
+                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
+                                            <img src="../assets/images/others/background.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
                                     <div class="col-md-6 d-flex justify-content-center align-content-center">
@@ -179,7 +179,7 @@
                                                 <p>
                                                     <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
                                                 </p>
-                                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</button>
+                                                <a href="./trip_description.php" class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</a>
                                             </div>
                                         </div>
                                     </div>

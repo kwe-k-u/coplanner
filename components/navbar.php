@@ -9,10 +9,10 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-blue" href="javascript:void(0)">Home</a>
+                            <a class="nav-link text-blue" href="./home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Trips</a>
+                            <a class="nav-link" href="./trips.php">Trips</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)">Blog</a>
