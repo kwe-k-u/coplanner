@@ -152,10 +152,10 @@
                                 <div class="img-holder"></div>
                                 <div class="card-content">
                                     <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
+                                    <h5 class="text-capitalize easygo-fw-1">
+                                        Ashesi Dlab: Expo
                                     </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
+                                    <p>We partook in the Ashesi D:Lab Expo on 7th September 2022 are were awarded a category award in Health and Lifestyle</p>
                                 </div>
                             </div>
                         </div>
@@ -202,30 +202,36 @@
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- out team [start] -->
-            <section class="my-5 out-team">
+            <section class="mb-5 out-team" style="margin-top: 7rem;">
                 <div class="container">
-                    <div class="d-flex gap-4 justify-content-center" style="overflow-x: auto;">
-                        <div>
-                            <div class="easygo-card-1">
+                    <h1 class="easgyo-h3 text-capitalize text-blue text-center">out team</h1>
+                    <p class="text-center mb-5">
+                        To be the company our customers want us to be, it takes a group of passionate people.
+                        Get to know the people leading the way at easyGo. Meet our world class problem solvers and CEOS.
+                    </p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="easygo-card-1 mx-auto">
                                 <div class="img-holder"></div>
                                 <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
+                                    <h5 class="text-capitalize easygo-fw-1">
+                                        Kweku Acquaye
                                     </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
+                                    <p>Founder, development lead</p>
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="easygo-card-1">
+                        <div class="col-lg-6">
+                            <div class="easygo-card-1 mx-auto">
                                 <div class="img-holder"></div>
                                 <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
+                                    <h5 class="text-capitalize easygo-fw-1">
+                                        Edna naa tetteh
                                     </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
+                                    <p>
+                                        Marketing, Public relations and
+                                        communications
+                                    </p>
                                 </div>
                             </div>
                         </div>
