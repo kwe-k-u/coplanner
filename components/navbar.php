@@ -21,7 +21,7 @@
                             <a class="nav-link" href="javascript:void(0)">Curators</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">About</a>
+                            <a class="nav-link" href="./about.php">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)">Contact </a>
