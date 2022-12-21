@@ -611,6 +611,22 @@ form .inline-inputs > * {
   width: 100%;
 }
 
+/**nav tabs **/
+.easygo-nav-tabs .nav-link{
+  border: none;
+  color: black;
+}
+
+.easygo-nav-tabs .nav-link.active{
+  border-bottom: solid 1px var(--easygo-blue);
+  color: var(--easygo-blue)
+}
+
+
+
+
+
+
 /******************** Effects ********************/
 /** hover effects **/
 .text-hover-blue {
