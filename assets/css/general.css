@@ -614,7 +614,7 @@ form .inline-inputs > * {
 /**nav tabs **/
 .easygo-nav-tabs .nav-link{
   border: none;
-  color: black;
+  color: var(--easygo-black);
 }
 
 .easygo-nav-tabs .nav-link.active{
