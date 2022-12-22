@@ -29,7 +29,7 @@
         <main>
             <!--- ================================ -->
             <!--- photo gallery [start] -->
-            <section style="margin-top: 10rem;">
+            <section style="margin-top: 10rem; margin-bottom: 7rem;">
                 <div class="container">
                     <h1 class="easygo-h3 text-center">Our Gallery</h1>
                     <p class="text-center">Photos and views from our amazing trips</p>
@@ -111,6 +111,9 @@
                             </div>
                             <!--- videos [end] -->
                             <!--- ================================ -->
+                        </div>
+                        <div class="mt-3 mb-5 d-flex justify-content-center">
+                            <button class="easygo-btn-1 easygo-rounded-2 easygo-fs-4" style="padding: 0.7rem 5rem;">Load More</button>
                         </div>
                     </div>
                 </div>
