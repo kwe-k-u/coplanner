@@ -48,28 +48,28 @@
                             <div class="tab-pane fade show active" id="photos" role="tabpanel" aria-labelledby="photos-tab">
                                 <div class="py-4">
                                     <div class="grid-5" style="max-height: 100vh;">
-                                        <div class="grid-item">
+                                        <div class="grid-item rounded overflow-hidden">
                                             <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
                                         </div>
-                                        <div class="grid-item">
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/tour1.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/tour3.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/tour2.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/scenery2.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/background.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
                                             <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
                                         </div>
-                                        <div class="grid-item">
-                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
-                                        </div>
-                                        <div class="grid-item">
+                                        <div class="grid-item rounded overflow-hidden">
                                             <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
                                         </div>
                                     </div>
@@ -78,13 +78,38 @@
                             <!--- photos [end] -->
                             <!--- ================================ -->
                             <!--- ================================ -->
-                            <!--- photos [start] -->
+                            <!--- videos [start] -->
                             <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">
                                 <div class="py-4">
-                                    Videos
+                                    <div class="grid-6" style="max-height: 100vh;">
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/tour1.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/tour3.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/tour2.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/scenery2.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/background.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
+                                        </div>
+                                        <div class="grid-item rounded overflow-hidden">
+                                            <img class="w-100 h-100" src="../assets/images/others/scenery1.jpg" alt="scenery 1">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!--- photos [end] -->
+                            <!--- videos [end] -->
                             <!--- ================================ -->
                         </div>
                     </div>

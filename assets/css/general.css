@@ -504,6 +504,30 @@ form .inline-inputs > * {
   grid-column: span 4;
 }
 
+.grid-6{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  gap: 1rem;
+}
+
+.grid-6 .grid-item{
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.grid-6 .grid-item:nth-child(3),
+.grid-6 .grid-item:nth-child(5){
+  grid-column: span 4;
+  grid-row: span 4;
+}
+
+.grid-6 .grid-item:nth-child(4n + 4){
+  grid-column: span 4;
+}
+
 /** media query for grid-layouts **/
 @media only screen and (max-width: 768px) {
   .grid-1 {
