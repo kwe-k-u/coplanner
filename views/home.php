@@ -40,7 +40,7 @@
                     </p>
                     <div class="d-flex gap-3 justify-content-center">
                         <button class="easygo-btn-5">Book Now</button>
-                        <button class="easygo-btn-4">Photo Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow"></button>
+                        <a href="./photo_gallery.php" class="easygo-btn-4">Photo Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow"></a>
                     </div>
                     <form class="d-block d-lg-flex m-auto easygo-fs-5">
                         <div class="bg-white d-block d-lg-flex justify-content-center gap-4  p-3">
@@ -455,7 +455,7 @@
                             <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                         </div>
                     </div>
-                    <div style="text-align: right" class="my-3"><a class="text-black easygo-fs-2" href="javascript:void(0)">View Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_black.svg" alt=" black 45 degree arrow"></a></div>
+                    <div style="text-align: right" class="my-3"><a class="text-black easygo-fs-2" href="./photo_gallery.php">View Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_black.svg" alt=" black 45 degree arrow"></a></div>
                 </div>
             </section>
             <!--- gallery section [wns] -->
