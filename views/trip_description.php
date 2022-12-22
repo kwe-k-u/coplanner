@@ -113,10 +113,10 @@
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-center gap-4 my-4">
-                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
-                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
-                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
-                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
+                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/calendar_black.svg" alt="calendar"> 4th November - 10th November</span>
+                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/crescent_black.svg" alt="crescent"> Duration: 6hrs</span>
+                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/globe_black.svg" alt="globe"> Language: English</span>
+                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/clock_black.svg" alt="clock"> Start Time: 11am</span>
                                 </div>
                                 <div class="text-description easygo-fs-1">
                                     Immerse yourself in the vibrant culture and rich history of Ghana on a tour of this beautiful West African country. Start in the bustling capital city of Accra, where you can explore the vibrant markets and try local dishes such as jollof rice and fufu. Don't miss the opportunity to visit the Kwame Nkrumah Memorial Park, a historical landmark dedicated to Ghana's first president.

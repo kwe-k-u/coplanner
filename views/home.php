@@ -42,58 +42,11 @@
                         <button class="easygo-btn-5">Book Now</button>
                         <a href="./photo_gallery.php" class="easygo-btn-4">Photo Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow"></a>
                     </div>
-                    <form class="d-block d-lg-flex m-auto easygo-fs-5">
-                        <div class="bg-white d-block d-lg-flex justify-content-center gap-4  p-3">
-                            <div>
-                                <h6 class="text-black easygo-fs-4">Location</h6>
-                                <div class="select-menu-1">
-                                    <div>
-                                        <a href="javascript:void(0);" class="select-menu-value text-gray-1">Select</a>
-                                    </div>
-                                    <ul class="options">
-                                        <li class="option">Location 1</li>
-                                        <li class="option">Location 2</li>
-                                        <li class="option">Location 3</li>
-                                        <li class="option">Location 4 dkfjldkjflkj</li>
-                                    </ul>
-                                    <input class="value" type="text" value="value"></input>
-                                </div>
-                            </div>
-                            <div>
-                                <h6 class="text-black easygo-fs-4">Choose Date</h6>
-                                <div class="select-menu-1">
-                                    <div>
-                                        <a href="javascript:void(0);" class="select-menu-value text-gray-1">Select</a>
-                                    </div>
-                                    <ul class="options">
-                                        <li class="option">Location 1</li>
-                                        <li class="option">Location 2</li>
-                                        <li class="option">Location 3</li>
-                                        <li class="option">Location 4 dkfjldkjflkj</li>
-                                    </ul>
-                                    <input class="value" type="text" value="value"></input>
-                                </div>
-                            </div>
-                            <div>
-                                <h6 class="text-black easygo-fs-4">Curator</h6>
-                                <div class="select-menu-1">
-                                    <div>
-                                        <a href="javascript:void(0);" class="select-menu-value text-gray-1">Select</a>
-                                    </div>
-                                    <ul class="options">
-                                        <li class="option">Location 1</li>
-                                        <li class="option">Location 2</li>
-                                        <li class="option">Location 3</li>
-                                        <li class="option">Location 4 dkfjldkjflkj</li>
-                                    </ul>
-                                    <input class="value" type="text" value="value"></input>
-                                </div>
-                            </div>
+                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" style="min-width: 50%;">
+                        <div class="d-flex">
+                            <input class="px-3 py-2 border-0" type="text" placeholder="Where to ?" style="flex: 1;">
+                            <button class="easygo-btn-1 rounded-0">Search</button>
                         </div>
-                        <a class="bg-blue text-white d-flex flex-column justify-content-center align-items-center p-4" href="#">
-                            <img src="../assets/images/svgs/paper_plane_white.svg" alt="white paper plane">
-                            Find Trip
-                        </a>
                     </form>
                 </div>
                 <img src="../assets/images/others/scenery2.jpg" alt="background-image" class="background-img">
