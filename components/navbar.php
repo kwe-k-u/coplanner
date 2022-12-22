@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="./home.php">
                     <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="">
                 </a>
