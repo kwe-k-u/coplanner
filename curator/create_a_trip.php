@@ -545,7 +545,6 @@
                 <!-- Modal footer -->
                 <div class="d-flex justify-content-end gap-2 align-items-center">
                     <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
-                    <button style="width: 5rem;" type="button " class="easygo-btn-1 py-2 easygo-fs-5 easygo-fw-2">Upload</button>
                 </div>
             </div>
         </div>
