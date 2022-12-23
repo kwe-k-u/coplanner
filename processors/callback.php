@@ -10,28 +10,28 @@
 
 	switch($_GET["action"]){
 		case "paybox":
-			$_POST=
-		array("status"=> "Success",
-		"message"=> "Test Payment Initiated",
-		"token"=> "bhIYQ0shG0",
-		"timestamp"=> "2022-12-23T03:52:38.000000Z",
-		"currency"=> "GHS",
-		"exchange"=> null,
-		"amount"=> 400,
-		"fee"=> 7.6,
-		"mode"=> "Test",
-		"payment_processor"=> "Test",
-		"transaction"=> "Credit",
-		"payload"=> array("payment_method"=>"momo","contact_name"=>"Mildred","contact_number"=>"0208162626","seats"=>"2","number"=>"0559582518","network"=>"MTN","user_id"=>"a6d783492bfac5fc426a552592d13e57","campaign_id"=>"36d61baa788777e446c0a0361aea6ef2","trip_id"=>"d1a10ba6198572ee80984e0fb17ae533","action"=>"trip_payment"),
-		"order_id"=> null,
-		"environment"=> "Development",
-		"callback_url"=> "https:\/\/www.easygo.com.gh\/processors\/callback.php?action=paybox&mode=",
-		"redirect_url"=> "https:\/\/www.easygo.com.gh\/settings\/test_prod.php",
-		"payer_name"=> null,
-		"payer_email"=> "easy@go",
-		"payer_phone"=> null,
-		"customer_id"=> null
-	);
+	// 		$_POST=
+	// 	array("status"=> "Success",
+	// 	"message"=> "Test Payment Initiated",
+	// 	"token"=> "bhIYQ0shG0",
+	// 	"timestamp"=> "2022-12-23T03:52:38.000000Z",
+	// 	"currency"=> "GHS",
+	// 	"exchange"=> null,
+	// 	"amount"=> 400,
+	// 	"fee"=> 7.6,
+	// 	"mode"=> "Test",
+	// 	"payment_processor"=> "Test",
+	// 	"transaction"=> "Credit",
+	// 	"payload"=> array("payment_method"=>"momo","contact_name"=>"Mildred","contact_number"=>"0208162626","seats"=>"2","number"=>"0559582518","network"=>"MTN","user_id"=>"a6d783492bfac5fc426a552592d13e57","campaign_id"=>"36d61baa788777e446c0a0361aea6ef2","trip_id"=>"d1a10ba6198572ee80984e0fb17ae533","action"=>"trip_payment"),
+	// 	"order_id"=> null,
+	// 	"environment"=> "Development",
+	// 	"callback_url"=> "https:\/\/www.easygo.com.gh\/processors\/callback.php?action=paybox&mode=",
+	// 	"redirect_url"=> "https:\/\/www.easygo.com.gh\/settings\/test_prod.php",
+	// 	"payer_name"=> null,
+	// 	"payer_email"=> "easy@go",
+	// 	"payer_phone"=> null,
+	// 	"customer_id"=> null
+	// );
 			$success = $_POST["status"] == "Success";
 
 			if (!$success){
