@@ -9,6 +9,8 @@ $(document).ready(function () {
     event.stopPropagation();
   }); // preventing click event from bubbling
   $(".pad-item-add").click(padListAdd);
+  $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
+  $(".close-sidebar").click(closeSidebar); // close side bar
   
   // form listeners
   $(".date-input").focus(changeToDate);
@@ -39,6 +41,19 @@ function padListAdd(){
   if(item){
     $(`#${padListClass}`).append(`<div class="item-pad">${item}</div>`);
   }
+}
+
+// function to toggle sidebar
+function toggleSidebar(){
+  let target = $(this).attr("data-target");
+  console.log(target);
+  $(`#${target}`).toggleClass("open");
+}
+// function to close side bar
+function closeSidebar(){
+  let target = $(this).attr("data-target");
+  console.log(target);
+  $(`#${target}`).removeClass("open");
 }
 
 //--- [form] functions ---//

@@ -10,25 +10,25 @@
             <div class="col-lg-3 py-3">
                 <h5 class="easygo-fw-2">Trip Goers</h5>
                 <div class="d-flex flex-column">
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Home</a>
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">FAQ'S</a>
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Report Spam</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Home</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">FAQ'S</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Report Spam</a>
                 </div>
             </div>
             <div class="col-lg-3 py-3">
                 <h5 class="easygo-fw-2">Trip Curators</h5>
                 <div class="d-flex flex-column">
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Become a curator</a>
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Value added services</a>
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Become a curator</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Value added services</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
                 </div>
             </div>
             <div class="col-lg-3 py-3">
                 <h5 class="easygo-fw-2">About us</h5>
                 <div class="d-flex flex-column">
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Privacy policy</a>
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Meet the team</a>
-                    <a class="text-gray-1 easygo-fs-4 text-hover-orange" href="javascript:void(0)">Careers</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Privacy policy</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Meet the team</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Careers</a>
                 </div>
             </div>
         </div>
