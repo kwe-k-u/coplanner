@@ -59,7 +59,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div>
+                            <div  class="px-lg-5">
                                 <div class="stacked-imgs">
                                     <img src="../assets/images/others/tour2.jpg" alt="scenery">
                                 </div>
@@ -257,7 +257,7 @@
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- view trips section [start] -->
-            <section class="view-trips bg-blue text-white" style="margin: 10rem 0rem;">
+            <section class="view-trips bg-blue text-white  d-none d-lg-block" style="margin: 10rem 0rem;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">

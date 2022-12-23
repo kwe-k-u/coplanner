@@ -36,7 +36,7 @@
 </nav>
 
 <!-- The side bar -->
-<aside id="main-sidebar" class="sidebar sidebar-right bg-white">
+<aside id="main-sidebar" class="sidebar sidebar-right bg-white d-md-none">
     <div class="sidebar-header py-3">
         <div class="log">
             <img class="logo-small" src="../assets/images/svgs/logo.svg" alt="easygo logo">

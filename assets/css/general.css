@@ -583,7 +583,6 @@ form .inline-inputs > * {
 .stacked-imgs {
   position: relative;
   background-color: var(--easygo-orange);
-  max-width: 70%;
   height: 500px;
 }
 
@@ -594,7 +593,7 @@ form .inline-inputs > * {
 }
 
 .stacked-imgs img:nth-child(1) {
-  transform: translate(2rem, -2rem);
+  transform: translate(1rem, -1rem);
 }
 
 /**navbar themes **/
