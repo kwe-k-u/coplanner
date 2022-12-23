@@ -5,6 +5,11 @@
 	class campaign_class extends db_connection{
 
 
+		//=============================SELECT======================
+		function get_campaign_tour_by_id($id){
+			$sql = "SELECT * FROM `campaign_trips` WHERE `trip_id`='$id'";
+			return $this->db_fetch_one($sql);
+		}
 
 		//=============================INSERT======================
 		function create_campaign($campaign_id,$curator_id,$title, $description){

@@ -50,6 +50,11 @@
 			return $this->db_fetch_one($sql);
 		}
 
+		function get_user_by_id($id){
+			$sql = "SELECT * FROM `users` WHERE `user_id`='$id'";
+			return $this->db_fetch_one($sql);
+		}
+
 		function verify_reset_token($token){
 			$sql = "SELECT * FROM `forgot_password_token` WHERE `token`='$token'";
 			return $this->db_fetch_one($sql);

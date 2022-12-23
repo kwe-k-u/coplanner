@@ -41,6 +41,12 @@
 	}
 
 
+	function get_user_by_id($id){
+		$auth = new auth_class();
+		return $auth->get_user_by_id($id);
+	}
+
+
 	function get_password_token($email){
 		$auth = new auth_class();
 		$token = $auth->get_password_token($email);

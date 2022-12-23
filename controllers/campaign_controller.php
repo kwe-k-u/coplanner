@@ -3,6 +3,11 @@
 	require_once("../classes/campaign_class.php");
 
 
+	function get_campaign_trip_by_id($id){
+		$campaign = new campaign_class();
+		return $campaign->get_campaign_tour_by_id($id);
+	}
+
 	function create_campaign($camp_id, $curator_id, $title,$description){
 		$campaign = new campaign_class();
 		return $campaign->create_campaign($camp_id,$curator_id, $title,$description);

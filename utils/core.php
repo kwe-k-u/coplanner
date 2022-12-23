@@ -1,5 +1,7 @@
 <?php
-
+	require_once(__DIR__. "/http_handler.php");
+	require_once(__DIR__."/env_manager.php");
+	
 //start session
 session_start();
 

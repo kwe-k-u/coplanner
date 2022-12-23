@@ -28,14 +28,12 @@
 					$campaign_id = $_POST["campaign_id"];
 					$s = add_campaign_wishlist($user_id,$campaign_id);
 					echo $s;
-					echo "add";
 					die();
 				case "remove_campaign_wishlist":
 					$user_id = $_POST["user_id"];
 					$campaign_id = $_POST["campaign_id"];
 					$s = remove_campaign_wishlist($user_id,$campaign_id);
 					echo $s;
-					echo "remove";
 					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";
@@ -51,5 +49,5 @@
 		die();
 	}
 
-	interaction();
+	// interaction();
 ?>

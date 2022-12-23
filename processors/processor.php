@@ -18,4 +18,5 @@
 	include_once(__DIR__."/sub_system/campaign.php");
 	include_once(__DIR__."/sub_system/private_tour.php");
 	include_once(__DIR__."/sub_system/user_interaction.php");
+	include_once(__DIR__."/sub_system/booking_and_payment.php");
 ?>

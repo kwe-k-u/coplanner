@@ -14,7 +14,7 @@
 		}
 
 		//Add to payload, booking_id, seats_booked,$trip_id,$user_id
-		function send_momo($order_id, $email,$amount, $network, $number, $payload = []){
+		function charge_momo($order_id, $email,$amount, $network, $number, $payload = []){
 			$body = array (
 				"payerEmail" => $email,
 				"payload" => json_encode($payload),
@@ -47,7 +47,6 @@
 
 
 		function withdraw($amount, $bank_account,$bank_code, $receiver_name, $receiver_email, $user_id, $currency = "GHS"){
-
 			return $this->http->post(
 				"https://paybox.com.co/transfer",
 				array(
@@ -61,7 +60,7 @@
 					"bank_account" => $bank_account,
 					"callback_url" => "https://www.easygo.com.gh/processors/callback.php?id=paybox_transfer"
 				),
-				array("Authorization: Bearer ". paybox_token())
+				header: array("Authorization: Bearer ". paybox_token())
 
 			);
 		}
