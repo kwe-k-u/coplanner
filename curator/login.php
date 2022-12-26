@@ -15,14 +15,17 @@
 </head>
 
 <body>
-
+<?php
+require_once(__DIR__."/../utils/core.php");
+    var_dump($_SESSION);
+?>
     <!-- main content start -->
     <main class="form-page-main container">
         <div class="img-container d-none d-lg-block">
             <img src="../assets/images/svgs/login.svg" alt="register image">
         </div>
         <div class="form-container container">
-            <form>
+            <form onsubmit="return login(this)">
                 <div class="form-header">
                     <div class="logo">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
@@ -30,11 +33,11 @@
                     <p class="instruction">Please enter your login credentials</p>
                 </div>
                 <div class="input-field">
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" name="email">
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input type="password" placeholder="Password">
+                        <input type="password" placeholder="Password" name="password">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                     <div class="text-end">
@@ -56,6 +59,8 @@
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/curator_auth.js"></script>
 </body>
 
 </html>

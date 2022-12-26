@@ -1,4 +1,6 @@
 <?php
+	require_once(__DIR__. "/http_handler.php");
+	require_once(__DIR__."/env_manager.php");
 
 //start session
 session_start();
@@ -128,5 +130,39 @@ ob_start();
 
 	function generate_id(){
 		return encrypt(get_current_date().time() . random_bytes((55)));
+	}
+
+	function upload_file($directory,$subdir,$tempname,$image){
+		//check if the directory exists
+		// echo "image $image";
+		//Then upload the file into the directory
+		$temp_id = generate_id();
+		$ext = explode(".",$image); //file extension
+		$ext = $ext[count($ext)-1]; //file extension
+		$form_name = $temp_id.'.'. $ext;
+		$folder = "../$directory/$subdir/".$form_name;
+
+		//create folder if it does not exist
+		if (!file_exists("../$directory/$subdir/")){
+			mkdir("../$directory/$subdir/",0777);
+
+			// echo("Folder created");
+			move_uploaded_file($tempname,$folder);
+			return $folder;
+		}
+		else{
+			move_uploaded_file($tempname,$folder);
+			return $folder;
+		}
+		return false;
+
+	}
+
+
+	function send_json($data, $response = 200){
+		echo json_encode(array(
+			"data" => $data,
+			"status"=> $response)
+		);
 	}
 ?>

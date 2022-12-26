@@ -42,17 +42,17 @@
 					$password = encrypt($_POST["password"]);
 					$number = $_POST["phone_number"];
 					$country = $_POST["country"];
-					$image_id = $_POST["profile_image"];
 
 					//generate user id
 					$user_id = generate_id();
 
-					$response = sign_up_user($user_id,$email, $user_name,$password,$number,$country,$image_id);
+					$response = sign_up_user($user_id,$email, $user_name,$password,$number,$country);
 					//create email verification
 					if(!$response){//sign up was not successful
-						echo "sign up failed";
+						send_json(array("msg"=> "Sign up failed"), 100);
 						die();
 					}
+					$id_array = array("user_id"=> $user_id);
 					$email_token = encrypt(get_current_date());
 					create_email_verification_token($email_token,$user_id);
 					//TODO send email verification
@@ -73,23 +73,28 @@
 					if(isset($_POST["type"])){
 						switch($_POST["type"]){
 							case "curator":
-								$logo_id = $_POST["curator_logo"];
 								$curator_id = generate_id();
 								$curator_name = $_POST["curator_name"];
+								$id_array = array_merge($id_array,array("curator_id"=>$curator_id));
 
 								//create curator account
-								create_curator_account($curator_id,$curator_name,$logo_id);
+								create_curator_account($curator_id,$curator_name);
 								//add user to curator management
 								add_curator_manager($curator_id,$user_id);
 								//TODO include national identification
-								die();
+								// die();
+								break;
 
 							default:
-								ECHO $_POST["type"];
+								// ECHO $_POST["type"];
 								echo "Not implemented";
 						}
 					}
-					echo "sign up successful";
+					echo json_encode(array(
+						"msg" => "sign up successful",
+						"status_code" => 200,
+						"data" => $id_array
+					));
 					break;
 
 				case "logout":
@@ -100,7 +105,11 @@
 					//delete all expired links for the email
 					remove_expired_tokens();
 					$token = get_password_token($email);
-					echo $token;
+					if ($token){
+						echo "Check your email for link to reset your password";
+					}else {
+						echo 'Something went wrong. Try again soon';
+					}
 					die();
 				case "change_password":
 					$token = $_POST["token"];

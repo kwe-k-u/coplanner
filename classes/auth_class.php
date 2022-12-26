@@ -50,6 +50,11 @@
 			return $this->db_fetch_one($sql);
 		}
 
+		function get_user_by_id($id){
+			$sql = "SELECT * FROM `users` WHERE `user_id`='$id'";
+			return $this->db_fetch_one($sql);
+		}
+
 		function verify_reset_token($token){
 			$sql = "SELECT * FROM `forgot_password_token` WHERE `token`='$token'";
 			return $this->db_fetch_one($sql);
@@ -72,16 +77,16 @@
 		//===================================== INSERT =========================================
 
 		/**Creates a user entry with the parameters passed */
-		function sign_up_user($user_id, $email, $user_name,$password,$phone_number,$country,$profile_image){
-			$sql = "INSERT INTO `users`(`user_id`,`email`,`user_name`,`password`,`phone_number`,`country`,`profile_image`)
-			VALUES('$user_id','$email','$user_name','$password', '$phone_number','$country',NULL)";
+		function sign_up_user($user_id, $email, $user_name,$password,$phone_number,$country){
+			$sql = "INSERT INTO `users`(`user_id`,`email`,`user_name`,`password`,`phone_number`,`country`)
+			VALUES('$user_id','$email','$user_name','$password', '$phone_number','$country')";
 			// return $sql;
 			return $this->db_query($sql);
 		}
 
 
 
-		function create_curator_account($curator_id,$curator_name,$logo_id){
+		function create_curator_account($curator_id,$curator_name){
 			$sql = "INSERT INTO `curators`(`curator_id`,`curator_name`,`curator_logo`)
 			VALUES ('$curator_id','$curator_name',NULL)";
 			return $this->db_query($sql);

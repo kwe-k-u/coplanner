@@ -11,7 +11,7 @@
 
 			// Add header to curl request if one is given
 			if ($header != null){
-				curl_setopt_array($curl, array(CURLOPT_POSTFIELDS => $header));
+				curl_setopt_array($curl, array(CURLOPT_HTTPHEADER => $header));
 			}
 
 			// Add body to curl request if one is given
@@ -39,12 +39,12 @@
 			return $response;
 		}
 
-		function get($url,$body = null, $header) {
+		function get($url,$body = null, $header = null) {
 			return $this->http_request($url,"GET", body: $body, header: $header);
 		}
 
 
-		function post($url, $body, $header){
+		function post($url, $body, $header = null){
 			return $this->http_request($url,"POST", body: $body, header: $header);
 		}
 	}

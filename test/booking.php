@@ -12,7 +12,7 @@
 	<title>test - booking</title>
 </head>
 <body>
-	<?php echo "<form onsubmit='on_booking_submit(this,\"$user_id\")' id='booking_form'>"; ?>
+	<?php echo "<form id='booking_form'>"; ?>
 		<input type="hidden" name="mode">
 	<h4>Personal information</h4>
 		<label >Emergency contact name</label>
@@ -36,7 +36,9 @@
 		</select><br>
 		<!-- <button type="submit" onclick="pay_mobile_money(this)">Book with momo</button> -->
 		<!-- <input type="submit" name="payment_option" value="momo"> -->
-		<button onclick="pay('momo')">Pay with Momo</button>
+		<!-- <button onclick="pay('momo')">Pay with Momo</button> -->
+
+		<?php echo "<button onclick=\"pay('momo', '$user_id')\">Pay with Mobile money</button>"; ?>
 		<br>
 		<h5>Pay with Credit card</h5>
 
@@ -44,7 +46,7 @@
 		<input type="text" name="card_first_name"><br>
 		<label>First name</label>
 		<input type="text" name="card_last_name"><br>
-		
+
 		<label>Select country</label>
 		<select name="card_country">
 			<?php
@@ -62,29 +64,35 @@
 		</select><br>
 
 
-		<!-- <input type="submit" name="payment_option" value="card"> -->
-		<button onclick="pay('card')">Pay with card</button>
+		<!-- <button onclick="pay('card')">Pay with card</button> -->
+		<?php
+			echo "<button>Pay with card<\button>";
+			// echo "<button onclick=\"pay('card','$user_id')\">Pay with card<\button>";
+		?>
+		<button></button>
 	</form>
 </body>
 <script>
 
-	function pay(option){
+	function pay(option,user_id){
 
 		var form = document.getElementById("booking_form");
 		form.mode.value = option;
 		form.submit()
 	}
 
-	// function populate_country_code(){}
 
 	function on_booking_submit(form,user_id){
 		event.preventDefault();
+		// alert(form.mode.value);
 		payload = "action=trip_payment";
 		payload += "&trip_id=" + url_params("trip_id");
 		payload += "&payment_method=" + form.mode.value;
 		payload += "&user_id="+user_id;
-
-		if (form.mode.value="card"){//attach card details
+		payload += "&seats="+form.seats.value;
+		payload += "&contact_name="+form.contact_name.value;
+		payload += "&contact_number="+form.contact_number.value;
+		if (form.mode.value =="card"){//attach card details
 			payload += "&card_number=" + form.card_number.value;
 			payload += "&card_first_name=" + form.card_first_name.value;
 			payload += "&card_last_name=" + form.card_last_name.value;
@@ -104,7 +112,6 @@
 		//send request
 		//initiate 10 second delay to prevent multiple request send
 
-		alert(form.mode.value);
 	}
 
 

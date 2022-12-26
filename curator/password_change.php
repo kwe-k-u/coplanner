@@ -22,7 +22,7 @@
             <img src="../assets/images/svgs/login.svg" alt="register image">
         </div>
         <div class="form-container container">
-            <form>
+            <form onsubmit="return reset_password(this)">
                 <div class="form-header">
                     <div class="logo">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
@@ -31,14 +31,14 @@
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input type="password" placeholder="New Password">
+                        <input type="password" placeholder="New Password" name="password">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
                         <input type="password" placeholder="Confirm Password">
-                        <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
+                        <button type="button" class="toggle-password-show" name="confirm_password"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field button-container">
@@ -55,6 +55,7 @@
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
 </body>
 
 </html>
