@@ -9,10 +9,14 @@ $(document).ready(function () {
     event.stopPropagation();
   }); // preventing click event from bubbling
   $(".pad-item-add").click(padListAdd);
+  $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
+  $(".close-sidebar").click(closeSidebar); // close side bar
   
   // form listeners
   $(".date-input").focus(changeToDate);
   $(".date-input").blur(changeToText);
+  $(".select-menu-1").click(openSelectMenu);
+  $(".select-menu-1").focusout(closeSelectMenu);
 
   // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
@@ -37,6 +41,19 @@ function padListAdd(){
   if(item){
     $(`#${padListClass}`).append(`<div class="item-pad">${item}</div>`);
   }
+}
+
+// function to toggle sidebar
+function toggleSidebar(){
+  let target = $(this).attr("data-target");
+  console.log(target);
+  $(`#${target}`).toggleClass("open");
+}
+// function to close side bar
+function closeSidebar(){
+  let target = $(this).attr("data-target");
+  console.log(target);
+  $(`#${target}`).removeClass("open");
 }
 
 //--- [form] functions ---//
@@ -72,6 +89,21 @@ function changeToText(){
     let splitStr = value.split("-");
     $(this).val(splitStr.reverse().join("-"));
   }
+}
+
+// to open select menu
+function openSelectMenu(event){
+  if(event.target.classList.contains("option")){
+    $(this).find(".select-menu-value").text(event.target.textContent);
+    $(this).find(".value").val(event.target.textContent);
+    $(this).children(".options").slideUp();
+  } 
+  else{
+    $(this).children(".options").slideDown();
+  }
+}
+function closeSelectMenu(event){
+  $(this).children(".options").slideUp();
 }
 
 // to move to next form
