@@ -31,6 +31,11 @@ function db_pass(){
 	return getenv("DB_PASSWORD");
 }
 
+/**Returns the baseurl for the server */
+function server_base_url(){
+	return getenv("SERVER_BASE_URL");
+}
+
 /**Returns the databse server for the current environment */
 function db_server(){
 	return getenv("DB_SERVER");

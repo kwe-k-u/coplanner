@@ -4,9 +4,9 @@
 	require_once(__DIR__."/../utils/core.php");
 
 	//Creates a user account with the information passed and returns the new user id. False if an error occurs
-	function sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country,$profile_image){
+	function sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country){
 		$user = new auth_class();
-		return $user->sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country,$profile_image);
+		return $user->sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country);
 	}
 
 	function log_in_user($email,$password){
@@ -117,9 +117,9 @@
 	}
 
 
-	function create_curator_account($curator_id,$curator_name,$logo_id){
+	function create_curator_account($curator_id,$curator_name){
 		$user = new auth_class();
-		return $user->create_curator_account($curator_id,$curator_name,$logo_id);
+		return $user->create_curator_account($curator_id,$curator_name);
 	}
 
 	function record_user_login($user_id){

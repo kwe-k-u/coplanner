@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - curator password reset</title>
+    <title>easyGo - Curator Request Password Reset</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -22,7 +22,7 @@
             <img src="../assets/images/svgs/login.svg" alt="register image">
         </div>
         <div class="form-container container">
-            <form>
+            <form onsubmit="return request_password_reset(this)">
                 <div class="form-header">
                     <div class="logo">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
@@ -30,7 +30,7 @@
                     <p class="instruction">Please enter your email address</p>
                 </div>
                 <div class="input-field">
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" name="email">
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-3" type="submit">Send reset link</button>
@@ -47,6 +47,7 @@
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
 </body>
 
 </html>

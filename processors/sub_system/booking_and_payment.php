@@ -61,19 +61,6 @@
 
 					}
 
-
-
-
-
-
-
-
-
-
-					//create booking
-
-					//issue payment
-
 					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";
