@@ -93,7 +93,7 @@
                     <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
                 </ul>
                 <div class="py-4 border-top">
-                    <a class="text-gray-1 easygo-fs-4" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
+                    <a class="easygo-fs-4 text-red" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
                 </div>
             </aside>
             <div class="main-content px-3">
