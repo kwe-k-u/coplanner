@@ -523,7 +523,7 @@
             <div class="my-5">
                 <div class="container  d-flex justify-content-between">
                     <button style="flex: 0 0 30%" class="easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue">Save Trip</button>
-                    <button style="flex: 0 0 65%" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3">Book Trip</button>
+                    <a href="./book_trip.php" style="flex: 0 0 65%" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3">Book Trip</a>
                 </div>
             </div>
         </main>
