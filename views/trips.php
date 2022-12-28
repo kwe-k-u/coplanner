@@ -44,12 +44,12 @@
                             <!-- trip card horizontal [start] -->
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
-                                    <div class="col-md-6">
-                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
+                                    <div class="col-md-5">
+                                        <div class="rounded overflow-hidden h-100" style="margin: auto">
                                             <img src="../assets/images/others/scenery2.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
+                                    <div class="col-md-7 d-flex justify-content-center align-content-center">
                                         <div>
                                             <div>
                                                 <div class="trip-card-header border-0">
@@ -93,12 +93,12 @@
                             <!-- trip card horizontal [start] -->
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
-                                    <div class="col-md-6">
-                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
+                                    <div class="col-md-5">
+                                        <div class="rounded overflow-hidden h-100" style="margin: auto">
                                             <img src="../assets/images/others/tour3.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
+                                    <div class="col-md-7 d-flex justify-content-center align-content-center">
                                         <div>
                                             <div>
                                                 <div class="trip-card-header border-0">
@@ -142,12 +142,12 @@
                             <!-- trip card horizontal [start] -->
                             <div class="col-12 my-4">
                                 <div class="row box-shadow-1 py-5 rounded">
-                                    <div class="col-md-6">
-                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
+                                    <div class="col-md-5">
+                                        <div class="rounded overflow-hidden h-100" style="margin: auto">
                                             <img src="../assets/images/others/tour2.jpg" class="img-fluid h-100" alt="trip card image">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
+                                    <div class="col-md-7 d-flex justify-content-center align-content-center">
                                         <div>
                                             <div>
                                                 <div class="trip-card-header border-0">
