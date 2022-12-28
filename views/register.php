@@ -29,8 +29,8 @@
                 </div>
                 <div class="profile-img-upload">
                     <div class="profile-img-disp">
-                        <img id="register-profile-img" src="../assets/images/others/tour2.jpg" alt="profile image">
-                        <label class="profile-img-upload-btn" for="profile-img">Choose file</label>
+                        <img id="register-profile-img" class="image-display" src="../assets/images/others/tour2.jpg" alt="profile image">
+                        <label class="profile-img-upload-btn" for="profile-img"><img src="../assets/images/svgs/pen_line.svg" alt="pen line image"></label>
                         <input display-target="register-profile-img" class="profile-img-file" id="profile-img" type="file" accept=".jpg, .jpeg, .png">
                     </div>
                     <div class="easygo-fs-5 mt-3">Add a profile picture</div>

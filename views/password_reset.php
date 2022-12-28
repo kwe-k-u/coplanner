@@ -19,7 +19,7 @@
     <!-- main content start -->
     <main class="form-page-main container">
         <div class="img-container d-none d-lg-block">
-            <img src="../assets/images/svgs/login.svg" alt="register image">
+            <img src="../assets/images/svgs/forgot_password_home.svg" alt="register image">
         </div>
         <div class="form-container container">
             <form onsubmit="return request_password_reset(this)">
