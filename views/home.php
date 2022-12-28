@@ -284,7 +284,7 @@
                 <div class="container">
                     <h3 class="text-center easygo-fs-1">Our News Blog</h3>
                     <p class="text-center">Get up to date news about new, recurring trips and also the latest updates about trip locations</p>
-                    <div class="grid-1" style="min-height: 80vh;">
+                    <div class="grid-1 d-flex flex-column d-lg-grid" style="min-height: 80vh;">
                         <div class="grid-item">
                             <div class="d-flex flex-column">
                                 <img class="img-fluid" src="../assets/images/others/background.jpg" alt="scenery">
@@ -299,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex grid-item gap-1">
+                        <div class="d-flex grid-item gap-1 flex-column flex-row-lg">
                             <div class="h-100" style="flex: 1 2 50%;">
                                 <img class="img-fluid h-100" src="../assets/images/others/background.jpg" alt="scenery">
                             </div>
@@ -313,7 +313,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex grid-item gap-1">
+                        <div class="d-flex grid-item gap-1 flex-column flex-row-lg">
                             <div class="h-100" style="flex: 1 2 50%;">
                                 <img class="img-fluid h-100" src="../assets/images/others/background.jpg" alt="scenery">
                             </div>
