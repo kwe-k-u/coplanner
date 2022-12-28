@@ -33,6 +33,7 @@
                         <label class="profile-img-upload-btn" for="profile-img">Choose file</label>
                         <input display-target="register-profile-img" class="profile-img-file" id="profile-img" type="file" accept=".jpg, .jpeg, .png">
                     </div>
+                    <div class="easygo-fs-5 mt-3">Add a profile picture</div>
                 </div>
                 <div class="input-field">
                     <input class="border-blue" name="user_name" type="text" placeholder="Full Name">

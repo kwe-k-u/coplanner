@@ -910,6 +910,7 @@ form .inline-inputs > * {
 
 .form-page-main form .agreement-check {
   display: flex;
+  align-items: center;
   gap: 3px;
   font-size: var(--font-size-4);
   margin-top: 1rem;
