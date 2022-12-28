@@ -46,7 +46,7 @@
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-1 easygo-rounded-2" type="button">Login</button>
-                    <p class="easygo-fs-5 text-center mt-4">Don't have an account ? <a href="./login.php" class="easygo-fs-5 easygo-fw-3">Sign Up now</a></p>
+                    <p class="easygo-fs-5 text-center mt-4">Don't have an account ? <a href="./register.php" class="easygo-fs-5 easygo-fw-3">Sign Up now</a></p>
                 </div>
             </form>
             <!-- register form 1 [end] -->
