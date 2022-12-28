@@ -21,6 +21,7 @@ $(document).ready(function () {
   // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
+  $(".profile-img-file").change(updateProfileImgDisp);
 });
 
 /*************** FUNCTIONS ****************/
@@ -119,4 +120,22 @@ function previousForm() {
   $("#register-form-1").css("pointer-events", "all");
   $("#register-form-2").css("opacity", "0");
   $("#register-form-2").css("pointer-events", "none");
+}
+
+// to insert user profile images
+function updateProfileImgDisp(){
+  let fileInput = $(this)[0];
+  let chosenFile = fileInput.files[0];
+
+  if (chosenFile){
+    let fileReader = new FileReader();
+
+    fileReader.addEventListener("load", function(){
+      let targetId = fileInput.getAttribute("display-target");
+      console.log(targetId);
+      document.getElementById(`${targetId}`).setAttribute("src", fileReader.result);
+    })
+
+    fileReader.readAsDataURL(chosenFile);
+  }
 }

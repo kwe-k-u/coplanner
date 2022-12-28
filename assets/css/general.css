@@ -105,35 +105,35 @@ i {
 }
 
 .easygo-fs-1 {
-  font-size: var(--font-size-1);
+  font-size: var(--font-size-1) !important;
 }
 .easygo-fs-2 {
-  font-size: var(--font-size-2);
+  font-size: var(--font-size-2) !important;
 }
 .easygo-fs-3 {
-  font-size: var(--font-size-3);
+  font-size: var(--font-size-3) !important;
 }
 .easygo-fs-4 {
-  font-size: var(--font-size-4);
+  font-size: var(--font-size-4) !important;
 }
 .easygo-fs-5 {
-  font-size: var(--font-size-5);
+  font-size: var(--font-size-5) !important;
 }
 .easygo-fs-6 {
-  font-size: var(--font-size-6);
+  font-size: var(--font-size-6) !important;
 }
 
 .easygo-fw-1 {
-  font-weight: var(--font-weight-1);
+  font-weight: var(--font-weight-1) !important;
 }
 .easygo-fw-2 {
-  font-weight: var(--font-weight-2);
+  font-weight: var(--font-weight-2) !important;
 }
 .easygo-fw-3 {
-  font-weight: var(--font-weight-3);
+  font-weight: var(--font-weight-3) !important;
 }
 .easygo-fw-4 {
-  font-weight: var(--font-weight-4);
+  font-weight: var(--font-weight-4) !important;
 }
 
 .s-title-1 {
@@ -780,6 +780,44 @@ form .inline-inputs > * {
 .sidebar.open{
   right: 0;
 }
+
+
+/** profile image styles **/
+.profile-img-upload{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-img-upload .profile-img-disp{
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+}
+
+.profile-img-upload .profile-img-disp img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-img-upload .profile-img-file{
+  display: none;
+}
+
+.profile-img-upload .profile-img-upload-btn{
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: -100%;
+}
+
+
+
+
+
 
 
 
