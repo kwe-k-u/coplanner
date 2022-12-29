@@ -19,7 +19,7 @@
     <!-- main content start -->
     <main class="form-page-main container">
         <div class="form-container container" style="max-width: 600px;">
-            <!-- register form 1 [start] -->
+            <!-- register login form [start] -->
             <form>
                 <div class="form-header">
                     <div class="logo">
@@ -49,7 +49,7 @@
                     <p class="easygo-fs-5 text-center mt-4">Don't have an account ? <a href="./register.php" class="easygo-fs-5 easygo-fw-3">Sign Up now</a></p>
                 </div>
             </form>
-            <!-- register form 1 [end] -->
+            <!-- register login form [end] -->
             <!-- ======================= -->
         </div>
     </main>
