@@ -355,7 +355,7 @@ form .inline-inputs > * {
 }
 
 .nl-subscription-form .input-field {
-  width: 70%;
+  min-width: 70%;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -366,19 +366,25 @@ form .inline-inputs > * {
 
 .nl-subscription-form .input-field input,
 .nl-subscription-form .input-field button {
-  padding: 1rem;
+  padding: 1rem 0.5rem;
 }
 
 .nl-subscription-form .input-field input {
-  flex-basis: 70%;
+  flex: 2;
   border: none;
   outline: none;
 }
 .nl-subscription-form .input-field button {
-  flex-basis: 30%;
+  flex: 1;
   border: none;
   outline: none;
 }
+
+/* @media screen and (max-width: 568px) {
+  .nl-subscription-form .input-field{
+    width: 100%;
+  }
+} */
 
 /** form inputs **/
 .toggle-password-show {

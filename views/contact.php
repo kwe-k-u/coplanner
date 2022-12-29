@@ -94,13 +94,13 @@
                                 <h4 class="text-capitalize text-center text-blue">send us a message</h4>
                                 <form>
                                     <div class="form-input-field py-2">
-                                        <input class="border-blue" type="text" placeholder="Full Name">
+                                        <input class="border-blue" type="text" placeholder="Your Name">
                                     </div>
                                     <div class="form-input-field py-2">
-                                        <input class="border-blue" type="text" placeholder="Full Name">
+                                        <input class="border-blue" type="text" placeholder="Your Email">
                                     </div>
                                     <div class="form-input-field py-2">
-                                        <input class="border-blue" type="text" placeholder="Full Name">
+                                        <input class="border-blue" type="text" placeholder="Your Phone Number">
                                     </div>
                                     <div class="form-input-field py-2">
                                         <textarea class="border-blue" style="resize: none" cols="30" rows="7" placeholder="Trip description"></textarea>

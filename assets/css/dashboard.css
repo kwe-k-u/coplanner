@@ -44,6 +44,7 @@
   border-right: 1px solid var(--easygo-gray-2);
   padding: 1rem 0;
   padding-left: 1rem;
+  z-index: 1;
 }
 
 .sidebar ul {

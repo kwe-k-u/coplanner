@@ -47,13 +47,11 @@ function padListAdd(){
 // function to toggle sidebar
 function toggleSidebar(){
   let target = $(this).attr("data-target");
-  console.log(target);
   $(`#${target}`).toggleClass("open");
 }
 // function to close side bar
 function closeSidebar(){
   let target = $(this).attr("data-target");
-  console.log(target);
   $(`#${target}`).removeClass("open");
 }
 

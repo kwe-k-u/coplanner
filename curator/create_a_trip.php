@@ -537,15 +537,15 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5">Select Location</button>
+                                <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5">Select this location</button>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Modal footer -->
-                <div class="d-flex justify-content-end gap-2 align-items-center">
-                    <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>
