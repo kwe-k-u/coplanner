@@ -245,7 +245,11 @@
                     <div class="w-100 bg-white easygo-rounded-3">
                         <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
                             <h5 class="easygo-fs-4 easygo-fw-1">Recent Trips</h5>
-                            <div>d</div>
+                            <button class="three-dots-btn">
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </button>
                         </div>
                         <div class="p-3" style="overflow-x: auto;">
                             <div class="easygo-list-3" style="min-width: 992px;">

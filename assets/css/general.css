@@ -246,6 +246,22 @@ i {
   margin: 0.1rem 0rem;
 }
 
+.three-dots-btn{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.three-dots-btn .dot{
+  width: 3px;
+  height: 3px;
+  background-color: black;
+  border-radius: 50%;
+}
+
 /** forms **/
 form .inline-inputs {
   display: flex;
