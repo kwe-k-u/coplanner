@@ -241,16 +241,74 @@
                 <!-- ============================== -->
                 <!-- ============================== -->
                 <!-- recent bookings [start] -->
-                <section class="upcoming-trips pt-5">
+                <section class="upcoming-trips py-5">
                     <div class="w-100 bg-white easygo-rounded-3">
                         <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
                             <h5 class="easygo-fs-4 easygo-fw-1">Recent Trips</h5>
                             <div>d</div>
                         </div>
-                        <div class="p-3">
-                            <div class="easygo-list-3">
+                        <div class="p-3" style="overflow-x: auto;">
+                            <div class="easygo-list-3" style="min-width: 992px;">
                                 <div class="list-item">
-                                    <div class="inner-item">m</div>
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi Kojo</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
                                     <div class="inner-item">#01</div>
                                     <div class="inner-item">13 Dec 2022</div>
                                     <div class="inner-item">Aburi Gardens</div>
@@ -262,6 +320,9 @@
                                     <div class="inner-item">Success</div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center p-3">
+                            <button class="easygo-btn-1">View Bookings</button>
                         </div>
                     </div>
                 </section>

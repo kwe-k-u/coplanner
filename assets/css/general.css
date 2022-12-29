@@ -667,9 +667,25 @@ form .inline-inputs > * {
   margin: 0.5rem 0rem;
   padding: 1.25rem 0.75rem;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
+  align-items: center;
   box-shadow: var(--box-shadow-2);
   border-radius: var(--easygo-br-3);
+}
+
+.easygo-list-3 .list-item .inner-item{
+  flex: 2;
+}
+.easygo-list-3 .list-item .item-bullet-container{
+  flex: 1;
+}
+
+.easygo-list-3 .list-item .item-bullet{
+  width: 1rem;
+  height: 1rem;
+  border: solid 2px var(--easygo-blue);
+  border-radius: 50%;
 }
 
 /** carousel **/
