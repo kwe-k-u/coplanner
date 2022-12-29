@@ -39,6 +39,7 @@
 
   /** box shadows **/
   --box-shadow-1: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  --box-shadow-2: 0px 4px 18px rgba(209, 209, 209, 0.25);
 
   /** logo sizes **/
   --logo-small: 4rem;
@@ -662,6 +663,15 @@ form .inline-inputs > * {
   color: var(--easygo-orange);
 }
 
+.easygo-list-3 .list-item{
+  margin: 0.5rem 0rem;
+  padding: 1.25rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: var(--box-shadow-2);
+  border-radius: var(--easygo-br-3);
+}
+
 /** carousel **/
 .easygo-carousel-indicators button {
   width: 1rem !important;
@@ -760,8 +770,6 @@ form .inline-inputs > * {
 .crossbars .bar:nth-child(2){
   transform: rotate(-45deg);
 }
-
-
 
 
 /** Sidebar **/

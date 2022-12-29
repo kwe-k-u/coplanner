@@ -19,21 +19,12 @@
     <!-- ============================== -->
     <!-- dashboard-wrapper [start] -->
     <div class="main-wrapper">
-        <header class="dashboard-header d-none d-lg-flex">
+        <header class="dashboard-header d-none d-lg-flex py-4 bg-gray-3" style="box-shadow: none;">
             <div class="logo logo-medium">
                 <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
             </div>
-            <div class="dashboard-title">Dashboard</div>
+            <div class="dashboard-title easygo-fs-1 easygo-fw-1">Good Evening, Collins</div>
             <div class="right-sec">
-                <form id="dashboard-search">
-                    <div class="form-input-field">
-                        <input class="p-2" type="text" placeholder="search">
-                    </div>
-                </form>
-                <div class="balance d-flex flex-column justify-content-center">
-                    <h4 class="m-0 easygo-fs-3 easygo-fw-1">GHC 500</h4>
-                    <small class="easygo-fs-5 text-orange">Withdrawable balance</small>
-                </div>
                 <div class="user-menu d-flex gap-1">
                     <div class="user-icon">
                         <img src="../assets/images/others/profile.jpeg" alt="">
@@ -76,7 +67,7 @@
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <aside class="sidebar d-lg-flex d-none flex-column justify-content-between">
+            <aside class="sidebar d-lg-flex d-none flex-column justify-content-between bg-gray-3">
                 <ul class="main-list slide-down">
                     <li>
                         <div class="slide-down-menu">
@@ -96,8 +87,186 @@
                     <a class="text-gray-1 easygo-fs-4" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
                 </div>
             </aside>
-            <div class="main-content p-lg-5">
-
+            <div class="main-content px-3 bg-gray-3">
+                <!-- ============================== -->
+                <!-- stat cards [start] -->
+                <section class="stat-cards pt-5">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 py-3">
+                            <div class="info-card m-auto bg-white">
+                                <div class="info-img">
+                                    <img src="../assets/images/svgs/bus_red_bg.svg" alt="bus image">
+                                </div>
+                                <div class="info-content">
+                                    <div class="text-gray-1 info-title easygo-fs-4">Booked Trips</div>
+                                    <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 py-3">
+                            <div class="info-card m-auto bg-white">
+                                <div class="info-img">
+                                    <img src="../assets/images/svgs/bus_black_bg.svg" alt="bus image">
+                                </div>
+                                <div class="info-content">
+                                    <div class="text-gray-1 info-title easygo-fs-4">Booked Trips</div>
+                                    <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 py-3">
+                            <div class="info-card m-auto bg-white">
+                                <div class="info-img">
+                                    <img src="../assets/images/svgs/barchart_blue_bg.svg" alt="bus image">
+                                </div>
+                                <div class="info-content">
+                                    <div class="text-gray-1 info-title easygo-fs-4">Total Revenue</div>
+                                    <div class="info-num easygo-fs-2 easygo-fw-1">GHS 2,456.00</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 py-3">
+                            <div class="info-card m-auto bg-white">
+                                <div class="info-img">
+                                    <img src="../assets/images/svgs/wallet_orange_bg.svg" alt="bus image">
+                                </div>
+                                <div class="info-content">
+                                    <div class="text-gray-1 info-title easygo-fs-4">Remaining Balance</div>
+                                    <div class="info-num easygo-fs-2 easygo-fw-1">GHS 2,456.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- stat cards [end] -->
+                <!-- ============================== -->
+                <!-- ============================== -->
+                <!-- upcoming trips [start] -->
+                <section class="upcoming-trips pt-5">
+                    <h5 class="easygo-fs-4 easygo-fw-1">Upcoming Trips</h5>
+                    <div class="d-flex gap-2 w-100" style="overflow-x: auto;">
+                        <div class="upcoming-trip-card">
+                            <div class="ut-card-content">
+                                <h2 class="title">Botanical Gardens Tour</h2>
+                                <div class="ut-card-info">
+                                    <div class="row">
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/calendar_white.svg" alt="calendar icon"> 12 Dec 2022 - 10 Jan 2023</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/seats_white.svg" alt="seats icon"> 30 Available Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/price_tag_white.svg" alt="Price tag icon"> GHc 150</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/list_pen_white.svg" alt="LIst and pen icon"> 15 Booked Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/map_pin_white.svg" alt="map pin icon"> Pickup coming soon</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ut-card-footer">
+                                <a href="javascript:void(0)" class="ut-card-footer-item">View Listing</a>
+                                <a href="javascript:void(0)" class="ut-card-footer-item">Send Notification</a>
+                            </div>
+                        </div>
+                        <div class="upcoming-trip-card">
+                            <div class="ut-card-content">
+                                <h2 class="title">Botanical Gardens Tour</h2>
+                                <div class="ut-card-info">
+                                    <div class="row">
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/calendar_white.svg" alt="calendar icon"> 12 Dec 2022 - 10 Jan 2023</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/seats_white.svg" alt="seats icon"> 30 Available Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/price_tag_white.svg" alt="Price tag icon"> GHc 150</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/list_pen_white.svg" alt="LIst and pen icon"> 15 Booked Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/map_pin_white.svg" alt="map pin icon"> Pickup coming soon</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ut-card-footer">
+                                <a href="javascript:void(0)" class="ut-card-footer-item">View Listing</a>
+                                <a href="javascript:void(0)" class="ut-card-footer-item">Send Notification</a>
+                            </div>
+                        </div>
+                        <div class="upcoming-trip-card">
+                            <div class="ut-card-content">
+                                <h2 class="title">Botanical Gardens Tour</h2>
+                                <div class="ut-card-info">
+                                    <div class="row">
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/calendar_white.svg" alt="calendar icon"> 12 Dec 2022 - 10 Jan 2023</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/seats_white.svg" alt="seats icon"> 30 Available Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/price_tag_white.svg" alt="Price tag icon"> GHc 150</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/list_pen_white.svg" alt="LIst and pen icon"> 15 Booked Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/map_pin_white.svg" alt="map pin icon"> Pickup coming soon</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ut-card-footer">
+                                <a href="javascript:void(0)" class="ut-card-footer-item">View Listing</a>
+                                <a href="javascript:void(0)" class="ut-card-footer-item">Send Notification</a>
+                            </div>
+                        </div>
+                        <div class="upcoming-trip-card">
+                            <div class="ut-card-content">
+                                <h2 class="title">Botanical Gardens Tour</h2>
+                                <div class="ut-card-info">
+                                    <div class="row">
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/calendar_white.svg" alt="calendar icon"> 12 Dec 2022 - 10 Jan 2023</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/seats_white.svg" alt="seats icon"> 30 Available Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/price_tag_white.svg" alt="Price tag icon"> GHc 150</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/list_pen_white.svg" alt="LIst and pen icon"> 15 Booked Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/map_pin_white.svg" alt="map pin icon"> Pickup coming soon</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ut-card-footer">
+                                <a href="javascript:void(0)" class="ut-card-footer-item">View Listing</a>
+                                <a href="javascript:void(0)" class="ut-card-footer-item">Send Notification</a>
+                            </div>
+                        </div>
+                        <div class="upcoming-trip-card">
+                            <div class="ut-card-content">
+                                <h2 class="title">Botanical Gardens Tour</h2>
+                                <div class="ut-card-info">
+                                    <div class="row">
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/calendar_white.svg" alt="calendar icon"> 12 Dec 2022 - 10 Jan 2023</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/seats_white.svg" alt="seats icon"> 30 Available Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/price_tag_white.svg" alt="Price tag icon"> GHc 150</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/list_pen_white.svg" alt="LIst and pen icon"> 15 Booked Seats</div>
+                                        <div class="col-4 p-0"><img src="../assets/images/svgs/map_pin_white.svg" alt="map pin icon"> Pickup coming soon</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ut-card-footer">
+                                <a href="javascript:void(0)" class="ut-card-footer-item">View Listing</a>
+                                <a href="javascript:void(0)" class="ut-card-footer-item">Send Notification</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- upcoming trips [end] -->
+                <!-- ============================== -->
+                <!-- ============================== -->
+                <!-- recent bookings [start] -->
+                <section class="upcoming-trips pt-5">
+                    <div class="w-100 bg-white easygo-rounded-3">
+                        <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                            <h5 class="easygo-fs-4 easygo-fw-1">Recent Trips</h5>
+                            <div>d</div>
+                        </div>
+                        <div class="p-3">
+                            <div class="easygo-list-3">
+                                <div class="list-item">
+                                    <div class="inner-item">m</div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- recent bookings [end] -->
+                <!-- ============================== -->
             </div>
         </main>
         <!-- dashboard-content [end] -->
