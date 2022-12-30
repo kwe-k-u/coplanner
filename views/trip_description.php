@@ -46,12 +46,12 @@
                                     <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                                 <div style="max-height: 400px;">
                                     <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                                 <div style="max-height: 400px;">
                                     <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
                                 </div>
