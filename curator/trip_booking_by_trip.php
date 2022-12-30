@@ -116,11 +116,11 @@
                         <div class="right-controls d-flex gap-2">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    View by
+                                    Trips
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="viewby-menu">
                                     <li><a class="dropdown-item" href="#">All</a></li>
-                                    <li><a class="dropdown-item" href="#">Date</a></li>
+                                    <li><a class="dropdown-item" href="./trip_booking_by_date.php">Date</a></li>
                                 </ul>
                             </div>
                             <div class="dropdown">
@@ -158,23 +158,23 @@
                                 <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
                             </div>
                         </div>
-                        <div class="pagination-section my-5">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div>
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <nav aria-label="Page navigation m-auto">
-                                            <ul class="pagination gap-2">
-                                                <li class="page-item"><a class="page-link rounded" href="#">Previous</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item"><a class="page-link rounded" href="#">Next</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                    </div>
+                    <div class="pagination-section my-5">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <nav aria-label="Page navigation m-auto">
+                                        <ul class="pagination gap-2">
+                                            <li class="page-item"><a class="page-link rounded" href="#">Previous</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link rounded" href="#">Next</a></li>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>

@@ -116,12 +116,11 @@
                         <div class="right-controls d-flex gap-2">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Trips
+                                    Date
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="viewby-menu">
                                     <li><a class="dropdown-item" href="#">All</a></li>
                                     <li><a class="dropdown-item" href="./trip_booking_by_trip.php">Trips</a></li>
-                                    <li><a class="dropdown-item" href="./trip_booking_by_date.php">Date</a></li>
                                 </ul>
                             </div>
                             <div class="dropdown">
@@ -137,7 +136,7 @@
                         </div>
                     </div>
                     <div class="trip-listing">
-                        <div class="easygo-list-3 list-striped" style="min-width: 992px;">
+                        <div class="easygo-list-3 border-bottom" style="min-width: 992px;">
                             <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
@@ -152,61 +151,171 @@
                                 <div class="inner-item">Occurence Date</div>
                                 <div class="inner-item">Status</div>
                             </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                        </div>
+                        <div class="date-group pt-4 pb-3">
+                            <div class="dropdown">
+                                <button class="btn border dropdown-toggle px-5" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                    December 13
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="export-menu">
+                                    <li><a class="dropdown-item" href="#">December 13</a></li>
+                                    <li><a class="dropdown-item" href="#">December 13</a></li>
+                                </ul>
                             </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
+                            <div class="easygo-list-3" style="min-width: 992px;">
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi Kojo</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
                                 </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
                             </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                        </div>
+                        <div class="date-group pt-4 pb-3">
+                            <div class="dropdown">
+                                <button class="btn border dropdown-toggle px-5" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                    December 16
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="export-menu">
+                                    <li><a class="dropdown-item" href="#">December 13</a></li>
+                                    <li><a class="dropdown-item" href="#">December 13</a></li>
+                                </ul>
                             </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
+                            <div class="easygo-list-3" style="min-width: 992px;">
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi Kojo</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
                                 </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
+                                <div class="list-item">
+                                    <div class="item-bullet-container">
+                                        <div class="item-bullet"></div>
+                                    </div>
+                                    <div class="inner-item">#01</div>
+                                    <div class="inner-item">13 Dec 2022</div>
+                                    <div class="inner-item">Aburi Gardens</div>
+                                    <div class="inner-item">Collins Kofi</div>
+                                    <div class="inner-item">5</div>
+                                    <div class="inner-item">c1000</div>
+                                    <div class="inner-item">James - 010300000</div>
+                                    <div class="inner-item">30 Dec 2022</div>
+                                    <div class="inner-item">Success</div>
+                                </div>
                             </div>
                         </div>
                     </div>

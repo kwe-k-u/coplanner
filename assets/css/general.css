@@ -710,6 +710,7 @@ form .inline-inputs > * {
   align-items: center;
   box-shadow: var(--box-shadow-2);
   border-radius: var(--easygo-br-3);
+  font-size: var(--font-size-5);
 }
 
 .easygo-list-3 .list-item.list-header {
