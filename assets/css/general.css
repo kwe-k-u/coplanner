@@ -24,6 +24,7 @@
 
   /** colors **/
   --easygo-blue: #2b65b1;
+  --easygo-lblue-1: #F1F4F8;
   --easygo-orange: #ffa500;
   --easygo-red: #ff2600;
   --easygo-white: #ffffff;
@@ -685,8 +686,12 @@ form .inline-inputs > * {
   color: var(--easygo-orange);
 }
 
+.easygo-list-3.list-striped .list-item:nth-child(odd){
+  background-color: var(--easygo-lblue-1);
+}
+
 .easygo-list-3 .list-item{
-  margin: 0.5rem 0rem;
+  margin: 1rem 0rem;
   padding: 1.25rem 0.75rem;
   display: flex;
   gap: 1rem;
@@ -694,6 +699,13 @@ form .inline-inputs > * {
   align-items: center;
   box-shadow: var(--box-shadow-2);
   border-radius: var(--easygo-br-3);
+}
+
+.easygo-list-3 .list-item.list-header{
+  font-weight: var(--font-weight-1);
+}
+.easygo-list-3 .list-item.list-header .item-bullet{
+  border-width: 3px;
 }
 
 .easygo-list-3 .list-item .inner-item{

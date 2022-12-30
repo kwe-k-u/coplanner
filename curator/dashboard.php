@@ -326,7 +326,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-center p-3">
-                            <button class="easygo-btn-1">View Bookings</button>
+                            <a href="./trip_booking.php" class="easygo-btn-1">View Bookings</a href="./trip_booking.php">
                         </div>
                     </div>
                 </section>
