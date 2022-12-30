@@ -24,7 +24,7 @@
 
   /** colors **/
   --easygo-blue: #2b65b1;
-  --easygo-lblue-1: #F1F4F8;
+  --easygo-lblue-1: #f1f4f8;
   --easygo-orange: #ffa500;
   --easygo-red: #ff2600;
   --easygo-white: #ffffff;
@@ -247,7 +247,7 @@ i {
   margin: 0.1rem 0rem;
 }
 
-.three-dots-btn{
+.three-dots-btn {
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -256,7 +256,7 @@ i {
   gap: 5px;
 }
 
-.three-dots-btn .dot{
+.three-dots-btn .dot {
   width: 3px;
   height: 3px;
   background-color: black;
@@ -482,7 +482,7 @@ form .inline-inputs > * {
   grid-column: span 3;
 }
 
-.grid-3{
+.grid-3 {
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -491,15 +491,15 @@ form .inline-inputs > * {
   gap: 1rem;
 }
 
-.grid-3 .grid-item:nth-child(2n){
+.grid-3 .grid-item:nth-child(2n) {
   grid-row: span 2;
 }
 
-.grid-3 .grid-item:nth-child(2n + 1){
+.grid-3 .grid-item:nth-child(2n + 1) {
   grid-row: span 3;
 }
 
-.grid-4{
+.grid-4 {
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -509,15 +509,15 @@ form .inline-inputs > * {
 }
 
 .grid-4 .grid-item:nth-child(2),
-.grid-4 .grid-item:nth-child(3){
+.grid-4 .grid-item:nth-child(3) {
   grid-column: span 2;
 }
 
-.grid-4 .grid-item:nth-child(3n + 1){
+.grid-4 .grid-item:nth-child(3n + 1) {
   grid-column: span 3;
 }
 
-.grid-5{
+.grid-5 {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
@@ -526,21 +526,21 @@ form .inline-inputs > * {
   gap: 1rem;
 }
 
-.grid-5 .grid-item{
+.grid-5 .grid-item {
   grid-row: span 2;
   grid-column: span 2;
 }
 
-.grid-5 .grid-item:nth-child(6n + 1){
+.grid-5 .grid-item:nth-child(6n + 1) {
   grid-column: span 4;
   grid-row: span 4;
 }
 
-.grid-5 .grid-item:nth-child(6n + 2){
+.grid-5 .grid-item:nth-child(6n + 2) {
   grid-column: span 4;
 }
 
-.grid-6{
+.grid-6 {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
@@ -549,31 +549,31 @@ form .inline-inputs > * {
   gap: 1rem;
 }
 
-.grid-6 .grid-item{
+.grid-6 .grid-item {
   grid-row: span 2;
   grid-column: span 2;
 }
 
 .grid-6 .grid-item:nth-child(3),
-.grid-6 .grid-item:nth-child(5){
+.grid-6 .grid-item:nth-child(5) {
   grid-column: span 4;
   grid-row: span 4;
 }
 
-.grid-6 .grid-item:nth-child(4n + 4){
+.grid-6 .grid-item:nth-child(4n + 4) {
   grid-column: span 4;
 }
 
-.grid-7{
+.grid-7 {
   display: grid;
   grid-auto-rows: 1fr;
-  grid-auto-columns: minmax(200px,1fr);
+  grid-auto-columns: minmax(200px, 1fr);
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-auto-flow: column;
   gap: 0.5rem;
 }
 
-.grid-7 .grid-item:nth-child(3n){
+.grid-7 .grid-item:nth-child(3n) {
   grid-row: span 2;
   /* grid-column: span 2; */
 }
@@ -686,11 +686,22 @@ form .inline-inputs > * {
   color: var(--easygo-orange);
 }
 
-.easygo-list-3.list-striped .list-item:nth-child(odd){
+.easygo-list-3.list-striped .list-item:nth-child(odd) {
   background-color: var(--easygo-lblue-1);
 }
 
-.easygo-list-3 .list-item{
+.easygo-list-3.left-bordered-items .list-item {
+  border-left: solid 10px;
+}
+
+.easygo-list-3.left-bordered-items .list-item:nth-child(even) {
+  border-color: var(--easygo-orange);
+}
+.easygo-list-3.left-bordered-items .list-item:nth-child(odd) {
+  border-color: var(--easygo-blue);
+}
+
+.easygo-list-3 .list-item {
   margin: 1rem 0rem;
   padding: 1.25rem 0.75rem;
   display: flex;
@@ -701,21 +712,21 @@ form .inline-inputs > * {
   border-radius: var(--easygo-br-3);
 }
 
-.easygo-list-3 .list-item.list-header{
+.easygo-list-3 .list-item.list-header {
   font-weight: var(--font-weight-1);
 }
-.easygo-list-3 .list-item.list-header .item-bullet{
+.easygo-list-3 .list-item.list-header .item-bullet {
   border-width: 3px;
 }
 
-.easygo-list-3 .list-item .inner-item{
+.easygo-list-3 .list-item .inner-item {
   flex: 2;
 }
-.easygo-list-3 .list-item .item-bullet-container{
+.easygo-list-3 .list-item .item-bullet-container {
   flex: 1;
 }
 
-.easygo-list-3 .list-item .item-bullet{
+.easygo-list-3 .list-item .item-bullet {
   width: 1rem;
   height: 1rem;
   border: solid 2px var(--easygo-blue);
@@ -779,18 +790,18 @@ form .inline-inputs > * {
 }
 
 /**nav tabs **/
-.easygo-nav-tabs .nav-link{
+.easygo-nav-tabs .nav-link {
   border: none;
   color: var(--easygo-black);
 }
 
-.easygo-nav-tabs .nav-link.active{
+.easygo-nav-tabs .nav-link.active {
   border-bottom: solid 1px var(--easygo-blue);
-  color: var(--easygo-blue)
+  color: var(--easygo-blue);
 }
 
 /** easygo cards **/
-.easygo-card-1{
+.easygo-card-1 {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -798,15 +809,14 @@ form .inline-inputs > * {
   max-width: 400px;
 }
 
-.easygo-card-1 .img-holder{
+.easygo-card-1 .img-holder {
   width: 100%;
   height: 300px;
   background-color: var(--easygo-blue);
 }
 
-
 /** cross bars **/
-.crossbars .bar{
+.crossbars .bar {
   display: block;
   height: 0.1rem;
   width: 1.5rem;
@@ -814,16 +824,15 @@ form .inline-inputs > * {
   transform-origin: center center;
 }
 
-.crossbars .bar:nth-child(1){
+.crossbars .bar:nth-child(1) {
   transform: translateY(0.1rem) rotate(45deg);
 }
-.crossbars .bar:nth-child(2){
+.crossbars .bar:nth-child(2) {
   transform: rotate(-45deg);
 }
 
-
 /** Sidebar **/
-.sidebar{
+.sidebar {
   position: fixed;
   top: 0;
   width: 100%;
@@ -832,65 +841,57 @@ form .inline-inputs > * {
   transition: all 0.5s;
 }
 
-.sidebar .sidebar-header{
+.sidebar .sidebar-header {
   display: flex;
   justify-content: space-between;
 }
 
-.sidebar .sidebar-nav-menu{
+.sidebar .sidebar-nav-menu {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.sidebar.sidebar-right{
+.sidebar.sidebar-right {
   right: -100%;
 }
 
-.sidebar.open{
+.sidebar.open {
   right: 0;
 }
 
-
 /** profile image styles **/
-.profile-img-upload{
+.profile-img-upload {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.profile-img-upload .profile-img-disp{
+.profile-img-upload .profile-img-disp {
   width: 5rem;
   height: 5rem;
   position: relative;
 }
 
-.profile-img-upload .profile-img-disp .image-display{
+.profile-img-upload .profile-img-disp .image-display {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.profile-img-upload .profile-img-file{
+.profile-img-upload .profile-img-file {
   display: none;
 }
 
-.profile-img-upload .profile-img-upload-btn{
+.profile-img-upload .profile-img-upload-btn {
   cursor: pointer;
   position: absolute;
   bottom: 0;
   right: 0;
   transform: translateX(70%);
 }
-
-
-
-
-
-
-
 
 /******************** Effects ********************/
 /** hover effects **/
@@ -907,12 +908,6 @@ form .inline-inputs > * {
 .text-hover-orange:hover {
   color: var(--easygo-orange) !important;
 }
-
-
-
-
-
-
 
 /******************** Animations ********************/
 /** success page animation **/
@@ -945,13 +940,12 @@ form .inline-inputs > * {
   left: 0;
 }
 
-.success-anim-box .circle-box.large-circle-box{
+.success-anim-box .circle-box.large-circle-box {
   animation: large-circle-round 3s ease-in-out infinite;
 }
-.success-anim-box .circle-box.small-circle-box{
+.success-anim-box .circle-box.small-circle-box {
   animation: small-circle-round 3s ease-in-out infinite;
 }
-
 
 .success-anim-box .large-circle {
   position: absolute;
@@ -1024,14 +1018,6 @@ form .inline-inputs > * {
     transform: rotate(360deg);
   }
 }
-
-
-
-
-
-
-
-
 
 /******************** CLASS AND ID based stylilng ********************/
 
@@ -1212,7 +1198,7 @@ form .inline-inputs > * {
 }
 
 /** styles for success page **/
-.success-page-main{
+.success-page-main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -1220,11 +1206,6 @@ form .inline-inputs > * {
   align-items: center;
   gap: 4rem;
 }
-
-
-
-
-
 
 /******************** MORE SPECIFIC STYLES (PAGE SPECIFIC) ********************/
 #register-form-1 {

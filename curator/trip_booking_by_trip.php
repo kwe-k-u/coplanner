@@ -116,11 +116,10 @@
                         <div class="right-controls d-flex gap-2">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Trips
+                                    View by
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="viewby-menu">
                                     <li><a class="dropdown-item" href="#">All</a></li>
-                                    <li><a class="dropdown-item" href="./trip_booking_by_trip.php">Trips</a></li>
                                     <li><a class="dropdown-item" href="#">Date</a></li>
                                 </ul>
                             </div>
@@ -137,76 +136,26 @@
                         </div>
                     </div>
                     <div class="trip-listing">
-                        <div class="easygo-list-3 list-striped" style="min-width: 992px;">
-                            <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">ID</div>
-                                <div class="inner-item">Booking Date</div>
-                                <div class="inner-item">Trip Name</div>
-                                <div class="inner-item">Customer Name</div>
-                                <div class="inner-item">Seats</div>
-                                <div class="inner-item">Amount</div>
-                                <div class="inner-item">Emergency Contact</div>
-                                <div class="inner-item">Occurence Date</div>
-                                <div class="inner-item">Status</div>
+                        <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
+                            <div class="list-item">
+                                <div class="inner-item">Aburi Botanical Gardens Trip</div>
+                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
                             </div>
                             <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                                <div class="inner-item">Kwame Nkrumah National Park</div>
+                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
                             </div>
                             <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                                <div class="inner-item">Mount Afadzo Trip</div>
+                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
                             </div>
                             <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                                <div class="inner-item">Osu Castle Trip</div>
+                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
                             </div>
                             <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
                                 <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
+                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
                             </div>
                         </div>
                         <div class="pagination-section my-5">
