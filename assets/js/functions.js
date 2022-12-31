@@ -168,3 +168,26 @@ function reset_password(form){
 	)
 }
 
+
+// $("#subscribe_button").click(add_subscriber);
+$(".nl-subscription-form").submit(add_subscriber);
+
+function add_subscriber(event){
+	event.preventDefault();
+	var email = document.getElementById("newsletter_email_field");
+	payload = "action=add_subscriber";
+	payload += "&email="+email.value;
+
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response)=> {
+			// alert(response);
+			var json = JSON.parse(response);
+			alert(json["data"].msg);
+			email.value= "";
+
+		}
+	)
+}

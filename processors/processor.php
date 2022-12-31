@@ -47,6 +47,12 @@
 		"update_curator_logo"
 	);
 
+	$newsletter_actions = array(
+		"add_subscriber",
+		"get_subscribers",
+		"clear_subscribers"
+	);
+
 
 
 
@@ -67,5 +73,8 @@
 	}
 	else if(in_array($_POST["action"],$media_actions)){
 		include_once(__DIR__."/sub_system/media.php");
+	}
+	else if(in_array($_POST["action"],$newsletter_actions)){
+		include_once(__DIR__."/sub_system/newsletter.php");
 	}
 ?>

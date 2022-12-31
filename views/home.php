@@ -420,8 +420,8 @@
                     <form class="nl-subscription-form py-5">
                         <h4 class="title text-white">subscribe to our newsletter to get the latest information about trips directly from email</h4>
                         <div class="input-field">
-                            <input type="text" placeholder="Your email address">
-                            <button class="bg-orange text-white" type="submit">Subscribe</button>
+                            <input id="newsletter_email_field" type="text" placeholder="Your email address">
+                            <button class="bg-orange text-white" >Subscribe</button>
                         </div>
                     </form>
                 </div>
@@ -446,6 +446,7 @@
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/home.js"></script>
+    <script src="../assets/js/functions.js"></script>
 </body>
 
 </html>

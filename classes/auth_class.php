@@ -86,9 +86,9 @@
 
 
 
-		function create_curator_account($curator_id,$curator_name){
-			$sql = "INSERT INTO `curators`(`curator_id`,`curator_name`,`curator_logo`)
-			VALUES ('$curator_id','$curator_name',NULL)";
+		function create_curator_account($curator_id,$curator_name, $country){
+			$sql = "INSERT INTO `curators`(`curator_id`,`curator_name`,`curator_logo`, `country`)
+			VALUES ('$curator_id','$curator_name',NULL, '$country')";
 			return $this->db_query($sql);
 		}
 

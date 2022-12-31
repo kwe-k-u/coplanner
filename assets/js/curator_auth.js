@@ -44,10 +44,10 @@ function signup(){
 			// 	return false;
 			// }
 
-			var user_id = "999372d45082a25cf742e37b2f74ee2d";
-			var curator_id = "40c0f486531b5ce8c6d3500ec637a2e6";
-			// var user_id = json["data"]["user_id"];
-			// var curator_id = json["data"]["curator_id"];
+			// var user_id = "999372d45082a25cf742e37b2f74ee2d";
+			// var curator_id = "40c0f486531b5ce8c6d3500ec637a2e6";
+			var user_id = json["data"]["user_id"];
+			var curator_id = json["data"]["curator_id"];
 
 
 			//uploading incorporation document if one exists

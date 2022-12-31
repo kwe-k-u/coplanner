@@ -117,9 +117,9 @@
 	}
 
 
-	function create_curator_account($curator_id,$curator_name){
+	function create_curator_account($curator_id,$curator_name, $country){
 		$user = new auth_class();
-		return $user->create_curator_account($curator_id,$curator_name);
+		return $user->create_curator_account($curator_id,$curator_name, $country);
 	}
 
 	function record_user_login($user_id){

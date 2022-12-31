@@ -78,7 +78,7 @@
 								$id_array = array_merge($id_array,array("curator_id"=>$curator_id));
 
 								//create curator account
-								create_curator_account($curator_id,$curator_name);
+								create_curator_account($curator_id,$curator_name, $country);
 								//add user to curator management
 								add_curator_manager($curator_id,$user_id);
 								//TODO include national identification
