@@ -295,7 +295,7 @@
             <!--- view trips section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
-            <!--- news-blot section [start] -->
+            <!--- news-blog section [start] -->
             <section class="news-blog my-5">
                 <div class="container">
                     <h3 class="text-center easygo-fs-1">Our News Blog</h3>
@@ -315,7 +315,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex grid-item gap-1 flex-column flex-row-lg">
+                        <div class="d-flex grid-item gap-1 flex-column flex-lg-row">
                             <div class="h-100" style="flex: 1 2 50%;">
                                 <img class="img-fluid h-100" src="../assets/images/others/background.jpg" alt="scenery">
                             </div>
@@ -329,7 +329,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex grid-item gap-1 flex-column flex-row-lg">
+                        <div class="d-flex grid-item gap-1 flex-column flex-lg-row">
                             <div class="h-100" style="flex: 1 2 50%;">
                                 <img class="img-fluid h-100" src="../assets/images/others/background.jpg" alt="scenery">
                             </div>
