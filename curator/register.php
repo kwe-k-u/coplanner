@@ -59,8 +59,9 @@
                                 <img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag">
                             </a>
                             <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
-                                <li onclick="on_country_select('Ghana')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
-                                <li onclick="on_country_select('Nigeria')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Nigeria</li>
+                                <li class="text-hover-orange" onclick="on_country_select('Ghana')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
+                                <li class="text-hover-orange" onclick="on_country_select('Nigeria')"><img src="../assets/images/svgs/nigeria_flag.svg" alt="Zimbabwe flag"> Nigeria</li>
+                                <li class="text-hover-orange" onclick="on_country_select('Zimbabwe')"><img src="../assets/images/svgs/zimbabwe_flag.svg" alt="Zimbabwe flag"> Zimbabwe</li>
                             </ul>
                         </div>
                         <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" value="easygo">

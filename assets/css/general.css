@@ -896,8 +896,10 @@ form .inline-inputs > * {
 
 /******************** Effects ********************/
 /** hover effects **/
-.text-hover-blue {
+.text-hover-blue,
+.text-hover-orange {
   transition: all var(--trans-time-1);
+  cursor: pointer;
 }
 .text-hover-blue:hover {
   color: var(--easygo-blue) !important;
