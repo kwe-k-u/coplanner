@@ -30,7 +30,7 @@
             <!--- ================================ -->
             <!--- introduction section [start] -->
             <section class="intro py-5">
-                <div class="intro-card text-center text-white" style="backdrop-filter: blur(20px);">
+                <div class="intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px);">
                     <h1>
                         You don't need to hassle to have a fun trip
                         <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
@@ -39,8 +39,8 @@
                         easyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.
                     </p>
                     <div class="d-flex gap-3 justify-content-center">
-                        <button class="easygo-btn-5">Book Now</button>
-                        <a href="./photo_gallery.php" class="easygo-btn-4">Photo Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow"></a>
+                        <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
+                        <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                     </div>
                     <form class="m-auto easygo-fs-5 rounded overflow-hidden" style="min-width: 50%;">
                         <div class="d-flex">
@@ -57,16 +57,16 @@
             <!--- get started section [start] -->
             <section class="get-started my-5">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div  class="px-lg-5">
+                    <div class="row flex-column-reverse flex-lg-row">
+                        <div class="col-lg-6 p-3">
+                            <div class="px-lg-5">
                                 <div class="stacked-imgs">
                                     <img src="../assets/images/others/tour2.jpg" alt="scenery">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center p-3">
-                            <div class="container d-flex flex-column gap-4">
+                            <div class="container d-flex flex-column gap-2">
                                 <h1>Find the Best Trip For You And Your Family</h1>
                                 <p>We use top trip curator services to create new adventure for you and your loved ones. You’ll explore top destinations and popular tourists attraction centers in the whole of Ghana. Let’s create memories for you and your family. We also offer private tour services so you can customize your trip to your taste.</p>
                                 <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" style="border-radius: 50px; word-spacing: 5px;">Get started</button>
@@ -75,6 +75,9 @@
                     </div>
                 </div>
             </section>
+            <div class="container">
+                <hr class="text-gray-1 d-md-none">
+            </div>
             <!--- get started [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
@@ -224,6 +227,10 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a class="text-black d-none d-md-block" href="./trips.php">Go to trips <img src="../assets/images/svgs/arrow_45deg_black.svg" alt="45 degree arrow" style="width: 0.7rem;"></a>
+                        <a href="./trips.php" class="easygo-btn-1 d-block d-md-none w-100 text-center">Go to trips &nbsp; <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" style="width: 0.7rem;"></a></a>
                     </div>
                 </div>
             </section>
