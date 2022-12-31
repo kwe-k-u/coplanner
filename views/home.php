@@ -76,7 +76,7 @@
                 </div>
             </section>
             <div class="container">
-                <hr class="text-gray-1 d-md-none">
+                <hr class=" opacity-100 d-md-none">
             </div>
             <!--- get started [end] -->
             <!--- ================================ -->
@@ -234,13 +234,16 @@
                     </div>
                 </div>
             </section>
+            <div class="container">
+                <hr class=" opacity-100 d-md-none">
+            </div>
             <!--- suggested locations section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- about us section [start] -->
             <section class="about-us my-5">
                 <div class="container">
-                    <div class="row">
+                    <div class="row flex-column-reverse flex-lg-row">
                         <div class="col-lg-6">
                             <div>
                                 <div class="stacked-imgs">
@@ -260,16 +263,22 @@
                     </div>
                 </div>
             </section>
+            <div class="container">
+                <hr class=" opacity-100 d-md-none">
+            </div>
             <!--- about us section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- view trips section [start] -->
-            <section class="view-trips bg-blue text-white  d-none d-lg-block" style="margin: 10rem 0rem;">
+            <section class="view-trips bg-blue text-white" style="margin: 10rem 0rem;">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="container-fluid px-5 position-relative h-100">
-                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid" src="../assets/images/others/background.jpg" alt="background image">
+                            <div class="container-fluid position-relative h-100">
+                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block" src="../assets/images/others/background.jpg" alt="background image">
+                                <div class="d-block d-lg-none pt-5">
+                                    <img class="img-fluid" src="../assets/images/others/background.jpg" alt="background image">
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 py-5">
@@ -337,6 +346,9 @@
                     </div>
                 </div>
             </section>
+            <div class="container">
+                <hr class=" opacity-100 d-md-none">
+            </div>
             <!--- news-blog section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
@@ -388,6 +400,9 @@
                     </div>
                 </div>
             </section>
+            <div class="container">
+                <hr class=" opacity-100 d-md-none">
+            </div>
             <!--- testimonies section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
