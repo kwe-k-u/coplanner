@@ -67,12 +67,12 @@
                                     <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                                 <div style="max-height: 400px;">
                                     <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item">
                                 <div style="max-height: 400px;">
                                     <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
                                 </div>
@@ -97,7 +97,7 @@
                 <div class="container">
                     <ul class="nav nav-tabs easygo-nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="home" aria-selected="true">Description</button>
+                            <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="itineries-tab" data-bs-toggle="tab" data-bs-target="#itineries" type="button" role="tab" aria-controls="itineries" aria-selected="false">Locations</button>
@@ -488,7 +488,7 @@
             <div class="my-5">
                 <div class="container  d-flex justify-content-between">
                     <button style="flex: 0 0 30%" class="easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue">Save Trip</button>
-                    <button style="flex: 0 0 65%" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3">Book Trip</button>
+                    <a href="./book_trip.php" style="flex: 0 0 65%" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3">Book Trip</a>
                 </div>
             </div>
         </main>

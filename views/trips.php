@@ -33,6 +33,8 @@
         <!--- ================================ -->
         <!-- page content [start] -->
         <main>
+            <!--- ================================ -->
+            <!-- next trips [start] -->
             <section style="margin-top: 10rem;">
                 <div class="container">
                     <div>
@@ -116,7 +118,14 @@
                     </div>
                 </div>
             </section>
-            <section>
+            <div class="container">
+                <hr class=" opacity-100 d-md-none">
+            </div>
+            <!-- next trips [next] -->
+            <!--- ================================ -->
+            <!--- ================================ -->
+            <!-- recent trips [start] -->
+            <section class="py-5">
                 <div class="container">
                     <div class="text-center easygo-h3">Recent Trips</div>
                     <div class="row my-3">
@@ -253,8 +262,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-5">
+                        <a href="javascript:void(0)" class="easygo-btn-1 easygo-rounded-2 m-auto" style="max-width: 400px;">See All</a>
+                    </div>
                 </div>
             </section>
+            <!-- recent trips [end] -->
+            <!--- ================================ -->
         </main>
         <!-- page content [end] -->
         <!--- ================================ -->
