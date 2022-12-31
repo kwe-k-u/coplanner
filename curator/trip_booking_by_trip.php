@@ -113,21 +113,21 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="right-controls d-flex gap-2">
+                        <div class="right-controls d-flex gap-2 easygo-fs-5">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle easygo-fs-5 h-100" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
                                     Trips
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="viewby-menu">
+                                <ul class="dropdown-menu easygo-fs-5" aria-labelledby="viewby-menu">
                                     <li><a class="dropdown-item" href="#">All</a></li>
                                     <li><a class="dropdown-item" href="./trip_booking_by_date.php">Date</a></li>
                                 </ul>
                             </div>
                             <div class="dropdown">
-                                <button class="btn border dropdown-toggle px-5" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn border dropdown-toggle px-5 easygo-fs-5 h-100" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
                                     Export
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="export-menu">
+                                <ul class="dropdown-menu easygo-fs-5" aria-labelledby="export-menu">
                                     <li><a class="dropdown-item" href="#">PDF</a></li>
                                     <li><a class="dropdown-item" href="#">Excel</a></li>
                                 </ul>
