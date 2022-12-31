@@ -28,8 +28,8 @@
                 </li>
             </ul>
             <div class="d-flex gap-4">
-                <a href="javascript:void(0)" class="easygo-btn-4 border-blue text-blue">Login</a>
-                <a href="javascript:void(0)" class="easygo-btn-5 bg-blue text-white">Create Account</a>
+                <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue easygo-fs-5">Login</a>
+                <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white easygo-fs-5">Create Account</a>
                 </form>
             </div>
         </div>
@@ -75,8 +75,8 @@
                 </li>
             </ul>
             <div class="d-flex flex-column gap-4 px-2 mt-5">
-                <a href="javascript:void(0)" class="easygo-btn-4 border-blue text-blue">Login</a>
-                <a href="javascript:void(0)" class="easygo-btn-5 bg-blue text-white">Create Account</a>
+                <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue">Login</a>
+                <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white">Create Account</a>
                 </form>
             </div>
         </div>

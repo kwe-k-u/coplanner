@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard</title>
+    <title>Curator - Dashboard | Create a trip</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -93,7 +93,7 @@
                     <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
                 </ul>
                 <div class="py-4 border-top">
-                    <a class="text-gray-1 easygo-fs-4" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
+                    <a class="easygo-fs-4 text-red" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
                 </div>
             </aside>
             <div class="main-content px-3">
@@ -119,7 +119,20 @@
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <!-- <input accept=".png, .jpg, .jpeg, .svg" type="file"> -->
+                                        <div class="img-display">
+                                           <div class="img-display-item">
+                                                <button class="item-remove">X</button>
+                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
+                                            </div> 
+                                           <div class="img-display-item">
+                                                <button class="item-remove">X</button>
+                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
+                                            </div> 
+                                           <div class="img-display-item">
+                                                <button class="item-remove">X</button>
+                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
+                                            </div> 
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-input-field">
@@ -153,7 +166,6 @@
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <!-- <input accept=".png, .jpg, .jpeg, .svg" type="file"> -->
                                     </div>
                                 </div>
                             </div>
@@ -537,15 +549,15 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5">Select Location</button>
+                                <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5">Select this location</button>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Modal footer -->
-                <div class="d-flex justify-content-end gap-2 align-items-center">
-                    <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
-                </div>
             </div>
         </div>
     </div>

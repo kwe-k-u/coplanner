@@ -38,10 +38,13 @@
 
 /********** sidebar **********/
 .sidebar {
+  flex: 0 0 auto;
+  position: static;
   width: 200px;
   border-right: 1px solid var(--easygo-gray-2);
   padding: 1rem 0;
   padding-left: 1rem;
+  z-index: 1;
 }
 
 .sidebar ul {
@@ -75,7 +78,7 @@
 }
 
 /** mobile nav menu **/
-.nav-menu .main-list{
+.nav-menu .main-list {
   font-size: 15px;
   font-weight: var(--font-weight-2);
   display: flex;
@@ -83,7 +86,6 @@
   gap: 1rem;
   padding: 1rem 0rem;
   box-shadow: 0px 4px 24px rgba(188, 188, 188, 0.13);
-
 }
 
 .nav-menu ul {
@@ -102,8 +104,6 @@
   padding-left: 1rem;
 }
 
-
-
 /** main content **/
 .main-content {
   flex-grow: 1;
@@ -115,16 +115,65 @@
 }
 
 /** form styles **/
-.item-pad-list{
+.item-pad-list {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.item-pad{
+.item-pad {
   padding: 0.3rem 0.7rem !important;
   font-size: var(--font-size-5);
   background-color: var(--easygo-blue);
   color: white;
   border-radius: 50px;
+}
+
+/** component styles **/
+/* infor card */
+.info-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 1rem;
+  border-radius: var(--easygo-br-3);
+  min-height: 100%;
+}
+
+/*upcoming trip card */
+.upcoming-trip-card {
+  background-color: var(--easygo-blue);
+  color: white;
+  padding: 2rem;
+  border-radius: var(--easygo-br-3);
+  min-width: 550px;
+}
+
+.upcoming-trip-card .ut-card-content {
+  border: dashed 1px white;
+  padding: 1rem;
+  font-size: var(--font-size-5);
+  border-radius: var(--easygo-br-3);
+}
+
+.upcoming-trip-card .ut-card-content .title {
+  font-weight: var(--easygo-fw-1);
+  font-size: var(--font-size-2);
+}
+
+.upcoming-trip-card .ut-card-footer {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  font-size: var(--font-size-5);
+}
+
+.upcoming-trip-card .ut-card-footer .ut-card-footer-item {
+  padding: 0rem 1rem;
+  color: white;
+}
+
+.upcoming-trip-card .ut-card-footer .ut-card-footer-item:nth-child(1) {
+  border-right: solid white 2px;
 }
