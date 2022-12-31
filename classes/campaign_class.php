@@ -11,6 +11,56 @@
 			return $this->db_fetch_one($sql);
 		}
 
+
+		function get_toursite_by_name($name){
+			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE %$name%";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_current_campaigns(){
+			$sql = "SELECT campaigns.*,curators.curator_name FROM `campaigns`
+			JOIN curators on campaigns.curator_id = curators.curator_id";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_campaign_by_id($id){
+			$sql = "SELECT campaigns.*, curators.curator_name FROM `campaigns`
+			join curators on curators.curator_id = campaigns.curator_id
+			where campaigns.campaign_id = '$id'";
+
+			return $this->db_fetch_one($sql);
+		}
+
+		function get_campaign_trips($campaign_id){
+			$sql = "SELECT * FROM `campaign_trips`
+			WHERE `campaign_id` = '$campaign_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+
+		function get_campaign_activities($campaign_id){
+			$sql = "SELECT toursite_activity.activity_name FROM `campaign_activities`
+			join toursite_activity on toursite_activity.activity_id = campaign_activities.activity_id
+			WHERE campaign_activities.campaign_id = '$campaign_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_toursite_by_campaign($id){
+			$sql = "SELECT toursites.* from toursites
+			join toursite_activity on toursite_activity.toursite_id = toursites.toursite_id
+			join campaign_activities on toursite_activity.activity_id = campaign_activities.activity_id
+			WHERE campaign_activities.campaign_id = '$id' ";
+			return $this->db_fetch_all($sql);
+		}
+
+
+
+		function get_past_campaigns(){
+			$sql = "SELECT * FROM `campaigns`";
+			return $this->db_fetch_all($sql);
+		}
+
+
 		//=============================INSERT======================
 		function create_campaign($campaign_id,$curator_id,$title, $description){
 			$sql = "INSERT INTO `campaigns` (`campaign_id`, `curator_id`,`title`,`description` )
@@ -45,14 +95,6 @@
 			return $this->db_query($sql);
 		}
 
-
-		//====================================SELECT===================================================
-
-
-		function get_toursite_by_name($name){
-			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE %$name%";
-			return $this->db_fetch_all($sql);
-		}
 
 
 

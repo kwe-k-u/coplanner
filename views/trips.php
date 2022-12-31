@@ -1,3 +1,7 @@
+<?php
+    require_once(__DIR__. "/../controllers/campaign_controller.php");
+    require_once(__DIR__. "/../utils/core.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,153 +44,68 @@
                     </div>
                     <div>
                         <div class="row">
-                            <!--- ================================ -->
-                            <!-- trip card horizontal [start] -->
-                            <div class="col-12 my-4">
-                                <div class="row box-shadow-1 py-5 rounded">
-                                    <div class="col-md-6">
-                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/scenery2.jpg" class="img-fluid h-100" alt="trip card image">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
-                                        <div>
-                                            <div>
-                                                <div class="trip-card-header border-0">
-                                                    <div class="title">
-                                                        <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                                        <div class="easygo-fs-4 mb-1">Curated by easygo events</div>
-                                                        <div class="d-flex justify-content-start align-items-center gap-2">
-                                                            <div class="stars">
-                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                            <?php
+                                $campaigns = get_current_campaigns();
+
+                                foreach ($campaigns as $trip) {
+                                    $id = $trip["campaign_id"];
+                                    $title = $trip["title"];
+                                    $desc = $trip["description"];
+                                    $curator = $trip["curator_name"];
+                                    echo "
+                                         <!--- ================================ -->
+                                        <!-- trip card horizontal [start] -->
+                                        <div class='col-12 my-4'>
+                                            <div class='row box-shadow-1 py-5 rounded'>
+                                                <div class='col-md-6'>
+                                                    <div class='rounded overflow-hidden h-100' style='max-width: 480px; margin: auto'>
+                                                        <img src='../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
+                                                    </div>
+                                                </div>
+                                                <div class='col-md-6 d-flex justify-content-center align-content-center'>
+                                                    <div>
+                                                        <div>
+                                                            <div class='trip-card-header border-0'>
+                                                                <div class='title'>
+                                                                    <h5 class='easygo-fw-1'>$title</h5>
+                                                                    <div class='easygo-fs-4 mb-1'>Curated by $curator</div>
+                                                                    <div class='d-flex justify-content-start align-items-center gap-2'>
+                                                                        <div class='stars'>
+                                                                            <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
+                                                                            <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                            <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                            <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                            <img src='../assets/images/svgs/empty_star.svg' alt='empty star'>
+                                                                        </div>
+                                                                        <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <span class="easygo-fs-6 text-gray-1">4 star rating</span>
+                                                            <div class='trip-card-content py-1'>
+                                                                $desc
+                                                            </div>
+                                                            <div class='d-flex justify-content-between'>
+                                                                <span class='easygo-fs-6'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> 4th November - 10th November</span>
+                                                                <span class='easygo-fs-6'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
+                                                                <span class='easygo-fs-6'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class='trip-card-footer p-0'>
+                                                            <p>
+                                                                <span class='easygo-h3'>$30</span><span class='easygo-fs-2'>/Person</span>
+                                                            </p>
+                                                            <a href='./trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-5'>Go To Trip</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="trip-card-content py-1">
-                                                    Bunso Eco Park Tour Is a day fun trip with a power pack activities that we are going to start it from Accra to Eastern Region (BUNSO ECO PARK and ASENAMA WATERFALLS). See the best of what Accra has to offer in just one day with this private tour.
-                                                </div>
-                                                <div class="d-flex justify-content-between">
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
-                                                </div>
-                                            </div>
-                                            <div class="trip-card-footer p-0">
-                                                <p>
-                                                    <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
-                                                </p>
-                                                <a href="./trip_description.php" class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</a>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- trip card horizontal [end] -->
-                            <!--- ================================ -->
-                            <!--- ================================ -->
-                            <!-- trip card horizontal [start] -->
-                            <div class="col-12 my-4">
-                                <div class="row box-shadow-1 py-5 rounded">
-                                    <div class="col-md-6">
-                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/tour3.jpg" class="img-fluid h-100" alt="trip card image">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
-                                        <div>
-                                            <div>
-                                                <div class="trip-card-header border-0">
-                                                    <div class="title">
-                                                        <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                                        <div class="easygo-fs-4 mb-1">Curated by easygo events</div>
-                                                        <div class="d-flex justify-content-start align-items-center gap-2">
-                                                            <div class="stars">
-                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
-                                                            </div>
-                                                            <span class="easygo-fs-6 text-gray-1">4 star rating</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="trip-card-content py-1">
-                                                    Bunso Eco Park Tour Is a day fun trip with a power pack activities that we are going to start it from Accra to Eastern Region (BUNSO ECO PARK and ASENAMA WATERFALLS). See the best of what Accra has to offer in just one day with this private tour.
-                                                </div>
-                                                <div class="d-flex justify-content-between">
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
-                                                </div>
-                                            </div>
-                                            <div class="trip-card-footer p-0">
-                                                <p>
-                                                    <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
-                                                </p>
-                                                <a href="./trip_description.php" class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- trip card horizontal [end] -->
-                            <!--- ================================ -->
-                            <!--- ================================ -->
-                            <!-- trip card horizontal [start] -->
-                            <div class="col-12 my-4">
-                                <div class="row box-shadow-1 py-5 rounded">
-                                    <div class="col-md-6">
-                                        <div class="rounded overflow-hidden h-100" style="max-width: 480px; margin: auto">
-                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid h-100" alt="trip card image">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 d-flex justify-content-center align-content-center">
-                                        <div>
-                                            <div>
-                                                <div class="trip-card-header border-0">
-                                                    <div class="title">
-                                                        <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                                        <div class="easygo-fs-4 mb-1">Curated by easygo events</div>
-                                                        <div class="d-flex justify-content-start align-items-center gap-2">
-                                                            <div class="stars">
-                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
-                                                            </div>
-                                                            <span class="easygo-fs-6 text-gray-1">4 star rating</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="trip-card-content py-1">
-                                                    Bunso Eco Park Tour Is a day fun trip with a power pack activities that we are going to start it from Accra to Eastern Region (BUNSO ECO PARK and ASENAMA WATERFALLS). See the best of what Accra has to offer in just one day with this private tour.
-                                                </div>
-                                                <div class="d-flex justify-content-between">
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/calendar_orange.svg" alt="orange calendar"> 4th November - 10th November</span>
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/moon_orange.svg" alt="orange calendar"> Duration: 6hrs</span>
-                                                    <span class="easygo-fs-6"><img src="../assets/images/svgs/globe_orange.svg" alt="orange calendar"> Language: English</span>
-                                                </div>
-                                            </div>
-                                            <div class="trip-card-footer p-0">
-                                                <p>
-                                                    <span class="easygo-h3">$30</span><span class="easygo-fs-2">/Person</span>
-                                                </p>
-                                                <a href="./trip_description.php" class="easygo-btn-1 easygo-rounded-2 px-5">Go To Trip</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- trip card horizontal [end] -->
-                            <!--- ================================ -->
+                                        <!-- trip card horizontal [end] -->
+                                        <!--- ================================ -->
+                                    ";
+                                }
+                            ?>
+
                         </div>
                         <div class="py-5 text-center">
                             <div class="d-flex justify-content-center mb-3">

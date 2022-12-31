@@ -8,6 +8,28 @@
 		return $campaign->get_campaign_tour_by_id($id);
 	}
 
+
+	function get_campaign_by_id($id){
+		$campaign = new campaign_class();
+		return $campaign->get_campaign_by_id($id);
+	}
+
+
+	function get_campaign_trips($campaign_id){
+		$campaign = new campaign_class();
+		return $campaign->get_campaign_trips($campaign_id);
+	}
+
+	function get_campaign_activities($campaign_id){
+		$campaign = new campaign_class();
+		return $campaign->get_campaign_activities($campaign_id);
+	}
+
+	function get_toursite_by_campaign($id){
+		$camp = new campaign_class();
+		return $camp->get_toursite_by_campaign($id);
+	}
+
 	function create_campaign($camp_id, $curator_id, $title,$description){
 		$campaign = new campaign_class();
 		return $campaign->create_campaign($camp_id,$curator_id, $title,$description);
@@ -32,6 +54,12 @@
 	function add_campaign_activity($campaign_id, $activity_id){
 		$camp = new campaign_class();
 		return $camp->add_campaign_activity($campaign_id, $activity_id);
+	}
+
+
+	function get_current_campaigns(){
+		$camp = new campaign_class();
+		return $camp->get_current_campaigns();
 	}
 
 
