@@ -119,7 +119,20 @@
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <!-- <input accept=".png, .jpg, .jpeg, .svg" type="file"> -->
+                                        <div class="img-display">
+                                           <div class="img-display-item">
+                                                <button class="item-remove">X</button>
+                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
+                                            </div> 
+                                           <div class="img-display-item">
+                                                <button class="item-remove">X</button>
+                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
+                                            </div> 
+                                           <div class="img-display-item">
+                                                <button class="item-remove">X</button>
+                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
+                                            </div> 
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-input-field">
@@ -153,7 +166,6 @@
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <!-- <input accept=".png, .jpg, .jpeg, .svg" type="file"> -->
                                     </div>
                                 </div>
                             </div>
