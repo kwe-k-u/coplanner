@@ -1167,6 +1167,19 @@ form .inline-inputs > * {
   gap: 1rem;
   background-color: rgba(0,0,0, 0.5);
   overflow-x: auto;
+  display: none;
+}
+
+.img-display.display-full.not-empty{
+  display: flex;
+}
+
+.img-display.display-full .img-display-item{
+  flex-basis: 100% !important;
+}
+
+.file-input .img-display.not-empty{
+  display: flex;
 }
 
 .file-input .img-display .img-display-item{

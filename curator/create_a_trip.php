@@ -113,25 +113,13 @@
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div>
-                                    <div data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input">
+                                    <div id="coverphoto-upload" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
                                         <div class="img-display">
-                                           <div class="img-display-item">
-                                                <button class="item-remove">X</button>
-                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
-                                            </div> 
-                                           <div class="img-display-item">
-                                                <button class="item-remove">X</button>
-                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
-                                            </div> 
-                                           <div class="img-display-item">
-                                                <button class="item-remove">X</button>
-                                                <img src="../assets/images/others/tour3.jpg" alt="upload image">
-                                            </div> 
                                         </div>
                                     </div>
                                 </div>
@@ -160,12 +148,14 @@
                             </div>
                             <div class="col-lg-7">
                                 <div>
-                                    <div data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input">
+                                    <div id="tripimages-upload" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input w-popup">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
                                         <a>Click to upload or drag and drop</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                        <div class="img-display">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -252,18 +242,20 @@
         <div class="modal-dialog .modal-dialog-centered modal-xl">
             <div class="modal-content p-5">
 
-                <form>
+                <form id="img-upload-form">
                     <div class="px-2">
                         <h5 class="mb-2">Upload Image</h5>
 
                         <div>
-                            <div class="file-input py-5">
+                            <div id="upload-img-file-input" class="file-input py-5">
                                 <div class="upload-symbol">
                                     <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                 </div>
                                 <a>Click to upload or drag and drop</a>
                                 <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                <input accept=".png, .jpg, .jpeg, .svg" type="file">
+                                <input accept=".png, .jpg, .jpeg, .svg" type="file" multiple>
+                                <div class="img-display">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -348,7 +340,7 @@
             </div>
         </div>
     </div>
-    <!-- add_activities_&_locations modal [end] -->
+    <!-- Upload image modal [end] -->
     <!-- ============================== -->
     <!-- ============================== -->
     <!-- add_activities_&_locations modal [start] -->
@@ -561,7 +553,7 @@
             </div>
         </div>
     </div>
-    <!-- Upload image modal [end] -->
+    <!-- add_activities_&_locations modal [end] -->
     <!-- ============================== -->
 
 
@@ -572,6 +564,7 @@
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/curator_general.js"></script>
 </body>
 
 </html>
