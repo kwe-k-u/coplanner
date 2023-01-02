@@ -41,6 +41,7 @@
 .swiper-slide{
     border-radius: var(--easygo-br-3);
     overflow: hidden;
+    max-width: 800px;
 }
 .swiper-slide.portrait{
     max-width: 400px;
