@@ -762,6 +762,10 @@ form .inline-inputs > * {
   position: relative;
 }
 
+.l5-rating-bar .bar.small{
+  height: 0.3rem;
+}
+
 .l5-rating-bar .bar,
 .l5-rating-bar .bar .bar-inner {
   border-radius: var(--easygo-br-1);
