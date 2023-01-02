@@ -1,3 +1,4 @@
+/*************** GLOBAL VARIABLES ****************/
 /*************** SELECTORS ****************/
 $(document).ready(function () {
   // -- Adding Listeners -- //
@@ -8,15 +9,17 @@ $(document).ready(function () {
   $(".file-input input[type=file]").click(function (event) {
     event.stopPropagation();
   }); // preventing click event from bubbling
+  $(".file-input input[type=file]").change(displayUpload);
   $(".pad-item-add").click(padListAdd);
   $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
   $(".close-sidebar").click(closeSidebar); // close side bar
-  
+
   // form listeners
   $(".date-input").focus(changeToDate);
   $(".date-input").blur(changeToText);
   $(".select-menu-1").click(openSelectMenu);
   $(".select-menu-1").focusout(closeSelectMenu);
+  // $(".file-input.w-popup").click(updateUploadPopup);
 
   // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
@@ -27,33 +30,55 @@ $(document).ready(function () {
 /*************** FUNCTIONS ****************/
 //--- [utility] functions --//
 // toggle slide menu
-function toggleSlideMenu(){
+function toggleSlideMenu() {
   let target = $(this).attr("data-target");
   $(`#${target}`).slideToggle();
   $(this).toggleClass("open");
 }
 // to add item to item pad list
-function padListAdd(){
+function padListAdd() {
   let inputClass = $(this).attr("data-sender");
   let padListClass = $(this).attr("data-target");
   let item = $(`#${inputClass}`).val();
   $(`#${inputClass}`).val("");
 
-  if(item){
+  if (item) {
     $(`#${padListClass}`).append(`<div class="item-pad">${item}</div>`);
   }
 }
 
 // function to toggle sidebar
-function toggleSidebar(){
+function toggleSidebar() {
   let target = $(this).attr("data-target");
   $(`#${target}`).toggleClass("open");
 }
 // function to close side bar
-function closeSidebar(){
+function closeSidebar() {
   let target = $(this).attr("data-target");
   $(`#${target}`).removeClass("open");
 }
+
+// function to create img-dislay item
+function createImgDispItem(file) {
+  let fileURL = URL.createObjectURL(file);
+  let dispItem = document.createElement("div");
+  dispItem.classList.add("img-display-item");
+  // let removeBtn = document.createElement("button");
+  // removeBtn.classList.add("item-remove");
+  // removeBtn.innerText = "X";
+  let img = new Image();
+  // freeing up memory when done loaidng image
+  img.onload = function(){ 
+    URL.revokeObjectURL(img.src);
+  }
+  img.src = fileURL;
+  dispItem.appendChild(img);
+  // dispItem.appendChild(removeBtn);
+  return dispItem;
+}
+
+
+
 
 //--- [form] functions ---//
 // to toggle password show
@@ -74,34 +99,54 @@ function triggerFileUpload() {
   $(this).children("input[type=file]").trigger("click");
 }
 
+// function to display uploaded item
+function displayUpload(event){
+  let targetDisplay = $(this).attr("data-display-target");
+  $(`${targetDisplay}`).html("");
+  $(`${targetDisplay}`).addClass("not-empty");
+  $(`${targetDisplay}`).append(createImgDispItem($(this).prop("files")[0]));
+}
+
+// // to open popup for file upload
+// function updateUploadPopup() {
+//   let target = $(this).attr("data-popup-target");
+//   let displayItems = $(this).find(".img-display-item").clone();
+//   // clearing  the image display and removing the not-empty class
+//   $(`${target}`).children(".img-display").html("");
+//   $(`${target}`).children(".img-display").removeClass("not-empty");
+//   if (displayItems.length > 0) {
+//     $(`${target}`).children(".img-display").append(displayItems);
+//     $(`${target}`).children(".img-display").addClass("not-empty");
+//   }
+// }
+
 // to change date fields from type "text" to type "date"
-function changeToDate(){
+function changeToDate() {
   $(this).attr("type", "date");
 }
 // to change type back to "text"
-function changeToText(){
+function changeToText() {
   $(this).attr("type", "text");
 
   let value = $(this).val();
 
-  if(value){
+  if (value) {
     let splitStr = value.split("-");
     $(this).val(splitStr.reverse().join("-"));
   }
 }
 
 // to open select menu
-function openSelectMenu(event){
-  if(event.target.classList.contains("option")){
+function openSelectMenu(event) {
+  if (event.target.classList.contains("option")) {
     $(this).find(".select-menu-value").text(event.target.textContent);
     $(this).find(".value").val(event.target.textContent);
     $(this).children(".options").slideUp();
-  } 
-  else{
+  } else {
     $(this).children(".options").slideDown();
   }
 }
-function closeSelectMenu(event){
+function closeSelectMenu(event) {
   $(this).children(".options").slideUp();
 }
 
@@ -121,18 +166,20 @@ function previousForm() {
 }
 
 // to insert user profile images
-function updateProfileImgDisp(){
+function updateProfileImgDisp() {
   let fileInput = $(this)[0];
   let chosenFile = fileInput.files[0];
 
-  if (chosenFile){
+  if (chosenFile) {
     let fileReader = new FileReader();
 
-    fileReader.addEventListener("load", function(){
+    fileReader.addEventListener("load", function () {
       let targetId = fileInput.getAttribute("display-target");
       console.log(targetId);
-      document.getElementById(`${targetId}`).setAttribute("src", fileReader.result);
-    })
+      document
+        .getElementById(`${targetId}`)
+        .setAttribute("src", fileReader.result);
+    });
 
     fileReader.readAsDataURL(chosenFile);
   }
