@@ -59,8 +59,9 @@
                                 <img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag">
                             </a>
                             <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
-                                <li onclick="on_country_select('Ghana')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
-                                <li onclick="on_country_select('Nigeria')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Nigeria</li>
+                                <li class="text-hover-orange" onclick="on_country_select('Ghana')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
+                                <li class="text-hover-orange" onclick="on_country_select('Nigeria')"><img src="../assets/images/svgs/nigeria_flag.svg" alt="Zimbabwe flag"> Nigeria</li>
+                                <li class="text-hover-orange" onclick="on_country_select('Zimbabwe')"><img src="../assets/images/svgs/zimbabwe_flag.svg" alt="Zimbabwe flag"> Zimbabwe</li>
                             </ul>
                         </div>
                         <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" value="easygo">
@@ -91,7 +92,8 @@
                         </div>
                         <a>Upload file</a>
                         <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                        <input id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file">
+                        <input id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#logo-display">
+                        <div id="logo-display" class="img-display"></div>
                     </div>
                 </div>
                 <div class="input-field">
@@ -102,14 +104,16 @@
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
                             <small class="easygo-fs-4 text-gray-1">Front</small>
-                            <input id="gov_id_front" accept=".png, .jpg, .jpeg, .svg" type="file">
+                            <input id="gov_id_front" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-front">
+                            <div id="id-front" class="img-display display-full"></div>
                         </div>
                         <div class="file-input">
                             <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
                             <small class="easygo-fs-4 text-gray-1">Back</small>
-                            <input id="gov_id_back" accept=".png, .jpg, .jpeg, .svg" type="file">
+                            <input id="gov_id_back" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-back">
+                            <div id="id-back" class="img-display display-full"></div>
                         </div>
                     </div>
                 </div>

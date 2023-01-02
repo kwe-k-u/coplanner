@@ -762,6 +762,10 @@ form .inline-inputs > * {
   position: relative;
 }
 
+.l5-rating-bar .bar.small{
+  height: 0.3rem;
+}
+
 .l5-rating-bar .bar,
 .l5-rating-bar .bar .bar-inner {
   border-radius: var(--easygo-br-1);
@@ -896,8 +900,10 @@ form .inline-inputs > * {
 
 /******************** Effects ********************/
 /** hover effects **/
-.text-hover-blue {
+.text-hover-blue,
+.text-hover-orange {
   transition: all var(--trans-time-1);
+  cursor: pointer;
 }
 .text-hover-blue:hover {
   color: var(--easygo-blue) !important;
@@ -1165,6 +1171,19 @@ form .inline-inputs > * {
   gap: 1rem;
   background-color: rgba(0,0,0, 0.5);
   overflow-x: auto;
+  display: none;
+}
+
+.img-display.display-full.not-empty{
+  display: flex;
+}
+
+.img-display.display-full .img-display-item{
+  flex-basis: 100% !important;
+}
+
+.file-input .img-display.not-empty{
+  display: flex;
 }
 
 .file-input .img-display .img-display-item{
