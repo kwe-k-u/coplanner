@@ -27,3 +27,31 @@
 //     }
 //   });
 // }
+
+const swiper = new Swiper(".swiper", {
+  speed: 400,
+  spaceBetween: 30,
+  slidesPerView: "auto",
+  // centerInsufficientSlides: true,
+  // centeredAuto: true,
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  autoplay: {
+    delay: 1000,
+  },
+});
+
+const slides = document.querySelectorAll(".swiper-slide");
+console.log()
+slides.forEach(function (slide, index) {
+  let slideImg = slide.querySelector("img");
+  let imgWidth = slideImg.naturalWidth;
+  let imgHeight = slideImg.naturalHeight;
+
+  if ((imgWidth / imgHeight) < 1) {
+    slide.classList.add("portrait");
+  }
+});

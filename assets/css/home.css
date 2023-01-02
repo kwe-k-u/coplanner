@@ -34,3 +34,14 @@
     min-height: 70vh;
 
 }
+
+
+/***** utility classes for home *****/
+/** swiper **/
+.swiper-slide{
+    border-radius: var(--easygo-br-3);
+    overflow: hidden;
+}
+.swiper-slide.portrait{
+    max-width: 400px;
+}

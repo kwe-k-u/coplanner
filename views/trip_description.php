@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- swiper css -->
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
     <!-- easygo css -->
     <link rel="stylesheet" href="../assets/css/general.css">
     <link rel="stylesheet" href="../assets/css/home.css">
@@ -34,7 +36,27 @@
             <!--- image display section [start] -->
             <section class="image-display">
                 <div class="container">
-                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade rounded overflow-hidden" data-bs-ride="carousel">
+                    <!-- Slider main container -->
+                    <div class="swiper" style="height: 500px;">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image"></div>
+                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image"></div>
+                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image"></div>
+                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour3.jpg" alt="carousel image"></div>
+                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/portrait_scenery1.jpg" alt="carousel image"></div>
+                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/portrait_scenery2.jpg" alt="carousel image"></div>
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                    </div>
+                    <!-- <div id="carouselExampleIndicators" class="carousel slide carousel-fade rounded overflow-hidden" data-bs-ride="carousel">
                         <div class="carousel-indicators easygo-carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -65,7 +87,7 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <!--- image display section [end] -->
@@ -1005,6 +1027,8 @@
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
+    <!-- Swiper js -->
+    <script src="../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/home.js"></script>
