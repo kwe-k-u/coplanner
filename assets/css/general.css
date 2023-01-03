@@ -656,13 +656,16 @@ form .inline-inputs > * {
 
 /** border radii **/
 .easygo-rounded-1 {
-  border-radius: var(--easygo-br-1);
+  border-radius: var(--easygo-br-1) !important;
 }
 .easygo-rounded-2 {
-  border-radius: var(--easygo-br-2);
+  border-radius: var(--easygo-br-2) !important;
 }
 .easygo-rounded-3 {
-  border-radius: var(--easygo-br-3);
+  border-radius: var(--easygo-br-3) !important;
+}
+.easygo-rounded-4 {
+  border-radius: var(--easygo-br-4) !important;
 }
 
 /** box shadows **/
