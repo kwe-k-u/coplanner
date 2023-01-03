@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - About</title>
+    <title>easygo - Contact Us</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -35,7 +35,7 @@
                         <h6 class="text-orange text-center mb-3">Contact Us</h6>
                         <h1 class="easygo-h3 easygo-fw-1 text-blue text-capitalize text-center">get in touch with us</h1>
                         <p class="text-center">
-                            Hi there, We would love to hear your thoughts. You can reach us using the contact information below or send us a message with the form on the left. It could be a bug you found, an issue with our service or opinions about improvements we can make
+                            Hi there, We would love to hear your thoughts. You can reach us using the contact information below or send us a message with the form on the right. It could be a bug you found, an issue with our service or opinions about improvements we can make
                         </p>
                     </div>
                     <div class="my-5">
@@ -49,7 +49,7 @@
                                         </div>
                                         <div>
                                             <h5 class="easygo-fw-2 text-capitalize">Our Location</h5>
-                                            <p>99 street, Company location/address, Kumasi, Ghana</p>
+                                            <p> East Tanokrom, Takoradi, Ghana</p>
                                         </div>
                                     </div>
                                     <div class="contact-item d-flex gap-3 my-4">
@@ -58,7 +58,7 @@
                                         </div>
                                         <div>
                                             <h5 class="easygo-fw-2 text-capitalize">Contact Number</h5>
-                                            <p>+000 1234567890</p>
+                                            <p>054-067-2298 or 050-689-9983</p>
                                         </div>
                                     </div>
                                     <div class="contact-item d-flex gap-3 my-4">
@@ -67,7 +67,7 @@
                                         </div>
                                         <div>
                                             <h5 class="easygo-fw-2 text-capitalize">Email Address</h5>
-                                            <p>contacteasyGo@gmail.com</p>
+                                            <p>main.easygo@gmail.com</p>
                                         </div>
                                     </div>
                                     <div class="contact-item d-flex gap-3 my-4">
@@ -92,18 +92,18 @@
                             </div>
                             <div class="col-lg-6">
                                 <h4 class="text-capitalize text-center text-blue">send us a message</h4>
-                                <form>
+                                <form onsubmit="contact(this)">
                                     <div class="form-input-field py-2">
-                                        <input class="border-blue" type="text" placeholder="Your Name">
+                                        <input class="border-blue" type="text" name="contact_name" placeholder="Your Name">
                                     </div>
                                     <div class="form-input-field py-2">
-                                        <input class="border-blue" type="text" placeholder="Your Email">
+                                        <input class="border-blue" type="text" name="contact_email" placeholder="Your Email">
                                     </div>
                                     <div class="form-input-field py-2">
-                                        <input class="border-blue" type="text" placeholder="Your Phone Number">
+                                        <input class="border-blue" type="text" name="contact_phone" placeholder="Your Phone Number">
                                     </div>
                                     <div class="form-input-field py-2">
-                                        <textarea class="border-blue" style="resize: none" cols="30" rows="7" placeholder="Trip description"></textarea>
+                                        <textarea class="border-blue" style="resize: none" name="contact_message"cols="30" rows="7" placeholder="Message Content"></textarea>
                                     </div>
                                     <div>
                                         <input class="easygo-btn-1 w-100" type="submit" value="Send Message">
@@ -149,6 +149,31 @@
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/home.js"></script>
     <script src="../assets/js/functions.js"></script>
+    <script >
+        function contact(form){
+            event.preventDefault();
+
+            var email = form.contact_email.value;
+            var name = form.contact_name.value;
+            var message = form.contact_message.value;
+            var phone = form.contact_phone.value;
+
+            payload = "action=send_contact_message";
+            payload += "&email=" + email;
+            payload += "&name=" + name;
+            payload += "&message=" + message;
+            payload += "&phone=" + phone;
+
+            send_request("POST",
+            "processors/processor.php",
+            payload,
+            (response)=> {
+                alert(response);
+            });
+
+
+        }
+    </script>
 </body>
 
 </html>

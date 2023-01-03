@@ -159,55 +159,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="easygo-card-1">
-                                <div class="img-holder"></div>
-                                <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
-                                    </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="easygo-card-1">
-                                <div class="img-holder"></div>
-                                <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
-                                    </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="easygo-card-1">
-                                <div class="img-holder"></div>
-                                <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
-                                    </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
             <!--- milestones [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
-            <!--- out team [start] -->
+            <!--- our team [start] -->
             <section class="mb-5 out-team" style="margin-top: 7rem;">
                 <div class="container">
-                    <h1 class="easgyo-h3 text-capitalize text-blue text-center">out team</h1>
+                    <h1 class="easgyo-h3 text-capitalize text-blue text-center">our team</h1>
                     <p class="text-center mb-5">
                         To be the company our customers want us to be, it takes a group of passionate people.
-                        Get to know the people leading the way at easyGo. Meet our world class problem solvers and CEOS.
+                        Get to know the people leading the way at easyGo. Meet our directors and problem sovlers.
                     </p>
                     <div class="row">
                         <div class="col-lg-6">
@@ -217,7 +181,7 @@
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Kweku Acquaye
                                     </h5>
-                                    <p>Founder, development lead</p>
+                                    <p class="text-capitalize">Founder, development lead</p>
                                 </div>
                             </div>
                         </div>
@@ -228,9 +192,8 @@
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Edna naa tetteh
                                     </h5>
-                                    <p>
-                                        Marketing, Public relations and
-                                        communications
+                                    <p class="text-capitalize">
+                                        Founder, Marketing & Public relations
                                     </p>
                                 </div>
                             </div>
@@ -238,7 +201,7 @@
                     </div>
                 </div>
             </section>
-            <!--- out team [end] -->
+            <!--- our team [end] -->
             <!--- ================================ -->
             <!--- News letter section [start] -->
             <section class="nl-subscribe my-5">

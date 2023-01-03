@@ -119,6 +119,10 @@ ob_start();
 		return md5($string );
 	}
 
+	function shorten($string, $max_char = 256){
+		return mb_strimwidth($string,0,$max_char,"...");
+	}
+
 
 	function get_current_date(){
 		return date("Y-m-d HH:mm");
@@ -126,6 +130,10 @@ ob_start();
 
 	function format_string_as_date_fn($date_str){
 		return (new DateTime($date_str))->format('d M Y');
+	}
+
+	function format_string_as_time_fn($string){
+		return (new DateTime($string))->format('h:m A');
 	}
 
 	function generate_id(){

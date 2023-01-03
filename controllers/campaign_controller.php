@@ -30,6 +30,11 @@
 		return $camp->get_toursite_by_campaign($id);
 	}
 
+	function get_campaign_next_trip($id){
+		$camp = new campaign_class();
+		return $camp->get_campaign_next_trip($id);
+	}
+
 	function create_campaign($camp_id, $curator_id, $title,$description){
 		$campaign = new campaign_class();
 		return $campaign->create_campaign($camp_id,$curator_id, $title,$description);

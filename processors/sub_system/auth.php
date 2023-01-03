@@ -101,9 +101,13 @@
 					session_log_out();
 					die();
 				case 'request_password_reset':
-					$email = $_POST["email"];
-					//delete all expired links for the email
 					remove_expired_tokens();
+					$email = $_POST["email"];
+					if ($email == ""){
+						echo "No email provided";
+						die();
+					}
+					//delete all expired links for the email
 					$token = get_password_token($email);
 					if ($token){
 						echo "Check your email for link to reset your password";

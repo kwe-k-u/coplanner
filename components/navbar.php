@@ -14,9 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./trips.php">Trips</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Blog</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Curators</a>
                 </li>

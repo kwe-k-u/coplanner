@@ -53,6 +53,10 @@
 		"clear_subscribers"
 	);
 
+	$contact_actions = array(
+		"send_contact_message"
+	);
+
 
 
 
@@ -76,5 +80,7 @@
 	}
 	else if(in_array($_POST["action"],$newsletter_actions)){
 		include_once(__DIR__."/sub_system/newsletter.php");
+	} else if (in_array($_POST["action"], $contact_actions)){
+		include_once(__DIR__."/sub_system/contact.php");
 	}
 ?>

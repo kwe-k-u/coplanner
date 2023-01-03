@@ -3,7 +3,7 @@
 	require_once(__DIR__. "/../../controllers/newsletter_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 
-	function auth(){
+	function newsletter(){
 		$request = $_SERVER["REQUEST_METHOD"];
 
 		if ($request == "POST"){
@@ -42,5 +42,5 @@
 		die();
 	}
 
-	auth();
+	newsletter();
 ?>

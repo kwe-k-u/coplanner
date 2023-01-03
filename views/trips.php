@@ -38,7 +38,7 @@
             <section style="margin-top: 10rem;">
                 <div class="container">
                     <div>
-                        <h1 class="easygo-fw-1 text-center easygo-h3">Your next trip starts here</h1>
+                        <h1 class="easygo-fw-1 text-center easygo-h3">Your Next Tour Starts Here</h1>
                         <p class="easygo-fs-1 text-center">
                             Book these experiences for a close-up look at Africa. Explore top
                             destinations for your next trip.
@@ -52,8 +52,17 @@
                                 foreach ($campaigns as $trip) {
                                     $id = $trip["campaign_id"];
                                     $title = $trip["title"];
-                                    $desc = $trip["description"];
+                                    $desc = shorten($trip["description"]);
                                     $curator = $trip["curator_name"];
+                                    $next = get_campaign_next_trip($id);
+                                    if (!$next){
+                                        continue;
+                                    }
+                                    $start = format_string_as_date_fn($next["start_date"]);
+                                    $end = format_string_as_date_fn($next["end_date"]);
+                                    $fee = $next["fee"];
+                                    $currency = $next["currency"];
+
                                     echo "
                                          <!--- ================================ -->
                                         <!-- trip card horizontal [start] -->
@@ -87,14 +96,14 @@
                                                                 $desc
                                                             </div>
                                                             <div class='d-flex justify-content-between'>
-                                                                <span class='easygo-fs-6'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> 4th November - 10th November</span>
-                                                                <span class='easygo-fs-6'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                                <span class='easygo-fs-6'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
+                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
+                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
+                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
                                                             </div>
                                                         </div>
                                                         <div class='trip-card-footer p-0'>
                                                             <p>
-                                                                <span class='easygo-h3'>$30</span><span class='easygo-fs-2'>/Person</span>
+                                                                <span class='easygo-h3'>$currency $fee</span><span class='easygo-fs-2'>/Person</span>
                                                             </p>
                                                             <a href='./trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-5'>Go To Trip</a>
                                                         </div>
@@ -269,6 +278,92 @@
             </section>
             <!-- recent trips [end] -->
             <!--- ================================ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </main>
         <!-- page content [end] -->
         <!--- ================================ -->
