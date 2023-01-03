@@ -1,4 +1,5 @@
-const baseurl = "http://localhost/easygo_v2/";
+// const baseurl = "http://localhost/easygo_v2/";
+const baseurl = "http://localhost:81/internship/easygo_2/easygo/";
 
 
 

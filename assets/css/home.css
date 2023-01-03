@@ -1,48 +1,86 @@
 /* * styling for various sections of home page **/
-.intro, .get-started, .about-us{
-    min-height: 100vh;
+.intro,
+.get-started,
+.about-us {
+  min-height: 100vh;
 }
 
-.gallery{
-    min-height: 50vh;
+.gallery {
+  min-height: 50vh;
 }
 
-.intro{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.intro .intro-card{
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    /* padding: 3rem; */
-    margin: 0rem 1rem;
+.intro .intro-card {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* padding: 3rem; */
+  margin: 0rem 1rem;
 }
 
-.get-started, .about-us{
-    display: flex;
-    align-items: center;
+.get-started,
+.about-us {
+  display: flex;
+  align-items: center;
 }
-
 
 /* * styling trip description page **/
-.trip-info{
-    min-height: 70vh;
-
+.trip-info {
+  min-height: 70vh;
 }
-
 
 /***** utility classes for home *****/
 /** swiper **/
-.swiper-slide{
-    border-radius: var(--easygo-br-3);
-    overflow: hidden;
-    max-width: 800px;
+.swiper-slide {
+  border-radius: var(--easygo-br-3);
+  overflow: hidden;
+  max-width: 800px;
 }
-.swiper-slide.portrait{
-    max-width: 400px;
+.swiper-slide.portrait {
+  max-width: 400px;
+}
+
+/************** User Dashboard Styles ****************/
+/** dashboard content **/
+.dashboard-content {
+    display: flex;
+    /* overflow-y: auto; */
+  }
+  
+/** sidebar **/
+#userdashboard-sidebar{
+    box-shadow: var(--box-shadow-1);
+    overflow-y: auto;
+    height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  #userdashboard-sidebar {
+    position: static;
+    width: 300px;
+    flex: 0 0 auto;
+  }
+}
+
+/** main content **/
+.main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/** components **/
+.del-btn{
+    border: none;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--easygo-lred-1);
+    color: var(--easygo-red);
+    border-radius: var(--easygo-br-4);
 }

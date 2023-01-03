@@ -30,7 +30,6 @@
             <div class="d-flex gap-4">
                 <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue easygo-fs-5">Login</a>
                 <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white easygo-fs-5">Create Account</a>
-                </form>
             </div>
         </div>
 </nav>
