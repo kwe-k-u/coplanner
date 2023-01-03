@@ -24,9 +24,9 @@
 
 
 		function admin_login($user_id){
-			$sql = "SELECT * FROM `admin_manager`
-			JOIN users on users.user_id = admin_manager.user_id
-			WHERE admin_manager.user_id = '$user_id'";
+			$sql = "SELECT * FROM `admin_user`
+			JOIN users on users.user_id = admin_user.user_id
+			WHERE admin_user.user_id = '$user_id'";
 			return $this->db_fetch_one($sql);
 		}
 

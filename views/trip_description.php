@@ -16,6 +16,14 @@
         $title = $campaign["title"];
         $curator = $campaign["curator_name"];
         $desc = $campaign["description"];
+        $next = get_campaign_next_trip($id);
+        $start = format_string_as_date_fn($next["start_date"]);
+        $end = format_string_as_date_fn($next["end_date"]);
+        $pickup_location = $next["pickup_location"];
+        $pickup_time = format_string_as_time_fn($next["start_date"]);
+        $currency = $next["currency"];
+        $fee = $next["fee"];
+        $seats = $next["seats_available"];
 
 ?>
 <!DOCTYPE html>
@@ -156,14 +164,14 @@
                                         </div>
                                     </div>
                                     <p>
-                                        <span class='easygo-h2'>$30</span><span class='easygo-fs-2'>/Person</span>
+                                        <span class='easygo-h2'>$currency $fee</span><span class='easygo-fs-2'>/Person</span>
                                     </p>
                                 </div>
                                 <div class='d-flex justify-content-center gap-4 my-4'>
-                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'> 4th November - 10th November</span>
-                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Duration: 6hrs</span>
-                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Language: English</span>
-                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Start Time: 11am</span>
+                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'> $start - $end</span>
+                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Seats available: $seats </span>
+                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Pickup Location: $pickup_location</span>
+                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Pickup Time: $pickup_time</span>
                                 </div>
                                 <div class='text-description easygo-fs-1'>
                                 $desc

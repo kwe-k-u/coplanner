@@ -20,12 +20,12 @@
     <main class="form-page-main container">
         <div class="form-container container" style="max-width: 600px;">
             <!-- register login form [start] -->
-            <form>
+            <form onsubmit="return login(this)">
                 <div class="form-header">
                     <div class="logo">
                         <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
-                    <div class="easygo-fs-1">Welcome, Name</div>
+                    <div class="easygo-fs-1">Welcome</div>
                     <p class="instruction easygo-fs-4">Please enter your credentials to sign up</p>
                 </div>
                 <div class="input-field">
@@ -33,7 +33,7 @@
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="pswd" type="password" placeholder="Password" class="border-blue">
+                        <input name="password" type="password" placeholder="Password" class="border-blue">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <a class="text-black easygo-fs-4" href="./password_reset.php">Forgot Password ?</a>
                 </div>
                 <div class="input-field button-container">
-                    <button class="easygo-btn-1 easygo-rounded-2" type="button">Login</button>
+                    <button class="easygo-btn-1 easygo-rounded-2" type="submit">Login</button>
                     <p class="easygo-fs-5 text-center mt-4">Don't have an account ? <a href="./register.php" class="easygo-fs-5 easygo-fw-3">Sign Up now</a></p>
                 </div>
             </form>
@@ -62,7 +62,7 @@
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/curator_auth.js"></script>
+    <script src="../assets/js/user_auth.js"></script>
 </body>
 
 </html>

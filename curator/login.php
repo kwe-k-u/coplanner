@@ -17,7 +17,6 @@
 <body>
 <?php
 require_once(__DIR__."/../utils/core.php");
-    var_dump($_SESSION);
 ?>
     <!-- main content start -->
     <main class="form-page-main container">

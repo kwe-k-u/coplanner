@@ -53,6 +53,12 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_campaign_next_trip($id){
+			$sql = "SELECT * FROM `campaign_trips`
+			where `campaign_id`='$id' AND start_date > CURRENT_TIMESTAMP";
+			return $this->db_fetch_one($sql);
+		}
+
 
 
 		function get_past_campaigns(){
