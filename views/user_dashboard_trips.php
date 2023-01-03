@@ -57,6 +57,9 @@
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="javascript:void(0)"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="javascript:void(0)"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">

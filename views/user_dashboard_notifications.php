@@ -26,7 +26,7 @@
                 <button class="navbar-toggler sidebar-toggler border-0 text-black" type="button" data-target="userdashboard-sidebar">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h5>Trips</h5>
+                <h5>Notifications</h5>
                 <button class="btn"><i class="fa-solid fa-bell"></i></button>
         </nav>
         <main>
@@ -47,7 +47,7 @@
                         <div>
                             <ul class="sidebar-nav-menu">
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./home.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./home.php"><i class="fa-solid fa-bus"></i> Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./trips.php"><i class="fa-solid fa-user"></i> Profile</a>
@@ -57,6 +57,9 @@
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="javascript:void(0)"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="javascript:void(0)"><i class="fa-solid fa-bell"></i>Notifications</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
@@ -86,7 +89,7 @@
                 <main class="main-content bg-gray-3">
                     <div class="px-lg-5 px-2">
                         <div class="main-content-header d-flex justify-content-between align-items-center py-4 d-none d-md-flex">
-                            <h3 class="m-0">Trips</h3>
+                            <h3 class="m-0">Notifications</h3>
                             <div class="d-flex justify-content-center my-3">
                                 <div class="d-flex gap-2">
                                     <div class="user-icon bg-blue">
