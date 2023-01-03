@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard | Ongoing Trip</title>
+    <title>easygo - User Dashboard | Saved Trip</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -1039,11 +1039,11 @@
                             <!--- ================================ -->
                             <!--- ================================ -->
 
-                            <div class="my-5">
-                                <div class="container">
+                            <div class="mb-5">
+                                <div>
                                     <div class="row">
                                         <div class="col-12 py-2">
-                                            <a href="./book_trip.php" class="easygo-btn-3 easygo-fs-1 easygo-rounded-1 py-3">Cancel Trip</a>
+                                            <a href="./book_trip.php" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3">Book Trip</a>
                                         </div>
                                     </div>
                                 </div>

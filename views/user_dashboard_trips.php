@@ -28,7 +28,7 @@
                 <button class="btn"><i class="fa-solid fa-bell"></i></button>
         </nav>
         <main>
-            <div class="container-fluid dashboard-content">
+            <div class="dashboard-content">
                 <!-- ============================== -->
                 <!-- sidebar [start] -->
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
