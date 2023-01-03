@@ -13,12 +13,16 @@ $(document).ready(function () {
   $(".pad-item-add").click(padListAdd);
   $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
   $(".close-sidebar").click(closeSidebar); // close side bar
+  $(".page-reloader").click(function(){window.location.reload();}) // to reload page
 
   // form listeners
   $(".date-input").focus(changeToDate);
   $(".date-input").blur(changeToText);
   $(".select-menu-1").click(openSelectMenu);
   $(".select-menu-1").focusout(closeSelectMenu);
+  $(".input-enabler").click(enableInputs);
+  $(".input-disabler").click(disableInputs);
+  $(".visibility-changer").click(changeVisibility);
   // $(".file-input.w-popup").click(updateUploadPopup);
 
   // form page listeners
@@ -68,13 +72,35 @@ function createImgDispItem(file) {
   // removeBtn.innerText = "X";
   let img = new Image();
   // freeing up memory when done loaidng image
-  img.onload = function(){ 
+  img.onload = function () {
     URL.revokeObjectURL(img.src);
-  }
+  };
   img.src = fileURL;
   dispItem.appendChild(img);
   // dispItem.appendChild(removeBtn);
   return dispItem;
+}
+
+// function to change between display none and display block
+function changeVisibility(){
+  let targets = $(this).attr("data-visibility-target");
+  $(`${targets}`).each(function(){
+    let dMode = $(this).attr("visible-mode");
+    let currentDisplay = $(this).css("display");
+
+    if(currentDisplay === "none"){
+      if(dMode){
+        console.log(dMode);
+        $(this).css("display", dMode);
+      }
+      else{
+        $(this).css("display", "block");
+      }
+    }
+    else{
+      $(this).css("display", "none");
+    }
+  });
 }
 
 
@@ -100,7 +126,7 @@ function triggerFileUpload() {
 }
 
 // function to display uploaded item
-function displayUpload(event){
+function displayUpload(event) {
   let targetDisplay = $(this).attr("data-display-target");
   $(`${targetDisplay}`).html("");
   $(`${targetDisplay}`).addClass("not-empty");
@@ -175,7 +201,6 @@ function updateProfileImgDisp() {
 
     fileReader.addEventListener("load", function () {
       let targetId = fileInput.getAttribute("display-target");
-      console.log(targetId);
       document
         .getElementById(`${targetId}`)
         .setAttribute("src", fileReader.result);
@@ -184,3 +209,13 @@ function updateProfileImgDisp() {
     fileReader.readAsDataURL(chosenFile);
   }
 }
+
+// to enable inputs with class equal to 'data-enable-target'
+function enableInputs() {
+  let targets = $(this).attr("data-enable-target");
+  $(`${targets}`).prop("disabled", false);
+}
+// to disable inputs with class equal to 'data-disable-target'
+function disableInputs() {
+  let targets = $(this).attr("data-disable-target");
+  $(`${targets}`).prop("disabled", true);}

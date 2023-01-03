@@ -297,6 +297,11 @@ form .inline-inputs > * {
   font-size: var(--font-size-4);
 }
 
+input:disabled {
+  background-color: var(--easygo-gray-2) !important;
+  color: var(--easygo-blue);
+}
+
 .select-menu-1 {
   width: 100%;
   color: black;
@@ -669,7 +674,7 @@ form .inline-inputs > * {
 }
 
 /** box shadows **/
-.box-shadow-0{
+.box-shadow-0 {
   box-shadow: none;
 }
 .box-shadow-1 {
@@ -771,7 +776,7 @@ form .inline-inputs > * {
   position: relative;
 }
 
-.l5-rating-bar .bar.small{
+.l5-rating-bar .bar.small {
   height: 0.3rem;
 }
 
@@ -927,26 +932,23 @@ form .inline-inputs > * {
 /**badges **/
 .easygo-badge-blue,
 .easygo-badge-orange,
-.easygo-badge-gray{
+.easygo-badge-gray {
   display: inline-block;
   border-radius: var(--easygo-br-4);
   padding: 0.5rem 1rem;
 }
-.easygo-badge-blue{
+.easygo-badge-blue {
   background-color: var(--easygo-lblue-1);
   color: var(--easygo-blue);
 }
-.easygo-badge-orange{
+.easygo-badge-orange {
   background-color: var(--easygo-lorange-1);
   color: var(--easygo-orange);
 }
-.easygo-badge-gray{
+.easygo-badge-gray {
   background-color: var(--easygo-gray-2);
   color: var(--easygo-gray-1);
 }
-
-
-
 
 /******************** Effects ********************/
 /** hover effects **/
@@ -1208,7 +1210,7 @@ form .inline-inputs > * {
   height: 100%;
 }
 
-.file-input .img-display{
+.file-input .img-display {
   padding: 1rem;
   position: absolute;
   top: 0;
@@ -1219,37 +1221,37 @@ form .inline-inputs > * {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   overflow-x: auto;
   display: none;
 }
 
-.img-display.display-full.not-empty{
+.img-display.display-full.not-empty {
   display: flex;
 }
 
-.img-display.display-full .img-display-item{
+.img-display.display-full .img-display-item {
   flex-basis: 100% !important;
 }
 
-.file-input .img-display.not-empty{
+.file-input .img-display.not-empty {
   display: flex;
 }
 
-.file-input .img-display .img-display-item{
+.file-input .img-display .img-display-item {
   position: relative;
   height: 100%;
   flex: 0 0 8rem;
 }
 
-.file-input .img-display .img-display-item img{
+.file-input .img-display .img-display-item img {
   display: flex;
   width: 100%;
   height: 100%;
   border-radius: var(--easygo-br-3);
 }
 
-.file-input .img-display .img-display-item .item-remove{
+.file-input .img-display .img-display-item .item-remove {
   position: absolute;
   right: -5%;
   top: -5%;
