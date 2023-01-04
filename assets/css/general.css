@@ -167,6 +167,9 @@ i {
 .bg-blue {
   background-color: var(--easygo-blue) !important;
 }
+.bg-lblue-1 {
+  background-color: var(--easygo-lblue-1) !important;
+}
 .bg-orange {
   background-color: var(--easygo-orange) !important;
 }

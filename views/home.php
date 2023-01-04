@@ -50,11 +50,11 @@
                     </form>
                 </div>
                 <div class="background-item" style="z-index: 1;">
-                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
+                    <div id="background-slider" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
                         <div class="carousel-indicators easygo-carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner w-100 h-100">
                             <div class="carousel-item active w-100 h-100">
@@ -382,11 +382,11 @@
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
-                            <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded text-white" style="padding: 4rem 2rem;" data-bs-ride="carousel">
+                            <div id="testimony-slider" class="carousel slide bg-blue rounded text-white" style="padding: 4rem 2rem;" data-bs-ride="carousel">
                                 <div class="carousel-indicators easygo-carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#testimony-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#testimony-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#testimony-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item w-100 h-100 active">
@@ -397,7 +397,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
+                                    <div class="carousel-item w-100 h-100">
                                         <div>
                                             <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
                                             <p>
@@ -405,7 +405,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
+                                    <div class="carousel-item w-100 h-100">
                                         <div>
                                             <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
                                             <p>

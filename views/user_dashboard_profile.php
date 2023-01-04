@@ -104,7 +104,7 @@
                         </div>
                         <div class="main-content-body py-2">
                             <div class="mb-5">
-                                <button class="btn page-reloader">&lt; Back</button>
+                                <button class="btn page-reloader"><i class="fa-solid fa-chevron-left"></i> Back</button>
                             </div>
                             <!-- ============================== -->
                             <!-- profile form [start] -->
