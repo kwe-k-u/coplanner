@@ -85,7 +85,7 @@
                 <!-- ============================== -->
                 <!-- dashboard content [start] -->
                 <main class="main-content bg-gray-3">
-                    <div class="px-5">
+                    <div class="px-lg-5 px-2">
                         <div class="main-content-header d-flex justify-content-between align-items-center py-4 d-none d-md-flex">
                             <h3 class="m-0">Trips</h3>
                             <div class="d-flex justify-content-center my-3">
