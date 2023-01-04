@@ -26,7 +26,7 @@
                 <button class="navbar-toggler sidebar-toggler border-0 text-black" type="button" data-target="userdashboard-sidebar">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h5>Private Tour</h5>
+                <h5>Private Tour Request - Details</h5>
                 <button class="btn"><i class="fa-solid fa-bell"></i></button>
         </nav>
         <main>
@@ -105,18 +105,12 @@
                         <div class="main-content-body py-2">
                             <!-- ============================== -->
                             <!-- private tour history [start] -->
-                            <div class="private-tour-requests-more">
-                                <!-- <div class="d-flex justify-content-between accordion-button px-3">
-                                    <span style="flex: 1;">Curator</span>
-                                    <span style="flex: 1;">Price</span>
-                                    <span style="flex: 1;">Proposed Date</span>
-                                    <span style="flex: 1;">d</span>
-                                </div> -->
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
+                            <div class="private-tour-requests-more" style="min-width: 992px; overflow-x: auto;">
+                                <div class="accordion accordion-flush easygo-accordion-custom-1" id="accordionFlushExample">
+                                    <div class="accordion-item heading">
                                         <h2 class="accordion-header">
                                             <button class="accordion-button collapsed bg-transparent" type="button">
-                                                <div class="w-100 d-flex justify-content-between">
+                                                <div class="easygo-fw-1 w-100 d-flex justify-content-between">
                                                     <span style="flex: 1;">Curator</span>
                                                     <span style="flex: 1;">Price</span>
                                                     <span style="flex: 1;">Proposed Date</span>
@@ -132,12 +126,22 @@
                                                     <span style="flex: 1;">Lionize Tourism Consult</span>
                                                     <span style="flex: 1;">$30</span>
                                                     <span style="flex: 1;">12-21-2022</span>
-                                                    <span style="flex: 1;">More Details</span>
+                                                    <span class="text-end" style="flex: 1;">More Details</span>
                                                 </div>
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                                            <div class="accordion-body">
+                                                <div class="bg-gray-3 py-4" style="margin: 0rem -0.5rem;">
+                                                    <div class="px-2">
+                                                        We will Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
+                                                    </div>
+                                                    <div class="quote-btns d-flex justify-content-end align-items-center gap-2 mt-4">
+                                                        <button class="easygo-btn-1 easygo-rounded-1"><i class="fa-solid fa-circle-check"></i> &nbsp; Accept</button>
+                                                        <button class="easygo-btn-3 easygo-rounded-1"><i class="fa-solid fa-circle-xmark"></i> &nbsp; Reject</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
@@ -146,11 +150,21 @@
                                                 <span style="flex: 1;">Lionize Tourism Consult</span>
                                                 <span style="flex: 1;">$30</span>
                                                 <span style="flex: 1;">12-21-2022</span>
-                                                <span style="flex: 1;">More Details</span>
+                                                <span class="text-end" style="flex: 1;">More Details</span>
                                             </button>
                                         </h2>
                                         <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                                            <div class="accordion-body">
+                                                <div class="bg-gray-3 py-4" style="margin: 0rem -0.5rem;">
+                                                    <div class="px-2">
+                                                        We will Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
+                                                    </div>
+                                                    <div class="quote-btns d-flex justify-content-end align-items-center gap-2 mt-4">
+                                                        <button class="easygo-btn-1 easygo-rounded-1"><i class="fa-solid fa-circle-check"></i> &nbsp; Accept</button>
+                                                        <button class="easygo-btn-3 easygo-rounded-1"><i class="fa-solid fa-circle-xmark"></i> &nbsp; Reject</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
@@ -159,11 +173,21 @@
                                                 <span style="flex: 1;">Lionize Tourism Consult</span>
                                                 <span style="flex: 1;">$30</span>
                                                 <span style="flex: 1;">12-21-2022</span>
-                                                <span style="flex: 1;">More Details</span>
+                                                <span class="text-end" style="flex: 1;">More Details</span>
                                             </button>
                                         </h2>
                                         <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                                            <div class="accordion-body">
+                                                <div class="bg-gray-3 py-4" style="margin: 0rem -0.5rem;">
+                                                    <div class="px-2">
+                                                        We will Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
+                                                    </div>
+                                                    <div class="quote-btns d-flex justify-content-end align-items-center gap-2 mt-4">
+                                                        <button class="easygo-btn-1 easygo-rounded-1"><i class="fa-solid fa-circle-check"></i> &nbsp; Accept</button>
+                                                        <button class="easygo-btn-3 easygo-rounded-1"><i class="fa-solid fa-circle-xmark"></i> &nbsp; Reject</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

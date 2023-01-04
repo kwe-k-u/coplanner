@@ -963,6 +963,30 @@ input:disabled {
   color: var(--easygo-gray-1);
 }
 
+/** accordion **/
+.easygo-accordion-custom-1 .heading{
+  background-color: transparent !important;
+  font-weight: var(--font-weight-1) !important;
+}
+
+.easygo-accordion-custom-1 .heading .accordion-button{
+  outline: none;
+  box-shadow: none;
+  cursor:default;
+}
+
+.easygo-accordion-custom-1 .heading .accordion-button::after{
+  opacity: 0;
+}
+/*-- UTILITY - END*/
+
+
+
+
+
+
+
+
 /******************** Effects ********************/
 /** hover effects **/
 .text-hover-blue,
