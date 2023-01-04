@@ -104,7 +104,7 @@
                         </div>
                         <div class="main-content-body py-2">
                             <div class="mb-4">
-                                <a href="./trips.php"> &lt; Back</a>
+                                <a href="./user_dashboard_saved_trips.php"><i class="fa-solid fa-chevron-left"></i> Back</a>
                             </div>
                             <!--- ================================ -->
                             <!--- image display section [start] -->
