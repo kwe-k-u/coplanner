@@ -131,7 +131,7 @@
 
 /** component styles **/
 /* infor card */
-.info-card {
+/* .info-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,7 +139,7 @@
   padding: 2rem 1rem;
   border-radius: var(--easygo-br-3);
   min-height: 100%;
-}
+} */
 
 /*upcoming trip card */
 .upcoming-trip-card {

@@ -30,7 +30,6 @@
             <div class="d-flex gap-4">
                 <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue easygo-fs-5">Login</a>
                 <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white easygo-fs-5">Create Account</a>
-                </form>
             </div>
         </div>
 </nav>
@@ -49,29 +48,23 @@
     <nav class="sidebar-navbar">
         <div>
             <ul class="sidebar-nav-menu">
-                <li class="s-nav-item py-2 px-2 border-top d-flex justify-content-between align-items-center">
-                    <a class="nav-link text-blue" href="./home.php">Home</a>
-                    <span>></span>
+                <li class="s-nav-item border-top">
+                    <a class="nav-link text-blue py-2 px-2 d-flex justify-content-between align-items-center" href="./home.php">Home <i class="fa-solid fa-angle-right"></i></a>
                 </li>
-                <li class="s-nav-item py-2 px-2 border-top d-flex justify-content-between align-items-center">
-                    <a class="nav-link" href="./trips.php">Trips</a>
-                    <span>></span>
+                <li class="s-nav-item  border-top">
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./trips.php">Trips <i class="fa-solid fa-angle-right"></i></a>
                 </li>
-                <li class="s-nav-item py-2 px-2 border-top d-flex justify-content-between align-items-center">
-                    <a class="nav-link" href="javascript:void(0)">Blog</a>
-                    <span>></span>
+                <li class="s-nav-item border-top">
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="javascript:void(0)">Blog <i class="fa-solid fa-angle-right"></i></a>
                 </li>
-                <li class="s-nav-item py-2 px-2 border-top d-flex justify-content-between align-items-center">
-                    <a class="nav-link" href="javascript:void(0)">Curators</a>
-                    <span>></span>
+                <li class="s-nav-item border-top">
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="javascript:void(0)">Curators <i class="fa-solid fa-angle-right"></i></a>
                 </li>
-                <li class="s-nav-item py-2 px-2 border-top d-flex justify-content-between align-items-center">
-                    <a class="nav-link" href="./about.php">About</a>
-                    <span>></span>
+                <li class="s-nav-item border-top">
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./about.php">About <i class="fa-solid fa-angle-right"></i></a>
                 </li>
-                <li class="s-nav-item py-2 px-2 border-top d-flex justify-content-between align-items-center">
-                    <a class="nav-link" href="./contact.php">Contact </a>
-                    <span>></span>
+                <li class="s-nav-item border-top">
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./contact.php">Contact  <i class="fa-solid fa-angle-right"></i></a>
                 </li>
             </ul>
             <div class="d-flex flex-column gap-4 px-2 mt-5">

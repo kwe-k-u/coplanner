@@ -29,7 +29,7 @@
         <main>
             <!--- ================================ -->
             <!--- introduction section [start] -->
-            <section class="intro py-5">
+            <section class="intro py-5" style="position: relative;">
                 <div class="intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px);">
                     <h1>
                         You don't need to hassle to have a fun trip
@@ -49,7 +49,26 @@
                         </div>
                     </form>
                 </div>
-                <img src="../assets/images/others/scenery2.jpg" alt="background-image" class="background-img">
+                <div class="background-item" style="z-index: 1;">
+                    <div id="background-slider" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
+                        <div class="carousel-indicators easygo-carousel-indicators">
+                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner w-100 h-100">
+                            <div class="carousel-item active w-100 h-100">
+                                <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
+                            </div>
+                            <div class="carousel-item w-100 h-100">
+                                <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
+                            </div>
+                            <div class="carousel-item w-100 h-100">
+                                <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!--- introduction section [end] -->
             <!--- ================================ -->
@@ -363,14 +382,14 @@
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center">
-                            <div id="carouselExampleIndicators" class="carousel slide bg-blue rounded text-white" style="padding: 4rem 2rem;" data-bs-ride="carousel">
+                            <div id="testimony-slider" class="carousel slide bg-blue rounded text-white" style="padding: 4rem 2rem;" data-bs-ride="carousel">
                                 <div class="carousel-indicators easygo-carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#testimony-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#testimony-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#testimony-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                 </div>
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
+                                    <div class="carousel-item w-100 h-100 active">
                                         <div>
                                             <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
                                             <p>
@@ -378,7 +397,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
+                                    <div class="carousel-item w-100 h-100">
                                         <div>
                                             <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
                                             <p>
@@ -386,7 +405,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="carousel-item">
+                                    <div class="carousel-item w-100 h-100">
                                         <div>
                                             <h5 class="text-center easygo-fw-1 s-title-1">Victor Soludo</h5>
                                             <p>
@@ -443,7 +462,7 @@
                         <h4 class="title text-white">subscribe to our newsletter to get the latest information about trips directly from email</h4>
                         <div class="input-field">
                             <input id="newsletter_email_field" type="text" placeholder="Your email address">
-                            <button class="bg-orange text-white" >Subscribe</button>
+                            <button class="bg-orange text-white">Subscribe</button>
                         </div>
                     </form>
                 </div>
