@@ -443,13 +443,13 @@ input:disabled {
   z-index: -1;
 }
 
-.background-item .bg-img{
+.background-item .bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.background-item .bg-content{
+.background-item .bg-content {
   width: 100%;
   height: 100%;
 }
@@ -931,6 +931,27 @@ input:disabled {
   transform: translateX(70%);
 }
 
+.profile-img-upload.piu-alt .profile-img-disp{
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-img-upload.piu-alt .profile-img-upload-btn {
+  transform: none;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    rgba(251, 251, 251, 0) 2.63%,
+    rgba(217, 217, 217, 0.150973) 2.63%,
+    rgba(132, 132, 132, 0.53299) 35.52%,
+    rgba(56, 56, 56, 0.87) 98.38%
+  );
+  font-size: var(--font-size-5);
+  padding: 0.3rem 0rem;
+  color: white;
+}
+
 /* infor card */
 .info-card {
   display: flex;
@@ -964,28 +985,21 @@ input:disabled {
 }
 
 /** accordion **/
-.easygo-accordion-custom-1 .heading{
+.easygo-accordion-custom-1 .heading {
   background-color: transparent !important;
   font-weight: var(--font-weight-1) !important;
 }
 
-.easygo-accordion-custom-1 .heading .accordion-button{
+.easygo-accordion-custom-1 .heading .accordion-button {
   outline: none;
   box-shadow: none;
-  cursor:default;
+  cursor: default;
 }
 
-.easygo-accordion-custom-1 .heading .accordion-button::after{
+.easygo-accordion-custom-1 .heading .accordion-button::after {
   opacity: 0;
 }
 /*-- UTILITY - END*/
-
-
-
-
-
-
-
 
 /******************** Effects ********************/
 /** hover effects **/
