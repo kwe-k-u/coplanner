@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div>
-                                    <div id="coverphoto-upload" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input">
+                                    <div id="coverphoto-upload-btn" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#cover-photo-upload" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input visibility-changer">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
@@ -148,7 +148,7 @@
                             </div>
                             <div class="col-lg-7">
                                 <div>
-                                    <div id="tripimages-upload" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input w-popup">
+                                    <div id="tripimages-upload-btn" data-bs-toggle="modal" data-bs-target="#upload-img-modal" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#trip-imgs-upload" class="file-input visibility-changer">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
@@ -247,7 +247,17 @@
                         <h5 class="mb-2">Upload Image</h5>
 
                         <div>
-                            <div id="upload-img-file-input" class="file-input py-5">
+                            <div id="cover-photo-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
+                                <div class="upload-symbol">
+                                    <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
+                                </div>
+                                <a>Click to upload or drag and drop</a>
+                                <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                <input accept=".png, .jpg, .jpeg, .svg" type="file">
+                                <div class="img-display">
+                                </div>
+                            </div>
+                            <div id="trip-imgs-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
                                 <div class="upload-symbol">
                                     <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                 </div>
