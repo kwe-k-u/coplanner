@@ -24,6 +24,7 @@
         <?php
         require_once("../components/navbar.php");
         ?>
+        
         <!-- navbar [end] -->
         <!--- ================================ -->
         <main>
