@@ -90,13 +90,13 @@ i {
   color: var(--easygo-red);
 }
 .text-gray-1 {
-  color: var(--easygo-gray-1);
+  color: var(--easygo-gray-1) !important;
 }
 .text-gray-2 {
-  color: var(--easygo-gray-2);
+  color: var(--easygo-gray-2) !important;
 }
 .text-gray-3 {
-  color: var(--easygo-gray-3);
+  color: var(--easygo-gray-3) !important;
 }
 
 .easygo-h1 {
