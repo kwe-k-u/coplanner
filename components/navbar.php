@@ -31,6 +31,17 @@
                 <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue easygo-fs-5">Login</a>
                 <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white easygo-fs-5">Create Account</a>
             </div>
+            <div class="d-flex justify-content-center my-3">
+                <div class="d-flex gap-2">
+                    <div class="user-icon bg-blue">
+                        <img src="../assets/images/others/profile.jpeg" alt="">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center gap-1">
+                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
+                        <h6 class="easygo-fs-5 m-0"><a class="text-gray-1 easygo-fs-5 text-hover-blue" href="../views/user_dashboard_saved_trips.php">Go To Profile &nbsp;<i class="fa-solid fa-arrow-right-long"></i></a></h6>
+                    </div>
+                </div>
+            </div>
         </div>
 </nav>
 
@@ -64,13 +75,23 @@
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./about.php">About <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <li class="s-nav-item border-top">
-                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./contact.php">Contact  <i class="fa-solid fa-angle-right"></i></a>
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./contact.php">Contact <i class="fa-solid fa-angle-right"></i></a>
                 </li>
             </ul>
             <div class="d-flex flex-column gap-4 px-2 mt-5">
                 <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue">Login</a>
                 <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white">Create Account</a>
-                </form>
+            </div>
+            <div class="d-flex justify-content-center my-3">
+                <div class="d-flex gap-2">
+                    <div class="user-icon bg-blue">
+                        <img src="../assets/images/others/profile.jpeg" alt="">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center gap-1">
+                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
+                        <h6 class="easygo-fs-5 m-0"><a class="text-gray-1 easygo-fs-5 text-hover-blue" href="../views/user_dashboard_saved_trips.php">Go To Profile &nbsp;<i class="fa-solid fa-arrow-right-long"></i></a></h6>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

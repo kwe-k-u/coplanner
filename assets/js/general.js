@@ -13,7 +13,9 @@ $(document).ready(function () {
   $(".pad-item-add").click(padListAdd);
   $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
   $(".close-sidebar").click(closeSidebar); // close side bar
-  $(".page-reloader").click(function(){window.location.reload();}) // to reload page
+  $(".page-reloader").click(function () {
+    window.location.reload();
+  }); // to reload page
 
   // form listeners
   $(".date-input").focus(changeToDate);
@@ -82,29 +84,39 @@ function createImgDispItem(file) {
 }
 
 // function to change between display none and display block
-function changeVisibility(){
+function changeVisibility() {
   let targets = $(this).attr("data-visibility-target");
-  $(`${targets}`).each(function(){
+  let showAlways = $(this).attr("data-visibility-show");
+  $(`${targets}`).each(function () {
     let dMode = $(this).attr("visible-mode");
     let currentDisplay = $(this).css("display");
 
-    if(currentDisplay === "none"){
-      if(dMode){
-        console.log(dMode);
-        $(this).css("display", dMode);
+    // making just particular visible
+    if (showAlways) {
+      let classOrId = showAlways.substring(1);
+      if ($(this).hasClass(classOrId) || $(this).attr("id") === classOrId) {
+        if (dMode) {
+          $(this).css("display", dMode);
+        } else {
+          $(this).css("display", "block");
+        }
+      } else {
+        $(this).css("display", "none");
       }
-      else{
-        $(this).css("display", "block");
+    } else {
+      // invert displays
+      if (currentDisplay === "none") {
+        if (dMode) {
+          $(this).css("display", dMode);
+        } else {
+          $(this).css("display", "block");
+        }
+      } else {
+        $(this).css("display", "none");
       }
-    }
-    else{
-      $(this).css("display", "none");
     }
   });
 }
-
-
-
 
 //--- [form] functions ---//
 // to toggle password show
@@ -218,4 +230,5 @@ function enableInputs() {
 // to disable inputs with class equal to 'data-disable-target'
 function disableInputs() {
   let targets = $(this).attr("data-disable-target");
-  $(`${targets}`).prop("disabled", true);}
+  $(`${targets}`).prop("disabled", true);
+}
