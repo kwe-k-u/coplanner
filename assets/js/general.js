@@ -25,6 +25,8 @@ $(document).ready(function () {
   $(".input-enabler").click(enableInputs);
   $(".input-disabler").click(disableInputs);
   $(".visibility-changer").click(changeVisibility);
+  $(".easygo-num-input .plus").click(changeNumInputVal);
+  $(".easygo-num-input .minus").click(changeNumInputVal);
   // $(".file-input.w-popup").click(updateUploadPopup);
 
   // form page listeners
@@ -143,6 +145,40 @@ function displayUpload(event) {
   $(`${targetDisplay}`).html("");
   $(`${targetDisplay}`).addClass("not-empty");
   $(`${targetDisplay}`).append(createImgDispItem($(this).prop("files")[0]));
+}
+
+// to change input[type='number'] value when plus or minus buttons clicked
+function changeNumInputVal() {
+  let targetSelector = $(this).attr("data-input-target");
+  let targetEl = $(`${targetSelector}`);
+  let min_val = targetEl.attr("min")
+    ? parseInt(targetEl.attr("min"))
+    : Number.MIN_SAFE_INTEGER;
+  let max_val = targetEl.attr("max")
+    ? targetEl.attr("max")
+    : Number.MAX_SAFE_INTEGER;
+  let cur_val = targetEl.val() ? parseInt(targetEl.val()) : 0;
+
+  // setting the current value of the input element
+  targetEl.val(cur_val);
+
+  // adding or subtracting
+  // adding
+  if ($(this).hasClass("plus")) {
+    targetEl.val(
+      (parseInt(targetEl.val()) + 1) > max_val
+        ? parseInt(targetEl.val())
+        : (parseInt(targetEl.val()) + 1)
+    );
+  }
+  // subtracting
+  if ($(this).hasClass("minus")) {
+    targetEl.val(
+      (parseInt(targetEl.val()) - 1) < min_val
+        ? parseInt(targetEl.val())
+        : (parseInt(targetEl.val()) - 1)
+    );
+  }
 }
 
 // // to open popup for file upload
