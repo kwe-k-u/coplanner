@@ -9,7 +9,9 @@ $(document).ready(function () {
   $(".file-input input[type=file]").click(function (event) {
     event.stopPropagation();
   }); // preventing click event from bubbling
-  $(".file-input input[type=file]").change(displayUpload);
+  $(".file-input input[type=file].img-upload").change(displayUpload);
+  $(".file-input input[type=file].file-upload").change(showDocName);
+  $(".doc-display .doc-display-item .item-remove").click(removeDocName);
   $(".pad-item-add").click(padListAdd);
   $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
   $(".close-sidebar").click(closeSidebar); // close side bar
@@ -25,6 +27,9 @@ $(document).ready(function () {
   $(".input-enabler").click(enableInputs);
   $(".input-disabler").click(disableInputs);
   $(".visibility-changer").click(changeVisibility);
+  $(".easygo-num-input .plus").click(changeNumInputVal);
+  $(".easygo-num-input .minus").click(changeNumInputVal);
+  $(".img-display .item-remove");
   // $(".file-input.w-popup").click(updateUploadPopup);
 
   // form page listeners
@@ -69,9 +74,12 @@ function createImgDispItem(file) {
   let fileURL = URL.createObjectURL(file);
   let dispItem = document.createElement("div");
   dispItem.classList.add("img-display-item");
-  // let removeBtn = document.createElement("button");
-  // removeBtn.classList.add("item-remove");
-  // removeBtn.innerText = "X";
+  let removeBtn = document.createElement("button");
+  removeBtn.classList.add("item-remove");
+  removeBtn.innerText = "X";
+  removeBtn.setAttribute("type", "button"); // to prevent from submitting the form
+  // adding event listener to remove button
+  removeBtn.addEventListener("click", deleteDispayItem);
   let img = new Image();
   // freeing up memory when done loaidng image
   img.onload = function () {
@@ -79,8 +87,50 @@ function createImgDispItem(file) {
   };
   img.src = fileURL;
   dispItem.appendChild(img);
-  // dispItem.appendChild(removeBtn);
+  dispItem.appendChild(removeBtn);
   return dispItem;
+}
+
+// function to delete displayItem
+function deleteDispayItem(event) {
+  event.stopPropagation();
+  let displayContainer = this.parentElement.parentElement;
+  let inputTarget = displayContainer.getAttribute("data-input-target");
+
+  if (inputTarget) {
+    let fileInput = document.querySelector(`${inputTarget}`);
+    // removing the item from the file input
+    fileInput.value = "";
+  }
+
+  this.parentElement.remove();
+  displayContainer.classList.remove("not-empty");
+}
+
+// function to show file name
+function showDocName() {
+  let targetDisplay = $(this).attr("data-display-target");
+  let nameDisplay = $(this).attr("data-name-display");
+  let file = $(this).prop("files")[0];
+  if (file) {
+    $(`${targetDisplay}`).addClass("not-empty");
+    $(`${nameDisplay}`).text(file.name);
+  } else {
+    $(`${targetDisplay}`).removeClass("not-empty");
+  }
+}
+
+// function to remove file name
+function removeDocName(event) {
+  event.stopPropagation();
+  let displayContainer = $(this).parent().parent();
+  let inputTarget = displayContainer.attr("data-input-target");
+
+  if (inputTarget) {
+    $(`${inputTarget}`).val("");
+  }
+
+  displayContainer.removeClass("not-empty");
 }
 
 // function to change between display none and display block
@@ -141,8 +191,47 @@ function triggerFileUpload() {
 function displayUpload(event) {
   let targetDisplay = $(this).attr("data-display-target");
   $(`${targetDisplay}`).html("");
-  $(`${targetDisplay}`).addClass("not-empty");
-  $(`${targetDisplay}`).append(createImgDispItem($(this).prop("files")[0]));
+  let file = $(this).prop("files")[0];
+  if (file) {
+    $(`${targetDisplay}`).addClass("not-empty");
+    $(`${targetDisplay}`).append(createImgDispItem(file));
+  } else {
+    $(`${targetDisplay}`).removeClass("not-empty");
+  }
+}
+
+// to change input[type='number'] value when plus or minus buttons clicked
+function changeNumInputVal() {
+  let targetSelector = $(this).attr("data-input-target");
+  let targetEl = $(`${targetSelector}`);
+  let min_val = targetEl.attr("min")
+    ? parseInt(targetEl.attr("min"))
+    : Number.MIN_SAFE_INTEGER;
+  let max_val = targetEl.attr("max")
+    ? targetEl.attr("max")
+    : Number.MAX_SAFE_INTEGER;
+  let cur_val = targetEl.val() ? parseInt(targetEl.val()) : 0;
+
+  // setting the current value of the input element
+  targetEl.val(cur_val);
+
+  // adding or subtracting
+  // adding
+  if ($(this).hasClass("plus")) {
+    targetEl.val(
+      parseInt(targetEl.val()) + 1 > max_val
+        ? parseInt(targetEl.val())
+        : parseInt(targetEl.val()) + 1
+    );
+  }
+  // subtracting
+  if ($(this).hasClass("minus")) {
+    targetEl.val(
+      parseInt(targetEl.val()) - 1 < min_val
+        ? parseInt(targetEl.val())
+        : parseInt(targetEl.val()) - 1
+    );
+  }
 }
 
 // // to open popup for file upload

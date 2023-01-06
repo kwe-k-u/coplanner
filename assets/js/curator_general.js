@@ -40,6 +40,7 @@ function createImgDispItem(file) {
   dispItem.classList.add("img-display-item");
   let removeBtn = document.createElement("button");
   removeBtn.classList.add("item-remove");
+  removeBtn.setAttribute("type", "button"); // to prevent from submitting the form
   removeBtn.innerText = "X";
   removeBtn.addEventListener("click", function (event) {
     event.stopPropagation();

@@ -282,7 +282,6 @@
                                 </div>
                                 <div class="form-page-main container d-block">
                                     <div class="form-container container" style="max-width: 600px;">
-                                        <!-- register form 1 [start] -->
                                         <form>
                                             <div class="form-header">
                                                 <h5 class="easygo-fs-2 my-3">Book a private tour. Customize trips to your taste</h5>
@@ -294,30 +293,47 @@
                                                 <div class="col-lg-6">
                                                     <div class="input-field">
                                                         <div class="text-gray-1 easygo-fs-5">Number of Kids</div>
-                                                        <input type="number" class="border-blue text-center" name="phone" value="1">
+                                                        <div class="easygo-num-input">
+                                                            <span data-input-target="#num-kids" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
+                                                            <input id="num-kids" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                            <span data-input-target="#num-kids" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="input-field">
                                                         <div class="text-gray-1 easygo-fs-5">Number of Adults</div>
-                                                        <input type="number" class="border-blue text-center" name="phone" value="1">
+                                                        <div class="easygo-num-input">
+                                                            <span data-input-target="#num-adults" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
+                                                            <input id="num-adults" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                            <span data-input-target="#num-adults" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="input-field">
                                                         <div class="text-gray-1 easygo-fs-5">Start Date</div>
-                                                        <input type="date" class="border-blue text-center" name="phone" value="1">
+                                                        <div class="input-w-icon">
+                                                            <label for="start-date" class="input-icon"><i class="fa-solid fa-calendar"></i></label>
+                                                            <input id="start-date" type="date" class="border-blue">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="input-field">
-                                                        <div class="text-gray-1 easygo-fs-5">Start Date</div>
-                                                        <input type="date" class="border-blue text-center" name="phone" value="1">
+                                                        <div class="text-gray-1 easygo-fs-5">End Date</div>
+                                                        <div class="input-w-icon">
+                                                            <label for="end-date" class="input-icon"><i class="fa-solid fa-calendar"></i></label>
+                                                            <input id="end-date" type="date" class="border-blue">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="input-field">
-                                                <input class="border-blue" name="user_name" type="text" placeholder="Budget">
+                                                <div class="input-w-icon">
+                                                    <label for="budget" class="input-icon"><i class="fa-solid fa-dollar-sign"></i></label>
+                                                    <input id="budget" class="border-blue" name="user_name" type="text" placeholder="Budget">
+                                                </div>
                                             </div>
                                             <div class="input-field button-container my-2">
                                                 <button type="submit" class="easygo-btn-1 easygo-rounded-2" type="button">Place Request</button>

@@ -99,7 +99,37 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-input-field py-2">
-                                            <input class="border-blue" type="text" placeholder="Contact's phone number" name="contact_number">
+                                            <input class="border-blue" type="text" placeholder="Contact's Phone number" name="phone_number">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-input-field py-2">
+                                            <input class="border-blue" type="text" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-input-field py-2">
+                                            <input class="border-blue" type="text" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-input-field py-2">
+                                            <div class="text-gray-1 easygo-fs-4">Number of Adults</div>
+                                            <div class="easygo-num-input">
+                                                <span data-input-target="#num-adults" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
+                                                <input id="num-adults" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                <span data-input-target="#num-adults" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-input-field py-2">
+                                            <div class="text-gray-1 easygo-fs-4">Number of Kids</div>
+                                            <div class="easygo-num-input">
+                                                <span data-input-target="#num-kids" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
+                                                <input id="num-kids" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                <span data-input-target="#num-kids" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

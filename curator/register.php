@@ -31,7 +31,7 @@
                     <p class="instruction">Please enter your credentials</p>
                 </div>
                 <div class="input-field">
-                    <input name= "user_name" type="text" placeholder="Full Name - Personal" value="Kweku Acquaye">
+                    <input name="user_name" type="text" placeholder="Full Name - Personal" value="Kweku Acquaye">
                 </div>
                 <div class="input-field">
                     <input type="text" name="email" placeholder="Email" value="kweku@acquaye.com">
@@ -92,8 +92,8 @@
                         </div>
                         <a>Upload file</a>
                         <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                        <input id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#logo-display">
-                        <div id="logo-display" class="img-display"></div>
+                        <input class="img-upload" id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#logo-display">
+                        <div data-input-target="#company_logo" id="logo-display" class="img-display"></div>
                     </div>
                 </div>
                 <div class="input-field">
@@ -104,28 +104,35 @@
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
                             <small class="easygo-fs-4 text-gray-1">Front</small>
-                            <input id="gov_id_front" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-front">
-                            <div id="id-front" class="img-display display-full"></div>
+                            <input id="gov_id_front" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-front">
+                            <div id="id-front" data-input-target="#gov_id_front" class="img-display display-full"></div>
                         </div>
                         <div class="file-input">
                             <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
                             <small class="easygo-fs-4 text-gray-1">Back</small>
-                            <input id="gov_id_back" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-back">
-                            <div id="id-back" class="img-display display-full"></div>
+                            <input id="gov_id_back" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-back">
+                            <div id="id-back" data-input-target="#gov_id_back" class="img-display display-full"></div>
                         </div>
                     </div>
                 </div>
                 <div class="input-field">
                     <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2">(Optional)</span></small>
-                    <div class="file-input">
+                    <div class="file-input type-doc">
                         <div class="upload-symbol">
                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                         </div>
                         <a>Upload file</a>
                         <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                        <input id="inc_doc" accept=".png, .jpg, .docx, .doc .pdf" type="file">
+                        <input id="inc_doc" class="file-upload" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" accept=".png, .jpg, .jpeg, .svg" type="file">
+                        <div id="gov-doc-display" class="doc-display" data-input-target="#inc_doc">
+                            <div class="doc-display-item">
+                                <i class="fa-solid fa-file easygo-h2"></i>
+                                <div id="gov-doc-name" class="doc-name"></div>
+                                <button class="item-remove" type="button">X</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="agreement-check">
