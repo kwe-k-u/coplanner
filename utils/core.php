@@ -18,6 +18,10 @@ ob_start();
 		$_SESSION["user_role"] = $role; //admin or user
 	}
 
+	function get_default_profile_img(){
+		return server_base_url()."assets/images/others/profile.jpeg";
+	}
+
 	/**Logs in users with special access */
 	function session_log_in_advanced($user_id,$profile_img,$user_role,$account_id){
 		session_log_in($user_id,$profile_img,$user_role);
@@ -39,6 +43,17 @@ ob_start();
 			// unset($_SESSION["account_type"]);
 		}
 
+	}
+
+	function login_check(){
+		$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
+		|| $_SERVER['SERVER_PORT'] == 443)
+		? "https://" : "http://";
+		$redirect = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		if (!is_session_logged_in()){
+			header("Location: ../login.php?redirect=$redirect");
+			die();
+		}
 	}
 
 	/**Allows the admin to sign into another user's account */

@@ -1,6 +1,21 @@
 <?php
 	require("../utils/core.php");
 
+	function first(){
+		echo "first ";
+		return 1;
+	}
+
+	function second(){
+		echo "second";
+		return 1;
+	}
+
+	function run(){
+		return first() && second();
+	}
+
+	run();
 
 
 	// echo generate_id();

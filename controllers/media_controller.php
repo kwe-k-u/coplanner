@@ -2,6 +2,11 @@
 	require_once(__DIR__. "/../classes/media_class.php");
 
 
+	function get_media_by_id($id){
+		$media = new media_class();
+		return $media->get_media_by_id($id);
+	}
+
 	function upload_user_media_ctrl($media_id, $user_id,$location, $media_type = "picture" ){
 		$media = new media_class();
 
@@ -19,10 +24,16 @@
 		return $media->update_curator_logo($curator_id,$media_id);
 	}
 
+	function update_profile_image($curator_id,$media_id){
+		$media = new media_class();
+		return $media->update_profile_image($curator_id,$media_id);
+	}
+
 	function upload_curator_media_ctrl($media_id, $curator_id,$location, $media_type = "picture"){
 		$media = new media_class();
 
 		return $media->add_media_cls($media_id,$location, $media_type)
+		// && $media->link_media_cls($curator_id,$media_id,"curator_uploads","curator_id");
 		&& _link_curator_upload_ctrl($curator_id,$media_id);
 	}
 

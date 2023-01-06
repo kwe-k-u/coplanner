@@ -166,7 +166,7 @@
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- our team [start] -->
-            <section class="mb-5 out-team" style="margin-top: 7rem;">
+            <section class="mb-5 out-team" id="team" style="margin-top: 7rem;">
                 <div class="container">
                     <h1 class="easgyo-h3 text-capitalize text-blue text-center">our team</h1>
                     <p class="text-center mb-5">

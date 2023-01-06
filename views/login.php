@@ -62,7 +62,6 @@
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/user_auth.js"></script>
 </body>
 
 </html>

@@ -41,13 +41,18 @@
                         <h1 class="easygo-fw-1 text-center easygo-h3">Your Next Tour Starts Here</h1>
                         <p class="easygo-fs-1 text-center">
                             Book these experiences for a close-up look at Africa. Explore top
-                            destinations for your next trip.
+                            options for your next tour.
                         </p>
                     </div>
                     <div>
                         <div class="row">
                             <?php
+                            if (isset($_GET["search"])){
+                                //TODO:: search for trips
                                 $campaigns = get_current_campaigns();
+                            }else {
+                                $campaigns = get_current_campaigns();
+                            }
 
                                 foreach ($campaigns as $trip) {
                                     $id = $trip["campaign_id"];
@@ -62,6 +67,9 @@
                                     $end = format_string_as_date_fn($next["end_date"]);
                                     $fee = $next["fee"];
                                     $currency = $next["currency"];
+                                    $pickup_location = $next["pickup_location"];
+                                    $seats = $next["seats_available"];
+
 
                                     echo "
                                          <!--- ================================ -->
@@ -97,8 +105,9 @@
                                                             </div>
                                                             <div class='d-flex justify-content-between'>
                                                                 <span class='easygo-fs-5'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
+                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Seats left: $seats</span>
+                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Pickup: $pickup_location</span>
+                                                                <span class='easygo-fs-5'></span>
                                                             </div>
                                                         </div>
                                                         <div class='trip-card-footer p-0'>
@@ -136,7 +145,7 @@
             <!-- recent trips [start] -->
             <section class="py-5">
                 <div class="container">
-                    <div class="text-center easygo-h3">Recent Trips</div>
+                    <div class="text-center easygo-h3">Past Trips</div>
                     <div class="row my-3">
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="trip-card">

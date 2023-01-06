@@ -1,5 +1,5 @@
-// const baseurl = "http://localhost/easygo_v2/";
-const baseurl = "http://localhost:81/internship/easygo_2/easygo/";
+const baseurl = "http://localhost/easygo_v2/";
+// const baseurl = "http://localhost:81/internship/easygo_2/easygo/";
 
 
 
@@ -18,6 +18,19 @@ function url_params(key){
 	return value;
 }
 
+function show_loader(hide_element){
+	var fn = e => {e.preventDefault(); e.stopPropagation();};
+	hide_element.classList.toggle("hide");
+	hide_element.classList.toggle("animate-bottom");
+	document.getElementsByClassName("loader")[0].style.display= "inline";
+	document.addEventListener("click", fn, true);
+	var load_var = setTimeout(()=> {
+		hide_element.classList.toggle("hide");
+		document.getElementsByClassName("loader")[0].style.display= "none";
+		document.removeEventListener("click", fn, true);
+		// document.getElementsByClassName("loader")[0].classList.toggle("hide");
+	}, 5000);
+}
 
 
 //Make http requests with paraterms type(POST/GET), endpoint,payload and onload function
@@ -28,7 +41,12 @@ function send_request(type,endpoint, payload,  onload){
 	// Set up a handler for when the task for the request is complete
 	xhr.onload =  function () {
 		if (xhr.readyState == XMLHttpRequest.DONE) {
-			onload(xhr.response);
+			// console.log(endpoint + " <<<<<start>>>> "+ xhr.response);
+			// console.log( " <<<payload>>> "+ payload);
+			// console.log(" <<<<<end>>>> ");
+			if (onload != null){
+				onload(xhr.response);
+			}
 		 }
 	 };
 	 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -44,7 +62,7 @@ function logout(){
 		"processors/processor.php",
 		"action=logout",
 		(response)=>{
-			window.location.reload();
+			window.location.href = baseurl;
 		}
 	)
 }
@@ -76,6 +94,9 @@ function upload_image(image_input_id, media_type, {curator_id = null, user_id = 
 	// Set up a handler for when the task for the request is complete
 	xhr.onload = function () {
 		if (xhr.readyState == XMLHttpRequest.DONE) {
+			console.log(image_input_id + " <<<<<start>>>> ");
+			console.log( xhr.response);
+			console.log(" <<<<<end>>>> ");
 			if (callback != null){
 				callback(xhr.response);
 			}
@@ -97,9 +118,28 @@ function update_curator_logo(media_id,curator_id){
 		"POST",
 		"processors/processor.php",
 		payload,
-		(response) => {}
+		(response) => {
+		}
 	)
 }
+
+
+function update_profile_image(media_id,user_id, {callback = null}){
+	payload = "action=update_user_profile_image";
+	payload += "&media_id="+ media_id;
+	payload += "&user_id="+ user_id;
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response) => {
+			if (callback != null){
+				callback(response);
+			}
+		}
+	)
+}
+
 
 function update_curator_manager_id(user_id,front_media_id, back_media_id){
 	payload = "action=link_curator_manager_id";
@@ -129,7 +169,22 @@ function login(form){
 	send_request("POST","processors/processor.php",
 	payload,
 	 (response)=>{
-		alert(response);
+		var json = JSON.parse(response);
+		var status = json["status"];
+		var url = "";
+		json = json["data"];
+		if (status == 200){
+			url = json["url"];
+			//check redirect
+			if (url_params("redirect")){
+				url = url_params("redirect");
+			}
+
+			window.location.href = url;
+
+		}else {
+			alert(json["msg"]);
+		}
 	 }
 	);
 }

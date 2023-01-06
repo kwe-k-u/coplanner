@@ -10,13 +10,16 @@
 
     if (isset($_GET["trip_id"])){
         $trip_id = $_GET["trip_id"];
+        $next = get_campaign_trip_by_id($trip_id);
+    } else {
+        $next = get_campaign_next_trip($id);
+        $trip_id = $next["trip_id"];
     }
 
         $campaign = get_campaign_by_id($id);
         $title = $campaign["title"];
         $curator = $campaign["curator_name"];
         $desc = $campaign["description"];
-        $next = get_campaign_next_trip($id);
         $start = format_string_as_date_fn($next["start_date"]);
         $end = format_string_as_date_fn($next["end_date"]);
         $pickup_location = $next["pickup_location"];
@@ -85,38 +88,6 @@
                         <div class="swiper-button-next"></div>
 
                     </div>
-                    <!-- <div id="carouselExampleIndicators" class="carousel slide carousel-fade rounded overflow-hidden" data-bs-ride="carousel">
-                        <div class="carousel-indicators easygo-carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div style="max-height: 400px;">
-                                    <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div style="max-height: 400px;">
-                                    <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div style="max-height: 400px;">
-                                    <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div> -->
                 </div>
             </section>
             <!--- image display section [end] -->
@@ -140,6 +111,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
                         </li>
+
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <!--- ================================ -->
@@ -980,7 +952,9 @@
                             <a class="d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue">Save Trip</a>
                         </div>
                         <div class="col-lg-7 py-2">
-                            <a href="./book_trip.php" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3">Book Trip</a>
+                            <?php
+                                echo "<a href='./book_trip.php?trip_id=$trip_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Trip</a>";
+                            ?>
                         </div>
                     </div>
                 </div>

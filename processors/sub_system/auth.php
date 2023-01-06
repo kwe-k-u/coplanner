@@ -2,6 +2,7 @@
 
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
+	require_once(__DIR__."/../../utils/env_manager.php");
 
 	function auth(){
 		$request = $_SERVER["REQUEST_METHOD"];
@@ -23,16 +24,25 @@
 						//check if user has special permissions
 						if(isset($result["curator_id"])){
 							session_log_in_advanced($result["user_id"],'$result["media_location"]',$result["role"],$result["curator_id"]);
+							$url = server_base_url() . "curator/dashboard.php";
 						} else if (isset($result["admin"])){
+							$url = server_base_url() . "admin/dashboard.php";
 							session_log_in_advanced($result["user_id"],'$result["media_location"]',$result["role"],NULL);
-
 						} else{
+							$url = server_base_url() . "views/trips.php";
 							session_log_in($result["user_id"],'$result["media_location"]',$result["role"]);
 						}
 
-						echo "login success";
+						send_json(array(
+							"msg" => "login success",
+							"url" => $url
+						));
 					}else {
-						echo "login failed";
+						send_json(
+							array(
+								"msg" => "Login failed"
+							),100
+							);
 					}
 					die();
 					break;
@@ -42,6 +52,7 @@
 					$password = encrypt($_POST["password"]);
 					$number = $_POST["phone_number"];
 					$country = $_POST["country"];
+					// $referral = $_POST["referral"];
 
 					//generate user id
 					$user_id = generate_id();
@@ -90,12 +101,9 @@
 								echo "Not implemented";
 						}
 					}
-					echo json_encode(array(
-						"msg" => "sign up successful",
-						"status_code" => 200,
-						"data" => $id_array
-					));
-					break;
+
+					send_json($id_array);
+					die();
 
 				case "logout":
 					session_log_out();

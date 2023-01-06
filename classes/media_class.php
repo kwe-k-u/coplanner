@@ -1,15 +1,20 @@
 <?php
-	require(__DIR__. "/../utils/db_class.php");
+	require_once(__DIR__. "/../utils/db_class.php");
 
 
 	class media_class extends db_connection{
+
+	//========================== INSERT ==================================
+	function get_media_by_id($id){
+		$sql = "SELECT * FROM `media` where `media_id` = '$id'";
+		return $this->db_fetch_one($sql);
+	}
 
 
 	//========================== INSERT ==================================
 		function add_media_cls($media_id, $location, $type){
 			$sql = "INSERT INTO `media`(`media_id`, `media_location`, `media_type`)
 			VALUE ('$media_id', '$location', '$type')";
-			// return $sql;
 			return $this->db_query($sql);
 		}
 
@@ -35,6 +40,12 @@
 		function update_curator_logo($curator_id,$media_id){
 			$sql = "UPDATE `curators` SET `curator_logo` = '$media_id'
 			WHERE `curator_id`= '$curator_id'";
+			return $this->db_query($sql);
+		}
+
+		function update_profile_image($user_id,$media_id){
+			$sql = "UPDATE `users` SET `profile_image` = '$media_id'
+			WHERE `user_id`= '$user_id'";
 			return $this->db_query($sql);
 		}
 

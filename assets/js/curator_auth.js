@@ -18,14 +18,13 @@ function signup(){
 	var id_back = document.getElementById("gov_id_back");
 	var inc_doc = document.getElementById("inc_doc");
 
-	payload ="action=signup";
+	payload ="action=signup&type=curator";
 	payload += "&user_name="+name;
 	payload += "&email="+email;
 	payload += "&password="+password;
 	payload += "&phone_number="+phone;
 	payload += "&country="+company_country;
 	payload += "&curator_name="+company_name;
-	payload += "&type=curator";
 
 	// alert(id_back.files.length);
 
@@ -37,15 +36,13 @@ function signup(){
 		"processors/processor.php",
 		payload,
 		(response) =>{
-			// alert(response);
+
 			var json = JSON.parse(response);
 			// if(json["status_code"]!= 200){
 			// 	alert(json["data"]["msg"]);
 			// 	return false;
 			// }
 
-			// var user_id = "999372d45082a25cf742e37b2f74ee2d";
-			// var curator_id = "40c0f486531b5ce8c6d3500ec637a2e6";
 			var user_id = json["data"]["user_id"];
 			var curator_id = json["data"]["curator_id"];
 
@@ -59,10 +56,12 @@ function signup(){
 			if(id_front.files.length >0){
 				upload_image("gov_id_back","confidential", {user_id : user_id,
 				callback: (back_response) =>{
+					alert("back res " + back_response);
 					upload_image("gov_id_front","confidential", {user_id: user_id,
-					callback: (front_response)=> {
-						var json = JSON.parse(back_response);
-						var back_id = json["data"]["media_id"];
+						callback: (front_response)=> {
+							var json = JSON.parse(back_response);
+							var back_id = json["data"]["media_id"];
+							alert("front res " + front_response);
 
 						json = JSON.parse(front_response);
 						var front_id = json["data"]["media_id"];
@@ -77,8 +76,9 @@ function signup(){
 			if(company_logo.files.length >0){
 
 				//callback for when upload of image completes
-				var upload_fn = (response)=>{
-					var json = JSON.parse(response);
+				var upload_fn = (company_res)=>{
+
+					var json = JSON.parse(company_res);
 					var media_id = json["data"]["media_id"];
 					update_curator_logo(media_id, curator_id);
 

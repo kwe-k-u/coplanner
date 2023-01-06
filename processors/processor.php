@@ -44,7 +44,8 @@
 	$media_actions = array(
 		"upload_media",
 		"link_curator_manager_id",
-		"update_curator_logo"
+		"update_curator_logo",
+		"update_user_profile_image"
 	);
 
 	$newsletter_actions = array(

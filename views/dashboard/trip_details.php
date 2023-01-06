@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard | Canceled Trip</title>
+    <title>easygo - User Dashboard | Ongoing Trip</title>
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- swiper css -->
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
     <!-- easygo css -->
-    <link rel="stylesheet" href="../assets/css/general.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/general.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 
 <body>
@@ -35,8 +35,13 @@
                 <!-- sidebar [start] -->
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
-                        <div class="logo m-md-auto">
-                            <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+                        <script>
+                            function goHome(){
+                                window.location.href="../home.php";;
+                            }
+                        </script>
+                        <div class="logo m-md-auto" onclick = "return goHome()">
+                            <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
                             <span class="bar"></span>
@@ -47,22 +52,25 @@
                         <div>
                             <ul class="sidebar-nav-menu">
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./home.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./user_dashboard_trips.php"><i class="fa-solid fa-bus"></i> Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./trips.php"><i class="fa-solid fa-user"></i> Profile</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_profile.php"><i class="fa-solid fa-user"></i> Profile</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="javascript:void(0)"><i class="fa-solid fa-car"></i> Private Tour</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="javascript:void(0)"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" href="./contact.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -70,7 +78,7 @@
                     <div class="d-flex justify-content-center my-3 d-md-none">
                         <div class="d-flex gap-2">
                             <div class="user-icon bg-blue">
-                                <!-- <img src="../assets/images/others/profile.jpeg" alt=""> -->
+                                <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
                             </div>
                             <div class="d-flex flex-column justify-content-center gap-1">
                                 <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
@@ -90,7 +98,7 @@
                             <div class="d-flex justify-content-center my-3">
                                 <div class="d-flex gap-2">
                                     <div class="user-icon bg-blue">
-                                        <!-- <img src="../assets/images/others/profile.jpeg" alt=""> -->
+                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
                                     </div>
                                     <div class="d-flex flex-column justify-content-center gap-1">
                                         <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
@@ -112,12 +120,12 @@
                                         <!-- Additional required wrapper -->
                                         <div class="swiper-wrapper">
                                             <!-- Slides -->
-                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image"></div>
-                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image"></div>
-                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image"></div>
-                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour3.jpg" alt="carousel image"></div>
-                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/portrait_scenery1.jpg" alt="carousel image"></div>
-                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/portrait_scenery2.jpg" alt="carousel image"></div>
+                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../../assets/images/others/scenery1.jpg" alt="carousel image"></div>
+                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../../assets/images/others/tour1.jpg" alt="carousel image"></div>
+                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../../assets/images/others/tour2.jpg" alt="carousel image"></div>
+                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../../assets/images/others/tour3.jpg" alt="carousel image"></div>
+                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../../assets/images/others/portrait_scenery1.jpg" alt="carousel image"></div>
+                                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../../assets/images/others/portrait_scenery2.jpg" alt="carousel image"></div>
                                         </div>
                                         <!-- If we need pagination -->
                                         <div class="swiper-pagination"></div>
@@ -162,11 +170,11 @@
                                                         <div class="easygo-fs-2 my-1">Curated by easygo events</div>
                                                         <div class="d-flex justify-content-start align-items-center gap-2">
                                                             <div class="stars">
-                                                                <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                <img src="../../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                                <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                             </div>
                                                             <span class="easygo-fs-6 text-gray-1">4 star rating</span>
                                                         </div>
@@ -176,10 +184,10 @@
                                                     </p>
                                                 </div>
                                                 <div class="d-flex justify-content-center gap-4 my-4">
-                                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/calendar_black.svg" alt="calendar"> 4th November - 10th November</span>
-                                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/crescent_black.svg" alt="crescent"> Duration: 6hrs</span>
-                                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/globe_black.svg" alt="globe"> Language: English</span>
-                                                    <span class="easygo-fs-2"><img src="../assets/images/svgs/clock_black.svg" alt="clock"> Start Time: 11am</span>
+                                                    <span class="easygo-fs-2"><img src="../../assets/images/svgs/calendar_black.svg" alt="calendar"> 4th November - 10th November</span>
+                                                    <span class="easygo-fs-2"><img src="../../assets/images/svgs/crescent_black.svg" alt="crescent"> Duration: 6hrs</span>
+                                                    <span class="easygo-fs-2"><img src="../../assets/images/svgs/globe_black.svg" alt="globe"> Language: English</span>
+                                                    <span class="easygo-fs-2"><img src="../../assets/images/svgs/clock_black.svg" alt="clock"> Start Time: 11am</span>
                                                 </div>
                                                 <div class="text-description easygo-fs-1">
                                                     Immerse yourself in the vibrant culture and rich history of Ghana on a tour of this beautiful West African country. Start in the bustling capital city of Accra, where you can explore the vibrant markets and try local dishes such as jollof rice and fufu. Don't miss the opportunity to visit the Kwame Nkrumah Memorial Park, a historical landmark dedicated to Ghana's first president.
@@ -189,7 +197,7 @@
                                                     Overall, a Ghanaian tour offers a unique and exciting experience for travelers, combining visits to historical and cultural landmarks with opportunities for adventure and exploration in the country's beautiful natural surroundings. Book your tour today and start planning your trip to this incredible destination
                                                 </div>
                                                 <div class="warning mt-5 d-flex align-items-center gap-3">
-                                                    <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image"> <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
+                                                    <img src="../../assets/images/svgs/exclamation_orange.svg" alt="warning image"> <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
                                                 </div>
                                             </div>
                                             <!--- gallery [start] -->
@@ -198,22 +206,22 @@
                                                     <h1>Destination Gallery</h1>
                                                     <div class="grid-2">
                                                         <div class="grid-item">
-                                                            <img src="../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
+                                                            <img src="../../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
                                                         </div>
                                                         <div class="grid-item">
-                                                            <img src="../assets/images/others/scenery2.jpg" alt="scenery" class="w-100 h-100">
+                                                            <img src="../../assets/images/others/scenery2.jpg" alt="scenery" class="w-100 h-100">
                                                         </div>
                                                         <div class="grid-item">
-                                                            <img src="../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
+                                                            <img src="../../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
                                                         </div>
                                                         <div class="grid-item">
-                                                            <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
+                                                            <img src="../../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
                                                         </div>
                                                         <div class="grid-item">
-                                                            <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
+                                                            <img src="../../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
                                                         </div>
                                                         <div class="grid-item">
-                                                            <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                                            <img src="../../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,7 +239,7 @@
                                                     <div class="row">
                                                         <div class="col-1">
                                                             <div style='width: 3rem; height: 3rem;' class='easygo-fs-1 rounded-circle border d-flex justify-content-center align-items-center'>
-                                                                <img src="../assets/images/svgs/path_orange.svg" alt="path image">
+                                                                <img src="../../assets/images/svgs/path_orange.svg" alt="path image">
                                                             </div>
                                                         </div>
                                                         <div class="col-11">
@@ -338,7 +346,7 @@
                                                     <div class="row">
                                                         <div class="col-1">
                                                             <div style="width: 3rem; height: 3rem;" class="easygo-fs-1 rounded-circle border d-flex justify-content-center align-items-center">
-                                                                <img src="../assets/images/svgs/path_orange.svg" alt="path image">
+                                                                <img src="../../assets/images/svgs/path_orange.svg" alt="path image">
                                                             </div>
                                                         </div>
                                                         <div class="col-11">
@@ -355,7 +363,7 @@
                                                 </div>
                                             </div>
                                             <div class="warning mt-5 d-flex align-items-center gap-3">
-                                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
+                                                <img src="../../assets/images/svgs/exclamation_orange.svg" alt="warning image">
                                                 <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
                                                 <a class="easygo-btn-1" href="javascript:void(0)">Click here</a>
                                             </div>
@@ -380,7 +388,7 @@
                                                 </ul>
                                             </div>
                                             <div class="warning mt-5 d-flex align-items-center gap-3">
-                                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
+                                                <img src="../../assets/images/svgs/exclamation_orange.svg" alt="warning image">
                                                 <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
                                                 <a class="easygo-btn-1" href="javascript:void(0)">Click here</a>
                                             </div>
@@ -396,11 +404,11 @@
                                                     <div class="easygo-fs-2 my-1">Curated by easygo events</div>
                                                     <div class="d-flex justify-content-start align-items-center gap-2">
                                                         <div class="stars">
-                                                            <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                            <img src="../../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                            <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                         </div>
                                                         <span class="easygo-fs-6 text-gray-1">4 star rating</span>
                                                     </div>
@@ -412,11 +420,11 @@
                                                                 <p><span class="easygo-h3">4.0</span>/5</p>
                                                                 <p>Based on 150 customer reviews</p>
                                                                 <div class="stars">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -480,11 +488,11 @@
                                                                                 <h6>Victor Ciemerie</h6>
                                                                                 <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                 <div class="stars">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -504,11 +512,11 @@
                                                                                 <h6>Victor Ciemerie</h6>
                                                                                 <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                 <div class="stars">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -528,11 +536,11 @@
                                                                                 <h6>Victor Ciemerie</h6>
                                                                                 <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                 <div class="stars">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -552,11 +560,11 @@
                                                                                 <h6>Victor Ciemerie</h6>
                                                                                 <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                 <div class="stars">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -591,11 +599,11 @@
                                             <div class="easygo-fs-5 my-1 text-gray-1">Curated by easygo events</div>
                                             <div class="d-flex justify-content-start align-items-center gap-2">
                                                 <div class="stars">
-                                                    <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                    <img src="../../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                 </div>
                                                 <span class="easygo-fs-6 text-gray-1">4 star rating</span>
                                             </div>
@@ -606,16 +614,16 @@
                                     </div>
                                     <div class="row mb-5 mt-4">
                                         <div class="col-6 py-2">
-                                            <span class="easygo-fs-4"><img src="../assets/images/svgs/calendar_black.svg" alt="calendar"> 4th November</span>
+                                            <span class="easygo-fs-4"><img src="../../assets/images/svgs/calendar_black.svg" alt="calendar"> 4th November</span>
                                         </div>
                                         <div class="col-6 py-2">
-                                            <span class="easygo-fs-4"><img src="../assets/images/svgs/crescent_black.svg" alt="crescent"> Duration: 6hrs</span>
+                                            <span class="easygo-fs-4"><img src="../../assets/images/svgs/crescent_black.svg" alt="crescent"> Duration: 6hrs</span>
                                         </div>
                                         <div class="col-6 py-2">
-                                            <span class="easygo-fs-4"><img src="../assets/images/svgs/globe_black.svg" alt="globe"> Language: English</span>
+                                            <span class="easygo-fs-4"><img src="../../assets/images/svgs/globe_black.svg" alt="globe"> Language: English</span>
                                         </div>
                                         <div class="col-6 py-2">
-                                            <span class="easygo-fs-4"><img src="../assets/images/svgs/clock_black.svg" alt="clock"> Start Time: 11am</span>
+                                            <span class="easygo-fs-4"><img src="../../assets/images/svgs/clock_black.svg" alt="clock"> Start Time: 11am</span>
 
                                         </div>
                                     </div>
@@ -636,7 +644,7 @@
                                                         Overall, a Ghanaian tour offers a unique and exciting experience for travelers, combining visits to historical and cultural landmarks with opportunities for adventure and exploration in the country's beautiful natural surroundings. Book your tour today and start planning your trip to this incredible destination
                                                     </div>
                                                     <div class="warning my-3 d-flex align-items-center gap-3">
-                                                        <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image"> <span class="easygo-fs-5">This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
+                                                        <img src="../../assets/images/svgs/exclamation_orange.svg" alt="warning image"> <span class="easygo-fs-5">This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -654,7 +662,7 @@
                                                             <div class="row">
                                                                 <div class="col-1">
                                                                     <div style="width: 2.5rem; height: 2.5rem;" class="rounded-circle border d-flex justify-content-center align-items-center">
-                                                                        <img src="../assets/images/svgs/path_orange.svg" alt="path image">
+                                                                        <img src="../../assets/images/svgs/path_orange.svg" alt="path image">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-11">
@@ -761,7 +769,7 @@
                                                             <div class="row">
                                                                 <div class="col-1">
                                                                     <div style="width: 2.5rem; height: 2.5rem;" class="easygo-fs-4 rounded-circle border d-flex justify-content-center align-items-center">
-                                                                        <img src="../assets/images/svgs/path_orange.svg" alt="path image">
+                                                                        <img src="../../assets/images/svgs/path_orange.svg" alt="path image">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-11">
@@ -819,11 +827,11 @@
                                                             <div class="easygo-fs-2 my-1">Curated by easygo events</div>
                                                             <div class="d-flex justify-content-start align-items-center gap-2">
                                                                 <div class="stars">
-                                                                    <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                    <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                 </div>
                                                                 <span class="easygo-fs-6 text-gray-1">4 star rating</span>
                                                             </div>
@@ -835,11 +843,11 @@
                                                                         <p class="m-0 p-0"><span class="easygo-h3">4.0</span>/5</p>
                                                                         <p class="easygo-fs-5">Based on 150 customer reviews</p>
                                                                         <div class="stars">
-                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                            <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -905,11 +913,11 @@
                                                                                         <h6>Victor Ciemerie</h6>
                                                                                         <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                         <div class="stars">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -929,11 +937,11 @@
                                                                                         <h6>Victor Ciemerie</h6>
                                                                                         <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                         <div class="stars">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -953,11 +961,11 @@
                                                                                         <h6>Victor Ciemerie</h6>
                                                                                         <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                         <div class="stars">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -977,11 +985,11 @@
                                                                                         <h6>Victor Ciemerie</h6>
                                                                                         <small class="text-gray-1 easygo-fs-6">3 days ago</small>
                                                                                         <div class="stars">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                                                                            <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/full_star.svg" alt="full star">
+                                                                                            <img src="../../assets/images/svgs/empty_star.svg" alt="full star">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -1009,22 +1017,22 @@
                                             <h1 class="easygo-fs-2">Destination Gallery</h1>
                                             <div class="grid-2">
                                                 <div class="grid-item">
-                                                    <img src="../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
+                                                    <img src="../../assets/images/others/scenery1.jpg" alt="scenery" class="w-100 h-100">
                                                 </div>
                                                 <div class="grid-item">
-                                                    <img src="../assets/images/others/scenery2.jpg" alt="scenery" class="w-100 h-100">
+                                                    <img src="../../assets/images/others/scenery2.jpg" alt="scenery" class="w-100 h-100">
                                                 </div>
                                                 <div class="grid-item">
-                                                    <img src="../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
+                                                    <img src="../../assets/images/others/tour1.jpg" alt="scenery" class="w-100 h-100">
                                                 </div>
                                                 <div class="grid-item">
-                                                    <img src="../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
+                                                    <img src="../../assets/images/others/tour2.jpg" alt="scenery" class="w-100 h-100">
                                                 </div>
                                                 <div class="grid-item">
-                                                    <img src="../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
+                                                    <img src="../../assets/images/others/tour3.jpg" alt="scenery" class="w-100 h-100">
                                                 </div>
                                                 <div class="grid-item">
-                                                    <img src="../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
+                                                    <img src="../../assets/images/others/background.jpg" alt="scenery" class="w-100 h-100">
                                                 </div>
                                             </div>
                                         </div>
@@ -1038,8 +1046,15 @@
                             <!--- trip info section [end] -->
                             <!--- ================================ -->
                             <!--- ================================ -->
-                            <div class="warning d-flex align-items-center gap-3 mb-4">
-                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image"> <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span> <a class="easygo-btn-1">Click here</a>
+
+                            <div class="my-5">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 py-2">
+                                            <a href="./book_trip.php" class="easygo-btn-3 easygo-fs-1 easygo-rounded-1 py-3">Cancel Trip</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1052,15 +1067,15 @@
     <!-- main content end -->
 
     <!-- Bootstrap js -->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
-    <script src="../assets/js/jquery-3.6.1.min.js"></script>
+    <script src="../../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Swiper js -->
-    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
-    <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/home.js"></script>
-    <script src="../assets/js/functions.js"></script>
+    <script src="../../assets/js/general.js"></script>
+    <script src="../../assets/js/home.js"></script>
+    <script src="../../assets/js/functions.js"></script>
 </body>
 
 </html>

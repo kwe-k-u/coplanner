@@ -20,7 +20,7 @@
     <main class="form-page-main container">
         <div class="form-container container" style="max-width: 600px;">
             <!-- register form 1 [start] -->
-            <form>
+            <form onsubmit="return signup(this)">
                 <div class="form-header">
                     <div class="logo">
                         <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easy go logo">
@@ -42,7 +42,7 @@
                     <input type="text" class="border-blue" name="email" placeholder="Email">
                 </div>
                 <div class="input-field">
-                    <input type="text" class="border-blue" name="phone" placeholder="Telephone">
+                    <input type="text" class="border-blue" name="phone" placeholder="Phone number">
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
@@ -59,22 +59,12 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="input-field">
-                            <input type="text" class="border-blue" name="phone" placeholder="Address">
+                            <input type="text" class="border-blue" name="country" placeholder="Country">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="input-field">
-                            <input type="text" class="border-blue" name="phone" placeholder="City">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="input-field">
-                            <input type="text" class="border-blue" name="phone" placeholder="State">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="input-field">
-                            <input type="text" class="border-blue" name="phone" placeholder="Country">
+                            <input type="text" class="border-blue" name="referral" placeholder="Referral Code">
                         </div>
                     </div>
                 </div>
@@ -83,7 +73,7 @@
                     <input type="checkbox"><span>By creating an account, you agree to these <a href="">terms and conditions</a></span>
                 </div>
                 <div class="input-field button-container">
-                    <button class="easygo-btn-1 easygo-rounded-2" type="button">Register</button>
+                    <button class="easygo-btn-1 easygo-rounded-2" type="submit">Register</button>
                     <p class="easygo-fs-5 text-center mt-4">Already have an account ? <a href="./login.php" class="easygo-fs-5 easygo-fw-3">Login now</a></p>
                 </div>
             </form>
@@ -100,7 +90,7 @@
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/curator_auth.js"></script>
+    <script src="../assets/js/user_auth.js"></script>
 </body>
 
 </html>

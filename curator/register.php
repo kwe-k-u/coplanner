@@ -125,7 +125,7 @@
                         </div>
                         <a>Upload file</a>
                         <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                        <input id="inc_doc" accept=".png, .jpg, .jpeg, .svg" type="file">
+                        <input id="inc_doc" accept=".png, .jpg, .docx, .doc .pdf" type="file">
                     </div>
                 </div>
                 <div class="agreement-check">

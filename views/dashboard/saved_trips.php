@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easygo - User Dashboard | Saved Trips</title>
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- swiper css -->
-    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../assets/css/swiper-bundle.min.css">
     <!-- easygo css -->
-    <link rel="stylesheet" href="../assets/css/general.css">
-    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../../assets/css/general.css">
+    <link rel="stylesheet" href="../../assets/css/home.css">
 </head>
 
 <body>
@@ -35,8 +35,13 @@
                 <!-- sidebar [start] -->
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
-                        <div class="logo m-md-auto">
-                            <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+                        <script>
+                            function goHome(){
+                                window.location.href="../home.php";;
+                            }
+                        </script>
+                        <div class="logo m-md-auto" onclick = "return goHome()">
+                            <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
                             <span class="bar"></span>
@@ -65,7 +70,7 @@
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" href="./contact.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -73,7 +78,7 @@
                     <div class="d-flex justify-content-center my-3 d-md-none">
                         <div class="d-flex gap-2">
                             <div class="user-icon bg-blue">
-                                <!-- <img src="../assets/images/others/profile.jpeg" alt=""> -->
+                                <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
                             </div>
                             <div class="d-flex flex-column justify-content-center gap-1">
                                 <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
@@ -93,7 +98,7 @@
                             <div class="d-flex justify-content-center my-3">
                                 <div class="d-flex gap-2">
                                     <div class="user-icon bg-blue">
-                                        <!-- <img src="../assets/images/others/profile.jpeg" alt=""> -->
+                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
                                     </div>
                                     <div class="d-flex flex-column justify-content-center gap-1">
                                         <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
@@ -113,7 +118,7 @@
                                         <div class='row box-shadow-1 py-5 rounded'>
                                             <div class='col-lg-6'>
                                                 <div class='rounded overflow-hidden h-100' style='max-width: 100%; margin: auto'>
-                                                    <img src='../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
+                                                    <img src='../../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
                                                 </div>
                                             </div>
                                             <div class='my-auto col-lg-6 d-flex justify-content-center align-content-center'>
@@ -130,11 +135,11 @@
                                                                 <div class='easygo-fs-4 mb-1'>Curated by easygo events</div>
                                                                 <div class='d-flex justify-content-start align-items-center gap-2'>
                                                                     <div class='stars'>
-                                                                        <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/empty_star.svg' alt='empty star'>
+                                                                        <img src='../../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/empty_star.svg' alt='empty star'>
                                                                     </div>
                                                                     <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
                                                                 </div>
@@ -144,9 +149,9 @@
                                                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur aliquid, quibusdam repellendus consectetur fugit illo eius error pariatur distinctio recusandae vel dolor, alias tempora quaerat nisi saepe, sapiente sed placeat! Numquam doloribus iure quibusdam libero optio illum accusantium quidem non molestias vero officia iusto nesciunt repudiandae, aperiam, deleniti, vitae cupiditate.
                                                         </div>
                                                         <div class='d-flex justify-content-between'>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
                                                         </div>
                                                     </div>
                                                     <div class='trip-card-footer px-0 py-3'>
@@ -170,7 +175,7 @@
                                         <div class='row box-shadow-1 py-5 rounded'>
                                             <div class='col-lg-6'>
                                                 <div class='rounded overflow-hidden h-100' style='max-width: 100%; margin: auto'>
-                                                    <img src='../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
+                                                    <img src='../../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
                                                 </div>
                                             </div>
                                             <div class='my-auto col-lg-6 d-flex justify-content-center align-content-center'>
@@ -187,11 +192,11 @@
                                                                 <div class='easygo-fs-4 mb-1'>Curated by easygo events</div>
                                                                 <div class='d-flex justify-content-start align-items-center gap-2'>
                                                                     <div class='stars'>
-                                                                        <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/empty_star.svg' alt='empty star'>
+                                                                        <img src='../../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/empty_star.svg' alt='empty star'>
                                                                     </div>
                                                                     <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
                                                                 </div>
@@ -201,9 +206,9 @@
                                                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur aliquid, quibusdam repellendus consectetur fugit illo eius error pariatur distinctio recusandae vel dolor, alias tempora quaerat nisi saepe, sapiente sed placeat! Numquam doloribus iure quibusdam libero optio illum accusantium quidem non molestias vero officia iusto nesciunt repudiandae, aperiam, deleniti, vitae cupiditate.
                                                         </div>
                                                         <div class='d-flex justify-content-between'>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
                                                         </div>
                                                     </div>
                                                     <div class='trip-card-footer px-0 py-3'>
@@ -227,7 +232,7 @@
                                         <div class='row box-shadow-1 py-5 rounded'>
                                             <div class='col-lg-6'>
                                                 <div class='rounded overflow-hidden h-100' style='max-width: 100%; margin: auto'>
-                                                    <img src='../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
+                                                    <img src='../../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
                                                 </div>
                                             </div>
                                             <div class='my-auto col-lg-6 d-flex justify-content-center align-content-center'>
@@ -244,11 +249,11 @@
                                                                 <div class='easygo-fs-4 mb-1'>Curated by easygo events</div>
                                                                 <div class='d-flex justify-content-start align-items-center gap-2'>
                                                                     <div class='stars'>
-                                                                        <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../assets/images/svgs/empty_star.svg' alt='empty star'>
+                                                                        <img src='../../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
+                                                                        <img src='../../assets/images/svgs/empty_star.svg' alt='empty star'>
                                                                     </div>
                                                                     <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
                                                                 </div>
@@ -258,9 +263,9 @@
                                                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur aliquid, quibusdam repellendus consectetur fugit illo eius error pariatur distinctio recusandae vel dolor, alias tempora quaerat nisi saepe, sapiente sed placeat! Numquam doloribus iure quibusdam libero optio illum accusantium quidem non molestias vero officia iusto nesciunt repudiandae, aperiam, deleniti, vitae cupiditate.
                                                         </div>
                                                         <div class='d-flex justify-content-between'>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                            <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
+                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
                                                         </div>
                                                     </div>
                                                     <div class='trip-card-footer px-0 py-3'>
@@ -293,15 +298,15 @@
     <!-- main content end -->
 
     <!-- Bootstrap js -->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
-    <script src="../assets/js/jquery-3.6.1.min.js"></script>
+    <script src="../../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Swiper js -->
-    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
-    <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/home.js"></script>
-    <script src="../assets/js/functions.js"></script>
+    <script src="../../assets/js/general.js"></script>
+    <script src="../../assets/js/home.js"></script>
+    <script src="../../assets/js/functions.js"></script>
 </body>
 
 </html>

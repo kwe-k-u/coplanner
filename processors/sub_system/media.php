@@ -16,7 +16,7 @@
 				case "upload_media":
 
 					$images = $_FILES;
-					//accepted values (image,video,document,confidential)
+					//accepted values (picture,video,document,confidential)
 					$media_type = $_POST["media_type"];
 
 					foreach ($images as $entry) {
@@ -39,14 +39,10 @@
 						if ($media_type == "confidential"){
 							//TODO:: notify confidentiality
 						}
-						// $paths = $;
-						// echo $location;
 						send_json(array("media_id"=> $id));
-						// $paths = $paths.";".$id;
 					}
 
 
-					// echo substr($paths,1);
 					die();
 				case "link_curator_manager_id":
 					$user_id = $_POST["user_id"];
@@ -63,6 +59,12 @@
 						$curator_id = $_POST["curator_id"];
 						$media_id = $_POST["media_id"];
 						$status = update_curator_logo($curator_id,$media_id);
+						send_json(array("status" => $status ? "Success" : "Failed"), $status ? 200 : 100);
+						die();
+					case "update_user_profile_image":
+						$user_id = $_POST["user_id"];
+						$media_id = $_POST["media_id"];
+						$status = update_profile_image($user_id,$media_id);
 						send_json(array("status" => $status ? "Success" : "Failed"), $status ? 200 : 100);
 						die();
 				default:
