@@ -730,7 +730,16 @@ input:disabled {
   border-color: var(--easygo-blue) !important;
 }
 .border-orange {
-  border-color: var(--easygo-orange);
+  border-color: var(--easygo-orange) !important;
+}
+.border-gray-1{
+  border-color: var(--easygo-gray-1) !important;
+}
+.border-gray-2{
+  border-color: var(--easygo-gray-2) !important;
+}
+.border-gray-3{
+  border-color: var(--easygo-gray-3) !important;
 }
 
 /** border radii **/
