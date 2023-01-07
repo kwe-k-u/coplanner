@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- EHImageUpload css -->
+    <link rel="stylesheet" href="../assets/css/EhImageUploadDisplay.css">
     <!-- easygo css -->
     <link rel="stylesheet" href="../assets/css/general.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
@@ -113,14 +115,12 @@
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div>
-                                    <div id="coverphoto-upload-btn" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#cover-photo-upload" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input visibility-changer">
+                                    <div id="coverphoto-upload-btn" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#cover-photo-upload-outer" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input visibility-changer">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
-                                        <a>Click to upload or drag and drop</a>
+                                        <a>Click to upload</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                        <div class="img-display">
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-input-field">
@@ -148,11 +148,11 @@
                             </div>
                             <div class="col-lg-7">
                                 <div>
-                                    <div id="tripimages-upload-btn" data-bs-toggle="modal" data-bs-target="#upload-img-modal" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#trip-imgs-upload" class="file-input visibility-changer">
+                                    <div id="tripimages-upload-btn" data-bs-toggle="modal" data-bs-target="#upload-img-modal" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#trip-imgs-upload-outer" class="file-input visibility-changer">
                                         <div class="upload-symbol">
                                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                         </div>
-                                        <a>Click to upload or drag and drop</a>
+                                        <a>Click to upload</a>
                                         <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
                                         <div class="img-display">
                                         </div>
@@ -247,7 +247,7 @@
                         <h5 class="mb-2">Upload Image</h5>
 
                         <div>
-                            <div id="cover-photo-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
+                            <!-- <div id="cover-photo-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
                                 <div class="upload-symbol">
                                     <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                 </div>
@@ -256,8 +256,40 @@
                                 <input accept=".png, .jpg, .jpeg, .svg" type="file">
                                 <div class="img-display">
                                 </div>
+                            </div> -->
+                            <!-- ============================== -->
+                            <!-- cover photo upload file input [start] -->
+                            <div style="height: 200px;" class ="cover_or_trip-imgs" id="cover-photo-upload-outer">
+                                <div id="cover-photo-upload" id="upload-display" class="eh_img-upload-display border-gray-2">
+                                    <div class="eh_iu-label">
+                                        <div class="upload-symbol rounded-circle bg-gray-2">
+                                            <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image" style="width: 2rem; height: 2rem;">
+                                        </div>
+                                        <a class="easygo-blue easygo-fw-1 easygo-fs-4">Click to upload or drag and drop</a>
+                                        <span class="text-gray-1 easygo-fs-4">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                    </div>
+                                    <input id="file" type="file" />
+                                </div>
                             </div>
-                            <div id="trip-imgs-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
+                            <!-- cover photo upload file input [end] -->
+                            <!-- ============================== -->
+                            <!-- ============================== -->
+                            <!-- trip images  upload file input [start] -->
+                            <div style="height: 200px;" id="trip-imgs-upload-outer" class ="cover_or_trip-imgs">
+                                <div id="trip-imgs-upload" id="upload-display" class="eh_img-upload-display border-gray-2">
+                                    <div class="eh_iu-label">
+                                        <div class="upload-symbol rounded-circle bg-gray-2">
+                                            <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image" style="width: 2rem; height: 2rem;">
+                                        </div>
+                                        <a class="easygo-blue easygo-fw-1 easygo-fs-4">Click to upload or drag and drop</a>
+                                        <span class="text-gray-1 easygo-fs-4">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                    </div>
+                                    <input id="file" type="file" multiple/>
+                                </div>
+                            </div>
+                            <!-- trip images  upload file input [end] -->
+                            <!-- ============================== -->
+                            <!-- <div id="trip-imgs-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
                                 <div class="upload-symbol">
                                     <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                                 </div>
@@ -266,7 +298,7 @@
                                 <input accept=".png, .jpg, .jpeg, .svg" type="file" multiple>
                                 <div class="img-display">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -572,6 +604,8 @@
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
+    <!-- EHImageUpload js -->
+    <script src="../assets/js/EhImageUploadDisplay.js"></script>
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/curator_general.js"></script>

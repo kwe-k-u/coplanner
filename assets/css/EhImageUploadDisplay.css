@@ -1,0 +1,105 @@
+/** styles for eh image upload **/
+.eh_img-upload-display {
+  width: 100%;
+  height: 100%;
+  border: dashed gray 1px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.eh_img-upload-display .eh_iu-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.eh_img-upload-display input[type="file"] {
+  display: none;
+}
+
+.eh_img-display {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1rem;
+  display: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.eh_img-display.show {
+  display: block;
+}
+
+.eh_img-display .eh_img-display-item {
+  display: inline-block;
+  pointer-events: none;
+  position: relative;
+  height: 100%;
+  flex: 0 0 auto;
+  width: 8rem;
+  padding: 0rem 0.5rem;
+}
+
+.eh_img-display .eh_img-display-item img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.eh_img-display .eh_img-display-item .item-remove {
+  position: absolute;
+  right: 0;
+  top: -5%;
+  background-color: white;
+  font-weight: 700;
+  border-radius: 50%;
+  color: red;
+  border: none;
+  pointer-events: all;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.eh_dragover-interface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(94, 164, 192);
+  color: rgb(106, 33, 109);
+  text-transform: uppercase;
+  font-weight: bold;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.eh_dragover-interface.show {
+  opacity: 1;
+}
+
+/** for alternate display **/
+.eh_alt-display {
+  position: relative;
+}
