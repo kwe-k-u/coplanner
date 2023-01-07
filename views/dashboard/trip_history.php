@@ -1,3 +1,7 @@
+<?php
+require_once(__DIR__ . "/../../utils/core.php");
+login_check();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard</title>
+    <title>easygo - Trip History</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -34,11 +38,11 @@
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
                         <script>
-                            function goHome(){
-                                window.location.href="../home.php";;
+                            function goHome() {
+                                window.location.href = "../home.php";;
                             }
                         </script>
-                        <div class="logo m-md-auto" onclick = "return goHome()">
+                        <div class="logo m-md-auto" onclick="return goHome()">
                             <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
@@ -48,24 +52,26 @@
                     </div>
                     <nav class="sidebar-navbar">
                         <div>
+
                             <ul class="sidebar-nav-menu">
+
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./user_dashboard_trips.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_profile.php"><i class="fa-solid fa-user"></i> Profile</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./trip_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
@@ -106,47 +112,6 @@
                             </div>
                         </div>
                         <div class="main-content-body py-2">
-                            <!-- ============================== -->
-                            <!-- stat cards [start] -->
-                            <section class="stat-cards py-3">
-                                <div class="d-flex gap-3 w-100" style="overflow-x: auto;">
-                                    <div style="min-width: 300px;">
-                                        <div class="info-card m-auto bg-white">
-                                            <div class="info-img">
-                                                <img src="../../assets/images/svgs/bus_red_bg.svg" alt="bus image">
-                                            </div>
-                                            <div class="info-content">
-                                                <div class="info-title easygo-fs-2">Completed trips</div>
-                                                <div class="info-num easygo-fs-3">10</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="min-width: 300px;">
-                                        <div class="info-card m-auto bg-white">
-                                            <div class="info-img">
-                                                <img src="../../assets/images/svgs/bus_black_bg.svg" alt="bus image">
-                                            </div>
-                                            <div class="info-content">
-                                                <div class="info-title easygo-fs-2">Ongoing trips</div>
-                                                <div class="info-num easygo-fs-3">10</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="min-width: 300px;">
-                                        <div class="info-card m-auto bg-white">
-                                            <div class="info-img">
-                                                <img src="../../assets/images/svgs/bus_black_bg.svg" alt="bus image" />
-                                            </div>
-                                            <div class="info-content">
-                                                <div class="info-title easygo-fs-2">Canceled trips</div>
-                                                <div class="info-num easygo-fs-3">10</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                            <!-- stat cards [end] -->
-                            <!-- ============================== -->
                             <!-- ============================== -->
                             <!-- trip history [start] -->
                             <section class="mt-5">

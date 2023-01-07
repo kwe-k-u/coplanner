@@ -54,7 +54,7 @@
                     </div>
                     <div class='d-flex flex-column justify-content-center gap-1'>
                         <h5 class='easygo-fs-4 m-0'>$user_name</h5>
-                        <h6 class='easygo-fs-5 m-0'><a class='text-gray-1 easygo-fs-5 text-hover-blue' href='../views/user_dashboard_saved_trips.php'>Go To Profile &nbsp;<i class='fa-solid fa-arrow-right-long'></i></a></h6>
+                        <h6 class='easygo-fs-5 m-0'><a class='text-gray-1 easygo-fs-5 text-hover-blue' href='../views/dashboard/dashboard.php'>Go To Profile &nbsp;<i class='fa-solid fa-arrow-right-long'></i></a></h6>
                     </div>
                 </div>
             </div>

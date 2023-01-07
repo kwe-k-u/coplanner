@@ -20,9 +20,15 @@
     <main class="form-page-main container">
         <div class="form-container container" style="max-width: 600px;">
             <!-- register form 1 [start] -->
+
+            <script>
+                function goHome(){
+                    window.location.href = "../views/home.php";
+                }
+            </script>
             <form onsubmit="return signup(this)">
                 <div class="form-header">
-                    <div class="logo">
+                    <div class="logo" onclick="return goHome()">
                         <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
                     <p class="instruction easygo-fs-4">Please enter your credentials to sign up</p>

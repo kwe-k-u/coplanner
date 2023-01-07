@@ -1,3 +1,7 @@
+<?php
+	require_once(__DIR__."/../../utils/core.php");
+	login_check();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,29 +54,31 @@
                     </div>
                     <nav class="sidebar-navbar">
                         <div>
-                            <ul class="sidebar-nav-menu">
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./user_dashboard_trips.php"><i class="fa-solid fa-bus"></i> Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_profile.php"><i class="fa-solid fa-user"></i> Profile</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-                                </li>
-                            </ul>
+
+                        <ul class="sidebar-nav-menu">
+
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+</li>
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./trip_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+</li>
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
+</li>
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+</li>
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+</li>
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
+</li>
+<li class="s-nav-item px-3 py-2">
+    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+</li>
+</ul>
                         </div>
                     </nav>
                     <div class="d-flex justify-content-center my-3 d-md-none">
@@ -109,7 +115,7 @@
                         </div>
                         <div class="main-content-body py-2">
                             <div class="mb-4">
-                                <a href="./trips.php"> &lt; Back</a>
+                                <a href="./trip_history.php"> &lt; Back</a>
                             </div>
                             <!--- ================================ -->
                             <!--- image display section [start] -->

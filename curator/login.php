@@ -26,7 +26,12 @@ require_once(__DIR__."/../utils/core.php");
         <div class="form-container container">
             <form onsubmit="return login(this)">
                 <div class="form-header">
-                    <div class="logo">
+                    <script>
+                        function goHome(){
+                            window.location.href = "../views/home.php";
+                        }
+                    </script>
+                    <div class="logo" onclick="return goHome()">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your login credentials</p>

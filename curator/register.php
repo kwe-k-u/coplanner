@@ -25,7 +25,12 @@
             <!-- register form 1 [start] -->
             <form id="register-form-1">
                 <div class="form-header">
-                    <div class="logo">
+                    <script>
+                        function goHome(){
+                            window.location.href = "../views/home.php";
+                        }
+                    </script>
+                    <div class="logo" onclick="return goHome()">
                         <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your credentials</p>

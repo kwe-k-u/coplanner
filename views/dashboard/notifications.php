@@ -1,3 +1,7 @@
+<?php
+require_once(__DIR__ . "/../../utils/core.php");
+login_check();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,11 +40,11 @@
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
                         <script>
-                            function goHome(){
-                                window.location.href="../home.php";;
+                            function goHome() {
+                                window.location.href = "../home.php";;
                             }
                         </script>
-                        <div class="logo m-md-auto" onclick = "return goHome()">
+                        <div class="logo m-md-auto" onclick="return goHome()">
                             <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
@@ -50,24 +54,26 @@
                     </div>
                     <nav class="sidebar-navbar">
                         <div>
+
                             <ul class="sidebar-nav-menu">
-                            <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_trips.php"><i class="fa-solid fa-bus"></i> Trips</a>
+
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_profile.php"><i class="fa-solid fa-user"></i> Profile</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./trip_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./user_dashboard_saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./user_dashboard_notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./about.php"><i class="fa-solid fa-house"></i> Home Page</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
@@ -78,7 +84,7 @@
                     <div class="d-flex justify-content-center my-3 d-md-none">
                         <div class="d-flex gap-2">
                             <div class="user-icon bg-blue">
-                                <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
+                                <img src="../../assets/images/others/profile.jpeg" alt="">
                             </div>
                             <div class="d-flex flex-column justify-content-center gap-1">
                                 <h5 class="easygo-fs-4 m-0">Victor Ola</h5>

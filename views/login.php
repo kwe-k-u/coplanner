@@ -22,7 +22,13 @@
             <!-- register login form [start] -->
             <form onsubmit="return login(this)">
                 <div class="form-header">
-                    <div class="logo">
+
+                    <script>
+                        function goHome(){
+                            window.location.href = "../views/home.php";
+                        }
+                    </script>
+                    <div class="logo" onclick="return goHome()">
                         <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easy go logo">
                     </div>
                     <div class="easygo-fs-1">Welcome</div>
