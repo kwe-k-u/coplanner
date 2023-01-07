@@ -86,7 +86,7 @@
                 </div>
                 <div class="input-field">
                     <small class="text-gray-1">Upload company logo<span class="text-gray-2">(Optional)</span></small>
-                    <div class="file-input">
+                    <div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo">
                         <div class="upload-symbol">
                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                         </div>
@@ -99,7 +99,7 @@
                 <div class="input-field">
                     <small class="text-gray-1">Government Issued Identification Card</small>
                     <div class="inline-inputs">
-                        <div class="file-input">
+                        <div class="file-input drag-n-drop type-img" data-display-target="#id-front" data-input-target="#gov_id_front">
                             <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
@@ -107,7 +107,7 @@
                             <input id="gov_id_front" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-front">
                             <div id="id-front" data-input-target="#gov_id_front" class="img-display display-full"></div>
                         </div>
-                        <div class="file-input">
+                        <div class="file-input drag-n-drop type-img" data-display-target="#id-back"  data-input-target="#gov_id_back">
                             <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="input-field">
                     <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2">(Optional)</span></small>
-                    <div class="file-input type-doc">
+                    <div class="file-input drag-n-drop type-doc" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" data-input-target="#inc_doc">
                         <div class="upload-symbol">
                             <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                         </div>

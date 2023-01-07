@@ -9,8 +9,22 @@ $(document).ready(function () {
   $(".file-input input[type=file]").click(function (event) {
     event.stopPropagation();
   }); // preventing click event from bubbling
-  $(".file-input input[type=file].img-upload").change(displayUpload);
-  $(".file-input input[type=file].file-upload").change(showDocName);
+  $(".file-input.drag-n-drop").on("dragover", receiveDraggedFiles);
+  $(".file-input.drag-n-drop.type-img").on("drop", processDroppedFiles);
+  $(".file-input.drag-n-drop.type-doc").on("drop", showDroppedDocName);
+  $(".file-input input[type=file].img-upload").change(function (event) {
+    displayUpload(
+      $(this).attr("data-display-target"),
+      $(this).prop("files")[0]
+    );
+  });
+  $(".file-input input[type=file].file-upload").change(function (event) {
+    showDocName(
+      $(this).prop("files")[0],
+      $(this).attr("data-display-target"),
+      $(this).attr("data-name-display")
+    );
+  });
   $(".doc-display .doc-display-item .item-remove").click(removeDocName);
   $(".pad-item-add").click(padListAdd);
   $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
@@ -101,6 +115,7 @@ function deleteDispayItem(event) {
     let fileInput = document.querySelector(`${inputTarget}`);
     // removing the item from the file input
     fileInput.value = "";
+    fileInput.files = null;
   }
 
   this.parentElement.remove();
@@ -108,16 +123,31 @@ function deleteDispayItem(event) {
 }
 
 // function to show file name
-function showDocName() {
-  let targetDisplay = $(this).attr("data-display-target");
-  let nameDisplay = $(this).attr("data-name-display");
-  let file = $(this).prop("files")[0];
+function showDocName(file, targetDisplay, nameDisplay) {
   if (file) {
     $(`${targetDisplay}`).addClass("not-empty");
     $(`${nameDisplay}`).text(file.name);
   } else {
     $(`${targetDisplay}`).removeClass("not-empty");
   }
+}
+
+// function to show name of dropped document
+function showDroppedDocName(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  let targetDisplay = $(this).attr("data-display-target");
+  let nameDisplay = $(this).attr("data-name-display");
+  let file = event.originalEvent.dataTransfer.files[0];
+  if (file) {
+    $(`${targetDisplay}`).addClass("not-empty");
+    $(`${nameDisplay}`).text(file.name);
+  } else {
+    $(`${targetDisplay}`).removeClass("not-empty");
+  }
+
+  let fileInput = $(this).attr("data-input-target");
+  $(`${fileInput}`).prop("files", event.originalEvent.dataTransfer.files);
 }
 
 // function to remove file name
@@ -168,6 +198,25 @@ function changeVisibility() {
   });
 }
 
+// function to handle drag and drop events
+function receiveDraggedFiles(event) {
+  event.preventDefault();
+  event.stopPropagation();
+}
+
+// function to process dropped files
+function processDroppedFiles(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  displayUpload(
+    $(this).attr("data-display-target"),
+    event.originalEvent.dataTransfer.files[0]
+  );
+
+  let fileInput = $(this).attr("data-input-target");
+  $(`${fileInput}`).prop("files", event.originalEvent.dataTransfer.files);
+}
+
 //--- [form] functions ---//
 // to toggle password show
 function togglePasswordShow() {
@@ -188,10 +237,9 @@ function triggerFileUpload() {
 }
 
 // function to display uploaded item
-function displayUpload(event) {
-  let targetDisplay = $(this).attr("data-display-target");
+function displayUpload(targetDisplay, file) {
   $(`${targetDisplay}`).html("");
-  let file = $(this).prop("files")[0];
+
   if (file) {
     $(`${targetDisplay}`).addClass("not-empty");
     $(`${targetDisplay}`).append(createImgDispItem(file));
