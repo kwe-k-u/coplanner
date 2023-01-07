@@ -126,6 +126,10 @@
 // }
 
 
+
+/* [[[[ important information ]]]] */
+// ** to get the files out of these objects user the function
+// EhImageUploadDisplay.getFiles();
 let coverphoto_upload_display = new EhImageUploadDisplay("#cover-photo-upload", {
   dragAndDrop: true,
   altDisplay: {
@@ -135,6 +139,7 @@ let coverphoto_upload_display = new EhImageUploadDisplay("#cover-photo-upload", 
     width: "10rem",
   },
 });
+
 let tripimages_upload_display = new EhImageUploadDisplay("#trip-imgs-upload", {
   dragAndDrop: true,
   altDisplay: {
