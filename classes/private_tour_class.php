@@ -36,6 +36,17 @@ require_once(__DIR__. "/../utils/db_class.php");
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_user_private_trip_requests($id){
+			$sql = "SELECT * FROM `private_tour` WHERE `user_id` = '$id'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function count_request_quotes($id){
+			$sql = "SELECT COUNT(`private_tour_id`) AS count FROM `private_tour`
+			WHERE `user_id`= '$id'";
+			return $this->db_fetch_one($sql);
+		}
+
 
 
 

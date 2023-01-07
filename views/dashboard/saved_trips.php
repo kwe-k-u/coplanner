@@ -1,6 +1,11 @@
 <?php
-require_once(__DIR__ . "/../../utils/core.php");
-login_check();
+	require_once(__DIR__."/../../utils/core.php");
+	require_once(__DIR__."/../../controllers/interaction_controller.php");
+	login_check();
+
+    $user_id = get_session_user_id();
+    $user_name = get_username_by_id($user_id);
+    $profile = get_user_profile_img($user_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +44,7 @@ login_check();
                 <!-- sidebar [start] -->
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
-                        <script>
-                            function goHome() {
-                                window.location.href = "../home.php";;
-                            }
-                        </script>
-                        <div class="logo m-md-auto" onclick="return goHome()">
+                        <div class="logo m-md-auto" onclick="return goto_page('views/home.php')">
                             <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
@@ -83,13 +83,17 @@ login_check();
                     </nav>
                     <div class="d-flex justify-content-center my-3 d-md-none">
                         <div class="d-flex gap-2">
-                            <div class="user-icon bg-blue">
-                                <img src="../../assets/images/others/profile.jpeg" alt="">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center gap-1">
-                                <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                            </div>
+                            <?php
+                                echo "
+                                <div class='user-icon bg-blue'>
+                                    <img src='$profile' alt=''>
+                                </div>
+                                <div class='d-flex flex-column justify-content-center gap-1'>
+                                    <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                                    <h6 class='text-gray-1 easygo-fs-5 m-0'>User profile</h6>
+                                </div>
+                                ";
+                            ?>
                         </div>
                     </div>
                 </aside>
@@ -103,13 +107,16 @@ login_check();
                             <h3 class="m-0">Saved Trips</h3>
                             <div class="d-flex justify-content-center my-3">
                                 <div class="d-flex gap-2">
-                                    <div class="user-icon bg-blue">
-                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
+                                    <?php
+                                        echo "
+                                        <div class='user-icon bg-blue'>
+                                        <img src='$profile' alt=''>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center gap-1">
-                                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                        <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                                    </div>
+                                    <div class='d-flex flex-column justify-content-center gap-1'>
+                                        <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                                        <h6 class='text-gray-1 easygo-fs-5 m-0'>User profile</h6>
+                                    </div>"
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +125,29 @@ login_check();
                             <!-- saved trips listing [start] -->
                             <div class="px-2">
                                 <div class="row">
-                                    <!--- ================================ -->
+                                    <?php
+                                        $wishlist = get_user_wishlist($user_id);
+
+                                        if (!$wishlist){
+                                            echo "No Trips have been added to your wishlist";
+                                        }
+
+                                        foreach ($wishlist as $entry) {
+                                            $id = $entry["campaign_id"];
+                                            $title = $entry["title"];
+                                            $desc = shorten($entry["description"]);
+                                            $curator = get_curator_name($entry["curator_id"]);
+
+                                            $next = get_campaign_next_trip($id);
+                                            if ($next){
+                                                $start = $next["start_date"];
+                                                $end = $next["end_date"];
+                                                $fee = $next["fee"];
+                                                $currency = $next["currency"];
+                                            }
+
+                                        echo "
+                                        <!--- ================================ -->
                                     <!-- trip card horizontal [start] -->
                                     <div class='col-12 my-4'>
                                         <div class='row box-shadow-1 py-5 rounded'>
@@ -128,13 +157,13 @@ login_check();
                                                 </div>
                                             </div>
                                             <div class='my-auto col-lg-6 d-flex justify-content-center align-content-center'>
-                                                <div class="w-100">
+                                                <div class='w-100'>
                                                     <div>
                                                         <div class='trip-card-header border-0'>
                                                             <div class='title'>
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <h5 class='easygo-fw-1'>Bunsco Eco Park</h5>
-                                                                    <p class="d-lg-none d-block">
+                                                                <div class='d-flex justify-content-between align-items-center'>
+                                                                    <h5 class='easygo-fw-1'>$title</h5>
+                                                                    <p class='d-lg-none d-block'>
                                                                         <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
                                                                     </p>
                                                                 </div>
@@ -152,7 +181,7 @@ login_check();
                                                             </div>
                                                         </div>
                                                         <div class='trip-card-content py-1'>
-                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur aliquid, quibusdam repellendus consectetur fugit illo eius error pariatur distinctio recusandae vel dolor, alias tempora quaerat nisi saepe, sapiente sed placeat! Numquam doloribus iure quibusdam libero optio illum accusantium quidem non molestias vero officia iusto nesciunt repudiandae, aperiam, deleniti, vitae cupiditate.
+                                                            $desc
                                                         </div>
                                                         <div class='d-flex justify-content-between'>
                                                             <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
@@ -161,12 +190,12 @@ login_check();
                                                         </div>
                                                     </div>
                                                     <div class='trip-card-footer px-0 py-3'>
-                                                        <p class="d-none d-lg-block flex-grow-1">
+                                                        <p class='d-none d-lg-block flex-grow-1'>
                                                             <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
                                                         </p>
-                                                        <div class="d-flex gap-2 justify-content-end flex-grow-1">
-                                                            <a href='./trip_description.php?campaign_id=$id' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'><i class="fa-solid fa-trash"></i> Remove</a>
-                                                            <a href='./trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
+                                                        <div class='d-flex gap-2 justify-content-end flex-grow-1'>
+                                                            <a href='#' onclick='remove_from_wishlist(\"$user_id\",\"$id\")' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'><i class='fa-solid fa-trash'></i> Remove</a>
+                                                            <a href='../trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,121 +203,9 @@ login_check();
                                         </div>
                                     </div>
                                     <!-- trip card horizontal [end] -->
-                                    <!--- ================================ -->
-                                    <!--- ================================ -->
-                                    <!-- trip card horizontal [start] -->
-                                    <div class='col-12 my-4'>
-                                        <div class='row box-shadow-1 py-5 rounded'>
-                                            <div class='col-lg-6'>
-                                                <div class='rounded overflow-hidden h-100' style='max-width: 100%; margin: auto'>
-                                                    <img src='../../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
-                                                </div>
-                                            </div>
-                                            <div class='my-auto col-lg-6 d-flex justify-content-center align-content-center'>
-                                                <div class="w-100">
-                                                    <div>
-                                                        <div class='trip-card-header border-0'>
-                                                            <div class='title'>
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <h5 class='easygo-fw-1'>Bunsco Eco Park</h5>
-                                                                    <p class="d-lg-none d-block">
-                                                                        <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class='easygo-fs-4 mb-1'>Curated by easygo events</div>
-                                                                <div class='d-flex justify-content-start align-items-center gap-2'>
-                                                                    <div class='stars'>
-                                                                        <img src='../../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
-                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../../assets/images/svgs/empty_star.svg' alt='empty star'>
-                                                                    </div>
-                                                                    <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class='trip-card-content py-1'>
-                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur aliquid, quibusdam repellendus consectetur fugit illo eius error pariatur distinctio recusandae vel dolor, alias tempora quaerat nisi saepe, sapiente sed placeat! Numquam doloribus iure quibusdam libero optio illum accusantium quidem non molestias vero officia iusto nesciunt repudiandae, aperiam, deleniti, vitae cupiditate.
-                                                        </div>
-                                                        <div class='d-flex justify-content-between'>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class='trip-card-footer px-0 py-3'>
-                                                        <p class="d-none d-lg-block flex-grow-1">
-                                                            <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
-                                                        </p>
-                                                        <div class="d-flex gap-2 justify-content-end flex-grow-1">
-                                                            <a href='./trip_description.php?campaign_id=$id' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'><i class="fa-solid fa-trash"></i> Remove</a>
-                                                            <a href='./trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- trip card horizontal [end] -->
-                                    <!--- ================================ -->
-                                    <!--- ================================ -->
-                                    <!-- trip card horizontal [start] -->
-                                    <div class='col-12 my-4'>
-                                        <div class='row box-shadow-1 py-5 rounded'>
-                                            <div class='col-lg-6'>
-                                                <div class='rounded overflow-hidden h-100' style='max-width: 100%; margin: auto'>
-                                                    <img src='../../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
-                                                </div>
-                                            </div>
-                                            <div class='my-auto col-lg-6 d-flex justify-content-center align-content-center'>
-                                                <div class="w-100">
-                                                    <div>
-                                                        <div class='trip-card-header border-0'>
-                                                            <div class='title'>
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <h5 class='easygo-fw-1'>Bunsco Eco Park</h5>
-                                                                    <p class="d-lg-none d-block">
-                                                                        <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class='easygo-fs-4 mb-1'>Curated by easygo events</div>
-                                                                <div class='d-flex justify-content-start align-items-center gap-2'>
-                                                                    <div class='stars'>
-                                                                        <img src='../../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
-                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../../assets/images/svgs/full_star.svg' alt='full star'>
-                                                                        <img src='../../assets/images/svgs/empty_star.svg' alt='empty star'>
-                                                                    </div>
-                                                                    <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class='trip-card-content py-1'>
-                                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur aliquid, quibusdam repellendus consectetur fugit illo eius error pariatur distinctio recusandae vel dolor, alias tempora quaerat nisi saepe, sapiente sed placeat! Numquam doloribus iure quibusdam libero optio illum accusantium quidem non molestias vero officia iusto nesciunt repudiandae, aperiam, deleniti, vitae cupiditate.
-                                                        </div>
-                                                        <div class='d-flex justify-content-between'>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class='trip-card-footer px-0 py-3'>
-                                                        <p class="d-none d-lg-block flex-grow-1">
-                                                            <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
-                                                        </p>
-                                                        <div class="d-flex gap-2 justify-content-end flex-grow-1">
-                                                            <a href='./trip_description.php?campaign_id=$id' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'><i class="fa-solid fa-trash"></i> Remove</a>
-                                                            <a href='./trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- trip card horizontal [end] -->
-                                    <!--- ================================ -->
+                                    <!--- ================================ -->";
+                                        }
+                                    ?>
                                 </div>
                             </div>
                             <!-- saved trips listing [end] -->

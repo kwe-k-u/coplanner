@@ -1,6 +1,7 @@
 <?php
     require_once(__DIR__."/../utils/core.php");
-    require_once(__DIR__."/../controllers/campaign_controller.php");
+    // require_once(__DIR__."/../controllers/campaign_controller.php");
+    require_once(__DIR__."/../controllers/interaction_controller.php");
 
 
     if (!isset($_GET["campaign_id"])){
@@ -14,6 +15,14 @@
     } else {
         $next = get_campaign_next_trip($id);
         $trip_id = $next["trip_id"];
+    }
+
+
+    if(is_session_logged_in()){
+        $user_id = get_session_user_id();
+        $is_wishlisted = is_campaign_wishlisted($user_id,$id);
+    }else {
+        $is_wishlisted = false;
     }
 
         $campaign = get_campaign_by_id($id);
@@ -948,14 +957,23 @@
             <div class="my-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5 py-2">
-                            <a class="d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue">Save Trip</a>
-                        </div>
-                        <div class="col-lg-7 py-2">
-                            <?php
-                                echo "<a href='./book_trip.php?trip_id=$trip_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Trip</a>";
+                        <?php
+                        if($is_wishlisted){
+                            echo "<div class='col-lg-5 py-2'>
+                            <a onclick='return remove_from_wishlist(\"$user_id\",\"$id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Remove from Wishlist</a>
+                        </div>";
+                        } else {
+                            echo "<div class='col-lg-5 py-2'>
+                            <a onclick='return add_to_wishlist(\"$user_id\",\"$id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Add to Wishlist</a>
+                        </div>";
+                        }
+
+                            echo "
+                            <div class='col-lg-7 py-2'>
+                                <a href='./book_trip.php?trip_id=$trip_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Trip</a>
+                            </div>
+                                ";
                             ?>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -979,6 +997,7 @@
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/home.js"></script>
+    <script src="../assets/js/functions.js"></script>
 </body>
 
 </html>

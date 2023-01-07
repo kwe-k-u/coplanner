@@ -16,6 +16,16 @@
 		return $trip->place_tour_request_bid($b_id,$curator,$r_id,$comment,$fee);
 	}
 
+	function count_request_quotes($id){
+		$trip = new private_tour_class();
+		return $trip->count_request_quotes($id)["count"];
+	}
+
+
+	function get_user_private_trip_requests($id){
+		$trip = new private_tour_class();
+		return $trip->get_user_private_trip_requests($id);
+	}
 
 
 	function get_private_trip_requests($accepted = false){

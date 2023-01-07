@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__. "/../controllers/campaign_controller.php");
+    require_once(__DIR__. "/../controllers/interaction_controller.php");
     require_once(__DIR__. "/../utils/core.php");
 ?>
 <!DOCTYPE html>

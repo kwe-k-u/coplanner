@@ -60,13 +60,13 @@
                     <small class="input-title">Company profile</small>
                     <div class="d-flex">
                         <div class="dropdown">
-                            <a id="country_selected_icon" href="#ghana" style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a id="country_selected_icon" href="#ghana" style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag">
                             </a>
-                            <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
-                                <li class="text-hover-orange" onclick="on_country_select('Ghana')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
-                                <li class="text-hover-orange" onclick="on_country_select('Nigeria')"><img src="../assets/images/svgs/nigeria_flag.svg" alt="Zimbabwe flag"> Nigeria</li>
-                                <li class="text-hover-orange" onclick="on_country_select('Zimbabwe')"><img src="../assets/images/svgs/zimbabwe_flag.svg" alt="Zimbabwe flag"> Zimbabwe</li>
+                            <ul class="dropdown-menu px-2" aria-labelledby="country_selected_icon">
+                                <li class="text-hover-orange" onclick="on_option_select('country_selected_icon','Ghana')"><img src="../assets/images/svgs/GH_flag.svg" alt="Ghana flag"> Ghana</li>
+                                <li class="text-hover-orange" onclick="on_option_select('country_selected_icon','Nigeria')"><img src="../assets/images/svgs/nigeria_flag.svg" alt="Zimbabwe flag"> Nigeria</li>
+                                <li class="text-hover-orange" onclick="on_option_select('country_selected_icon','Zimbabwe')"><img src="../assets/images/svgs/zimbabwe_flag.svg" alt="Zimbabwe flag"> Zimbabwe</li>
                             </ul>
                         </div>
                         <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" value="easygo">

@@ -23,7 +23,7 @@
         <!-- navbar [start] -->
         <?php
         require_once("../components/navbar.php");
-        ?>        
+        ?>
         <!-- navbar [end] -->
         <!--- ================================ -->
         <main>
@@ -304,7 +304,7 @@
                             <div class="container-fluid">
                                 <h1>Let’s create a memorable trip for you and your loved ones</h1>
                                 <p>Plan a trip with your loved ones.. Enjoy a weekend with your friends and family, we’ll help you plan the perfect weekend trip. You’ll choose from our numerous trip locations filled with fun activities and sites.</p>
-                                <button type="button" class="easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5" style="border-radius: 50px; word-spacing: 5px;">View Trips</button>
+                                <button type="button" onclick="return goto_page('views/dashboard/private_tour.php')" class="easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5" style="border-radius: 50px; word-spacing: 5px;"> Private Tour</button>
 
                             </div>
                         </div>

@@ -49,5 +49,5 @@
 		die();
 	}
 
-	// interaction();
+	interaction();
 ?>

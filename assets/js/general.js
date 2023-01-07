@@ -321,3 +321,36 @@ function disableInputs() {
   let targets = $(this).attr("data-disable-target");
   $(`${targets}`).prop("disabled", true);
 }
+
+
+
+//Returns the value of the option selected in the custom select dropdown
+function get_dropdown_value(dropdown_id){
+  return document.getElementById(dropdown_id).href.split("#")[1]
+}
+
+//Updates the custom dropdown value with the value of selected option
+function on_option_select(id,value){
+	var selected = document.getElementById(id);
+	selected.href="#"+value;
+}
+
+//Shows a loader animation for 5 seconds
+function show_loader(hide_element = null, time=5000){
+	var fn = e => {e.preventDefault(); e.stopPropagation();};
+
+  if (hide_element != null){
+    hide_element.classList.toggle("hide");
+    hide_element.classList.toggle("animate-bottom");
+  }
+	document.getElementsByClassName("loader")[0].style.display= "inline";
+	document.addEventListener("click", fn, true);
+	var load_var = setTimeout(()=> {
+    if (hide_element != null){
+      hide_element.classList.toggle("hide");
+    }
+		document.getElementsByClassName("loader")[0].style.display= "none";
+		document.removeEventListener("click", fn, true);
+		// document.getElementsByClassName("loader")[0].classList.toggle("hide");
+	}, time);
+}

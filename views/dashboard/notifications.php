@@ -1,6 +1,9 @@
 <?php
-require_once(__DIR__ . "/../../utils/core.php");
-login_check();
+	require_once(__DIR__."/../../utils/core.php");
+	require_once(__DIR__."/../../controllers/auth_controller.php");
+	require_once(__DIR__."/../../controllers/private_tour_controller.php");
+	require_once(__DIR__."/../../controllers/media_controller.php");
+	login_check();
 ?>
 <!DOCTYPE html>
 <html lang="en">

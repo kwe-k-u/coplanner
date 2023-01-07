@@ -12,10 +12,67 @@
 		return $inte->get_all_campaigns();
 	}
 
+	function get_curator_name($curator_id){
+		$inte = new interaction_class();
+		return $inte->get_curator_name($curator_id)["curator_name"];
+	}
+
+	function get_private_trip_quotes($request_id){
+		$inte = new interaction_class();
+		return $inte->get_private_trip_quotes($request_id);
+	}
+
+	function get_username_by_id($id){
+		$inte = new interaction_class();
+		return $inte->get_user_name_by_id($id)["user_name"];
+	}
+
+	function get_user_wishlist($user_id){
+		$inte = new interaction_class();
+		return $inte->get_user_wishlist($user_id);
+	}
+
+	function get_current_campaigns(){
+		$inte = new interaction_class();
+		return $inte->get_current_campaigns();
+	}
+
+	function get_past_campaigns(){
+		$inte = new interaction_class();
+		return $inte->get_past_campaigns();
+	}
+
+
+	function get_campaign_by_id($id){
+		$inte = new interaction_class();
+		return $inte->get_campaign_by_id($id);
+	}
+
+	function get_toursite_by_campaign($id){
+		$inte = new interaction_class();
+		return $inte->get_toursite_by_campaign($id);
+	}
+
+	function get_campaign_activities($id){
+		$inte = new interaction_class();
+		return $inte->get_campaign_activities($id);
+	}
+
+
+	function get_user_profile_img($id){
+		$inte = new interaction_class();
+		return $inte->get_user_profile_img($id)["media_location"] ?? get_default_profile_img();
+	}
+
 
 	function get_campaign_trips($campaign_id){
 		$inte = new interaction_class();
 		return $inte->get_campaign_trips($campaign_id);
+	}
+
+	function get_campaign_next_trip($id){
+		$inte = new interaction_class();
+		return $inte->get_campaign_next_trip($id);
 	}
 
 

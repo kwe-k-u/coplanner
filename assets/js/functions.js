@@ -18,19 +18,6 @@ function url_params(key){
 	return value;
 }
 
-function show_loader(hide_element){
-	var fn = e => {e.preventDefault(); e.stopPropagation();};
-	hide_element.classList.toggle("hide");
-	hide_element.classList.toggle("animate-bottom");
-	document.getElementsByClassName("loader")[0].style.display= "inline";
-	document.addEventListener("click", fn, true);
-	var load_var = setTimeout(()=> {
-		hide_element.classList.toggle("hide");
-		document.getElementsByClassName("loader")[0].style.display= "none";
-		document.removeEventListener("click", fn, true);
-		// document.getElementsByClassName("loader")[0].classList.toggle("hide");
-	}, 5000);
-}
 
 
 //Make http requests with paraterms type(POST/GET), endpoint,payload and onload function
@@ -246,6 +233,46 @@ function add_subscriber(event){
 
 		}
 	)
+}
+
+function goto_page(url, isRelative = true){
+	if (isRelative){
+		window.location.href = baseurl + url;
+	}else {
+		window.location.href = url;
+	}
+}
+
+
+
+
+function add_to_wishlist(user_id,campaign_id){
+	payload = "action=add_campaign_wishlist";
+	payload += "&user_id="+user_id;
+	payload += "&campaign_id="+campaign_id;
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response)=>{
+			window.location.reload();
+		}
+	);
+}
+
+
+function remove_from_wishlist(user_id,campaign_id){
+	payload = "action=remove_campaign_wishlist";
+	payload += "&user_id="+user_id;
+	payload += "&campaign_id="+campaign_id;
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response)=>{
+			window.location.reload();
+		}
+	);
 }
 
 

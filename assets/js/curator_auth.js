@@ -11,8 +11,7 @@ function signup(){
 	var c_password = form1.con_pswd.value;
 	var phone = form1.phone.value;
 	var company_name = form1.company_name.value;
-	var company_country = document.getElementById("country_selected_icon").href.split("#")[1];
-	// alert(company_country)
+	var company_country = get_dropdown_value("country_selected_icon");
 	var company_logo = document.getElementById("company_logo");
 	var id_front = document.getElementById("gov_id_front");
 	var id_back = document.getElementById("gov_id_back");
@@ -105,10 +104,4 @@ function signup(){
 
 
 	// alert(name);
-}
-
-
-function on_country_select(country){
-	var selected = document.getElementById("country_selected_icon");
-	selected.href="#"+country;
 }
