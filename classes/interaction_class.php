@@ -29,6 +29,12 @@
 		}
 
 
+		function get_user_booking_history($user_id){
+			$sql = "SELECT * FROM `bookings` WHERE `user_id` = '$user_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+
 		function get_past_campaigns(){
 			$sql = "SELECT * FROM `campaigns`";
 			return $this->db_fetch_all($sql);

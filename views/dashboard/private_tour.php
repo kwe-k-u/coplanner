@@ -1,14 +1,15 @@
 <?php
 require_once(__DIR__ . "/../../utils/core.php");
-require_once(__DIR__ . "/../../controllers/auth_controller.php");
+require_once(__DIR__ . "/../../controllers/interaction_controller.php");
 require_once(__DIR__ . "/../../controllers/media_controller.php");
 require_once(__DIR__ . "/../../controllers/private_tour_controller.php");
 login_check();
 
 $user_id = get_session_user_id();
-$user = get_user_by_id($user_id);
-$user_name = $user["user_name"];
-$profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_default_profile_img();
+// $user = ge($user_id);
+
+$user_name = get_username_by_id($user_id);
+$profile = get_user_profile_img($user_id);
 
 
 
@@ -42,9 +43,10 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <h5>Private Tour</h5>
-                <button class="btn"><i class="fa-solid fa-bell"></i></button>
+                <button class="btn" onclick="goto_page('views/dashboard/notifications.php')"><i class="fa-solid fa-bell"></i></button>
         </nav>
         <main>
+            <div class="loader"></div>
             <div class="dashboard-content">
                 <!-- ============================== -->
                 <!-- sidebar [start] -->
@@ -131,29 +133,30 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                                     <h3 class="easygo-fs-3">Private Tour Request</h3>
                                     <button class="easygo-btn-1 easygo-fs-4 easygo-rounded-2 visibility-changer" data-visibility-target=".request-tour"><i class="fa-solid fa-circle-plus"></i> &nbsp; Request New Tour</button>
                                 </div>
-                                <div class="loader"></div>
                                 <!-- ============================== -->
                                 <!-- | desktop | [start] -->
-                                <div class="for-dekstop d-none d-md-block">
+                                <div class="for-desktop d-none d-md-block">
                                     <div class="private-tour-request-items">
                                         <div class="easygo-list-3">
                                             <?php
                                                 $requests = get_user_private_trip_requests($user_id);
+
                                                 if (!$requests){ //TODO:: Show empty prompt
                                                     echo "empty";
                                                     // die();
                                                 }
 
                                                 foreach ($requests as $entry) {
-                                                    $start = $entry["date_start"];
-                                                    $end = $entry["date_end"];
+                                                    $start = format_string_as_date_fn($entry["date_start"]);
+                                                    $end = format_string_as_date_fn($entry["date_end"]);
                                                     $seats = $entry["person_count"];
                                                     $budget_min = $entry["min_budget"];
                                                     $budget_max = $entry["max_budget"];
-                                                    $desc = $entry["description"];
+                                                    $desc = shorten($entry["description"]);
                                                     $currency = $entry["currency"];
                                                     $tour_id = $entry["private_tour_id"];
                                                     $quote_count = count_request_quotes($tour_id);
+                                                    $accepted_quote = $entry["accepted_quote"];
 
                                                     echo "<div class='list-item'>
                                                     <div class='w-100'>
@@ -173,65 +176,23 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                                                         <div class='d-flex justify-content-between'>
                                                             <h5 class='easygo-fs-3 easygo-fw-1'>$quote_count Quotes received</h5>
                                                             <div class='d-flex gap-1'>
-                                                                <button class='del-btn easygo-rounded-1 easygo-fs-5'><i class='fa-solid fa-trash'></i> Remove</button>
-                                                                <button onclick='return goto_page(\"views/dashboard/private_tour_quotes.php?request_id=$tour_id\")' class='easygo-btn-5 bg-lblue-1 easygo-rounded-1 easygo-fs-5 px-2'><i class='fa-solid fa-eye'></i> &nbsp; View Quotes</button>
-                                                                <button onclick='edit_request(\"$tour_id\")' data-visibility-target='.request-tour' class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3 visibility-changer'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>
-                                                            </div>
+                                                                <button onclick='return delete_request(\"$tour_id\")' class='del-btn easygo-rounded-1 easygo-fs-5'><i class='fa-solid fa-trash'></i> Remove</button>";
+
+                                                                if ($quote_count > 0){
+                                                                    echo "<button onclick='return goto_page(\"views/dashboard/private_tour_quotes.php?request_id=$tour_id\")' class='easygo-btn-5 bg-lblue-1 easygo-rounded-1 easygo-fs-5 px-2'><i class='fa-solid fa-eye'></i> &nbsp; View Quotes</button>";
+                                                                }
+                                                                if ($accepted_quote){
+                                                                    echo "<button class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3'><i class='fa-solid fa-eye'></i> &nbsp; View Request</button>";
+                                                                } else {
+                                                                    echo "<button onclick='edit_request(\"$tour_id\")' data-visibility-target='.request-tour' class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3 visibility-changer'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>";
+                                                                }
+
+                                                            echo "</div>
                                                         </div>
                                                     </div>
                                                 </div>";
                                                 }
                                             ?>
-
-                                            <div class='list-item'>
-                                                <div class='w-100'>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <div class='easygo-fs-5 text-gray-1 d-flex align-items-center gap-1'>
-                                                            GHC 200 - GHC 500
-                                                            <span class='bg-gray-1 rounded-circle' style='width:7px; height: 7px'></span>
-                                                            2nd Jan - 3rd Jan
-                                                            <span class='bg-gray-1 rounded-circle' style='width:7px; height: 7px'></span>
-                                                            2 kids & 4 adults
-                                                        </div>
-                                                        <span class='easygo-badge-orange easygo-fs-5'>Ongoing</span>
-                                                    </div>
-                                                    <div class='easygo-fs-4 py-3'>
-                                                        I am looking for Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
-                                                    </div>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <h5 class='easygo-fs-4'>You accepted a quote from <span class='easygo-fw-1'>‘Lionize Tourism Consult’</span></h5>
-                                                        <div class='d-flex gap-1'>
-                                                            <button class='del-btn easygo-rounded-1 easygo-fs-5'><i class='fa-solid fa-trash'></i> Remove</button>
-                                                            <button class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3'><i class='fa-solid fa-eye'></i> &nbsp; View Description</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='list-item'>
-                                                <div class='w-100'>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <div class='easygo-fs-5 text-gray-1 d-flex align-items-center gap-1'>
-                                                            GHC 200 - GHC 500
-                                                            <span class='bg-gray-1 rounded-circle' style='width:7px; height: 7px'></span>
-                                                            2nd Jan - 3rd Jan
-                                                            <span class='bg-gray-1 rounded-circle' style='width:7px; height: 7px'></span>
-                                                            2 kids & 4 adults
-                                                        </div>
-                                                        <span class='easygo-badge-orange easygo-fs-5'>Ongoing</span>
-                                                    </div>
-                                                    <div class='easygo-fs-4 py-3'>
-                                                        I am looking for Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
-                                                    </div>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <h5 class='easygo-fs-3 easygo-fw-1'>0 Quotes received</h5>
-                                                        <div class='d-flex gap-1'>
-                                                            <button class='del-btn easygo-rounded-1 easygo-fs-5'><i class='fa-solid fa-trash'></i> Remove</button>
-                                                            <button class='easygo-btn-5 bg-lblue-1 easygo-rounded-1 easygo-fs-5 px-2'><i class='fa-solid fa-eye'></i> &nbsp; View Quotes</button>
-                                                            <button class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -242,68 +203,50 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                                 <div class="for-mobile d-block d-md-none">
                                     <div class="private-tour-request-items">
                                         <div class="easygo-list-3">
-                                            <div class='list-item'>
-                                                <div class='w-100'>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <h5 class='easygo-fs-3 easygo-fw-1'>2 Quotes received</h5>
-                                                        <span class='easygo-badge-orange easygo-fs-5'>Ongoing</span>
+                                            <?php
+                                                foreach ($requests as $entry) {
+
+                                            $start = format_string_as_date_fn($entry["date_start"]);
+                                            $end = format_string_as_date_fn($entry["date_end"]);
+                                            $seats = $entry["person_count"];
+                                            $budget_min = $entry["min_budget"];
+                                            $budget_max = $entry["max_budget"];
+                                            $desc = shorten($entry["description"]);
+                                            $currency = $entry["currency"];
+                                            $tour_id = $entry["private_tour_id"];
+                                            $quote_count = count_request_quotes($tour_id);
+                                            $accepted_quote = $entry["accepted_quote"];
+
+                                                    echo "<div class='list-item'>
+                                                    <div class='w-100'>
+                                                        <div class='d-flex justify-content-between'>
+                                                            <h5 class='easygo-fs-3 easygo-fw-1'>$quote_count Quotes received</h5>
+                                                            <span class='easygo-badge-orange easygo-fs-5'>Ongoing</span>
+                                                        </div>
+                                                        <div class='easygo-fs-4 py-3'>
+                                                        $desc
+                                                        </div>
+                                                        <div class='easygo-fs-5 text-gray-1 d-flex align-items-center gap-1'>
+                                                            $currency $budget_min - $currency $budget_max <br>
+                                                            $start - $end &nbsp; &nbsp;
+                                                            $seats people
+                                                        </div>
+                                                        <div class='d-flex gap-1 flex-wrap py-3'>";
+                                                        if ($quote_count > 0){
+
+                                                            echo "<button class='easygo-btn-1 easygo-rounded-1 easygo-fs-5 px-2 w-100 my-2'><i class='fa-solid fa-eye'></i> &nbsp; View Quotes</button>";
+                                                        }
+                                                        if ($accepted_quote){
+                                                            echo "<button class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3'><i class='fa-solid fa-eye'></i> &nbsp; View Request</button>";
+                                                        } else {
+                                                            echo "<button onclick='edit_request(\"$tour_id\")' data-visibility-target='.request-tour' class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3 visibility-changer'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>";
+                                                        }
+                                                            echo "<button class='del-btn easygo-rounded-1 easygo-fs-5 flex-grow-1 px-0'><i class='fa-solid fa-trash'></i> Remove</button>
+                                                        </div>
                                                     </div>
-                                                    <div class='easygo-fs-4 py-3'>
-                                                        I am looking for Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
-                                                    </div>
-                                                    <div class='easygo-fs-5 text-gray-1 d-flex align-items-center gap-1'>
-                                                        GHC 200 - GHC 500 <br>
-                                                        2nd Jan - 3rd Jan &nbsp; &nbsp;
-                                                        2 kids & 4 adults
-                                                    </div>
-                                                    <div class='d-flex gap-1 flex-wrap py-3'>
-                                                        <button class='easygo-btn-1 easygo-rounded-1 easygo-fs-5 px-2 w-100 my-2'><i class='fa-solid fa-eye'></i> &nbsp; View Quotes</button>
-                                                        <button class='easygo-rounded-1 easygo-fs-5 easygo-btn-5 bg-lblue-1 py-1 easygo-fw-3 flex-grow-1 px-0'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>
-                                                        <button class='del-btn easygo-rounded-1 easygo-fs-5 flex-grow-1 px-0'><i class='fa-solid fa-trash'></i> Remove</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='list-item'>
-                                                <div class='w-100'>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <span class='easygo-badge-blue easygo-fs-5 ms-auto'>Completed</span>
-                                                    </div>
-                                                    <div class='easygo-fs-4 py-3'>
-                                                        I am looking for Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
-                                                    </div>
-                                                    <div class='easygo-fs-5 text-gray-1 d-flex align-items-center gap-1'>
-                                                        GHC 200 - GHC 500 <br>
-                                                        2nd Jan - 3rd Jan &nbsp; &nbsp;
-                                                        2 kids & 4 adults
-                                                    </div>
-                                                    <h5 class='easygo-fs-4 pt-3'>You accepted a quote from <span class='easygo-fw-1'>‘Lionize Tourism Consult’</span></h5>
-                                                    <div class='d-flex gap-1 flex-wrap py-3'>
-                                                        <button class='easygo-rounded-1 easygo-fs-5 easygo-btn-1 py-1 easygo-fw-3 flex-grow-1 px-0'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>
-                                                        <button class='del-btn easygo-rounded-1 easygo-fs-5 flex-grow-1 px-0'><i class='fa-solid fa-trash'></i> Remove</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class='list-item'>
-                                                <div class='w-100'>
-                                                    <div class='d-flex justify-content-between'>
-                                                        <h5 class='easygo-fs-3 easygo-fw-1'>0 Quotes received</h5>
-                                                        <span class='easygo-badge-orange easygo-fs-5'>Ongoing</span>
-                                                    </div>
-                                                    <div class='easygo-fs-4 py-3'>
-                                                        I am looking for Massa risus, imperdiet vestibulum, tristique nunc ut felis auctor quams cursus tincidunt quis ultrices adipiscing magna condimentum. Metus, eget pulvinar volutpat elementum, placerat elementum aliquam. Morbi nibh a nisi, ac ac scelerisque elementum aliquam. Morbi nibh a nisi, ac ac scelerisque....
-                                                    </div>
-                                                    <div class='easygo-fs-5 text-gray-1 d-flex align-items-center gap-1'>
-                                                        GHC 200 - GHC 500 <br>
-                                                        2nd Jan - 3rd Jan &nbsp; &nbsp;
-                                                        2 kids & 4 adults
-                                                    </div>
-                                                    <div class='d-flex gap-1 flex-wrap py-3'>
-                                                        <button class='easygo-btn-1 easygo-rounded-1 easygo-fs-5 px-2 w-100 my-2'><i class='fa-solid fa-eye'></i> &nbsp; View Quotes</button>
-                                                        <button class='easygo-rounded-1 easygo-fs-5 easygo-btn-5 bg-lblue-1 py-1 easygo-fw-3 flex-grow-1 px-0'><i class='fa-solid fa-pen'></i> &nbsp; Edit Request</button>
-                                                        <button class='del-btn easygo-rounded-1 easygo-fs-5 flex-grow-1 px-0'><i class='fa-solid fa-trash'></i> Remove</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                </div>";
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -316,11 +259,11 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                             <!-- book private tour [start] -->
                             <div class="book-private-tour request-tour" style="display: none;">
                                 <div>
-                                    <button class="visibility-changer btn" data-visibility-target=".request-tour"><i class="fa-solid fa-chevron-left"></i> Back</button>
+                                    <button onclick="return clear_form()" class="visibility-changer btn" data-visibility-target=".request-tour"><i class="fa-solid fa-chevron-left"></i> Back</button>
                                 </div>
                                 <div class="form-page-main container d-block">
                                     <div class="form-container container" style="max-width: 600px;">
-                                        <form onsubmit=request_private_tour(this)>
+                                        <form id="request_form" onsubmit=request_private_tour(this)>
                                             <?php
 
                                                 echo "<input type='hidden' name='user_id' value='$user_id'>";
@@ -329,14 +272,14 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                                                 <h5 class="easygo-fs-2 my-3">Book a private tour. Customize trips to your taste</h5>
                                             </div>
                                             <div class="form-input-field">
-                                                <textarea name="desc" class="border-blue" style="resize: none" cols="30" rows="7"
-                                                placeholder="Describe your vision for the tour as much as you can. Eg: I want a tour for my friends and I where we get to visit the Kakum National Park. We are open to spending the night in the town and visiting other sites. The following day we would like to go hiking through Aburi too but its fine if we cant do that on this trip ">Going to town</textarea>
+                                                <textarea id="desc" name="desc" class="border-blue" style="resize: none" cols="30" rows="7"
+                                                placeholder="Describe your vision for the tour as much as you can. Eg: I want a tour for my friends and I where we get to visit the Kakum National Park. We are open to spending the night in the town and visiting other sites. The following day we would like to go hiking through Aburi too but its fine if we cant do that on this trip "></textarea>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="input-field">
-                                                        <div class="text-gray-1 easygo-fs-5">Budget</div>
+                                                        <div class="text-gray-1 easygo-fs-5">Total Budget for entire Tour</div>
                                                             <a href="#GHS"  id="currency_menu" class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                                 GHS
                                                             </a>
@@ -350,14 +293,14 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                                                     <div class="col-lg-4">
                                                         <div class="input-field">
                                                         <div class="text-gray-1 easygo-fs-5">Min</div>
-                                                            <input name="min_b" type="text" value="200" class="border-blue">
+                                                            <input id="min_b" name="min_b" type="text" class="border-blue">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="input-field">
 
                                                         <div name="max_b" class="text-gray-1 easygo-fs-5">Max</div>
-                                                            <input name="max_b" value="500" type="text" class="border-blue">
+                                                            <input id="max_b" name="max_b" type="text" class="border-blue">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -405,7 +348,7 @@ $profile = get_media_by_id($user["profile_image"])["media_location"] ?? get_defa
                                                 </div>
 
                                             <div class="input-field button-container my-2">
-                                                <button type="submit" class="easygo-btn-1 easygo-rounded-2" type="button">Place Request</button>
+                                                <button id="submit_btn" type="submit" class="easygo-btn-1 easygo-rounded-2" type="button">Place Request</button>
                                             </div>
                                         </form>
                                         <!-- register form 1 [end] -->

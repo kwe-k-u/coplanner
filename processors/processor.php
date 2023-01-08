@@ -32,7 +32,10 @@
 
 	$private_tour_actions = array(
 		"request_private_tour",
-		"bid_private_trip"
+		"bid_private_trip",
+		"get_private_request",
+		"edit_private_tour",
+		"delete_private_tour"
 	);
 
 	$interaction_actions = array(

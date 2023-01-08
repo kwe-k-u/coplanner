@@ -42,6 +42,11 @@
 		return $inte->get_past_campaigns();
 	}
 
+	function get_user_booking_history($user_id){
+		$inte = new interaction_class();
+		return $inte->get_user_booking_history($user_id);
+	}
+
 
 	function get_campaign_by_id($id){
 		$inte = new interaction_class();

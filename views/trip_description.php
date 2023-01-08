@@ -500,82 +500,89 @@
             <!--| for mobile [start] |-->
             <section class="trip-info-mobile py-5 d-block d-md-none">
                 <div class="container">
-                    <h5 class="easygo-fw-1 easygo-fs-2">Bunsco Eco Park Tour</h5>
-                    <div class="description-title d-flex justify-content-between">
+                    <?php
+                        echo "<h5 class='easygo-fw-1 easygo-fs-2'>$title</h5>";
+                    ?>
+
+                    <div class='description-title d-flex justify-content-between'>
                         <div>
-                            <div class="easygo-fs-5 my-1 text-gray-1">Curated by easygo events</div>
-                            <div class="d-flex justify-content-start align-items-center gap-2">
-                                <div class="stars">
-                                    <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
-                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                    <img src="../assets/images/svgs/full_star.svg" alt="full star">
-                                    <img src="../assets/images/svgs/empty_star.svg" alt="full star">
+
+                            <?php
+                                echo "<div class='easygo-fs-5 my-1 text-gray-1'>Curated by $curator</div>";
+                            ?>
+                            <div class='d-flex justify-content-start align-items-center gap-2'>
+                                <div class='stars'>
+                                    <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
+                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                    <img src='../assets/images/svgs/empty_star.svg' alt='full star'>
                                 </div>
-                                <span class="easygo-fs-6 text-gray-1">4 star rating</span>
+                                <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
                             </div>
                         </div>
                         <p>
-                            <span class="easygo-fs-1">$30</span><span class="easygo-fs-4">/Person</span>
+                            <?php
+                                echo "<span class='easygo-fs-1'>$currency $fee</span><span class='easygo-fs-4'>/Person</span>";
+                            ?>
+
                         </p>
                     </div>
-                    <div class="row mb-5 mt-4">
-                        <div class="col-6 py-2">
-                            <span class="easygo-fs-4"><img src="../assets/images/svgs/calendar_black.svg" alt="calendar"> 4th November</span>
+                    <div class='row mb-5 mt-4'>
+                        <div class='col-6 py-2'>
+                            <span class='easygo-fs-4'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'> 4th November</span>
                         </div>
-                        <div class="col-6 py-2">
-                            <span class="easygo-fs-4"><img src="../assets/images/svgs/crescent_black.svg" alt="crescent"> Duration: 6hrs</span>
+                        <div class='col-6 py-2'>
+                            <span class='easygo-fs-4'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Duration: 6hrs</span>
                         </div>
-                        <div class="col-6 py-2">
-                            <span class="easygo-fs-4"><img src="../assets/images/svgs/globe_black.svg" alt="globe"> Language: English</span>
+                        <div class='col-6 py-2'>
+                            <span class='easygo-fs-4'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Language: English</span>
                         </div>
-                        <div class="col-6 py-2">
-                            <span class="easygo-fs-4"><img src="../assets/images/svgs/clock_black.svg" alt="clock"> Start Time: 11am</span>
+                        <div class='col-6 py-2'>
+                            <span class='easygo-fs-4'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Start Time: 11am</span>
 
                         </div>
                     </div>
-                    <div class="accordion accordion-flush" id="trip-info-accordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="description-heading">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#description-collapse" aria-expanded="true" aria-controls="description-collapse">
+                    <div class='accordion accordion-flush' id='trip-info-accordion'>
+                        <div class='accordion-item'>
+                            <h2 class='accordion-header' id='description-heading'>
+                                <button class='accordion-button' type='button' data-bs-toggle='collapse' data-bs-target='#description-collapse' aria-expanded='true' aria-controls='description-collapse'>
                                     Description
                                 </button>
                             </h2>
-                            <div id="description-collapse" class="accordion-collapse collapse show" aria-labelledby="description-heading" data-bs-parent="#trip-info-accordion">
-                                <div class="accordion-body">
-                                    <div class="text-description easygo-fs-4">
-                                        Immerse yourself in the vibrant culture and rich history of Ghana on a tour of this beautiful West African country. Start in the bustling capital city of Accra, where you can explore the vibrant markets and try local dishes such as jollof rice and fufu. Don't miss the opportunity to visit the Kwame Nkrumah Memorial Park, a historical landmark dedicated to Ghana's first president.
-                                        Next, head to the coastal city of Cape Coast and visit the Cape Coast Castle, a former slave trading fort that is now a UNESCO World Heritage Site. From there, take a boat ride to Kakum National Park and go on a thrilling canopy walk through the lush rainforest, where you can see a wide variety of exotic flora and fauna.
-                                        In the central region of Ghana, visit the ancient Ashanti Kingdom and see the historic city of Kumasi. Here, you can visit the Ashanti Royal Palace and learn about the rich culture and history of the Ashanti people.
-                                        In the northern part of the country, go on a safari in Mole National Park and see elephants, lions, and other African wildlife in their natural habitat. Don't miss the opportunity to visit the Tamale Market, where you can experience the vibrant colors and sounds of daily life in northern Ghana.
-                                        Overall, a Ghanaian tour offers a unique and exciting experience for travelers, combining visits to historical and cultural landmarks with opportunities for adventure and exploration in the country's beautiful natural surroundings. Book your tour today and start planning your trip to this incredible destination
+                            <div id='description-collapse' class='accordion-collapse collapse show' aria-labelledby='description-heading' data-bs-parent='#trip-info-accordion'>
+                                <div class='accordion-body'>
+                                    <div class='text-description easygo-fs-4'>
+                                        <?php
+                                            echo $desc;
+                                        ?>
                                     </div>
-                                    <div class="warning my-3 d-flex align-items-center gap-3">
-                                        <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image"> <span class="easygo-fs-5">This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
+                                    <div class='warning my-3 d-flex align-items-center gap-3'>
+                                        <img src='../assets/images/svgs/exclamation_orange.svg' alt='warning image'> <span class='easygo-fs-5'>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="itineries-heading">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#itineries-collapse" aria-expanded="false" aria-controls="itineries-collapse">
-                                    Itineries
+                        <div class='accordion-item'>
+                            <h2 class='accordion-header' id='itineries-heading'>
+                                <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#itineries-collapse' aria-expanded='false' aria-controls='itineries-collapse'>
+                                    Itinery
                                 </button>
                             </h2>
-                            <div id="itineries-collapse" class="accordion-collapse collapse" aria-labelledby="itineries-heading" data-bs-parent="#trip-info-accordion">
-                                <div class="accordion-body">
-                                    <div class="py-5">
-                                        <div class="itinery-item py-3">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div style="width: 2.5rem; height: 2.5rem;" class="rounded-circle border d-flex justify-content-center align-items-center">
-                                                        <img src="../assets/images/svgs/path_orange.svg" alt="path image">
+                            <div id='itineries-collapse' class='accordion-collapse collapse' aria-labelledby='itineries-heading' data-bs-parent='#trip-info-accordion'>
+                                <div class='accordion-body'>
+                                    <div class='py-5'>
+                                        <div class='itinery-item py-3'>
+                                            <div class='row'>
+                                                <div class='col-1'>
+                                                    <div style='width: 2.5rem; height: 2.5rem;' class='rounded-circle border d-flex justify-content-center align-items-center'>
+                                                        <img src='../assets/images/svgs/path_orange.svg' alt='path image'>
                                                     </div>
                                                 </div>
-                                                <div class="col-11">
-                                                    <div class="ps-4">
-                                                        <h6 class="easygo-fw-2 easygo-fs-3">Starting Point</h6>
-                                                        <div class="text-gray-1 easygo-fs-4">
+                                                <div class='col-11'>
+                                                    <div class='ps-4'>
+                                                        <h6 class='easygo-fw-2 easygo-fs-3'>Starting Point</h6>
+                                                        <div class='text-gray-1 easygo-fs-4'>
                                                             <p>
                                                                 We’ll get picked up from your apartments or hotels room
                                                             </p>
@@ -584,105 +591,46 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="itinery-item py-3">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div style="width: 2.5rem; height: 2.5rem;" class="easygo-fs-4 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                        1
+                                                <?php
+                                                    foreach ($sites as $index => $entry) {
+                                                        $site_desc = $entry["toursite_description"];
+                                                        $site_loc = $entry["site_location"];
+                                                        $site_name = $entry["site_name"];
+                                                        $i = $index +1;
+
+
+                                                        echo "
+                                        <div class='itinery-item py-3'>
+                                            <div class='row'>
+
+                                                        <div class='col-1'>
+                                                        <div style='width: 2.5rem; height: 2.5rem;' class='easygo-fs-4 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center'>
+                                                            $i
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-11">
-                                                    <div class="ps-4">
-                                                        <h6 class="easygo-fw-2 easygo-fs-3">Kwame Nkrumah Memorial Park</h6>
-                                                        <div class="text-gray-1 easygo-fs-4">
-                                                            <p>
-                                                                Travellers will get to learn about the history of Ghana's independent leader and first President Dr. Kwame Nkrumah. Gate Fee included.
-                                                            </p>
-                                                            <p>
-                                                                Duration: 30 minutes
-                                                            </p>
+                                                    <div class='col-11'>
+                                                        <div class='ps-4'>
+                                                            <h6 class='easygo-fw-2 easygo-fs-3'>$site_name</h6>
+                                                            <div class='text-gray-1 easygo-fs-4'>
+                                                                <p>$site_desc</p>
+                                                                <p>$site_loc</p
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="itinery-item py-3">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div style="width: 2.5rem; height: 2.5rem;" class="easygo-fs-4 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                        2
+                                            </div>";
+                                            }
+                                        ?>
+                                            <div class='row'>
+                                                <div class='col-1'>
+                                                    <div style='width: 2.5rem; height: 2.5rem;' class='easygo-fs-4 rounded-circle border d-flex justify-content-center align-items-center'>
+                                                        <img src='../assets/images/svgs/path_orange.svg' alt='path image'>
                                                     </div>
                                                 </div>
-                                                <div class="col-11">
-                                                    <div class="ps-4">
-                                                        <h6 class="easygo-fw-2 easygo-fs-3">Bunsco Eco Park</h6>
-                                                        <div class="text-gray-1 easygo-fs-4">
-                                                            <p>
-                                                                Travellers arrives at Bunsco Eco Park, explore vast gardens and different wildlifes. Gate Fee included.
-                                                            </p>
-                                                            <p>
-                                                                Duration: 1.5 hours
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="itinery-item py-3">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div style="width: 2.5rem; height: 2.5rem;" class="easygo-fs-4 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                        3
-                                                    </div>
-                                                </div>
-                                                <div class="col-11">
-                                                    <div class="ps-4">
-                                                        <h6 class="easygo-fw-2 easygo-fs-3">Makola Market</h6>
-                                                        <div class="text-gray-1 easygo-fs-4">
-                                                            <p>
-                                                                Travellers will get to explore one of Ghana's bustling open air market and also learn about the day to day life of buyers and sellers
-                                                            </p>
-                                                            <p>
-                                                                Duration: 30 minutes
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="itinery-item py-3">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div style="width: 2.5rem; height: 2.5rem;" class="easygo-fs-4 rounded-circle bg-blue text-white d-flex justify-content-center align-items-center">
-                                                        4
-                                                    </div>
-                                                </div>
-                                                <div class="col-11">
-                                                    <div class="ps-4">
-                                                        <h6 class="easygo-fw-2 easygo-fs-3">Asenama Waterfalls</h6>
-                                                        <div class="text-gray-1 easygo-fs-4">
-                                                            <p>
-                                                                Travellers arrives Asenama waterfalls, experience the beauty of nature, take photos and take a swim if they wish to. Gate Fee included.
-                                                            </p>
-                                                            <p>
-                                                                Duration: 30 minutes
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="itinery-item py-3">
-                                            <div class="row">
-                                                <div class="col-1">
-                                                    <div style="width: 2.5rem; height: 2.5rem;" class="easygo-fs-4 rounded-circle border d-flex justify-content-center align-items-center">
-                                                        <img src="../assets/images/svgs/path_orange.svg" alt="path image">
-                                                    </div>
-                                                </div>
-                                                <div class="col-11">
-                                                    <div class="ps-4">
-                                                        <h6 class="easygo-fw-2 easygo-fs-3">Return back to the starting point</h6>
-                                                        <div class="text-gray-1 easygo-fs-4">
+                                                <div class='col-11'>
+                                                    <div class='ps-4'>
+                                                        <h6 class='easygo-fw-2 easygo-fs-3'>Return back to the starting point</h6>
+                                                        <div class='text-gray-1 easygo-fs-4'>
                                                             <p>
                                                                 Returns to original depature point
                                                             </p>
@@ -695,34 +643,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="activities-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#activities-collapse" aria-expanded="false" aria-controls="activities-collapse">
+                        <div class='accordion-item'>
+                            <h2 class='accordion-header' id='activities-header'>
+                                <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#activities-collapse' aria-expanded='false' aria-controls='activities-collapse'>
                                     Activities
                                 </button>
                             </h2>
-                            <div id="activities-collapse" class="accordion-collapse collapse" aria-labelledby="activities-header" data-bs-parent="#trip-info-accordion">
-                                <div class="accordion-body">
+                            <div id='activities-collapse' class='accordion-collapse collapse' aria-labelledby='activities-header' data-bs-parent='#trip-info-accordion'>
+                                <div class='accordion-body'>
                                     <div>
-                                        <h3 class="ps-2">Activities included in trip:</h3>
-                                        <ul class="easygo-list-2">
-                                            <li>Canopy Walk</li>
-                                            <li>Ziplining</li>
-                                            <li>Nature Tour</li>
-                                            <li>Forest Hicking</li>
-                                            <li>Visit to Asenama Waterfalls</li>
-                                            <li>Visit to Makola Market</li>
-                                            <li>Visit to Bunso Eco Park</li>
-                                            <li>Board Games</li>
-                                            <li>Horse Riding</li>
+                                        <h3 class='ps-2'>Activities included in trip:</h3>
+                                        <ul class='easygo-list-2'>
+                                            <?php
+                                                foreach ($activities as $entry) {
+                                                    $name = $entry["activity_name"];
+                                                    echo "<li>$name</li>";
+                                                }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="reviews-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reviews-collapse" aria-expanded="false" aria-controls="reviews-collapse">
+                        <div class='accordion-item'>
+                            <h2 class='accordion-header' id='reviews-header'>
+                                <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#reviews-collapse' aria-expanded='false' aria-controls='reviews-collapse'>
                                     Reviews
                                 </button>
                             </h2>

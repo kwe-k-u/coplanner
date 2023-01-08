@@ -25,7 +25,7 @@
 
 					create_private_trip($trip_id,$user_id,
 						$currency,$min,$max,$desc,$start,$end,$state,$count);
-					echo "Uploaded your private trip request. Curators will send quotes soon";
+					send_json(array("msg"=>"Uploaded your private trip request. Curators will send quotes soon"));
 					die();
 				case "bid_private_trip":
 					$request_id = $_POST["request_id"];
@@ -42,6 +42,40 @@
 					} else {
 						echo "Failed to place bid";
 					}
+					die();
+				case "edit_private_tour":
+					$id = $_POST["request_id"];
+					$user_id = $_POST["user_id"];
+					$currency = $_POST["currency"];
+					$max = $_POST["max_budget"];
+					$min = $_POST["min_budget"];
+					$desc = $_POST["description"];
+					$start = $_POST["start_date"];
+					$end = $_POST["end_date"];
+					$state = $_POST["state"];
+					$count = $_POST["person_count"];
+					$success = edit_private_tour_request($id, $currency,$min,$max,
+						$desc,$start,$end,$state, $count);
+
+
+					$msg = $success ? "Edited your request, we will notify curators"
+					: "Something went wrong, try again";
+
+
+					send_json(array("msg"=>$msg, $success ? 200:100));
+					die();
+					case "delete_private_tour":
+						$id = $_POST["request_id"];
+						$success = remove_private_tour_request($id);
+
+						$msg = $success ? "Successfully deleted your request" : "We cant delete a request that has received quotes";
+						send_json(array("msg"=>$msg, $success ? 200:100));
+						die();
+				case "get_private_request":
+					$id = $_POST["request_id"];
+					$request = get_private_trip_by_id($id);
+
+					send_json($request);
 					die();
 
 				default:

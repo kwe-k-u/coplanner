@@ -11,10 +11,19 @@ require_once(__DIR__. "/../utils/db_class.php");
 			$sql = "INSERT INTO `private_tour`
 			(`private_tour_id`,`user_id`,`currency`,`min_budget`,
 			`max_budget`,`description`,`date_start`,`date_end`,`publish_state`, `person_count`)
-			VALUE
-			('$id','$user', '$currency','$min_bug','$max_bug',
-			'$desc', '$start', '$end', '$state', '$count')";
+			VALUE ('$id','$user', '$currency','$min_bug','$max_bug', '$desc', '$start', '$end',
+			 '$state', '$count')";
 			return $this->db_query($sql);
+		}
+
+		function edit_private_tour_request($id, $currency,$min_bug,$max_bug,
+		$desc,$start,$end,$state, $count){
+			$sql = "UPDATE `private_tour` SET `currency` = '$currency', `date_start`='$start', `date_end` = '$end', `description`='$desc',
+			`person_count`='$count', `publish_state` = '$state', `max_budget`='$max_bug', `min_budget` = '$min_bug'
+			WHERE `private_tour_id`='$id'";
+
+			return $this->db_query($sql);
+
 		}
 
 
@@ -47,9 +56,19 @@ require_once(__DIR__. "/../utils/db_class.php");
 			return $this->db_fetch_one($sql);
 		}
 
+		function get_private_trip_by_id($id){
+			$sql = "SELECT * FROM `private_tour`
+			WHERE `private_tour_id` = '$id'";
+			return $this->db_fetch_one($sql);
+		}
 
 
+		//=================================DELETE================================
+		function remove_private_tour_request($id){
+			$sql = "DELETE FROM `private_tour` WHERE `private_tour_id` = '$id'";
+			return $this->db_query($sql);
+		}
 
 
 	}
-?>
+	?>

@@ -78,5 +78,5 @@
 	}
 
 
-	// campaign();
+	campaign();
 ?>

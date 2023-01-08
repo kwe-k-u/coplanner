@@ -94,11 +94,11 @@
                 <li class="s-nav-item  border-top">
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./trips.php">Trips <i class="fa-solid fa-angle-right"></i></a>
                 </li>
+                <!-- <li class="s-nav-item border-top">
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="https://easygo.substack.com/" target="_blank">Blog <i class="fa-solid fa-angle-right"></i></a>
+                </li> -->
                 <li class="s-nav-item border-top">
-                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="javascript:void(0)">Blog <i class="fa-solid fa-angle-right"></i></a>
-                </li>
-                <li class="s-nav-item border-top">
-                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="javascript:void(0)">Curators <i class="fa-solid fa-angle-right"></i></a>
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="../curator/dashboard.php">Curators <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <li class="s-nav-item border-top">
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./about.php">About <i class="fa-solid fa-angle-right"></i></a>
@@ -107,21 +107,34 @@
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./contact.php">Contact <i class="fa-solid fa-angle-right"></i></a>
                 </li>
             </ul>
-            <div class="d-flex flex-column gap-4 px-2 mt-5">
-                <a href="../views/login.php" class="easygo-btn-4 border-blue text-blue">Login</a>
-                <a href="../views/register.php" class="easygo-btn-5 bg-blue text-white">Create Account</a>
-            </div>
-            <div class="d-flex justify-content-center my-3">
-                <div class="d-flex gap-2">
-                    <div class="user-icon bg-blue">
-                        <img src="../assets/images/others/profile.jpeg" alt="">
+            <?php
+                if(is_session_logged_in()){
+                    echo
+                "<div class='d-flex my-3'>
+                    <div class='d-flex gap-2'>
+                        <div class='user-icon bg-blue'>
+                            <img src='$profile_img' alt=''>
+                        </div>
+                        <div class='d-flex flex-column justify-content-center gap-1'>
+                            <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                            <h6 class='easygo-fs-5 m-0'><a class='text-gray-1 easygo-fs-5 text-hover-blue' href='../views/dashboard/dashboard.php'>Go To Profile &nbsp;<i class='fa-solid fa-arrow-right-long'></i></a></h6>
+                        </div>
                     </div>
-                    <div class="d-flex flex-column justify-content-center gap-1">
-                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                        <h6 class="easygo-fs-5 m-0"><a class="text-gray-1 easygo-fs-5 text-hover-blue" href="../views/user_dashboard_saved_trips.php">Go To Profile &nbsp;<i class="fa-solid fa-arrow-right-long"></i></a></h6>
-                    </div>
-                </div>
-            </div>
+                </div>";
+                }else {
+                    echo "<div class='d-flex flex-column gap-4 px-2 mt-5'>
+                    <a href='../views/login.php' class='easygo-btn-4 border-blue text-blue'>Login</a>
+                    <a href='../views/register.php' class='easygo-btn-5 bg-blue text-white'>Create Account</a>
+                </div>";
+                }
+            ?>
         </div>
     </nav>
 </aside>
+
+<script>
+    $("document").ready(function(){
+        var url = "";
+
+    });
+</script>

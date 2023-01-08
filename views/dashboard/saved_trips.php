@@ -140,10 +140,15 @@
 
                                             $next = get_campaign_next_trip($id);
                                             if ($next){
-                                                $start = $next["start_date"];
-                                                $end = $next["end_date"];
+                                                $start = format_string_as_date_fn($next["start_date"]);
+                                                $end = format_string_as_date_fn($next["end_date"]);
                                                 $fee = $next["fee"];
                                                 $currency = $next["currency"];
+                                            }else {
+                                                $start = "n/a";
+                                                $end = "n/a";
+                                                $fee = "n/a";
+                                                $currency = "n/a";
                                             }
 
                                         echo "
@@ -191,10 +196,12 @@
                                                     </div>
                                                     <div class='trip-card-footer px-0 py-3'>
                                                         <p class='d-none d-lg-block flex-grow-1'>
-                                                            <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
+                                                            <span class='easygo-fs-2'>$currency $fee</span><span class='easygo-fs-5'>/Person</span>
                                                         </p>
                                                         <div class='d-flex gap-2 justify-content-end flex-grow-1'>
-                                                            <a href='#' onclick='remove_from_wishlist(\"$user_id\",\"$id\")' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'><i class='fa-solid fa-trash'></i> Remove</a>
+                                                            <a href='#' onclick='remove_from_wishlist(\"$user_id\",\"$id\")' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>
+                                                                <i class='fa-solid fa-trash'></i> Remove
+                                                            </a>
                                                             <a href='../trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
                                                         </div>
                                                     </div>
