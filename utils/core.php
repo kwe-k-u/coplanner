@@ -12,9 +12,8 @@ ob_start();
 
 
 	/**Signs in user accounts */
-	function session_log_in($user_id, $profile_img,$role){
+	function session_log_in($user_id,$role){
 		$_SESSION["user_id"] = $user_id;
-		$_SESSION["profile_image"] = $profile_img;
 		$_SESSION["user_role"] = $role; //admin or user
 	}
 
@@ -23,8 +22,8 @@ ob_start();
 	}
 
 	/**Logs in users with special access */
-	function session_log_in_advanced($user_id,$profile_img,$user_role,$account_id){
-		session_log_in($user_id,$profile_img,$user_role);
+	function session_log_in_advanced($user_id,$user_role,$account_id){
+		session_log_in($user_id,$user_role);
 
 		$_SESSION["account_id"] = $account_id;
 	}
@@ -34,7 +33,6 @@ ob_start();
 	/**Logs out all user types */
 	function session_log_out(){
 		unset($_SESSION["user_id"]);
-		unset($_SESSION["profile_img"]);
 		unset($_SESSION["user_role"]);
 
 		// if the account is a special user (admin, curator, etc) clear those credentials
@@ -101,6 +99,23 @@ ob_start();
 			return $_SESSION["user_id"];
 		}
 		return false;
+	}
+
+
+	/**Returns an appropriate greeting based on time. eg Good Afternoon */
+	function greet(){
+		$hour      = date('H');
+
+		if ($hour >= 20) {
+			return "Good Night";
+		} elseif ($hour > 17) {
+		return "Good Evening";
+		} elseif ($hour > 11) {
+			return "Good Afternoon";
+		} elseif ($hour < 12) {
+		return "Good Morning";
+		}
+
 	}
 
 	// /**Returns the type of entity account a user has (curator, etc). Returns false if none exists*/

@@ -1,3 +1,21 @@
+<?php
+    require_once(__DIR__. "/../utils/core.php");
+    require_once(__DIR__."/../controllers/curator_interraction_controller.php");
+
+    if (!is_session_user_curator()){
+        header("Location: ../views/home.php");
+        die();
+    }
+
+    $info = get_collaborator_info(get_session_user_id());
+    $user_name = $info["user_name"];
+    $curator_name = $info["curator_name"];
+    $logo = $info["curator_logo"];
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,18 +41,26 @@
             <div class="logo logo-medium">
                 <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
             </div>
-            <div class="dashboard-title easygo-fs-1 easygo-fw-1">Good Evening, Collins</div>
-            <div class="right-sec">
-                <div class="user-menu d-flex gap-1">
-                    <div class="user-icon">
-                        <img src="../assets/images/others/profile.jpeg" alt="">
+            <?php
+            $greeting = greet();
+
+
+                echo "
+                <div class='dashboard-title easygo-fs-1 easygo-fw-1'>$greeting, $user_name</div>
+            <div class='right-sec'>
+                <div class='user-menu d-flex gap-1'>
+                    <div class='user-icon'>
+                        <img src='../assets/images/others/profile.jpeg' alt=''>
                     </div>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h5 class="easygo-fs-3">Admin</h5>
-                        <h6 class="text-orange easygo-fs-5">Administrator</h6>
+                    <div class='d-flex flex-column justify-content-center'>
+                        <h5 class='easygo-fs-3'>$curator_name</h5>
+                        <h6 class='text-orange easygo-fs-5'>$user_name</h6>
                     </div>
                 </div>
             </div>
+                ";
+            ?>
+
         </header>
         <header class="nav-menu d-lg-none">
             <div class="nav-menu-title bg-blue text-white easygo-fw-1 py-3 ps-3 d-flex justify-content-between">
@@ -98,7 +124,7 @@
                                     <img src="../assets/images/svgs/bus_red_bg.svg" alt="bus image">
                                 </div>
                                 <div class="info-content">
-                                    <div class="text-gray-1 info-title easygo-fs-4">Booked Trips</div>
+                                    <div class="text-gray-1 info-title easygo-fs-4">Listed Trips</div>
                                     <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
                                 </div>
                             </div>
@@ -131,7 +157,7 @@
                                     <img src="../assets/images/svgs/wallet_orange_bg.svg" alt="bus image">
                                 </div>
                                 <div class="info-content">
-                                    <div class="text-gray-1 info-title easygo-fs-4">Remaining Balance</div>
+                                    <div class="text-gray-1 info-title easygo-fs-4">Withdrawable Balance</div>
                                     <div class="info-num easygo-fs-2 easygo-fw-1">GHS 2,456.00</div>
                                 </div>
                             </div>
@@ -244,7 +270,7 @@
                 <section class="upcoming-trips py-5">
                     <div class="w-100 bg-white easygo-rounded-3">
                         <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
-                            <h5 class="easygo-fs-4 easygo-fw-1">Recent Trips</h5>
+                            <h5 class="easygo-fs-4 easygo-fw-1">Recent Bookings</h5>
                             <button class="three-dots-btn">
                                 <span class="dot"></span>
                                 <span class="dot"></span>
@@ -253,80 +279,58 @@
                         </div>
                         <div class="p-3" style="overflow-x: auto;">
                             <div class="easygo-list-3" style="min-width: 992px;">
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi Kojo</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
+                            <?php
+                            $bookings = get_recent_bookings(get_session_account_id());
+
+                            if($bookings){
+                                foreach ($variable as $entry) {
+                                    $transaction_id = $entry["transaction_id"];
+                                    $name = $entry["user_name"];
+                                    $date_booked = $entry["date_booked"];
+                                    $contact_name = $entry["emergency_contact_name"];
+                                    $contact_number = $entry["emergency_contact_number"];
+                                    $amount_paid = $entry["amount"];
+                                    $currency = $entry["currency"];
+                                    $seats = $entry["seats"];
+                                    $trip_date = $entry["trip_start_date"];
+                                    $trip_name = $entry["title"];
+                                }
+                                echo "
+                            <div class='list-item'>
+                                <div class='item-bullet-container'>
+                                    <div class='item-bullet'></div>
                                 </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
+                                <div class='inner-item'>$transaction_id</div>
+                                <div class='inner-item'>$date_booked</div>
+                                <div class='inner-item'>$user_name</div>
+                                <div class='inner-item'>$trip_name</div>
+                                <div class='inner-item'>$trip_date</div>
+                                <div class='inner-item'>$seats</div>
+                                <div class='inner-item'>$currency $amount_paid</div>
+                                <div class='inner-item'>$contact_name - $contact_number</div>
+                                <div class='inner-item'>Success</div>
+                            </div>
+                                ";
+
+                            }else {
+                                echo "
+                            <div class='list-item'>
+                                <div class='item-bullet-container'>
+                                    <div class='item-bullet' ></div>
                                 </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
+                                <div class='inner-item'> You don't have bookings as of now
+                                Promote your listing on social media to increase visibility
                                 </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
-                                </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
-                                </div>
+                            </div>
+                                ";
+                            }
+
+                            ?>
+
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-center p-3">
-                            <a href="./trip_booking.php" class="easygo-btn-1">View Bookings</a href="./trip_booking.php">
+                            <a href="./trip_booking.php" class="easygo-btn-1">View Bookings</a>
                         </div>
                     </div>
                 </section>

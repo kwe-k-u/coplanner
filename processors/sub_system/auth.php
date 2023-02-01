@@ -18,7 +18,6 @@
 					$email = $_POST["email"];
 					$password = encrypt($_POST["password"]);
 					$result = log_in_user($email,$password);
-					// var_dump($result);
 					if($result){
 						record_user_login($result["user_id"]);
 						//check if user has special permissions
