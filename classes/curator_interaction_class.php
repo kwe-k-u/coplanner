@@ -14,6 +14,7 @@
 			users.email,
 			curators.curator_name,
 			curators.curator_logo,
+			curators.curator_id,
 			curators.is_verified as curator_verified,
 			curator_manager.access_status
 			FROM `users`
@@ -44,6 +45,42 @@
 			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
 			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
 			WHERE curators.curator_id = '$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_curator_trip_count($curator_id){
+			$sql = "SELECT count(campaign_trips.trip_id) as upcoming_trip_count
+			FROM campaign_trips
+			JOIN campaigns on campaign_trips.campaign_id = campaigns.campaign_id
+			WHERE campaigns.curator_id = '$curator_id'
+			";
+
+			return $this->db_fetch_one($sql);
+		}
+
+		function get_curator_revenue($curator_id){
+			$sql = "SELECT sum(transactions.amount_paid)  AS total_revenue FROM transactions
+			JOIN bookings on bookings.transaction_id = transactions.transaction_id
+			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
+			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			WHERE campaigns.curator_id = '$curator_id'";
+
+			return $this->db_fetch_one($sql);
+		}
+
+		function get_curator_balance($curator_id){
+			$sql = "SELECT sum(transactions.amount_paid)  AS withdrawable_balance FROM transactions
+			JOIN bookings on bookings.transaction_id = transactions.transaction_id
+			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
+			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			WHERE campaigns.curator_id = '$curator_id'";
+			return $this->db_fetch_one($sql);
+		}
+
+		function get_curator_upcoming_trips($curator_id){
+			$sql = "SELECT * FROM campaigns
+			JOIN campaign_trips on campaign_trips.campaign_id = campaigns.campaign_id
+			WHERE campaigns.curator_id = '$curator_id'";
 			return $this->db_fetch_all($sql);
 		}
 

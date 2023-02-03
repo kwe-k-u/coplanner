@@ -32,9 +32,9 @@
 		return $inte->get_user_wishlist($user_id);
 	}
 
-	function get_current_campaigns(){
+	function get_current_campaigns($query = null){
 		$inte = new interaction_class();
-		return $inte->get_current_campaigns();
+		return $inte->get_current_campaigns($query = null);
 	}
 
 	function get_past_campaigns(){

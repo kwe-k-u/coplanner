@@ -1,3 +1,21 @@
+<?php
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+
+    if (!is_session_user_curator()) {
+        header("Location: ../views/home.php");
+        die();
+    }
+
+    $info = get_collaborator_info(get_session_user_id());
+    $curator_id = get_session_account_id();
+    $user_name = $info["user_name"];
+    $curator_name = $info["curator_name"];
+    $logo = $info["curator_logo"];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +40,7 @@
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
         <header class="dashboard-header d-none d-lg-flex">
-            <div class="logo logo-medium">
+            <div class="dashlogo logo logo-medium">
                 <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
             </div>
             <div class="dashboard-title">Dashboard</div>
@@ -48,56 +66,11 @@
             </div>
         </header>
         <header class="nav-menu d-lg-none">
-            <div class="nav-menu-title bg-blue text-white easygo-fw-1 py-3 ps-3 d-flex justify-content-between">
-                <h6 class="m-0">Dashboard</h6>
-                <button data-target="dashboard-menu" class="burger-btn slide-down-btn">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </button>
-            </div>
-            <div id="dashboard-menu" class="slide-down-sub-menu">
-                <ul class="main-list">
-                    <li>
-                        <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu" class="slide-down-btn" href="#">
-                                <img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
-                            <ul id="dashboard-submenu" class="sub-menu slide-down-sub-menu">
-                                <li><a href="#">Trips</a></li>
-                                <li><a href="#">Finance</a></li>
-                                <li><a href="#">Notifications</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#"><img src="../assets/images/svgs/trips.svg" alt="trips icon"> Trips</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
-                </ul>
-            </div>
-        </header>
+            <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <aside class="sidebar d-lg-flex d-none flex-column justify-content-between">
-                <ul class="main-list slide-down">
-                    <li>
-                        <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
-                            <ul id="dashboard-submenu-sb" class="sub-menu slide-down-sub-menu">
-                                <li><a href="#">Trips</a></li>
-                                <li><a href="#">Finance</a></li>
-                                <li><a href="#">Notifications</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#"><img src="../assets/images/svgs/trips.svg" alt="trips icon"> Trips</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
-                </ul>
-                <div class="py-4 border-top">
-                    <a class="easygo-fs-4 text-red" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
-                </div>
-            </aside>
+        <?php require_once(__DIR__. "/../components/curator_navbar_desktop.php"); ?>
             <div class="main-content px-3">
                 <section class="create-trip">
                     <div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">

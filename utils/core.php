@@ -106,14 +106,12 @@ ob_start();
 	function greet(){
 		$hour      = date('H');
 
-		if ($hour >= 20) {
-			return "Good Night";
-		} elseif ($hour > 17) {
-		return "Good Evening";
+		if ($hour > 17) {
+		return "Good evening";
 		} elseif ($hour > 11) {
-			return "Good Afternoon";
+			return "Good afternoon";
 		} elseif ($hour < 12) {
-		return "Good Morning";
+		return "Good morning";
 		}
 
 	}

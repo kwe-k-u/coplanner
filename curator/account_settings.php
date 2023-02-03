@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard | Account Settings</title>
+    <title>Curator | Account Settings</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -20,73 +20,17 @@
     <!-- dashboard-wrapper [start] -->
     <div class="main-wrapper">
         <header class="dashboard-header d-none d-lg-flex py-4 bg-gray-3" class="box-shadow-1">
-            <div class="logo logo-medium">
+            <div class="dashlogo logo logo-medium">
                 <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
             </div>
             <div class="dashboard-title easygo-fs-2 easygo-fw-1">Account Settings</div>
-            <!-- <div class="right-sec">
-                <div class="user-menu d-flex gap-1">
-                    <div class="user-icon">
-                        <img src="../assets/images/others/profile.jpeg" alt="">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h5 class="easygo-fs-3">Admin</h5>
-                        <h6 class="text-orange easygo-fs-5">Administrator</h6>
-                    </div>
-                </div>
-            </div> -->
         </header>
         <header class="nav-menu d-lg-none">
-            <div class="nav-menu-title bg-blue text-white easygo-fw-1 py-3 ps-3 d-flex justify-content-between">
-                <h6 class="m-0">Dashboard</h6>
-                <button data-target="dashboard-menu" class="burger-btn slide-down-btn">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </button>
-            </div>
-            <div id="dashboard-menu" class="slide-down-sub-menu">
-                <ul class="main-list">
-                    <li>
-                        <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu" class="slide-down-btn" href="#">
-                                <img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
-                            <ul id="dashboard-submenu" class="sub-menu slide-down-sub-menu">
-                                <li><a href="#">Trips</a></li>
-                                <li><a href="#">Finance</a></li>
-                                <li><a href="#">Notifications</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#"><img src="../assets/images/svgs/trips.svg" alt="trips icon"> Trips</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
-                </ul>
-            </div>
-        </header>
+            <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <aside class="sidebar d-lg-flex d-none flex-column justify-content-between bg-gray-3">
-                <ul class="main-list slide-down">
-                    <li>
-                        <div class="slide-down-menu">
-                            <a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
-                            <ul id="dashboard-submenu-sb" class="sub-menu slide-down-sub-menu">
-                                <li><a href="#">Trips</a></li>
-                                <li><a href="#">Finance</a></li>
-                                <li><a href="#">Notifications</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="#"><img src="../assets/images/svgs/trips.svg" alt="trips icon"> Trips</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
-                    <li><a href="#"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
-                </ul>
-                <div class="py-4 border-top">
-                    <a class="text-gray-1 easygo-fs-4" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
-                </div>
-            </aside>
+        <?php require_once(__DIR__. "/../components/curator_navbar_desktop.php"); ?>
             <div class="main-content px-3 bg-gray-3">
                 <!-- ============================== -->
                 <!-- account settings [start] -->

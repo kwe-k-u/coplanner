@@ -22,9 +22,12 @@
 		}
 
 
-		function get_current_campaigns(){
+		function get_current_campaigns($query = null){
 			$sql = "SELECT campaigns.*,curators.curator_name FROM `campaigns`
 			JOIN curators on campaigns.curator_id = curators.curator_id";
+			if($query != null){
+				$sql .= " ";
+			}
 			return $this->db_fetch_all($sql);
 		}
 

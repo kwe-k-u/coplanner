@@ -49,7 +49,7 @@
                             <?php
                             if (isset($_GET["search"])){
                                 //TODO:: search for trips
-                                $campaigns = get_current_campaigns();
+                                $campaigns = get_current_campaigns($_GET["search"]);
                             }else {
                                 $campaigns = get_current_campaigns();
                             }
