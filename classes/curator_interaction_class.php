@@ -27,24 +27,28 @@
 
 		function get_recent_bookings($curator_id){
 			$sql = "SELECT
-			users.user_name,
-			users.user_id,
 			transactions.transaction_id,
-			transactions.amount_paid,
+			transactions.amount_paid as amount,
 			transactions.currency,
-			bookings.booking_id,
-			bookings.seats_boked,
+			transactions.transaction_date,
 			bookings.date_booked,
 			bookings.emergency_contact_name,
 			bookings.emergency_contact_number,
-			bookings.status,
-			campaign_trips.trip
-			FROM `bookings`
-			JOIN users on users.user_id = bookings.user_id
+			bookings.seats_booked,
+			bookings.booking_id,
+			users.user_name,
+			users.user_id,
+			campaigns.title,
+			campaign_trips.start_date,
+			campaign_trips.end_date
+			FROM bookings
 			JOIN transactions on transactions.transaction_id = bookings.transaction_id
+			JOIN users on users.user_id = bookings.user_id
 			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
 			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
-			WHERE curators.curator_id = '$curator_id'";
+			JOIN curators on campaigns.curator_id = curators.curator_id
+			WHERE curators.curator_id = '$curator_id'
+			LIMIT 7";
 			return $this->db_fetch_all($sql);
 		}
 
@@ -84,6 +88,76 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_curator_bookings($curator_id){
+			$sql = "SELECT
+			transactions.transaction_id,
+			transactions.amount_paid as amount,
+			transactions.currency,
+			transactions.transaction_date,
+			bookings.date_booked,
+			bookings.emergency_contact_name,
+			bookings.emergency_contact_number,
+			bookings.seats_booked,
+			bookings.booking_id,
+			users.user_name,
+			users.user_id,
+			campaigns.title,
+			campaign_trips.start_date,
+			campaign_trips.end_date
+			FROM bookings
+			JOIN transactions on transactions.transaction_id = bookings.transaction_id
+			JOIN users on users.user_id = bookings.user_id
+			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
+			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN curators on campaigns.curator_id = curators.curator_id
+			WHERE curators.curator_id = '$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
 
+
+
+		function get_curator_campaigns($curator_id){
+			$sql = "SELECT  *, COUNT(campaign_trips.trip_id) as trip_count FROM campaigns
+			JOIN campaign_trips on campaign_trips.campaign_id = campaigns.campaign_id
+			WHERE campaigns.curator_id =  '$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+
+
+		function count_campaign_bookings($campaign_id){
+			$sql ="SELECT count(campaign_trips.trip_id) as booking_count FROM campaign_trips
+			WHERE campaign_trips.campaign_id = '$campaign_id'";
+			return $this->db_fetch_one($sql);
+		}
+
+
+		function get_all_transactions_curator($curator_id){
+			$sql = "SELECT * FROM
+			`transactions`;";
+			return $this->db_fetch_all($sql);
+		}
+
+
+		function get_booking_transactions_curator($curator_id){
+			$sql = "SELECT
+			transactions.*,
+			users.user_name,
+			campaign_trips.start_date,
+			campaigns.title
+			FROM transactions
+			JOIN bookings on transactions.transaction_id = bookings.transaction_id
+			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
+			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN users on bookings.user_id = users.user_id
+			WHERE campaigns.curator_id = '$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+
+		function get_withdrawal_transactions($curator_id){
+			$sql = "SELECT * FROM transactions";
+			return $this->db_fetch_all($sql);
+		}
 	}
 ?>

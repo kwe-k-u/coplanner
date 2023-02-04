@@ -73,9 +73,9 @@ $logo = $info["curator_logo"];
                     <div class="border-1 border-bottom py-3">
                         <div>
                             <h5 class="title">Trip Booking</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Boooking</small>
+                            <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Boooking</small>
                         </div>
-                        <p class="mt-4 mb-0">This table contins all the booking information associated with your trips. Click on a row to expand on the information provided.</p>
+                        <p class="mt-4 mb-0">This table contains all the booking information associated with your trips.</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
                         <div class="left-controls">
@@ -115,71 +115,49 @@ $logo = $info["curator_logo"];
                                     <div class="item-bullet"></div>
                                 </div>
                                 <div class="inner-item">ID</div>
-                                <div class="inner-item">Booking Date</div>
-                                <div class="inner-item">Trip Name</div>
                                 <div class="inner-item">Customer Name</div>
-                                <div class="inner-item">Seats</div>
                                 <div class="inner-item">Amount</div>
-                                <div class="inner-item">Emergency Contact</div>
+                                <div class="inner-item">Seats</div>
+                                <div class="inner-item">Trip Name</div>
                                 <div class="inner-item">Occurence Date</div>
+                                <div class="inner-item">Emergency Contact</div>
+                                <div class="inner-item">Booking Date</div>
                                 <div class="inner-item">Status</div>
                             </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="item-bullet-container">
-                                    <div class="item-bullet"></div>
-                                </div>
-                                <div class="inner-item">#01</div>
-                                <div class="inner-item">13 Dec 2022</div>
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item">Collins Kofi</div>
-                                <div class="inner-item">5</div>
-                                <div class="inner-item">c1000</div>
-                                <div class="inner-item">James - 010300000</div>
-                                <div class="inner-item">30 Dec 2022</div>
-                                <div class="inner-item">Success</div>
-                            </div>
+
+                            <?php
+
+                                $bookings = get_curator_bookings($curator_id);
+
+                                if (!$bookings){
+                                    echo "<div class='list-item'>
+                                        <div class='item-bullet-container'>
+                                            <div class='item-bullet'></div>
+                                        </div>
+                                        <div class='inner-item'>There are no bookings for any of your trips yet. </div>
+                                    </div>";
+                                }else {
+                                    foreach ($bookings as $entry){
+
+                                    echo "<div class='list-item'>
+                                        <div class='item-bullet-container'>
+                                            <div class='item-bullet'></div>
+                                        </div>
+                                        <div class='inner-item'>#01</div>
+                                        <div class='inner-item'>13 Dec 2022</div>
+                                        <div class='inner-item'>Aburi Gardens</div>
+                                        <div class='inner-item'>Collins Kofi</div>
+                                        <div class='inner-item'>5</div>
+                                        <div class='inner-item'>c1000</div>
+                                        <div class='inner-item'>James - 010300000</div>
+                                        <div class='inner-item'>30 Dec 2022</div>
+                                        <div class='inner-item'>Success</div>
+                                    </div>";
+                                    }
+                                }
+                            ?>
+
+
                         </div>
                     </div>
                     <div class="pagination-section my-5">

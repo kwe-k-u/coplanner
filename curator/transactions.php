@@ -1,3 +1,22 @@
+<?php
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+
+    if (!is_session_user_curator()) {
+        header("Location: ../views/home.php");
+        die();
+    }
+
+    $info = get_collaborator_info(get_session_user_id());
+    $curator_id = get_session_account_id();
+    $user_name = $info["user_name"];
+    $curator_name = $info["curator_name"];
+    $logo = $info["curator_logo"];
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,78 +135,45 @@
                                                 <div class="item-bullet"></div>
                                             </div>
                                             <div class="inner-item">Transaction ID</div>
-                                            <div class="inner-item">Sender Name</div>
-                                            <div class="inner-item">Recipient Name</div>
-                                            <div class="inner-item">Transaction Date</div>
+                                            <div class="inner-item">Customer Name</div>
                                             <div class="inner-item">Amount</div>
-                                            <div class="inner-item">Status</div>
+                                            <div class="inner-item">Transaction Date</div>
+                                            <div class="inner-item">Transaction Fee</div>
                                         </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Pending</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
+                                        <?php
+                                            $all_transactions = get_all_transactions($curator_id);
+
+                                            foreach($all_transactions as $entry){
+                                                $transaction_id = $entry["transaction_id"];
+                                                $sender = $entry["user_name"];
+                                                $date = $entry["transaction_date"];
+                                                $currency = $entry["currency"];
+                                                $amount = $entry["amount_paid"];
+                                                $fee = $entry["transaction_fee"];
+
+                                                echo "
+                                            <div class='list-item'>
+                                                <div class='item-bullet-container'>
+                                                    <div class='item-bullet'></div>
+                                                </div>
+                                                <div class='inner-item'>$transaction_id</div>
+                                                <div class='inner-item'>$sender</div>
+                                                <div class='inner-item'>$currency $amount</div>
+                                                <div class='inner-item'>$date</div>
+                                                <div class='inner-item text-danger'>-$fee</div>
+                                            </div>";
+                                            }
+
+                                            if(!$all_transactions){
+                                                echo "
+                                            <div class='list-item'>
+                                                <div class='item-bullet-container'>
+                                                    <div class='item-bullet'></div>
+                                                </div>
+                                                <div class='inner-item'>There are no recorded transactions at this moment</div>
+                                            </div>";
+                                            }
+                                        ?>
                                     </div>
                                     <div class="pagination-section my-5">
                                         <div class="row">
@@ -222,77 +208,48 @@
                                             </div>
                                             <div class="inner-item">Transaction ID</div>
                                             <div class="inner-item">Sender Name</div>
-                                            <div class="inner-item">Recipient Name</div>
-                                            <div class="inner-item">Transaction Date</div>
                                             <div class="inner-item">Amount</div>
-                                            <div class="inner-item">Status</div>
+                                            <div class="inner-item">Trip</div>
+                                            <div class="inner-item">Trip Date</div>
+                                            <div class="inner-item">Transaction Date</div>
+                                            <div class="inner-item">Fee</div>
                                         </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Pending</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
+                                        <?php
+                                            $booking_transactions = get_booking_transactions($curator_id);
+
+                                            foreach($booking_transactions as $entry){
+                                                $transaction_id = $entry["transaction_id"];
+                                                $sender = $entry["user_name"];
+                                                $date = $entry["transaction_date"];
+                                                $currency = $entry["currency"];
+                                                $amount = $entry["amount_paid"];
+                                                $fee = $entry["transaction_fee"];
+
+                                                echo "
+                                            <div class='list-item'>
+                                                <div class='item-bullet-container'>
+                                                    <div class='item-bullet'></div>
+                                                </div>
+                                                <div class='inner-item'>$transaction_id</div>
+                                                <div class='inner-item'>$sender</div>
+                                                <div class='inner-item'>$currency $amount</div>
+                                                <div class='inner-item'>$trip_name</div>
+                                                <div class='inner-item'>$trip_date</div>
+                                                <div class='inner-item'>$date</div>
+                                                <div class='inner-item text-danger'>-$fee</div>
+                                            </div>";
+                                            }
+
+                                            if(!$all_transactions){
+                                                echo "
+                                            <div class='list-item'>
+                                                <div class='item-bullet-container'>
+                                                    <div class='item-bullet'></div>
+                                                </div>
+                                                <div class='inner-item'>There are no recorded transactions at this moment</div>
+                                            </div>";
+                                            }
+                                        ?>
                                     </div>
                                     <div class="pagination-section my-5">
                                         <div class="row">
@@ -326,78 +283,46 @@
                                                 <div class="item-bullet"></div>
                                             </div>
                                             <div class="inner-item">Transaction ID</div>
-                                            <div class="inner-item">Sender Name</div>
-                                            <div class="inner-item">Recipient Name</div>
-                                            <div class="inner-item">Transaction Date</div>
+                                            <div class="inner-item">Requested by</div>
                                             <div class="inner-item">Amount</div>
-                                            <div class="inner-item">Status</div>
+                                            <div class="inner-item">Receiving Account</div>
+                                            <div class="inner-item">Network/Bank</div>
+                                            <div class="inner-item">Transaction Date</div>
                                         </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Pending</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
+                                        <?php
+                                            $withdrawal_transactions = get_withdrawal_transactions($curator_id);
+
+                                            foreach($withdrawal_transactions as $entry){
+                                                $transaction_id = $entry["transaction_id"];
+                                                $sender = $entry["user_name"];
+                                                $date = $entry["transaction_date"];
+                                                $currency = $entry["currency"];
+                                                $amount = $entry["amount_paid"];
+                                                $fee = $entry["transaction_fee"];
+
+                                                echo "
+                                            <div class='list-item'>
+                                                <div class='item-bullet-container'>
+                                                    <div class='item-bullet'></div>
+                                                </div>
+                                                <div class='inner-item'>$transaction_id</div>
+                                                <div class='inner-item'>$sender</div>
+                                                <div class='inner-item'>$currency $amount</div>
+                                                <div class='inner-item'>$date</div>
+                                                <div class='inner-item text-danger'>-$fee</div>
+                                            </div>";
+                                            }
+
+                                            if(!$all_transactions){
+                                                echo "
+                                            <div class='list-item'>
+                                                <div class='item-bullet-container'>
+                                                    <div class='item-bullet'></div>
+                                                </div>
+                                                <div class='inner-item'>There are no recorded withdrawals at this moment</div>
+                                            </div>";
+                                            }
+                                        ?>
                                     </div>
                                     <div class="pagination-section my-5">
                                         <div class="row">

@@ -1,3 +1,23 @@
+<?php
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+
+    if (!is_session_user_curator()) {
+        header("Location: ../views/home.php");
+        die();
+    }
+
+    $info = get_collaborator_info(get_session_user_id());
+    $curator_id = get_session_account_id();
+    $user_name = $info["user_name"];
+    $curator_name = $info["curator_name"];
+    $logo = $info["curator_logo"];
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +25,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard | Trip Booking</title>
+    <title>Curator | Trip Booking</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -56,9 +76,9 @@
                     <div class="border-1 border-bottom py-3">
                         <div>
                             <h5 class="title">Trip Booking</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Boooking</small>
+                            <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Boooking</small>
                         </div>
-                        <p class="mt-4 mb-0">This table contins all the booking information associated with your trips. Click on a row to expand on the information provided.</p>
+                        <p class="mt-4 mb-0">Bookings have been grouped based on the Trip. Click on a particular trip to view more information.</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
                         <div class="left-controls">
@@ -71,7 +91,7 @@
                         <div class="right-controls d-flex gap-2 easygo-fs-5">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle easygo-fs-5 h-100" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Trips
+                                    <span class="easygo-fw-3">Group by</span> Trips
                                 </button>
                                 <ul class="dropdown-menu easygo-fs-5" aria-labelledby="viewby-menu">
                                     <li><a class="dropdown-item" href="#">All</a></li>
@@ -92,26 +112,23 @@
                     </div>
                     <div class="trip-listing">
                         <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
-                            <div class="list-item">
-                                <div class="inner-item">Aburi Botanical Gardens Trip</div>
-                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="inner-item">Kwame Nkrumah National Park</div>
-                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="inner-item">Mount Afadzo Trip</div>
-                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="inner-item">Osu Castle Trip</div>
-                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="inner-item">Aburi Gardens</div>
-                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                            </div>
+                        <?php
+                            $trips = get_booking_summary_by_trip($curator_id);
+                            foreach($trips as $entry){
+                                $name = $entry["title"];
+                                $id = $entry["campaign_id"];
+                                $count = $entry["booking_count"];
+                                echo "
+                                <div class='list-item'>
+                                    <div class='inner-item'>$name</div>
+                                    <div class='inner-item easygo-fs-5 text-end'>$count Bookings</div>
+                                </div>";
+                            }
+                            if(!$trips){
+                                echo "<h5>You don't have any bookings yet</h5>";
+                            }
+                        ?>
+
                         </div>
                     </div>
                     <div class="pagination-section my-5">

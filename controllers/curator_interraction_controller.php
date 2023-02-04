@@ -29,4 +29,52 @@
 		return $class->get_curator_upcoming_trips($curator_id);
 	}
 
+	function get_curator_bookings($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_curator_bookings($curator_id);
+	}
+
+	function get_curator_campaigns($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_curator_campaigns($curator_id);
+	}
+
+	// Returns all the campaigns with how many bookings for their various tours
+	function get_booking_summary_by_trip($curator_id){
+		$class = new curator_interaction_class();
+		$trips = $class->get_curator_campaigns($curator_id);
+		$data = array();
+		foreach($trips as $e){
+			$id = $e["campaign_id"];
+			$count = $class->count_campaign_bookings($id)["booking_count"];
+
+			if ($count > 0 ){
+				$data = array_merge($data,array(
+					"campaign_id" => $id,
+					"booking_count" => $count,
+					"title" => $e["title"]
+				));
+			}
+		}
+		return $data;
+	}
+
+
+	function get_all_transactions($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_all_transactions_curator($curator_id);
+	}
+
+
+	function get_booking_transactions($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_booking_transactions_curator($curator_id);
+	}
+
+
+	function get_withdrawal_transactions($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_withdrawal_transactions($curator_id);
+	}
+
 ?>

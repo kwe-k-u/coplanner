@@ -22,14 +22,14 @@
 						record_user_login($result["user_id"]);
 						//check if user has special permissions
 						if(isset($result["curator_id"])){
-							session_log_in_advanced($result["user_id"],'$result["media_location"]',$result["role"],$result["curator_id"]);
+							session_log_in_advanced($result["user_id"],$result["role"],$result["curator_id"]);
 							$url = server_base_url() . "curator/dashboard.php";
 						} else if (isset($result["admin"])){
 							$url = server_base_url() . "admin/dashboard.php";
-							session_log_in_advanced($result["user_id"],'$result["media_location"]',$result["role"],NULL);
+							session_log_in_advanced($result["user_id"],$result["role"],NULL);
 						} else{
 							$url = server_base_url() . "views/trips.php";
-							session_log_in($result["user_id"],'$result["media_location"]',$result["role"]);
+							session_log_in($result["user_id"],$result["role"]);
 						}
 
 						send_json(array(

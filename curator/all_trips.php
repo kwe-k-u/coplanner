@@ -1,3 +1,22 @@
+<?php
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+
+    if (!is_session_user_curator()) {
+        header("Location: ../views/home.php");
+        die();
+    }
+
+    $info = get_collaborator_info(get_session_user_id());
+    $curator_id = get_session_account_id();
+    $user_name = $info["user_name"];
+    $curator_name = $info["curator_name"];
+    $logo = $info["curator_logo"];
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +24,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard | All Trips</title>
+    <title>Curator || All Trips</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -65,102 +84,40 @@
                         <div class="row pt-5">
                             <!-- ============================== -->
                             <!-- tirp card [start] -->
-                            <div class="col-lg-4 col-md-6 pb-4">
-                                <div class="trip-card-2">
-                                    <div class="trip-card-img">
-                                        <img src="../assets/images/others/tour3.jpg" alt="tour 3">
+                            <?php
+                                $trips = get_curator_campaigns($curator_id);
+
+                                if(!$trips){
+                                    echo "<h4>You don't have any listed tours. Click <a class='btn btn-primary' href='create_a_trip.php'> Here </a> to get started</h4>";
+                                }else {
+                                    foreach($trips as $entry){
+                                        echo "
+                                        <div class='col-lg-4 col-md-6 pb-4'>
+                                <div class='trip-card-2'>
+                                    <div class='trip-card-img'>
+                                        <img src='../assets/images/others/tour3.jpg' alt='tour 3'>
                                     </div>
-                                    <div class="trip-card-content">
-                                        <h5 class="header">Legon Botanical Gardens</h5>
-                                        <div class="easygo-fs-5 d-flex align-items-center justify-content-between">
-                                            <div><i class="fa-regular fa-calendar-days"></i> 12 Dec 2022 - 10 Jan 2023</div>
-                                            <div><i class="fa-solid fa-pen-to-square"></i> 15 Booked Seats</div>
+                                    <div class='trip-card-content'>
+                                        <h5 class='header'>Legon Botanical Gardens</h5>
+                                        <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
+                                            <div><i class='fa-regular fa-calendar-days'></i> 12 Dec 2022 - 10 Jan 2023</div>
+                                            <div><i class='fa-solid fa-pen-to-square'></i> 15 Booked Seats</div>
                                         </div>
-                                        <div class="easygo-fs-5">
-                                            <i class="fa-solid fa-map-pin"></i> Pickup coming soon
+                                        <div class='easygo-fs-5'>
+                                            <i class='fa-solid fa-map-pin'></i> Pickup coming soon
                                         </div>
-                                        <div class="py-3 d-flex justify-content-between align-items-center easygo-fs-5">
-                                            <span><i class="fa-solid fa-tag"></i> GHc150</span>
-                                            <button class="btn px-3 py-1 border easygo-fs-5">Edit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- tirp card [start] -->
-                            <!-- ============================== -->
-                            <!-- ============================== -->
-                            <!-- tirp card [start] -->
-                            <div class="col-lg-4 col-md-6 pb-4">
-                                <div class="trip-card-2">
-                                    <div class="trip-card-img">
-                                        <img src="../assets/images/others/scenery1.jpg" alt="tour 3">
-                                    </div>
-                                    <div class="trip-card-content">
-                                        <h5 class="header">Legon Botanical Gardens</h5>
-                                        <div class="easygo-fs-5 d-flex align-items-center justify-content-between">
-                                            <div><i class="fa-regular fa-calendar-days"></i> 12 Dec 2022 - 10 Jan 2023</div>
-                                            <div><i class="fa-solid fa-pen-to-square"></i> 15 Booked Seats</div>
-                                        </div>
-                                        <div class="easygo-fs-5">
-                                            <i class="fa-solid fa-map-pin"></i> Pickup coming soon
-                                        </div>
-                                        <div class="py-3 d-flex justify-content-between align-items-center easygo-fs-5">
-                                            <span><i class="fa-solid fa-tag"></i> GHc150</span>
-                                            <button class="btn px-3 py-1 border easygo-fs-5">Edit</button>
+                                        <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
+                                            <span><i class='fa-solid fa-tag'></i> GHc150</span>
+                                            <button class='btn px-3 py-1 border easygo-fs-5'>Edit</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- tirp card [start] -->
-                            <!-- ============================== -->
-                            <!-- ============================== -->
-                            <!-- tirp card [start] -->
-                            <div class="col-lg-4 col-md-6 pb-4">
-                                <div class="trip-card-2">
-                                    <div class="trip-card-img">
-                                        <img src="../assets/images/others/scenery2.jpg" alt="tour 3">
-                                    </div>
-                                    <div class="trip-card-content">
-                                        <h5 class="header">Legon Botanical Gardens</h5>
-                                        <div class="easygo-fs-5 d-flex align-items-center justify-content-between">
-                                            <div><i class="fa-regular fa-calendar-days"></i> 12 Dec 2022 - 10 Jan 2023</div>
-                                            <div><i class="fa-solid fa-pen-to-square"></i> 15 Booked Seats</div>
-                                        </div>
-                                        <div class="easygo-fs-5">
-                                            <i class="fa-solid fa-map-pin"></i> Pickup coming soon
-                                        </div>
-                                        <div class="py-3 d-flex justify-content-between align-items-center easygo-fs-5">
-                                            <span><i class="fa-solid fa-tag"></i> GHc150</span>
-                                            <button class="btn px-3 py-1 border easygo-fs-5">Edit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- tirp card [start] -->
-                            <!-- ============================== -->
-                            <!-- ============================== -->
-                            <!-- tirp card [start] -->
-                            <div class="col-lg-4 col-md-6 pb-4">
-                                <div class="trip-card-2">
-                                    <div class="trip-card-img">
-                                        <img src="../assets/images/others/portrait_scenery2.jpg" alt="tour 3">
-                                    </div>
-                                    <div class="trip-card-content">
-                                        <h5 class="header">Legon Botanical Gardens</h5>
-                                        <div class="easygo-fs-5 d-flex align-items-center justify-content-between">
-                                            <div><i class="fa-regular fa-calendar-days"></i> 12 Dec 2022 - 10 Jan 2023</div>
-                                            <div><i class="fa-solid fa-pen-to-square"></i> 15 Booked Seats</div>
-                                        </div>
-                                        <div class="easygo-fs-5">
-                                            <i class="fa-solid fa-map-pin"></i> Pickup coming soon
-                                        </div>
-                                        <div class="py-3 d-flex justify-content-between align-items-center easygo-fs-5">
-                                            <span><i class="fa-solid fa-tag"></i> GHc150</span>
-                                            <button class="btn px-3 py-1 border easygo-fs-5">Edit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        ";
+                                    }
+                                }
+                            ?>
+
                             <!-- tirp card [start] -->
                             <!-- ============================== -->
                         </div>
