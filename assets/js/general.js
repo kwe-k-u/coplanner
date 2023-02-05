@@ -375,12 +375,14 @@ function disableInputs() {
 
 //Returns the value of the option selected in the custom select dropdown
 function get_dropdown_value(dropdown_id){
-  return document.getElementById(dropdown_id).href.split("#")[1]
+  var element = document.getElementById(dropdown_id);
+  return element.href.split("#")[1]
 }
 
 //Updates the custom dropdown value with the value of selected option
 function on_option_select(id,value){
 	var selected = document.getElementById(id);
+  selected.innerText = value;
 	selected.href="#"+value;
 }
 
