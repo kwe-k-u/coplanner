@@ -144,6 +144,23 @@
 						echo "The token has expired. Request a new token to be sent";
 					}
 					die();
+				case "change_password_logged_in":
+					$new_password = $_POST["new_password"];
+					$current_password = $_POST["current_password"];
+					$user_id = (isset($_POST["user_id"])) ? $_POST["user_id"] : get_session_user_id();
+					$email = get_user_by_id($user_id)["email"];
+					$result = log_in_user($email,$current_password);
+					echo "eres ".$result;
+					if ($result){
+						change_password_by_user_id($user_id,$new_password);
+
+						session_log_out();
+						send_json("You have to log in now");
+					} else {
+						send_json("Current password does not match",100);
+					}
+
+					die();
 				case "invite_curator_collaborator":
 					$email = $_POST["email"];
 					$curator_id = $_POST["curator_id"];

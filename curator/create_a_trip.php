@@ -27,7 +27,7 @@ $logo = $info["curator_logo"];
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- EHImageUpload css -->
     <link rel="stylesheet" href="../assets/css/EhImageUploadDisplay.css">
@@ -317,72 +317,106 @@ $logo = $info["curator_logo"];
 
                     <div class="row my-5">
                         <h5 class="mb-2">Recent uploads</h5>
-                        <div class="col-lg-4 pb-3">
-                            <div class="container bg-gray-3 border rounded">
-                                <div class="img-grid-1">
+
+                        <div id="recent-list" style="display:none;">
+                            <div style="overflow-x: auto;">
+                                <div class="grid-7" style="max-height: 500px;">
                                     <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/scenery1.jpg" alt="scene 1">
                                     </div>
                                     <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/scenery2.jpg" alt="scene 1">
                                     </div>
                                     <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
                                     </div>
                                     <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
                                     </div>
-                                </div>
-                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
-                                    <span class="easygo-fs-5">Boti Falls</span>
-                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                    <div class="grid-item">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="col-lg-4 pb-3">
-                            <div class="container bg-gray-3 border rounded">
-                                <div class="img-grid-1">
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+
+
+                            <div class="col-lg-4 pb-3 image-collection" id="collection1">
+                                <div class="container bg-gray-3 border rounded">
+                                    <div class="img-grid-1" id="boti">
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
                                     </div>
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                        <span class="easygo-fs-5">Boti Falls</span>
+                                        <span class="text-gray-1 easygo-fs-5">30 photos</span>
                                     </div>
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
-                                    </div>
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
-                                    </div>
-                                </div>
-                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
-                                    <span class="easygo-fs-5">Boti Falls</span>
-                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 pb-3">
-                            <div class="container bg-gray-3 border rounded">
-                                <div class="img-grid-1">
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                            <div class="col-lg-4 pb-3 image-collection" id="collection2">
+                                <div class="container bg-gray-3 border rounded">
+                                    <div class="img-grid-1">
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
                                     </div>
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                        <span class="easygo-fs-5">Boti Falls</span>
+                                        <span class="text-gray-1 easygo-fs-5">30 photos</span>
                                     </div>
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
-                                    </div>
-                                    <div class="grid-item">
-                                        <img src="../assets/images/others/profile.jpeg" alt="">
-                                    </div>
-                                </div>
-                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
-                                    <span class="easygo-fs-5">Boti Falls</span>
-                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-lg-4 pb-3 image-collection" id="collection3">
+                                <div class="container bg-gray-3 border rounded">
+                                    <div class="img-grid-1">
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                        <div class="grid-item">
+                                            <img src="../assets/images/others/profile.jpeg" alt="">
+                                        </div>
+                                    </div>
+                                    <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                        <span class="easygo-fs-5">Boti Falls</span>
+                                        <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
 
                     <!-- Modal footer -->
@@ -625,4 +659,5 @@ $logo = $info["curator_logo"];
     <script src="../assets/js/create_a_trip.js"></script>
 </body>
 +9-
+
 </html>

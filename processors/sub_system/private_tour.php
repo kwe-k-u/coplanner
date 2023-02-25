@@ -27,7 +27,7 @@
 						$currency,$min,$max,$desc,$start,$end,$state,$count);
 					send_json(array("msg"=>"Uploaded your private trip request. Curators will send quotes soon"));
 					die();
-				case "bid_private_trip":
+				case "bid_private_tour":
 					$request_id = $_POST["request_id"];
 					$comment = $_POST["comment"];
 					$fee = $_POST["fee"];
@@ -38,9 +38,9 @@
 					// echo $success;
 					// die();
 					if($success){
-						echo "bid placed";
+						send_json(array("msg"=> 'Bid placed'));
 					} else {
-						echo "Failed to place bid";
+						send_json(array("msg"=> 'Failed to place bid'),100);
 					}
 					die();
 				case "edit_private_tour":

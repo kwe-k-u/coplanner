@@ -159,5 +159,24 @@
 			$sql = "SELECT * FROM transactions";
 			return $this->db_fetch_all($sql);
 		}
+
+		function get_private_tour_requests(){
+			$sql = "SELECT * FROM private_tour";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_private_tour_requests_with_bids($curator_id){
+			$sql = "SELECT * FROM private_tour_quote
+			JOIN private_tour on private_tour_quote.private_tour_id = private_tour.private_tour_id
+			WHERE private_tour_quote.curator_id='$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_accepted_tour_requests($curator_id){
+			$sql = "SELECT * FROM private_tour
+			JOIN private_tour_quote ON private_tour_quote.quote_id = private_tour.accepted_quote
+			WHERE private_tour_quote.curator_id = '$curator_id'";
+			return $this->db_fetch_all($sql);
+		}
 	}
 ?>

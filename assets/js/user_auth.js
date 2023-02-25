@@ -48,3 +48,27 @@ function signup(form){
 
 }
 
+
+
+function change_password_signed_in(form){
+	event.preventDefault();
+	var current = form.current_password.value;
+	var new_pass = form.new_password.value;
+	var confirm_pass = form.confirm_password.value;
+
+	payload="action=change_password_logged_in";
+	payload += "&current_password="+ current;
+	payload += "&new_password="+ confirm_pass;
+
+	send_request("POST",
+	"processors/processor.php",
+	payload,
+	 (response)=>{
+		alert(response);
+		var json = JSON.parse(response);
+		if(json["status"]==100){
+			event.preventDefault();
+		}
+		alert(json)
+	});
+}

@@ -164,6 +164,12 @@
 			return $this->db_query($sql);
 		}
 
+		function change_password_by_user_id($user_id,$password){
+			$sql = "UPDATE `users` SET `password`='$password'
+			WHERE `user_id`='$user_id'";
+			return $this->db_query($sql);
+		}
+
 
 
 		//================================ DELETE =============================================

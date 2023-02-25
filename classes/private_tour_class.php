@@ -29,7 +29,7 @@ require_once(__DIR__. "/../utils/db_class.php");
 
 		function place_tour_request_bid($bid_id,$curator,$request,$comment,$fee){
 			$sql = "INSERT INTO `private_tour_quote` (`quote_id`, `curator_id`, `private_tour_id`, `fee`, `comments`)
-			VALUE ('$bid_id', '$curator', '$request', '$comment', '$fee')";
+			VALUE ('$bid_id', '$curator', '$request', '$fee', '$comment')";
 			// return $sql;
 			return $this->db_query($sql);
 		}

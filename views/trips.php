@@ -1,19 +1,6 @@
 <?php
     require_once(__DIR__ . "/../utils/core.php");
-    require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
-
-    if (!is_session_user_curator()) {
-        header("Location: ../views/home.php");
-        die();
-    }
-
-    $info = get_collaborator_info(get_session_user_id());
-    $curator_id = get_session_account_id();
-    $user_name = $info["user_name"];
-    $curator_name = $info["curator_name"];
-    $logo = $info["curator_logo"];
-
-
+    require_once(__DIR__ . "/../controllers/interaction_controller.php");
 
 
 ?>
@@ -146,7 +133,7 @@
                             <div class="d-flex justify-content-center mb-3">
                                 <button class="easygo-btn-1 easygo-rounded-2 px-5">Load More Trips</button>
                             </div>
-                            <p class="easygo-fs-4">Are you looking to plan a private tour? Book Here!</p>
+                            <p class="easygo-fs-4">Are you looking to plan a private tour? <a href="dashboard/private_tour.php" style="text-decoration:underline">Book Here!</a> </p>
                         </div>
                     </div>
                 </div>
@@ -160,144 +147,52 @@
             <!-- recent trips [start] -->
             <section class="py-5">
                 <div class="container">
-                    <div class="text-center easygo-h3">Past Trips</div>
+
                     <div class="row my-3">
-                        <div class="col-lg-4 col-md-6 py-3">
-                            <div class="trip-card">
-                                <img src="../assets/images/others/tour1.jpg" alt="trip card image">
-                                <div class="trip-card-body">
-                                    <div class="trip-card-header">
-                                        <div class="title">
-                                            <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                            <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
+                        <?php
+                            $past_trips = get_past_campaigns();
+
+                            if($past_trips){
+                                echo "<div class='text-center easygo-h3'>Past Trips</div>";
+                            }
+
+
+                            foreach ($past_trips as $trip) {
+                                $title = $trip["title"];
+                                $trip_id = $trip["campaign_id"];
+                                $description = shorten($trip["description"]);
+                                $curator = $trip["curator_name"];
+
+
+                                echo "<div class='col-lg-4 col-md-6 py-3'>
+                                <div class='trip-card'>
+                                    <img src='../assets/images/others/tour1.jpg' alt='trip card image'>
+                                    <div class='trip-card-body'>
+                                        <div class='trip-card-header'>
+                                            <div class='title'>
+                                                <h5 class='easygo-fw-1'>$title</h5>
+                                                <p class='text-gray-1 easygo-fs-5'>Curated by $curator</p>
+                                            </div>
+                                            <div class='location easygo-fs-4'>
+                                                Accra Ghana
+                                            </div>
                                         </div>
-                                        <div class="location easygo-fs-4">
-                                            Accra Ghana
-                                        </div>
-                                    </div>
-                                    <div class="trip-card-content">
-                                        Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
-                                    </div>
-                                </div>
-                                <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 ">View trip</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 py-3">
-                            <div class="trip-card">
-                                <img src="../assets/images/others/tour2.jpg" alt="trip card image">
-                                <div class="trip-card-body">
-                                    <div class="trip-card-header">
-                                        <div class="title">
-                                            <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                            <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
-                                        </div>
-                                        <div class="location easygo-fs-4">
-                                            Accra Ghana
+                                        <div class='trip-card-content'>
+                                            $description
                                         </div>
                                     </div>
-                                    <div class="trip-card-content">
-                                        Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
+                                    <div class='trip-card-footer'>
+                                        <a class='easygo-btn-1 w-100' href='trip_description?campaign_id=$trip_id'>View trip</a>
                                     </div>
                                 </div>
-                                <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 ">View trip</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 py-3">
-                            <div class="trip-card">
-                                <img src="../assets/images/others/tour3.jpg" alt="trip card image">
-                                <div class="trip-card-body">
-                                    <div class="trip-card-header">
-                                        <div class="title">
-                                            <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                            <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
-                                        </div>
-                                        <div class="location easygo-fs-4">
-                                            Accra Ghana
-                                        </div>
-                                    </div>
-                                    <div class="trip-card-content">
-                                        Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
-                                    </div>
-                                </div>
-                                <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 ">View trip</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 py-3">
-                            <div class="trip-card">
-                                <img src="../assets/images/others/scenery1.jpg" alt="trip card image">
-                                <div class="trip-card-body">
-                                    <div class="trip-card-header">
-                                        <div class="title">
-                                            <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                            <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
-                                        </div>
-                                        <div class="location easygo-fs-4">
-                                            Accra Ghana
-                                        </div>
-                                    </div>
-                                    <div class="trip-card-content">
-                                        Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
-                                    </div>
-                                </div>
-                                <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 ">View trip</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 py-3">
-                            <div class="trip-card">
-                                <img src="../assets/images/others/scenery2.jpg" alt="trip card image">
-                                <div class="trip-card-body">
-                                    <div class="trip-card-header">
-                                        <div class="title">
-                                            <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                            <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
-                                        </div>
-                                        <div class="location easygo-fs-4">
-                                            Accra Ghana
-                                        </div>
-                                    </div>
-                                    <div class="trip-card-content">
-                                        Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
-                                    </div>
-                                </div>
-                                <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 ">View trip</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 py-3">
-                            <div class="trip-card">
-                                <img src="../assets/images/others/background.jpg" alt="trip card image">
-                                <div class="trip-card-body">
-                                    <div class="trip-card-header">
-                                        <div class="title">
-                                            <h5 class="easygo-fw-1">Bunsco Eco Park</h5>
-                                            <p class="text-gray-1 easygo-fs-5">Curated by easygo events</p>
-                                        </div>
-                                        <div class="location easygo-fs-4">
-                                            Accra Ghana
-                                        </div>
-                                    </div>
-                                    <div class="trip-card-content">
-                                        Dummy Text. We use top trip curator services to create new adventure for you and your loved ones. We use top trip curator services to create new adventure for you and your loved ones.
-                                    </div>
-                                </div>
-                                <div class="trip-card-footer">
-                                    <button class="easygo-btn-1 w-100 ">View trip</button>
-                                </div>
-                            </div>
-                        </div>
+                            </div>";
+                            }
+                        ?>
+
                     </div>
-                    <div class="mt-5">
+                    <!-- <div class="mt-5">
                         <a href="javascript:void(0)" class="easygo-btn-1 easygo-rounded-2 m-auto" style="max-width: 400px;">See All</a>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <!-- recent trips [end] -->

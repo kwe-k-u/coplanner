@@ -108,7 +108,7 @@
                                     <img src="../assets/images/svgs/bus_red_bg.svg" alt="bus image">
                                 </div>
                                 <div class="info-content">
-                                    <div class="text-gray-1 info-title easygo-fs-4">Booked Trips</div>
+                                    <div class="text-gray-1 info-title easygo-fs-4">Group Trips</div>
                                     <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                                     <img src="../assets/images/svgs/bus_black_bg.svg" alt="bus image">
                                 </div>
                                 <div class="info-content">
-                                    <div class="text-gray-1 info-title easygo-fs-4">Booked Trips</div>
+                                    <div class="text-gray-1 info-title easygo-fs-4">Private Trips</div>
                                     <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
                                 </div>
                             </div>

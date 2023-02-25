@@ -17,6 +17,10 @@
 <body>
 <?php
 require_once(__DIR__."/../utils/core.php");
+
+if(is_session_user_curator()){
+    header("Location: dashboard.php");
+}
 ?>
     <!-- main content start -->
     <main class="form-page-main container">

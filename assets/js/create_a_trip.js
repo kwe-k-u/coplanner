@@ -183,7 +183,22 @@ function get_occurance_row_values(element) {
 //===================================================================================
 // 			Functions for activity sections
 
-$(".activity-span").on("click", activity_click)
+$(".activity-span").on("click", activity_click);
+
+$(".image-collection").on("click", showRecentList);
+
+
+
+
+//Changes the display to show the images within the clicked collection
+function showRecentList(element){
+	get_collection();
+
+	function get_collection(){
+		alert(element.target);
+	}
+
+}
 
 
 
@@ -247,3 +262,4 @@ function activity_deselect(element){
 		parent.insertBefore(element.target,next);
 	}
 }
+

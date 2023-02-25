@@ -97,6 +97,12 @@
 	}
 
 
+	function change_password_by_user_id($user_id,$password){
+		$auth = new auth_class();
+		return $auth->change_password_by_user_id($user_id,$password);
+	}
+
+
 
 
 

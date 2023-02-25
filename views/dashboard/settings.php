@@ -168,8 +168,8 @@
                                         </div>
                                         <div class="input-field button-container">
                                             <button class="easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile" type="button" data-enable-target=".profile-form-field" data-visibility-target=".edit-or-update-profile">Edit Profile</button>
+                                            <center><div visible-mode="flex" class="justify-content-center edit-or-update-profile" ><a class="text-black easygo-fw-3 visibility-changer" href="javascript:void(0);" data-visibility-target=".update-pass-or-profile">Change Password</a></div></center>
                                             <button class="easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile" type="submit" data-enable-target=".profile-form-field" data-visibility-target=".edit-or-update-profile" style="display: none;">Update Profile</button>
-                                            <div visible-mode="flex" class="justify-content-center edit-or-update-profile" style="display: none;"><a class="text-black easygo-fw-3 visibility-changer" href="javascript:void(0);" data-visibility-target=".update-pass-or-profile">Change Password</a></div>
                                         </div>
                                     </form>
                                     <!-- register form 1 [end] -->
@@ -182,26 +182,25 @@
                             <!-- change password [start] -->
                             <div class="form-page-main container update-pass-or-profile" style="display: none;">
                                 <div class="form-container container" style="max-width: 600px;">
-                                    <form>
+                                    <form onsubmit="return change_password_signed_in(this)">
                                         <div class="input-field">
                                             <div class="password-input-container">
-                                                <input name="pswd" type="password" placeholder="Current Password" class="border-blue">
+                                                <input name="current_password" type="password" placeholder="Current Password" class="border-blue">
                                                 <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                                             </div>
                                         </div>
                                         <div class="input-field">
                                             <div class="password-input-container">
-                                                <input name="pswd" type="password" placeholder="New Password" class="border-blue">
+                                                <input name="new_password" type="password" placeholder="New Password" class="border-blue">
                                                 <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                                             </div>
                                         </div>
                                         <div class="input-field">
                                             <div class="password-input-container">
-                                                <input name="pswd" type="password" placeholder="Confirm Password" class="border-blue">
+                                                <input name="confirm_password" type="password" placeholder="Confirm Password" class="border-blue">
                                                 <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                                             </div>
                                         </div>
-                                        <div class="justify-content-end d-flex"><a class="text-black easygo-fw-3" href="./password_reset.php">Forgot Password ?</a></div>
                                         <div class="input-field button-container">
                                             <button class="easygo-btn-1 easygo-rounded-2" type="submit">Update Password</button>
                                         </div>
@@ -232,6 +231,7 @@
     <script src="../../assets/js/general.js"></script>
     <script src="../../assets/js/home.js"></script>
     <script src="../../assets/js/functions.js"></script>
+    <script src="../../assets/js/user_auth.js"></script>
 </body>
 
 </html>

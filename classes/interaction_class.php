@@ -39,7 +39,11 @@
 
 
 		function get_past_campaigns(){
-			$sql = "SELECT * FROM `campaigns`";
+			$sql = "SELECT campaigns.*,
+			curators.curator_name
+			 FROM `campaigns`
+			JOIN `campaign_trips` on campaign_trips.campaign_id = campaigns.campaign_id
+			JOIN curators on curators.curator_id = campaigns.campaign_id";
 			return $this->db_fetch_all($sql);
 		}
 
