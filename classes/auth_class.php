@@ -15,6 +15,7 @@
 			return $this->db_fetch_one($sql);
 		}
 
+
 		function curator_login($user_id){
 			$sql = "SELECT * FROM `curator_manager`
 			JOIN users on curator_manager.user_id = users.user_id

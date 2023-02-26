@@ -1,22 +1,28 @@
 <?php
 	require("../utils/core.php");
+	require("../utils/db_prepared.php");
 
-	function first(){
-		echo "first ";
-		return 1;
+	class test_db extends db_prepared{
+
+
+		function login($email,$password){
+			$query = "INSERT INTO `tesat` VALUE(?,?)";
+
+
+			$this->prepare($query);
+
+			$this->bind($email,$password);
+
+			// $sql = mysqli_prepare($this->db,$query);
+			return $this->db_query();
+		}
+
 	}
 
-	function second(){
-		echo "second";
-		return 1;
-	}
+	$class = new test_db();
 
-	function run(){
-		return first() && second();
-	}
-
-	run();
-
+	$results = $class->login(5,"kweku@.com");
+	var_dump($results);
 
 	// echo generate_id();
 	// $_SESSION["val"] = NULL;
