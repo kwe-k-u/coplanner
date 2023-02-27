@@ -1,13 +1,15 @@
 <?php
-	require_once(__DIR__."/../utils/db_class.php");
+	require_once(__DIR__."/../utils/db_prepared.php");
 
 
-	class contact_class extends db_connection{
+	class contact_class extends db_prepared{
 
 		function send_contact_message($email,$name,$message,$number){
 			$sql = "INSERT INTO `contact_message`(`email`, `name`, `message`, `phone`)
-			VALUES ('$email','$name','$message','$number')";
-			return $this->db_query($sql);
+			VALUES (?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($email,$name,$message,$number);
+			return $this->db_query();
 			}
 	}
 ?>

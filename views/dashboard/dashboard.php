@@ -233,9 +233,10 @@
     <!-- JQuery js -->
     <script src="../../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
+    <?php require_once(__DIR__."/../../utils/js_env_variables.php"); ?>
     <script src="../../assets/js/general.js"></script>
-    <script src="../../assets/js/home.js"></script>
     <script src="../../assets/js/functions.js"></script>
+    <script src="../../assets/js/home.js"></script>
 </body>
 
 </html>

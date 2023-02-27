@@ -1,11 +1,13 @@
 <?php
-	require_once(__DIR__."/../utils/db_class.php");
+	require_once(__DIR__."/../utils/db_prepared.php");
 
-	class newsletter_class extends db_connection{
+	class newsletter_class extends db_prepared{
 
 		function add_subscriber($email){
 			$sql = "INSERT INTO `newsletter_subscriptions` (`email`)
-			VALUE ('$email')";
+			VALUE (?)";
+			$this->prepare($sql);
+			$this->bind($email);
 			return $this->db_query($sql);
 		}
 

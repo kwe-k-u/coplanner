@@ -654,6 +654,8 @@ $logo = $info["curator_logo"];
     <!-- EHImageUpload js -->
     <script src="../assets/js/EhImageUploadDisplay.js"></script>
     <!-- easygo js -->
+    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__."../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/curator_general.js"></script>
     <script src="../assets/js/create_a_trip.js"></script>

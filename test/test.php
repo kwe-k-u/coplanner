@@ -20,8 +20,6 @@
 	}
 
 	$class = new test_db();
-
-	$results = $class->login(5,"kweku@.com");
 	var_dump($results);
 
 	// echo generate_id();

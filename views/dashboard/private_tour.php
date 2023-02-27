@@ -375,6 +375,7 @@ $profile = get_user_profile_img($user_id);
     <!-- Swiper js -->
     <script src="../../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
+    <?php require_once(__DIR__."/../../utils/js_env_variables.php"); ?>
     <script src="../../assets/js/general.js"></script>
     <script src="../../assets/js/home.js"></script>
     <script src="../../assets/js/functions.js"></script>

@@ -1,5 +1,3 @@
-// const baseurl = "http://137.184.228.209/easygo/";
-const baseurl = "http://localhost/easygo_v2/";
 
 
 

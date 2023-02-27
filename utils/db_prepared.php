@@ -14,10 +14,10 @@
 			$this->db = mysqli_connect(db_server(),db_username(),db_pass(),db_name());
 		}
 
-		// function __destruct()
-		// {
-		// 	$this->db->close();
-		// }
+		function __destruct()
+		{
+			$this->db->close();
+		}
 
 		function prepare($sql){
 			$this->statement = mysqli_prepare($this->db, $sql);
@@ -86,7 +86,7 @@
 			// mysqli_stmt_bind_result($this->statement, $result);
 
 			$result = $this->statement->get_result()->fetch_assoc();
-			$this->db->close();
+
 
 			/* fetch value */
 			return $result;
