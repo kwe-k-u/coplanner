@@ -24,6 +24,7 @@
 
 
 
+
 		//=============================INSERT======================
 		function create_campaign($campaign_id,$curator_id,$title, $description){
 			$sql = "INSERT INTO `campaigns` (`campaign_id`, `curator_id`,`title`,`description` )

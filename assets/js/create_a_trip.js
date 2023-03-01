@@ -263,3 +263,79 @@ function activity_deselect(element){
 	}
 }
 
+
+
+function on_location_expand(id){
+	var title = document.getElementById("location-info-title");
+	var description = document.getElementById("location-info-desc");
+
+	var payload = "action=get_site_by_id";
+	payload += "&toursite_id=" + id;
+
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response) => {
+			// alert(response);
+			var json = JSON.parse(response)["data"];
+			var activity = json["activities"];
+			var image_list = [
+				"../assets/images/others/scenery2.jpg",
+				"../assets/images/others/tour1.jpg"
+			];
+
+			title.innerText = json["site_name"];
+			description.innerText = json["toursite_description"];
+
+			reset_location_info_images(image_list);
+			reset_location_info_activities(activity);
+		}
+	);
+
+	$(".activity-span").on("click", activity_click);
+
+}
+
+
+function reset_location_info_images(images){
+	var image_div = document.getElementById("location-info-images")
+	var full_body = "";
+
+
+	images.forEach(image_source => {
+		full_body += "<div class='grid-item'> \
+		<img class='w-100 h-100 rounded' src='"+image_source+"' alt='scene 1'> \
+	</div>";
+	});
+
+	image_div.innerHTML = full_body;
+}
+
+
+function reset_location_info_activities(activities){
+	var activity_div = document.getElementById("activity-list-div");
+	var full_body = "";
+
+
+	for(key in activities){
+		var value = activities[key];
+		full_body += "<span id='"+key+"' class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>"+value+"</span>";
+	}
+	activity_div.innerHTML = full_body;
+}
+
+function location_search_submit(form){
+	event.preventDefault();
+
+
+}
+
+
+function create_location_tile(map){
+	var title = map["site_name"];
+	var location = map["site_location"];
+	var id = map["toursite_id"];
+
+}
+

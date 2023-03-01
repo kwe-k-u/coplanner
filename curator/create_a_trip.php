@@ -440,152 +440,82 @@ $logo = $info["curator_logo"];
                     <div class="col-lg-6">
                         <h6 class="mb-4">Add Trip And Activities</h6>
                         <div class="al-search">
-                            <div class="d-flex gap-2">
-                                <div class="form-input-field">
-                                    <input class="px-4 py-2 flex-grow-1" type="text" placeholder="Full Name">
-                                    <small class="easygo-fs-5">4 results found in <span class="text-gray-1">Ghana</span></small>
+                            <form onsubmit='location_search_submit(this)'>
+                                <div class="d-flex gap-2">
+                                    <div class="form-input-field">
+                                        <input class="px-4 py-2 flex-grow-1" type="text" placeholder="Search" name="query">
+                                        <small class="easygo-fs-5">4 results found in <span class="text-gray-1">Ghana</span></small>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a id="location_search_filter" class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" id="citymenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Search by
+</a>
+                                        <ul class="dropdown-menu px-2" aria-labelledby="citymenu">
+                                            <li onclick="on_option_select('location_search_filter','Activity')">Activity</li>
+                                            <li onclick="on_option_select('location_search_filter','Location')">Location</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-default border text-blue px-4 py-2">Search</button>
+                                    </div>
                                 </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" id="citymenu" data-bs-toggle="dropdown" aria-expanded="false">
-                                        City
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="citymenu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <button class="btn btn-default border text-blue px-4 py-2">Filter</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
-                        <div class="location-listing py-4">
-                            <div class="location-card border p-4 rounded my-3">
-                                <div class="header d-flex justify-content-between">
-                                    <h1 class="easygo-fs-3 text-capitalize">Legon Botanical Gardens</h1>
-                                    <h5 class="easygo-fs-4 text-orange">GHC 20 - 40</h5>
-                                </div>
-                                <div class="text-gray-1 easygo-fs-6">
-                                    <div class="rating-and-info d-flex align-items-center gap-1">
-                                        <span>4.3</span>
-                                        <span>
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/empty_star.svg" alt="star">
-                                        </span>
-                                        <span>(1708)</span>
+                        <div class='location-listing py-4'>
+                            <?php
+
+                            $toursites = get_toursites();
+
+                            foreach ($toursites as $site) {
+                                $site_id = $site["toursite_id"];
+                                $site_name = $site["site_name"];
+                                $site_location = $site["site_location"];
+                                $site_country = $site["country"];
+                                echo "
+                                <div class='location-card border p-4 rounded my-3'>
+                                    <div class='header d-flex justify-content-between'>
+                                        <h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
+                                        <h5 class='easygo-fs-4 text-orange'>$site_country</h5>
                                     </div>
-                                    <div class="time pt-2">
-                                        <span>Open</span>
-                                        &nbsp;
-                                        &nbsp;
-                                        <span>Closes 5pm</span>
+                                    <div class='text-gray-1 easygo-fs-6'>
+                                        <!-- <div class='rating-and-info d-flex align-items-center gap-1'>
+                                            <span>4.3</span>
+                                            <span>
+                                                <img src='../assets/images/svgs/full_star.svg' alt='star'>
+                                                <img src='../assets/images/svgs/full_star.svg' alt='star'>
+                                                <img src='../assets/images/svgs/full_star.svg' alt='star'>
+                                                <img src='../assets/images/svgs/full_star.svg' alt='star'>
+                                                <img src='../assets/images/svgs/empty_star.svg' alt='star'>
+                                            </span>
+                                            <span>(1708)</span>
+                                        </div> -->
+                                        <div class='time'>
+                                            <span>Location</span>
+                                            &nbsp;
+                                            &nbsp;
+                                            <span>Country</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="pt-3">
-                                    <button class="easygo-btn-1 easygo-fs-5 py-1 px-4">See More</button>
-                                </div>
-                            </div>
-                            <div class="location-card border p-4 rounded my-3">
-                                <div class="header d-flex justify-content-between">
-                                    <h1 class="easygo-fs-3 text-capitalize">Legon Botanical Gardens</h1>
-                                    <h5 class="easygo-fs-4 text-orange">GHC 20 - 40</h5>
-                                </div>
-                                <div class="text-gray-1 easygo-fs-6">
-                                    <div class="rating-and-info d-flex align-items-center gap-1">
-                                        <span>4.3</span>
-                                        <span>
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/empty_star.svg" alt="star">
-                                        </span>
-                                        <span>(1708)</span>
+                                    <div class='pt-3'>
+                                        <button class='easygo-btn-1 easygo-fs-5 py-1 px-4' onclick='on_location_expand(\"$site_id\")'>See More</button>
                                     </div>
-                                    <div class="time pt-2">
-                                        <span>Open</span>
-                                        &nbsp;
-                                        &nbsp;
-                                        <span>Closes 5pm</span>
-                                    </div>
-                                </div>
-                                <div class="pt-3">
-                                    <button class="easygo-btn-1 easygo-fs-5 py-1 px-4">See More</button>
-                                </div>
-                            </div>
-                            <div class="location-card border p-4 rounded my-3">
-                                <div class="header d-flex justify-content-between">
-                                    <h1 class="easygo-fs-3 text-capitalize">Legon Botanical Gardens</h1>
-                                    <h5 class="easygo-fs-4 text-orange">GHC 20 - 40</h5>
-                                </div>
-                                <div class="text-gray-1 easygo-fs-6">
-                                    <div class="rating-and-info d-flex align-items-center gap-1">
-                                        <span>4.3</span>
-                                        <span>
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/empty_star.svg" alt="star">
-                                        </span>
-                                        <span>(1708)</span>
-                                    </div>
-                                    <div class="time pt-2">
-                                        <span>Open</span>
-                                        &nbsp;
-                                        &nbsp;
-                                        <span>Closes 5pm</span>
-                                    </div>
-                                </div>
-                                <div class="pt-3">
-                                    <button class="easygo-btn-1 easygo-fs-5 py-1 px-4">See More</button>
-                                </div>
-                            </div>
-                            <div class="location-card border p-4 rounded my-3">
-                                <div class="header d-flex justify-content-between">
-                                    <h1 class="easygo-fs-3 text-capitalize">Legon Botanical Gardens</h1>
-                                    <h5 class="easygo-fs-4 text-orange">GHC 20 - 40</h5>
-                                </div>
-                                <div class="text-gray-1 easygo-fs-6">
-                                    <div class="rating-and-info d-flex align-items-center gap-1">
-                                        <span>4.3</span>
-                                        <span>
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/full_star.svg" alt="star">
-                                            <img src="../assets/images/svgs/empty_star.svg" alt="star">
-                                        </span>
-                                        <span>(1708)</span>
-                                    </div>
-                                    <div class="time pt-2">
-                                        <span>Open</span>
-                                        &nbsp;
-                                        &nbsp;
-                                        <span>Closes 5pm</span>
-                                    </div>
-                                </div>
-                                <div class="pt-3">
-                                    <button class="easygo-btn-1 easygo-fs-5 py-1 px-4">See More</button>
-                                </div>
-                            </div>
+                                </div>";
+                            }
+
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div>
-                            <h5 class="loc-title pb-3 border-bottom">Legon Botanical Gardens</h5>
+                            <h5 class="loc-title pb-3 border-bottom" id="location-info-title">Legon Botanical Gardens</h5>
                             <div class="loc-info">
-                                <p class="easygo-fs-5">
+                                <p class="easygo-fs-5" id="location-info-desc">
                                     Located in the heart of Accra in the University of Ghana is the Legon Botanical Gardens, a beautiful, dynamic outdoor play space for all ages where nature and fun collide.
                                     This dynamic Garden provides several recreational activities for the public and constantly adding new ones. The managers always give you reason to visit again and again. The facility has a colorful first class playground for children and a rope walk session for them also with genial staff.
                                 </p>
                             </div>
                             <div style="overflow-x: auto;">
-                                <div class="grid-7" style="max-height: 500px;">
+                                <div class="grid-7" style="max-height: 500px;" id="location-info-images">
                                     <div class="grid-item">
                                         <img class="w-100 h-100 rounded" src="../assets/images/others/scenery1.jpg" alt="scene 1">
                                     </div>
@@ -612,13 +542,13 @@ $logo = $info["curator_logo"];
                                     </div>
                                 </div>
                             </div>
-                            <div class="activity-listing">
+                            <div class="activity-listing" id="activity-listing">
                                 <div class="d-flex align-items-center gap-2 my-4">
                                     <h6 class="easygo-fw-1 m-0">Activities</h6>
                                     <small class="text-gray-1 easygo-fs-6">(Select activities to include)</small>
                                     <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
                                 </div>
-                                <div class="activity-list d-flex flex-wrap gap-2">
+                                <div id="activity-list-div" class="activity-list d-flex flex-wrap gap-2">
                                     <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">high rope course</span>
                                     <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">children playground</span>
                                     <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">canoeing</span>
@@ -655,11 +585,11 @@ $logo = $info["curator_logo"];
     <script src="../assets/js/EhImageUploadDisplay.js"></script>
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/curator_general.js"></script>
     <script src="../assets/js/create_a_trip.js"></script>
 </body>
-+9-
 
 </html>

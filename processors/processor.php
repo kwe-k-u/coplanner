@@ -28,7 +28,8 @@
 
 	$campaign_actions = array(
 		"create_campagin",
-		"add_site"
+		"add_site",
+		"get_site_by_id"
 	);
 
 	$private_tour_actions = array(

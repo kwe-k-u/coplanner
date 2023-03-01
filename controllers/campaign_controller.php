@@ -1,6 +1,6 @@
 <?php
-	require_once("../utils/core.php");
-	require_once("../classes/campaign_class.php");
+	require_once(__DIR__."/../utils/core.php");
+	require_once(__DIR__."/../classes/campaign_class.php");
 
 
 	function get_campaign_trip_by_id($id){
@@ -9,31 +9,31 @@
 	}
 
 
-	function get_campaign_by_id($id){
-		$campaign = new campaign_class();
-		return $campaign->get_campaign_by_id($id);
-	}
+	// function get_campaign_by_id($id){
+	// 	$campaign = new campaign_class();
+	// 	return $campaign->get_campaign_by_id($id);
+	// }
 
 
-	function get_campaign_trips($campaign_id){
-		$campaign = new campaign_class();
-		return $campaign->get_campaign_trips($campaign_id);
-	}
+	// function get_campaign_trips($campaign_id){
+	// 	$campaign = new campaign_class();
+	// 	return $campaign->get_campaign_trips($campaign_id);
+	// }
 
-	function get_campaign_activities($campaign_id){
-		$campaign = new campaign_class();
-		return $campaign->get_campaign_activities($campaign_id);
-	}
+	// function get_campaign_activities($campaign_id){
+	// 	$campaign = new campaign_class();
+	// 	return $campaign->get_campaign_activities($campaign_id);
+	// }
 
-	function get_toursite_by_campaign($id){
-		$camp = new campaign_class();
-		return $camp->get_toursite_by_campaign($id);
-	}
+	// function get_toursite_by_campaign($id){
+	// 	$camp = new campaign_class();
+	// 	return $camp->get_toursite_by_campaign($id);
+	// }
 
-	function get_campaign_next_trip($id){
-		$camp = new campaign_class();
-		return $camp->get_campaign_next_trip($id);
-	}
+	// function get_campaign_next_trip($id){
+	// 	$camp = new campaign_class();
+	// 	return $camp->get_campaign_next_trip($id);
+	// }
 
 	function create_campaign($camp_id, $curator_id, $title,$description){
 		$campaign = new campaign_class();
@@ -62,10 +62,10 @@
 	}
 
 
-	function get_current_campaigns(){
-		$camp = new campaign_class();
-		return $camp->get_current_campaigns();
-	}
+	// function get_current_campaigns(){
+	// 	$camp = new campaign_class();
+	// 	return $camp->get_current_campaigns();
+	// }
 
 
 

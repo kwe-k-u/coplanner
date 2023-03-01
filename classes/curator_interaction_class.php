@@ -200,6 +200,63 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_toursites(){
+			$sql = "SELECT * FROM toursites LIMIT 6";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_toursite_by_id($id){
+			$sql = "SELECT * FROM toursites ts
+			 WHERE ts.toursite_id = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_one();
+		}
+
+		function get_toursite_activities($id){
+			$sql = "SELECT
+			ta.activity_name,
+			ta.activity_id,
+			ta.is_verified
+			 FROM toursite_activity ta
+			WHERE ta.toursite_id=?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_all();
+		}
+
+		function get_toursite_media($id){
+
+			$sql = "SELECT
+			m.media_location,
+			tm.toursite_id
+			FROM toursite_media tm
+			JOIN media m on m.media_id = tm.media_id
+			WHERE tm.toursite_id=? AND m.media_type='picture'";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_all();
+		}
+
+
+		function get_toursite_by_location($query){
+			$sql = "SELECT * FROM `touristes` WHERE `site_location` LIKE %?% or
+			`country` LIKE %?%";
+			$this->prepare($sql);
+			$this->bind($query);
+			$this->db_fetch_all();
+		}
+
+		function get_toursite_by_activity($query){
+			$sql = "SELECT * FROM tour_sites ts
+			JOIN toursite_activity ta on ta.toursite_id = ts.toursite_id
+			WHERE ta.activity_name LIKE %?%";
+			$this->prepare($sql);
+			$this->bind($query);
+			$this->db_fetch_all();
+		}
+
 		function get_accepted_tour_requests($curator_id){
 			$sql = "SELECT * FROM private_tour
 			JOIN private_tour_quote ON private_tour_quote.quote_id = private_tour.accepted_quote

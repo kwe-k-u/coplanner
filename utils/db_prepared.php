@@ -70,8 +70,9 @@
 			/* fetch value */
 			$res = mysqli_stmt_get_result($this->statement);
 
-			 while($row = mysqli_fetch_array($res, MYSQLI_NUM)){
-				$result = array_merge($result,$row);
+			 while($row = mysqli_fetch_array($res, MYSQLI_ASSOC)){
+				$count = count($result);
+				$result[$count] = $row;
 			 }
 			 return $result;
 			// return $this->statement->get_result();
