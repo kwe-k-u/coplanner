@@ -7,18 +7,32 @@ function book_trip(form){
 	var seats = form.seats.value;
 
 
-	payload = "action=trip_payment";
-	payload += "&trip_id=" + url_params("trip_id");
-	payload += "&user_id=" + user_id;
-	payload += "&seats=" + seats;
-	payload += "&contact_name" + contact_name;
-	payload += "&contact_number" + contact_number;
+	// payload = "action=trip_payment";
+	// payload += "&trip_id=" + url_params("trip_id");
+	// payload += "&user_id=" + user_id;
+	// payload += "&seats=" + seats;
+	// payload += "&contact_name" + contact_name;
+	// payload += "&contact_number" + contact_number;
+	let payload = {
+		"action" : "trip_payment",
+		"trip_id" : url_params("trip_id"),
+		"user_id" : user_id,
+		"seats" : seats,
+		"contact_name" : contact_name,
+		"contact_number" : contact_number
+	};
 
 	//get details for respective payment options
 	if (payment_method == "mobile money"){
-		payload += mobile_money_payload(form);
+		let m = mobile_money_payload(form);
+		for (key in m){
+			payload[key] = m[key];
+		}
 	}else {
-		payload += credit_card_payload(form);
+		let m = credit_card_payload(form);
+		for (key in m){
+			payload[key] = m[key];
+		}
 	}
 
 
@@ -37,16 +51,17 @@ function book_trip(form){
 }
 
 function mobile_money_payload(form){
-	var payload = "&payment_method=momo";
-	payload += "&network=" + form.network.value;
-	payload += "&number=" + form.number.value;
-
-	return payload;
+	return {
+		"payment_method" : "momo",
+		"network" : form.network.value,
+		"number" : form.number.value,
+	};
 }
 
 function credit_card_payload(form){
-	var payload = "&payment_method=card";
+	return {
+		"payment_method" : card
+	};
 
-	return payload;
 }
 

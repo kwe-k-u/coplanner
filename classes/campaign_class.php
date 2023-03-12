@@ -15,7 +15,7 @@
 
 
 		function get_toursite_by_name($name){
-			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE %?%";
+			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);
 			$this->bind($name);
 			return $this->db_fetch_all();

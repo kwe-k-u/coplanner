@@ -241,20 +241,22 @@
 
 
 		function get_toursite_by_location($query){
-			$sql = "SELECT * FROM `touristes` WHERE `site_location` LIKE %?% or
-			`country` LIKE %?%";
+			$sql = "SELECT * FROM `toursites` WHERE `site_location` LIKE CONCAT('%',?,'%') or
+			`country` LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);
-			$this->bind($query);
-			$this->db_fetch_all();
+			$this->bind($query,$query);
+			return $this->db_fetch_all();
 		}
 
+
+
 		function get_toursite_by_activity($query){
-			$sql = "SELECT * FROM tour_sites ts
+			$sql = "SELECT * FROM toursites ts
 			JOIN toursite_activity ta on ta.toursite_id = ts.toursite_id
-			WHERE ta.activity_name LIKE %?%";
+			WHERE ta.activity_name LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);
 			$this->bind($query);
-			$this->db_fetch_all();
+			return $this->db_fetch_all();
 		}
 
 		function get_accepted_tour_requests($curator_id){
@@ -264,6 +266,10 @@
 			$this->prepare($sql);
 			$this->bind($curator_id);
 			return $this->db_fetch_all();
+		}
+
+		function get_curator_info($curator_id){
+			$sql = "SELECT";
 		}
 	}
 ?>

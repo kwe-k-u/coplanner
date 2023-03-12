@@ -19,33 +19,55 @@ function url_params(key){
 
 
 //Make http requests with paraterms type(POST/GET), endpoint,payload and onload function
-function send_request(type,endpoint, payload,  onload){
-	var xhr = new XMLHttpRequest();
-	// Open the connection
-	xhr.open(type, baseurl+endpoint);
-	// Set up a handler for when the task for the request is complete
-	xhr.onload =  function () {
-		if (xhr.readyState == XMLHttpRequest.DONE) {
-			// console.log(endpoint + " <<<<<start>>>> "+ xhr.response);
-			// console.log( " <<<payload>>> "+ payload);
-			// console.log(" <<<<<end>>>> ");
-			if (onload != null){
-				onload(xhr.response);
-			}
-		 }
-	 };
-	 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+async function send_request(type,endpoint, data,  onload){
+	let formdata = new FormData();
+	for (key in data) {
+		formdata.append(key, data[key]);
+	}
 
-	 // Send the data.
-		xhr.send(payload);
+	let response = await fetch(baseurl+endpoint,
+		{
+			method : type,
+			body : formdata
+		});
+
+		// alert(response.json());
+
+		try {
+			var caught = response.clone();
+			// alert(await caught.clone().text());
+			onload (await response.json());
+		}catch (e){
+			alert("error "+await caught.text());
+		}
 }
+// function send_request(type,endpoint, payload,  onload){
+// 	var xhr = new XMLHttpRequest();
+// 	// Open the connection
+// 	xhr.open(type, baseurl+endpoint);
+// 	// Set up a handler for when the task for the request is complete
+// 	xhr.onload =  function () {
+// 		if (xhr.readyState == XMLHttpRequest.DONE) {
+// 			// console.log(endpoint + " <<<<<start>>>> "+ xhr.response);
+// 			// console.log( " <<<payload>>> "+ payload);
+// 			// console.log(" <<<<<end>>>> ");
+// 			if (onload != null){
+// 				onload(xhr.response);
+// 			}
+// 		 }
+// 	 };
+// 	 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+// 	 // Send the data.
+// 		xhr.send(payload);
+// }
 
 
 function logout(){
 	send_request(
 		"POST",
 		"processors/processor.php",
-		"action=logout",
+		{"action":"logout"},
 		(response)=>{
 			window.location.href = baseurl;
 		}
@@ -96,9 +118,14 @@ function upload_image(image_input_id, media_type, {curator_id = null, user_id = 
 
 
 function update_curator_logo(media_id,curator_id){
-	payload = "action=update_curator_logo";
-	payload += "&media_id="+ media_id;
-	payload += "&curator_id="+ curator_id;
+	// payload = "action=update_curator_logo";
+	// payload += "&media_id="+ media_id;
+	// payload += "&curator_id="+ curator_id;
+	let payload = {
+		"action" : "update_curator_logo",
+		"media_id" : media_id,
+		"curator_id" : curator_id
+	};
 	send_request(
 		"POST",
 		"processors/processor.php",
@@ -110,9 +137,14 @@ function update_curator_logo(media_id,curator_id){
 
 
 function update_profile_image(media_id,user_id, {callback = null}){
-	payload = "action=update_user_profile_image";
-	payload += "&media_id="+ media_id;
-	payload += "&user_id="+ user_id;
+	// payload = "action=update_user_profile_image";
+	// payload += "&media_id="+ media_id;
+	// payload += "&user_id="+ user_id;
+	let payload = {
+		"action" : "update_user_profile_image",
+		"media_id" : media_id,
+		"user_id" : user_id
+	};
 	send_request(
 		"POST",
 		"processors/processor.php",
@@ -127,10 +159,16 @@ function update_profile_image(media_id,user_id, {callback = null}){
 
 
 function update_curator_manager_id(user_id,front_media_id, back_media_id){
-	payload = "action=link_curator_manager_id";
-	payload += "&front_id=" + front_media_id;
-	payload += "&user_id=" + user_id;
-	payload += "&back_id=" + back_media_id;
+	// payload = "action=link_curator_manager_id";
+	// payload += "&front_id=" + front_media_id;
+	// payload += "&user_id=" + user_id;
+	// payload += "&back_id=" + back_media_id;
+	let payload = {
+		"action" : "link_curator_manager_id",
+		"front_id" : front_media_id,
+		"user_id" : user_id,
+		"back_id" : back_media_id
+	};
 	send_request(
 		"POST",
 		"processors/processor.php",
@@ -147,14 +185,19 @@ function login(form){
 
 	var email = form.email.value;
 	var password = form.password.value;
-	payload = "action=login";
-	payload += "&email="+ email;
-	payload += "&password="+ password;
+	// payload = "action=login";
+	// payload += "&email="+ email;
+	// payload += "&password="+ password;
+	let payload = {
+		"action": "login",
+		"email" : email,
+		"password" : password
+	};
 
 	send_request("POST","processors/processor.php",
 	payload,
 	 (response)=>{
-		var json = JSON.parse(response);
+		var json = response;
 		var status = json["status"];
 		var url = "";
 		json = json["data"];
@@ -177,8 +220,12 @@ function login(form){
 function request_password_reset(form){
 	event.preventDefault();
 	var email = form.email.value;
-	payload = "action=request_password_reset";
-	payload += "&email="+email;
+	// payload = "action=request_password_reset";
+	// payload += "&email="+email;
+	let payload = {
+		"action" : "request_password_reset",
+		"email" : email
+	};
 
 	send_request("POST","processors/processor.php",
 	payload,
@@ -198,6 +245,11 @@ function reset_password(form){
 	payload = "action=change_password";
 	payload += "&token="+token;
 	payload += "&password="+password;
+	let payload = {
+		"action" : "change_password",
+		"token" : token,
+		"password" : password
+	};
 
 	send_request(
 		"POST",
@@ -216,8 +268,12 @@ $(".nl-subscription-form").submit(add_subscriber);
 function add_subscriber(event){
 	event.preventDefault();
 	var email = document.getElementById("newsletter_email_field");
-	payload = "action=add_subscriber";
-	payload += "&email="+email.value;
+	// payload = "action=add_subscriber";
+	// payload += "&email="+email.value;
+	let payload = {
+		"action" : "add_subscriber",
+		"email" : email.value
+	};
 
 	send_request(
 		"POST",
@@ -225,7 +281,7 @@ function add_subscriber(event){
 		payload,
 		(response)=> {
 			// alert(response);
-			var json = JSON.parse(response);
+			var json = response;
 			alert(json["data"].msg);
 			email.value= "";
 
@@ -245,9 +301,14 @@ function goto_page(url, isRelative = true){
 
 
 function add_to_wishlist(user_id,campaign_id){
-	payload = "action=add_campaign_wishlist";
-	payload += "&user_id="+user_id;
-	payload += "&campaign_id="+campaign_id;
+	// payload = "action=add_campaign_wishlist";
+	let payload = {
+		"action" : "add_campaign_wishlist",
+		"campaign_id" : campaign_id,
+		"user_id" : user_id
+	};
+	// payload += "&user_id="+user_id;
+	// payload += "&campaign_id="+campaign_id;
 	send_request(
 		"POST",
 		"processors/processor.php",
@@ -260,9 +321,14 @@ function add_to_wishlist(user_id,campaign_id){
 
 
 function remove_from_wishlist(user_id,campaign_id){
-	payload = "action=remove_campaign_wishlist";
-	payload += "&user_id="+user_id;
-	payload += "&campaign_id="+campaign_id;
+	// payload = "action=remove_campaign_wishlist";
+	// payload += "&user_id="+user_id;
+	// payload += "&campaign_id="+campaign_id;
+	let payload = {
+		"action" : "remove_campaign_wishlist",
+		"user_id" : user_id,
+		"campaign_id": campaign_id
+	};
 	send_request(
 		"POST",
 		"processors/processor.php",

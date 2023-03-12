@@ -247,7 +247,7 @@ class EhImageUploadDisplay {
 
   // function to get files
   getFiles() {
-    return this.fileList;
+    return this.fileList ?? [];
   }
 }
 

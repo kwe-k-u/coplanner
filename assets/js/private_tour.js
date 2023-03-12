@@ -10,25 +10,34 @@
 		var user_id = form.user_id.value;
 		var start_date = form.start.value;
 		var end_date = form.end.value;
+		let payload = {
+			"user_id" : user_id,
+		"currency" : currency,
+		"max_budget" : max_b,
+		"min_budget" : min_b,
+		"description" : desc,
+		"start_date" : start_date,
+		"end_date" : end_date,
+		"state" : state,
+		"person_count" : count
+		};
 
-		var payload = "action=" + (request_id == null ? "request_private_tour"
-		: ("edit_private_tour&request_id=" + request_id));
-		payload += "&user_id=" + user_id;
-		payload += "&currency=" + currency;
-		payload += "&max_budget=" + max_b;
-		payload += "&min_budget=" + min_b;
-		payload += "&description=" + desc;
-		payload += "&start_date=" + start_date;
-		payload += "&end_date=" + end_date;
-		payload += "&state=" + state;
-		payload += "&person_count=" + count;
+		if (request_id == null){
+			payload["action"] = "request_private_tour"
+		}else {
+			payload["action"] = "edit_private_tour";
+			payload["request_id"] = request_id;
+		}
+
+		// var payload = "action=" + (request_id == null ? "request_private_tour"
+		// : ("edit_private_tour&request_id=" + request_id));
 
 		send_request(
 			 "POST",
 			 "processors/processor.php",
 			 payload,
 			 (response) =>{
-				alert(JSON.parse(response)["data"]["msg"]);
+				alert(response["data"]["msg"]);
 
 				window.location.reload();
 			 }
@@ -38,13 +47,17 @@
 
 	function edit_request(id){
 		show_loader();
-		payload = "action=get_private_request&request_id="+id;
+		// payload = "action=get_private_request&request_id="+id;
+		let payload = {
+			"action" : "get_private_request",
+			"request_id" : id
+		};
 		send_request(
 			"POST",
 			"processors/processor.php",
 			payload,
 			(response) => {
-				var json = JSON.parse(response)["data"];
+				var json = response["data"];
 				var desc = json["description"];
 				var b_min = json["min_budget"];
 				var b_max = json["max_budget"];
@@ -102,11 +115,18 @@
 		var fee = form.fee.value;
 		var curator = form.curator_id.value;
 
-		payload = "action=bid_private_trip";
-		payload += "&request_id=" + request_id;
-		payload += "&comment=" + comment;
-		payload += "&fee="+fee;
-		payload += "&curator_id="+curator;
+		// payload = "action=bid_private_trip";
+		// payload += "&request_id=" + request_id;
+		// payload += "&comment=" + comment;
+		// payload += "&fee="+fee;
+		// payload += "&curator_id="+curator;
+		let payload = {
+			"action" : "bid_private_trip",
+			"request_id" : request_id,
+			"comment" : comment,
+			"fee" : fee,
+			"curator_id": curator
+		}
 
 		send_request(
 			"POST",
@@ -119,13 +139,17 @@
 	}
 
 	function delete_request(id){
-		payload = "action=delete_private_tour&request_id="+id;
+		// payload = "action=delete_private_tour&request_id="+id;
+		let payload = {
+			"action" : "delete_private_tour",
+			"request_id" : id
+		};
 		send_request("POST",
 		"processors/processor.php",
 		payload,
 		(response)=> {
 			show_loader();
-			alert(JSON.parse(response)["data"]["msg"]);
+			alert(response["data"]["msg"]);
 			window.location.reload();
 		}
 		)

@@ -92,24 +92,25 @@
 	<h4>Curator remove collaborator</h4>
 	<ol>
 		<?php
-			$curator_id = $_SESSION["account_id"];
-			$collaborators = get_curator_collaborators($curator_id);
-			foreach ($collaborators as $pers) {
-				$c = $pers["user_id"];
-				echo "<li>".$c
-				."<button onclick='remove_curator(\"$curator_id\",\"$c\")'>Remove</button>".
-				"</li>";
-			}
+			// $curator_id = $_SESSION["account_id"];
+			// $collaborators = get_curator_collaborators($curator_id);
+			// foreach ($collaborators as $pers) {
+			// 	$c = $pers["user_id"];
+			// 	echo "<li>".$c
+			// 	."<button onclick='remove_curator(\"$curator_id\",\"$c\")'>Remove</button>".
+			// 	"</li>";
+			// }
 		?>
 	</ol>
 
 
+	<?php require_once(__DIR__. "/../utils/js_env_variables.php"); ?>
 	<script>
 
 		function login(form){
 			event.preventDefault();
 			// alert(form.y.value);
-			send_request("POST","../processors/processor.php",
+			send_request("POST","processors/processor.php",
 				"action=login" +
 				"&email="+ form.email.value +
 				"&password=" + form.password.value,
@@ -216,17 +217,25 @@
 		}
 
 
-		function send_request(type, endpoint, data, onFinish){
-			const xhttp = new XMLHttpRequest();
-			xhttp.open(type, endpoint);
-			xhttp.onreadystatechange = function (){
-				if (xhttp.readyState == XMLHttpRequest.DONE){
-					onFinish(xhttp.response);
-				}
+		async function send_request(type,endpoint, data,  onload){
+			var xhr = new XMLHttpRequest();
+			let formdata = new FormData();
+			for (key in data) {
+				formdata.append(key, data[key]);
 			}
-			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhttp.send(data);
-		}
+
+			let response = await fetch(baseurl+endpoint,
+				{
+					method : type,
+					body : formdata
+				});
+
+				try {
+					onload (response.json());
+				}catch (e){
+					onload(response.text());
+				}
+}
 
 
 

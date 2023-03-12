@@ -17,13 +17,24 @@ function signup(){
 	var id_back = document.getElementById("gov_id_back");
 	var inc_doc = document.getElementById("inc_doc");
 
-	payload ="action=signup&type=curator";
-	payload += "&user_name="+name;
-	payload += "&email="+email;
-	payload += "&password="+password;
-	payload += "&phone_number="+phone;
-	payload += "&country="+company_country;
-	payload += "&curator_name="+company_name;
+	// payload ="action=signup&type=curator";
+	// payload += "&user_name="+name;
+	// payload += "&email="+email;
+	// payload += "&password="+password;
+	// payload += "&phone_number="+phone;
+	// payload += "&country="+company_country;
+	// payload += "&curator_name="+company_name;
+	let payload = {
+		"action" : "signup",
+		"type" : "curator",
+		"user_name" : name,
+		"email" : email,
+		"password" : password,
+		"phone" : phone,
+		"country" : company_country,
+		"curator_name" : company_name
+
+	};
 
 	// alert(id_back.files.length);
 
@@ -36,7 +47,7 @@ function signup(){
 		payload,
 		(response) =>{
 
-			var json = JSON.parse(response);
+			var json = response;
 			// if(json["status_code"]!= 200){
 			// 	alert(json["data"]["msg"]);
 			// 	return false;
@@ -58,11 +69,11 @@ function signup(){
 					alert("back res " + back_response);
 					upload_image("gov_id_front","confidential", {user_id: user_id,
 						callback: (front_response)=> {
-							var json = JSON.parse(back_response);
+							var json = back_response;
 							var back_id = json["data"]["media_id"];
 							alert("front res " + front_response);
 
-						json = JSON.parse(front_response);
+						json = front_response;
 						var front_id = json["data"]["media_id"];
 						update_curator_manager_id(user_id, front_id, back_id);
 					}});
@@ -77,7 +88,7 @@ function signup(){
 				//callback for when upload of image completes
 				var upload_fn = (company_res)=>{
 
-					var json = JSON.parse(company_res);
+					var json = company_res;
 					var media_id = json["data"]["media_id"];
 					update_curator_logo(media_id, curator_id);
 

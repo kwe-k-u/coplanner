@@ -130,7 +130,7 @@
 /* [[[[ important information ]]]] */
 // ** to get the files out of these objects user the function
 // EhImageUploadDisplay.getFiles();
-let coverphoto_upload_display = new EhImageUploadDisplay("#cover-photo-upload", {
+let flyerimage_upload_display = new EhImageUploadDisplay("#cover-photo-upload", {
   dragAndDrop: true,
   altDisplay: {
     selector: "#coverphoto-upload-btn",

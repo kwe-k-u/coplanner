@@ -40,32 +40,7 @@ $logo = $info["curator_logo"];
     <!-- ============================== -->
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
-        <header class="dashboard-header d-none d-lg-flex">
-            <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
-            </div>
-            <div class="dashboard-title">Dashboard</div>
-            <div class="right-sec">
-                <form id="dashboard-search">
-                    <div class="form-input-field">
-                        <input class="p-2" type="text" placeholder="search">
-                    </div>
-                </form>
-                <div class="balance d-flex flex-column justify-content-center">
-                    <h4 class="m-0 easygo-fs-3 easygo-fw-1">GHC 500</h4>
-                    <small class="easygo-fs-5 text-orange">Withdrawable balance</small>
-                </div>
-                <div class="user-menu d-flex gap-1">
-                    <div class="user-icon">
-                        <img src="../assets/images/others/profile.jpeg" alt="">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h5 class="easygo-fs-3">Admin</h5>
-                        <h6 class="text-orange easygo-fs-5">Administrator</h6>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php require_once(__DIR__. "/../components/curator_header.php") ?>
         <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__ . "/../components/curator_navbar_mobile.php"); ?>
             <!-- ============================== -->
@@ -79,13 +54,14 @@ $logo = $info["curator_logo"];
                                 <h5 class="title">Create a trip</h5>
                                 <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Create Trip</small>
                             </div>
-                            <button class="easygo-btn-2">Preview</button>
                         </div>
-                        <form>
+                        <form id="create_trip_form">
+
+                            <!-- Flyer upload -->
                             <div class="row border-1 border-bottom py-4 pe-lg-5">
                                 <div class="col-lg-5">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Header</h3>
-                                    <p class="text-gray-1 easygo-fs-5">set a cover photo and title for trip</p>
+                                    <h3 class="easygo-fs-3 easygo-fw-1">Flyer</h3>
+                                    <p class="text-gray-1 easygo-fs-5">Upload the flyer for the trip if you have any</p>
                                 </div>
                                 <div class="col-lg-7 d-flex flex-column gap-4">
                                     <div>
@@ -97,24 +73,45 @@ $logo = $info["curator_logo"];
                                             <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <!-- Tour name  -->
+                            <div class="row border-1 border-bottom py-4 pe-lg-5">
+                                <div class="col-lg-5">
+                                    <h3 class="easygo-fs-3 easygo-fw-1">Name of tour</h3>
+                                    <p class="text-gray-1 easygo-fs-5">Give a short and catch name for the tour. Ideally, it should give a hint of what the tour is about. Eg: Experience Trident Island</p>
+                                </div>
+                                <div class="col-lg-7 d-flex flex-column gap-4">
                                     <div class="form-input-field">
-                                        <input type="text" placeholder="Full Name">
+                                        <input type="text" name="title" value="Experience Trident Island" placeholder="Name of your amazing tour">
                                     </div>
                                 </div>
                             </div>
+                            <!-- Tour description  -->
                             <div class="row border-1 border-bottom py-4 pe-lg-5">
                                 <div class="col-lg-5">
                                     <h3 class="easygo-fs-3 easygo-fw-1">Trip Description</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Write a description</p>
+                                    <p class="text-gray-1 easygo-fs-5">Describe the trip in detail. Tell us about all the activities involved
+                                        in the trip. Tell us the locations you will be visiting, anything special about the trip you will like
+                                        tour goers to know? Here's an example (NB: AI generated)</p>
+                                    <p class="text-gray-1 easygo-fs-5">
+                                        Our tour begins with a pick-up from your hotel in the city and a comfortable drive to the countryside, where you can breathe in the fresh air and take in the beauty of nature. Our first stop will be at a local farm, where you can see how the farmers cultivate the land and produce various crops.
+                                        Next, we'll take you to a breathtaking viewpoint, where you can capture panoramic views of the lush green hills and valleys. This spot is perfect for some stunning photos!
+                                        After taking in the beauty of the landscape, we'll continue our journey to a quaint little village. Here, you can explore the charming streets and learn about the local culture and traditions. We'll take you to a local restaurant where you can try some authentic, delicious food.
+                                        Our next stop will be a natural wonder - a cascading waterfall surrounded by dense forests. Take a dip in the cool waters or simply admire the cascading beauty of the waterfall.
+                                        Our final destination is a serene lake nestled amidst the hills. Here, you can enjoy a peaceful boat ride or simply sit by the banks and soak in the serene surroundings. As the sun sets over the horizon, we'll head back to the city.
+                                        This tour is perfect for those looking to escape the hustle and bustle of the city and immerse themselves in nature's beauty. With comfortable transportation, knowledgeable guides, and a carefully crafted itinerary, this tour promises to be an unforgettable experience!
+                                    </p>
                                 </div>
                                 <div class="col-lg-7">
                                     <div>
                                     </div>
                                     <div class="form-input-field">
-                                        <textarea style="resize: none" cols="30" rows="7" placeholder="Trip description"></textarea>
+                                        <textarea name="description" style="resize: none" cols="30" rows="14" placeholder="Trip description"></textarea>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Tour images  -->
                             <div class="row border-1 border-bottom py-4 pe-lg-5">
                                 <div class="col-lg-5">
                                     <h3 class="easygo-fs-3 easygo-fw-1">Trip Images</h3>
@@ -134,15 +131,27 @@ $logo = $info["curator_logo"];
                                     </div>
                                 </div>
                             </div>
+                            <!-- Activities  -->
                             <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
-                                <div class="col-lg-5">
+                                <div class="col-lg-2">
                                     <h3 class="easygo-fs-3 easygo-fw-1">Activities & Locations</h3>
                                     <p class="text-gray-1 easygo-fs-5">Add activities and locations</p>
                                 </div>
-                                <div class="col-lg-7 ">
-                                    <button class="btn btn-default border px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
+                                <div class="col-lg-3">
+                                    <div class="location-list d-flex flex-wrap gap-2" id="selected-locations">
+                                    </div>
                                 </div>
+                                <div class="col-lg-7 ">
+                                    <div class="activity-list d-flex flex-wrap gap-2" id="selected-activities">
+                                    </div>
+
+                                    <button class="btn btn-default px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
+                                </div>
+                                <!-- <div class="col-lg-7 ">
+                                    <button class="btn btn-default border px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
+                                </div> -->
                             </div>
+                            <!-- Occurences  -->
                             <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
                                 <div class="col-lg-5">
                                     <h3 class="easygo-fs-3 easygo-fw-1">Trip Occurence</h3>
@@ -206,7 +215,7 @@ $logo = $info["curator_logo"];
                                         </div>
 
 
-                                        <div class='list-item'>
+                                        <!-- <div class='list-item'>
                                             <div class='inner-item start_val'>22 May 2023</div>
                                             <div class='inner-item end_val'>22 May 2023</div>
                                             <div class='inner-item  fee_val'>GHC 50</div>
@@ -215,7 +224,7 @@ $logo = $info["curator_logo"];
                                                 <div class="inner-item fa fa-edit" onclick="edit_occurance_entry(this)"></div>
                                                 <div class="inner-item fa fa-trash" onclick="delete_occurance_entry(this)"></div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
 
                                         <!-- ======================================================================== -->
@@ -235,7 +244,7 @@ $logo = $info["curator_logo"];
 
                             <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
                                 <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel">
-                                <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" type="submit" value="Create Trip">
+                                <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" onclick="submit_tour()" value="Create Trip">
                             </div>
                         </form>
                     </section>
@@ -315,7 +324,7 @@ $logo = $info["curator_logo"];
                         </div>
                     </div>
 
-                    <div class="row my-5">
+                    <!-- <div class="row my-5">
                         <h5 class="mb-2">Recent uploads</h5>
 
                         <div id="recent-list" style="display:none;">
@@ -351,73 +360,73 @@ $logo = $info["curator_logo"];
                         </div>
 
 
-                            <div class="col-lg-4 pb-3 image-collection" id="collection1">
-                                <div class="container bg-gray-3 border rounded">
-                                    <div class="img-grid-1" id="boti">
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
+                        <div class="col-lg-4 pb-3 image-collection" id="collection1">
+                            <div class="container bg-gray-3 border rounded">
+                                <div class="img-grid-1" id="boti">
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
                                     </div>
-                                    <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
-                                        <span class="easygo-fs-5">Boti Falls</span>
-                                        <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 pb-3 image-collection" id="collection2">
-                                <div class="container bg-gray-3 border rounded">
-                                    <div class="img-grid-1">
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                    </div>
-                                    <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
-                                        <span class="easygo-fs-5">Boti Falls</span>
-                                        <span class="text-gray-1 easygo-fs-5">30 photos</span>
-                                    </div>
+                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                    <span class="easygo-fs-5">Boti Falls</span>
+                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
                                 </div>
                             </div>
-                            <div class="col-lg-4 pb-3 image-collection" id="collection3">
-                                <div class="container bg-gray-3 border rounded">
-                                    <div class="img-grid-1">
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
-                                        <div class="grid-item">
-                                            <img src="../assets/images/others/profile.jpeg" alt="">
-                                        </div>
+                        </div>
+                        <div class="col-lg-4 pb-3 image-collection" id="collection2">
+                            <div class="container bg-gray-3 border rounded">
+                                <div class="img-grid-1">
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
                                     </div>
-                                    <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
-                                        <span class="easygo-fs-5">Boti Falls</span>
-                                        <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
                                     </div>
                                 </div>
+                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                    <span class="easygo-fs-5">Boti Falls</span>
+                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                </div>
                             </div>
-                    </div>
+                        </div>
+                        <div class="col-lg-4 pb-3 image-collection" id="collection3">
+                            <div class="container bg-gray-3 border rounded">
+                                <div class="img-grid-1">
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="../assets/images/others/profile.jpeg" alt="">
+                                    </div>
+                                </div>
+                                <div style="padding: 0rem 0.5rem;" class="d-flex justify-content-between">
+                                    <span class="easygo-fs-5">Boti Falls</span>
+                                    <span class="text-gray-1 easygo-fs-5">30 photos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
 
                     <!-- Modal footer -->
                     <div class="d-flex justify-content-end gap-2 align-items-center">
@@ -447,11 +456,12 @@ $logo = $info["curator_logo"];
                                         <small class="easygo-fs-5">4 results found in <span class="text-gray-1">Ghana</span></small>
                                     </div>
                                     <div class="dropdown">
-                                        <a id="location_search_filter" class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" id="citymenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a id="location_search_filter" href="#Name" class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" id="citymenu" data-bs-toggle="dropdown" aria-expanded="false">
                                             Search by
-</a>
+                                        </a>
                                         <ul class="dropdown-menu px-2" aria-labelledby="citymenu">
                                             <li onclick="on_option_select('location_search_filter','Activity')">Activity</li>
+                                            <li onclick="on_option_select('location_search_filter','Name')">Name</li>
                                             <li onclick="on_option_select('location_search_filter','Location')">Location</li>
                                         </ul>
                                     </div>
@@ -475,7 +485,7 @@ $logo = $info["curator_logo"];
                                 <div class='location-card border p-4 rounded my-3'>
                                     <div class='header d-flex justify-content-between'>
                                         <h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
-                                        <h5 class='easygo-fs-4 text-orange'>$site_country</h5>
+                                        <h5 class='easygo-fs-4 text-orange'>$site_location</h5>
                                     </div>
                                     <div class='text-gray-1 easygo-fs-6'>
                                         <!-- <div class='rating-and-info d-flex align-items-center gap-1'>
@@ -490,10 +500,10 @@ $logo = $info["curator_logo"];
                                             <span>(1708)</span>
                                         </div> -->
                                         <div class='time'>
-                                            <span>Location</span>
+                                            <span></span>
                                             &nbsp;
                                             &nbsp;
-                                            <span>Country</span>
+                                            <span>$site_location</span>
                                         </div>
                                     </div>
                                     <div class='pt-3'>
@@ -507,23 +517,35 @@ $logo = $info["curator_logo"];
                     </div>
                     <div class="col-lg-6">
                         <div>
-                            <h5 class="loc-title pb-3 border-bottom" id="location-info-title">Legon Botanical Gardens</h5>
-                            <div class="loc-info">
-                                <p class="easygo-fs-5" id="location-info-desc">
-                                    Located in the heart of Accra in the University of Ghana is the Legon Botanical Gardens, a beautiful, dynamic outdoor play space for all ages where nature and fun collide.
-                                    This dynamic Garden provides several recreational activities for the public and constantly adding new ones. The managers always give you reason to visit again and again. The facility has a colorful first class playground for children and a rope walk session for them also with genial staff.
+                            <?php
+                                $site = $toursites[0];
+                                $site_id = $site["toursite_id"];
+                                $site = get_toursite_by_id($site_id);
+                                $site_name = $site["site_name"];
+                                $site_desc = $site["toursite_description"];
+                                $site_location = $site["site_location"];
+                                $site_country = $site["country"];
+                                $site_activities = $site["activities"];
+
+
+                            echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
+                            <div class='loc-info'>
+                                <p class='easygo-fs-5' id='location-info-desc'>
+                                $site_desc
                                 </p>
-                            </div>
-                            <div style="overflow-x: auto;">
-                                <div class="grid-7" style="max-height: 500px;" id="location-info-images">
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/scenery1.jpg" alt="scene 1">
+                            </div>";
+                            ?>
+                            <div style='overflow-x: auto;'>
+
+                                <div class='grid-7' style='max-height: 500px;' id='location-info-images'>
+                                    <div class='grid-item'>
+                                        <img class='w-100 h-100 rounded' src='../assets/images/others/scenery1.jpg' alt='scene 1'>
                                     </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/scenery2.jpg" alt="scene 1">
+                                    <div class='grid-item'>
+                                        <img class='w-100 h-100 rounded' src='../assets/images/others/scenery2.jpg' alt='scene 1'>
                                     </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
+                                    <div class='grid-item'>
+                                        <img class='w-100 h-100 rounded' src='../assets/images/others/tour1.jpg' alt='scene 1'>
                                     </div>
                                     <div class="grid-item">
                                         <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
@@ -549,18 +571,16 @@ $logo = $info["curator_logo"];
                                     <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
                                 </div>
                                 <div id="activity-list-div" class="activity-list d-flex flex-wrap gap-2">
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">high rope course</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">children playground</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">canoeing</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">fishing</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">canopy walk</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">woodland</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">birdwatching</span>
-                                    <span class="px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span">zipline</span>
+                                    <?php
+                                        foreach ($site_activities as $value) {
+                                            echo "<span class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>high rope course</span>";
+                                        }
+                                    ?>
+
                                 </div>
                             </div>
                             <div>
-                                <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5">Add this location</button>
+                                <button onclick="add_location_activity()" class="easygo-btn-1 mt-4 ms-auto easygo-fs-5">Add this location</button>
                             </div>
                             <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
                                 <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
@@ -584,8 +604,7 @@ $logo = $info["curator_logo"];
     <!-- EHImageUpload js -->
     <script src="../assets/js/EhImageUploadDisplay.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/curator_general.js"></script>

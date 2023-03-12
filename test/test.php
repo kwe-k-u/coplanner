@@ -2,6 +2,11 @@
 	require("../utils/core.php");
 	require("../utils/db_prepared.php");
 
+	// var_dump($_FILES);
+	send_json(array("files", count($_POST)));
+
+	die();
+
 	class test_db extends db_prepared{
 
 

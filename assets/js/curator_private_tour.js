@@ -34,19 +34,27 @@ function submit_bid(form){
 	var request_id = form.request_id.value;
 	var curator_id = form.curator_id.value;
 
-	payload = "action=bid_private_tour";
-	payload += "&comment=" + comment;
-	payload += "&currency=" + currency;
-	payload += "&fee=" + amount;
-	payload += "&curator_id=" + curator_id;
-	payload += "&request_id=" + request_id;
-	alert(payload);
+	// payload = "action=bid_private_tour";
+	// payload += "&comment=" + comment;
+	// payload += "&currency=" + currency;
+	// payload += "&fee=" + amount;
+	// payload += "&curator_id=" + curator_id;
+	// payload += "&request_id=" + request_id;
+	let payload = {
+		"action" : "bid_private_tour",
+		"comment" : comment,
+		"currency" : currency,
+		"fee" : amount,
+		"curator_id" : curator_id,
+		"request_id" : request_id
+	};
+	// alert(payload);
 
 	send_request("POST",
 	"processors/processor.php",
 	payload,
 	(response)=>{
-		var json = JSON.parse(response)
+		var json = response;
 		if(json["status"] == 200){
 			hide_bid_form();
 		}

@@ -159,11 +159,13 @@
             var message = form.contact_message.value;
             var phone = form.contact_phone.value;
 
-            payload = "action=send_contact_message";
-            payload += "&email=" + email;
-            payload += "&name=" + name;
-            payload += "&message=" + message;
-            payload += "&phone=" + phone;
+            payload = {
+                "action" : "send_contact_message",
+                "email" : email,
+                'name' : name,
+                "message" : message,
+                "phone": phone
+            }
 
             send_request("POST",
             "processors/processor.php",

@@ -14,6 +14,7 @@
 </head>
 <body>
 
+	
 	<form action="" onsubmit="request_reset(this)">
 		<h4>Reset password</h4>
 		<label for="">Email</label>

@@ -74,6 +74,23 @@
 					$response = get_toursite_by_id($site_id);
 					send_json($response);
 					die();
+				case "query_site":
+					$query = $_POST["query"];
+					$type = $_POST["type"];
+
+					if ($type == "Activity"){
+						$data = get_toursite_by_activity($query);
+
+					}else if($type == "Location"){
+						$data = get_toursite_by_location($query);
+					} else if ($type == "Name"){
+						$data = get_toursite_by_name($query);
+					} 
+
+
+
+					send_json(array("result" => $data));
+					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";
 					die();

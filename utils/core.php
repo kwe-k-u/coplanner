@@ -164,6 +164,10 @@ ob_start();
 		return (new DateTime($string))->format('h:m A');
 	}
 
+	function format_string_as_currency_fn($string){
+		return $string;
+	}
+
 	function generate_id(){
 		return encrypt(get_current_date().time() . random_bytes((55)));
 	}

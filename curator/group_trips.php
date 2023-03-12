@@ -77,6 +77,7 @@
                             <h5 class="title easygo-fs-3 easygo-fw-1 m-0">All Trips</h5>
                             <small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Trips</a> <i class="fa-solid fa-chevron-right"></i> All Trips</small>
                         </div>
+                        <a href="create_a_trip.php" class="easygo-btn-1">Create a Trip</a>
                     </div>
                     <!-- ============================== -->
                     <!-- tirp card listing [start] -->

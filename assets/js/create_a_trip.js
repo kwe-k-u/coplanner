@@ -9,6 +9,35 @@ $("#start_date").on("input", () => { on_occurance_edit("start_date") });
 
 
 
+  function submit_tour(){
+	var form = document.getElementById("create_trip_form");
+	var title = form.title;
+	var description = form.description;
+	// var locations = [];
+	var activities = [];
+	var occurances = get_occurance_entries();
+	var images = tripimages_upload_display.getFiles();// + flyerimage_upload_displayflyerimage_upload_display.getFiles();
+
+
+
+	// alert("title "+ title);
+	// alert("description "+ description);
+	// alert("occurances "+ occurances);
+	// alert("images "+ images);
+
+	send_request(
+		"POST",
+		"test/test.php",
+	{"images" : images},
+	(response) => {
+		alert(response["data"]);
+	}
+	)
+
+
+}
+
+
 function on_occurance_edit(id) {
 	var element = document.getElementById(id);
 	// check if theres an active field
@@ -95,8 +124,8 @@ function create_active_row() {
 	<div class='inner-item  fee_val'> </div> \
 	<div class='inner-item seats_val'> </div> \
 	<div class='inner-item row'> \
-		<div class='inner-item' onclick='edit_occurance_entry(this)'>d</div> \
-		<div class='inner-item' onclick='delete_occurance_entry(this)'>e</div> \
+		<div class='inner-item fa fa-edit' onclick='edit_occurance_entry(this)'></div> \
+		<div class='inner-item fa fa-trash' onclick='delete_occurance_entry(this)'></div> \
 	</div>";
 
 	collection.insertBefore(newNode, addButton);
@@ -187,6 +216,8 @@ $(".activity-span").on("click", activity_click);
 
 $(".image-collection").on("click", showRecentList);
 
+$(".activity-span-selected").on("click", selectedActivityClick);
+
 
 
 
@@ -269,16 +300,18 @@ function on_location_expand(id){
 	var title = document.getElementById("location-info-title");
 	var description = document.getElementById("location-info-desc");
 
-	var payload = "action=get_site_by_id";
-	payload += "&toursite_id=" + id;
+	var payload ={
+		"action" : "get_site_by_id",
+		"toursite_id" : id
+	};
+
 
 	send_request(
 		"POST",
 		"processors/processor.php",
 		payload,
 		(response) => {
-			// alert(response);
-			var json = JSON.parse(response)["data"];
+			var json = response["data"];
 			var activity = json["activities"];
 			var image_list = [
 				"../assets/images/others/scenery2.jpg",
@@ -290,10 +323,10 @@ function on_location_expand(id){
 
 			reset_location_info_images(image_list);
 			reset_location_info_activities(activity);
+			$(".activity-span").on("click", activity_click);
 		}
 	);
 
-	$(".activity-span").on("click", activity_click);
 
 }
 
@@ -314,12 +347,14 @@ function reset_location_info_images(images){
 
 
 function reset_location_info_activities(activities){
+	// alert(activities[0]["activity_name"]);
 	var activity_div = document.getElementById("activity-list-div");
 	var full_body = "";
 
 
-	for(key in activities){
-		var value = activities[key];
+	for(index=0; index < activities.length; index++){
+		var value = activities[index]["activity_name"];
+		var key = activities[index]["activity_id"];
 		full_body += "<span id='"+key+"' class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>"+value+"</span>";
 	}
 	activity_div.innerHTML = full_body;
@@ -327,15 +362,76 @@ function reset_location_info_activities(activities){
 
 function location_search_submit(form){
 	event.preventDefault();
+	var query = form.query.value;
+	var type = get_dropdown_value("location_search_filter");
+
+	// payload = "action=query_site";
+	// payload += "&query="+query;
+	// payload += "&type="+type;
+	let payload = {
+		"action" : query_site,
+		"query" : query,
+		"type" : type
+	};
+
+	send_request("POST",
+	'processors/processor.php',
+	payload,
+	(response) => {
+		alert(response);
+	}
+	);
 
 
 }
 
+
+
+
+function add_location_activity(){
+	//filling location section of page
+	// var selected = document.getElementById("selected-locations");
+	// for(var index = 0; index <document.getElementById("activity-list-div").children.length; index ++){
+	// 	var element = document.getElementById("activity-list-div").children[index];
+	// 	if (element.classList.contains("easygo-btn-1")){
+	// 		var newNode = document.createElement("span");
+	// 		newNode.setAttribute("id",element.id);
+	// 		newNode.setAttribute("class","px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
+	// 		// newNode.setAttribute("onclick", "selectedActivityClick()");
+	// 		newNode.innerText = element.innerText;
+	// 		selected.appendChild(newNode);
+	// 	}
+
+	// };
+
+	//filling activity section of page
+	var selected = document.getElementById("selected-activities");
+	for(var index = 0; index <document.getElementById("activity-list-div").children.length; index ++){
+		var element = document.getElementById("activity-list-div").children[index];
+		if (element.classList.contains("easygo-btn-1")){
+			var newNode = document.createElement("span");
+			newNode.setAttribute("id",element.id);
+			newNode.setAttribute("class","px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
+			// newNode.setAttribute("onclick", "selectedActivityClick()");
+			newNode.innerText = element.innerText;
+			selected.appendChild(newNode);
+		}
+
+	};
+
+
+$(".activity-span-selected").on("click", selectedActivityClick);
+}
 
 function create_location_tile(map){
 	var title = map["site_name"];
 	var location = map["site_location"];
 	var id = map["toursite_id"];
-
 }
 
+
+function selectedActivityClick(element){
+	if(confirm("Remove Activity from list?")){
+		document.getElementById("selected-activities").removeChild(element.target);
+	}
+}
