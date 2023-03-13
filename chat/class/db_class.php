@@ -1,0 +1,78 @@
+<?php
+	require_once(__DIR__. "/db_connection.php");
+
+
+	class db_class extends db_prepared{
+
+		function credentials_exist($email){
+			$sql = "SELECT * FROM users WHERE email = ?";
+			$this->prepare($sql);
+			$this->bind($email);
+			return $this->db_fetch_one() ==true;
+		}
+
+
+
+		function location_exists($location){
+			$sql = "SELECT * from locations where location_name = ?";
+			$this->prepare($sql);
+			$this->bind($location);
+			return $this->db_fetch_one() == true;
+		}
+
+		function activity_exists($activity){
+			$sql = "SELECT * from activities where activity_name = ?";
+			$this->prepare($sql);
+			$this->bind($activity);
+			return $this->db_fetch_one() == true;
+		}
+
+
+		function create_account($name,$email,$institution,$number){
+			if(!$this->credentials_exist($email)){
+				$sql = "INSERT INTO users(email,user_name,phone,institution)
+				 VALUE (?,?,?,?)";
+				 $this->prepare($sql);
+				 $this->bind($email, $name,$number,$institution);
+				//  $this->bind($name);
+				// $this->bind($number);
+				// $this->bind($institution);
+
+				return $this->db_query();
+			}
+
+			return true;
+		}
+
+		function verify_token($token){
+			$sql = "SELECT * FROM login_token where token = ?";
+			$this->prepare($sql);
+			$this->bind($token);
+			return $this->db_fetch_one();
+		}
+
+		function store_token($email,$token){
+			$sql = "INSERT INTO login_token(email,token) VALUE (?,?)";
+			$this->prepare($sql);
+			$this->bind($email,$token);
+			return $this->db_query();
+		}
+
+		function remove_token($token){
+			$sql = "DELETE FROM login_token where token = ?";
+			$this->prepare($sql);
+			$this->bind($token);
+			return $this->db_query();
+		}
+
+		function add_location($location){
+			if (!$this->location_exists($location)){
+				$sql = "INSERT INTO locations VALUE (?)";
+				$this->prepare($sql);
+				$this->bind($location);
+				return $this->db_query();
+			}
+		}
+
+	}
+?>
