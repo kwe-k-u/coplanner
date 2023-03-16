@@ -7,7 +7,6 @@ if (!($_SESSION["cus_encrypt"] == md5("main.easygo@gmail.com"))) {
 	echo "credential verification failed. Try loggin in again";
 	die();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,27 +19,36 @@ if (!($_SESSION["cus_encrypt"] == md5("main.easygo@gmail.com"))) {
 </head>
 
 <body>
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
 
-<div class="form-input">
+	<div id="logo">
+		<img src="css/logo.png" alt="easyGo logo" >
+	</div>
+<div class="form-input-field">
 	<form onsubmit="query_submit(this,'activity')">
-		<label for="">Activity</label>
+		<label for="">Activity</label><br>
 		<input type="text" name="text">
-		<button type="submit">Add</button>
+		<button class="easygo-btn-2" type="submit">Add</button>
 	</form>
-	<div id="activity-list" class="grid"><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Hiking</span><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Dancing</span><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Swimming</span><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Running</span><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Kayaking</span></div>
+	<div id="activity-list" class="grid-1">
+		<span class="">Hiking</span><span class="">Dancing</span><span class="">Swimming</span><span class="">Running</span><span class="">Kayaking</span></div>
 </div>
 
-<div class="form-input">
+<div class="form-input-field">
 	<form onsubmit="query_submit(this,'location')">
-		<label for="">Location</label>
+		<label for="">Location</label><br>
 		<input type="text" name="text">
-		<button type="submit">Add</button>
+		<button class="easygo-btn-2"type="submit">Add</button>
 	</form>
-	<div id="location-list" class="grid"><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Accra</span><span class="px-3 mx-1 py-1 rounded-border text-capitalize">Botanical Garden</span></div>
+	<div id="location-list" class="grid">
+		<span class="">Accra</span>
+		<span class="">Botanical Garden</span>
+	</div>
 </div>
 <?php
 	$email = $_SESSION["cus_email"];
-	echo"<button onclick='generate_trip(\"$email\")'>Generate Trip</button>";
+	echo"<button class='easygo-btn-1' onclick='generate_trip(\"$email\")'>Generate Trip</button>";
 ?>
 
 <div class="col">

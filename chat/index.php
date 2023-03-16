@@ -1,5 +1,5 @@
 <?php
-if( $_SERVER['REQUEST_METHOD'] == "POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	var_dump($_POST);
 	die();
 }
@@ -15,35 +15,104 @@ if( $_SERVER['REQUEST_METHOD'] == "POST"){
 </head>
 
 <body>
+	<link rel="stylesheet" href="./css/general.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
 
 	<div class="col">
-		<p>Logo</p>
+		<div id="logo">
+			<img src="./css/logo.png" alt="easyGo logo">
+		</div>
 		<form method="post" onsubmit="login_submit(this)">
 			<div class="col">
 
-				<div class="form-input">
-					<label for="name">Name:</label>
+				<div class="form-input-field" id="email_field">
+					<label for="">Email</label><br>
+					<input type="email" id="email_sec" name="email" value="kweku.acquaye@ashesi.edu.gh">
+				</div>
+				<div class="form-input-field" id="name_field">
+					<label for="name">Name:</label><br>
 					<input type="text" name="name" value="Kweku">
 				</div>
-				<div class="form-input">
-					<label for="">Email</label>
-					<input type="email" name="email" value="kwekuaacquaye@gmail.com">
-				</div>
-				<div class="form-input">
-					<label for="">Phone Number</label>
+				<div class="form-input-field" id="number_field">
+					<label for="">Phone Number</label><br>
 					<input type="text" name="number" value="0559582518">
 				</div>
-				<div class="form-input">
-					<label for="">Institution</label>
-					<input type="text" name="institution" value = "Ashesi University">
-				</div>
+				<!-- <div class="form-input-field" id="name_field">
+					<label for="">Institution</label><br>
 
-				<button type="submit">Let's get started</button>
+						<input type="text" class="border-blue" name="institution" value = "Ashesi University">
+				</div> -->
+
+				<button type="submit" onclick="btn_click(this)" class="easygo-btn-1 btn-blue">Next</button>
 			</div>
 		</form>
 	</div>
-	<script src="js/script.js">
 
+	<script src="js/script.js">
+	</script>
+	<script>
+		var current = 1;
+		var name_field = document.getElementById("name_field");
+		var email_field = document.getElementById("email_field");
+		var number_field = document.getElementById("number_field");
+		var button
+		window.onload = () => {
+			show_field("email");
+			current = 1;
+		};
+
+		function hide_fields() {
+			name_field.style.display = "none";
+			email_field.style.display = "none";
+			number_field.style.display = "none";
+		}
+
+
+		async function check_email() {
+			var send_res = null;
+			var email = document.getElementById("email_sec").value;
+			send_request("POST",
+				"chat/process/processor.php", {
+					"action": "check_email",
+					"email": email
+				}, (response) => {
+					if (response == 1) {
+						alert("Welcome back! We have your email in our system and have sent you the login link there. Thank you for trying the Beta");
+						return 1;
+					}
+					show_field('name');
+					current = 2;
+				}
+			);
+			while (send_res = null) {
+				continue;
+			}
+			return send_res;
+		}
+
+		async function btn_click(element) {
+			switch (current) {
+				case 1:
+					event.preventDefault();
+					await check_email();
+					break;
+				case 2:
+					show_field('number');
+					element.innerText = "Let's Get Started!"
+					current = 3;
+					event.preventDefault();
+					break;
+				case 3:
+					break;
+				default:
+					break;
+			}
+		}
+
+		function show_field(id) {
+			hide_fields();
+			document.getElementById(id + "_field").style.display = "block";
+		}
 	</script>
 </body>
 

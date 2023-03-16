@@ -16,7 +16,7 @@ class mailer_class{
 
 
 	function send_email_cls($destination, $subject, $message){
-		return null;
+		// return null;
 		// if (!is_env_remote()){
 		// 	return null;
 		// }

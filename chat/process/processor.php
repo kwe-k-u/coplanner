@@ -18,26 +18,63 @@ function generate_id()
 $action = $_POST["action"];
 
 switch ($action) {
+	case "check_email":
+		$email = $_POST["email"];
+		$db = new db_class();
+		$exists = $db->credentials_exist($email);
+
+		if($exists){
+			//generate token
+			$token = generate_id();
+			$db->store_token($email, $token);
+			send_token($email, $token);
+			echo true;
+			// echo "exists";
+		}else {
+			echo false;
+		}
+		die();
+
+		//send email;
+
 	case "login":
 		$name = $_POST["name"];
 		$email = $_POST["email"];
-		$institution = $_POST["institution"];
 		$number = $_POST["number"];
 
 		$db = new db_class();
-		$db->create_account($name, $email, $institution, $number);
+		$db->create_account($name, $email, "", $number);
 		//generate token
 		$token = generate_id();
 		$db->store_token($email, $token);
 
 
 		//send email;
-		echo $token;
+		// echo $token;
 		send_token($email, $token);
+		echo "We have sent your login url to your email";
 		die();
 	case "generate":
 		$activities = $_POST["activities"];
 		$location = $_POST["locations"];
+		$email = $_POST["email"];
+		$db = new db_class();
+		// echo json_encode(array(
+		// 	"data" => explode(",",$activities))
+		// );
+
+		//create a request
+		$request_id = $db->add_request($email);
+		//save activities
+		foreach(explode(",",$activities) as $current){
+			$db->add_activity($current,$request_id);
+		}
+		//save loctions
+		foreach(explode(",",$location) as $current){
+			$db->add_location($current,$request_id);
+		}
+
+
 		$ch = curl_init();
 
 		curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
@@ -57,7 +94,7 @@ switch ($action) {
 		)));
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			'Content-Type: application/json',
-			'Authorization: Bearer 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'
+			'Authorization: Bearer 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'
 		));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -66,12 +103,13 @@ switch ($action) {
 		if (curl_errno($ch)) {
 			echo 'Error: ' . curl_error($ch);
 		} else {
-			// var_dump($response);
+			//save response
 			echo $response;
+			$prompt_text = json_decode($response,true)["choices"][0]["message"]["content"];
+			$db->save_response($request_id,$prompt_text);
 		}
 
 		curl_close($ch);
-		// var_dump($location);
 		die();
 	default:
 		echo "sike 😂😂";

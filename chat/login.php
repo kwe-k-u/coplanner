@@ -19,9 +19,7 @@
 			header("Location: chat.php");
 		}
 
-		//redirect to chat screen with session logged in
 	}
-	echo $text;
-	// echo "Your login attempt failed. Kindly visit easygo.com.gh/chat";
+	echo "Your login attempt failed. Kindly visit easygo.com.gh/chat";
 	die();
 ?>

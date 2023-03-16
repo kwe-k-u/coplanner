@@ -65,14 +65,50 @@
 			return $this->db_query();
 		}
 
-		function add_location($location){
+		function add_location($location,$request_id){
 			if (!$this->location_exists($location)){
 				$sql = "INSERT INTO locations VALUE (?)";
 				$this->prepare($sql);
 				$this->bind($location);
-				return $this->db_query();
+				$this->db_query();
 			}
+			$sql = "INSERT INTO request_location(`request_id`,`location_name`) VALUE (?,?)";
+			$this->prepare($sql);
+			$this->bind($request_id,$location);
+			return $this->db_query();
 		}
+
+		function add_activity($activity,$request_id){
+			if (!$this->activity_exists($activity)){
+				$sql = "INSERT INTO activities VALUE (?)";
+				$this->prepare($sql);
+				$this->bind($activity);
+				$this->db_query();
+			}
+			$sql = "INSERT INTO request_activity(`request_id`,`activity_name`) VALUE (?,?)";
+			$this->prepare($sql);
+			$this->bind($request_id,$activity);
+			return $this->db_query();
+		}
+
+		function add_request($email){
+			$sql = "INSERT INTO requests(`email`) VALUE (?)";
+			$this->prepare($sql);
+			$this->bind($email);
+			$this->db_query();
+			$sql = "SELECT request_id FROM requests where email= ? ORDER BY request_id desc";
+			$this->prepare($sql);
+			$this->bind($email);
+			return $this->db_fetch_one()["request_id"];
+		}
+
+		function save_response($request_id,$prompt_text){
+			$sql = "INSERT INTO generated_prompt(`request_id`,`prompt_text`) VALUE (?,?)";
+			$this->prepare($sql);
+			$this->bind($request_id,$prompt_text);
+			return $this->db_query();
+		}
+
 
 	}
 ?>

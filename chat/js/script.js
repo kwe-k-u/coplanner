@@ -6,7 +6,6 @@ function login_submit(form) {
 		"action" : "login",
 		"name" : form.name.value,
 		"email" : form.email.value,
-		"institution" : form.institution.value,
 		"number" : form.number.value
 	},
 	(response)=> {
@@ -22,8 +21,6 @@ function query_submit(form, id){
 	var list_div = document.getElementById(id+"-list");
 
 	var newNode = document.createElement("span");
-	newNode.setAttribute("class","px-3 mx-1 py-1 rounded-border text-capitalize");
-	// newNode.setAttribute("onclick", "selectedActivityClick()");
 	newNode.innerText = form.text.value;
 	list_div.appendChild(newNode);
 }
@@ -45,6 +42,7 @@ function generate_trip(email){
 	{
 		"action":"generate",
 		"activities" : activities,
+		"email": email,
 		"locations" : locations
 	},(response)=> {
 		var message = JSON.parse(response)["choices"][0]["message"]["content"];
@@ -54,6 +52,7 @@ function generate_trip(email){
 
 function set_prompt(prompt){
 	document.getElementById("prompt_message").innerText = prompt;
+	window.scrollTo(0, document.body.scrollHeight);
 }
 
 
@@ -63,7 +62,7 @@ async function send_request(type, endpoint, data, onload) {
 		formdata.append(key, data[key]);
 	}
 
-	let response = await fetch("http://localhost/easygo_v2/" + endpoint, {
+	let response = await fetch("https://www.easygo.com.gh/" + endpoint, {
 		method: type,
 		body: formdata
 	});
