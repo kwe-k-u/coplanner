@@ -11,6 +11,17 @@
 			return $this->db_fetch_one() ==true;
 		}
 
+		function get_current_prompt($email){
+			$sql = "SELECT * FROM `generated_prompt`
+			JOIN requests on requests.request_id = generated_prompt.request_id
+			JOIN users on users.email = requests.email
+			WHERE requests.email = ?
+			ORDER BY generated_prompt.prompt_id DESC";
+			$this->prepare($sql);
+			$this->bind($email);
+			return $this->db_fetch_one();
+		}
+
 
 
 		function location_exists($location){

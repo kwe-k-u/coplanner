@@ -813,6 +813,11 @@ html{
   color: var(--easygo-gray-1);
 }
 
+.grid> span {
+  margin-right: 8px;
+  margin-left: 4px;
+}
+
 /*-- UTILITY - END*/
 
 /******************** Effects ********************/

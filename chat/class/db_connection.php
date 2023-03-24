@@ -10,6 +10,7 @@
 
 		function __construct(){
 			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+			// $this->db = mysqli_connect("localhost","root","","easy_coplanner");
 			$this->db = mysqli_connect("localhost","root","e1fc6f22e5b47bcf7e8636dc7a4143a15f4071b748eecf42","easy_coplanner");
 		}
 

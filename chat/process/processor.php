@@ -2,6 +2,7 @@
 //origin of request
 // var_dump($_SERVER["HTTP_ORIGIN"]);
 
+
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 	echo "sike 😂😂";
 	die();
@@ -18,6 +19,47 @@ function generate_id()
 $action = $_POST["action"];
 
 switch ($action) {
+	case "contact_curator":
+		$email = $_POST["email"];
+		$db = new db_class();
+		$prompt = $db->get_current_prompt($email);
+
+		if(!$prompt){
+			echo "You don't have any requests yet. We want to see what you will create";
+			die();
+		}
+		//get prompt from request_id
+		$prompt_text = $prompt["prompt_text"];
+		$first = $prompt["user_name"];
+		$number =$prompt["phone"];
+
+		//get contact number
+		//notify easyGo reps about the tour
+		$message = "$first:$number<$email> has requested us to take a look at their itinery \n\n\n$prompt_text";
+		$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+			CURLOPT_URL => "https://hooks.slack.com/services/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",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS =>"{
+				'text' : \"$message\"
+			}",
+			CURLOPT_HTTPHEADER => array(
+				'Content-Type: application/json'
+			),
+			));
+
+			$response = curl_exec($curl);
+
+			curl_close($curl);
+		echo "We have shared your request and a rep from easyGo will contact you in a few days";
+		die();
 	case "check_email":
 		$email = $_POST["email"];
 		$db = new db_class();
@@ -28,10 +70,10 @@ switch ($action) {
 			$token = generate_id();
 			$db->store_token($email, $token);
 			send_token($email, $token);
-			echo true;
+			echo 1;
 			// echo "exists";
 		}else {
-			echo false;
+			echo 0;
 		}
 		die();
 
@@ -45,6 +87,7 @@ switch ($action) {
 		$db = new db_class();
 		$db->create_account($name, $email, "", $number);
 		//generate token
+
 		$token = generate_id();
 		$db->store_token($email, $token);
 
@@ -52,7 +95,7 @@ switch ($action) {
 		//send email;
 		// echo $token;
 		send_token($email, $token);
-		echo "We have sent your login url to your email";
+		echo "We have sent your login url to your email. Kindly wait a few seconds";
 		die();
 	case "generate":
 		$activities = $_POST["activities"];

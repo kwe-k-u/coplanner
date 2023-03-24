@@ -22,20 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<div id="logo">
 			<img src="./css/logo.png" alt="easyGo logo">
 		</div>
+		<div class="loader"></div>
 		<form method="post" onsubmit="login_submit(this)">
 			<div class="col">
 
 				<div class="form-input-field" id="email_field">
 					<label for="">Email</label><br>
-					<input type="email" id="email_sec" name="email" value="kweku.acquaye@ashesi.edu.gh">
+					<input type="email" id="email_sec" name="email">
 				</div>
 				<div class="form-input-field" id="name_field">
 					<label for="name">Name:</label><br>
-					<input type="text" name="name" value="Kweku">
+					<input type="text" name="name">
 				</div>
 				<div class="form-input-field" id="number_field">
 					<label for="">Phone Number</label><br>
-					<input type="text" name="number" value="0559582518">
+					<input type="text" name="number">
 				</div>
 				<!-- <div class="form-input-field" id="name_field">
 					<label for="">Institution</label><br>
@@ -69,25 +70,33 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 		async function check_email() {
-			var send_res = null;
+			// var send_res = null;
 			var email = document.getElementById("email_sec").value;
-			send_request("POST",
-				"chat/process/processor.php", {
+			show_loader();
+			await send_request("POST",
+				"process/processor.php", {
 					"action": "check_email",
 					"email": email
 				}, (response) => {
+					// alert(response);
+					// return 1;
 					if (response == 1) {
-						alert("Welcome back! We have your email in our system and have sent you the login link there. Thank you for trying the Beta");
+						alert("Welcome back! We have your email in our system and have sent you the login link there (Might take a minute or two). Thank you for trying the Beta");
+					hide_loader();
 						return 1;
-					}
-					show_field('name');
+					} else {
+
+						show_field('name');
 					current = 2;
+					}
+
+			hide_loader();
 				}
 			);
-			while (send_res = null) {
-				continue;
-			}
-			return send_res;
+			// while (send_res = null) {
+			// 	continue;
+			// }
+			// return send_res;
 		}
 
 		async function btn_click(element) {

@@ -21,35 +21,46 @@ if (!($_SESSION["cus_encrypt"] == md5("main.easygo@gmail.com"))) {
 <body>
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+	<div class="easygo-badge-orange">
+		Caution: This feature is in <span style='color:red'>beta</span>. Itinerary generated may included errors
+		and wrong quotes. We do not guarantee the accuracy of generated itinerary and advise you speak to our
+		human curators after you find an itinery that meets your needs
+	</div>
 
 	<div id="logo">
 		<img src="css/logo.png" alt="easyGo logo" >
 	</div>
+	<p>Tell us the activities and locations you are interested in visiting</p>
+	<p>Have nothing in mind? Just click generate😊</p>
+	<div class="loader"></div>
 <div class="form-input-field">
 	<form onsubmit="query_submit(this,'activity')">
-		<label for="">Activity</label><br>
+		<label for=""><strong>Activity</strong></label><br>
 		<input type="text" name="text">
 		<button class="easygo-btn-2" type="submit">Add</button>
 	</form>
-	<div id="activity-list" class="grid-1">
-		<span class="">Hiking</span><span class="">Dancing</span><span class="">Swimming</span><span class="">Running</span><span class="">Kayaking</span></div>
+	<div id="activity-list" class="grid">
 </div>
 
 <div class="form-input-field">
 	<form onsubmit="query_submit(this,'location')">
-		<label for="">Location</label><br>
+		<label for=""><strong>Location</strong></label><br>
 		<input type="text" name="text">
 		<button class="easygo-btn-2"type="submit">Add</button>
 	</form>
 	<div id="location-list" class="grid">
-		<span class="">Accra</span>
-		<span class="">Botanical Garden</span>
 	</div>
 </div>
 <?php
 	$email = $_SESSION["cus_email"];
 	echo"<button class='easygo-btn-1' onclick='generate_trip(\"$email\")'>Generate Trip</button>";
+
+echo "<div class='easygo-badge-blue' onclick='contact_curator(\"$email\")'>
+		Do you like this itinerary? Click here to have our experienced curators refine it and give you
+		accurate quotes.
+	</div>"
 ?>
+
 
 <div class="col">
 	<div id="prompt_message"></div>
