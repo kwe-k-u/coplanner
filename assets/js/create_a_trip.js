@@ -9,7 +9,7 @@ $("#start_date").on("input", () => { on_occurance_edit("start_date") });
 
 
 
-  function submit_tour(){
+function submit_tour() {
 	var form = document.getElementById("create_trip_form");
 	var title = form.title;
 	var description = form.description;
@@ -28,10 +28,10 @@ $("#start_date").on("input", () => { on_occurance_edit("start_date") });
 	send_request(
 		"POST",
 		"test/test.php",
-	{"images" : images},
-	(response) => {
-		alert(response["data"]);
-	}
+		{ "images": images },
+		(response) => {
+			alert(response["data"]);
+		}
 	)
 
 
@@ -117,7 +117,7 @@ function create_active_row() {
 	var collection = document.getElementById("occurance_list");
 	var addButton = document.getElementById("add_button");
 	var newNode = document.createElement("div");
-	newNode.setAttribute("id","active_occurance_row")
+	newNode.setAttribute("id", "active_occurance_row")
 	newNode.classList.add("list-item");
 	newNode.innerHTML = "<div class='inner-item start_val'> </div> \
 	<div class='inner-item end_val'> </div> \
@@ -152,30 +152,30 @@ function create_entry_row(start, end, fee, seats) {
 
 }
 
-function add_new_occurance(){
+function add_new_occurance() {
 	//check if all entries are filled
-	if(is_occurance_entry_complete()){
+	if (is_occurance_entry_complete()) {
 		remove_active_row();
 		create_active_row();
 		clear_occurance_fields();
-	}else { // display error if some fields are incomplete
+	} else { // display error if some fields are incomplete
 		alert("Ensure that you have provided values for all the occurace fields before adding a new one");
 	}
 
 }
 
 //Disables the active row
-function remove_active_row(){
+function remove_active_row() {
 	document.getElementById("active_occurance_row").removeAttribute("id");
 }
 
 
 //Removes the values in the textfields for trip occurances
-function clear_occurance_fields(){
-document.getElementById("start_date").value = "";
-document.getElementById("seats").value = "";
-document.getElementById("fee").value = "";
-document.getElementById("end_date").value = "";
+function clear_occurance_fields() {
+	document.getElementById("start_date").value = "";
+	document.getElementById("seats").value = "";
+	document.getElementById("fee").value = "";
+	document.getElementById("end_date").value = "";
 }
 
 
@@ -222,10 +222,10 @@ $(".activity-span-selected").on("click", selectedActivityClick);
 
 
 //Changes the display to show the images within the clicked collection
-function showRecentList(element){
+function showRecentList(element) {
 	get_collection();
 
-	function get_collection(){
+	function get_collection() {
 		alert(element.target);
 	}
 
@@ -234,16 +234,16 @@ function showRecentList(element){
 
 
 
-function activity_click(element){
-	if (element.target.classList.contains("easygo-btn-1")){
+function activity_click(element) {
+	if (element.target.classList.contains("easygo-btn-1")) {
 		activity_deselect(element);
-	}else {
+	} else {
 		activity_select(element);
 	}
 }
 
 
-function activity_select(element){
+function activity_select(element) {
 	// document.getElementById().
 	element.target.classList.add("easygo-btn-1");
 	var parent = element.target.parentElement;
@@ -252,24 +252,24 @@ function activity_select(element){
 	var next = null;
 
 	//determine position of clicked activity
-	for(index = 0; index < parent.children.length; index++){
+	for (index = 0; index < parent.children.length; index++) {
 		var child = parent.children[index];
-		if (!child.classList.contains("easygo-btn-1")){
+		if (!child.classList.contains("easygo-btn-1")) {
 			next = child;
 			break;
 		}
 	}
 
 	//make insertion
-	if(next == null){
+	if (next == null) {
 		parent.appendChild(element.target);
-	}else {
-		parent.insertBefore(element.target,next);
+	} else {
+		parent.insertBefore(element.target, next);
 	}
 }
 
 
-function activity_deselect(element){
+function activity_deselect(element) {
 	// document.getElementById().classList;
 	element.target.classList.remove("easygo-btn-1");
 	var parent = element.target.parentElement;
@@ -278,31 +278,31 @@ function activity_deselect(element){
 	var next = null;
 
 	//determine position of clicked activity
-	for(index = 0; index < parent.children.length; index++){
+	for (index = 0; index < parent.children.length; index++) {
 		var child = parent.children[index];
-		if (!child.classList.contains("easygo-btn-1")){
+		if (!child.classList.contains("easygo-btn-1")) {
 			next = child;
 			break;
 		}
 	}
 
 	//make insertion
-	if(next == null){
+	if (next == null) {
 		parent.appendChild(element.target);
-	}else {
-		parent.insertBefore(element.target,next);
+	} else {
+		parent.insertBefore(element.target, next);
 	}
 }
 
 
 
-function on_location_expand(id){
+function on_location_expand(id) {
 	var title = document.getElementById("location-info-title");
 	var description = document.getElementById("location-info-desc");
 
-	var payload ={
-		"action" : "get_site_by_id",
-		"toursite_id" : id
+	var payload = {
+		"action": "get_site_by_id",
+		"toursite_id": id
 	};
 
 
@@ -331,14 +331,14 @@ function on_location_expand(id){
 }
 
 
-function reset_location_info_images(images){
+function reset_location_info_images(images) {
 	var image_div = document.getElementById("location-info-images")
 	var full_body = "";
 
 
 	images.forEach(image_source => {
 		full_body += "<div class='grid-item'> \
-		<img class='w-100 h-100 rounded' src='"+image_source+"' alt='scene 1'> \
+		<img class='w-100 h-100 rounded' src='"+ image_source + "' alt='scene 1'> \
 	</div>";
 	});
 
@@ -346,21 +346,21 @@ function reset_location_info_images(images){
 }
 
 
-function reset_location_info_activities(activities){
+function reset_location_info_activities(activities) {
 	// alert(activities[0]["activity_name"]);
 	var activity_div = document.getElementById("activity-list-div");
 	var full_body = "";
 
 
-	for(index=0; index < activities.length; index++){
+	for (index = 0; index < activities.length; index++) {
 		var value = activities[index]["activity_name"];
 		var key = activities[index]["activity_id"];
-		full_body += "<span id='"+key+"' class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>"+value+"</span>";
+		full_body += "<span id='" + key + "' class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>" + value + "</span>";
 	}
 	activity_div.innerHTML = full_body;
 }
 
-function location_search_submit(form){
+function location_search_submit(form) {
 	event.preventDefault();
 	var query = form.query.value;
 	var type = get_dropdown_value("location_search_filter");
@@ -369,26 +369,48 @@ function location_search_submit(form){
 	// payload += "&query="+query;
 	// payload += "&type="+type;
 	let payload = {
-		"action" : query_site,
-		"query" : query,
-		"type" : type
+		"action": "query_site",
+		"query": query,
+		"type": type
 	};
 
 	send_request("POST",
-	'processors/processor.php',
-	payload,
-	(response) => {
-		alert(response);
-	}
+		'processors/processor.php',
+		payload,
+		(response) => {
+			// alert(response);
+			// console.log(response["data"]["sites"])
+			update_location_results(response["data"]["sites"])
+		}
 	);
 
 
 }
 
 
+// Update the tour location modal with a list of tour locations
+function update_location_results(location_list) {
+
+	// update search result count
+	document.getElementById("site_search_result_count").innerText = location_list.length;
 
 
-function add_location_activity(){
+	//update list with the children
+	var list_div = document.getElementById("site_result_div");
+	list_div.innerHTML = "";
+	if (location_list.length > 0){ // If results exist, populate list
+		location_list.forEach(json => {
+			list_div.appendChild(create_location_tile(json));
+		});
+
+		//Update the expanded list with the first result
+		on_location_expand(location_list[0]["toursite_id"]);
+	}else { //else show message for no results TODO
+	}
+}
+
+
+function add_location_activity() {
 	//filling location section of page
 	// var selected = document.getElementById("selected-locations");
 	// for(var index = 0; index <document.getElementById("activity-list-div").children.length; index ++){
@@ -406,12 +428,12 @@ function add_location_activity(){
 
 	//filling activity section of page
 	var selected = document.getElementById("selected-activities");
-	for(var index = 0; index <document.getElementById("activity-list-div").children.length; index ++){
+	for (var index = 0; index < document.getElementById("activity-list-div").children.length; index++) {
 		var element = document.getElementById("activity-list-div").children[index];
-		if (element.classList.contains("easygo-btn-1")){
+		if (element.classList.contains("easygo-btn-1")) {
 			var newNode = document.createElement("span");
-			newNode.setAttribute("id",element.id);
-			newNode.setAttribute("class","px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
+			newNode.setAttribute("id", element.id);
+			newNode.setAttribute("class", "px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
 			// newNode.setAttribute("onclick", "selectedActivityClick()");
 			newNode.innerText = element.innerText;
 			selected.appendChild(newNode);
@@ -420,18 +442,63 @@ function add_location_activity(){
 	};
 
 
-$(".activity-span-selected").on("click", selectedActivityClick);
+	$(".activity-span-selected").on("click", selectedActivityClick);
 }
 
-function create_location_tile(map){
+
+// creates and returns an html element for the result tile of tour sites
+function create_location_tile(map) {
 	var title = map["site_name"];
 	var location = map["site_location"];
 	var id = map["toursite_id"];
+
+	const locationCard = document.createElement("div");
+	locationCard.classList.add('location-card', 'border', 'p-4', 'rounded', 'my-3');
+
+	// create the header div with site name and location
+	const header = document.createElement('div');
+	header.classList.add('header', 'd-flex', 'justify-content-between');
+	const siteNameH1 = document.createElement('h1');
+	siteNameH1.classList.add('easygo-fs-3', 'text-capitalize');
+	siteNameH1.textContent = title;
+	const siteLocationH5 = document.createElement('h5');
+	siteLocationH5.classList.add('easygo-fs-4', 'text-orange');
+	siteLocationH5.textContent = location;
+	header.appendChild(siteNameH1);
+	header.appendChild(siteLocationH5);
+	locationCard.appendChild(header);
+
+	// create the text-gray-1 div with time and buttons
+	const textGray1 = document.createElement('div');
+	textGray1.classList.add('text-gray-1', 'easygo-fs-6');
+
+	// create the time div with site location
+	const time = document.createElement('div');
+	const timeLocationSpan = document.createElement('span');
+	timeLocationSpan.textContent = location;
+	time.appendChild(timeLocationSpan);
+	textGray1.appendChild(time);
+
+
+	locationCard.appendChild(textGray1);
+
+	// create the pt-3 div with the See More button
+	const pt3 = document.createElement('div');
+	pt3.classList.add('pt-3');
+	const seeMoreButton = document.createElement('button');
+	seeMoreButton.classList.add('easygo-btn-1', 'easygo-fs-5', 'py-1', 'px-4');
+	seeMoreButton.textContent = 'See More';
+	seeMoreButton.setAttribute('onclick', `on_location_expand("${id}")`);
+	pt3.appendChild(seeMoreButton);
+	locationCard.appendChild(pt3);
+
+	return locationCard;
+
 }
 
 
-function selectedActivityClick(element){
-	if(confirm("Remove Activity from list?")){
+function selectedActivityClick(element) {
+	if (confirm("Remove Activity from list?")) {
 		document.getElementById("selected-activities").removeChild(element.target);
 	}
 }

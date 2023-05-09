@@ -18,6 +18,6 @@
 		<li><a href="account_settings.php"><img src="../assets/images/svgs/notifications.svg" alt="settings icon">Account Settings</a></li>
 	</ul>
 	<div class="py-4 border-top">
-		<a class="easygo-fs-4 text-red" href="#"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
+		<a class="easygo-fs-4 text-red" onclick="return logout()"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>
 	</div>
 </aside>

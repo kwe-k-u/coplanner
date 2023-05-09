@@ -23,12 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<img src="./css/logo.png" alt="easyGo logo">
 		</div>
 		<div class="loader"></div>
-		<a class='easygo-badge-orange' target="_blank" href="https://api.whatsapp.com/send/?phone=233506899883&text&type=phone_number&app_absent=0">
-			This feature is in beta. Tap here if something doesn't work
-		</a>
 		<div class='easygo-badge-blue' id="safari_notice" style="display:none;">
-			We recommend using Google Chrome instead of safari broswers. Safari broswers
-			 may trigger our firewall (indicated by a `sike 😂😂` message).
+			We notice you are using a Safari browser. We recommend using Google Chrome or
+			FireFox as Safari does not integrate well with js (indicated by 'Syke' error message).
 		</div>
 		<form method="post" onsubmit="login_submit(this)">
 			<div class="col">
@@ -72,9 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		};
 
 		function safari_check(){
+			alert(navigator.userAgent.toLowerCase());
 			var is_safari = navigator.userAgent.toLowerCase().indexOf('safari/') > -1;
 			if(is_safari){
-				// alert("We do not recommend using Safari Browsers");
+				alert("We do not recommend using Safari Browsers");
 				document.getElementById("safari_notice").style.display="block";
 			}
 		}

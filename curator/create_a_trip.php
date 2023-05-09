@@ -429,10 +429,10 @@ $logo = $info["curator_logo"];
                     </div> -->
 
                     <!-- Modal footer -->
-                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                    <!-- <div class="d-flex justify-content-end gap-2 align-items-center">
                         <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
-                        <button style="width: 5rem;" type="button " class="easygo-btn-1 py-2 easygo-fs-5 easygo-fw-2">Upload</button>
-                    </div>
+                        <button style="width: 5rem;" type="button " class="easygo-btn-1 py-2 easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Upload</button>
+                    </div> -->
                 </form>
 
             </div>
@@ -453,15 +453,15 @@ $logo = $info["curator_logo"];
                                 <div class="d-flex gap-2">
                                     <div class="form-input-field">
                                         <input class="px-4 py-2 flex-grow-1" type="text" placeholder="Search" name="query">
-                                        <small class="easygo-fs-5">4 results found in <span class="text-gray-1">Ghana</span></small>
+                                        <small class="easygo-fs-5"><span id="site_search_result_count">4</span> results found in <span class="text-gray-1">Ghana</span></small>
                                     </div>
                                     <div class="dropdown">
                                         <a id="location_search_filter" href="#Name" class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" id="citymenu" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Search by
+                                            Name
                                         </a>
                                         <ul class="dropdown-menu px-2" aria-labelledby="citymenu">
-                                            <li onclick="on_option_select('location_search_filter','Activity')">Activity</li>
                                             <li onclick="on_option_select('location_search_filter','Name')">Name</li>
+                                            <li onclick="on_option_select('location_search_filter','Activity')">Activity</li>
                                             <li onclick="on_option_select('location_search_filter','Location')">Location</li>
                                         </ul>
                                     </div>
@@ -471,7 +471,7 @@ $logo = $info["curator_logo"];
                                 </div>
                             </form>
                         </div>
-                        <div class='location-listing py-4'>
+                        <div class='location-listing py-4' id="site_result_div">
                             <?php
 
                             $toursites = get_toursites();

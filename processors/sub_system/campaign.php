@@ -85,11 +85,11 @@
 						$data = get_toursite_by_location($query);
 					} else if ($type == "Name"){
 						$data = get_toursite_by_name($query);
-					} 
+					}
 
 
 
-					send_json(array("result" => $data));
+					send_json(array("sites" => $data));
 					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";

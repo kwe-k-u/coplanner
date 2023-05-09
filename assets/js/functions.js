@@ -33,13 +33,13 @@ async function send_request(type,endpoint, data,  onload){
 
 		// alert(response.json());
 
-		try {
-			var caught = response.clone();
+		// try {
+			// var caught = response.clone();
 			// alert(await caught.clone().text());
 			onload (await response.json());
-		}catch (e){
-			alert("error "+await caught.text());
-		}
+		// }catch (e){
+		// 	alert("error "+await caught.text());
+		// }
 }
 // function send_request(type,endpoint, payload,  onload){
 // 	var xhr = new XMLHttpRequest();
