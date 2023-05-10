@@ -5,7 +5,8 @@
 	// if (!isset($_SERVER["PATH_INFO"])){
 	// 	respond("No subsystem specified",false);
 	// }
-	 $auth_actions = array ("login",
+	 $auth_actions = array (
+		"login",
 	  "signup",
 	 "logout",
 	 "request_password_reset",

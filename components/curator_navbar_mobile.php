@@ -21,7 +21,7 @@
 				<ul id="dashboard-submenu" class="sub-menu slide-down-sub-menu">
 					<li><a href="#">Trips</a></li>
 					<li><a href="#">Finance</a></li>
-					<li><a href="#">Notifications</a></li>
+					<!-- <li><a href="#">Notifications</a></li> -->
 				</ul>
 			</div>
 		</li>

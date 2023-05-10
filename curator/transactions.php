@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard | Transactions</title>
+    <title>Curator | Transactions</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -74,24 +74,21 @@
                 <section class="trip-booking">
                     <div class="border-1 border-bottom py-3">
                         <div>
-                            <h5 class="title">All Transactions</h5>
+                            <h5 class="title"> Transactions</h5>
                             <small class="easygo-fs-5 text-gray-1"><a href="#">Finance</a> > Transactions</small>
                         </div>
-                        <p class="mt-4 mb-0">This table contains all the transactions associated with your trips. Export the data with any of the options below.</p>
+                        <p class="mt-4 mb-0">This table contains all the transactions associated with your trips.</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
                         <div class="left-controls">
-                            <form id="dashboard-search">
+                            <!-- <form id="dashboard-search">
                                 <div class="form-input-field">
                                     <input class="p-2" type="text" placeholder="search">
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                         <div class="right-controls d-flex gap-2">
-                            <button class="btn border" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                Copy
-                            </button>
-                            <div class="dropdown">
+                            <!-- <div class="dropdown">
                                 <button class="btn border dropdown-toggle px-5" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
                                     Export
                                 </button>
@@ -99,112 +96,28 @@
                                     <li><a class="dropdown-item" href="#">PDF</a></li>
                                     <li><a class="dropdown-item" href="#">Excel</a></li>
                                 </ul>
-                            </div>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Column Visibility
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="viewby-menu">
-                                    <!-- <li><a class="dropdown-item" href="#">All</a></li>
-                                    <li><a class="dropdown-item" href="./trip_booking_by_trip.php">Trips</a></li> -->
-                                </ul>
-                            </div>
-                            <button class="easygo-btn-1 py-1 px-5">Print</button>
+                            </div> -->
+                            <!-- <button class="easygo-btn-1 py-1 px-5">Print</button> -->
                         </div>
                     </div>
                     <div class="transaction-listing">
                         <div>
                             <ul class="nav nav-tabs easygo-nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active easygo-fs-4 h-100" id="all-transactions-tab" data-bs-toggle="tab" data-bs-target="#all-transactions" type="button" role="tab" aria-controls="all-transactions" aria-selected="true">All Transactions</button>
+                                    <button class="nav-link active easygo-fs-4 h-100" id="booking-transactions-tab" data-bs-toggle="tab" data-bs-target="#booking-transactions" type="button" role="tab" aria-controls="booking-transactions" aria-selected="false">Booking Transactions</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link easygo-fs-4 h-100" id="booking-transactions-tab" data-bs-toggle="tab" data-bs-target="#booking-transactions" type="button" role="tab" aria-controls="booking-transactions" aria-selected="false">Booking Transactions</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
+                                <!-- <li class="nav-item" role="presentation">
                                     <button class="nav-link easygo-fs-4 h-100" id="withdrawals-tab" data-bs-toggle="tab" data-bs-target="#withdrawals" type="button" role="tab" aria-controls="withdrawals" aria-selected="false">Withdrawals</button>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <!--- ================================ -->
-                                <!--- all transactions [start] -->
-                                <div class="tab-pane fade show active" id="all-transactions" role="tabpanel" aria-labelledby="description-tab">
-                                    <div class="easygo-list-3 list-striped" style="min-width: 992px;">
-                                        <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">Transaction ID</div>
-                                            <div class="inner-item">Customer Name</div>
-                                            <div class="inner-item">Amount</div>
-                                            <div class="inner-item">Transaction Date</div>
-                                            <div class="inner-item">Transaction Fee</div>
-                                        </div>
-                                        <?php
-                                            $all_transactions = get_all_transactions($curator_id);
-
-                                            foreach($all_transactions as $entry){
-                                                $transaction_id = $entry["transaction_id"];
-                                                $sender = $entry["user_name"];
-                                                $date = $entry["transaction_date"];
-                                                $currency = $entry["currency"];
-                                                $amount = $entry["amount_paid"];
-                                                $fee = $entry["transaction_fee"];
-
-                                                echo "
-                                            <div class='list-item'>
-                                                <div class='item-bullet-container'>
-                                                    <div class='item-bullet'></div>
-                                                </div>
-                                                <div class='inner-item'>$transaction_id</div>
-                                                <div class='inner-item'>$sender</div>
-                                                <div class='inner-item'>$currency $amount</div>
-                                                <div class='inner-item'>$date</div>
-                                                <div class='inner-item text-danger'>-$fee</div>
-                                            </div>";
-                                            }
-
-                                            if(!$all_transactions){
-                                                echo "
-                                            <div class='list-item'>
-                                                <div class='item-bullet-container'>
-                                                    <div class='item-bullet'></div>
-                                                </div>
-                                                <div class='inner-item'>There are no recorded transactions at this moment</div>
-                                            </div>";
-                                            }
-                                        ?>
-                                    </div>
-                                    <div class="pagination-section my-5">
-                                        <div class="row">
-                                            <div class="col-lg-3">
-                                                <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div>
-                                            </div>
-                                            <div class="col-lg-9">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <nav aria-label="Page navigation m-auto">
-                                                        <ul class="pagination gap-2">
-                                                            <li class="page-item"><a class="page-link rounded" href="#">Previous</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                            <li class="page-item"><a class="page-link rounded" href="#">Next</a></li>
-                                                        </ul>
-                                                    </nav>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--- all transactions [end] -->
-                                <!--- ================================ -->
-                                <!--- ================================ -->
                                 <!--- booking transactions [start] -->
-                                <div class="tab-pane fade" id="booking-transactions" role="tabpanel" aria-labelledby="booking-transactions-tab">
+                                <div class="tab-pane fade show active" id="booking-transactions" role="tabpanel" aria-labelledby="booking-transactions-tab">
                                     <div class="easygo-list-3 list-striped" style="min-width: 992px;">
                                         <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
+                                            <div class='item-bullet-container'>
+                                                <div class='item-bullet'></div>
                                             </div>
                                             <div class="inner-item">Transaction ID</div>
                                             <div class="inner-item">Sender Name</div>
@@ -236,11 +149,11 @@
                                                 <div class='inner-item'>$trip_name</div>
                                                 <div class='inner-item'>$trip_date</div>
                                                 <div class='inner-item'>$date</div>
-                                                <div class='inner-item text-danger'>-$fee</div>
+                                                <div class='inner-item text-danger'>$currency -$fee</div>
                                             </div>";
                                             }
 
-                                            if(!$all_transactions){
+                                            if(!$booking_transactions){
                                                 echo "
                                             <div class='list-item'>
                                                 <div class='item-bullet-container'>
@@ -276,7 +189,7 @@
                                 <!--- ================================ -->
                                 <!--- ================================ -->
                                 <!--- withdrawals [start] -->
-                                <div class="tab-pane fade" id="withdrawals" role="tabpanel" aria-labelledby="withdrawals-tab">
+                                <!-- <div class="tab-pane fade" id="withdrawals" role="tabpanel" aria-labelledby="withdrawals-tab">
                                     <div class="easygo-list-3 list-striped" style="min-width: 992px;">
                                         <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                             <div class="item-bullet-container">
@@ -309,11 +222,11 @@
                                                 <div class='inner-item'>$sender</div>
                                                 <div class='inner-item'>$currency $amount</div>
                                                 <div class='inner-item'>$date</div>
-                                                <div class='inner-item text-danger'>-$fee</div>
+                                                <div class='inner-item text-danger'> $currency -$fee</div>
                                             </div>";
                                             }
 
-                                            if(!$all_transactions){
+                                            if(!$withdrawal_transactions){
                                                 echo "
                                             <div class='list-item'>
                                                 <div class='item-bullet-container'>
@@ -327,7 +240,7 @@
                                     <div class="pagination-section my-5">
                                         <div class="row">
                                             <div class="col-lg-3">
-                                                <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div>
+                                                <!-- <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div> -->
                                             </div>
                                             <div class="col-lg-9">
                                                 <div class="d-flex justify-content-center align-items-center">
@@ -344,7 +257,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!--- withdrawals [end] -->
                                 <!--- ================================ -->
                             </div>

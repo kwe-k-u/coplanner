@@ -171,18 +171,19 @@
 						$is_collaborator = is_user_a_collaborator($user["user_id"]);
 						if($is_collaborator){
 							//send error saying user is a collaborator
-							echo "user is a registered collaborator and can't manage several accounts";
+							echo "";
+							send_json(array("msg"=>"user is a registered collaborator and can't manage several accounts"));
 						}else {
 							//add the managers
 							add_curator_manager($curator_id,$user["user_id"],$privilege);
-							echo "Added <$email> as collaborator";
+							send_json(array("msg"=>"Added <$email> as collaborator"));
 							//TODO send email
 						}
 
 					}else {//user doesn't exist
 						//create invite entry
 						invite_curator_manager($curator_id,$email,$privilege);
-						echo "Invite sent to <$email>";
+						send_json(array("msg"=>"Invite sent to <$email>"));
 						//TODO Send email to notify
 
 					}

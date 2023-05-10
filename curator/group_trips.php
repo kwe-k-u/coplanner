@@ -92,24 +92,34 @@
                                     echo "<h4>You don't have any listed tours. Click <a class='btn btn-primary' href='create_a_trip.php'> Here </a> to get started</h4>";
                                 }else {
                                     foreach($trips as $entry){
+                                        $c_id = $entry["campaign_id"];
+                                        $c_name = $entry["title"];
+                                        $c_count = $entry["trip_count"];
+                                        $c_media = get_campaign_image($c_id)[0]["media_location"];
+                                        $c_trip = get_campaign_trips($c_id)[0];
+                                        $t_sdate = format_string_as_date_fn($c_trip["start_date"]);
+                                        $t_edate = format_string_as_date_fn($c_trip["end_date"]);
+                                        $t_fee = $c_trip["fee"];
+                                        $t_currency = $c_trip["currency"];
+                                        $t_booking = count_trip_booking($c_trip["trip_id"])["booking_count"];
                                         echo "
                                         <div class='col-lg-4 col-md-6 pb-4'>
-                                <div class='trip-card-2'>
+                                <div class='trip-card-2' onclick='goto_page(\"curator/trip_booking_by_trip.php?campaign_id=$c_id\")'>
                                     <div class='trip-card-img'>
-                                        <img src='../assets/images/others/tour3.jpg' alt='tour 3'>
+                                        <img src='$c_media' alt='tour 3'>
                                     </div>
                                     <div class='trip-card-content'>
-                                        <h5 class='header'>Legon Botanical Gardens</h5>
+                                        <h5 class='header'>$c_name</h5>
                                         <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
-                                            <div><i class='fa-regular fa-calendar-days'></i> 12 Dec 2022 - 10 Jan 2023</div>
-                                            <div><i class='fa-solid fa-pen-to-square'></i> 15 Booked Seats</div>
+                                            <div><i class='fa-regular fa-calendar-days'></i> $t_sdate - $t_edate</div>
+                                            <div><i class='fa-solid fa-pen-to-square'></i> $t_booking Booked Seats</div>
                                         </div>
                                         <div class='easygo-fs-5'>
-                                            <i class='fa-solid fa-map-pin'></i> Pickup coming soon
+                                            <!-- <i class='fa-solid fa-map-pin'></i> Pickup coming soon -->
                                         </div>
                                         <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
-                                            <span><i class='fa-solid fa-tag'></i> GHc150</span>
-                                            <button class='btn px-3 py-1 border easygo-fs-5'>Edit</button>
+                                            <span><i class='fa-solid fa-tag'></i> $t_currency $t_fee</span>
+                                            <!-- <a class='btn px-3 py-1 border easygo-fs-5' href='create_a_trip.php?id=$c_id'>Edit</a> -->
                                         </div>
                                     </div>
                                 </div>
@@ -144,8 +154,8 @@
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/curator_general.js"></script>
 </body>
 
 </html>

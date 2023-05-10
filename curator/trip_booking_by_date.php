@@ -215,62 +215,6 @@
                                     <div class="inner-item">30 Dec 2022</div>
                                     <div class="inner-item">Success</div>
                                 </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
-                                </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
-                                </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
-                                </div>
-                                <div class="list-item">
-                                    <div class="item-bullet-container">
-                                        <div class="item-bullet"></div>
-                                    </div>
-                                    <div class="inner-item">#01</div>
-                                    <div class="inner-item">13 Dec 2022</div>
-                                    <div class="inner-item">Aburi Gardens</div>
-                                    <div class="inner-item">Collins Kofi</div>
-                                    <div class="inner-item">5</div>
-                                    <div class="inner-item">c1000</div>
-                                    <div class="inner-item">James - 010300000</div>
-                                    <div class="inner-item">30 Dec 2022</div>
-                                    <div class="inner-item">Success</div>
-                                </div>
                             </div>
                         </div>
                     </div>

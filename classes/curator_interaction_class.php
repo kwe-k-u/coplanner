@@ -11,6 +11,7 @@
 			users.profile_image as user_profile,
 			users.email_verified,
 			users.user_name,
+			users.phone_number,
 			users.email,
 			curators.curator_name,
 			curators.curator_logo,
@@ -131,11 +132,23 @@
 
 
 		function get_curator_campaigns($curator_id){
-			$sql = "SELECT  *, COUNT(campaign_trips.trip_id) as trip_count FROM campaigns
-			JOIN campaign_trips on campaign_trips.campaign_id = campaigns.campaign_id
-			WHERE campaigns.curator_id =  ?";
+			$sql = "SELECT *,
+			(SELECT COUNT(*) AS trip_count FROM campaign_trips AS ct
+				JOIN campaigns AS c ON c.campaign_id = ct.campaign_id
+				WHERE c.curator_id = campaigns.curator_id) AS trip_count
+		FROM campaigns
+		";
 			$this->prepare($sql);
-			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_campaign_image($campaign_id){
+			$sql = "SELECT * FROM
+			media as m join campaign_media as cm
+			on cm.media_id = m.media_id
+			where cm.campaign_id = ?";
+			$this->prepare($sql);
+			$this->bind($campaign_id);
 			return $this->db_fetch_all();
 		}
 
@@ -151,8 +164,11 @@
 
 
 		function get_all_transactions_curator($curator_id){
+			return null;
 			$sql = "SELECT * FROM
-			`transactions`;";
+			`transactions` AS t
+			JOIN bookings AS b ON b.transaction_id = t.transaction_id
+			;";
 			$this->prepare($sql);
 			// $this->bind();
 			return $this->db_fetch_all();
@@ -178,6 +194,7 @@
 
 
 		function get_withdrawal_transactions($curator_id){
+			return null;
 			$sql = "SELECT * FROM transactions";
 			$this->prepare($sql);
 			// $this->bind();
@@ -268,8 +285,33 @@
 			return $this->db_fetch_all();
 		}
 
+		//Return information about a curator account
 		function get_curator_info($curator_id){
 			$sql = "SELECT";
+		}
+
+
+		function get_curator_collaborators($curator_id){
+			$sql = "SELECT
+			*
+			FROM
+			curator_manager AS cm
+			JOIN users AS u on cm.user_id = u.user_id
+			WHERE cm.curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_trip_bookings($trip_id){
+			$sql = "SELECT bookings.*, users.user_name FROM
+			bookings
+			join users on users.user_id = bookings.user_id
+			where trip_id = ?
+			";
+			$this->prepare($sql);
+			$this->bind($trip_id);
+			return $this->db_fetch_all();
 		}
 	}
 ?>

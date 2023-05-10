@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__."/../classes/curator_interaction_class.php");
+	require_once(__DIR__."/../classes/interaction_class.php");
 
 
 
@@ -119,4 +120,41 @@
 		return $data;
 	}
 
+
+	function get_toursite_media($site_id){
+		$class = new curator_interaction_class();
+		return $class->get_toursite_media($site_id);
+	}
+
+	function get_curator_collaborators($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_curator_collaborators($curator_id);
+	}
+
+
+	function get_campaign_image($campaign_id){
+		$class = new curator_interaction_class();
+		return $class->get_campaign_image($campaign_id);
+	}
+
+	function get_campaign_by_id($c_id){
+		$class = new interaction_class();
+		return $class->get_campaign_by_id($c_id);
+	}
+
+	function count_trip_booking($trip_id){
+		$class = new curator_interaction_class();
+		return $class->count_campaign_bookings($trip_id);
+	}
+
+
+	function get_campaign_trips($campaign_id){
+		$class = new interaction_class();
+		return $class->get_campaign_trips($campaign_id);
+	}
+
+	function get_trip_bookings($trip_id){
+		$class = new curator_interaction_class();
+		return $class->get_trip_bookings($trip_id);
+	}
 ?>

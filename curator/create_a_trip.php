@@ -23,7 +23,7 @@ $logo = $info["curator_logo"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard | Create a trip</title>
+    <title>Curator | Create a trip</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -83,7 +83,7 @@ $logo = $info["curator_logo"];
                                 </div>
                                 <div class="col-lg-7 d-flex flex-column gap-4">
                                     <div class="form-input-field">
-                                        <input type="text" name="title" value="Experience Trident Island" placeholder="Name of your amazing tour">
+                                        <input type="text" name="title" placeholder="Name of your amazing tour">
                                     </div>
                                 </div>
                             </div>
@@ -527,6 +527,8 @@ $logo = $info["curator_logo"];
                                 $site_country = $site["country"];
                                 $site_activities = $site["activities"];
 
+                                $site_media = get_toursite_media($site_id);
+
 
                             echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
                             <div class='loc-info'>
@@ -536,32 +538,20 @@ $logo = $info["curator_logo"];
                             </div>";
                             ?>
                             <div style='overflow-x: auto;'>
-
                                 <div class='grid-7' style='max-height: 500px;' id='location-info-images'>
-                                    <div class='grid-item'>
+                            <?php
+                                $site_media = array(
+                                    "../assets/images/others/scenery2.jpg",
+                                    "../assets/images/others/tour1.jpg");
+                                foreach ($site_media as $media) {
+                                    // $media_location = $site_media[""];
+                                    echo "<div class='grid-item'>
                                         <img class='w-100 h-100 rounded' src='../assets/images/others/scenery1.jpg' alt='scene 1'>
                                     </div>
-                                    <div class='grid-item'>
-                                        <img class='w-100 h-100 rounded' src='../assets/images/others/scenery2.jpg' alt='scene 1'>
-                                    </div>
-                                    <div class='grid-item'>
-                                        <img class='w-100 h-100 rounded' src='../assets/images/others/tour1.jpg' alt='scene 1'>
-                                    </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
-                                    </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
-                                    </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
-                                    </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
-                                    </div>
-                                    <div class="grid-item">
-                                        <img class="w-100 h-100 rounded" src="../assets/images/others/tour1.jpg" alt="scene 1">
-                                    </div>
+                                    ";
+                                }
+                            ?>
+
                                 </div>
                             </div>
                             <div class="activity-listing" id="activity-listing">

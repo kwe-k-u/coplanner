@@ -1,7 +1,8 @@
 <aside class="sidebar d-lg-flex d-none flex-column justify-content-between bg-gray-3">
 	<ul class="main-list slide-down">
 		<li>
-				<a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);" href="#"><img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard </a>
+				<a data-target="dashboard-submenu-sb" class="slide-down-btn text-blue" style="border-right: solid 2px var(--easygo-blue);" href="dashboard.php">
+				<img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard </a>
 		</li>
 		<li>
 			<div class="slide-down-menu">
@@ -14,7 +15,7 @@
 			</div>
 		</li>
 		<li><a href="transactions.php"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
-		<li><a href="notifications.php"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li>
+		<!-- <li><a href="notifications.php"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li> -->
 		<li><a href="account_settings.php"><img src="../assets/images/svgs/notifications.svg" alt="settings icon">Account Settings</a></li>
 	</ul>
 	<div class="py-4 border-top">

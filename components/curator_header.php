@@ -14,11 +14,12 @@
 		case "account_settings.php":
 			$page = "Account Settings";
 			break;
+		case "transactions.php":
+			$page = "Transactions";
+			break;
 		default:
 			$page = "Dashboard";
 	}
-	// $name = get_user_by_id($id);
-	// switch()
 ?>
 <header class="dashboard-header d-none d-lg-flex">
             <div class="dashlogo logo logo-medium">

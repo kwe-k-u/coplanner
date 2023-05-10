@@ -13,6 +13,8 @@
     $curator_name = $info["curator_name"];
     $logo = $info["curator_logo"];
 
+    $campaign_id= $_GET['campaign_id']
+
 
 
 
@@ -79,26 +81,40 @@
                             <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Boooking</small>
                         </div>
                         <p class="mt-4 mb-0">Bookings have been grouped based on the Trip. Click on a particular trip to view more information.</p>
+                        <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
+                            <?php
+
+                                $campaign = get_campaign_by_id($campaign_id);
+                                $trips = get_campaign_trips($campaign_id);
+                                $count = count($trips);
+                                $name = $campaign["title"];
+
+                                echo "
+                                <div class='list-item'>
+                                    <div class='inner-item'>$name</div>
+                                    <div class='inner-item easygo-fs-5 text-end'>$count Trips</div>
+                                </div>";
+                            ?>
+                        </div>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
-                        <div class="left-controls">
-                            <form id="dashboard-search">
-                                <div class="form-input-field">
-                                    <input class="p-2" type="text" placeholder="search">
-                                </div>
-                            </form>
-                        </div>
                         <div class="right-controls d-flex gap-2 easygo-fs-5">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle easygo-fs-5 h-100" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="easygo-fw-3">Group by</span> Trips
+                                    <span class="easygo-fw-3">Select Another tour</span>
                                 </button>
                                 <ul class="dropdown-menu easygo-fs-5" aria-labelledby="viewby-menu">
-                                    <li><a class="dropdown-item" href="#">All</a></li>
-                                    <li><a class="dropdown-item" href="./trip_booking_by_date.php">Date</a></li>
+                                <?php
+                                    $campaigns = get_curator_campaigns($curator_id);
+                                    foreach ($campaigns as  $trip) {
+                                        $name = $trip["title"];
+                                        $t_id = $trip["campaign_id"];
+                                        echo "<li><a class='dropdown-item' href='trip_booking_by_trip.php?campaign_id=$t_id'>$name</a></li>";
+                                    }
+                                ?>
                                 </ul>
                             </div>
-                            <div class="dropdown">
+                            <!-- <div class="dropdown">
                                 <button class="btn border dropdown-toggle px-5 easygo-fs-5 h-100" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
                                     Export
                                 </button>
@@ -107,25 +123,53 @@
                                     <li><a class="dropdown-item" href="#">Excel</a></li>
                                 </ul>
                             </div>
-                            <button class="easygo-btn-1 py-1 px-5">Print</button>
+                            <button class="easygo-btn-1 py-1 px-5">Print</button> -->
                         </div>
                     </div>
                     <div class="trip-listing">
-                        <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
+                        <div class="easygo-list-3 list-striped" style="min-width: 992px;">
                         <?php
-                            $trips = get_booking_summary_by_trip($curator_id);
-                            foreach($trips as $entry){
-                                $name = $entry["title"];
-                                $id = $entry["campaign_id"];
-                                $count = $entry["booking_count"];
+
+                            foreach($trips as $trip){ //for each trip, show the booking list
+                                $start = format_string_as_date_fn($trip["start_date"]);
+                                $end = format_string_as_date_fn($trip["end_date"]);
+                                $trip_id = $trip["trip_id"];
+
+                                $inner_list = "";
+
+                                $bookings = get_trip_bookings($trip_id);
+                                if(count($bookings) == 0){
+                                    $inner_list = "<h5>You don't have any bookings yet for this tour yet</h5>";
+                                }
+                                foreach ($bookings as $booking) {
+                                    $b_date = format_string_as_date_fn($booking["date_booked"]);
+                                    $b_seats = $booking["seats_booked"];
+                                    $emergency_name = $booking["emergency_contact_name"];
+                                    $emergency_number = $booking["emergency_contact_number"];
+                                    $b_name = $booking["user_name"];
+                                    $inner_list = $inner_list."
+                                        <div class='list-item'>
+                                            <div class='inner-item'>Customer Name: $b_name</div>
+                                            <div class='inner-item'>$b_seats seats</div>
+                                            <div class='inner-item'>$b_date</div>
+                                            <div class='inner-item'>Emergency: $emergency_name - $emergency_number</div>
+                                            <div class='item-bullet-container'>
+                                                <div class='item-bullet'></div>
+                                            </div>
+                                        </div>";
+                                }
+
                                 echo "
-                                <div class='list-item'>
-                                    <div class='inner-item'>$name</div>
-                                    <div class='inner-item easygo-fs-5 text-end'>$count Bookings</div>
+                                <div class='date-group pt-4 pb-3'>
+                                    <div class='dropdown'>
+                                        <span class='btn border px-5' >
+                                            $start - $end
+                                        </span>
+                                    </div>
+                                    <div class='easygo-list-3' style='min-width: 992px;'>
+                                        $inner_list
+                                    </div>
                                 </div>";
-                            }
-                            if(!$trips){
-                                echo "<h5>You don't have any bookings yet</h5>";
                             }
                         ?>
 

@@ -410,5 +410,5 @@ function show_loader(hide_element = null, time=5000){
 
 
 function open_curator_dashboard(){
-  window.location.href = "dashboard.php";
+  window.location.href = "../views/index.php";
 }
