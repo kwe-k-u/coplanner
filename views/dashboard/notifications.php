@@ -3,7 +3,13 @@
 	require_once(__DIR__."/../../controllers/auth_controller.php");
 	require_once(__DIR__."/../../controllers/private_tour_controller.php");
 	require_once(__DIR__."/../../controllers/media_controller.php");
+    require_once(__DIR__."/../../controllers/interaction_controller.php");
 	login_check();
+
+	$user_id = get_session_user_id();
+	$user_name = get_username_by_id($user_id);
+	$profile = get_user_profile_img($user_id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard | Notifications</title>
+    <title>easygo - Notifications</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -85,15 +91,15 @@
                         </div>
                     </nav>
                     <div class="d-flex justify-content-center my-3 d-md-none">
-                        <div class="d-flex gap-2">
-                            <div class="user-icon bg-blue">
-                                <img src="../../assets/images/others/profile.jpeg" alt="">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center gap-1">
-                                <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                            </div>
-                        </div>
+                        <?php
+                            echo "<div class='user-icon bg-blue'>
+                                        <img src='$profile' alt=''>
+                                    </div>
+                                    <div class='d-flex flex-column justify-content-center gap-1'>
+                                        <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                                        <h6 class='text-gray-1 easygo-fs-5 m-0'>User profile</h6>
+                                    </div>";
+                        ?>
                     </div>
                 </aside>
                 <!-- sidebar [end] -->
@@ -105,15 +111,15 @@
                         <div class="main-content-header d-flex justify-content-between align-items-center py-4 d-none d-md-flex">
                             <h3 class="m-0">Notifications</h3>
                             <div class="d-flex justify-content-center my-3">
-                                <div class="d-flex gap-2">
-                                    <div class="user-icon bg-blue">
-                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
+                        <?php
+                            echo "<div class='user-icon bg-blue'>
+                                        <img src='$profile' alt=''>
                                     </div>
-                                    <div class="d-flex flex-column justify-content-center gap-1">
-                                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                        <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                                    </div>
-                                </div>
+                                    <div class='d-flex flex-column justify-content-center gap-1'>
+                                        <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                                        <h6 class='text-gray-1 easygo-fs-5 m-0'>User profile</h6>
+                                    </div>";
+                        ?>
                             </div>
                         </div>
                         <div class="main-content-body py-2">

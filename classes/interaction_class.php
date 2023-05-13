@@ -118,6 +118,13 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_campaign_by_trip_id($trip_id){
+			$sql = "SELECT * FROM `campaigns` WHERE `campaign_id` = ?";
+			$this->prepare($sql);
+			$this->bind($trip_id);
+			return $this->db_fetch_one();
+		}
+
 		function get_user_profile_img($id){
 			$sql = "SELECT media.media_location from media
 			join users on users.profile_image = media.media_id
@@ -132,6 +139,16 @@
 			$this->prepare($sql);
 			$this->bind($request_id);
 			return $this->db_fetch_all();
+		}
+
+		function get_user_stats($user_id){
+			$sql = "SELECT
+			(SELECT count(*) FROM `bookings` WHERE `user_id` = ?) AS count_bookings,
+			(SELECT count(*) FROM `private_tour` WHERE `user_id` = ?) AS count_private,
+			(SELECT count(*) FROM `wishlist` WHERE `user_id` = ?) AS count_saved";
+			$this->prepare($sql);
+			$this->bind($user_id, $user_id,$user_id);
+			return $this->db_fetch_one();
 		}
 
 		function is_user_following_curator($user_id,$curator_id){

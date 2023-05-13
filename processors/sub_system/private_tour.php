@@ -16,15 +16,22 @@
 					$currency = $_POST["currency"];
 					$max = $_POST["max_budget"];
 					$min = $_POST["min_budget"];
-					$desc = $_POST["description"];
 					$start = $_POST["start_date"];
 					$end = $_POST["end_date"];
 					$state = $_POST["state"];
 					$count = $_POST["person_count"];
+					$type = $_POST["type"];
 					$trip_id = generate_id();
 
-					create_private_trip($trip_id,$user_id,
-						$currency,$min,$max,$desc,$start,$end,$state,$count);
+
+					if ($type == "custom"){
+						$desc = $_POST["description"];
+						create_private_tour_custom($trip_id,$user_id,
+							$currency,$min,$max,$desc,$start,$end,$state,$count);
+					}else {
+
+					}
+
 					send_json(array("msg"=>"Uploaded your private trip request. Curators will send quotes soon"));
 					die();
 				case "bid_private_tour":
@@ -49,13 +56,19 @@
 					$currency = $_POST["currency"];
 					$max = $_POST["max_budget"];
 					$min = $_POST["min_budget"];
-					$desc = $_POST["description"];
 					$start = $_POST["start_date"];
 					$end = $_POST["end_date"];
 					$state = $_POST["state"];
 					$count = $_POST["person_count"];
-					$success = edit_private_tour_request($id, $currency,$min,$max,
-						$desc,$start,$end,$state, $count);
+					$type = $_POST["type"];
+					if ($type == 'custom'){
+						$desc = $_POST["description"];
+						$success = edit_custom_private_tour_request($id, $currency,$min,$max,
+							$desc,$start,$end,$state, $count);
+					}else {
+						$success = edit_campaign_private_tour_request($id, $currency,$min,$max,
+							$start,$end,$state, $count);
+					}
 
 
 					$msg = $success ? "Edited your request, we will notify curators"
@@ -71,9 +84,16 @@
 						$msg = $success ? "Successfully deleted your request" : "We cant delete a request that has received quotes";
 						send_json(array("msg"=>$msg, $success ? 200:100));
 						die();
-				case "get_private_request":
+				case "get_custom_private_request":
 					$id = $_POST["request_id"];
-					$request = get_private_trip_by_id($id);
+					$request = get_custom_private_tour_by_id($id);
+
+					send_json($request);
+					die();
+
+				case "get_campaign_private_request":
+					$id = $_POST["request_id"];
+					$request = get_campaign_private_tour_by_id($id);
 
 					send_json($request);
 					die();

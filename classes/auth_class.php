@@ -106,7 +106,8 @@
 		}
 
 		function get_curator_invite_by_email($email){
-			$sql = "SELECT * FROM `curator_manager_invite`";
+			$sql = "SELECT * FROM `curator_manager_invite` WHERE email_address = ?
+			AND `invite_expiry` < CURRENT_TIMESTAMP";
 			// return $this->db_fetch_one($sql);
 			$this->prepare($sql);
 			$this->bind($email);

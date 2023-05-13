@@ -6,27 +6,46 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 
 		//===============================INSERT==========================================
 
-		function create_private_trip($id, $user, $currency,$min_bug,$max_bug,
-		$desc,$start,$end,$state, $count){
+		function create_private_tour($id, $user, $currency,$min_bug,$max_bug,
+		$start,$end,$state, $count){
 			$sql = "INSERT INTO `private_tour`
 			(`private_tour_id`,`user_id`,`currency`,`min_budget`,
-			`max_budget`,`description`,`date_start`,`date_end`,`publish_state`, `person_count`)
-			VALUE (?,?,?,?,?,?,?,?,?,?,)";
+			`max_budget`,`date_start`,`date_end`,`publish_state`, `person_count`)
+			VALUE (?,?,?,?,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($id,$user,$currency,$min_bug,$max_bug,$desc,$start,$end,$state,$count);
+			$this->bind($id,$user,$currency,$min_bug,$max_bug,$start,$end,$state,$count);
+			return $this->db_query();
+		}
+
+		function create_private_tour_custom($tour_id,$description){
+			$sql = "INSERT INTO `private_tour_custom` VALUE (?,?)";
+			$this->prepare($sql);
+			$this->bind($tour_id,$description);
+			return $this->db_query();
+		}
+
+		function create_private_tour_campaign($tour_id,$c_id){
+			$sql = "INSERT INTO `private_tour_campaign` VALUE (?,?)";
+			$this->prepare($sql);
+			$this->bind($tour_id,$c_id);
 			return $this->db_query();
 		}
 
 		function edit_private_tour_request($id, $currency,$min_bug,$max_bug,
-		$desc,$start,$end,$state, $count){
-			$sql = "UPDATE `private_tour` SET `currency` = ?, `date_start`=?, `date_end` = ?, `description`=?,
+		$start,$end,$state, $count){
+			$sql = "UPDATE `private_tour` SET `currency` = ?, `date_start`=?, `date_end` = ?,
 			`person_count`=?, `publish_state` = ?, `max_budget`=?, `min_budget` = ?
 			WHERE `private_tour_id`=?";
 			$this->prepare($sql);
 			$this->bind($currency,$start,$end,$count,$state,$max_bug,$min_bug,$id);
-
 			return $this->db_query();
+		}
 
+		function edit_private_tour_description($id,$desc){
+			$sql = "UPDATE `private_tour_custom` SET `description` = ? WHERE `private_tour_id` = ?";
+			$this->prepare($sql);
+			$this->bind($desc,$id);
+			return $this->db_query();
 		}
 
 
@@ -52,8 +71,19 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 			return $this->db_fetch_all();
 		}
 
-		function get_user_private_trip_requests($id){
-			$sql = "SELECT * FROM `private_tour` WHERE `user_id` = ?";
+		function get_user_private_trip_requests_custom($id){
+			$sql = "SELECT private_tour.*, pc.description FROM `private_tour`
+			JOIN private_tour_custom AS pc on pc.private_tour_id = private_tour.private_tour_id
+			 WHERE `user_id` = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_all();
+		}
+
+		function get_user_private_trip_requests_campaign($id){
+			$sql = "SELECT * FROM `private_tour`
+			JOIN private_tour_campaign AS pc on pc.private_tour_id = private_tour.private_tour_id
+			 WHERE `user_id` = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();
@@ -67,9 +97,19 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 			return $this->db_fetch_one();
 		}
 
-		function get_private_trip_by_id($id){
+		function get_custom_private_tour_by_id($id){
 			$sql = "SELECT * FROM `private_tour`
-			WHERE `private_tour_id` = ?";
+			JOIN private_tour_custom AS pc on pc.private_tour_id = private_tour.private_tour_id
+			WHERE pc.private_tour_id = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_one();
+		}
+
+		function get_campaign_private_tour_by_id($id){
+			$sql = "SELECT * FROM `private_tour`
+			JOIN private_tour_campaign AS pc on pc.private_tour_id = private_tour.private_tour_id
+			WHERE pc.private_tour_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_one();
@@ -79,6 +119,20 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 		//=================================DELETE================================
 		function remove_private_tour_request($id){
 			$sql = "DELETE FROM `private_tour` WHERE `private_tour_id` = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_query();
+		}
+
+		function remove_custom_private_tour_request($id){
+			$sql = "DELETE FROM `private_tour_custom` WHERE `private_tour_id` = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_query();
+		}
+
+		function remove_campaign_private_tour_request($id){
+			$sql = "DELETE FROM `private_tour_campaign` WHERE `private_tour_id` = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_query();

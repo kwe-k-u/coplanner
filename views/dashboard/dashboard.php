@@ -129,39 +129,49 @@
                             <!-- stat cards [start] -->
                             <section class="stat-cards py-3">
                                 <div class="d-flex gap-3 w-100" style="overflow-x: auto;">
-                                    <div style="min-width: 300px;">
-                                        <div class="info-card m-auto bg-white">
-                                            <div class="info-img">
-                                                <img src="../../assets/images/svgs/bus_red_bg.svg" alt="bus image">
+                                <?php
+                                    $stats = get_user_stats($user_id);
+                                    $private = $stats["count_private"];
+                                    $bookings = $stats["count_bookings"];
+                                    $saved = $stats["count_saved"];
+
+                                    echo "
+                                    <div style='min-width: 300px;'>
+                                        <div class='info-card m-auto bg-white'>
+                                            <div class='info-img'>
+                                                <img src='../../assets/images/svgs/bus_red_bg.svg' alt='bus image'>
                                             </div>
-                                            <div class="info-content">
-                                                <div class="info-title easygo-fs-2">Tours Joined</div>
-                                                <div class="info-num easygo-fs-3">10</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="min-width: 300px;">
-                                        <div class="info-card m-auto bg-white">
-                                            <div class="info-img">
-                                                <img src="../../assets/images/svgs/bus_black_bg.svg" alt="bus image">
-                                            </div>
-                                            <div class="info-content">
-                                                <div class="info-title easygo-fs-2">Private Tours</div>
-                                                <div class="info-num easygo-fs-3">10</div>
+                                            <div class='info-content'>
+                                                <div class='info-title easygo-fs-2'>Tours Joined</div>
+                                                <div class='info-num easygo-fs-3'>$bookings</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div style="min-width: 300px;">
-                                        <div class="info-card m-auto bg-white">
-                                            <div class="info-img">
-                                                <img src="../../assets/images/svgs/bus_black_bg.svg" alt="bus image" />
+                                    <div style='min-width: 300px;'>
+                                        <div class='info-card m-auto bg-white'>
+                                            <div class='info-img'>
+                                                <img src='../../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                             </div>
-                                            <div class="info-content">
-                                                <div class="info-title easygo-fs-2">Saved Tours</div>
-                                                <div class="info-num easygo-fs-3">10</div>
+                                            <div class='info-content'>
+                                                <div class='info-title easygo-fs-2'>Private Tours</div>
+                                                <div class='info-num easygo-fs-3'>$private</div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div style='min-width: 300px;'>
+                                        <div class='info-card m-auto bg-white'>
+                                            <div class='info-img'>
+                                                <img src='../../assets/images/svgs/bus_black_bg.svg' alt='bus image' />
+                                            </div>
+                                            <div class='info-content'>
+                                                <div class='info-title easygo-fs-2'>Saved Tours</div>
+                                                <div class='info-num easygo-fs-3'>$saved</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ";
+                                ?>
+
                                 </div>
                             </section>
                             <!-- stat cards [end] -->
@@ -183,34 +193,43 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-blue easygo-fs-5">Completed</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-orange easygo-fs-5">Ongoing</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-gray easygo-fs-5">Canceled</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-blue easygo-fs-5">Completed</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
+                                                <?php
+                                                    $bookings = get_user_booking_history($user_id);
+                                                    $bookings = array_slice($bookings,0,4);
+
+                                                    if(!$bookings){
+                                                        echo "<tr><td><h5 class='easygo-fs-2 easygo-fw-5 py-4'>You haven't booked a tour yet</h5></td></tr>";
+                                                    }
+
+                                                    foreach ($bookings as $entry) {
+                                                        $booking_id = $entry["booking_id"];
+                                                        $trip_id = $entry["trip_id"];
+                                                        $trip_name =get_campaign_by_trip_id($trip_id)["title"];
+                                                        $seats = $entry["seats_booked"];
+                                                        $amount = $entry["amount_due"];
+                                                        $emergency_name = $entry["emergency_name"];
+                                                        $emergency_number = $entry["emergency_number"];
+                                                        $date = format_string_as_date_fn($entry["date_booked"]);
+                                                        echo "
+                                                        <tr>
+                                                            <td>$trip_name</td>
+                                                            <td>$seats</td>
+                                                            <!-- <td><span class='easygo-badge-orange easygo-fs-5'>Ongoing</span></td>
+                                                            <td><span class='easygo-badge-gray easygo-fs-5'>Canceled</span></td> -->
+                                                            <td><span class='easygo-badge-blue easygo-fs-5'>Completed</span></td>
+                                                            <td>$date</td>
+                                                            <td>
+                                                                <div class='col'>
+                                                                    $emergency_name
+                                                                    $emergency_number
+                                                                </div>
+                                                            </td>
+                                                            <td><button class='del-btn my-3'><i class='fa-solid fa-edit'></i></button></td>
+                                                        </tr>
+                                                        ";
+                                                    }
+                                                ?>
+
                                             </tbody>
                                         </table>
                                     </div>

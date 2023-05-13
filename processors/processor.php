@@ -7,13 +7,13 @@
 	// }
 	 $auth_actions = array (
 		"login",
-	  "signup",
-	 "logout",
-	 "request_password_reset",
-	 "change_password",
-	 "change_password_logged_in",
-	 "invite_curator_collaborator",
-	 "remove_curator_collaborator"
+		"signup",
+		"logout",
+		"request_password_reset",
+		"change_password",
+		"change_password_logged_in",
+		"invite_curator_collaborator",
+		"remove_curator_collaborator"
 	);
 	$booking_actions = array(
 		"trip_payment",
@@ -30,7 +30,8 @@
 	$private_tour_actions = array(
 		"request_private_tour",
 		"bid_private_tour",
-		"get_private_request",
+		"get_custom_private_request",
+		"get_campaign_private_request",
 		"edit_private_tour",
 		"delete_private_tour"
 	);

@@ -16,7 +16,8 @@
 		</li>
 		<li><a href="transactions.php"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
 		<!-- <li><a href="notifications.php"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li> -->
-		<li><a href="account_settings.php"><img src="../assets/images/svgs/notifications.svg" alt="settings icon">Account Settings</a></li>
+		<li><a href="account_settings.php"><i class="fa-solid fa-gear"></i>Account Settings</a></li>
+		<!-- <li><a href="account_settings.php"><img src="../assets/images/svgs/notifications.svg" alt="settings icon">Account Settings</a></li> -->
 	</ul>
 	<div class="py-4 border-top">
 		<a class="easygo-fs-4 text-red" onclick="return logout()"><img src="../assets/images/svgs/logout.svg" alt="logout icon"> Logout</a>

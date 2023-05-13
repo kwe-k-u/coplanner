@@ -36,15 +36,17 @@
                         <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
                     </h1>
                     <p>
-                        easyGo is a trip curation platform that connects travelers to experiences that are celebrations of culture and expressions of their identity.
+                    easyGo is a tour booking platform that provides curated tour experiences for travellers and tourists
+                     within Ghana. We do this by providing a platform that allows seamless booking and payment for packaged tours,
+                      curating personalised experiences and the outsourcing of team-bonding trips for departments of corporate bodies.
                     </p>
                     <div class="d-flex gap-3 justify-content-center">
                         <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
                         <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                     </div>
-                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" style="min-width: 50%;">
+                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./trips.php" style="min-width: 50%;">
                         <div class="d-flex">
-                            <input class="px-3 py-2 border-0" type="text" placeholder="Where to ?" style="flex: 1;">
+                            <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
                             <button class="easygo-btn-1 rounded-0">Search</button>
                         </div>
                     </form>

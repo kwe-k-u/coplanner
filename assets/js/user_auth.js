@@ -9,7 +9,7 @@ function signup(form){
 	var password = form.pswd.value;
 	var email = form.email.value;
 	var country = form.country.value;
-	var referral = form.referral.value;
+	var referal = form.referral.value;
 	var phone = form.phone.value;
 
 	var payload = {
@@ -18,7 +18,8 @@ function signup(form){
 		"email" : email,
 		"password" : password,
 		"country" : country,
-		"phone_number" : phone
+		"phone_number" : phone,
+		"referal_code" : referal
 	}
 	// payload += "referral=" + referral;
 
@@ -27,24 +28,25 @@ function signup(form){
 	"processors/processor.php",
 	payload,
 	(response) => {
+		console.log(response);
 		var json = response;
-		if (json["status"] == 200){
+		// if (json["status"] == 200){
 
-			var user_id = json["data"]["user_id"];
-			upload_image("profile-img","picture", {user_id: user_id,
-			callback: (image_res)=>{
-				var img_json = image_res;
-				var img_id = img_json["data"]["media_id"];
-				update_profile_image(img_id,user_id, {
-					callback: (update_res) => {
+		// 	var user_id = json["data"]["user_id"];
+		// 	upload_image("profile-img","picture", {user_id: user_id,
+		// 	callback: (image_res)=>{
+		// 		var img_json = image_res;
+		// 		var img_id = img_json["data"]["media_id"];
+		// 		update_profile_image(img_id,user_id, {
+		// 			callback: (update_res) => {
 
 					window.location.href = baseurl + "views/register_success.php";
-				}});
-			}
-			})
-		}else {
-			alert(json["data"]["msg"]);
-		}
+	// 			}});
+	// 		}
+	// 		})
+	// 	}else {
+	// 		alert(json["data"]["msg"]);
+	// 	}
 	}
 	);
 

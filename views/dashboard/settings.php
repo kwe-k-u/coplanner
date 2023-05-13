@@ -1,6 +1,6 @@
 <?php
-	require_once(__DIR__."/../../utils/core.php");
-	login_check();
+require_once(__DIR__ . "/../../utils/core.php");
+login_check();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard | Profile</title>
+    <title>easygo - Account Settings</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -30,7 +30,7 @@
                 <button class="navbar-toggler sidebar-toggler border-0 text-black" type="button" data-target="userdashboard-sidebar">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h5>Profile</h5>
+                <h5>Account Settings</h5>
                 <button class="btn"><i class="fa-solid fa-bell"></i></button>
         </nav>
         <main>
@@ -40,11 +40,11 @@
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
                         <script>
-                            function goHome(){
-                                window.location.href="../home.php";;
+                            function goHome() {
+                                window.location.href = "../home.php";;
                             }
                         </script>
-                        <div class="logo m-md-auto" onclick = "return goHome()">
+                        <div class="logo m-md-auto" onclick="return goHome()">
                             <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
@@ -55,42 +55,33 @@
                     <nav class="sidebar-navbar">
                         <div>
 
-                        <ul class="sidebar-nav-menu">
+                            <ul class="sidebar-nav-menu">
 
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
-</li>
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./trip_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
-</li>
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
-</li>
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-</li>
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
-</li>
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
-</li>
-<li class="s-nav-item px-3 py-2">
-    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-</li>
-</ul>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./trip_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
+                                </li>
+                                <li class="s-nav-item px-3 py-2">
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 text-red" onclick="return logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+                                </li>
+                            </ul>
                         </div>
                     </nav>
                     <div class="d-flex justify-content-center my-3 d-md-none">
-                        <div class="d-flex gap-2">
-                            <div class="user-icon bg-blue">
-                                <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
-                            </div>
-                            <div class="d-flex flex-column justify-content-center gap-1">
-                                <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                            </div>
-                        </div>
                     </div>
                 </aside>
                 <!-- sidebar [end] -->
@@ -100,18 +91,7 @@
                 <main class="main-content bg-gray-3">
                     <div class="px-lg-5 px-2">
                         <div class="main-content-header d-flex justify-content-between align-items-center py-4 d-none d-md-flex">
-                            <h3 class="m-0">Settings</h3>
-                            <div class="d-flex justify-content-center my-3">
-                                <div class="d-flex gap-2">
-                                    <div class="user-icon bg-blue">
-                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center gap-1">
-                                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                        <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                                    </div>
-                                </div>
-                            </div>
+                            <h3 class="m-0">Account Settings</h3>
                         </div>
                         <div class="main-content-body py-2">
                             <div class="mb-5">
@@ -168,7 +148,9 @@
                                         </div>
                                         <div class="input-field button-container">
                                             <button class="easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile" type="button" data-enable-target=".profile-form-field" data-visibility-target=".edit-or-update-profile">Edit Profile</button>
-                                            <center><div visible-mode="flex" class="justify-content-center edit-or-update-profile" ><a class="text-black easygo-fw-3 visibility-changer" href="javascript:void(0);" data-visibility-target=".update-pass-or-profile">Change Password</a></div></center>
+                                            <center>
+                                                <div visible-mode="flex" class="justify-content-center edit-or-update-profile"><a class="text-black easygo-fw-3 visibility-changer" href="javascript:void(0);" data-visibility-target=".update-pass-or-profile">Change Password</a></div>
+                                            </center>
                                             <button class="easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile" type="submit" data-enable-target=".profile-form-field" data-visibility-target=".edit-or-update-profile" style="display: none;">Update Profile</button>
                                         </div>
                                     </form>
@@ -228,7 +210,7 @@
     <!-- Swiper js -->
     <script src="../../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../../utils/js_env_variables.php"); ?>
     <script src="../../assets/js/general.js"></script>
     <script src="../../assets/js/home.js"></script>
     <script src="../../assets/js/functions.js"></script>

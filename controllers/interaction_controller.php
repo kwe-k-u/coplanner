@@ -80,6 +80,15 @@
 		return $inte->get_campaign_next_trip($id);
 	}
 
+	function get_user_stats($user_id){
+		$inte = new interaction_class();
+		return $inte->get_user_stats($user_id);
+	}
+	function get_campaign_by_trip_id($trip_id){
+		$inte = new interaction_class();
+		return $inte->get_campaign_by_trip_id($trip_id);
+	}
+
 
 	function is_user_following_curator($user_id, $curator_id){
 		$inte = new interaction_class();

@@ -38,32 +38,7 @@
     <!-- ============================== -->
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
-        <header class="dashboard-header d-none d-lg-flex">
-            <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
-            </div>
-            <div class="dashboard-title">Private Tours</div>
-            <div class="right-sec">
-                <form id="dashboard-search">
-                    <div class="form-input-field">
-                        <input class="p-2" type="text" placeholder="search">
-                    </div>
-                </form>
-                <div class="balance d-flex flex-column justify-content-center">
-                    <h4 class="m-0 easygo-fs-3 easygo-fw-1">GHC 500</h4>
-                    <small class="easygo-fs-5 text-orange">Withdrawable balance</small>
-                </div>
-                <div class="user-menu d-flex gap-1">
-                    <div class="user-icon">
-                        <img src="../assets/images/others/profile.jpeg" alt="">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h5 class="easygo-fs-3">Admin</h5>
-                        <h6 class="text-orange easygo-fs-5">Administrator</h6>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php require_once(__DIR__."/../components/curator_header.php") ?>
         <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
         <!-- ============================== -->

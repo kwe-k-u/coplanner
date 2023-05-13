@@ -24,7 +24,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator || All Trips</title>
+    <title>Curator || Group Tours</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -38,32 +38,7 @@
     <!-- ============================== -->
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
-        <header class="dashboard-header d-none d-lg-flex">
-            <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
-            </div>
-            <div class="dashboard-title">All Trips</div>
-            <div class="right-sec">
-                <form id="dashboard-search">
-                    <div class="form-input-field">
-                        <input class="p-2" type="text" placeholder="search">
-                    </div>
-                </form>
-                <div class="balance d-flex flex-column justify-content-center">
-                    <h4 class="m-0 easygo-fs-3 easygo-fw-1">GHC 500</h4>
-                    <small class="easygo-fs-5 text-orange">Withdrawable balance</small>
-                </div>
-                <div class="user-menu d-flex gap-1">
-                    <div class="user-icon">
-                        <img src="../assets/images/others/profile.jpeg" alt="">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h5 class="easygo-fs-3">Admin</h5>
-                        <h6 class="text-orange easygo-fs-5">Administrator</h6>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <?php require_once(__DIR__."/../components/curator_header.php") ?>
         <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
         <!-- ============================== -->
@@ -104,7 +79,7 @@
                                         $t_booking = count_trip_booking($c_trip["trip_id"])["booking_count"];
                                         echo "
                                         <div class='col-lg-4 col-md-6 pb-4'>
-                                <div class='trip-card-2' onclick='goto_page(\"curator/trip_booking_by_trip.php?campaign_id=$c_id\")'>
+                                <div class='trip-card-2'>
                                     <div class='trip-card-img'>
                                         <img src='$c_media' alt='tour 3'>
                                     </div>
@@ -119,7 +94,11 @@
                                         </div>
                                         <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
                                             <span><i class='fa-solid fa-tag'></i> $t_currency $t_fee</span>
-                                            <!-- <a class='btn px-3 py-1 border easygo-fs-5' href='create_a_trip.php?id=$c_id'>Edit</a> -->
+                                            <div>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='../views/trip_description.php?campaign_id=$c_id'>Details</a>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='trip_booking_by_trip.php?campaign_id=$c_id'>Bookings</a>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='create_a_trip.php?id=$c_id'>Edit</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

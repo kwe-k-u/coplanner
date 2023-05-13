@@ -3,7 +3,13 @@
 	require_once(__DIR__."/../../controllers/auth_controller.php");
 	require_once(__DIR__."/../../controllers/private_tour_controller.php");
 	require_once(__DIR__."/../../controllers/media_controller.php");
+	require_once(__DIR__."/../../controllers/interaction_controller.php");
+
 	login_check();
+	$user_id = get_session_user_id();
+	$user_name = get_username_by_id($user_id);
+	$profile = get_user_profile_img($user_id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,13 +90,15 @@
                     </nav>
                     <div class="d-flex justify-content-center my-3 d-md-none">
                         <div class="d-flex gap-2">
-                            <div class="user-icon bg-blue">
-                                <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
-                            </div>
-                            <div class="d-flex flex-column justify-content-center gap-1">
-                                <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                            </div>
+                            <?php
+                                echo "<div class='user-icon bg-blue'>
+                                            <img src='$profile' alt=''>
+                                        </div>
+                                        <div class='d-flex flex-column justify-content-center gap-1'>
+                                            <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                                            <h6 class='text-gray-1 easygo-fs-5 m-0'>User profile</h6>
+                                        </div>";
+                            ?>
                         </div>
                     </div>
                 </aside>
@@ -104,13 +112,15 @@
                             <h3 class="m-0">Trips</h3>
                             <div class="d-flex justify-content-center my-3">
                                 <div class="d-flex gap-2">
-                                    <div class="user-icon bg-blue">
-                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center gap-1">
-                                        <h5 class="easygo-fs-4 m-0">Victor Ola</h5>
-                                        <h6 class="text-gray-1 easygo-fs-5 m-0">User profile</h6>
-                                    </div>
+                                    <?php
+                                        echo "<div class='user-icon bg-blue'>
+                                                    <img src='$profile' alt=''>
+                                                </div>
+                                                <div class='d-flex flex-column justify-content-center gap-1'>
+                                                    <h5 class='easygo-fs-4 m-0'>$user_name</h5>
+                                                    <h6 class='text-gray-1 easygo-fs-5 m-0'>User profile</h6>
+                                                </div>";
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -132,34 +142,42 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-blue easygo-fs-5">Completed</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-orange easygo-fs-5">Ongoing</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-gray easygo-fs-5">Canceled</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bunsco Eco Park</td>
-                                                    <td>30</td>
-                                                    <td><span class="easygo-badge-blue easygo-fs-5">Completed</span></td>
-                                                    <td>12-21-2022</td>
-                                                    <td><button class="del-btn my-3"><i class="fa-solid fa-trash"></i></button></td>
-                                                </tr>
+
+                                            <?php
+                                                    $bookings = get_user_booking_history($user_id);
+
+                                                    if(!$bookings){
+                                                        echo "<tr><td><h5 class='easygo-fs-2 easygo-fw-5 py-4'>You haven't booked a tour yet</h5></td></tr>";
+                                                    }
+
+                                                    foreach ($bookings as $entry) {
+                                                        $booking_id = $entry["booking_id"];
+                                                        $trip_id = $entry["trip_id"];
+                                                        $trip_name =get_campaign_by_trip_id($trip_id)["title"];
+                                                        $seats = $entry["seats_booked"];
+                                                        $amount = $entry["amount_due"];
+                                                        $emergency_name = $entry["emergency_name"];
+                                                        $emergency_number = $entry["emergency_number"];
+                                                        $date = format_string_as_date_fn($entry["date_booked"]);
+                                                        echo "
+                                                        <tr>
+                                                            <td>$trip_name</td>
+                                                            <td>$seats</td>
+                                                            <!-- <td><span class='easygo-badge-orange easygo-fs-5'>Ongoing</span></td>
+                                                            <td><span class='easygo-badge-gray easygo-fs-5'>Canceled</span></td> -->
+                                                            <td><span class='easygo-badge-blue easygo-fs-5'>Completed</span></td>
+                                                            <td>$date</td>
+                                                            <td>
+                                                                <div class='col'>
+                                                                    $emergency_name
+                                                                    $emergency_number
+                                                                </div>
+                                                            </td>
+                                                            <td><button class='del-btn my-3'><i class='fa-solid fa-edit'></i></button></td>
+                                                        </tr>
+                                                        ";
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>

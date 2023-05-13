@@ -1,5 +1,5 @@
 
-	function request_private_tour(form, request_id = null){
+	function request_private_tour(form, request_id = null, custom = true){
 		event.preventDefault();
 		var desc = form.desc.value;
 		var currency = get_dropdown_value('currency_menu');
@@ -19,7 +19,8 @@
 		"start_date" : start_date,
 		"end_date" : end_date,
 		"state" : state,
-		"person_count" : count
+		"person_count" : count,
+		"type" : (custom ? "custom" : campaign)
 		};
 
 		if (request_id == null){
@@ -37,6 +38,7 @@
 			 "processors/processor.php",
 			 payload,
 			 (response) =>{
+				console.log(response);
 				alert(response["data"]["msg"]);
 
 				window.location.reload();
@@ -47,9 +49,8 @@
 
 	function edit_request(id){
 		show_loader();
-		// payload = "action=get_private_request&request_id="+id;
 		let payload = {
-			"action" : "get_private_request",
+			"action" : "get_custom_private_request",
 			"request_id" : id
 		};
 		send_request(

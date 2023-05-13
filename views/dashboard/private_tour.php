@@ -21,7 +21,7 @@ $profile = get_user_profile_img($user_id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard | Private Tour</title>
+    <title>easygo - Private Tour</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -141,9 +141,8 @@ $profile = get_user_profile_img($user_id);
                                             <?php
                                                 $requests = get_user_private_trip_requests($user_id);
 
-                                                if (!$requests){ //TODO:: Show empty prompt
-                                                    echo "empty";
-                                                    // die();
+                                                if (!$requests){
+                                                    echo "No Private Tour requests yet";
                                                 }
 
                                                 foreach ($requests as $entry) {

@@ -185,9 +185,6 @@ function login(form){
 
 	var email = form.email.value;
 	var password = form.password.value;
-	// payload = "action=login";
-	// payload += "&email="+ email;
-	// payload += "&password="+ password;
 	let payload = {
 		"action": "login",
 		"email" : email,

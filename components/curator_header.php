@@ -1,15 +1,22 @@
 <?php
 	$id = get_session_user_id();
+
+	$info = get_collaborator_info($id);
+	$curator_id = get_session_account_id();
+
 	$balance = format_string_as_currency_fn(get_curator_statistics($id)["withdrawable_balance"]);
-	$name = "User name";
-	$company = "Curator";
+	$name = $info["user_name"];
+	$company = $info["curator_name"];;
 	$page = explode("/",$_SERVER["SCRIPT_NAME"]);
 	$page = end($page);
 	switch($page){
 		case "create_a_trip.php":
 		case "trips.php":
 		case "group_trips.php":
-			$page = "Trips";
+			$page = "Group Tours";
+			break;
+		case "private_trips.php":
+			$page = 'Private Tours';
 			break;
 		case "account_settings.php":
 			$page = "Account Settings";
@@ -45,8 +52,8 @@
                     <div class="d-flex flex-column justify-content-center">
 						<?php
 						echo "
-                        <h5 class='easygo-fs-3'>$name</h5>
-                        <h6 class='text-orange easygo-fs-5'>$company</h6>
+                        <h5 class='easygo-fs-3'>$company</h5>
+                        <h6 class='text-orange easygo-fs-5'>$name</h6>
 						";
 
 						?>
