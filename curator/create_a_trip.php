@@ -55,7 +55,7 @@ $logo = $info["curator_logo"];
                                 <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Create Trip</small>
                             </div>
                         </div>
-                        <form id="create_trip_form">
+                        <form id="create_trip_form" onsubmit="return submit_tour(this)">
 
                             <!-- Flyer upload -->
                             <div class="row border-1 border-bottom py-4 pe-lg-5">
@@ -131,6 +131,10 @@ $logo = $info["curator_logo"];
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                echo "<input type='hidden' name='curator_id' value='$curator_id'>";
+                            ?>
+
                             <!-- Activities  -->
                             <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
                                 <div class="col-lg-2">
@@ -138,14 +142,13 @@ $logo = $info["curator_logo"];
                                     <p class="text-gray-1 easygo-fs-5">Add activities and locations</p>
                                 </div>
                                 <div class="col-lg-3">
-                                    <div class="location-list d-flex flex-wrap gap-2" id="selected-locations">
+                                    <div class="location-list col " id="selected-locations">
                                     </div>
                                 </div>
                                 <div class="col-lg-7 ">
+                                    <button class="btn btn-default px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
                                     <div class="activity-list d-flex flex-wrap gap-2" id="selected-activities">
                                     </div>
-
-                                    <button class="btn btn-default px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
                                 </div>
                                 <!-- <div class="col-lg-7 ">
                                     <button class="btn btn-default border px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
@@ -243,8 +246,10 @@ $logo = $info["curator_logo"];
                             </div>
 
                             <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
-                                <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel">
-                                <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" onclick="submit_tour()" value="Create Trip">
+                                <!-- <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel"> -->
+                                <button type="reset" class="btn btn-default border px-4 easygo-fs-4">Cancel</button>
+                                <!-- <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" value="Create Trip"> -->
+                                <button class="easygo-btn-1 px-4 py2 easygo-fs-4" type="submit">Create Trip</button>
                             </div>
                         </form>
                     </section>
@@ -447,7 +452,8 @@ $logo = $info["curator_logo"];
             <div class="modal-content p-5">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h6 class="mb-4">Add Trip And Activities</h6>
+                        <h6 >Add Trip And Activities</h6>
+                        <a href='../curator/add_tour_site.php' target="_blank" class='easygo-fs-5 mb-4'>Can't find a location? Create it here</a>
                         <div class="al-search">
                             <form onsubmit='location_search_submit(this)'>
                                 <div class="d-flex gap-2">
@@ -484,7 +490,7 @@ $logo = $info["curator_logo"];
                                 echo "
                                 <div class='location-card border p-4 rounded my-3'>
                                     <div class='header d-flex justify-content-between'>
-                                        <h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
+                                        <h1 id='site_name_h1' class='easygo-fs-3 text-capitalize'>$site_name</h1>
                                         <h5 class='easygo-fs-4 text-orange'>$site_location</h5>
                                     </div>
                                     <div class='text-gray-1 easygo-fs-6'>

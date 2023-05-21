@@ -21,9 +21,17 @@ function url_params(key){
 //Make http requests with paraterms type(POST/GET), endpoint,payload and onload function
 async function send_request(type,endpoint, data,  onload){
 	let formdata = new FormData();
-	for (key in data) {
-		formdata.append(key, data[key]);
-	}
+
+
+    for (key in data) {
+        if (Array.isArray(data[key])) {
+            for (let i = 0; i < data[key].length; i++) {
+                formdata.append(key + "[]", data[key][i]);
+            }
+        } else {
+            formdata.append(key, data[key]);
+        }
+    }
 
 	let response = await fetch(baseurl+endpoint,
 		{
@@ -69,6 +77,8 @@ function logout(){
 		"processors/processor.php",
 		{"action":"logout"},
 		(response)=>{
+			console.log(response);
+			console.log(baseurl);
 			window.location.href = baseurl;
 		}
 	)
@@ -318,9 +328,6 @@ function add_to_wishlist(user_id,campaign_id){
 
 
 function remove_from_wishlist(user_id,campaign_id){
-	// payload = "action=remove_campaign_wishlist";
-	// payload += "&user_id="+user_id;
-	// payload += "&campaign_id="+campaign_id;
 	let payload = {
 		"action" : "remove_campaign_wishlist",
 		"user_id" : user_id,

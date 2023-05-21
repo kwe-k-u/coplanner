@@ -30,7 +30,7 @@ function signup(){
 		"user_name" : name,
 		"email" : email,
 		"password" : password,
-		"phone" : phone,
+		"phone_number" : phone,
 		"country" : company_country,
 		"curator_name" : company_name
 

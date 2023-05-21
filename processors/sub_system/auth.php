@@ -106,6 +106,7 @@
 
 				case "logout":
 					session_log_out();
+					send_json(array("msg" => "logged out"));
 					die();
 				case 'request_password_reset':
 					remove_expired_tokens();

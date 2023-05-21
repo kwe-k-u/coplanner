@@ -3,7 +3,9 @@
 	require("../utils/db_prepared.php");
 
 	// var_dump($_FILES);
-	send_json(array("files", count($_POST)));
+	// send_json(array("files", $_POST["images"]));
+	var_dump($_POST);
+	var_dump($_FILES);
 
 	die();
 

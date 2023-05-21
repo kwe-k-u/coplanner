@@ -1,6 +1,7 @@
 <?php
 	require_once(__DIR__. "/../../controllers/campaign_controller.php");
 	require_once(__DIR__. "/../../controllers/curator_interraction_controller.php");
+	require_once(__DIR__. "/../../controllers/media_controller.php");
 	require_once(__DIR__. "/../../utils/core.php");
 
 
@@ -19,35 +20,53 @@
 					$description = $_POST["description"];
 					$curator_id = $_POST["curator_id"];
 					$camp_id = generate_id();
-					$trips = json_decode($_POST["trips"], true);
+					$trips = json_decode($_POST["trips"],true);
+					$activities = $_POST["activities"];
 
 					// echo "count ". var_dump($trips["count"]);
 					// die();
 					$success = create_campaign($camp_id, $curator_id,$title,$description);
 					// echo $success;
 					if ($success){
-						//get trip coutn
-						$count = $trips["count"];
 						//for count, add each trip
-						for ($i=0; $i < $count; $i++) {
-							$current_trip =  $trips[$i];
+						foreach ($trips as $current_trip) {
 							$trip_id = generate_id();
 							$start = $current_trip["start_date"];
 							$end = $current_trip["end_date"];
-							$pickup = $current_trip["pickup_location"];
-							$dropoff = $current_trip["dropoff_location"];
+							$pickup = "Accra";//$current_trip["pickup_location"];
+							$dropoff = "Accra";//$current_trip["dropoff_location"];
 							$seats = $current_trip["seats"];
 							$fee = $current_trip["fee"];
 							$status = "published";
 							$currency = "GHS";
 							create_campaign_trip($trip_id,$camp_id,$pickup,$dropoff,$start,$end,$seats,$currency,$fee,$status);
+
+
+							//add activities
+							foreach($activities as $activity_id){
+								add_campaign_activity($camp_id,$activity_id);
+							}
+
+							//add images
+							$num_files = count($_FILES["images"]['name']);
+							$entry = $_FILES["images"];
+							for ($i=0; $i < $num_files; $i++) {
+
+								$image = $entry["name"][$i];
+								$tmp = $entry["tmp_name"][$i];
+								$id = generate_id();
+								$media_type = 'picture';
+								$location = upload_file("uploads",$media_type,$tmp,$image);
+
+								upload_curator_media_ctrl($id,$curator_id,$location,$media_type);
+								link_campaign_media_ctrl($camp_id,$id);
+							}
 						}
-						echo "end loop";
+						send_json(array("msg"=> "image upload successful"));
 
 					}else {
-						echo "Could not create trip";
+						send_json(array("msg" => "Could not create trip"),100);
 					}
-
 
 					die();
 

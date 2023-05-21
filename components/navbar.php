@@ -131,10 +131,3 @@
         </div>
     </nav>
 </aside>
-
-<script>
-    $("document").ready(function(){
-        var url = "";
-
-    });
-</script>

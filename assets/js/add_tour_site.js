@@ -6,44 +6,31 @@ $("#seats").on("input", () => { on_occurance_edit("seats") });
 $("#fee").on("input", () => { on_occurance_edit("fee") });
 $("#end_date").on("input", () => { on_occurance_edit("end_date") });
 $("#start_date").on("input", () => { on_occurance_edit("start_date") });
-// Holds the list of locations and their associated activities
-var location_activity_set = {} //{location : {activity_id, activity_name}}
-// the location whose activites are shown on the main form
-var active_location_name = "";
+
+
 
 function submit_tour(form) {
 	event.preventDefault();
-	var title = form.title.value;
-	var description = form.description.value;
-	var curator_id = form.curator_id.value;
+	// var form = document.getElementById("create_trip_form");
+	var title = form.title;
+	var description = form.description;
 	// var locations = [];
 	var activities = [];
-	for (var loc_name in location_activity_set){
-		for (var id in location_activity_set[loc_name]){
-			activities.push(id);
-		}
-	}
 	var occurances = get_occurance_entries();
-	console.log(occurances);
 	var images = tripimages_upload_display.getFiles();
-	//var flyer = flyerimage_upload_displayflyerimage_upload_display.getFiles();
 
 
 
 
 	send_request(
 		"POST",
-		// "test/test.php",
-		"processors/processor.php",
-		{
-			"action" : "create_campaign",
-			"images": images,
-			"title" : title,
-			"curator_id" : curator_id,
-			"description" : description,
-			"trips" : JSON.stringify(occurances),
-			"activities" : activities
-		},
+		"test/test.php",
+		{ "images": images,
+		"title" : title,
+		"description" : description,
+		"trips" : occurances,
+		"activities" : "activities"
+	 },
 		(response) => {
 			alert(response);
 			// alert(response["data"]);
@@ -203,8 +190,8 @@ function get_occurance_entries() {
 		var child = collection.children[index];
 		var values = get_occurance_row_values(child);
 		array.push(values);
-		// array.push(JSON.stringify(values));
 	}
+
 	return array;
 }
 
@@ -212,10 +199,10 @@ function get_occurance_entries() {
 //Reads the row element{element} and returns as a map the values for that occurance
 function get_occurance_row_values(element) {
 	return {
-		"start_date": element.getElementsByClassName("start_val")[0].innerText,
-		"end_date": element.getElementsByClassName("end_val")[0].innerText,
-		"fee": element.getElementsByClassName("fee_val")[0].innerText,
-		"seats": element.getElementsByClassName("seats_val")[0].innerText,
+		"start_date": element.getElementsByClassName("start_val")[0].innerHTML,
+		"end_date": element.getElementsByClassName("end_val")[0].innerHTML,
+		"fee": element.getElementsByClassName("fee_val")[0].innerHTML,
+		"seats": element.getElementsByClassName("seats_val")[0].innerHTML,
 	};
 
 }
@@ -428,72 +415,39 @@ function update_location_results(location_list) {
 
 function add_location_activity() {
 	//filling location section of page
-	var selected_location_list = document.getElementById("selected-locations");
-	var location_name = document.getElementById("site_name_h1").innerText;
-	var add_location = true;
+	// var selected = document.getElementById("selected-locations");
+	// for(var index = 0; index <document.getElementById("activity-list-div").children.length; index ++){
+	// 	var element = document.getElementById("activity-list-div").children[index];
+	// 	if (element.classList.contains("easygo-btn-1")){
+	// 		var newNode = document.createElement("span");
+	// 		newNode.setAttribute("id",element.id);
+	// 		newNode.setAttribute("class","px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
+	// 		// newNode.setAttribute("onclick", "selectedActivityClick()");
+	// 		newNode.innerText = element.innerText;
+	// 		selected.appendChild(newNode);
+	// 	}
 
-	for (var loc_index = 0; loc_index < selected_location_list.children.length; loc_index++){
-		var child = selected_location_list.children[loc_index];
-		if (child.innerText == location_name){
-			add_location = false
-			break;
-		}
-	}
-	//if the list of added locations does not include current location,
-	//then it should be added
-	if (add_location){ // if location has already been added update its list data
-		var newNode = document.createElement("span");
-		newNode.setAttribute("class","location_name mx-1 my-1 px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize location-span");
-		// newNode.setAttribute("onclick", "selectedActivityClick()");
-		newNode.innerText = location_name;
-		selected_location_list.appendChild(newNode);
-		location_activity_set[location_name] = {};
-	}
+	// };
 
 	//filling activity section of page
-	var added_activities_list = document.getElementById("selected-activities");
-	//for every activity the location has,
+	var selected = document.getElementById("selected-activities");
 	for (var index = 0; index < document.getElementById("activity-list-div").children.length; index++) {
 		var element = document.getElementById("activity-list-div").children[index];
-		var already_added = false; // if false add activity, if true skip activity
-
-		//Prevent duplicate additions by checking if the selected activity list
-		//has that Id already added to the page
-		for (var act_index = 0; act_index < added_activities_list.children.length; act_index++){
-			var child = added_activities_list.children[act_index];
-			if(child.id == element.id){
-				already_added = true;
-			}
-		}
-
-		if (element.classList.contains("easygo-btn-1") && !already_added) {
+		if (element.classList.contains("easygo-btn-1")) {
 			var newNode = document.createElement("span");
 			newNode.setAttribute("id", element.id);
 			newNode.setAttribute("class", "px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
 			// newNode.setAttribute("onclick", "selectedActivityClick()");
 			newNode.innerText = element.innerText;
-			added_activities_list.appendChild(newNode);
-
-			location_activity_set[location_name][element.id] = element.innerText;
+			selected.appendChild(newNode);
 		}
-
-		setActiveLocation(location_name)
 
 	};
 
 
 	$(".activity-span-selected").on("click", selectedActivityClick);
-	$(".location-span").on("click",selectedLocationClick);
 }
 
-function selectedLocationClick(element){
-	// setActiveLocation(element.target.innerText);
-}
-// Sets the location whose activites are shown
-function setActiveLocation(element){
-	// var location_name = element.target.innerText;
-	// console.log(location_name);
-}
 
 // creates and returns an html element for the result tile of tour sites
 function create_location_tile(map) {
@@ -548,10 +502,6 @@ function create_location_tile(map) {
 
 function selectedActivityClick(element) {
 	if (confirm("Remove Activity from list?")) {
-		delete location_activity_set[active_location_name][element.id];
 		document.getElementById("selected-activities").removeChild(element.target);
-		if(location_activity_set[active_location_name] == {}){
-			delete location_activity_set[active_location_name];
-		}
 	}
 }

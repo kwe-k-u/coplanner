@@ -21,7 +21,7 @@
 	);
 
 	$campaign_actions = array(
-		"create_campagin",
+		"create_campaign",
 		"add_site",
 		"get_site_by_id",
 		"query_site"
