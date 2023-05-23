@@ -118,11 +118,11 @@ login_check();
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="profile-img-upload edit-or-update-profile py-4" visible-mode="flex" style="display: none;">
-                                            <div class="profile-img-disp">
-                                                <img id="register-profile-img" class="image-display" src="../../assets/images/others/tour2.jpg" alt="profile image">
-                                                <label class="profile-img-upload-btn" for="profile-img"><img src="../../assets/images/svgs/pen_line.svg" alt="pen line image"></label>
-                                                <input display-target="register-profile-img" class="profile-img-file" id="profile-img" type="file" accept=".jpg, .jpeg, .png">
+                                        <div class="profile_img-upload edit-or-update-profile py-4" visible-mode="flex" style="display: none;">
+                                            <div class="profile_img-disp">
+                                                <img id="register-profile_img" class="image-display" src="../../assets/images/others/tour2.jpg" alt="profile image">
+                                                <label class="profile_img-upload-btn" for="profile_img"><img src="../../assets/images/svgs/pen_line.svg" alt="pen line image"></label>
+                                                <input display-target="register-profile_img" class="profile_img-file" id="profile_img" type="file" accept=".jpg, .jpeg, .png">
                                             </div>
                                         </div>
                                         <div class="input-field">

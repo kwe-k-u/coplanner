@@ -36,6 +36,7 @@
         $currency = $next["currency"];
         $fee = $next["fee"];
         $seats = $next["seats_available"];
+        $media = $campaign["media"];
 
 ?>
 <!DOCTYPE html>
@@ -82,7 +83,13 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image"></div>
+                            <?php
+                                foreach ($media as $image){
+                                    $location = $image["media_location"];
+                                    echo "<div class='swiper-slide h-100'><img class='h-100 w-100' src='$location' alt='carousel image'></div>";
+                                }
+                            ?>
+
                             <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image"></div>
                             <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image"></div>
                             <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour3.jpg" alt="carousel image"></div>

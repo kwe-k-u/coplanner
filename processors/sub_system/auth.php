@@ -1,6 +1,7 @@
 <?php
 
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
+	require_once(__DIR__. "/../../controllers/media_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 	require_once(__DIR__."/../../utils/env_manager.php");
 
@@ -57,6 +58,15 @@
 					$user_id = generate_id();
 
 					$response = sign_up_user($user_id,$email, $user_name,$password,$number,$country);
+					// if a profile image is provide, upload it
+					if(isset($_FILES["profile_img"])){
+						$media_id = generate_id();
+						$image = $_FILES["profile_img"]["name"];
+						$tmp = $_FILES["profile_img"]["tmp_name"];
+						$location = upload_file("uploads","picture",$tmp,$image);
+						upload_user_media_ctrl($media_id,$user_id,$location);
+						update_profile_image($user_id,$media_id);
+					}
 					//create email verification
 					if(!$response){//sign up was not successful
 						send_json(array("msg"=> "Sign up failed"), 100);
@@ -73,7 +83,22 @@
 						$user_id = get_user_by_email($email)["user_id"];
 						$curator_id = $collaborator_invite["curator_id"];
 						$privilege = $collaborator_invite["privilege"];
-						add_curator_manager($curator_id,$user_id,$privilege);
+
+							//uploading front side of government id
+							$gov_id_front = generate_id();
+							$image = $_FILES["gov_id_front"]["name"];
+							$tmp = $_FILES["gov_id_front"]["tmp_name"];
+							$location = upload_file("uploads","confidential",$tmp,$image);
+							upload_user_media_ctrl($gov_id_front,$user_id,$location);
+
+							//uploading back side of government id
+							$gov_id_back = generate_id();
+							$image = $_FILES["gov_id_back"]["name"];
+							$tmp = $_FILES["gov_id_back"]["tmp_name"];
+							$location = upload_file("uploads","confidential",$tmp,$image);
+							upload_user_media_ctrl($gov_id_back,$user_id,$location);
+
+						add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back,$privilege);
 						remove_curator_invite($email);
 						remove_expired_curator_invites();
 						//TODO send email letting them know addition was successful
@@ -90,8 +115,50 @@
 								//create curator account
 								create_curator_account($curator_id,$curator_name, $country);
 								//add user to curator management
-								add_curator_manager($curator_id,$user_id);
+
+
+								//adding uploaded images
+
+
+							//if company logo is uploaded, add it
+							if(isset($_FILES["company_logo"])){
+								$media_id = generate_id();
+								$image = $_FILES["company_logo"]["name"];
+								$tmp = $_FILES["company_logo"]["tmp_name"];
+								$location = upload_file("uploads","picture",$tmp,$image);
+								upload_curator_media_ctrl($media_id,$curator_id,$location);
+								update_curator_logo($curator_id,$media_id);
+
+							}
+							//if incorporation document is uploaded, add it
+							if(isset($_FILES["inc_doc"])){
+								$media_id = generate_id();
+								$image = $_FILES["inc_doc"]["name"];
+								$tmp = $_FILES["inc_doc"]["tmp_name"];
+								$location = upload_file("uploads","confidential",$tmp,$image);
+								upload_curator_media_ctrl($media_id,$curator_id,$location,"doc");
+								update_curator_inc_doc($curator_id,$media_id);
+
+							}
+							//uploading front side of government id
+							$gov_id_front = generate_id();
+							$image = $_FILES["gov_id_front"]["name"];
+							$tmp = $_FILES["gov_id_front"]["tmp_name"];
+							$location = upload_file("uploads","confidential",$tmp,$image);
+							upload_user_media_ctrl($gov_id_front,$user_id,$location);
+
+							//uploading back side of government id
+							$gov_id_back = generate_id();
+							$image = $_FILES["gov_id_back"]["name"];
+							$tmp = $_FILES["gov_id_back"]["tmp_name"];
+							$location = upload_file("uploads","confidential",$tmp,$image);
+							upload_user_media_ctrl($gov_id_back,$user_id,$location);
+
+
+								add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back);
 								//TODO include national identification
+
+								// $
 								// die();
 								break;
 
@@ -163,6 +230,8 @@
 
 					die();
 				case "invite_curator_collaborator":
+					send_json(array("msg" => "Action blocked. Government registration required"),100);
+					die();
 					$email = $_POST["email"];
 					$curator_id = $_POST["curator_id"];
 					$privilege = $_POST["privilege"];
@@ -176,7 +245,7 @@
 							send_json(array("msg"=>"user is a registered collaborator and can't manage several accounts"));
 						}else {
 							//add the managers
-							add_curator_manager($curator_id,$user["user_id"],$privilege);
+							// add_curator_manager($curator_id,$user["user_id"],$privilege);
 							send_json(array("msg"=>"Added <$email> as collaborator"));
 							//TODO send email
 						}

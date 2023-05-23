@@ -69,7 +69,7 @@
                                 <li class="text-hover-orange" onclick="on_option_select('country_selected_icon','Zimbabwe')"><img src="../assets/images/svgs/zimbabwe_flag.svg" alt="Zimbabwe flag"> Zimbabwe</li>
                             </ul>
                         </div>
-                        <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" value="easygo">
+                        <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" value="easyGo">
                     </div>
                 </div>
                 <div class="input-field button-container">
@@ -80,7 +80,7 @@
             <!-- register form 1 [end] -->
             <!-- ======================= -->
             <!-- company info upload [start] -->
-            <form id="register-form-2" onsubmit="return signup()" style="position: absolute; top: 0">
+            <form id="register-form-2" onsubmit="return signup(this)" style="position: absolute; top: 0">
                 <button type="button" class="back-btn btn" style="position: absolute; top: 3%; left: 0; color: blue">Go back</button>
                 <!-- <button type="button" class="back-btn btn" style="position: absolute; top: 3%; left: 0"><i class="fa-solid fa-arrow-left easygo-fs-1"></i></button> -->
                 <div class="form-header">
@@ -97,7 +97,7 @@
                         </div>
                         <a>Upload file</a>
                         <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                        <input class="img-upload" id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#logo-display">
+                        <input class="img-upload" name="company_logo" id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#logo-display">
                         <div data-input-target="#company_logo" id="logo-display" class="img-display"></div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                         </div>
                         <a>Upload file</a>
                         <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                        <input id="inc_doc" class="file-upload" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" accept=".png, .jpg, .jpeg, .svg" type="file">
+                        <input id="inc_doc" class="file-upload" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" accept=".png, .jpg, .jpeg, .svg, .docx, .pdf" type="file">
                         <div id="gov-doc-display" class="doc-display" data-input-target="#inc_doc">
                             <div class="doc-display-item">
                                 <i class="fa-solid fa-file easygo-h2"></i>
@@ -155,12 +155,16 @@
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- EHImageUpload js -->
+    <script src="../assets/js/EhImageUploadDisplay.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
+    <script>
+
+    </script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/curator_auth.js"></script>
 </body>

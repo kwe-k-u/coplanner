@@ -139,11 +139,11 @@
 			return $this->db_query();
 		}
 
-		function add_curator_manager($curator_id, $user_id, $privilege){
-			$sql = "INSERT INTO `curator_manager`(`curator_id`, `user_id`,`privilege`)
-			VALUES (?,?,?)";
+		function add_curator_manager($curator_id, $user_id,$id_front,$id_back, $privilege){
+			$sql = "INSERT INTO `curator_manager`(`curator_id`, `user_id`,`privilege`, `gov_id_front`, `gov_id_back`)
+			VALUES (?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($curator_id,$user_id,$privilege);
+			$this->bind($curator_id,$user_id,$privilege,$id_front,$id_back);
 			return $this->db_query();
 		}
 

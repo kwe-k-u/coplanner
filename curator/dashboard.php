@@ -152,24 +152,32 @@ $logo = $info["curator_logo"];
                         $trip_list_display = "";
 
                         foreach ($upcoming_trips as $entry) {
+                            $title = $entry["title"];
+                            $camp_id = $entry["campaign_id"];
+                            $start_date = format_string_as_date_fn($entry["start_date"]);
+                            $end_date = format_string_as_date_fn($entry["end_date"]);
+                            $currency = $entry["currency"];
+                            $fee = $entry["fee"];
+                            $img = $entry["media"][0]["media_location"];
+
                             $trip_list_display .="
 
                             <div class='trip-card-2'>
                             <div class='trip-card-img'>
-                                <img src='../assets/images/others/tour3.jpg' alt='tour 3'>
+                                <img src='$img' alt='tour 3'>
                             </div>
                             <div class='trip-card-content'>
-                                <h5 class='header'>Legon Botanical Gardens</h5>
+                                <h5 class='header'>$title</h5>
                                 <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
-                                    <div><i class='fa-regular fa-calendar-days'></i> 12 Dec 2022 - 10 Jan 2023</div>
+                                    <div><i class='fa-regular fa-calendar-days'></i>  $start_date - $end_date</div>
                                     <div><i class='fa-solid fa-pen-to-square'></i> 15 Booked Seats</div>
                                 </div>
                                 <div class='easygo-fs-5'>
                                     <i class='fa-solid fa-map-pin'></i> Pickup coming soon
                                 </div>
                                 <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
-                                    <span><i class='fa-solid fa-tag'></i> GHc150</span>
-                                    <button class='btn px-3 py-1 border easygo-fs-5'>Edit</button>
+                                    <span><i class='fa-solid fa-tag'></i> $currency $fee</span>
+                                    <a class='btn px-3 py-1 border easygo-fs-5' href='./create_a_trip.php?id=$camp_id'>Edit</a>
                                 </div>
                             </div>
                         </div>

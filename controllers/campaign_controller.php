@@ -5,7 +5,9 @@
 
 	function get_campaign_trip_by_id($id){
 		$campaign = new campaign_class();
-		return $campaign->get_campaign_tour_by_id($id);
+		$data = $campaign->get_campaign_tour_by_id($id);
+		$data["media"] = $campaign->get_campaign_media($data["campaign_id"]);
+		return $data;
 	}
 
 

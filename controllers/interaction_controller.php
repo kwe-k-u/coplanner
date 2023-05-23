@@ -50,7 +50,9 @@
 
 	function get_campaign_by_id($id){
 		$inte = new interaction_class();
-		return $inte->get_campaign_by_id($id);
+		$data = $inte->get_campaign_by_id($id);
+		$data["media"] = $inte->get_campaign_media($data["campaign_id"]);
+		return $data;
 	}
 
 	function get_toursite_by_campaign($id){

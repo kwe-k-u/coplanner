@@ -57,11 +57,11 @@ $number = $info["phone_number"]
                         <div class="row">
                             <div class="col-lg-2 py-3">
                                 <div class="user-icon-display">
-                                    <div class="profile-img-upload piu-alt">
-                                        <div class="profile-img-disp" style="width: 140px; height: 140px;">
-                                            <img id="register-profile-img" class="image-display" src="../assets/images/others/tour2.jpg" alt="profile image">
-                                            <label class="profile-img-upload-btn text-hover-orange" for="profile-img">Edit</label>
-                                            <input display-target="register-profile-img" class="profile-img-file" id="profile-img" type="file" accept=".jpg, .jpeg, .png">
+                                    <div class="profile_img-upload piu-alt">
+                                        <div class="profile_img-disp" style="width: 140px; height: 140px;">
+                                            <img id="register-profile_img" class="image-display" src="../assets/images/others/tour2.jpg" alt="profile image">
+                                            <label class="profile_img-upload-btn text-hover-orange" for="profile_img">Edit</label>
+                                            <input display-target="register-profile_img" class="profile_img-file" id="profile_img" type="file" accept=".jpg, .jpeg, .png">
                                         </div>
                                     </div>
                                 </div>

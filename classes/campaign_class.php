@@ -13,6 +13,17 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_campaign_media($id){
+			$sql = "SELECT
+				media.* FROM media
+				JOIN campaign_media on campaign_media.media_id = media.media_id
+				WHERE campaign_media.campaign_id = ?
+			";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_all();
+		}
+
 
 		function get_toursite_by_name($name){
 			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE CONCAT('%',?,'%')";

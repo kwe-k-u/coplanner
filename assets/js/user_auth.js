@@ -11,6 +11,7 @@ function signup(form){
 	var country = form.country.value;
 	var referal = form.referral.value;
 	var phone = form.phone.value;
+	var profile_img = form.profile_img.files[0];
 
 	var payload = {
 		"action" : "signup",
@@ -19,7 +20,8 @@ function signup(form){
 		"password" : password,
 		"country" : country,
 		"phone_number" : phone,
-		"referal_code" : referal
+		"referal_code" : referal,
+		"profile_img" : profile_img
 	}
 	// payload += "referral=" + referral;
 
@@ -29,11 +31,12 @@ function signup(form){
 	payload,
 	(response) => {
 		console.log(response);
+		return 1;
 		var json = response;
 		// if (json["status"] == 200){
 
 		// 	var user_id = json["data"]["user_id"];
-		// 	upload_image("profile-img","picture", {user_id: user_id,
+		// 	upload_image("profile_img","picture", {user_id: user_id,
 		// 	callback: (image_res)=>{
 		// 		var img_json = image_res;
 		// 		var img_id = img_json["data"]["media_id"];

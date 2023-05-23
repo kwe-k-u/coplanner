@@ -217,19 +217,6 @@
                                             <div class="col-lg-3">
                                                 <!-- <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div> -->
                                             </div>
-                                            <div class="col-lg-9">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <nav aria-label="Page navigation m-auto">
-                                                        <ul class="pagination gap-2">
-                                                            <li class="page-item"><a class="page-link rounded" href="#">Previous</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                            <li class="page-item"><a class="page-link rounded" href="#">Next</a></li>
-                                                        </ul>
-                                                    </nav>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div> -->
@@ -256,8 +243,8 @@
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
 </body>
 
 </html>

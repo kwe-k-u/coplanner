@@ -27,7 +27,11 @@
 
 	function get_curator_upcoming_trips($curator_id){
 		$class  = new curator_interaction_class();
-		return $class->get_curator_upcoming_trips($curator_id);
+		$data = $class->get_curator_upcoming_trips($curator_id);
+		for ($i=0; $i < count($data); $i++) {
+			$data[$i]["media"] =$class->get_campaign_image($data[$i]["campaign_id"]);
+		}
+		return $data;
 	}
 
 	function get_curator_bookings($curator_id){

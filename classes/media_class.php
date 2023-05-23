@@ -53,6 +53,14 @@
 			return $this->db_query();
 		}
 
+		function update_curator_inc_doc($curator_id,$media_id){
+			$sql = "UPDATE `curators` SET `curator_inc_doc` = ?
+			WHERE `curator_id`= ?";
+			$this->prepare($sql);
+			$this->bind($media_id,$curator_id);
+			return $this->db_query();
+		}
+
 		function update_profile_image($user_id,$media_id){
 			$sql = "UPDATE `users` SET `profile_image` = ?
 			WHERE `user_id`= ?";

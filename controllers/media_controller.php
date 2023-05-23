@@ -24,6 +24,11 @@
 		return $media->update_curator_logo($curator_id,$media_id);
 	}
 
+	function update_curator_inc_doc($curator_id,$media_id){
+		$media = new media_class();
+		return $media->update_curator_inc_doc($curator_id,$media_id);
+	}
+
 	function update_profile_image($curator_id,$media_id){
 		$media = new media_class();
 		return $media->update_profile_image($curator_id,$media_id);

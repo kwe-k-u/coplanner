@@ -1,8 +1,25 @@
 
-function signup(){
+
+function signup(form){
+	event.preventDefault();
+	console.log(form.company_logo.files);
+	payload = {
+	};
+
+	send_request("POST",
+	"test/test.php",
+	payload,
+	(response) => {
+		console.log(response)
+	}
+	);
+
+}
+function signup(form2){
+
+
 	event.preventDefault();
 	var form1 = document.getElementById("register-form-1");
-	// var form2 = document.getElementById("register-form-2");
 
 
 	var name = form1.user_name.value;
@@ -12,10 +29,10 @@ function signup(){
 	var phone = form1.phone.value;
 	var company_name = form1.company_name.value;
 	var company_country = get_dropdown_value("country_selected_icon");
-	var company_logo = document.getElementById("company_logo");
-	var id_front = document.getElementById("gov_id_front");
-	var id_back = document.getElementById("gov_id_back");
-	var inc_doc = document.getElementById("inc_doc");
+	var company_logo = form2.company_logo.files;
+	var id_front = form2.gov_id_front.files[0];
+	var id_back = form2.gov_id_back.files[0];
+	var inc_doc = form2.inc_doc.files[0];
 
 	// payload ="action=signup&type=curator";
 	// payload += "&user_name="+name;
@@ -32,14 +49,26 @@ function signup(){
 		"password" : password,
 		"phone_number" : phone,
 		"country" : company_country,
-		"curator_name" : company_name
+		"curator_name" : company_name,
+		"company_logo" : form2.company_logo.files[0],
+		"gov_id_front" : form2.gov_id_front.files[0],
+		"gov_id_back" : form2.gov_id_back.files[0],
+		"inc_doc" : form2.inc_doc.files[0]
 
 	};
 
 	// alert(id_back.files.length);
 
 
-
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response) => {
+			console.log(response);
+		}
+	);
+	return 1;
 	//register user
 	send_request(
 		"POST",

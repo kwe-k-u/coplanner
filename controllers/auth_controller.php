@@ -106,15 +106,16 @@
 
 
 
+
 	function create_email_verification_token($token,$user_id){
 		$user = new auth_class();
 		return $user->create_email_verification_token($token,$user_id);
 	}
 
 
-	function add_curator_manager($curator_id, $user_id, $privilege = 'admin'){
+	function add_curator_manager($curator_id, $user_id,$id_front,$id_back, $privilege = 'admin'){
 		$user = new auth_class();
-		return $user->add_curator_manager($curator_id, $user_id, $privilege);
+		return $user->add_curator_manager($curator_id, $user_id,$id_front,$id_back, $privilege);
 	}
 
 	function invite_curator_manager($curator_id,$email, $privilege){

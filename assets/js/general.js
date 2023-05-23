@@ -50,7 +50,7 @@ $(document).ready(function () {
   // form page listeners
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
-  $(".profile-img-file").change(updateProfileImgDisp);
+  $(".profile_img-file").change(updateProfileImgDisp);
 });
 
 /*************** FUNCTIONS ****************/
