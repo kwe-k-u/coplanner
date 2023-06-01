@@ -263,6 +263,10 @@
 					$user_id = $_POST["user_id"];
 					remove_curator_collaborator($user_id,$curator_id);
 					die();
+				case "update_profile":
+					var_dump($_POST);
+					var_dump($_FILES);
+					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";
 				}

@@ -25,11 +25,18 @@
 		}
 
 
-		function get_toursite_by_name($name){
-			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE CONCAT('%',?,'%')";
+		function get_toursite_by_name($name,$exact = false){
+			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE ".($exact ? "?" : " CONCAT('%',?,'%')");
 			$this->prepare($sql);
 			$this->bind($name);
-			return $this->db_fetch_all();
+			return $exact ? $this->db_fetch_one() :$this->db_fetch_all();
+		}
+
+		function get_activity_by_name($name, $exact = false){
+			$sql = "SELECT * FROM `activities` where activity_name like " .($exact ? "?" : "CONCAT('%',?,'%')");
+			$this->prepare($sql);
+			$this->bind($name);
+			return $exact ? $this->db_fetch_one() :$this->db_fetch_all();
 		}
 
 
@@ -46,6 +53,13 @@
 			return $this->db_query();
 		}
 
+		function add_activity($activity){
+			$sql = "INSERT INTO `activities`(`activity_name`) VALUES (?)";
+			$this->prepare($sql);
+			$this->bind($activity);
+			return $this->db_query();
+		}
+
 
 		function create_campaign_trip($trip_id,$campaign_id,$pickup_location, $dropoff_location, $start_date, $end_date,$seats, $currency, $fee,$status){
 			$sql = "INSERT INTO `campaign_trips`(`trip_id`, `campaign_id`, `pickup_location`, `dropoff_location`, `start_date`, `end_date`, `seats_available`, `currency`, `fee`, `publish_state`)
@@ -57,27 +71,27 @@
 		}
 
 
-		function add_toursite($site_id,$name,$location,$country){
-			$sql = "INSERT INTO `toursites`(`toursite_id`,`site_name`,`site_location`,`country`)
-			VALUE (?, ?, ?,?)";
+		function add_toursite($site_id,$name,$desc,$location,$country){
+			$sql = "INSERT INTO `toursites`(`toursite_id`,`site_name`,`toursite_description`,`site_location`,`country`)
+			VALUE (?, ?,?, ?,?)";
 			$this->prepare($sql);
-			$this->bind($site_id,$name,$location,$country);
+			$this->bind($site_id,$name,$desc,$location,$country);
 			return $this->db_query();
 		}
 
 
-		function add_toursite_activity($site_id, $activity_id,$activity){
-			$sql = "INSERT INTO toursite_activity(`activity_id`, `toursite_id`,`activity_name`)
-			VALUE (?,?,?) ";
+		function add_toursite_activity($site_id, $activity_id,$fee,$is_verified){
+			$sql = "INSERT INTO toursite_activity(`activity_id`, `toursite_id`,`activity_fee`,`is_verified`)
+			VALUE (?,?,?,?) ";
 			$this->prepare($sql);
-			$this->bind($activity_id,$site_id,$activity);
+			$this->bind($activity_id,$site_id,$fee,$is_verified);
 			return $this->db_query();
 		}
 
-		function add_campaign_activity($campaign_id, $activity_id){
-			$sql = "INSERT INTO `campaign_activities` VALUE (?,?)";
+		function add_campaign_activity($campaign_id, $activity_id, $touriste_id){
+			$sql = "INSERT INTO `campaign_activities` VALUE (?,?,?)";
 			$this->prepare($sql);
-			$this->bind($campaign_id,$activity_id);
+			$this->bind($campaign_id,$activity_id,$touriste_id);
 			return $this->db_query();
 		}
 

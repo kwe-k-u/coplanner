@@ -13,7 +13,8 @@
 		"change_password",
 		"change_password_logged_in",
 		"invite_curator_collaborator",
-		"remove_curator_collaborator"
+		"remove_curator_collaborator",
+		"update_profile"
 	);
 	$booking_actions = array(
 		"trip_payment",
@@ -22,10 +23,11 @@
 
 	$campaign_actions = array(
 		"create_campaign",
-		"add_site",
+		"add_tour_site",
 		"get_site_by_id",
 		"query_site"
 	);
+
 
 	$private_tour_actions = array(
 		"request_private_tour",

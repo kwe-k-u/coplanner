@@ -6,6 +6,19 @@ $("#seats").on("input", () => { on_occurance_edit("seats") });
 $("#fee").on("input", () => { on_occurance_edit("fee") });
 $("#end_date").on("input", () => { on_occurance_edit("end_date") });
 $("#start_date").on("input", () => { on_occurance_edit("start_date") });
+// script to prefill the page if a trip id is in the url (User wants to update tour information)
+$(document).ready (()=>{
+	if(window.location.search.includes("trip_id")){
+		//TODO: Edit trip
+		// alert("edit trip");
+		//show loader
+		//get trip id from url params
+		//get trip information from database
+		// fill the input fields
+		// image displays
+		//hide the loade
+	}
+});
 // Holds the list of locations and their associated activities
 var location_activity_set = {} //{location : {activity_id, activity_name}}
 // the location whose activites are shown on the main form
@@ -42,7 +55,7 @@ function submit_tour(form) {
 			"curator_id" : curator_id,
 			"description" : description,
 			"trips" : JSON.stringify(occurances),
-			"activities" : activities
+			"activities" : JSON.stringify(location_activity_set)
 		},
 		(response) => {
 			alert(response);
@@ -554,4 +567,75 @@ function selectedActivityClick(element) {
 			delete location_activity_set[active_location_name];
 		}
 	}
+}
+
+
+
+
+
+// Tour site addition by curator
+
+function create_site(form){
+	event.preventDefault();
+	const act_list = document.getElementById("add_loc_activity_list");
+	var activities = [];
+
+	for (var act_index = 0; act_index < act_list.children.length; act_index++){
+		var child = act_list.children[act_index];
+		activities.push(child.innerText);
+	}
+
+
+	var payload = {
+			"action" : "add_tour_site",
+			"site_name" : form.name.value,
+			"site_location" : form.location.value,
+			"site_description" : form.description.value,
+			"country" : form.country.value,
+			"activities" : activities,
+			"owner_name" : form.owner.value,
+			"owner_number" : form.number.value
+		};
+
+	send_request(
+		"POST",
+		"processors/processor.php",
+		payload,
+		(response) => {
+			alert(response['msg']);
+
+		}
+	);
+
+
+}
+
+
+function add_loc_activity(){
+	event.preventDefault();
+	var acts = document.getElementById("add_loc_activity_list");
+	var field = document.getElementById("add_loc_activity_input");
+	field.value = field.value.trim();
+	if(field.value.length < 4){
+		console.log("Too short a word for an activity");
+		return false;
+	}
+
+	for (var act_index = 0; act_index < acts.children.length; act_index++){
+		var child = acts.children[act_index];
+		if(child.innerText == field.value){
+			console.log("Already included");
+			return false;
+		}
+	}
+
+
+
+	var newNode = document.createElement("li");
+	// newNode.setAttribute("onclick", "selectedActivityClick()");
+	newNode.innerText = field.value;
+	acts.appendChild(newNode);
+
+	field.value = '';
+	return true;
 }

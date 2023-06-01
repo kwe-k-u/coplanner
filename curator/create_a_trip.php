@@ -40,7 +40,7 @@ $logo = $info["curator_logo"];
     <!-- ============================== -->
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
-        <?php require_once(__DIR__. "/../components/curator_header.php") ?>
+        <?php require_once(__DIR__ . "/../components/curator_header.php") ?>
         <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__ . "/../components/curator_navbar_mobile.php"); ?>
             <!-- ============================== -->
@@ -132,11 +132,11 @@ $logo = $info["curator_logo"];
                                 </div>
                             </div>
                             <?php
-                                echo "<input type='hidden' name='curator_id' value='$curator_id'>";
+                            echo "<input type='hidden' name='curator_id' value='$curator_id'>";
                             ?>
 
                             <!-- Activities  -->
-                            <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
+                            <div class="row border-1 border-top py-4 pe-lg-5">
                                 <div class="col-lg-2">
                                     <h3 class="easygo-fs-3 easygo-fw-1">Activities & Locations</h3>
                                     <p class="text-gray-1 easygo-fs-5">Add activities and locations</p>
@@ -154,94 +154,118 @@ $logo = $info["curator_logo"];
                                     <button class="btn btn-default border px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
                                 </div> -->
                             </div>
-                            <!-- Occurences  -->
-                            <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
-                                <div class="col-lg-5">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Trip Occurence</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Add trip occurence</p>
-                                </div>
-                                <div class="col-lg-7 d-flex flex-column gap-4">
-                                    <div class="row">
-                                        <div class="col-lg-6 pb-3 p-0 pe-lg-1">
-                                            <div class="form-input-field">
-                                                <h6 class="easygo-fs-4 text-gray-1">Start Date</h6>
-                                                <input id="start_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
-                                            </div>
+
+                            <h3 class="easygo-fs-3 easygo-fw-1">Tour type</h3>
+                            <ul class="nav nav-tabs easygo-nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active easygo-fs-4 h-100" id="group-tour-tab" data-bs-toggle="tab" data-bs-target="#group-tour" type="button" role="tab" aria-controls="group-tour" aria-selected="false">Group Tour</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link  easygo-fs-4 h-100" id="private-tour-tab" data-bs-toggle="tab" data-bs-target="#private-tour" type="button" role="tab" aria-controls="private-tour" aria-selected="false">Private Tour</button>
+                                </li>
+                                <!-- <li class="nav-item" role="presentation">
+                                    <button class="nav-link easygo-fs-4 h-100" id="withdrawals-tab" data-bs-toggle="tab" data-bs-target="#withdrawals" type="button" role="tab" aria-controls="withdrawals" aria-selected="false">Withdrawals</button>
+                                </li> -->
+                            </ul>
+                            <div class="tab-content">
+
+
+                                <div class="tab-pane fade show active" id="group-tour" role="tabpanel" aria-labelledby="group-tour-tab">
+
+                                    <!-- Occurences  -->
+                                    <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
+                                        <div class="col-lg-5">
+                                            <h4 class="easygo-fs-4 easygo-fw-1">Trip Occurence</h4>
+                                            <p class="text-gray-1 easygo-fs-5">Add trip occurence</p>
                                         </div>
-                                        <div class="col-lg-6 pb-3 p-0 ps-lg-1">
-                                            <div class="form-input-field">
-                                                <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
-                                                <input id="end_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row" id="occurance_field">
-                                        <div class="col-lg-6 p-0 pe-lg-1 pb-3">
-                                            <div class="form-input-field">
-                                                <h6 class="easygo-fs-4 text-gray-1">Fee</h6>
-                                                <div class="d-flex">
-                                                    <div class="dropdown">
-                                                        <a id="currency_menu" style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            GHS
-                                                        </a>
-                                                        <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
-                                                            <li onclick="on_option_select('currency_menu','GHS')">GHS</li>
-                                                            <li onclick="on_option_select('currency_menu','USD')">USD</li>
-                                                        </ul>
+                                        <div class="col-lg-7 d-flex flex-column gap-4">
+                                            <div class="row">
+                                                <div class="col-lg-6 pb-3 p-0 pe-lg-1">
+                                                    <div class="form-input-field">
+                                                        <h6 class="easygo-fs-4 text-gray-1">Start Date</h6>
+                                                        <input id="start_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
                                                     </div>
-                                                    <input id="fee" class="rounded-end rounded-0" type="text" placeholder="Fee">
                                                 </div>
-                                                <div class="d-flex align-items-start mt-3">
-                                                    <div class="icon"><img src="../assets/images/svgs/info.svg" alt="info icon"></div>
-                                                    <div class="easygo-fs-6">Total fee for each trip includes transportation, food & any other costs</div>
+                                                <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                    <div class="form-input-field">
+                                                        <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
+                                                        <input id="end_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6 pb-3 p-0 ps-lg-1">
-                                            <div class="form-input-field">
-                                                <h6 class="easygo-fs-4 text-gray-1">Seats</h6>
-                                                <input id="seats" type="number" min="1">
+                                            <div class="row" id="occurance_field">
+                                                <div class="col-lg-6 p-0 pe-lg-1 pb-3">
+                                                    <div class="form-input-field">
+                                                        <h6 class="easygo-fs-4 text-gray-1">Fee</h6>
+                                                        <div class="d-flex">
+                                                            <div class="dropdown">
+                                                                <a id="currency_menu" style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    GHS
+                                                                </a>
+                                                                <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
+                                                                    <li onclick="on_option_select('currency_menu','GHS')">GHS</li>
+                                                                    <li onclick="on_option_select('currency_menu','USD')">USD</li>
+                                                                </ul>
+                                                            </div>
+                                                            <input id="fee" class="rounded-end rounded-0" type="text" placeholder="Fee">
+                                                        </div>
+                                                        <div class="d-flex align-items-start mt-3">
+                                                            <div class="icon"><img src="../assets/images/svgs/info.svg" alt="info icon"></div>
+                                                            <div class="easygo-fs-6">Total fee for each trip includes transportation, food & any other costs</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                    <div class="form-input-field">
+                                                        <h6 class="easygo-fs-4 text-gray-1">Seats</h6>
+                                                        <input id="seats" type="number" min="1">
+                                                    </div>
+                                                </div>
                                             </div>
+
+                                            <!-- ======================================================================== -->
+                                            <!-- ==========================Start of entered occurances========================== -->
+                                            <p>Entered occurances</p>
+                                            <div id="occurance_list" class="easygo-list-3 list-striped">
+                                                <div class="list-item list-header bg-transparent" style="box-shadow: none;">
+                                                    <div class="inner-item">Start Date</div>
+                                                    <div class="inner-item">End Date</div>
+                                                    <div class="inner-item">Fee</div>
+                                                    <div class="inner-item">Number of seats</div>
+                                                    <div class="inner-item">Actions</div>
+                                                </div>
+
+
+                                                <!-- <div class='list-item'>
+                                                    <div class='inner-item start_val'>22 May 2023</div>
+                                                    <div class='inner-item end_val'>22 May 2023</div>
+                                                    <div class='inner-item  fee_val'>GHC 50</div>
+                                                    <div class='inner-item seats_val'>30</div>
+                                                    <div class='inner-item row'>
+                                                        <div class="inner-item fa fa-edit" onclick="edit_occurance_entry(this)"></div>
+                                                        <div class="inner-item fa fa-trash" onclick="delete_occurance_entry(this)"></div>
+                                                    </div>
+                                                </div> -->
+
+
+                                                <!-- ======================================================================== -->
+                                                <!-- ==========================Start of entered occurances========================== -->
+                                                <div class='list-item' id="add_button" onclick="add_new_occurance()">
+                                                    <div class='inner-item '>Click to add another date for this tour</div>
+                                                </div>
+
+                                                <!-- ==========================Add new occurance========================== -->
+                                                <!-- ======================================================================== -->
+
+                                            </div>
+                                            <!-- ==========================End of entered occurances========================== -->
+                                            <!-- ======================================================================== -->
                                         </div>
                                     </div>
+                                </div>
 
-                                    <!-- ======================================================================== -->
-                                    <!-- ==========================Start of entered occurances========================== -->
-                                    <p>Entered occurances</p>
-                                    <div id="occurance_list" class="easygo-list-3 list-striped">
-                                        <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                            <div class="inner-item">Start Date</div>
-                                            <div class="inner-item">End Date</div>
-                                            <div class="inner-item">Fee</div>
-                                            <div class="inner-item">Number of seats</div>
-                                            <div class="inner-item">Actions</div>
-                                        </div>
-
-
-                                        <!-- <div class='list-item'>
-                                            <div class='inner-item start_val'>22 May 2023</div>
-                                            <div class='inner-item end_val'>22 May 2023</div>
-                                            <div class='inner-item  fee_val'>GHC 50</div>
-                                            <div class='inner-item seats_val'>30</div>
-                                            <div class='inner-item row'>
-                                                <div class="inner-item fa fa-edit" onclick="edit_occurance_entry(this)"></div>
-                                                <div class="inner-item fa fa-trash" onclick="delete_occurance_entry(this)"></div>
-                                            </div>
-                                        </div> -->
-
-
-                                        <!-- ======================================================================== -->
-                                        <!-- ==========================Start of entered occurances========================== -->
-                                        <div class='list-item' id="add_button" onclick="add_new_occurance()">
-                                            <div class='inner-item '>Click to add another date for this tour</div>
-                                        </div>
-
-                                        <!-- ==========================Add new occurance========================== -->
-                                        <!-- ======================================================================== -->
-
-                                    </div>
-                                    <!-- ==========================End of entered occurances========================== -->
-                                    <!-- ======================================================================== -->
+                                <div class="tab-pane fade " id="private-tour" role="tabpanel" aria-labelledby="private-tour-tab">
+                                    <h4>Private tour options</h4>
                                 </div>
                             </div>
 
@@ -452,8 +476,8 @@ $logo = $info["curator_logo"];
             <div class="modal-content p-5">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h6 >Add Trip And Activities</h6>
-                        <a href='../curator/add_tour_site.php' target="_blank" class='easygo-fs-5 mb-4'>Can't find a location? Create it here</a>
+                        <h6>Add Trip And Activities</h6>
+                        <a data-bs-toggle="modal" data-bs-target="#add-location-modal" class='easygo-fs-5 mb-4'>Can't find a location? Create it here</a>
                         <div class="al-search">
                             <form onsubmit='location_search_submit(this)'>
                                 <div class="d-flex gap-2">
@@ -524,16 +548,16 @@ $logo = $info["curator_logo"];
                     <div class="col-lg-6">
                         <div>
                             <?php
-                                $site = $toursites[0];
-                                $site_id = $site["toursite_id"];
-                                $site = get_toursite_by_id($site_id);
-                                $site_name = $site["site_name"];
-                                $site_desc = $site["toursite_description"];
-                                $site_location = $site["site_location"];
-                                $site_country = $site["country"];
-                                $site_activities = $site["activities"];
+                            $site = $toursites[0];
+                            $site_id = $site["toursite_id"];
+                            $site = get_toursite_by_id($site_id);
+                            $site_name = $site["site_name"];
+                            $site_desc = $site["toursite_description"];
+                            $site_location = $site["site_location"];
+                            $site_country = $site["country"];
+                            $site_activities = $site["activities"];
 
-                                $site_media = get_toursite_media($site_id);
+                            $site_media = get_toursite_media($site_id);
 
 
                             echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
@@ -545,18 +569,19 @@ $logo = $info["curator_logo"];
                             ?>
                             <div style='overflow-x: auto;'>
                                 <div class='grid-7' style='max-height: 500px;' id='location-info-images'>
-                            <?php
-                                $site_media = array(
-                                    "../assets/images/others/scenery2.jpg",
-                                    "../assets/images/others/tour1.jpg");
-                                foreach ($site_media as $media) {
-                                    // $media_location = $site_media[""];
-                                    echo "<div class='grid-item'>
+                                    <?php
+                                    $site_media = array(
+                                        "../assets/images/others/scenery2.jpg",
+                                        "../assets/images/others/tour1.jpg"
+                                    );
+                                    foreach ($site_media as $media) {
+                                        // $media_location = $site_media[""];
+                                        echo "<div class='grid-item'>
                                         <img class='w-100 h-100 rounded' src='../assets/images/others/scenery1.jpg' alt='scene 1'>
                                     </div>
                                     ";
-                                }
-                            ?>
+                                    }
+                                    ?>
 
                                 </div>
                             </div>
@@ -568,9 +593,9 @@ $logo = $info["curator_logo"];
                                 </div>
                                 <div id="activity-list-div" class="activity-list d-flex flex-wrap gap-2">
                                     <?php
-                                        foreach ($site_activities as $value) {
-                                            echo "<span class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>high rope course</span>";
-                                        }
+                                    foreach ($site_activities as $value) {
+                                        echo "<span class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>high rope course</span>";
+                                    }
                                     ?>
 
                                 </div>
@@ -589,6 +614,168 @@ $logo = $info["curator_logo"];
         </div>
     </div>
     <!-- add_activities_&_locations modal [end] -->
+    <!-- ============================== -->
+
+
+    <!-- ============================== -->
+    <!-- Add toursite [start] -->
+    <div class="modal fade" id="add-location-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content p-5">
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <ul class="nav nav-tabs easygo-nav-tabs" role="tablist">
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link easygo-fs-4 h-100" id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-profile" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
+                                    Tour site Profile
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link easygo-fs-4 h-100" id="add-location-activities-tab" data-bs-toggle="tab" data-bs-target="#add-location-activities" type="button" role="tab" aria-controls="add-location-activities" aria-selected="false">
+                                    Tour site Activities
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link easygo-fs-4 h-100" id="add-location-info-tab" data-bs-toggle="tab" data-bs-target="#add-location-info" type="button" role="tab" aria-controls="add-location-info" aria-selected="false">
+                                    Other information
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <form onsubmit="return create_site(this)">
+                            <div>
+                                <div style='overflow-x: auto;'>
+                                    <div class='grid-7' style='max-height: 500px;' id='location-info-images'>
+
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+
+                                    <!-- Tour site profile [start] -->
+                                    <div class="col tab-pane fade" role="tabpanel" id="add-location-profile">
+                                        <div>
+
+                                            <div class="form-input-field">
+                                                <label class="text-gray-1 easygo-fs-4 ">Name</label>
+                                                <input class="px-4 py-2 flex-grow-1" type="text" name="name">
+                                            </div>
+
+                                            <div class="form-input-field">
+                                                <label class="text-gray-1 easygo-fs-4 ">Description</label>
+                                                <input class="px-4 py-2 flex-grow-1" type="text" name="description">
+                                            </div>
+
+                                            <div class="form-input-field">
+                                                <label class="text-gray-1 easygo-fs-4 ">Location</label>
+                                                <!-- TODO::Make GPS location -->
+                                                <input class="px-4 py-2 flex-grow-1" type="text" name="location">
+                                            </div>
+
+                                            <div class="form-input-field">
+                                                <label class="text-gray-1 easygo-fs-4 ">Country</label>
+                                                <input class="px-4 py-2 flex-grow-1" type="text" name="country">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- Tour site profile [end] -->
+                                    <!-- Tour site activities [start] -->
+                                    <div class="col tab-pane fade" role="tabpanel" id="add-location-activities">
+                                        <div class="d-flex align-items-center gap-2 my-4">
+                                            <h6 class="easygo-fw-1 m-0">Activities</h6>
+                                            <small class="text-gray-1 easygo-fs-6">(Activities that the tour site provides)</small>
+                                            <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+                                        </div>
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">Activity</label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
+                                            <button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
+                                            <div class="col">
+                                                <ul id='add_loc_activity_list'>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- Tour site activities [end] -->
+                                    <!-- Tour site extra info [start] -->
+                                    <div class="col tab-pane fade" role="tabpanel" id="add-location-info">
+                                        <div class="d-flex align-items-center gap-2 my-4">
+                                            <h6 class="easygo-fw-1 m-0">Extra information</h6>
+                                            <small class="text-gray-1 easygo-fs-6">(More information about the tour site)</small>
+                                            <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+                                        </div>
+
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">
+                                                Owner Name
+                                                <small class="text-gray-1 easygo-fs-6">(Optional)</small>
+                                            </label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" name="owner">
+                                        </div>
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">
+                                                Owner Number
+                                                <small class="text-gray-1 easygo-fs-6">(Optional)</small>
+                                            </label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" name="number">
+                                        </div>
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">
+                                                Website
+                                                <small class="text-gray-1 easygo-fs-6">(Optional)</small>
+                                            </label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" name="website">
+                                        </div>
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">
+                                                Tiktok handle
+                                                <small class="text-gray-1 easygo-fs-6">(Optional)</small>
+                                            </label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" name="tiktok">
+                                        </div>
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">
+                                                Instagram handle
+                                                <small class="text-gray-1 easygo-fs-6">(Optional)</small>
+                                            </label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" name="instagram">
+                                        </div>
+
+                                        <div class="form-input-field">
+                                            <label class="text-gray-1 easygo-fs-4 ">
+                                                Facebook handle
+                                                <small class="text-gray-1 easygo-fs-6">(Optional)</small>
+                                        </label>
+                                            <input class="px-4 py-2 flex-grow-1" type="text" name="facebook">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tour site extra info [end] -->
+                                <div>
+                                    <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5"  data-bs-dismiss="modal">Create Tour site</button>
+                                </div>
+                                <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                    <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+            </div>
+        </div>
+    </div>
+    <!-- Add toursite modal [end] -->
     <!-- ============================== -->
 
 

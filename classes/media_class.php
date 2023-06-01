@@ -36,6 +36,7 @@
 
 
 
+
 	//============================== UPDATE ==================================
 		function link_curator_id($user_id,$front_id,$back_id){
 			$sql = "UPDATE `curator_manager` SET `id_front` = ?, `id_back`=?
@@ -66,6 +67,14 @@
 			WHERE `user_id`= ?";
 			$this->prepare($sql);
 			$this->bind($media_id,$user_id);
+			return $this->db_query();
+		}
+
+		function link_toursite_media($media_id,$toursite_id,$location,$is_foreign){
+			$sql = "INSERT INTO `toursite` (`media_id`,`toursite_id`,`location`,`is_foreign`)
+			VALUE (?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($media_id,$toursite_id,$location,$is_foreign);
 			return $this->db_query();
 		}
 

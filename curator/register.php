@@ -36,23 +36,23 @@
                     <p class="instruction">Please enter your credentials</p>
                 </div>
                 <div class="input-field">
-                    <input name="user_name" type="text" placeholder="Full Name - Personal" value="Kweku Acquaye">
+                    <input name="user_name" type="text" placeholder="Full Name - Personal" >
                 </div>
                 <div class="input-field">
-                    <input type="text" name="email" placeholder="Email" value="kweku@acquaye.com">
+                    <input type="text" name="email" placeholder="Email">
                 </div>
                 <div class="input-field">
-                    <input type="text" name="phone" placeholder="Telephone" value="0559582518">
+                    <input type="text" name="phone" placeholder="Telephone">
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="pswd" type="password" placeholder="Password" value="kweku@acquaye.com">
+                        <input name="pswd" type="password" placeholder="Password" >
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="con_pswd" type="password" placeholder="Confirm Password" value="kweku@acquaye.com">
+                        <input name="con_pswd" type="password" placeholder="Confirm Password">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                                 <li class="text-hover-orange" onclick="on_option_select('country_selected_icon','Zimbabwe')"><img src="../assets/images/svgs/zimbabwe_flag.svg" alt="Zimbabwe flag"> Zimbabwe</li>
                             </ul>
                         </div>
-                        <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" value="easyGo">
+                        <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" >
                     </div>
                 </div>
                 <div class="input-field button-container">

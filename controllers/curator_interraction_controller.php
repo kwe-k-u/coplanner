@@ -120,6 +120,7 @@
 		//get activities
 		$data["activities"] = $class->get_toursite_activities($id);
 		//get media
+
 		$data["media"] = $class->get_toursite_media($id);
 		return $data;
 	}

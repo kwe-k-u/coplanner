@@ -127,7 +127,20 @@
                             <div class="easygo-card-1">
                                 <div class="img-holder"></div>
                                 <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
+                                    <small class="text-gray-1">Ashesi Entrepreneurship Center</small>
+                                    <h5 class="text-capitalize easygo-fw-1">
+                                        Ashesi Venture Incubator
+                                    </h5>
+                                    <p>We are honoured to announce that we have been accepted into Cohort 5 of the Ashesi Venture Incubator Program</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="easygo-card-1">
+                                <div class="img-holder"></div>
+                                <div class="card-content">
+                                    <small class="text-gray-1">
+                                        Ashesi University</small>
                                     <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
                                         program
                                     </h5>
@@ -139,19 +152,7 @@
                             <div class="easygo-card-1">
                                 <div class="img-holder"></div>
                                 <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
-                                    </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="easygo-card-1">
-                                <div class="img-holder"></div>
-                                <div class="card-content">
-                                    <small class="text-gray-1">Aseshi University</small>
+                                    <small class="text-gray-1">Aseshi Design Lab</small>
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Ashesi Dlab: Expo
                                     </h5>
@@ -181,7 +182,7 @@
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Kweku Acquaye
                                     </h5>
-                                    <p class="text-capitalize">Founder, development lead</p>
+                                    <p class="text-capitalize">Co-founder, Product development lead</p>
                                 </div>
                             </div>
                         </div>
@@ -190,10 +191,10 @@
                                 <div class="img-holder"></div>
                                 <div class="card-content">
                                     <h5 class="text-capitalize easygo-fw-1">
-                                        Edna naa tetteh
+                                        Edna Naa Tetteh
                                     </h5>
                                     <p class="text-capitalize">
-                                        Founder, Marketing & Public relations
+                                        Co-founder, Marketing & Public relations
                                     </p>
                                 </div>
                             </div>

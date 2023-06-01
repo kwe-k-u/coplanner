@@ -38,7 +38,6 @@
 		$media = new media_class();
 
 		return $media->add_media_cls($media_id,$location, $media_type)
-		// && $media->link_media_cls($curator_id,$media_id,"curator_uploads","curator_id");
 		&& _link_curator_upload_ctrl($curator_id,$media_id);
 	}
 
@@ -48,6 +47,19 @@
 
 		return $media->add_media_cls($media_id,$location, $media_type)
 		&& link_campaign_media_ctrl($campaign_id,$media_id);
+	}
+
+	function upload_toursite_media_ctrl($media_id,$toursite_id,$location,$is_foreign){
+		$media = new media_class();
+		if ($is_foreign){
+			return link_toursite_media(null,$toursite_id,$location,$is_foreign);
+		}
+		return $media->add_media_cls($media_id,$location,"picture")
+		&& link_toursite_media($media_id,$toursite_id,$location,$is_foreign);
+	}
+	function link_toursite_media($media_id,$toursite_id,$location,$is_foreign = false){
+		$media = new media_class();
+		return $media->link_toursite_media($media_id,$toursite_id,$location,$is_foreign);
 	}
 
 

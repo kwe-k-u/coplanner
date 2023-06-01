@@ -27,8 +27,8 @@
 
 
 		function get_campaign_activities($campaign_id){
-			$sql = "SELECT toursite_activity.activity_name FROM `campaign_activities`
-			join toursite_activity on toursite_activity.activity_id = campaign_activities.activity_id
+			$sql = "SELECT activities.activity_name FROM `activities`
+			join campaign_activities on activities.activity_id = campaign_activities.activity_id
 			WHERE campaign_activities.campaign_id = ?";
 			$this->prepare($sql);
 			$this->bind($campaign_id);

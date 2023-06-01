@@ -51,6 +51,14 @@ $(document).ready(function () {
   $("#register-form-1 .next-btn").click(nextForm); // going to next form when next button is clicked
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
   $(".profile_img-file").change(updateProfileImgDisp);
+
+  function nav_check(){
+    var nav = document.getElementById("mynavbar");
+    if(nav != undefined){
+      console.log("exists");
+    }
+  }
+  nav_check();
 });
 
 /*************** FUNCTIONS ****************/

@@ -110,7 +110,7 @@
                                                 $sender = $entry["user_name"];
                                                 $date = $entry["transaction_date"];
                                                 $currency = $entry["currency"];
-                                                $amount = $entry["amount_paid"];
+                                                $amount = $entry["transaction_amount"];
                                                 $fee = $entry["transaction_fee"];
 
                                                 echo "
@@ -185,7 +185,7 @@
                                                 $sender = $entry["user_name"];
                                                 $date = $entry["transaction_date"];
                                                 $currency = $entry["currency"];
-                                                $amount = $entry["amount_paid"];
+                                                $amount = $entry["transaction_amount"];
                                                 $fee = $entry["transaction_fee"];
 
                                                 echo "

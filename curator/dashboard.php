@@ -222,7 +222,7 @@ $logo = $info["curator_logo"];
                                         $date_booked = $entry["date_booked"];
                                         $contact_name = $entry["emergency_contact_name"];
                                         $contact_number = $entry["emergency_contact_number"];
-                                        $amount_paid = $entry["amount"];
+                                        $transaction_amount = $entry["amount"];
                                         $currency = $entry["currency"];
                                         $seats = $entry["seats"];
                                         $trip_date = $entry["trip_start_date"];
@@ -239,7 +239,7 @@ $logo = $info["curator_logo"];
                                 <div class='inner-item'>$trip_name</div>
                                 <div class='inner-item'>$trip_date</div>
                                 <div class='inner-item'>$seats</div>
-                                <div class='inner-item'>$currency $amount_paid</div>
+                                <div class='inner-item'>$currency $transaction_amount</div>
                                 <div class='inner-item'>$contact_name - $contact_number</div>
                                 <div class='inner-item'>Success</div>
                             </div>

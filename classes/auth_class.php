@@ -79,8 +79,13 @@
 		}
 
 		function get_user_by_id($id){
-			$sql = "SELECT * FROM `users` WHERE `user_id`=?";
-			// return $this->db_fetch_one($sql);
+			$sql = "SELECT
+			users.*,
+			media.media_location,
+			media.media_type
+			FROM `users`
+			LEFT JOIN media on media.media_id = users.profile_image
+			WHERE `user_id`=?";
 
 			$this->prepare($sql);
 			$this->bind($id);

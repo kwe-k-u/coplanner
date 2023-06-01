@@ -47,7 +47,7 @@
 			$token = $_POST["token"];
 			$currency = $_POST["currency"];
 			$time = $_POST["timestamp"];
-			$amount_paid = $_POST["amount"];
+			$transaction_amount = $_POST["amount"];
 			$transaction_fee = $_POST["fee"];
 
 

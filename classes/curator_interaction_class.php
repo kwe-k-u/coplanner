@@ -31,7 +31,7 @@
 		function get_recent_bookings($curator_id){
 			$sql = "SELECT
 			transactions.transaction_id,
-			transactions.amount_paid as amount,
+			transactions.transaction_amount as amount,
 			transactions.currency,
 			transactions.transaction_date,
 			bookings.date_booked,
@@ -70,7 +70,7 @@
 		}
 
 		function get_curator_revenue($curator_id){
-			$sql = "SELECT sum(transactions.amount_paid)  AS total_revenue FROM transactions
+			$sql = "SELECT sum(transactions.transaction_amount)  AS total_revenue FROM transactions
 			JOIN bookings on bookings.transaction_id = transactions.transaction_id
 			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
 			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
@@ -82,7 +82,7 @@
 		}
 
 		function get_curator_balance($curator_id){
-			$sql = "SELECT sum(transactions.amount_paid)  AS withdrawable_balance FROM transactions
+			$sql = "SELECT sum(transactions.transaction_amount)  AS withdrawable_balance FROM transactions
 			JOIN bookings on bookings.transaction_id = transactions.transaction_id
 			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
 			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
@@ -104,7 +104,7 @@
 		function get_curator_bookings($curator_id){
 			$sql = "SELECT
 			transactions.transaction_id,
-			transactions.amount_paid as amount,
+			transactions.transaction_amount as amount,
 			transactions.currency,
 			transactions.transaction_date,
 			bookings.date_booked,
@@ -233,10 +233,11 @@
 
 		function get_toursite_activities($id){
 			$sql = "SELECT
-			ta.activity_name,
+			a.activity_name,
 			ta.activity_id,
 			ta.is_verified
 			 FROM toursite_activity ta
+			 JOIN activities a on a.activity_id = ta.activity_id
 			WHERE ta.toursite_id=?";
 			$this->prepare($sql);
 			$this->bind($id);
@@ -270,7 +271,8 @@
 		function get_toursite_by_activity($query){
 			$sql = "SELECT * FROM toursites ts
 			JOIN toursite_activity ta on ta.toursite_id = ts.toursite_id
-			WHERE ta.activity_name LIKE CONCAT('%',?,'%')";
+			JOIN activities a on a.activity_id = ta.activity_id
+			WHERE a.activity_name LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);
 			$this->bind($query);
 			return $this->db_fetch_all();

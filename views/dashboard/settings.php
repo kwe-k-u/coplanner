@@ -1,6 +1,19 @@
 <?php
 require_once(__DIR__ . "/../../utils/core.php");
+require_once(__DIR__."/../../controllers/auth_controller.php");
 login_check();
+
+$user_id = get_session_user_id();
+$user = get_user_by_id($user_id);
+$profile = $user["profile_image"];
+$user_name = $user["user_name"];
+$email = $user["email"];
+$phone = $user["phone_number"];
+$country = $user["country"];
+$email_verified = $user["email_verified"] == 1;
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +22,7 @@ login_check();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - Account Settings</title>
+    <title>easyGo - Account Settings</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -101,58 +114,76 @@ login_check();
                             <!-- profile form [start] -->
                             <div class="form-page-main container update-pass-or-profile" style="display: block;">
                                 <div class="form-container container" style="max-width: 600px;">
+
                                     <!-- register form 1 [start] -->
+                                    <form class='reg-form edit-or-update-profile' action="../../processors/processor.php" method="post" style="display:none">
+                                        <?php
+                                            echo "
+
+                                        <div class='profile_img-upload edit-or-update-profile py-4' visible-mode='flex' style='display: none;'>
+                                            <div class='profile_img-disp'>
+                                                <img id='register-profile_img' class='image-display' src='$profile' alt='profile image'>
+                                                <label class='profile_img-upload-btn' for='profile_img'><img src='../../assets/images/svgs/pen_line.svg' alt='pen line image'></label>
+                                                <input display-target='register-profile_img' class='profile_img-file' name='profile_img' id='profile_img' type='file' accept='.jpg, .jpeg, .png'>
+                                            </div>
+                                        </div>
+                                        <div class='input-field'>
+                                            <label class='text-gray-1 fs-7' for='user_name'>Username</label>
+                                            <input disabled class='border-blue profile-form-field' name='user_name' type='text' placeholder='Full Name' value='$user_name'>
+                                        </div>
+                                        <div class='input-field'>
+                                            <label class='text-gray-1 fs-7' for='email'>Email</label>
+                                            <a href='' class='easygo-fs-5 mb-4' style='color:red'>Verify Email?</a>
+                                            <input disabled type='text' class='border-blue profile-form-field' name='email' placeholder='Email address' value='$email'>
+                                        </div>
+                                        <div class='input-field'>
+                                            <label class='text-gray-1 fs-7' for='email'>Phone Number</label>
+                                            <a href='' class='easygo-fs-5 mb-4' style='color:red'>Verify Phone Number?</a>
+                                            <input disabled type='text' class='border-blue profile-form-field' name='phone' placeholder='Telephone' value='$phone'>
+                                        </div>
+                                        <div class='input-field'>
+                                            <label class='text-gray-1 fs-7'for=''>Country</label>
+                                            <input disabled type='text' class='border-blue profile-form-field' name='phone' placeholder='Country' value='$country'>
+                                        </div>
+                                        <input type='hidden' name='action' value='update_profile'>
+
+                                        <div class='input-field button-container'>
+                                            <button class='easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile' type='submit' data-enable-target='.profile-form-field' data-visibility-target='.edit-or-update-profile' style='display: none;'>Update Profile</button>
+                                        </div>
+                                        "
+                                        ?>
+                                    </form>
+
+
+
                                     <form>
-                                        <div class="justify-content-center edit-or-update-profile" style="display: flex" visible-mode="flex">
-                                            <div class="row">
-                                                <div class="col-4 col-md-12">
-                                                    <div class="user-icon bg-blue m-auto" style="width: 5rem; height: 5rem;">
-                                                        <!-- <img src="../../assets/images/others/profile.jpeg" alt=""> -->
+
+                                    <div class='justify-content-center edit-or-update-profile' style='display: flex' visible-mode='flex'>
+                                            <div class='row'>
+                                                <?php
+
+                                                echo "<div class='col-4 col-md-12'>
+                                                    <div class='user-icon bg-blue m-auto' style='width: 5rem; height: 5rem;'>
+                                                        <img src='$profile' alt='Profile image'>
                                                     </div>
                                                 </div>
-                                                <div class="col-8 col-md-12">
-                                                    <div class="text-left text-md-center">
-                                                        <h2>Victor&nbsp;Ola</h2>
-                                                        <p class="easygo-fs-4 text-gray-1">victorola@gmail.com</p>
+                                                <div class='col-8 col-md-12'>
+                                                    <div class='text-left text-md-center'>
+                                                        <h2>$user_name</h2>
+                                                        <p class='easygo-fs-4 text-gray-1'>$email</p>
                                                     </div>
-                                                </div>
+                                                </div>"
+
+                                                ?>
                                             </div>
                                         </div>
-                                        <div class="profile_img-upload edit-or-update-profile py-4" visible-mode="flex" style="display: none;">
-                                            <div class="profile_img-disp">
-                                                <img id="register-profile_img" class="image-display" src="../../assets/images/others/tour2.jpg" alt="profile image">
-                                                <label class="profile_img-upload-btn" for="profile_img"><img src="../../assets/images/svgs/pen_line.svg" alt="pen line image"></label>
-                                                <input display-target="register-profile_img" class="profile_img-file" id="profile_img" type="file" accept=".jpg, .jpeg, .png">
+
+                                    <div class='input-field button-container'>
+                                                <button class='easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile' type='button' data-enable-target='.profile-form-field' data-visibility-target='.edit-or-update-profile'>Edit Profile</button>
+                                                <center>
+                                                    <div visible-mode='flex' class='justify-content-center edit-or-update-profile'><a class='text-black easygo-fw-3 visibility-changer' href='javascript:void(0);' data-visibility-target='.update-pass-or-profile'>Change Password</a></div>
+                                                </center>
                                             </div>
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled class="border-blue profile-form-field" name="user_name" type="text" placeholder="Full Name" value="Victor Ola">
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled type="text" class="border-blue profile-form-field" name="email" placeholder="Email address" value="victorola@gmail.com">
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled type="text" class="border-blue profile-form-field" name="phone" placeholder="Telephone" value="021122434">
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled type="text" class="border-blue profile-form-field" name="phone" placeholder="Address" value="Kpong Road House 2">
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled type="text" class="border-blue profile-form-field" name="phone" placeholder="City" value="Mangoase">
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled type="text" class="border-blue profile-form-field" name="phone" placeholder="State" value="Otherside">
-                                        </div>
-                                        <div class="input-field">
-                                            <input disabled type="text" class="border-blue profile-form-field" name="phone" placeholder="Country" value="Ghana">
-                                        </div>
-                                        <div class="input-field button-container">
-                                            <button class="easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile" type="button" data-enable-target=".profile-form-field" data-visibility-target=".edit-or-update-profile">Edit Profile</button>
-                                            <center>
-                                                <div visible-mode="flex" class="justify-content-center edit-or-update-profile"><a class="text-black easygo-fw-3 visibility-changer" href="javascript:void(0);" data-visibility-target=".update-pass-or-profile">Change Password</a></div>
-                                            </center>
-                                            <button class="easygo-btn-1 easygo-rounded-2 input-enabler visibility-changer edit-or-update-profile" type="submit" data-enable-target=".profile-form-field" data-visibility-target=".edit-or-update-profile" style="display: none;">Update Profile</button>
-                                        </div>
                                     </form>
                                     <!-- register form 1 [end] -->
                                     <!-- ======================= -->

@@ -21,12 +21,11 @@
 					$curator_id = $_POST["curator_id"];
 					$camp_id = generate_id();
 					$trips = json_decode($_POST["trips"],true);
-					$activities = $_POST["activities"];
+					$activities = json_decode($_POST["activities"],true);
 
 					// echo "count ". var_dump($trips["count"]);
 					// die();
 					$success = create_campaign($camp_id, $curator_id,$title,$description);
-					// echo $success;
 					if ($success){
 						//for count, add each trip
 						foreach ($trips as $current_trip) {
@@ -43,8 +42,12 @@
 
 
 							//add activities
-							foreach($activities as $activity_id){
-								add_campaign_activity($camp_id,$activity_id);
+							foreach($activities as $name => $entry){
+								$toursite_id = "";
+								$activity_id = $entry;
+								$site = get_toursite_by_name($name,true);
+								$toursite_id = $site["touriste_id"];
+								add_campaign_activity($camp_id,$activity_id,$toursite_id);
 							}
 
 							//add images
@@ -70,23 +73,49 @@
 
 					die();
 
-				case "add_site":
-					$name = $_POST["name"];
-					$location = $_POST["location"];
+				case "add_tour_site":
+					$name = $_POST["site_name"];
+					$location = $_POST["site_location"];
+					$desc = $_POST["site_description"];
 					$country = $_POST["country"];
-					$activities = explode(",",$_POST["activities"]);
+					$activities =$_POST["activities"];
 					$site_id = generate_id();
 					//check if location name exists,
-					add_toursite($site_id,$name,$location,$country);
+					add_toursite($site_id,$name,$desc,$location,$country);
 
-					foreach ($activities as $act){
-						$act_id = generate_id();
-						add_toursite_activity($site_id, $act_id, $act);
+					// Adding activities for the tour site
+					foreach ($activities as $name){
+						add_toursite_activity($site_id,$name);
+					}
+
+
+					//upload images for the toursite
+					if(isset($_FILES["toursite_images"])){
+						$num_files = count($_FILES["toursite_images"]['name']);
+						$entry = $_FILES["toursite_images"];
+						for ($i=0; $i < $num_files; $i++) {
+
+							$image = $entry["name"][$i];
+							$tmp = $entry["tmp_name"][$i];
+							$id = generate_id();
+							$media_type = 'picture';
+							$location = upload_file("uploads",$media_type,$tmp,$image);
+							upload_toursite_media_ctrl($id,$site_id,$location,false);
+						}
+					}
+
+					//link images from other websites if provided
+					if(isset($_POST["images"])){
+						$image_links = $_POST["images"];
+
+						foreach ($image_links as $entry) {
+							$location = $entry["image_url"];
+							upload_toursite_media_ctrl('',$site_id,$location,true);
+						}
 					}
 
 					// if it does add the location
-					// add location activities if they don't exists
-					echo "Added location";
+					send_json(array("msg" => "Added tour site"));
 					die();
 				case "get_site_by_id":
 					$site_id = $_POST["toursite_id"];
@@ -119,6 +148,6 @@
 		}
 	}
 
-
++
 	campaign();
 ?>
