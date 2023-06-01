@@ -184,12 +184,12 @@ ob_start();
 		//create folder if it does not exist
 		if (!file_exists("../$directory/$subdir/")){
 			mkdir("../$directory/$subdir/",0777);
-			move_uploaded_file($tempname,$folder);
-			return $folder;
+			move_uploaded_file($tempname,"../".$folder);
+			return server_base_url().$folder;
 		}
 		else{
-			move_uploaded_file($tempname,$folder);
-			return $folder;
+			move_uploaded_file($tempname,"../".$folder);
+			return server_base_url().$folder;
 		}
 		return false;
 

@@ -160,9 +160,9 @@ $logo = $info["curator_logo"];
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active easygo-fs-4 h-100" id="group-tour-tab" data-bs-toggle="tab" data-bs-target="#group-tour" type="button" role="tab" aria-controls="group-tour" aria-selected="false">Group Tour</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                <!-- <li class="nav-item" role="presentation">
                                     <button class="nav-link  easygo-fs-4 h-100" id="private-tour-tab" data-bs-toggle="tab" data-bs-target="#private-tour" type="button" role="tab" aria-controls="private-tour" aria-selected="false">Private Tour</button>
-                                </li>
+                                </li> -->
                                 <!-- <li class="nav-item" role="presentation">
                                     <button class="nav-link easygo-fs-4 h-100" id="withdrawals-tab" data-bs-toggle="tab" data-bs-target="#withdrawals" type="button" role="tab" aria-controls="withdrawals" aria-selected="false">Withdrawals</button>
                                 </li> -->
@@ -514,7 +514,7 @@ $logo = $info["curator_logo"];
                                 echo "
                                 <div class='location-card border p-4 rounded my-3'>
                                     <div class='header d-flex justify-content-between'>
-                                        <h1 id='site_name_h1' class='easygo-fs-3 text-capitalize'>$site_name</h1>
+                                        <h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
                                         <h5 class='easygo-fs-4 text-orange'>$site_location</h5>
                                     </div>
                                     <div class='text-gray-1 easygo-fs-6'>
@@ -594,7 +594,9 @@ $logo = $info["curator_logo"];
                                 <div id="activity-list-div" class="activity-list d-flex flex-wrap gap-2">
                                     <?php
                                     foreach ($site_activities as $value) {
-                                        echo "<span class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span'>high rope course</span>";
+                                        $act_id = $value['activity_id'];
+                                        $act_name = $value["activity_name"];
+                                        echo "<span class='px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span' id='$act_id'>$act_name</span>";
                                     }
                                     ?>
 
@@ -628,7 +630,7 @@ $logo = $info["curator_logo"];
                         <ul class="nav nav-tabs easygo-nav-tabs" role="tablist">
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link easygo-fs-4 h-100" id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-profile" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
+                                <button class="nav-link easygo-fs-4 h-100 active" id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-profile" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
                                     Tour site Profile
                                 </button>
                             </li>
@@ -655,7 +657,7 @@ $logo = $info["curator_logo"];
                                 <div class="tab-content">
 
                                     <!-- Tour site profile [start] -->
-                                    <div class="col tab-pane fade" role="tabpanel" id="add-location-profile">
+                                    <div class="col tab-pane fade active show" role="tabpanel" id="add-location-profile">
                                         <div>
 
                                             <div class="form-input-field">
@@ -693,11 +695,12 @@ $logo = $info["curator_logo"];
                                         <div class="form-input-field">
                                             <label class="text-gray-1 easygo-fs-4 ">Activity</label>
                                             <input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
-                                            <button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
                                             <div class="col">
                                                 <ul id='add_loc_activity_list'>
+                                                    <!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
                                                 </ul>
                                             </div>
+                                            <button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
                                         </div>
 
                                     </div>

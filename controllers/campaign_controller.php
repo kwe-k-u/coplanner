@@ -85,6 +85,6 @@
 
 	function get_toursite_by_name($name,$exact = false){
 		$camp = new campaign_class();
-		return $camp->get_toursite_by_name($name);
+		return $camp->get_toursite_by_name($name,$exact);
 	}
 ?>

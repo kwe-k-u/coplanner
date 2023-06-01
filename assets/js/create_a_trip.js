@@ -8,9 +8,10 @@ $("#end_date").on("input", () => { on_occurance_edit("end_date") });
 $("#start_date").on("input", () => { on_occurance_edit("start_date") });
 // script to prefill the page if a trip id is in the url (User wants to update tour information)
 $(document).ready (()=>{
-	if(window.location.search.includes("trip_id")){
+	if(window.location.search.includes("id")){
 		//TODO: Edit trip
-		// alert("edit trip");
+		const trip_id = window.location.search.id;
+		console.log(trip_id);
 		//show loader
 		//get trip id from url params
 		//get trip information from database
@@ -37,7 +38,6 @@ function submit_tour(form) {
 		}
 	}
 	var occurances = get_occurance_entries();
-	console.log(occurances);
 	var images = tripimages_upload_display.getFiles();
 	//var flyer = flyerimage_upload_displayflyerimage_upload_display.getFiles();
 
@@ -442,8 +442,9 @@ function update_location_results(location_list) {
 function add_location_activity() {
 	//filling location section of page
 	var selected_location_list = document.getElementById("selected-locations");
-	var location_name = document.getElementById("site_name_h1").innerText;
+	var location_name = document.getElementById("location-info-title").innerText;
 	var add_location = true;
+	console.log(location_name);
 
 	for (var loc_index = 0; loc_index < selected_location_list.children.length; loc_index++){
 		var child = selected_location_list.children[loc_index];

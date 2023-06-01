@@ -23,8 +23,6 @@
 					$trips = json_decode($_POST["trips"],true);
 					$activities = json_decode($_POST["activities"],true);
 
-					// echo "count ". var_dump($trips["count"]);
-					// die();
 					$success = create_campaign($camp_id, $curator_id,$title,$description);
 					if ($success){
 						//for count, add each trip
@@ -32,8 +30,9 @@
 							$trip_id = generate_id();
 							$start = $current_trip["start_date"];
 							$end = $current_trip["end_date"];
-							$pickup = "Accra";//$current_trip["pickup_location"];
-							$dropoff = "Accra";//$current_trip["dropoff_location"];
+							//TODO:: add pickup and dropoff locations
+							$pickup = "Accra";
+							$dropoff = "Accra";
 							$seats = $current_trip["seats"];
 							$fee = $current_trip["fee"];
 							$status = "published";
@@ -43,10 +42,10 @@
 
 							//add activities
 							foreach($activities as $name => $entry){
-								$toursite_id = "";
-								$activity_id = $entry;
+
+								$activity_id = array_keys($entry)[0];
 								$site = get_toursite_by_name($name,true);
-								$toursite_id = $site["touriste_id"];
+								$toursite_id = $site["toursite_id"];
 								add_campaign_activity($camp_id,$activity_id,$toursite_id);
 							}
 
