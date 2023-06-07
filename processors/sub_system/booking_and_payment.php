@@ -4,6 +4,7 @@
 	require_once(__DIR__. "/../../controllers/finance_controller.php");
 	require_once(__DIR__. "/../../utils/core.php");
 	require_once(__DIR__."/../../utils/paybox.php");
+	require_once(__DIR__."/../../utils/paystack.php");
 
 
 
@@ -16,15 +17,16 @@
 			}
 
 			switch($_POST["action"]){
-				case "trip_payment":
+				case "book_trip":
 					$paybox = new paybox_custom();
 					$mode = $_POST["payment_method"];
-					$trip_id = $_POST["trip_id"];
+					$trip_id = $_POST["tour_id"];
 					$trip = get_campaign_trip_by_id($trip_id);
 					$user_id = $_POST["user_id"];
 					$user = get_user_by_id($user_id);
-					$seats = $_POST["seats"];
-					$amount = floatval($trip["fee"]) * intval($seats);
+					$kids = $_POST["num_kids"];
+					$adults = $_POST["num_adults"];
+					$amount = floatval($trip["fee"]) * (intval($adults)+intval($kids));
 
 					if ($mode == "momo"){
 						$network = $_POST["network"];
@@ -38,7 +40,16 @@
 
 					}
 					die();
-				case "verify_payment":
+				case "book_standard_tour":
+// {
+//     "reference": "200399320",
+//     "trans": "2865246896",
+//     "status": "success",
+//     "message": "Approved",
+//     "transaction": "2865246896",
+//     "trxref": "200399320",
+//     "redirecturl": "?trxref=200399320&reference=200399320"
+// }
 
 					$provider = $_POST["provider"];
 					$amount_expected = $_POST["amount_expected"];
@@ -59,6 +70,42 @@
 						);
 						 echo json_encode($response);
 
+					}else if ($provider = "paystack"){
+						$reference = json_decode($_POST["response"],true)["reference"];
+						$paystack = new paystack_custom();
+						$res =  $paystack->verify_transaction($reference);
+						$status = $res["status"];
+						// if payment has been received create a booking
+						if($status){
+							$data = $res["data"];
+							$payload = json_decode($_POST["payload"],true);
+
+							$adult_seats= intval($payload["num_adults"]);
+							$kid_seats = intval($payload["num_kids"]);
+							$contact_name = $payload["contact_name"];
+							$contact_number = $payload["contact_number"];
+							$user_id = $payload["user_id"];
+							$tour_id = $payload["tour_id"];
+							$booking_id = generate_id();
+
+							$transaction_id = $data["id"];
+							$trans_fee=$data["fees"]/100;
+							$trans_date = $data["paid_at"];
+							$tax = ($amount_expected * 0.15)/100;
+							$trans_amount = $data["amount"]/100;
+							$currency = $data["currency"];
+							$amount = $trans_amount * (1-0.15);
+							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$amount,$trans_fee,$tax);
+							book_standard_trip($booking_id,$user_id,$tour_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
+
+							//TODO: send reciept
+						}
+
+						send_json(array(
+							"status" => $status,
+							"msg" => $status ? "Your seat(s) has been booked. Check your email for a reciept from us"
+							: "We couldn't confirm your payment. Kindly Try again or contact support at main.easygo@gmail.com"
+						));
 					}
 
 					die();

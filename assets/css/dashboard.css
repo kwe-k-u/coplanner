@@ -114,6 +114,13 @@
   margin: 0;
 }
 
+/** Quick Actions **/
+.quick-actions{
+  background-color: rgb(237, 244, 247);
+  padding: 4px;
+}
+
+
 /** form styles **/
 .item-pad-list {
   display: flex;

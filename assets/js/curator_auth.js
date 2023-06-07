@@ -1,20 +1,5 @@
 
 
-function signup(form){
-	event.preventDefault();
-	console.log(form.company_logo.files);
-	payload = {
-	};
-
-	send_request("POST",
-	"test/test.php",
-	payload,
-	(response) => {
-		console.log(response)
-	}
-	);
-
-}
 function signup(form2){
 
 
@@ -52,7 +37,14 @@ function signup(form2){
 		"processors/processor.php",
 		payload,
 		(response) => {
+			if(response["status"] == 200){
+				window.location.href = baseurl+"curator/login.php"
+			}else {
+				alert("Something went wrong. Try again or contact our support team at main.easygo@gmail.com");
+			}
 			console.log(response);
+
+
 		}
 	);
 }

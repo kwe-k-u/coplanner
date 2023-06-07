@@ -79,6 +79,15 @@ $logo = $info["curator_logo"];
         <main class="dashboard-content">
             <?php require_once(__DIR__. "/../components/curator_navbar_desktop.php"); ?>
             <div class="main-content px-3 bg-gray-3">
+
+                <div class="quick-actions col bg-white-1">
+                    <h5>Quick Actions</h5>
+                    <div class="row">
+                        <div>
+                            <button class="easygo-btn-5" onclick="goto_page('curator/create_a_trip.php')">Create Tour</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- ============================== -->
                 <!-- stat cards [start] -->
                 <section class="stat-cards pt-5">

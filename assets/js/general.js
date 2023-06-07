@@ -55,7 +55,22 @@ $(document).ready(function () {
   function nav_check(){
     var nav = document.getElementById("mynavbar");
     if(nav != undefined){
-      console.log("exists");
+      const nav_page = window.location.pathname;
+      if(nav_page.includes("home.php")){
+        nav.getElementsByClassName("nav-link")[0].classList.add('text-blue');
+      } else if (nav_page.includes("trips.php")){
+        nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
+      } else if (nav_page.includes("trip_description.php")){
+        nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
+      } else if (nav_page.includes("book_trip.php")){
+        nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
+      } else if (nav_page.includes("about.php")){
+        nav.getElementsByClassName("nav-link")[3].classList.add('text-blue');
+      }else if (nav_page.includes("contact.php")){
+        nav.getElementsByClassName("nav-link")[4].classList.add('text-blue');
+      }else {
+        nav.getElementsByClassName("nav-link")[0].classList.add('text-blue');
+      }
     }
   }
   nav_check();
@@ -412,6 +427,7 @@ function show_loader(hide_element = null, time=5000){
 		document.removeEventListener("click", fn, true);
 		// document.getElementsByClassName("loader")[0].classList.toggle("hide");
 	}, time);
+  return load_var;
 }
 
 

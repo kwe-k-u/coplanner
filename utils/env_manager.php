@@ -77,4 +77,14 @@ function slack_webhook_withdrawals(){
 function paybox_token(){
 	return getenv("PAYBOX_BEARER_TOKEN");
 }
+
+/**Returns the paystack public key */
+function paystack_public_key(){
+	return getenv("PAYSTACK_PUBLIC_KEY");
+}
+
+/** Returns the paystack private key */
+function paystack_private_key(){
+	return getenv("PAYSTACK_SECRET_KEY");
+}
 ?>

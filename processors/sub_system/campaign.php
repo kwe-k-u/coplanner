@@ -31,14 +31,14 @@
 							$start = $current_trip["start_date"];
 							$end = $current_trip["end_date"];
 							//TODO:: add pickup and dropoff locations
-							$pickup = "Accra";
-							$dropoff = "Accra";
+							$pickup = "";
+							$dropoff = "";
 							$seats = $current_trip["seats"];
 							$fee = $current_trip["fee"];
 							$status = "published";
 							$currency = "GHS";
 							create_campaign_trip($trip_id,$camp_id,$pickup,$dropoff,$start,$end,$seats,$currency,$fee,$status);
-
+						}
 
 							//add activities
 							foreach($activities as $name => $entry){
@@ -63,11 +63,10 @@
 								upload_curator_media_ctrl($id,$curator_id,$location,$media_type);
 								link_campaign_media_ctrl($camp_id,$id);
 							}
-						}
-						send_json(array("msg"=> "image upload successful"));
+						send_json(array("msg"=> "Tour created successful"));
 
 					}else {
-						send_json(array("msg" => "Could not create trip"),100);
+						send_json(array("msg" => "Could not create tour"),100);
 					}
 
 					die();
@@ -138,15 +137,32 @@
 
 					send_json(array("sites" => $data));
 					die();
+
+				case "get_tour_charge":
+					$tour_id = $_POST["tour_id"];
+					$seats = intval($_POST["adult_seats"])+intval($_POST["kid_seats"]);
+					$tour = get_campaign_trip_by_id($tour_id);
+					$currency = $tour["currency"];
+					$amount = doubleval($tour["fee"]) * $seats;
+					send_json(array(
+						"tour_id"=> $tour_id,
+						"amount" => $amount,
+						"currency" => $currency
+					));
+					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";
 					die();
 			}
 		}else if ($request == "GET"){
+			switch($_GET["action"]){
+				default:
+					die();
+			}
 
 		}
 	}
 
-+
+
 	campaign();
 ?>

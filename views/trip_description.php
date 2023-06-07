@@ -1,31 +1,33 @@
 <?php
     require_once(__DIR__."/../utils/core.php");
-    // require_once(__DIR__."/../controllers/campaign_controller.php");
+    require_once(__DIR__."/../controllers/campaign_controller.php");
     require_once(__DIR__."/../controllers/interaction_controller.php");
 
 
-    if (!isset($_GET["campaign_id"])){
+    if (!(isset($_GET["campaign_id"]) or isset($_GET["tour_id"]))){
         header("Location: trips.php");
     }
-    $id = $_GET["campaign_id"];
 
-    if (isset($_GET["trip_id"])){
-        $trip_id = $_GET["trip_id"];
-        $next = get_campaign_trip_by_id($trip_id);
+    if (isset($_GET["tour_id"])){
+        $tour_id = $_GET["tour_id"];
+        $next = get_campaign_trip_by_id($tour_id);
+        $campaign_id = $next["campaign_id"];
+
     } else {
-        $next = get_campaign_next_trip($id);
-        $trip_id = $next["trip_id"];
+        $campaign_id= $_GET["campaign_id"];
+        $next = get_campaign_next_trip($campaign_id);
+        $tour_id = $next["trip_id"];
     }
 
 
     if(is_session_logged_in()){
         $user_id = get_session_user_id();
-        $is_wishlisted = is_campaign_wishlisted($user_id,$id);
+        $is_wishlisted = is_campaign_wishlisted($user_id,$campaign_id);
     }else {
         $is_wishlisted = false;
     }
 
-        $campaign = get_campaign_by_id($id);
+        $campaign = get_campaign_by_id($campaign_id);
         $title = $campaign["title"];
         $curator = $campaign["curator_name"];
         $desc = $campaign["description"];
@@ -128,6 +130,8 @@
                             <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
                         </li>
 
+
+
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <!--- ================================ -->
@@ -164,12 +168,14 @@
                                 <div class='text-description easygo-fs-1'>
                                 $desc
                                 </div>
-                                <div class='warning mt-5 d-flex align-items-center gap-3'>
-                                    <img src='../assets/images/svgs/exclamation_orange.svg' alt='warning image'> <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
-                                </div>
-                            </div>
                             ";
                         ?>
+
+                                <div class="warning mt-5 d-flex align-items-center gap-3">
+                                    <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
+                                    <span>This tour has several upcoming dates. <a>Click here</a> to view the different dates</span>
+                                </div>
+                            </div>
                             <!--- gallery [start] -->
                             <div class='my-5'>
                                 <div class='container'>
@@ -225,7 +231,7 @@
                                     </div>
                                 </div>
                                <?php
-                                $sites = get_toursite_by_campaign($id);
+                                $sites = get_toursite_by_campaign($campaign_id);
                                 foreach($sites as $index => $entry){
                                     $site_desc = $entry["toursite_description"];
                                     $site_loc = $entry["site_location"];
@@ -277,11 +283,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="warning mt-5 d-flex align-items-center gap-3">
-                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
-                                <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
-                                <a class="easygo-btn-1" href="javascript:void(0)">Click here</a>
-                            </div>
                         </div>
                         <!--- itineries [end] -->
                         <!--- ================================ -->
@@ -292,7 +293,7 @@
                                 <h3>Activities included in trip:</h3>
                                 <ul class="easygo-list-2">
                                 <?php
-                                    $activities = get_campaign_activities($id);
+                                    $activities = get_campaign_activities($campaign_id);
                                     foreach ($activities as $entry) {
                                         $ac = $entry["activity_name"];
                                         echo "<li>$ac</li>";
@@ -300,11 +301,6 @@
                                     }
                                 ?>
                                 </ul>
-                            </div>
-                            <div class="warning mt-5 d-flex align-items-center gap-3">
-                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
-                                <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
-                                <a class="easygo-btn-1" href="javascript:void(0)">Click here</a>
                             </div>
                         </div>
                         <!--- activities [end] -->
@@ -645,7 +641,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -912,17 +907,24 @@
                         <?php
                         if($is_wishlisted){
                             echo "<div class='col-lg-5 py-2'>
-                            <a onclick='return remove_from_wishlist(\"$user_id\",\"$id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Remove from Wishlist</a>
+                            <a onclick='return remove_from_wishlist(\"$user_id\",\"$campaign_id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Remove from Wishlist</a>
                         </div>";
                         } else {
+                            if(is_session_logged_in()){
                             echo "<div class='col-lg-5 py-2'>
-                            <a onclick='return add_to_wishlist(\"$user_id\",\"$id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Add to Wishlist</a>
+                                <a onclick='return add_to_wishlist(\"$user_id\",\"$campaign_id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Add to Wishlist</a>
+                            </div>";
+                            }else {
+
+                            echo "<div class='col-lg-5 py-2'>
+                            <a onclick='return goto_page(\"views/login.php?redirect=tour_description.php?tour_id=$tour_id\")' class='d-block w-100 text-center easygo-fs-1 easygo-rounded-1 py-3 easygo-btn-5 border border-blue'>Add to Wishlist</a>
                         </div>";
+                            }
                         }
 
                             echo "
                             <div class='col-lg-7 py-2'>
-                                <a href='./book_trip.php?trip_id=$trip_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Trip</a>
+                                <a href='./book_trip.php?tour_id=$tour_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Tour</a>
                             </div>
                                 ";
                             ?>

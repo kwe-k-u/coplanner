@@ -11,11 +11,11 @@
 
 
 		//===================================== INSERT =========================================
-		function book_standard_trip($booking_id, $user_id,$trip_id,$seats, $transaction_id, $contact_name,$contact_number){
-			$sql = "INSERT INTO `bookings`(`booking_id`, `user_id`, `trip_id`, `date_booked`, `seats_booked`, `transaction_id`, `emergency_contact_name`, `emergency_contact_number`)
-			VALUES (?,?,?,CURRENT_TIMESTAMP,?,?,?,?)";
+		function book_standard_trip($booking_id, $user_id,$trip_id,$adult_seats,$kid_seats, $transaction_id, $contact_name,$contact_number){
+			$sql = "INSERT INTO `bookings`(`booking_id`, `user_id`, `trip_id`, `date_booked`, `adult_seats`,`child_seats`, `transaction_id`, `emergency_contact_name`, `emergency_contact_number`)
+			VALUES (?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($booking_id,$user_id,$trip_id,$seats,$transaction_id,$contact_name,$contact_number);
+			$this->bind($booking_id,$user_id,$trip_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
 			return $this->db_query();
 		}
 
@@ -24,13 +24,14 @@
 
 		}
 
-		function record_transaction($transaction_id,$date,$amount,$provider,$transaction_fee,$tax){
-			$sql = "INSERT INTO `transactions` VALUES (?,?,?,?,?,?)";
+		function record_transaction($transaction_id,$date,$currency,$trans_amount,$amount,$trans_fee,$tax){
+			$sql = "INSERT INTO `transactions`(`transaction_id`,`transaction_date`,`currency`,`transaction_amount`,`amount`,
+			`charges`,`tax`)
+			VALUES (?,?,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($transaction_id,$date,$amount,$provider,$transaction_fee,$tax);
+			$this->bind($transaction_id,$date,$currency,$trans_amount,$amount,$trans_fee,$tax);
 			return $this->db_query();
 		}
-
 
 
 		// ============================ UPDATE=========================================

@@ -1,3 +1,28 @@
+<?php
+    require_once(__DIR__."/../utils/core.php");
+    // require_once(__DIR__."/../controllers/campaign_controller.php");
+    require_once(__DIR__."/../controllers/interaction_controller.php");
+    require_once(__DIR__."/../controllers/auth_controller.php");
+    if (!isset($_GET["tour_id"])){
+        header("Location: trips.php");
+        die();
+    }
+    $id = $_GET["tour_id"];
+
+    if(is_session_logged_in()){
+        $user_id = get_session_user_id();
+        $email_verified = get_user_by_id($user_id)["email_verified"];
+        if($email_verified == 0){
+            require(__DIR__."/verification_required.php");
+
+            die();
+        }
+    }else {
+        header("Location: login.php?redirect=book_trip.php?tour_id=$id");
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +30,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - Trip Description</title>
+    <title>easygo - Booking</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -78,11 +103,11 @@
                         You're just one step away from a new <br> adventure
                     </div>
                     <div class="loader">
+
                     </div>
                     <div class="container px-lg-5">
                         <form class="px-lg-5" onsubmit="return book_trip(this)">
                         <?php
-                            $user_id = get_session_user_id();
                             echo "<input type='hidden' name='user_id' value='$user_id'>";
                         ?>
 
@@ -99,35 +124,27 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-input-field py-2">
-                                            <input class="border-blue" type="text" placeholder="Contact's Phone number" name="phone_number">
+                                            <input class="border-blue" type="text" placeholder="Contact's Phone number" name="contact_number">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-input-field py-2">
-                                            <input class="border-blue" type="text" placeholder="Full Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-input-field py-2">
-                                            <input class="border-blue" type="text" placeholder="Full Name">
-                                        </div>
-                                    </div>
+
+                                <div class="easygo-fs-2 easygo-fw-1">Number of seats</div>
                                     <div class="col-lg-6">
                                         <div class="form-input-field py-2">
                                             <div class="text-gray-1 easygo-fs-4">Number of Adults</div>
                                             <div class="easygo-num-input">
                                                 <span data-input-target="#num-adults" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
-                                                <input id="num-adults" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                <input id="num-adults" name="num_adults" type="number" class="border-blue text-center" value="1" min="0" max="100">
                                                 <span data-input-target="#num-adults" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-input-field py-2">
-                                            <div class="text-gray-1 easygo-fs-4">Number of Kids</div>
+                                            <div class="text-gray-1 easygo-fs-4">Number of Children <span class="text-gray-2"> (Anyone below 18 years old)</span> </div>
                                             <div class="easygo-num-input">
                                                 <span data-input-target="#num-kids" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
-                                                <input id="num-kids" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                <input id="num-kids" name="num_kids" type="number" class="border-blue text-center" value="0" min="0" max="100">
                                                 <span data-input-target="#num-kids" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
                                             </div>
                                         </div>
@@ -136,10 +153,10 @@
                             </div>
 
                             <div class="general-info">
-                                <div class="easygo-fs-2 easygo-fw-1">Payment Information</div>
+                                <!-- <div class="easygo-fs-2 easygo-fw-1">Payment Information</div> -->
                                 <div class="row">
 
-                                    <div class="col-lg-6">
+                                    <!-- <div class="col-lg-6">
                                         <div class="form-input-field py-2">
                                             <div class="text-gray-1 easygo-fs-4">Payment method</div>
 
@@ -148,18 +165,12 @@
                                                 <option value="credit card">Credit Card</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="col-lg-6">
-                                        <div class="form-input-field py-2">
-                                            <div class="text-gray-1 easygo-fs-4">Number of seats (18)</div>
-                                            <input name="seats" class="border-blue text-center" type="number" min="0" max="100" value="1">
-                                        </div>
-                                    </div>
 
                                     <!--- ================================ -->
                                     <!--- Mobile money section [start] -->
-                                    <section id="mobile_money_section">
+                                    <!-- <section id="mobile_money_section">
                                         <p>Pay with Mobile money</p>
                                         <div class="row">
 
@@ -178,12 +189,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </section>
+
+                                        <div class="warning my-5 d-flex align-items-center gap-3">
+                                            <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
+                                            <span>Please ensure you have the SIM close to you to confirm payment</span>
+                                        </div>
+                                    </section> -->
                                     <!--- Mobile money section [end] -->
                                     <!--- ================================ -->
                                     <!--- ================================ -->
                                     <!--- Credit Card section [start] -->
-                                    <section id="credit_card_section" class="hide">
+                                    <!-- <section id="credit_card_section" class="hide">
                                         <div class="row">
                                             <p>Pay with Credit Card <span class="text-gray-2">We do not save credit card information</span></p>
 
@@ -215,7 +231,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </section>
+                                    </section> -->
                                     <!--- Credit Card section [end] -->
                                     <!--- ================================ -->
 
@@ -223,16 +239,69 @@
                                     <!--- general information section [end] -->
                                     <!--- ================================ -->
                                 </div>
+                                <section id="invoice_section" class="px-2 py-2">
+                                    <div class="col">
+                                        <h4>Your Invoice</h4>
+                                        <div class="row">
+                                            <div class="col-6 text-right">
+                                                Tour Name and tour name <span class="text-gray-1">2 Seats</span>
+                                            </div>
+                                            <div class="text-align-righta col-6">
+                                                GHC <span id="invoice_tour">0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 text-right">
+                                                Discount applied <span class="text-gray-1">(15%)</span>
+                                            </div>
+                                            <div class="text-align-righta col-6">
+                                                GHC <span id="invoice_discount">0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row border-top border-bottom">
+                                            <div class="col-6 text-right">
+                                                Sub-Total <span class="text-gray-1">(Without Taxes)</span>
+                                            </div>
+                                            <div class="text-align-righta col-6">
+                                                GHC <span id="invoice_subtotal">0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 text-right">
+                                                Value Added Tax <span class="text-gray-1">(15%)</span>
+                                            </div>
+                                            <div class="text-align-righta col-6">
+                                                GHC <span id="invoice_vat">0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row border-bottom">
+                                            <div class="col-6 text-right">
+                                                Tourism Levy <span class="text-gray-1">(1%)</span>
+                                            </div>
+                                            <div class="text-align-righta col-6">
+                                                GHC <span id="invoice_tourism">0.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="row border-top border-bottom">
+                                            <div class="col-6 text-right">
+                                                <h5>Total Fee: </h5>
+                                            </div>
+                                            <div class="align-text-right col-6">
+                                            <h5>GHC <span id="invoice_total">0.00</span></h5>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </section>
                             </div>
 
-                            <div class="warning my-5 d-flex align-items-center gap-3">
-                                <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
-                                <span>This trip occurs multiple times in a year, we will send you an email when next it will occur</span>
-                            </div>
 
                             <div class="d-flex">
-                                <button type="submit" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3 w-100">Book Trip</button>
+                                <button type="submit" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3 w-100">Confirm Booking</button>
                             </div>
+                            <center>
+                                <!-- <a href="#" onclick='verify_payment()'>I have made payment. Confirm receipt</a> -->
+                            </center>
                         </form>
                     </div>
                 </div>
@@ -255,10 +324,11 @@
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
-    <!-- easygo js -->
+    <!-- paystack js -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- easyGo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/home.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/payment.js"></script>
     <script>

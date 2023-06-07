@@ -23,6 +23,34 @@
 						record_user_login($result["user_id"]);
 						//check if user has special permissions
 						if(isset($result["curator_id"])){
+							//Block login if curator access has been suspended
+							if($result["access_status"] == "suspended"){
+								send_json(
+									array(
+										"msg" => "Login failed. Your access to the curator account has been suspended"
+										."Kindly reach out to a member of your team or your easyGo support person"
+									),100);
+									die();
+							// Block access if the national ID has not been verified
+							}else if ($result["id_verified"] == 0){
+								send_json(
+									array(
+										"msg" => "Login failed. Your Identification documents are pending verification"
+										." You will receive an email as soon as this process is complete. You can reach "
+										."out to our team at main.easygo@gmail.com"
+									),100
+									);
+									die();
+								// Block access if curator has not verified their email
+							}else if ($result["email_verified"] == 0){
+								send_json(
+									array(
+										"msg" => "You need to verify your email to proceed."
+										." Check your email for a verification link"
+									),100
+									);
+									die();
+							}
 							session_log_in_advanced($result["user_id"],$result["role"],$result["curator_id"]);
 							$url = server_base_url() . "curator/dashboard.php";
 						} else if (isset($result["admin"])){
@@ -35,12 +63,12 @@
 
 						send_json(array(
 							"msg" => "login success",
-							"url" => $url
+							"url" => $url,
 						));
 					}else {
 						send_json(
 							array(
-								"msg" => "Login failed"
+								"msg" => "Login failed. Credentials may be wrong"
 							),100
 							);
 					}
@@ -266,6 +294,11 @@
 				case "update_profile":
 					var_dump($_POST);
 					var_dump($_FILES);
+					die();
+				case "resend_email_verification":
+					$user_id = $_POST["user_id"];
+					// TODO:: send verification email
+					send_json(array("msg"=>"Pending implementation"));
 					die();
 				default:
 					echo "No implementation for <". $_POST["action"] .">";

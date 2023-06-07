@@ -1,8 +1,48 @@
 <?php
 	require_once(__DIR__. "/http_handler.php");
+	require_once(__DIR__. "/env_manager.php");
 
 
-	class paystack_custom{
+	class paystack_custom extends http_handler{
+		private $baseurl = "https://api.paystack.co/";
+		private $public_key = null;
+		private $private_key = null;
+
+		function __construct()
+		{
+			$this->public_key = paystack_public_key();
+			$this->private_key = paystack_private_key();
+		}
+
+
+		function verify_transaction($reference){
+			$response = $this->get($this->baseurl."transaction/verify/$reference",
+			null,
+			array(
+				"Authorization: Bearer ".$this->private_key,
+				"Cache-Control: no-cache",
+			  )
+			);
+
+			return json_decode($response,true);
+		}
+
+
+
+
+		// function popup(){
+		// 	return $this->post(
+		// 		$this->baseurl."",
+		// 		array(
+		// 			"email" => $email,
+		// 			"amount" => $amount,
+		// 			"ref" => $tour_id,
+		// 			"currency" => $currency,
+		// 			"metadata" => $metadata,
+		// 		)
+
+		// 	);
+		// }
 
 
 		// private function charge($email,$amount){

@@ -10,8 +10,8 @@ $("#start_date").on("input", () => { on_occurance_edit("start_date") });
 $(document).ready (()=>{
 	if(window.location.search.includes("id")){
 		//TODO: Edit trip
-		const trip_id = window.location.search.id;
-		console.log(trip_id);
+		const trip_id = url_params("id");
+		
 		//show loader
 		//get trip id from url params
 		//get trip information from database

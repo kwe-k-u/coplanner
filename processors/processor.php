@@ -14,18 +14,20 @@
 		"change_password_logged_in",
 		"invite_curator_collaborator",
 		"remove_curator_collaborator",
-		"update_profile"
+		"update_profile",
+		"resend_email_verification"
 	);
 	$booking_actions = array(
-		"trip_payment",
-		"verify_payment"
+		"book_trip",
+		"book_standard_tour"
 	);
 
 	$campaign_actions = array(
 		"create_campaign",
 		"add_tour_site",
 		"get_site_by_id",
-		"query_site"
+		"query_site",
+		"get_tour_charge"
 	);
 
 
@@ -64,27 +66,27 @@
 
 
 
-	if(in_array($_POST["action"],$auth_actions)){
+	if(in_array($_REQUEST["action"],$auth_actions)){
 		include_once(__DIR__."/sub_system/auth.php");
 	}
-	else if(in_array($_POST["action"],$campaign_actions)){
+	else if(in_array($_REQUEST["action"],$campaign_actions)){
 		include_once(__DIR__."/sub_system/campaign.php");
 	}
-	else if(in_array($_POST["action"],$private_tour_actions)){
+	else if(in_array($_REQUEST["action"],$private_tour_actions)){
 		include_once(__DIR__."/sub_system/private_tour.php");
 	}
-	else if(in_array($_POST["action"],$interaction_actions)){
+	else if(in_array($_REQUEST["action"],$interaction_actions)){
 		include_once(__DIR__."/sub_system/user_interaction.php");
 	}
-	else if(in_array($_POST["action"],$booking_actions)){
+	else if(in_array($_REQUEST["action"],$booking_actions)){
 		include_once(__DIR__."/sub_system/booking_and_payment.php");
 	}
-	else if(in_array($_POST["action"],$media_actions)){
+	else if(in_array($_REQUEST["action"],$media_actions)){
 		include_once(__DIR__."/sub_system/media.php");
 	}
-	else if(in_array($_POST["action"],$newsletter_actions)){
+	else if(in_array($_REQUEST["action"],$newsletter_actions)){
 		include_once(__DIR__."/sub_system/newsletter.php");
-	} else if (in_array($_POST["action"], $contact_actions)){
+	} else if (in_array($_REQUEST["action"], $contact_actions)){
 		include_once(__DIR__."/sub_system/contact.php");
 	}
 ?>

@@ -213,6 +213,7 @@ function login(form){
 			//check redirect
 			if (url_params("redirect")){
 				url = url_params("redirect");
+
 			}
 
 			window.location.href = url;
