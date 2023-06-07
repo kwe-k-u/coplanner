@@ -31,7 +31,7 @@
 					}else {
 
 					}
-
+					//TODO: Email curators on posting of private tour request
 					send_json(array("msg"=>"Uploaded your private trip request. Curators will send quotes soon"));
 					die();
 				case "bid_private_tour":
@@ -46,6 +46,7 @@
 					// die();
 					if($success){
 						send_json(array("msg"=> 'Bid placed'));
+						//TODO: email user on bid received
 					} else {
 						send_json(array("msg"=> 'Failed to place bid'),100);
 					}

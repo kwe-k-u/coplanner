@@ -1,18 +1,8 @@
 <?php
-require_once(__DIR__."/../utils/http_handler.php");
-var_dump($_REQUEST);
-die();
-$http = new http_handler();
-$response = $http->post(
-	"http://localhost/easygo_v2/processors/processor.php",
-	array(
-		"action" => "verify_payment",
-		"response" => "{'reference': '482300948'}",
-		"provider" => "paystack",
-		"amount_expected" => 3,
-		"currency_expected" => "GHS"
-	)
-);
+require_once(__DIR__."/../utils/mailer/mailer_class.php");
 
-var_dump($response);
+$mailer = new mailer();
+
+$res = $mailer->email_verification("kwekuaacquaye@gmail.com","");
+var_dump($res);
 ?>

@@ -73,6 +73,7 @@
 
 		if ($result){
 			return $result["token"] === $token;
+			return $result;
 		}
 		return false;
 	}

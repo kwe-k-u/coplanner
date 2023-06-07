@@ -41,19 +41,11 @@
 					}
 					die();
 				case "book_standard_tour":
-// {
-//     "reference": "200399320",
-//     "trans": "2865246896",
-//     "status": "success",
-//     "message": "Approved",
-//     "transaction": "2865246896",
-//     "trxref": "200399320",
-//     "redirecturl": "?trxref=200399320&reference=200399320"
-// }
 
 					$provider = $_POST["provider"];
 					$amount_expected = $_POST["amount_expected"];
 					$currency_expected = $_POST["currency_expected"];
+					$mailer = new mailer();
 
 					if ($provider == "paybox"){
 						$token = $_POST["token"];
@@ -98,7 +90,8 @@
 							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$amount,$trans_fee,$tax);
 							book_standard_trip($booking_id,$user_id,$tour_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
 
-							//TODO: send reciept
+							$email = get_user_by_id($user_id)["email"];
+							$mailer->booking_confirmation($email);
 						}
 
 						send_json(array(

@@ -1,5 +1,6 @@
 <?php
 
+	require_once(__DIR__."/../utils/mailer/mailer_class.php");
 
 
 	// if (!isset($_SERVER["PATH_INFO"])){

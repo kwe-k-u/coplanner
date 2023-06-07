@@ -80,6 +80,7 @@
 					$password = encrypt($_POST["password"]);
 					$number = $_POST["phone_number"];
 					$country = $_POST["country"];
+					$mailer = new mailer();
 					// $referral = $_POST["referral"];
 
 					//generate user id
@@ -103,7 +104,8 @@
 					$id_array = array("user_id"=> $user_id);
 					$email_token = encrypt(get_current_date());
 					create_email_verification_token($email_token,$user_id);
-					//TODO send email verification
+					$mailer->email_verification($email,$email_token);
+
 
 					//check if a curator invite link has been sent and add them
 					$collaborator_invite = get_curator_invite_by_email($email);
@@ -112,24 +114,26 @@
 						$curator_id = $collaborator_invite["curator_id"];
 						$privilege = $collaborator_invite["privilege"];
 
-							//uploading front side of government id
-							$gov_id_front = generate_id();
-							$image = $_FILES["gov_id_front"]["name"];
-							$tmp = $_FILES["gov_id_front"]["tmp_name"];
-							$location = upload_file("uploads","confidential",$tmp,$image);
-							upload_user_media_ctrl($gov_id_front,$user_id,$location);
+						//uploading front side of government id
+						$gov_id_front = generate_id();
+						$image = $_FILES["gov_id_front"]["name"];
+						$tmp = $_FILES["gov_id_front"]["tmp_name"];
+						$location = upload_file("uploads","confidential",$tmp,$image);
+						upload_user_media_ctrl($gov_id_front,$user_id,$location);
 
-							//uploading back side of government id
-							$gov_id_back = generate_id();
-							$image = $_FILES["gov_id_back"]["name"];
-							$tmp = $_FILES["gov_id_back"]["tmp_name"];
-							$location = upload_file("uploads","confidential",$tmp,$image);
-							upload_user_media_ctrl($gov_id_back,$user_id,$location);
+						//uploading back side of government id
+						$gov_id_back = generate_id();
+						$image = $_FILES["gov_id_back"]["name"];
+						$tmp = $_FILES["gov_id_back"]["tmp_name"];
+						$location = upload_file("uploads","confidential",$tmp,$image);
+						upload_user_media_ctrl($gov_id_back,$user_id,$location);
 
 						add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back,$privilege);
 						remove_curator_invite($email);
 						remove_expired_curator_invites();
-						//TODO send email letting them know addition was successful
+						$mailer->curator_invite_success($email);
+						send_json(array("msg"=>"Successfully added as a curator"));
+						die();
 					}
 
 
@@ -148,52 +152,52 @@
 								//adding uploaded images
 
 
-							//if company logo is uploaded, add it
-							if(isset($_FILES["company_logo"])){
-								$media_id = generate_id();
-								$image = $_FILES["company_logo"]["name"];
-								$tmp = $_FILES["company_logo"]["tmp_name"];
-								$location = upload_file("uploads","picture",$tmp,$image);
-								upload_curator_media_ctrl($media_id,$curator_id,$location);
-								update_curator_logo($curator_id,$media_id);
+								//if company logo is uploaded, add it
+								if(isset($_FILES["company_logo"])){
+									$media_id = generate_id();
+									$image = $_FILES["company_logo"]["name"];
+									$tmp = $_FILES["company_logo"]["tmp_name"];
+									$location = upload_file("uploads","picture",$tmp,$image);
+									upload_curator_media_ctrl($media_id,$curator_id,$location);
+									update_curator_logo($curator_id,$media_id);
 
-							}
-							//if incorporation document is uploaded, add it
-							if(isset($_FILES["inc_doc"])){
-								$media_id = generate_id();
-								$image = $_FILES["inc_doc"]["name"];
-								$tmp = $_FILES["inc_doc"]["tmp_name"];
+								}
+								//if incorporation document is uploaded, add it
+								if(isset($_FILES["inc_doc"])){
+									$media_id = generate_id();
+									$image = $_FILES["inc_doc"]["name"];
+									$tmp = $_FILES["inc_doc"]["tmp_name"];
+									$location = upload_file("uploads","confidential",$tmp,$image);
+									upload_curator_media_ctrl($media_id,$curator_id,$location,"doc");
+									update_curator_inc_doc($curator_id,$media_id);
+
+								}
+								//uploading front side of government id
+								$gov_id_front = generate_id();
+								$image = $_FILES["gov_id_front"]["name"];
+								$tmp = $_FILES["gov_id_front"]["tmp_name"];
 								$location = upload_file("uploads","confidential",$tmp,$image);
-								upload_curator_media_ctrl($media_id,$curator_id,$location,"doc");
-								update_curator_inc_doc($curator_id,$media_id);
+								upload_user_media_ctrl($gov_id_front,$user_id,$location);
 
-							}
-							//uploading front side of government id
-							$gov_id_front = generate_id();
-							$image = $_FILES["gov_id_front"]["name"];
-							$tmp = $_FILES["gov_id_front"]["tmp_name"];
-							$location = upload_file("uploads","confidential",$tmp,$image);
-							upload_user_media_ctrl($gov_id_front,$user_id,$location);
-
-							//uploading back side of government id
-							$gov_id_back = generate_id();
-							$image = $_FILES["gov_id_back"]["name"];
-							$tmp = $_FILES["gov_id_back"]["tmp_name"];
-							$location = upload_file("uploads","confidential",$tmp,$image);
-							upload_user_media_ctrl($gov_id_back,$user_id,$location);
+								//uploading back side of government id
+								$gov_id_back = generate_id();
+								$image = $_FILES["gov_id_back"]["name"];
+								$tmp = $_FILES["gov_id_back"]["tmp_name"];
+								$location = upload_file("uploads","confidential",$tmp,$image);
+								upload_user_media_ctrl($gov_id_back,$user_id,$location);
 
 
 								add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back);
 								//TODO include national identification
+								$mailer->curator_signup($email);
 
-								// $
-								// die();
 								break;
-
 							default:
 								// ECHO $_POST["type"];
 								echo "Not implemented";
 						}
+					}else {
+						$mailer->tourist_signup($email);
 					}
 
 					send_json($id_array);
@@ -204,6 +208,7 @@
 					send_json(array("msg" => "logged out"));
 					die();
 				case 'request_password_reset':
+					$mailer = new mailer();
 					remove_expired_tokens();
 					$email = $_POST["email"];
 					if ($email == ""){
@@ -214,6 +219,7 @@
 					$token = get_password_token($email);
 					if ($token){
 						echo "Check your email for link to reset your password";
+						$mailer->password_reset($email,$token);
 					}else {
 						echo 'Something went wrong. Try again soon';
 					}
@@ -221,6 +227,7 @@
 				case "change_password":
 					$token = $_POST["token"];
 					$new_password = encrypt($_POST["password"]);
+					$mailer = new mailer();
 
 					//remove expired tokens
 					remove_expired_tokens();
@@ -232,6 +239,9 @@
 						$success = change_user_password($token, $new_password);
 						if($success){
 							remove_used_password_token($token);
+							$u_id = $verify["user_id"];
+							$email = get_user_by_id($u_id)["email"];
+							$mailer->password_reset_confirmation($email);
 							echo "Password change successful. Login with your new password";
 						}else {
 							echo "Password change failed.";
@@ -246,12 +256,14 @@
 					$user_id = (isset($_POST["user_id"])) ? $_POST["user_id"] : get_session_user_id();
 					$email = get_user_by_id($user_id)["email"];
 					$result = log_in_user($email,$current_password);
-					echo "eres ".$result;
+					$mailer = new mailer();
+					// echo "eres ".$result;
 					if ($result){
 						change_password_by_user_id($user_id,$new_password);
+						$mailer->password_reset_confirmation($email);
 
 						session_log_out();
-						send_json("You have to log in now");
+						send_json(array("msg"=>"You have to log in now"));
 					} else {
 						send_json("Current password does not match",100);
 					}
@@ -263,26 +275,26 @@
 					$email = $_POST["email"];
 					$curator_id = $_POST["curator_id"];
 					$privilege = $_POST["privilege"];
+					$mailer = new mailer();
 
 					$user = get_user_by_email($email);
 					if ($user){//user exists
 						$is_collaborator = is_user_a_collaborator($user["user_id"]);
 						if($is_collaborator){
 							//send error saying user is a collaborator
-							echo "";
-							send_json(array("msg"=>"user is a registered collaborator and can't manage several accounts"));
+							send_json(array("msg"=>"user is a registered collaborator and can't manage several accounts"),100);
 						}else {
 							//add the managers
 							// add_curator_manager($curator_id,$user["user_id"],$privilege);
+							$mailer->curator_invite_success($email);
 							send_json(array("msg"=>"Added <$email> as collaborator"));
-							//TODO send email
 						}
 
 					}else {//user doesn't exist
 						//create invite entry
 						invite_curator_manager($curator_id,$email,$privilege);
+						$mailer->curator_invite($email);
 						send_json(array("msg"=>"Invite sent to <$email>"));
-						//TODO Send email to notify
 
 					}
 					die();
@@ -297,6 +309,8 @@
 					die();
 				case "resend_email_verification":
 					$user_id = $_POST["user_id"];
+					$mailer = new mailer();
+					// $mailer->email_verification($email,$token);
 					// TODO:: send verification email
 					send_json(array("msg"=>"Pending implementation"));
 					die();
