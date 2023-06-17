@@ -15,13 +15,23 @@
 		return $class->get_recent_bookings($curator_id);
 	}
 
-	function get_curator_statistics($curator_id){
+	/**Returns an array with summary stats about the curator. Toggle full to show all stats */
+	function get_curator_statistics($curator_id, $full = false){
 		$class = new curator_interaction_class();
+		$rating = get_average_rating($curator_id);
 		return array(
-			"upcoming_trip_count" => $class->get_curator_trip_count($curator_id)["upcoming_trip_count"] ?? 0,
+			($full ? "tour_count" : "upcoming_trip_count") => $class->get_curator_trip_count($curator_id, $full)["upcoming_trip_count"] ?? 0,
 			"total_revenue" =>$class->get_curator_revenue($curator_id)["total_revenue"] ?? 0,
-			"withdrawable_balance" => $class->get_curator_balance($curator_id)["withdrawable_balance"] ?? 0
+			"withdrawable_balance" => $class->get_curator_balance($curator_id)["withdrawable_balance"] ?? 0,
+			"average_rating" =>$rating["average_rating"] ?? 0,
+			"review_count" => $rating["review_count"]
 		);
+	}
+
+	function get_average_rating($curator_id){
+		$class = new curator_interaction_class();
+		$results = $class->get_average_rating($curator_id);
+		return $results ? $results : array("average_rating"=> 0, "review_count" => 0);
 	}
 
 
@@ -32,6 +42,11 @@
 			$data[$i]["media"] =$class->get_campaign_image($data[$i]["campaign_id"]);
 		}
 		return $data;
+	}
+
+	function get_curator_reviews($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_curator_reviews($curator_id);
 	}
 
 	function get_curator_bookings($curator_id){

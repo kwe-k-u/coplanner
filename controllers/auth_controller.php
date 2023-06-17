@@ -89,6 +89,11 @@
 		return $auth->get_curator_invite_by_email($email);
 	}
 
+	function get_curator_invite_by_token($token){
+		$auth = new auth_class();
+		return $auth->get_curator_invite_by_token($token);
+	}
+
 
 
 

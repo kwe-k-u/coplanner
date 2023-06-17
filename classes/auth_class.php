@@ -113,9 +113,16 @@
 		function get_curator_invite_by_email($email){
 			$sql = "SELECT * FROM `curator_manager_invite` WHERE email_address = ?
 			AND `invite_expiry` < CURRENT_TIMESTAMP";
-			// return $this->db_fetch_one($sql);
 			$this->prepare($sql);
 			$this->bind($email);
+
+			return $this->db_fetch_one();
+		}
+
+		function get_curator_invite_by_token($token){
+			$sql = "SELECT * FROM `curator_manager_invite` WHERE token = ?";
+			$this->prepare($sql);
+			$this->bind($token);
 
 			return $this->db_fetch_one();
 		}
@@ -128,7 +135,6 @@
 		function sign_up_user($user_id, $email, $user_name,$password,$phone_number,$country){
 			$sql = "INSERT INTO `users`(`user_id`,`email`,`user_name`,`password`,`phone_number`,`country`)
 			VALUES(?,?,?,?, ?,?)";
-			// return $sql;
 			$this->prepare($sql);
 			$this->bind($user_id,$email,$user_name,$password,$phone_number,$country);
 			return $this->db_query();

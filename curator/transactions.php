@@ -91,41 +91,53 @@
                                 <div class="tab-pane fade show active" id="booking-transactions" role="tabpanel" aria-labelledby="booking-transactions-tab">
                                     <div class="easygo-list-3 list-striped" style="min-width: 992px;">
                                         <div class="list-item list-header bg-transparent" style="box-shadow: none;">
+
                                             <div class='item-bullet-container'>
-                                                <div class='item-bullet'></div>
                                             </div>
-                                            <div class="inner-item">Transaction ID</div>
-                                            <div class="inner-item">Sender Name</div>
-                                            <div class="inner-item">Amount</div>
-                                            <div class="inner-item">Trip</div>
-                                            <div class="inner-item">Trip Date</div>
-                                            <div class="inner-item">Transaction Date</div>
-                                            <div class="inner-item">Fee</div>
-                                        </div>
+                                            <div class='inner-item'>Transaction Id</div>
+                                            <div class='inner-item'>Booking Date</div>
+                                            <div class='inner-item'>User</div>
+                                            <div class='inner-item'>Amount</div>
+                                            <div class='inner-item'>Taxes</div>
+                                            <div class='inner-item'>Charges</div>
+                                            <div class='inner-item'>Seats</div>
+                                            <div class='inner-item'>Tour Name</div>
+                                            <div class='inner-item'>Tour Date</div>
+                                            <div class='inner-item'>Emergency Contact</div>
+                                    </div>
                                         <?php
                                             $booking_transactions = get_booking_transactions($curator_id);
 
                                             foreach($booking_transactions as $entry){
                                                 $transaction_id = $entry["transaction_id"];
-                                                $sender = $entry["user_name"];
-                                                $date = $entry["transaction_date"];
+                                                $name = $entry["user_name"];
+                                                $date_booked = format_string_as_date_fn($entry["date_booked"]);
+                                                $contact_name = $entry["emergency_contact_name"];
+                                                $contact_number = $entry["emergency_contact_number"];
+                                                $transaction_amount = format_string_as_currency_fn($entry["amount"]);
                                                 $currency = $entry["currency"];
-                                                $amount = $entry["transaction_amount"];
-                                                $fee = $entry["transaction_fee"];
-
+                                                $seats = $entry["seats_booked"];
+                                                $trip_date = format_string_as_date_fn($entry["start_date"]);
+                                                $trip_name = $entry["title"];
+                                                $tax = format_string_as_currency_fn($entry["tax"]);
+                                                $charge = format_string_as_currency_fn($entry["charges"]);
                                                 echo "
-                                            <div class='list-item'>
-                                                <div class='item-bullet-container'>
-                                                    <div class='item-bullet'></div>
-                                                </div>
-                                                <div class='inner-item'>$transaction_id</div>
-                                                <div class='inner-item'>$sender</div>
-                                                <div class='inner-item'>$currency $amount</div>
-                                                <div class='inner-item'>$trip_name</div>
-                                                <div class='inner-item'>$trip_date</div>
-                                                <div class='inner-item'>$date</div>
-                                                <div class='inner-item text-danger'>$currency -$fee</div>
-                                            </div>";
+                                        <div class='list-item'>
+                                            <div class='item-bullet-container'>
+                                                <div class='item-bullet'></div>
+                                            </div>
+                                            <div class='inner-item'>$transaction_id</div>
+                                            <div class='inner-item'>$date_booked</div>
+                                            <div class='inner-item'>$user_name</div>
+                                            <div class='inner-item text-success'>$currency $transaction_amount</div>
+                                            <div class='inner-item text-danger'>$currency $tax</div>
+                                            <div class='inner-item text-danger'>$currency $charge</div>
+                                            <div class='inner-item'>$seats seats</div>
+                                            <div class='inner-item'>$trip_name</div>
+                                            <div class='inner-item'>$trip_date</div>
+                                            <div class='inner-item'>$contact_name - $contact_number</div>
+                                        </div>
+                                            ";
                                             }
 
                                             if(!$booking_transactions){
@@ -215,11 +227,11 @@
                                     <div class="pagination-section my-5">
                                         <div class="row">
                                             <div class="col-lg-3">
-                                                <!-- <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div> -->
+                                                 <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div> -->
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                                 <!--- withdrawals [end] -->
                                 <!--- ================================ -->
                             </div>

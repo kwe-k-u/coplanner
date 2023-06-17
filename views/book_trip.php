@@ -1,4 +1,5 @@
 <?php
+    // TODO:: Take discount code and check if its valid. If yes, apply discount to fee calculations (book_trip front end, booking_processor)
     require_once(__DIR__."/../utils/core.php");
     // require_once(__DIR__."/../controllers/campaign_controller.php");
     require_once(__DIR__."/../controllers/interaction_controller.php");
@@ -21,6 +22,16 @@
         header("Location: login.php?redirect=book_trip.php?tour_id=$id");
     }
 
+
+
+    $tour = get_campaign_by_trip_id($id);
+    $name = $tour["title"];
+    $fee = $tour["fee"];
+    $currency = $tour["currency"];
+    $max_seats = 5;
+    $vat = $fee * VAT_RATE;
+    $tourism = $fee * TOURISM_LEVY;
+    $total = $vat + $tourism + $fee;
 
 ?>
 <!DOCTYPE html>
@@ -134,7 +145,8 @@
                                             <div class="text-gray-1 easygo-fs-4">Number of Adults</div>
                                             <div class="easygo-num-input">
                                                 <span data-input-target="#num-adults" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
-                                                <input id="num-adults" name="num_adults" type="number" class="border-blue text-center" value="1" min="0" max="100">
+                                                <?php echo "<input id='num-adults' name='num_adults' onchange='display_invoice($fee,$max_seats)' type='number' class='border-blue text-center' value='1' min='0' max='$max_seats'>"; ?>
+
                                                 <span data-input-target="#num-adults" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
                                             </div>
                                         </div>
@@ -144,8 +156,26 @@
                                             <div class="text-gray-1 easygo-fs-4">Number of Children <span class="text-gray-2"> (Anyone below 18 years old)</span> </div>
                                             <div class="easygo-num-input">
                                                 <span data-input-target="#num-kids" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
-                                                <input id="num-kids" name="num_kids" type="number" class="border-blue text-center" value="0" min="0" max="100">
+                                                <?php echo "<input onchange='display_invoice($fee,$max_seats)' id='num-kids' name='num_kids' type='number' class='border-blue text-center' value='0' min='0' max='$max_seats'>"; ?>
+
                                                 <span data-input-target="#num-kids" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-input-field py-2">
+                                            <div class="text-gray-1 easygo-fs-4">Invoice Email </div>
+                                            <div class="easygo-num-input">
+                                                <input type="email" name="invoice_email" id="invoice_email" class="text-center border-blue">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-input-field py-2">
+                                            <div class="text-gray-1 easygo-fs-4">Discount code </div>
+                                            <div class="easygo-num-input">
+                                                <input type="text" name="discount_code" id="discount_code" class="text-center border-blue">
                                             </div>
                                         </div>
                                     </div>
@@ -242,54 +272,61 @@
                                 <section id="invoice_section" class="px-2 py-2">
                                     <div class="col">
                                         <h4>Your Invoice</h4>
-                                        <div class="row">
-                                            <div class="col-6 text-right">
-                                                Tour Name and tour name <span class="text-gray-1">2 Seats</span>
+                                        <?php
+                                            echo "
+                                            <div class='row'>
+
+                                            <div class='col-6 text-right'>
+                                                <b>$name</b> <span class='text-gray-1' id='seat_span'>1 Seat</span>
                                             </div>
-                                            <div class="text-align-righta col-6">
-                                                GHC <span id="invoice_tour">0.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 text-right">
-                                                Discount applied <span class="text-gray-1">(15%)</span>
-                                            </div>
-                                            <div class="text-align-righta col-6">
-                                                GHC <span id="invoice_discount">0.00</span>
+                                            <div class='text-align-righta col-6'>
+                                                $currency <span id='invoice_tour'>$fee</span>
                                             </div>
                                         </div>
-                                        <div class="row border-top border-bottom">
-                                            <div class="col-6 text-right">
-                                                Sub-Total <span class="text-gray-1">(Without Taxes)</span>
+                                        <div class='row'>
+                                            <div class='col-6 text-right'>
+                                                Discount applied <span class='text-gray-1'>(0%)</span>
                                             </div>
-                                            <div class="text-align-righta col-6">
-                                                GHC <span id="invoice_subtotal">0.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 text-right">
-                                                Value Added Tax <span class="text-gray-1">(15%)</span>
-                                            </div>
-                                            <div class="text-align-righta col-6">
-                                                GHC <span id="invoice_vat">0.00</span>
+                                            <div class='text-align-righta col-6'>
+                                                $currency <span id='invoice_discount'>0.00</span>
                                             </div>
                                         </div>
-                                        <div class="row border-bottom">
-                                            <div class="col-6 text-right">
-                                                Tourism Levy <span class="text-gray-1">(1%)</span>
+                                        <div class='row border-top border-bottom'>
+                                            <div class='col-6 text-right'>
+                                                <b>Sub-Total <span class='text-gray-1'>(Without Taxes)</span></b>
                                             </div>
-                                            <div class="text-align-righta col-6">
-                                                GHC <span id="invoice_tourism">0.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="row border-top border-bottom">
-                                            <div class="col-6 text-right">
-                                                <h5>Total Fee: </h5>
-                                            </div>
-                                            <div class="align-text-right col-6">
-                                            <h5>GHC <span id="invoice_total">0.00</span></h5>
+                                            <div class='text-align-righta col-6'>
+                                               <b> $currency <span id='invoice_subtotal'>$fee</span></b>
                                             </div>
                                         </div>
+                                        <div class='row'>
+                                            <div class='col-6 text-right'>
+                                                Value Added Tax <span class='text-gray-1'>(15%)</span>
+                                            </div>
+                                            <div class='text-align-righta col-6'>
+                                                $currency <span id='invoice_vat'>$vat</span>
+                                            </div>
+                                        </div>
+                                        <div class='row border-bottom'>
+                                            <div class='col-6 text-right'>
+                                                Tourism Levy <span class='text-gray-1'>(1%)</span>
+                                            </div>
+                                            <div class='text-align-righta col-6'>
+                                                $currency <span id='invoice_tourism'>$tourism</span>
+                                            </div>
+                                        </div>
+                                        <div class='row border-top border-bottom'>
+                                            <div class='col-6 text-right'>
+                                                <h5><b>Total Fee: </b></h5>
+                                            </div>
+                                            <div class='align-text-right col-6'>
+                                            <h5><b>$currency <span id='invoice_total'>$total</span><b/b></h5>
+                                            </div>
+                                        </div>
+                                            ";
+                                        ?>
+
+
 
                                     </div>
                                 </section>
@@ -299,9 +336,9 @@
                             <div class="d-flex">
                                 <button type="submit" class="easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3 w-100">Confirm Booking</button>
                             </div>
-                            <center>
-                                <!-- <a href="#" onclick='verify_payment()'>I have made payment. Confirm receipt</a> -->
-                            </center>
+                            <!-- <center>
+                                <a href="#" onclick='verify_payment()'>I have made payment. Confirm receipt</a>
+                            </center> -->
                         </form>
                     </div>
                 </div>
@@ -330,7 +367,8 @@
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/payment.js"></script>
+    <script src="../assets/js/payment.js">
+    </script>
     <script>
         function switch_method(select) {
             var momo = document.getElementById("mobile_money_section");

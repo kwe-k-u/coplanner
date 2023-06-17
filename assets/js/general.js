@@ -73,7 +73,31 @@ $(document).ready(function () {
       }
     }
   }
+
+  function sidebar_check(){
+    const select_style = "border-right: solid 2px var(--easygo-blue);";
+    var side = document.getElementById("curator_side_bar");
+    if (side != undefined){
+      const page = window.location.pathname;
+      if (page.includes("group_trips.php") || page.includes("private_trips.php")){
+        document.getElementById("nav_trips").classList.toggle("text-blue");
+        document.getElementById("nav_trips").style = select_style;
+        // document.getElementById("nav_trips").classList.toggle("open");
+      }else if (page.includes("transactions.php")){
+        document.getElementById("nav_finance").classList.toggle("text-blue");
+        document.getElementById("nav_finance").style = select_style;
+      }else if (page.includes("account_settings.php")){
+        document.getElementById("nav_account").classList.toggle("text-blue");
+        document.getElementById("nav_account").style = select_style;
+      }else {
+        document.getElementById("nav_dash").classList.toggle("text-blue");
+        document.getElementById("nav_dash").style = select_style;
+
+      }
+    }
+  }
   nav_check();
+  sidebar_check();
 });
 
 /*************** FUNCTIONS ****************/

@@ -11,6 +11,13 @@ ob_start();
 
 
 
+	/*** RATES */
+	CONST TOURISM_LEVY = 0.1;
+	const VAT_RATE = 0.15;
+	const DOLLAR_RATE =12.5;
+	
+
+
 	/**Signs in user accounts */
 	function session_log_in($user_id,$role){
 		$_SESSION["user_id"] = $user_id;

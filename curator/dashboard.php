@@ -96,9 +96,9 @@ $logo = $info["curator_logo"];
                         $stats = get_curator_statistics(get_session_account_id());
                         // var_dump($stats);
                         // die();
-                        $upcoming = $stats["upcoming_trip_count"];
-                        $total_revenue = $stats["total_revenue"];
-                        $balance = $stats["withdrawable_balance"];
+                        $upcoming = format_string_as_currency_fn($stats["upcoming_trip_count"]);
+                        $total_revenue = format_string_as_currency_fn($stats["total_revenue"]);
+                        $balance = format_string_as_currency_fn($stats["withdrawable_balance"]);
                         $private_tour = 0; //$stats["private_trips"];
 
                         echo "
@@ -225,34 +225,53 @@ $logo = $info["curator_logo"];
                                 $bookings = get_recent_bookings(get_session_account_id());
 
                                 if ($bookings) {
-                                    foreach ($variable as $entry) {
+                                    echo "
+                                        <div class='list-item list-header'>
+                                            <div class='item-bullet-container'>
+                                            </div>
+                                            <div class='inner-item'>Transaction Id</div>
+                                            <div class='inner-item'>Booking Date</div>
+                                            <div class='inner-item'>User</div>
+                                            <div class='inner-item'>Amount</div>
+                                            <div class='inner-item'>Taxes</div>
+                                            <div class='inner-item'>Charges</div>
+                                            <div class='inner-item'>Seats</div>
+                                            <div class='inner-item'>Tour Name</div>
+                                            <div class='inner-item'>Tour Date</div>
+                                            <div class='inner-item'>Emergency Contact</div>
+                                        </div>
+                                            ";
+                                    foreach ($bookings as $entry) {
                                         $transaction_id = $entry["transaction_id"];
                                         $name = $entry["user_name"];
-                                        $date_booked = $entry["date_booked"];
+                                        $date_booked = format_string_as_date_fn($entry["date_booked"]);
                                         $contact_name = $entry["emergency_contact_name"];
                                         $contact_number = $entry["emergency_contact_number"];
                                         $transaction_amount = $entry["amount"];
                                         $currency = $entry["currency"];
-                                        $seats = $entry["seats"];
-                                        $trip_date = $entry["trip_start_date"];
+                                        $seats = $entry["seats_booked"];
+                                        $trip_date = format_string_as_date_fn($entry["start_date"]);
                                         $trip_name = $entry["title"];
-                                    }
-                                    echo "
-                            <div class='list-item'>
-                                <div class='item-bullet-container'>
-                                    <div class='item-bullet'></div>
+                                        $tax = $entry["tax"];
+                                        $charge = $entry["charges"];
+                                        echo "
+                                <div class='list-item'>
+                                    <div class='item-bullet-container'>
+                                        <div class='item-bullet'></div>
+                                    </div>
+                                    <div class='inner-item'>$transaction_id</div>
+                                    <div class='inner-item'>$date_booked</div>
+                                    <div class='inner-item'>$user_name</div>
+                                    <div class='inner-item text-success'>$currency $transaction_amount</div>
+                                    <div class='inner-item text-danger'>$currency $tax</div>
+                                    <div class='inner-item text-danger'>$currency $charge</div>
+                                    <div class='inner-item'>$seats seats</div>
+                                    <div class='inner-item'>$trip_name</div>
+                                    <div class='inner-item'>$trip_date</div>
+                                    <div class='inner-item'>$contact_name - $contact_number</div>
                                 </div>
-                                <div class='inner-item'>$transaction_id</div>
-                                <div class='inner-item'>$date_booked</div>
-                                <div class='inner-item'>$user_name</div>
-                                <div class='inner-item'>$trip_name</div>
-                                <div class='inner-item'>$trip_date</div>
-                                <div class='inner-item'>$seats</div>
-                                <div class='inner-item'>$currency $transaction_amount</div>
-                                <div class='inner-item'>$contact_name - $contact_number</div>
-                                <div class='inner-item'>Success</div>
-                            </div>
-                                ";
+                                    ";
+                                    }
                                 } else {
                                     echo "
                             <div class='list-item'>

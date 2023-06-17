@@ -130,7 +130,9 @@
 		}
 
 		function get_campaign_by_trip_id($trip_id){
-			$sql = "SELECT * FROM `campaigns` WHERE `campaign_id` = ?";
+			$sql = "SELECT * FROM `campaigns` as c
+			join campaign_trips ct on ct.campaign_id = c.campaign_id
+			WHERE ct.trip_id = ?";
 			$this->prepare($sql);
 			$this->bind($trip_id);
 			return $this->db_fetch_one();

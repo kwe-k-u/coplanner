@@ -13,8 +13,15 @@ $user_name = $info["user_name"];
 $curator_name = $info["curator_name"];
 $logo = $info["curator_logo"];
 $email = $info["email"];
-$number = $info["phone_number"]
+$number = $info["phone_number"];
 
+$stats = get_curator_statistics($curator_id, true);
+$group_count = $stats["tour_count"];
+$revenue = format_string_as_currency_fn($stats["total_revenue"]);
+$balance = format_string_as_currency_fn($stats["withdrawable_balance"]);
+$private_count = 0;//$stats["withdrawable_balance"];
+$rating = $stats["average_rating"];
+$rating_count = $stats["review_count"];
 
 ?>
 <!DOCTYPE html>
@@ -106,15 +113,19 @@ $number = $info["phone_number"]
                                                 <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
                                             </div>
                                             <div>
-                                                <h2 class="easygo-fs-1 easygo-fw-1">4.8</h2>
-                                                <div class="text-orange">
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    &nbsp; &nbsp; <span class="text-black easygo-fs-5 easygo-fw-1">14 reviews</span>
+                                                <?php
+                                                    echo "
+                                                    <h2 class='easygo-fs-1 easygo-fw-1'>$rating</h2>
+                                                <div class='text-orange'>
+                                                    <i class='fa-solid fa-star'></i>
+                                                    <i class='fa-solid fa-star'></i>
+                                                    <i class='fa-solid fa-star'></i>
+                                                    <i class='fa-solid fa-star'></i>
+                                                    <i class='fa-solid fa-star'></i>
+                                                    &nbsp; &nbsp; <span class='text-black easygo-fs-5 easygo-fw-1'>$rating_count reviews</span>
                                                 </div>
+                                                ";
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -129,50 +140,54 @@ $number = $info["phone_number"]
                     <section class="stat-cards pt-5">
                         <h3 class="easygo-fs-3 easygo-fw-1 ps-3">Company at glance</h3>
                         <div class="row">
-                            <div class="col-lg-3 col-sm-6 py-3">
-                                <div class="info-card m-auto bg-white">
-                                    <div class="info-img">
-                                        <img src="../assets/images/svgs/bus_red_bg.svg" alt="bus image">
+                            <?php
+                                echo "
+                                <div class='col-lg-3 col-sm-6 py-3'>
+                                <div class='info-card m-auto bg-white'>
+                                    <div class='info-img'>
+                                        <img src='../assets/images/svgs/bus_red_bg.svg' alt='bus image'>
                                     </div>
-                                    <div class="info-content">
-                                        <div class="text-gray-1 info-title easygo-fs-4">Group Trips</div>
-                                        <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 py-3">
-                                <div class="info-card m-auto bg-white">
-                                    <div class="info-img">
-                                        <img src="../assets/images/svgs/bus_black_bg.svg" alt="bus image">
-                                    </div>
-                                    <div class="info-content">
-                                        <div class="text-gray-1 info-title easygo-fs-4">Private Trips</div>
-                                        <div class="info-num easygo-fs-2 easygo-fw-1">54</div>
+                                    <div class='info-content'>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Group Trips</div>
+                                        <div class='info-num easygo-fs-2 easygo-fw-1'>$group_count</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-sm-6 py-3">
-                                <div class="info-card m-auto bg-white">
-                                    <div class="info-img">
-                                        <img src="../assets/images/svgs/barchart_blue_bg.svg" alt="bus image">
+                            <div class='col-lg-3 col-sm-6 py-3'>
+                                <div class='info-card m-auto bg-white'>
+                                    <div class='info-img'>
+                                        <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                     </div>
-                                    <div class="info-content">
-                                        <div class="text-gray-1 info-title easygo-fs-4">Total Revenue</div>
-                                        <div class="info-num easygo-fs-2 easygo-fw-1">GHS 2,456.00</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 py-3">
-                                <div class="info-card m-auto bg-white">
-                                    <div class="info-img">
-                                        <img src="../assets/images/svgs/wallet_orange_bg.svg" alt="bus image">
-                                    </div>
-                                    <div class="info-content">
-                                        <div class="text-gray-1 info-title easygo-fs-4">Remaining Balance</div>
-                                        <div class="info-num easygo-fs-2 easygo-fw-1">GHS 2,456.00</div>
+                                    <div class='info-content'>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Private Trips</div>
+                                        <div class='info-num easygo-fs-2 easygo-fw-1'>$private_count</div>
                                     </div>
                                 </div>
                             </div>
+                            <div class='col-lg-3 col-sm-6 py-3'>
+                                <div class='info-card m-auto bg-white'>
+                                    <div class='info-img'>
+                                        <img src='../assets/images/svgs/barchart_blue_bg.svg' alt='bus image'>
+                                    </div>
+                                    <div class='info-content'>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Total Revenue</div>
+                                        <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $revenue</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-lg-3 col-sm-6 py-3'>
+                                <div class='info-card m-auto bg-white'>
+                                    <div class='info-img'>
+                                        <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
+                                    </div>
+                                    <div class='info-content'>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Remaining Balance</div>
+                                        <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                    </div>
+                                </div>
+                            </div>
+                                "
+                            ?>
                         </div>
                     </section>
                     <!-- stat cards [end] -->
@@ -203,31 +218,27 @@ $number = $info["phone_number"]
                                 <!--- all trips [start] -->
                                 <div class="tab-pane fade active show" id="all-trips" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
-                                        <div class="list-item">
-                                            <div class="col">
-                                                <div class="inner-item">Aburi Botanical Gardens Trip</div>
-                                                <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                                                <div class="inner-item-easygo-fs-3">
-                                                    <?php echo str_repeat("A good trip",50) ?>
+                                    <?php
+                                        $tours_stats = get_curator_campaigns($curator_id);
+                                        foreach ($tours_stats as $entry) {
+                                            $title = $entry["title"];
+                                            $tour_count = $entry["trip_count"];
+                                            $label = $tour_count > 1 ? "Tours" : "Tour";
+                                            $desc = $entry["description"];
+                                            echo"
+                                            <div class='list-item'>
+                                                <div class='col'>
+                                                    <div class='inner-item easygo-fs-3'>$title</div>
+                                                    <div class='inner-item easygo-fs-5 text-end'>$tour_count $label</div>
+                                                    <div class='inner-item-easygo-fs-3'>
+                                                    $desc
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="inner-item">Kwame Nkrumah National Park</div>
-                                            <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="inner-item">Mount Afadzo Trip</div>
-                                            <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="inner-item">Osu Castle Trip</div>
-                                            <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="inner-item">Aburi Gardens</div>
-                                            <div class="inner-item easygo-fs-5 text-end">50 Bookings</div>
-                                        </div>
+                                            ";
+                                        }
+                                    ?>
+
                                     </div>
                                 </div>
                                 <!--- all trips [end] -->
@@ -322,20 +333,36 @@ $number = $info["phone_number"]
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
 
                                 <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
-                                        <div class="list-item">
-                                            <div class="col">
-                                                <div class="row">
-                                                    <div class="inner-item easygo-fs-2">
-                                                        Aburi Botanical Gardens Tour
+                                <?php
+                                    $reviews = get_curator_reviews($curator_id);
+                                    if(!$reviews){
+                                        echo "<h3>No reviews yet</h3>";
+                                    }
+                                    foreach ($reviews as $entry) {
+                                        $user_name = $entry["user_name"];
+                                        $comment = $entry["comment"];
+                                        $star = $entry["num_stars"];
+                                        $label = $star > 1 ? "Stars" : "Star";
+                                        $tour_date = format_string_as_date_fn($entry["tour_date"]);
+                                        echo "
+                                        <div class='list-item'>
+                                            <div class='col'>
+                                                <div class='row'>
+                                                    <div class='inner-item easygo-fs-2'>
+                                                        $user_name
                                                     </div>
-                                                    <div class="inner-item easygo-fs-5 text-end">Tour Date: DD MMM YYYY </div> <!-- Date of trip-->
+                                                    <div class='inner-item easygo-fs-5 text-end'>Tour Date: $tour_date </div>
                                                 </div>
-                                                <div class="inner-item">5 Stars</div>
-                                                <div class="inner-item-easygo-fs-3">
-                                                    <?php echo str_repeat("A good trip",50) ?>
+                                                <div class='inner-item'>$star $label</div>
+                                                <div class='inner-item-easygo-fs-3'>
+                                                $comment
                                                 </div>
                                             </div>
                                         </div>
+                                        ";
+                                    }
+                                ?>
+
                                     </div>
                                 </div>
 

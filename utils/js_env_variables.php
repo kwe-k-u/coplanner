@@ -11,5 +11,8 @@
 		const baseurl = '$base_url';
 		const server_mode = $server_mode;
 		const paystack_public_key = '$paystack_key';
+		const vat_rate =".VAT_RATE."
+		const tourism_levy =".TOURISM_LEVY."
+		const dollar_rate =".DOLLAR_RATE."
 	</script>";
 ?>

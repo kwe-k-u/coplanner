@@ -83,10 +83,10 @@
 							$transaction_id = $data["id"];
 							$trans_fee=$data["fees"]/100;
 							$trans_date = $data["paid_at"];
-							$tax = ($amount_expected * 0.15)/100;
+							$tax = ($data["amount"] * 0.15)/100;
 							$trans_amount = $data["amount"]/100;
 							$currency = $data["currency"];
-							$amount = $trans_amount * (1-0.15);
+							$amount = $trans_amount * $tax;
 							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$amount,$trans_fee,$tax);
 							book_standard_trip($booking_id,$user_id,$tour_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
 

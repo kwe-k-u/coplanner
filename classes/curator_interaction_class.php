@@ -4,7 +4,7 @@
 
 	class curator_interaction_class extends db_prepared{
 
-		// Returns information about curator and coll
+		// Returns information about curator and logged in collaborator
 		function get_collaborator_info($user_id){
 			$sql = "SELECT
 			users.user_id as user_id,
@@ -31,7 +31,9 @@
 		function get_recent_bookings($curator_id){
 			$sql = "SELECT
 			transactions.transaction_id,
-			transactions.transaction_amount as amount,
+			transactions.amount,
+			transactions.tax,
+			transactions.charges,
 			transactions.currency,
 			transactions.transaction_date,
 			bookings.date_booked,
@@ -57,12 +59,15 @@
 			return $this->db_fetch_all();
 		}
 
-		function get_curator_trip_count($curator_id){
+		function get_curator_trip_count($curator_id,$full){
 			$sql = "SELECT count(campaign_trips.trip_id) as upcoming_trip_count
 			FROM campaign_trips
 			JOIN campaigns on campaign_trips.campaign_id = campaigns.campaign_id
 			WHERE campaigns.curator_id = ?
 			";
+			if(!$full){
+				$sql = $sql . " AND campaign_trips.start_date > CURRENT_TIMESTAMP";
+			}
 			$this->prepare($sql);
 			$this->bind($curator_id);
 
@@ -70,7 +75,7 @@
 		}
 
 		function get_curator_revenue($curator_id){
-			$sql = "SELECT sum(transactions.transaction_amount)  AS total_revenue FROM transactions
+			$sql = "SELECT sum(transactions.amount)  AS total_revenue FROM transactions
 			JOIN bookings on bookings.transaction_id = transactions.transaction_id
 			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
 			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
@@ -82,7 +87,7 @@
 		}
 
 		function get_curator_balance($curator_id){
-			$sql = "SELECT sum(transactions.transaction_amount)  AS withdrawable_balance FROM transactions
+			$sql = "SELECT sum(transactions.amount)  AS withdrawable_balance FROM transactions
 			JOIN bookings on bookings.transaction_id = transactions.transaction_id
 			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
 			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
@@ -104,7 +109,9 @@
 		function get_curator_bookings($curator_id){
 			$sql = "SELECT
 			transactions.transaction_id,
-			transactions.transaction_amount as amount,
+			transactions.amount,
+			transactions.charges,
+			transactions.tax,
 			transactions.currency,
 			transactions.transaction_date,
 			bookings.date_booked,
@@ -129,16 +136,48 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_average_rating($curator_id){
+			$sql = "SELECT
+			AVG(r.num_stars) as average_rating,
+			count(r.review_id) as review_count
+			from reviews AS r
+			JOIN bookings as b on b.booking_id = r.booking_id
+			join campaign_trips as ct on ct.trip_id = b.trip_id
+			join campaigns as c on c.campaign_id = ct.campaign_id
+			where c.curator_id = ?
+			";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_one();
+		}
+
 
 
 		function get_curator_campaigns($curator_id){
 			$sql = "SELECT *,
-			(SELECT COUNT(*) AS trip_count FROM campaign_trips AS ct
+			(SELECT COUNT(*) FROM campaign_trips AS ct
 				JOIN campaigns AS c ON c.campaign_id = ct.campaign_id
-				WHERE c.curator_id = campaigns.curator_id) AS trip_count
-		FROM campaigns
+				WHERE c.curator_id = ?) AS trip_count
+		FROM campaigns WHERE curator_id = ?
 		";
 			$this->prepare($sql);
+			$this->bind($curator_id,$curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_curator_reviews($curator_id){
+			$sql = "SELECT
+			r.*,
+			u.user_name,
+			ct.start_date as tour_date
+			FROM reviews as r
+			join bookings as b on b.booking_id = r.booking_id
+			join users as u on u.user_id = b.user_id
+			join campaign_trips as ct on ct.trip_id = b.trip_id
+			join campaigns as c on c.campaign_id = ct.campaign_id
+			WHERE c.curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($curator_id);
 			return $this->db_fetch_all();
 		}
 
@@ -179,6 +218,10 @@
 			$sql = "SELECT
 			transactions.*,
 			users.user_name,
+			bookings.date_booked,
+			bookings.adult_seats + bookings.child_seats as seats_booked,
+			bookings.emergency_contact_name,
+			bookings.emergency_contact_number,
 			campaign_trips.start_date,
 			campaigns.title
 			FROM transactions
