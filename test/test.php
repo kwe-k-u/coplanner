@@ -1,6 +1,8 @@
 <?php
-require_once(__DIR__."/../utils/mailer/mailer_class.php");
+require_once(__DIR__."/../utils/core.php");
+require_once(__DIR__."/../utils/paystack.php");
 
-var_dump($_SERVER["PATH_INFO"]);
-
+$pay = new paystack_custom();
+$e = $pay->verify_transaction($_GET["id"]);
+send_json($e);
 ?>

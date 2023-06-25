@@ -20,9 +20,9 @@
 		}
 
 
-		function book_private_tour(){
+		// function book_private_tour(){
 
-		}
+		// }
 
 		function record_transaction($transaction_id,$date,$currency,$trans_amount,$amount,$trans_fee,$tax){
 			$sql = "INSERT INTO `transactions`(`transaction_id`,`transaction_date`,`currency`,`transaction_amount`,`amount`,

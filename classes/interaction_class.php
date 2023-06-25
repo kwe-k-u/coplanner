@@ -48,7 +48,24 @@
 
 
 		function get_user_booking_history($user_id){
-			$sql = "SELECT * FROM `bookings` WHERE `user_id` = ?";
+			$sql = "SELECT
+			b.booking_id,
+			b.user_id,
+			b.transaction_id,
+			b.trip_id,
+			ct.start_date,
+			ct.end_date,
+			b.adult_seats + b.child_seats as seats_booked,
+			b.emergency_contact_name,
+			b.emergency_contact_number,
+			b.booking_status,
+			t.transaction_amount as amount_due,
+			t.currency,
+			b.date_booked
+			 FROM `bookings` as b
+			 join transactions as t on t.transaction_id = b.transaction_id
+			 join campaign_trips as ct on ct.trip_id = b.trip_id
+			 WHERE b.user_id = ?";
 			$this->prepare($sql);
 			$this->bind($user_id);
 			return $this->db_fetch_all();

@@ -244,8 +244,10 @@
 			return $this->db_fetch_all();
 		}
 
-		function get_private_tour_requests(){
-			$sql = "SELECT * FROM private_tour";
+		function get_custom_private_tour_requests(){
+			$sql = "SELECT pt.*, ptc.description FROM private_tour as pt
+			join private_tour_custom as ptc on ptc.private_tour_id = pt.private_tour_id
+			where pt.publish_state = 'publish' AND ISNULL(pt.accepted_quote)";
 			$this->prepare($sql);
 			// $this->bind();
 			return $this->db_fetch_all($sql);

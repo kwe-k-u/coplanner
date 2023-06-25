@@ -21,6 +21,19 @@
 		return $trip->create_private_tour_campaign($id,$c_id);
 	}
 
+	function invoice_private_tour($invoice_id,$tour_id,$transaction_id,$transaction_date){
+		$trip = new private_tour_class();
+		return $trip->invoice_private_tour($invoice_id,$tour_id,$transaction_id,$transaction_date);
+	}
+
+	function react_to_private_quote($quote_id,$reaction, $private_tour_id){
+		$trip = new private_tour_class();
+		if ($reaction){
+			return $trip->accept_private_tour_quote($quote_id,$reaction,$private_tour_id);
+		}
+		return $trip->reject_private_tour_quote($quote_id,$reaction);
+	}
+
 
 
 
@@ -47,9 +60,9 @@
 		return $tour->remove_private_tour_request($id);
 	}
 
-	function place_tour_request_bid($b_id,$curator,$r_id,$comment,$fee){
+	function place_tour_request_bid($b_id,$curator,$r_id,$comment,$currency,$fee){
 		$trip = new private_tour_class();
-		return $trip->place_tour_request_bid($b_id,$curator,$r_id,$comment,$fee);
+		return $trip->place_tour_request_bid($b_id,$curator,$r_id,$comment,$currency,$fee);
 	}
 
 	function count_request_quotes($id){
@@ -72,6 +85,11 @@
 	function get_private_trip_requests($accepted = false){
 		$trip = new private_tour_class();
 		return $trip->get_private_trip_requests($accepted);
+	}
+
+	function get_private_tour_quote($quote_id){
+		$trip = new private_tour_class();
+		return $trip->get_private_tour_quote($quote_id);
 	}
 
 	function get_custom_private_tour_by_id($id){

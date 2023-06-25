@@ -49,13 +49,23 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 		}
 
 
-		function place_tour_request_bid($bid_id,$curator,$request,$comment,$fee){
-			$sql = "INSERT INTO `private_tour_quote` (`quote_id`, `curator_id`, `private_tour_id`, `fee`, `comments`)
-			VALUE (?,?,?,?, ?)";
+		function place_tour_request_bid($bid_id,$curator,$request,$comment,$currency,$fee){
+			$sql = "INSERT INTO `private_tour_quote` (`quote_id`, `curator_id`, `private_tour_id`, `currency`,`fee`, `comments`)
+			VALUE (?,?,?,?,?, ?)";
 			$this->prepare($sql);
-			$this->bind($bid_id,$curator,$request,$fee,$comment);
+			$this->bind($bid_id,$curator,$request,$currency,$fee,$comment);
 			return $this->db_query();
 		}
+
+
+		function invoice_private_tour($invoice_id,$tour_id,$transaction_id,$transaction_date){
+			$sql = "INSERT INTO `private_tour_invoice`(`invoice_id`, `private_tour`, `transaction_id`, `date_generated`)
+			VALUES (?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($invoice_id,$tour_id,$transaction_id,$transaction_date);
+			return $this->db_query();
+		}
+
 
 
 
@@ -90,8 +100,8 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 		}
 
 		function count_request_quotes($id){
-			$sql = "SELECT COUNT(`private_tour_id`) AS count FROM `private_tour`
-			WHERE `user_id`= ?";
+			$sql = "SELECT COUNT(`private_tour_id`) AS count FROM `private_tour_quote`
+			WHERE `private_tour_id`= ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_one();
@@ -114,6 +124,50 @@ require_once(__DIR__. "/../utils/db_prepared.php");
 			$this->bind($id);
 			return $this->db_fetch_one();
 		}
+
+
+		function get_private_tour_quote($quote_id){
+			$sql = "SELECT * FROM private_tour_quote where quote_id = ?";
+			$this->prepare($sql);
+			$this->bind($quote_id);
+			return $this->db_fetch_one();
+		}
+
+
+		//=================================UPDATE================================
+
+		function reject_private_tour_quote($quote_id){
+			$sql = "UPDATE private_tour_quote SET status = 'rejected'
+			WHERE quote_id = ?";
+
+			$this->prepare($sql);
+			$this->bind($quote_id);
+			return $this->db_query();
+		}
+
+		function reject_all_private_tour_quotes($tour_id){
+			$sql = "UPDATE private_tour_quote SET status = 'rejected'
+			WHERE private_tour_id = ?";
+
+			$this->prepare($sql);
+			$this->bind($tour_id);
+			return $this->db_query();
+		}
+
+
+
+
+
+		function accept_private_tour_quote($quote_id){
+			$sql = "UPDATE private_tour_quote SET status = 'accepted'
+			WHERE quote_id = ?";
+
+			$this->prepare($sql);
+			$this->bind($quote_id);
+			return $this->db_query();
+		}
+
+
 
 
 		//=================================DELETE================================

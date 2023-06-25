@@ -74,6 +74,41 @@ async function book_trip(form) {
 }
 
 
+function payWithPaystack(currency, charge_amount,c_email,payload){
+	let handler = PaystackPop.setup({
+		key: paystack_public_key,
+		email: c_email,
+		amount: charge_amount,
+		currency: currency,
+		// ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+		// label: "Optional string that replaces customer email"
+
+		onClose: function(){
+			alert('Window closed.');
+		},
+
+		callback: function(response){
+			// Confirm payment receipt
+			send_request(
+				"POST",
+				"processors/processor.php",
+				{
+					"action" : "book_standard_tour",
+					"provider" : "paystack",
+					"amount_expected" : charge_amount,
+					"currency_expected" : currency,
+					"payload": JSON.stringify(payload),
+					"response" : JSON.stringify(response)
+				},
+				(res)=>{
+					console.log(res);
+				}
+			)
+		}
+		});
+
+		handler.openIframe();
+}
 
 function display_invoice(fee,max_seats){
 	var seats = document.getElementById("seat_span");

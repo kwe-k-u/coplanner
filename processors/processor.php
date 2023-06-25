@@ -38,7 +38,9 @@
 		"get_custom_private_request",
 		"get_campaign_private_request",
 		"edit_private_tour",
-		"delete_private_tour"
+		"delete_private_tour",
+		"react_to_quote",
+		"get_private_tour_charge"
 	);
 
 	$interaction_actions = array(

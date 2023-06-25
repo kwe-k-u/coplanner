@@ -320,7 +320,7 @@
                                                 <h5><b>Total Fee: </b></h5>
                                             </div>
                                             <div class='align-text-right col-6'>
-                                            <h5><b>$currency <span id='invoice_total'>$total</span><b/b></h5>
+                                            <h5><b>$currency <span id='invoice_total'>$total</span></b></h5>
                                             </div>
                                         </div>
                                             ";

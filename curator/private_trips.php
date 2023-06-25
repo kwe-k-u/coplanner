@@ -62,7 +62,7 @@
                             <!-- tirp card [start] -->
                             <?php
 
-                                $requests = get_private_tour_requests();
+                                $requests = get_custom_private_tour_requests();
 
                                 foreach ($requests as $entry) {
                                     $start = format_string_as_date_fn($entry["date_start"]);

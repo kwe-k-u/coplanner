@@ -98,9 +98,9 @@
 	}
 
 
-	function get_private_tour_requests(){
+	function get_custom_private_tour_requests(){
 		$class = new curator_interaction_class();
-		return $class->get_private_tour_requests();
+		return $class->get_custom_private_tour_requests();
 	}
 
 	function get_accepted_tour_requests($curator_id){

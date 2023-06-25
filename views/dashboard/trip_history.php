@@ -134,17 +134,19 @@
                                         <table class="table align-middle">
                                             <thead>
                                                 <tr>
-                                                    <th>Trip Name</th>
+                                                    <th>Tour Name</th>
+                                                    <th>Tour date</th>
                                                     <th>Price</th>
+                                                    <th>Seats</th>
                                                     <th>Status</th>
-                                                    <th>Date</th>
+                                                    <th>Emergency contact information</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                            <?php
+                                                <?php
                                                     $bookings = get_user_booking_history($user_id);
+                                                    $bookings = array_slice($bookings,0,4);
 
                                                     if(!$bookings){
                                                         echo "<tr><td><h5 class='easygo-fs-2 easygo-fw-5 py-4'>You haven't booked a tour yet</h5></td></tr>";
@@ -155,18 +157,26 @@
                                                         $trip_id = $entry["trip_id"];
                                                         $trip_name =get_campaign_by_trip_id($trip_id)["title"];
                                                         $seats = $entry["seats_booked"];
+                                                        $currency = $entry["currency"];
                                                         $amount = $entry["amount_due"];
-                                                        $emergency_name = $entry["emergency_name"];
-                                                        $emergency_number = $entry["emergency_number"];
-                                                        $date = format_string_as_date_fn($entry["date_booked"]);
+                                                        $emergency_name = $entry["emergency_contact_name"];
+                                                        $emergency_number = $entry["emergency_contact_number"];
+                                                        $tour_date = format_string_as_date_fn($entry["start_date"]);
                                                         echo "
                                                         <tr>
                                                             <td>$trip_name</td>
+                                                            <td>$tour_date</td>
+                                                            <td>$currency $amount</td>
                                                             <td>$seats</td>
-                                                            <!-- <td><span class='easygo-badge-orange easygo-fs-5'>Ongoing</span></td>
-                                                            <td><span class='easygo-badge-gray easygo-fs-5'>Canceled</span></td> -->
-                                                            <td><span class='easygo-badge-blue easygo-fs-5'>Completed</span></td>
-                                                            <td>$date</td>
+                                                            <td>".
+                                                            ($entry["start_date"] > date("Y-m-d") ?
+                                                            " <span class='easygo-badge-orange easygo-fs-5'>Upcoming</span>"
+                                                            : (
+                                                                $entry["end_date"] > date("Y-m-d") ?
+                                                                "<span class='easygo-badge-gray easygo-fs-5'>Canceled</span>" :
+                                                                "<span class='easygo-badge-blue easygo-fs-5'>Completed</span>"
+                                                            ))
+                                                            ."</td>
                                                             <td>
                                                                 <div class='col'>
                                                                     $emergency_name

@@ -12,10 +12,10 @@ ob_start();
 
 
 	/*** RATES */
-	CONST TOURISM_LEVY = 0.1;
+	CONST TOURISM_LEVY = 0.01;
 	const VAT_RATE = 0.15;
 	const DOLLAR_RATE =12.5;
-	
+
 
 
 	/**Signs in user accounts */
