@@ -45,7 +45,6 @@
                 </div>
             </div>
         </header>
-        <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->

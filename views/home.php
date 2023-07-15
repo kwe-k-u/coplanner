@@ -29,10 +29,10 @@
         <main>
             <!--- ================================ -->
             <!--- introduction section [start] -->
-            <section class="intro py-5" style="position: relative;">
+            <section class="intro py-5" >
                 <div class="intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px);">
                     <h1>
-                        You don't need to hassle to have a fun trip
+                        You don't need to hassle to have a fun tour
                         <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
                     </h1>
                     <p>
@@ -54,20 +54,28 @@
                 <div class="background-item" style="z-index: 1;">
                     <div id="background-slider" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
                         <div class="carousel-indicators easygo-carousel-indicators">
-                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#background-slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <?php
+
+                                $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"]."/easygo_v2/assets/images/carousel/*";
+                                $carousel = glob($dir);
+                                for ($i=0; $i < count($carousel); $i++) {
+                                    echo "
+                                    <button type='button' data-bs-target='#background-slider' data-bs-slide-to='$i' class='".($i == 0 ? "active" : "")."' aria-current='true' aria-label='Slide ".($i+1).")'></button>
+                                    ";
+                                }
+                            ?>
                         </div>
                         <div class="carousel-inner w-100 h-100">
-                            <div class="carousel-item active w-100 h-100">
-                                <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
+                        <?php
+                                foreach($carousel as $index => $image){
+                                    $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/easygo_v2/",server_base_url(),$image);
+                                    echo "
+                            <div class='carousel-item ". ($index == 0 ? "active" : "") ." w-100 h-100'>
+                                <img class='h-100 w-100' src='$image' alt='carousel image'>
                             </div>
-                            <div class="carousel-item w-100 h-100">
-                                <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
-                            </div>
-                            <div class="carousel-item w-100 h-100">
-                                <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
-                            </div>
+                            ";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -82,13 +90,13 @@
                         <div class="col-lg-6 p-3">
                             <div class="px-lg-5">
                                 <div class="stacked-imgs">
-                                    <img src="../assets/images/others/tour2.jpg" alt="scenery">
+                                    <img src="../assets/images/site_images/home_1.jpg" alt="scenery">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center p-3">
                             <div class="container d-flex flex-column gap-2">
-                                <h1>Find the Best Trip For You And Your Family</h1>
+                                <h1>Find the Best Tour For You And Your Family</h1>
                                 <p>We use top trip curator services to create new adventure for you and your loved ones. You’ll explore top destinations and popular tourists attraction centers in the whole of Ghana. Let’s create memories for you and your family. We also offer private tour services so you can customize your trip to your taste.</p>
                                 <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" style="border-radius: 50px; word-spacing: 5px;">Get started</button>
                             </div>
@@ -296,9 +304,9 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="container-fluid position-relative h-100">
-                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block" src="../assets/images/others/background.jpg" alt="background image">
+                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block" src="../assets/images/site_images/home_3.jpg" alt="background image">
                                 <div class="d-block d-lg-none pt-5">
-                                    <img class="img-fluid" src="../assets/images/others/background.jpg" alt="background image">
+                                    <img class="img-fluid" src="../assets/images/site_images/home_3.jpg" alt="background image">
                                 </div>
                             </div>
                         </div>

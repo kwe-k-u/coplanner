@@ -223,7 +223,7 @@ function payWithPaystack(currency, charge_amount,c_email,quote_id,accepted){
 					"payment_reference" : response["reference"]
 				},
 				(res)=>{
-					console.log(res);
+					console.log(res["data"]);
 				}
 			)
 		}

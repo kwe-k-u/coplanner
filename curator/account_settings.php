@@ -51,7 +51,6 @@ $rating_count = $stats["review_count"];
             </div>
             <div class="dashboard-title easygo-fs-2 easygo-fw-1">Account Settings</div>
         </header>
-        <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__ . "/../components/curator_navbar_mobile.php"); ?>
             <!-- ============================== -->
             <!-- dashboard content [start] -->

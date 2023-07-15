@@ -28,11 +28,8 @@
                     <a class="nav-link" href="./home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./trips.php">Trips</a>
+                    <a class="nav-link" href="./trips.php">Tours</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Blog</a>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="../curator/login.php">Curators</a>
                 </li>

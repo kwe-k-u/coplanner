@@ -13,7 +13,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: self-end;
 }
 
 .intro .intro-card {
@@ -54,7 +54,7 @@
     display: flex;
     /* overflow-y: auto; */
   }
-  
+
 /** sidebar **/
 #userdashboard-sidebar{
     box-shadow: var(--box-shadow-1);

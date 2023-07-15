@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../controllers/admin_controller.php");
 require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 
 if (!is_session_user_curator()) {
@@ -24,7 +25,7 @@ $logo = $info["curator_logo"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard</title>
+    <title>Admin - Dashboard</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -63,11 +64,11 @@ $logo = $info["curator_logo"];
             ?>
 
         </header>
-            <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
+            <?php require_once(__DIR__."/../components/admin_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <?php require_once(__DIR__. "/../components/curator_navbar_desktop.php"); ?>
+            <?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
             <div class="main-content px-3 bg-gray-3">
 
                 <div class="quick-actions col bg-white-1">
@@ -75,6 +76,9 @@ $logo = $info["curator_logo"];
                     <div class="row">
                         <div>
                             <button class="easygo-btn-5" onclick="goto_page('curator/create_a_trip.php')">Create Tour</button>
+                        </div>
+                        <div>
+                            <button class="easygo-btn-5" onclick="goto_page('admin/locations.php')">Add Location</button>
                         </div>
                     </div>
                 </div>
@@ -117,10 +121,21 @@ $logo = $info["curator_logo"];
                         <div class='col-lg-3 col-sm-6 py-3'>
                             <div class='info-card m-auto bg-white'>
                                 <div class='info-img'>
+                                    <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
+                                </div>
+                                <div class='info-content'>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Pending curator approval</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$private_tour</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-lg-3 col-sm-6 py-3'>
+                            <div class='info-card m-auto bg-white'>
+                                <div class='info-img'>
                                     <img src='../assets/images/svgs/barchart_blue_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Revenue</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Booking Value</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $total_revenue</div>
                                 </div>
                             </div>
@@ -131,7 +146,29 @@ $logo = $info["curator_logo"];
                                     <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Withdrawable Balance</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Commission</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-lg-3 col-sm-6 py-3'>
+                            <div class='info-card m-auto bg-white'>
+                                <div class='info-img'>
+                                    <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
+                                </div>
+                                <div class='info-content'>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Escrow Amount</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-lg-3 col-sm-6 py-3'>
+                            <div class='info-card m-auto bg-white'>
+                                <div class='info-img'>
+                                    <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
+                                </div>
+                                <div class='info-content'>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Withdrawable Commission</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
                                 </div>
                             </div>
@@ -146,7 +183,7 @@ $logo = $info["curator_logo"];
                 <!-- ============================== -->
                 <!-- upcoming trips [start] -->
                 <?php
-                    $upcoming_trips = get_curator_upcoming_trips($curator_id);
+                    $upcoming_trips = get_upcoming_tours();
                     if($upcoming_trips){
                         $trip_list_display = "";
 
@@ -158,6 +195,7 @@ $logo = $info["curator_logo"];
                             $currency = $entry["currency"];
                             $fee = $entry["fee"];
                             $img = $entry["media"][0]["media_location"];
+                            $curator_name = $entry["curator_name"];
 
                             $trip_list_display .="
 
@@ -167,12 +205,12 @@ $logo = $info["curator_logo"];
                             </div>
                             <div class='trip-card-content'>
                                 <h5 class='header'>$title</h5>
+                                <div class='easygo-fs-5 text-orange'>
+                                    <i class='fa-solid fa-map-pin'></i> <b>$curator_name</b>
+                                </div>
                                 <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
                                     <div><i class='fa-regular fa-calendar-days'></i>  $start_date - $end_date</div>
                                     <div><i class='fa-solid fa-pen-to-square'></i> 15 Booked Seats</div>
-                                </div>
-                                <div class='easygo-fs-5'>
-                                    <i class='fa-solid fa-map-pin'></i> Pickup coming soon
                                 </div>
                                 <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
                                     <span><i class='fa-solid fa-tag'></i> $currency $fee</span>
@@ -212,7 +250,9 @@ $logo = $info["curator_logo"];
                         <div class="p-3" style="overflow-x: auto;">
                             <div class="easygo-list-3" style="min-width: 992px;">
                                 <?php
-                                $bookings = get_recent_bookings(get_session_account_id());
+                                $bookings = get_bookings();
+
+                                $bookings = array_slice($bookings,0,5);
 
                                 if ($bookings) {
                                     echo "
@@ -245,21 +285,21 @@ $logo = $info["curator_logo"];
                                         $tax = $entry["tax"];
                                         $charge = $entry["charges"];
                                         echo "
-                                <div class='list-item'>
-                                    <div class='item-bullet-container'>
-                                        <div class='item-bullet'></div>
-                                    </div>
-                                    <div class='inner-item'>$transaction_id</div>
-                                    <div class='inner-item'>$date_booked</div>
-                                    <div class='inner-item'>$user_name</div>
-                                    <div class='inner-item text-success'>$currency $transaction_amount</div>
-                                    <div class='inner-item text-danger'>$currency $tax</div>
-                                    <div class='inner-item text-danger'>$currency $charge</div>
-                                    <div class='inner-item'>$seats seats</div>
-                                    <div class='inner-item'>$trip_name</div>
-                                    <div class='inner-item'>$trip_date</div>
-                                    <div class='inner-item'>$contact_name - $contact_number</div>
-                                </div>
+                                        <div class='list-item'>
+                                            <div class='item-bullet-container'>
+                                                <div class='item-bullet'></div>
+                                            </div>
+                                            <div class='inner-item'>$transaction_id</div>
+                                            <div class='inner-item'>$date_booked</div>
+                                            <div class='inner-item'>$user_name</div>
+                                            <div class='inner-item text-success'>$currency $transaction_amount</div>
+                                            <div class='inner-item text-danger'>$currency $tax</div>
+                                            <div class='inner-item text-danger'>$currency $charge</div>
+                                            <div class='inner-item'>$seats seats</div>
+                                            <div class='inner-item'>$trip_name</div>
+                                            <div class='inner-item'>$trip_date</div>
+                                            <div class='inner-item'>$contact_name - $contact_number</div>
+                                        </div>
                                     ";
                                     }
                                 } else {
@@ -280,7 +320,7 @@ $logo = $info["curator_logo"];
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-center p-3">
-                            <a href="./trip_booking.php" class="easygo-btn-1">View Bookings</a>
+                            <a href="./bookings.php" class="easygo-btn-1">View Bookings</a>
                         </div>
                     </div>
                 </section>

@@ -143,7 +143,6 @@
 						// if payment has been received accept booking bid
 						if($paid){
 							$data = $res["data"];
-							var_dump($data);
 							$transaction_id = $data["reference"];
 							$trans_fee=$data["fees"]/100;
 							$trans_date = $data["paid_at"];

@@ -89,7 +89,7 @@
                                                             <div class='trip-card-header border-0'>
                                                                 <div class='title'>
                                                                     <h5 class='easygo-fw-1'>$title</h5>
-                                                                    <div class='easygo-fs-4 mb-1'>Curated by $curator</div>
+                                                                    <div class='easygo-fs-4 mb-1'>Curated by <span class='text-blue'>$curator</span></div>
                                                                     <div class='d-flex justify-content-start align-items-center gap-2'>
                                                                         <div class='stars'>
                                                                             <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>

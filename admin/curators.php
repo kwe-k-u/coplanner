@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+require_once(__DIR__ . "/../controllers/admin_controller.php");
 
 if (!is_session_user_curator()) {
     header("Location: ../views/home.php");
@@ -25,7 +26,7 @@ $logo = $info["curator_logo"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curator - Dashboard | Trip Booking</title>
+    <title>Curators</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -39,22 +40,23 @@ $logo = $info["curator_logo"];
     <!-- ============================== -->
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
-            <?php require_once(__DIR__."/../components/curator_header.php"); ?>
-            <?php require_once(__DIR__."/../components/curator_navbar_mobile.php"); ?>
+
+            <?php require_once(__DIR__."/../components/admin_header.php"); ?>
+            <?php require_once(__DIR__."/../components/admin_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-        <?php require_once(__DIR__. "/../components/curator_navbar_desktop.php"); ?>
+        <?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
 
 
             <div class="main-content px-3">
                 <section class="trip-booking">
                     <div class="border-1 border-bottom py-3">
                         <div>
-                            <h5 class="title">Trip Booking</h5>
+                            <h5 class="title">Curators</h5>
                             <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Bookings</small>
                         </div>
-                        <p class="mt-4 mb-0">This table contains all the booking information associated with your trips.</p>
+                        <p class="mt-4 mb-0">This table shows information about crator accounts.</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
                         <div class="left-controls">
@@ -64,28 +66,6 @@ $logo = $info["curator_logo"];
                                 </div>
                             </form>
                         </div>
-                        <div class="right-controls d-flex gap-2 easygo-fs-5">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle easygo-fs-5 h-100" type="button" id="viewby-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Trips
-                                </button>
-                                <ul class="dropdown-menu easygo-fs-5" aria-labelledby="viewby-menu">
-                                    <li><a class="dropdown-item" href="#">All</a></li>
-                                    <li><a class="dropdown-item" href="./trip_booking_by_trip.php">Trips</a></li>
-                                    <li><a class="dropdown-item" href="./trip_booking_by_date.php">Date</a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown">
-                                <button class="btn border dropdown-toggle px-5 easygo-fs-5 h-100" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Export
-                                </button>
-                                <ul class="dropdown-menu easygo-fs-5" aria-labelledby="export-menu">
-                                    <li><a class="dropdown-item" href="#">PDF</a></li>
-                                    <li><a class="dropdown-item" href="#">Excel</a></li>
-                                </ul>
-                            </div>
-                            <button class="easygo-btn-1 py-1 px-5">Print</button>
-                        </div>
                     </div>
                     <div class="trip-listing">
                         <div class="easygo-list-3 list-striped" style="min-width: 992px;">
@@ -93,23 +73,21 @@ $logo = $info["curator_logo"];
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
                                 </div>
-                                <div class="inner-item">ID</div>
-                                <div class="inner-item">Booking Date</div>
-                                <div class="inner-item">Customer Name</div>
-                                <div class="inner-item">Amount</div>
-                                <div class="inner-item">Tax</div>
-                                <div class="inner-item">Charges</div>
-                                <div class="inner-item">Seats</div>
-                                <div class="inner-item">Tour Name</div>
-                                <div class="inner-item">Tour Date</div>
-                                <div class="inner-item">Emergency Contact</div>
+                                <div class="inner-item">Logo</div>
+                                <div class="inner-item">Curator Name</div>
+                                <div class="inner-item">Country</div>
+                                <div class="inner-item">Number of tours</div>
+                                <div class="inner-item">Number of bookings</div>
+                                <div class="inner-item">Revenue from curator</div>
+                                <div class="inner-item">Number of admins</div>
+                                <div class="inner-item">Actions</div>
                             </div>
 
                             <?php
 
-                                $bookings = get_curator_bookings($curator_id);
+                                $curators = get_curators();
 
-                                if (!$bookings){
+                                if (!$curators){
                                     echo "<div class='list-item'>
                                         <div class='item-bullet-container'>
                                             <div class='item-bullet'></div>
@@ -117,34 +95,38 @@ $logo = $info["curator_logo"];
                                         <div class='inner-item'>There are no bookings for any of your trips yet. </div>
                                     </div>";
                                 }else {
-                                    foreach ($bookings as $entry) {
-                                        $transaction_id = $entry["transaction_id"];
-                                        $name = $entry["user_name"];
-                                        $date_booked = format_string_as_date_fn($entry["date_booked"]);
-                                        $contact_name = $entry["emergency_contact_name"];
-                                        $contact_number = $entry["emergency_contact_number"];
-                                        $transaction_amount = $entry["amount"];
-                                        $currency = $entry["currency"];
-                                        $seats = $entry["seats_booked"];
-                                        $trip_date = format_string_as_date_fn($entry["start_date"]);
-                                        $trip_name = $entry["title"];
-                                        $tax = $entry["tax"];
-                                        $charge = $entry["charges"];
+                                    foreach ($curators as $entry) {
+                                        $revenue = $entry["revenue"];
+                                        $num_bookings = $entry["num_bookings"];
+                                        $curator_name = $entry["curator_name"];
+                                        $num_admins = $entry["num_admins"];
+                                        $country = $entry["country"];
+                                        $curator_id = $entry["curator_id"];
+                                        $num_tours = $entry["num_tours"];
+                                        $verified = $entry["is_verified"];
+
                                         echo "
                                 <div class='list-item'>
                                     <div class='item-bullet-container'>
                                         <div class='item-bullet'></div>
                                     </div>
-                                    <div class='inner-item'>$transaction_id</div>
-                                    <div class='inner-item'>$date_booked</div>
-                                    <div class='inner-item'>$user_name</div>
-                                    <div class='inner-item text-success'>$currency $transaction_amount</div>
-                                    <div class='inner-item text-danger'>$currency $tax</div>
-                                    <div class='inner-item text-danger'>$currency $charge</div>
-                                    <div class='inner-item'>$seats seats</div>
-                                    <div class='inner-item'>$trip_name</div>
-                                    <div class='inner-item'>$trip_date</div>
-                                    <div class='inner-item'>$contact_name - $contact_number</div>
+                                    <div class='inner-item'>logo</div>
+                                    <div class='inner-item'>
+                                        <div class='col'>
+                                            <div>
+                                                $curator_name
+                                            </div>
+                                            <div>
+                                                $curator_id
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='inner-item '>$country</div>
+                                    <div class='inner-item '>$num_tours</div>
+                                    <div class='inner-item '>$num_bookings</div>
+                                    <div class='inner-item'>$revenue</div>
+                                    <div class='inner-item'>$num_admins</div>
+                                    <div class='inner-item'>Actions</div>
                                 </div>
                                     ";
                                     }

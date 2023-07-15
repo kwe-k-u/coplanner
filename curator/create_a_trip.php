@@ -41,7 +41,6 @@ $logo = $info["curator_logo"];
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
         <?php require_once(__DIR__ . "/../components/curator_header.php") ?>
-        <header class="nav-menu d-lg-none">
             <?php require_once(__DIR__ . "/../components/curator_navbar_mobile.php"); ?>
             <!-- ============================== -->
             <!-- dashboard content [start] -->
@@ -515,7 +514,7 @@ $logo = $info["curator_logo"];
                                 <div class='location-card border p-4 rounded my-3'>
                                     <div class='header d-flex justify-content-between'>
                                         <h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
-                                        <h5 class='easygo-fs-4 text-orange'>$site_location</h5>
+                                        <h5 class='easygo-fs-4 text-orange'>$site_country</h5>
                                     </div>
                                     <div class='text-gray-1 easygo-fs-6'>
                                         <!-- <div class='rating-and-info d-flex align-items-center gap-1'>
