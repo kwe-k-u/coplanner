@@ -262,49 +262,49 @@
 			return $this->db_fetch_all($sql);
 		}
 
-		function get_toursites(){
-			$sql = "SELECT * FROM toursites LIMIT 6";
+		function get_destinations(){
+			$sql = "SELECT * FROM destinations LIMIT 6";
 			$this->prepare($sql);
 			return $this->db_fetch_all();
 		}
 
-		function get_toursite_by_id($id){
-			$sql = "SELECT * FROM toursites ts
-			 WHERE ts.toursite_id = ?";
+		function get_destination_by_id($id){
+			$sql = "SELECT * FROM destinations ts
+			 WHERE ts.destination_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_one();
 		}
 
-		function get_toursite_activities($id){
+		function get_destination_activities($id){
 			$sql = "SELECT
 			a.activity_name,
 			ta.activity_id,
 			ta.is_verified
-			 FROM toursite_activity ta
+			 FROM destination_activity ta
 			 JOIN activities a on a.activity_id = ta.activity_id
-			WHERE ta.toursite_id=?";
+			WHERE ta.destination_id=?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();
 		}
 
-		function get_toursite_media($id){
+		function get_destination_media($id){
 
 			$sql = "SELECT
 			m.media_location,
-			tm.toursite_id
-			FROM toursite_media tm
+			tm.destination_id
+			FROM destination_media tm
 			JOIN media m on m.media_id = tm.media_id
-			WHERE tm.toursite_id=? AND m.media_type='picture'";
+			WHERE tm.destination_id=? AND m.media_type='picture'";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();
 		}
 
 
-		function get_toursite_by_location($query){
-			$sql = "SELECT * FROM `toursites` WHERE `site_location` LIKE CONCAT('%',?,'%') or
+		function get_destination_by_location($query){
+			$sql = "SELECT * FROM `destinations` WHERE `site_location` LIKE CONCAT('%',?,'%') or
 			`country` LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);
 			$this->bind($query,$query);
@@ -313,9 +313,9 @@
 
 
 
-		function get_toursite_by_activity($query){
-			$sql = "SELECT * FROM toursites ts
-			JOIN toursite_activity ta on ta.toursite_id = ts.toursite_id
+		function get_destination_by_activity($query){
+			$sql = "SELECT * FROM destinations ts
+			JOIN destination_activity ta on ta.destination_id = ts.destination_id
 			JOIN activities a on a.activity_id = ta.activity_id
 			WHERE a.activity_name LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);

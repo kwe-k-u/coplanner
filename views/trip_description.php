@@ -231,9 +231,9 @@
                                     </div>
                                 </div>
                                <?php
-                                $sites = get_toursite_by_campaign($campaign_id);
+                                $sites = get_destination_by_campaign($campaign_id);
                                 foreach($sites as $index => $entry){
-                                    $site_desc = $entry["toursite_description"];
+                                    $site_desc = $entry["destination_description"];
                                     $site_loc = $entry["site_location"];
                                     $site_name = $entry["site_name"];
                                     $i = $index +1;
@@ -596,7 +596,7 @@
                                         </div>
                                                 <?php
                                                     foreach ($sites as $index => $entry) {
-                                                        $site_desc = $entry["toursite_description"];
+                                                        $site_desc = $entry["destination_description"];
                                                         $site_loc = $entry["site_location"];
                                                         $site_name = $entry["site_name"];
                                                         $i = $index +1;

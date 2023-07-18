@@ -70,11 +70,11 @@
 			return $this->db_query();
 		}
 
-		function link_toursite_media($media_id,$toursite_id,$location,$is_foreign){
-			$sql = "INSERT INTO `toursite` (`media_id`,`toursite_id`,`location`,`is_foreign`)
+		function link_destination_media($media_id,$destination_id,$location,$is_foreign){
+			$sql = "INSERT INTO `destination` (`media_id`,`destination_id`,`location`,`is_foreign`)
 			VALUE (?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($media_id,$toursite_id,$location,$is_foreign);
+			$this->bind($media_id,$destination_id,$location,$is_foreign);
 			return $this->db_query();
 		}
 

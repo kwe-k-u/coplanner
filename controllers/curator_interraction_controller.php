@@ -113,37 +113,37 @@
 		return $class->get_private_tour_requests_with_bids($curator_id);
 	}
 
-	function get_toursite_by_activity($activity){
+	function get_destination_by_activity($activity){
 		$class = new curator_interaction_class();
-		return $class->get_toursite_by_activity($activity);
+		return $class->get_destination_by_activity($activity);
 	}
 
 
-	function get_toursite_by_location($location){
+	function get_destination_by_location($location){
 		$class = new curator_interaction_class();
-		return $class->get_toursite_by_location($location);
+		return $class->get_destination_by_location($location);
 	}
 
-	function get_toursites(){
+	function get_destinations(){
 		$class = new curator_interaction_class();
-		return $class->get_toursites();
+		return $class->get_destinations();
 	}
 
-	function get_toursite_by_id($id){
+	function get_destination_by_id($id){
 		$class = new curator_interaction_class();
-		$data =  $class->get_toursite_by_id($id);
+		$data =  $class->get_destination_by_id($id);
 		//get activities
-		$data["activities"] = $class->get_toursite_activities($id);
+		$data["activities"] = $class->get_destination_activities($id);
 		//get media
 
-		$data["media"] = $class->get_toursite_media($id);
+		$data["media"] = $class->get_destination_media($id);
 		return $data;
 	}
 
 
-	function get_toursite_media($site_id){
+	function get_destination_media($site_id){
 		$class = new curator_interaction_class();
-		return $class->get_toursite_media($site_id);
+		return $class->get_destination_media($site_id);
 	}
 
 	function get_curator_collaborators($curator_id){

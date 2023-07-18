@@ -65,35 +65,36 @@
 		}
 
 
-		function get_toursite_info($id){
-			$sql = "SELECT * FROM `toursites` as t where t.toursite_id = ?";
+		function get_destination_info($id){
+			$sql = "SELECT * FROM `destinations` as t where t.destination_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_one();
 		}
 
-		function get_toursite_activities($id){
-			$sql = "SELECT * FROM toursite_activity as ta
-			inner join toursites as t on t.toursite_id = ta.toursite_id
-			 where t.toursite_id = ?";
+		function get_destination_activities($id){
+			$sql = "SELECT ta.*, a.activity_name FROM destination_activity as ta
+			inner join destinations as t on t.destination_id = ta.destination_id
+			inner join activities as a on a.activity_id = ta.activity_id
+			 where t.destination_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();
 		}
 
-		function get_toursite_socials($id){
-			$sql = "SELECT * FROM toursite_socials as ts
-			inner join toursites as t on t.toursite_id = ts.toursite_id
-			 where t.toursite_id = ?";
+		function get_destination_socials($id){
+			$sql = "SELECT * FROM destination_socials as ts
+			inner join destinations as t on t.destination_id = ts.destination_id
+			 where t.destination_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();
 		}
 
-		function get_toursite_media($id){
-			$sql = "SELECT * FROM toursite_media
-			inner join media on media.media_id = toursite_media.media_id
-			where toursite_media.toursite_id = ?";
+		function get_destination_media($id){
+			$sql = "SELECT * FROM destination_media
+			inner join media on media.media_id = destination_media.media_id
+			where destination_media.destination_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();
@@ -101,7 +102,7 @@
 
 
 		function set_location_verification($id,$new_status){
-			$sql = "UPDATE toursites SET is_verified = ? where toursite_id = ?";
+			$sql = "UPDATE destinations SET is_verified = ? where destination_id = ?";
 			$this->prepare($sql);
 			$this->bind($new_status,$id);
 			return $this->db_query();

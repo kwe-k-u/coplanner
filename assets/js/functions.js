@@ -19,7 +19,7 @@ function url_params(key){
 
 
 //Make http requests with paraterms type(POST/GET), endpoint,payload and onload function
-async function send_request(type,endpoint, data,  onload){
+async function send_request(type,endpoint, data,  onload = null, files = null){
 	let formdata = new FormData();
 
 
@@ -32,6 +32,15 @@ async function send_request(type,endpoint, data,  onload){
             formdata.append(key, data[key]);
         }
     }
+	if (files != null){
+		var uploadedFiles = [].concat(files);
+		// for (let i = 0; i < files.length; i++){
+		// 	uploadedFiles.push(files[i])
+		// }
+		for (let i = 0; i < files.length; i++) {
+			formdata.append(i + "[]", files[i]);
+		}
+	}
 
 	let response = await fetch(baseurl+endpoint,
 		{
@@ -44,7 +53,10 @@ async function send_request(type,endpoint, data,  onload){
 		// try {
 			// var caught = response.clone();
 			// alert(await caught.clone().text());
-			onload (await response.json());
+			if(onload != null){
+
+				onload (await response.json());
+			}
 		// }catch (e){
 		// 	alert("error "+await caught.text());
 		// }

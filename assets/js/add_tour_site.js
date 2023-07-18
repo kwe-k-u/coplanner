@@ -305,7 +305,7 @@ function on_location_expand(id) {
 
 	var payload = {
 		"action": "get_site_by_id",
-		"toursite_id": id
+		"destination_id": id
 	};
 
 
@@ -322,7 +322,7 @@ function on_location_expand(id) {
 			];
 
 			title.innerText = json["site_name"];
-			description.innerText = json["toursite_description"];
+			description.innerText = json["destination_description"];
 
 			reset_location_info_images(image_list);
 			reset_location_info_activities(activity);
@@ -407,7 +407,7 @@ function update_location_results(location_list) {
 		});
 
 		//Update the expanded list with the first result
-		on_location_expand(location_list[0]["toursite_id"]);
+		on_location_expand(location_list[0]["destination_id"]);
 	}else { //else show message for no results TODO
 	}
 }
@@ -453,7 +453,7 @@ function add_location_activity() {
 function create_location_tile(map) {
 	var title = map["site_name"];
 	var location = map["site_location"];
-	var id = map["toursite_id"];
+	var id = map["destination_id"];
 
 	const locationCard = document.createElement("div");
 	locationCard.classList.add('location-card', 'border', 'p-4', 'rounded', 'my-3');

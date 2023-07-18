@@ -23,7 +23,7 @@ $logo = $info["curator_logo"];
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Add a toursite</title>
+	<title>Add a destination</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<!-- Fontawesome css -->
@@ -61,7 +61,7 @@ $logo = $info["curator_logo"];
 							<div class="row border-1 border-bottom py-4 pe-lg-5">
 								<div class="col-lg-5">
 									<h3 class="easygo-fs-3 easygo-fw-1">Name of location</h3>
-									<p class="text-gray-1 easygo-fs-5">What is the name of the toursite</p>
+									<p class="text-gray-1 easygo-fs-5">What is the name of the destination</p>
 								</div>
 								<div class="col-lg-7 d-flex flex-column gap-4">
 									<div class="form-input-field">
@@ -187,23 +187,23 @@ $logo = $info["curator_logo"];
 												<input id="seats" type="text" min="1">
 											</div>
 											<div class="form-input-field mt-3">
-												<h6 class="easygo-fs-4 text-gray-1">Toursite GPS location</h6>
+												<h6 class="easygo-fs-4 text-gray-1">destination GPS location</h6>
 												<input id="seats" type="text" min="1">
 											</div>
 											<div class="form-input-field mt-3">
-												<h6 class="easygo-fs-4 text-gray-1">Toursite website</h6>
+												<h6 class="easygo-fs-4 text-gray-1">destination website</h6>
 												<input id="seats" type="text" min="1">
 											</div>
 											<div class="form-input-field mt-3">
-												<h6 class="easygo-fs-4 text-gray-1">Toursite Instagram handle</h6>
+												<h6 class="easygo-fs-4 text-gray-1">destination Instagram handle</h6>
 												<input id="seats" type="text" min="1">
 											</div>
 											<div class="form-input-field mt-3">
-												<h6 class="easygo-fs-4 text-gray-1">Toursite Twitter handle</h6>
+												<h6 class="easygo-fs-4 text-gray-1">destination Twitter handle</h6>
 												<input id="seats" type="text" min="1">
 											</div>
 											<div class="form-input-field mt-3">
-												<h6 class="easygo-fs-4 text-gray-1">Toursite Tiktok handle</h6>
+												<h6 class="easygo-fs-4 text-gray-1">destination Tiktok handle</h6>
 												<input id="seats" type="text" min="1">
 											</div>
 											<!-- <div class="form-input-field">
@@ -489,10 +489,10 @@ $logo = $info["curator_logo"];
 						<div class='location-listing py-4' id="site_result_div">
 							<?php
 
-							$toursites = get_toursites();
+							$destinations = get_destinations();
 
-							foreach ($toursites as $site) {
-								$site_id = $site["toursite_id"];
+							foreach ($destinations as $site) {
+								$site_id = $site["destination_id"];
 								$site_name = $site["site_name"];
 								$site_location = $site["site_location"];
 								$site_country = $site["country"];
@@ -533,16 +533,16 @@ $logo = $info["curator_logo"];
 					<div class="col-lg-6">
 						<div>
 							<?php
-							$site = $toursites[0];
-							$site_id = $site["toursite_id"];
-							$site = get_toursite_by_id($site_id);
+							$site = $destinations[0];
+							$site_id = $site["destination_id"];
+							$site = get_destination_by_id($site_id);
 							$site_name = $site["site_name"];
-							$site_desc = $site["toursite_description"];
+							$site_desc = $site["destination_description"];
 							$site_location = $site["site_location"];
 							$site_country = $site["country"];
 							$site_activities = $site["activities"];
 
-							$site_media = get_toursite_media($site_id);
+							$site_media = get_destination_media($site_id);
 
 
 							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>

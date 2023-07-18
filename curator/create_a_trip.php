@@ -503,10 +503,10 @@ $logo = $info["curator_logo"];
                         <div class='location-listing py-4' id="site_result_div">
                             <?php
 
-                            $toursites = get_toursites();
+                            $destinations = get_destinations();
 
-                            foreach ($toursites as $site) {
-                                $site_id = $site["toursite_id"];
+                            foreach ($destinations as $site) {
+                                $site_id = $site["destination_id"];
                                 $site_name = $site["site_name"];
                                 $site_location = $site["site_location"];
                                 $site_country = $site["country"];
@@ -547,16 +547,16 @@ $logo = $info["curator_logo"];
                     <div class="col-lg-6">
                         <div>
                             <?php
-                            $site = $toursites[0];
-                            $site_id = $site["toursite_id"];
-                            $site = get_toursite_by_id($site_id);
+                            $site = $destinations[0];
+                            $site_id = $site["destination_id"];
+                            $site = get_destination_by_id($site_id);
                             $site_name = $site["site_name"];
-                            $site_desc = $site["toursite_description"];
+                            $site_desc = $site["destination_description"];
                             $site_location = $site["site_location"];
                             $site_country = $site["country"];
                             $site_activities = $site["activities"];
 
-                            $site_media = get_toursite_media($site_id);
+                            $site_media = get_destination_media($site_id);
 
 
                             echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
@@ -619,7 +619,7 @@ $logo = $info["curator_logo"];
 
 
     <!-- ============================== -->
-    <!-- Add toursite [start] -->
+    <!-- Add destination [start] -->
     <div class="modal fade" id="add-location-modal">
         <div class="modal-dialog modal-xl">
             <div class="modal-content p-5">
@@ -777,7 +777,7 @@ $logo = $info["curator_logo"];
             </div>
         </div>
     </div>
-    <!-- Add toursite modal [end] -->
+    <!-- Add destination modal [end] -->
     <!-- ============================== -->
 
 

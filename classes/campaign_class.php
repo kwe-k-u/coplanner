@@ -25,8 +25,8 @@
 		}
 
 
-		function get_toursite_by_name($name,$exact = false){
-			$sql = "SELECT * FROM `toursites` WHERE `site_name` LIKE ".($exact ? "?" : " CONCAT('%',?,'%')");
+		function get_destination_by_name($name,$exact = false){
+			$sql = "SELECT * FROM `destinations` WHERE `site_name` LIKE ".($exact ? "?" : " CONCAT('%',?,'%')");
 			$this->prepare($sql);
 			$this->bind($name);
 			return $exact ? $this->db_fetch_one() :$this->db_fetch_all();
@@ -71,8 +71,8 @@
 		}
 
 
-		function add_toursite($site_id,$name,$desc,$location,$country){
-			$sql = "INSERT INTO `toursites`(`toursite_id`,`site_name`,`toursite_description`,`site_location`,`country`)
+		function add_destination($site_id,$name,$desc,$location,$country){
+			$sql = "INSERT INTO `destinations`(`destination_id`,`site_name`,`destination_description`,`site_location`,`country`)
 			VALUE (?, ?,?, ?,?)";
 			$this->prepare($sql);
 			$this->bind($site_id,$name,$desc,$location,$country);
@@ -80,8 +80,8 @@
 		}
 
 
-		function add_toursite_activity($site_id, $activity_id,$fee,$is_verified){
-			$sql = "INSERT INTO toursite_activity(`activity_id`, `toursite_id`,`activity_fee`,`is_verified`)
+		function add_destination_activity($site_id, $activity_id,$fee,$is_verified){
+			$sql = "INSERT INTO destination_activity(`activity_id`, `destination_id`,`activity_fee`,`is_verified`)
 			VALUE (?,?,?,?) ";
 			$this->prepare($sql);
 			$this->bind($activity_id,$site_id,$fee,$is_verified);

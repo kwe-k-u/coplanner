@@ -1,6 +1,8 @@
 var location_info_div = document.getElementById("site_info_col");
 var location_form_div = document.getElementById("site_form_col");
 var location_search_results = document.getElementById("site_result_div");
+var acts = document.getElementById("add_loc_activity_list");
+var submit_loc_btn = document.getElementById("submit_loc_btn");
 
 var name_field = document.getElementById("name");
 var description_field = document.getElementById("description");
@@ -14,6 +16,9 @@ var instagram_field = document.getElementById("instagram");
 var facebook_field = document.getElementById("facebook");
 
 
+var ext_img_list = document.getElementById("external-images");
+var ext_img_field = document.getElementById("external-image-field");
+
 
 // Switches the display of the location form. If the location edit is tapped
 // it prefills the form with the existing information
@@ -23,19 +28,19 @@ function add_location_toggle(location_id = null){
 		location_info_div.classList.toggle("hide");
 		location_form_div.classList.toggle("hide");
 	}
-	if(location_id != null){
+	if(location_id != null){ // prefill fields with location information
 		//get location info
+		//TODO:: include location id
 		send_request("POST",
 		"processors/admin_processor.php/get_location_info?id="+location_id,
 		{},
 		(response)=>{
 			// alert(response);
 			const data = response["data"];
-			// console.log(response);
 
 			// document.getElementById("name");
 			name_field.value = data["site_name"];
-			description_field.value = data["toursite_description"];
+			description_field.value = data["destination_description"];
 			location_field.value = data["site_location"];
 			country_field.value = data["country"];
 			// owner_name.value = data[""];
@@ -45,29 +50,45 @@ function add_location_toggle(location_id = null){
 			// instagram_field.value = data[""];
 			// facebook_field.value = data[""];
 
-			for (let i = 0; i < array.length; i++) {
-				const element = array[i];
-				insert_location_element(data["activities"][i]);
+			for (let i = 0; i < data["activities"].length; i++) {
+				insert_location_element(data["activities"][i]["activity_name"], data["activities"][i]["activity_id"]);
 			}
-			//TODO:: Insert locations
 			//TODO:: Insert social credentials
 
 
 
+			//set submit button to insert
+			submit_loc_btn.setAttribute("value",location_id);
 		});
 
-		//populate the edit fields
+	}else { // empty fields if data is existing in them
+		name_field.value = "";
+		description_field.value = "";
+		location_field.value = "";
+		country_field.value = "";
+
+		//TODO:: remove social information about stuff like that
+		// submit_loc_btn.value = "edit";
+		submit_loc_btn.setAttribute("value","");
+		console.log("edit");
 	}
 }
 
 
+// Ensures the location info section is visible and updates the location info
+// being displayed
 function expand_location_info(id) {
+
+	if(location_info_div.classList.contains("hide")){
+		location_info_div.classList.toggle("hide");
+		location_form_div.classList.toggle("hide");
+	}
 	var title = document.getElementById("location-info-title");
 	var description = document.getElementById("location-info-desc");
 
 	var payload = {
 		"action": "get_site_by_id",
-		"toursite_id": id
+		"destination_id": id
 	};
 
 
@@ -84,7 +105,7 @@ function expand_location_info(id) {
 			];
 
 			title.innerText = json["site_name"];
-			description.innerText = json["toursite_description"];
+			description.innerText = json["destination_description"];
 
 			reset_location_info_images(image_list);
 			reset_location_info_activities(activity);
@@ -133,14 +154,14 @@ function verification_toggle(site_id){
 	var text = document.getElementById("verified_text_"+site_id);
 	var icon = document.getElementById("verified_image_"+site_id);
 	const verified = text.value == "Verified (Click to Change)";
-	const confirm_text = verified ? "Remove verification for location?" : "Verify the toursite?"
+	const confirm_text = verified ? "Remove verification for location?" : "Verify the destination?"
 
 	if(confirm(confirm_text)){
 
 		send_request("POST",
 		"processors/admin_processor.php/toggle_location_verification",
 		{
-			"toursite_id" : site_id
+			"destination_id" : site_id
 		},
 		(response)=> {
 			//location is now unverified
@@ -196,6 +217,9 @@ function add_loc_activity(){
 function insert_location_element(value,id=null){
 
 	var newNode = document.createElement("li");
+	if(id != null){
+		newNode.setAttribute("id", id);
+	}
 	// newNode.setAttribute("onclick", "selectedActivityClick()");
 	newNode.innerText = value;
 	acts.appendChild(newNode);
@@ -219,7 +243,7 @@ function insert_result_element(location_list) {
 		});
 
 		//Update the expanded list with the first result
-		on_location_expand(location_list[0]["toursite_id"]);
+		expand_location_info(location_list[0]["destination_id"]);
 	}else { //else show message for no results TODO
 	}
 }
@@ -229,7 +253,8 @@ function insert_result_element(location_list) {
 function create_result_tile(map) {
 	var title = map["site_name"];
 	var location = map["site_location"];
-	var id = map["toursite_id"];
+	var id = map["destination_id"];
+	const is_verified = map["is_verified"] == 1;
 
 	const locationCard = document.createElement("div");
 	locationCard.classList.add('location-card', 'border', 'p-4', 'rounded', 'my-3');
@@ -251,6 +276,30 @@ function create_result_tile(map) {
 	const textGray1 = document.createElement('div');
 	textGray1.classList.add('text-gray-1', 'easygo-fs-6');
 
+
+	//create section with verification toggle
+	const ver_div = document.createElement("div");
+	const ver_span = document.createElement("span");
+	const ver_img_span = document.createElement("span");
+	const ver_img = document.createElement("img");
+
+	ver_div.classList.add("rating-and-info","d-flex","align-items-center","gap-1");
+	// creating star display for verification
+	ver_img.src = baseurl+"assets/images/svgs/"+(is_verified ? "full_star.svg" : "empty_star.svg");
+	ver_img.setAttribute("id","verified_image_"+ id);
+	ver_img_span.appendChild(ver_img);
+	ver_div.appendChild(ver_img_span);
+
+	//creating span text for verification
+	ver_span.setAttribute("onclick",'verification_toggle("'+id+'")');
+	ver_span.setAttribute("id","verified_text_"+id);
+	ver_span.innerText = is_verified ? "Verified (Click to Change)" : "Unverified(Click to Change)";
+
+
+	ver_div.appendChild(ver_span);
+	textGray1.appendChild(ver_div);
+
+
 	// create the time div with site location
 	const time = document.createElement('div');
 	const timeLocationSpan = document.createElement('span');
@@ -259,18 +308,109 @@ function create_result_tile(map) {
 	textGray1.appendChild(time);
 
 
+
+
 	locationCard.appendChild(textGray1);
 
-	// create the pt-3 div with the See More button
+	// create the pt-3 div with the Expand and edit button
 	const pt3 = document.createElement('div');
-	pt3.classList.add('pt-3');
-	const seeMoreButton = document.createElement('button');
-	seeMoreButton.classList.add('easygo-btn-1', 'easygo-fs-5', 'py-1', 'px-4');
-	seeMoreButton.textContent = 'See More';
-	seeMoreButton.setAttribute('onclick', `on_location_expand("${id}")`);
-	pt3.appendChild(seeMoreButton);
+	pt3.classList.add('pt-3',"gap-2","d-flex");
+
+	//on location expand button
+	const expandButton = document.createElement('button');
+	expandButton.classList.add('easygo-btn-1', 'easygo-fs-5', 'py-1', 'px-4');
+	expandButton.textContent = 'Expand';
+	expandButton.setAttribute('onclick', `expand_location_info("${id}")`);
+
+	pt3.appendChild(expandButton);
+
+
+	//on location edit button
+	const editButton = document.createElement('button');
+	editButton.classList.add('easygo-btn-2', 'easygo-fs-5', 'py-1', 'px-4');
+	editButton.textContent = 'Edit';
+	editButton.setAttribute('onclick', `add_location_toggle("${id}")`);
+
+	pt3.appendChild(editButton);
+
+
 	locationCard.appendChild(pt3);
 
 	return locationCard;
 
+}
+
+
+
+//submits the location info
+function create_site(form){
+	console.log(form);
+	event.preventDefault();
+	const act_list = document.getElementById("add_loc_activity_list");
+	var activities = [];
+
+	for (var act_index = 0; act_index < act_list.children.length; act_index++){
+		var child = act_list.children[act_index];
+		activities.push(child.innerText);
+	}
+
+	// var images = locationImages.getFiles();
+
+	var payload = {
+			"site_name" : form.name.value,
+			"site_location" : form.location.value,
+			"site_description" : form.description.value,
+			// "images" : images,
+			"external_images" : get_ext_images(),
+			"site_id" : form.loc_id.value,
+			"country" : form.country.value,
+			"activities" : activities,
+			"owner_name" : form.owner.value,
+			"owner_number" : form.number.value,
+			"tiktok" : form.tiktok.value,
+			"facebook" : form.facebook.value,
+			"instagram" : form.instagram.value,
+			"website" : form.website.value,
+		};
+
+	send_request(
+		"POST",
+		"processors/admin_processor.php/" +(form.loc_id == "" ? "insert_destination" : "edit_destination"),
+		payload,
+		(response) => {
+			alert(response['msg']);
+
+		},
+		form.images.files
+	);
+
+}
+//TODO:: when info of destination is displayed, click on activity for destination to mark as verified or unverified
+
+
+function insert_external_image_url(){
+	event.preventDefault();
+
+	var newEntry = document.createElement("li");
+	newEntry.innerText = ext_img_field.value;
+	newEntry.setAttribute("onclick", "removeExtLink(this)");
+	ext_img_field.value = "";
+
+	ext_img_list.appendChild(newEntry);
+
+}
+
+function get_ext_images(){
+	var list = [];
+
+	for (let i = 0; i < ext_img_list.children.length; i++){
+		list[i] = ext_img_list.children[i].innerText;
+	}
+
+	return list;
+}
+
+
+function removeExtLink(){
+	event.target.remove()
 }

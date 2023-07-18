@@ -26,7 +26,7 @@ $logo = $info["curator_logo"];
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bookings</title>
+	<title>Manage destinations</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<!-- Fontawesome css -->
@@ -95,10 +95,10 @@ $logo = $info["curator_logo"];
 						<div class='location-listing py-4' id="site_result_div">
 							<?php
 
-							$toursites = get_toursites();
+							$destinations = get_destinations();
 
-							foreach ($toursites as $site) {
-								$site_id = $site["toursite_id"];
+							foreach ($destinations as $site) {
+								$site_id = $site["destination_id"];
 								$site_name = $site["site_name"];
 								$site_location = $site["site_location"];
 								$site_country = $site["country"];
@@ -137,16 +137,31 @@ $logo = $info["curator_logo"];
 					<div class="col-lg-6" id="site_info_col">
 						<div>
 							<?php
-							$site = $toursites[0];
-							$site_id = $site["toursite_id"];
-							$site = get_toursite_by_id($site_id);
+							if(count($destinations) != 0){
+							$site = $destinations[0];
+							$site_id = $site["destination_id"];
+							$site = get_destination_by_id($site_id);
 							$site_name = $site["site_name"];
-							$site_desc = $site["toursite_description"];
+							$site_desc = $site["destination_description"];
 							$site_location = $site["site_location"];
 							$site_country = $site["country"];
 							$site_activities = $site["activities"];
 
-							$site_media = get_toursite_media($site_id);
+							$site_media = get_destination_media($site_id);
+						}else {
+
+							$site = "";
+							$site_id = "";
+							$site = "";
+							$site_name = "";
+							$site_desc = "";
+							$site_location = "";
+							$site_country = "";
+							$site_activities = [];
+
+							$site_media = [];
+
+						}
 
 
 							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
@@ -261,99 +276,113 @@ $logo = $info["curator_logo"];
 
 									<!-- Tour site media [start] -->
 									<div class="col tab-pane fade " role="tabpanel" id="add-location-media">
-										<div>
-											<h4>media uploads (url for external and image for ours)</h4>
-										</div>
+										<div class="row border-1 border-bottom py-4 pe-lg-5">
+											<!-- <div class="col-lg-5">
+                                    <h3 class="easygo-fs-3 easygo-fw-1">Flyer</h3>
+                                    <p class="text-gray-1 easygo-fs-5">Upload the flyer for the trip if you have any</p>
+                                </div> -->
+											<input type="file" name="images" id="images">
+											<ul id="external-images">
 
-									</div>
-									<!-- Tour site media [end] -->
-									<!-- Tour site activities [start] -->
-									<div class="col tab-pane fade" role="tabpanel" id="add-location-activities">
-										<div class="d-flex align-items-center gap-2 my-4">
-											<h6 class="easygo-fw-1 m-0">Activities</h6>
-											<small class="text-gray-1 easygo-fs-6">(Activities that the tour site provides)</small>
-											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-										</div>
+											</ul>
+											<div>
 
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">Activity</label>
-											<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
-											<div class="col">
-												<ul id='add_loc_activity_list'>
-													<!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
-												</ul>
+												<label for="external-image-field">External image urls</label>
+												<input type="url" id="external-image-field">
+												<button class="easygo-btn-2" id="external-image-btn" onclick="insert_external_image_url()">Add external image</button>
 											</div>
-											<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
-										</div>
 
+
+										</div>
+										</div>
+										<!-- Tour site media [end] -->
+										<!-- Tour site activities [start] -->
+										<div class="col tab-pane fade" role="tabpanel" id="add-location-activities">
+											<div class="d-flex align-items-center gap-2 my-4">
+												<h6 class="easygo-fw-1 m-0">Activities</h6>
+												<small class="text-gray-1 easygo-fs-6">(Activities that the tour site provides)</small>
+												<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">Activity</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
+												<div class="col">
+													<ul id='add_loc_activity_list'>
+														<!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
+													</ul>
+												</div>
+												<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
+											</div>
+
+										</div>
+										<!-- Tour site activities [end] -->
+										<!-- Tour site extra info [start] -->
+										<div class="col tab-pane fade" role="tabpanel" id="add-location-info">
+											<div class="d-flex align-items-center gap-2 my-4">
+												<h6 class="easygo-fw-1 m-0">Extra information</h6>
+												<small class="text-gray-1 easygo-fs-6">(More information about the tour site)</small>
+												<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+											</div>
+
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">
+													Owner Name
+													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
+												</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="owner_name" name="owner">
+											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">
+													Owner Number
+													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
+												</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="owner_number" name="number">
+											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">
+													Website
+													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
+												</label>
+												<input class="px-4 py-2 flex-grow-1" id="website" type="text" name="website">
+											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">
+													Tiktok handle
+													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
+												</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="tiktok" name="tiktok">
+											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">
+													Instagram handle
+													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
+												</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="instagram" name="instagram">
+											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">
+													Facebook handle
+													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
+												</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="facebook" name="facebook">
+											</div>
+										</div>
 									</div>
-									<!-- Tour site activities [end] -->
-									<!-- Tour site extra info [start] -->
-									<div class="col tab-pane fade" role="tabpanel" id="add-location-info">
-										<div class="d-flex align-items-center gap-2 my-4">
-											<h6 class="easygo-fw-1 m-0">Extra information</h6>
-											<small class="text-gray-1 easygo-fs-6">(More information about the tour site)</small>
-											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-										</div>
-
-
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">
-												Owner Name
-												<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-											</label>
-											<input class="px-4 py-2 flex-grow-1" type="text" id="owner_name" name="owner">
-										</div>
-
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">
-												Owner Number
-												<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-											</label>
-											<input class="px-4 py-2 flex-grow-1" type="text" id="owner_number" name="number">
-										</div>
-
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">
-												Website
-												<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-											</label>
-											<input class="px-4 py-2 flex-grow-1" id="website" type="text" name="website">
-										</div>
-
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">
-												Tiktok handle
-												<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-											</label>
-											<input class="px-4 py-2 flex-grow-1" type="text" id="tiktok" name="tiktok">
-										</div>
-
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">
-												Instagram handle
-												<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-											</label>
-											<input class="px-4 py-2 flex-grow-1" type="text" id="instagram" name="instagram">
-										</div>
-
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">
-												Facebook handle
-												<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-											</label>
-											<input class="px-4 py-2 flex-grow-1" type="text" id="facebook" name="facebook">
-										</div>
+									<!-- Tour site extra info [end] -->
+									<div>
+										<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Create Tour site</button>
+									</div>
+									<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+										<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>
 									</div>
 								</div>
-								<!-- Tour site extra info [end] -->
-								<div>
-									<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" data-bs-dismiss="modal">Create Tour site</button>
-								</div>
-								<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
-									<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>
-								</div>
-							</div>
 						</form>
 					</div>
 				</div>
@@ -361,6 +390,7 @@ $logo = $info["curator_logo"];
 				<div class="row">
 
 				</div>
+				<!-- ============================== -->
 			</div>
 		</main>
 		<!-- dashboard-content [end] -->
@@ -376,10 +406,9 @@ $logo = $info["curator_logo"];
 	<!-- JQuery js -->
 	<script src="../assets/js/jquery-3.6.1.min.js"></script>
 	<!-- easygo js -->
-	<?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+	<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
 	<script src="../assets/js/general.js"></script>
 	<script src="../assets/js/functions.js"></script>
-	<script src="../assets/js/create_a_trip.js"></script>
 	<script src="../assets/js/admin/locations.js"></script>
 </body>
 

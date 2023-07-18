@@ -55,9 +55,9 @@
 		return $data;
 	}
 
-	function get_toursite_by_campaign($id){
+	function get_destination_by_campaign($id){
 		$inte = new interaction_class();
-		return $inte->get_toursite_by_campaign($id);
+		return $inte->get_destination_by_campaign($id);
 	}
 
 	function get_campaign_activities($id){

@@ -29,23 +29,30 @@
 
 	function get_location_info($location_id){
 		$admin = new admin();
-		$data = $admin->get_toursite_info($location_id);
-		$data["activities"] = $admin->get_toursite_activities($location_id);
-		$data["media"] = $admin->get_toursite_media($location_id);
-		$data["socials"] = $admin->get_toursite_socials($location_id);
+		$data = $admin->get_destination_info($location_id);
+		$data["activities"] = $admin->get_destination_activities($location_id);
+		$data["media"] = $admin->get_destination_media($location_id);
+		$data["socials"] = $admin->get_destination_socials($location_id);
 		return $data;
+	}
+
+	function get_location_activities($id){
+		$admin = new admin();
+		return $admin->get_destination_activities($id);
 	}
 
 
 	function toggle_location_verification($id){
 		$admin = new admin();
-		$verified = $admin->get_toursite_info($id)["is_verified"] == "1";
+		$verified = $admin->get_destination_info($id)["is_verified"] == "1";
 		$new_status = $verified ? "0" : "1";
 		//Toggle verification
 		$admin->set_location_verification($id,$new_status);
 
-		return array("new_verification" => $new_status,"toursite_id"=>$id);
+		return array("new_verification" => $new_status,"destination_id"=>$id);
 	}
+
+	function update_location_info(){}
 
 
 ?>

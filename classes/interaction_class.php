@@ -82,10 +82,10 @@
 			return $this->db_fetch_all();
 		}
 
-		function get_toursite_by_campaign($id){
-			$sql = "SELECT toursites.* from toursites
-			join toursite_activity on toursite_activity.toursite_id = toursites.toursite_id
-			join campaign_activities on toursite_activity.activity_id = campaign_activities.activity_id
+		function get_destination_by_campaign($id){
+			$sql = "SELECT destinations.* from destinations
+			join destination_activity on destination_activity.destination_id = destinations.destination_id
+			join campaign_activities on destination_activity.activity_id = campaign_activities.activity_id
 			WHERE campaign_activities.campaign_id = ? ";
 			$this->prepare($sql);
 			$this->bind($id);

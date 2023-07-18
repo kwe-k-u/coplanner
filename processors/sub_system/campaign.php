@@ -44,9 +44,9 @@
 							foreach($activities as $name => $entry){
 
 								$activity_id = array_keys($entry)[0];
-								$site = get_toursite_by_name($name,true);
-								$toursite_id = $site["toursite_id"];
-								add_campaign_activity($camp_id,$activity_id,$toursite_id);
+								$site = get_destination_by_name($name,true);
+								$destination_id = $site["destination_id"];
+								add_campaign_activity($camp_id,$activity_id,$destination_id);
 							}
 
 							//add images
@@ -79,18 +79,18 @@
 					$activities =$_POST["activities"];
 					$site_id = generate_id();
 					//check if location name exists,
-					add_toursite($site_id,$name,$desc,$location,$country);
+					add_destination($site_id,$name,$desc,$location,$country);
 
 					// Adding activities for the tour site
 					foreach ($activities as $name){
-						add_toursite_activity($site_id,$name);
+						add_destination_activity($site_id,$name);
 					}
 
 
-					//upload images for the toursite
-					if(isset($_FILES["toursite_images"])){
-						$num_files = count($_FILES["toursite_images"]['name']);
-						$entry = $_FILES["toursite_images"];
+					//upload images for the destination
+					if(isset($_FILES["destination_images"])){
+						$num_files = count($_FILES["destination_images"]['name']);
+						$entry = $_FILES["destination_images"];
 						for ($i=0; $i < $num_files; $i++) {
 
 							$image = $entry["name"][$i];
@@ -98,7 +98,7 @@
 							$id = generate_id();
 							$media_type = 'picture';
 							$location = upload_file("uploads",$media_type,$tmp,$image);
-							upload_toursite_media_ctrl($id,$site_id,$location,false);
+							upload_destination_media_ctrl($id,$site_id,$location,false);
 						}
 					}
 
@@ -108,7 +108,7 @@
 
 						foreach ($image_links as $entry) {
 							$location = $entry["image_url"];
-							upload_toursite_media_ctrl('',$site_id,$location,true);
+							upload_destination_media_ctrl('',$site_id,$location,true);
 						}
 					}
 
@@ -116,8 +116,8 @@
 					send_json(array("msg" => "Added tour site"));
 					die();
 				case "get_site_by_id":
-					$site_id = $_POST["toursite_id"];
-					$response = get_toursite_by_id($site_id);
+					$site_id = $_POST["destination_id"];
+					$response = get_destination_by_id($site_id);
 					send_json($response);
 					die();
 				case "query_site":
@@ -125,12 +125,12 @@
 					$type = $_POST["type"];
 
 					if ($type == "Activity"){
-						$data = get_toursite_by_activity($query);
+						$data = get_destination_by_activity($query);
 
 					}else if($type == "Location"){
-						$data = get_toursite_by_location($query);
+						$data = get_destination_by_location($query);
 					} else if ($type == "Name"){
-						$data = get_toursite_by_name($query);
+						$data = get_destination_by_name($query);
 					}
 
 
