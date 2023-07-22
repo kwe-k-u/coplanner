@@ -347,7 +347,7 @@ function on_location_expand(id) {
 				"../assets/images/others/tour1.jpg"
 			];
 
-			title.innerText = json["site_name"];
+			title.innerText = json["destination_name"];
 			description.innerText = json["destination_description"];
 
 			reset_location_info_images(image_list);
@@ -511,8 +511,8 @@ function setActiveLocation(element){
 
 // creates and returns an html element for the result tile of tour sites
 function create_location_tile(map) {
-	var title = map["site_name"];
-	var location = map["site_location"];
+	var title = map["destination_name"];
+	var location = map["destination_location"];
 	var id = map["destination_id"];
 
 	const locationCard = document.createElement("div");
@@ -589,8 +589,8 @@ function create_site(form){
 
 	var payload = {
 			"action" : "add_tour_site",
-			"site_name" : form.name.value,
-			"site_location" : form.location.value,
+			"destination_name" : form.name.value,
+			"destination_location" : form.location.value,
 			"site_description" : form.description.value,
 			"country" : form.country.value,
 			"activities" : activities,

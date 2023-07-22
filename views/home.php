@@ -29,8 +29,8 @@
         <main>
             <!--- ================================ -->
             <!--- introduction section [start] -->
-            <section class="intro py-5" >
-                <div class="intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px);">
+            <section class="intro py-7 home-background" >
+                <div class="d-none d-lg-block d-xl-block intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px); background-image: linear-gradient(transparent,#7283e9);">
                     <h1>
                         You don't need to hassle to have a fun tour
                         <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
@@ -51,7 +51,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="background-item" style="z-index: 1;">
+                <div class="background-item home-background" style="z-index: 1;">
                     <div id="background-slider" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
                         <div class="carousel-indicators easygo-carousel-indicators">
                             <?php
@@ -79,7 +79,30 @@
                         </div>
                     </div>
                 </div>
+
             </section>
+
+            <div class="d-sm-block d-xl-none intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px); background-color: #7283e9;">
+                    <h1>
+                        You don't need to hassle to have a fun tour
+                        <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
+                    </h1>
+                    <p>
+                    easyGo is a tour booking platform that provides curated tour experiences for travellers and tourists
+                     within Ghana. We do this by providing a platform that allows seamless booking and payment for packaged tours,
+                      curating personalised experiences and the outsourcing of team-bonding trips for departments of corporate bodies.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
+                        <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
+                    </div>
+                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./trips.php" style="min-width: 50%;">
+                        <div class="d-flex">
+                            <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
+                            <button class="easygo-btn-1 rounded-0">Search</button>
+                        </div>
+                    </form>
+                </div>
             <!--- introduction section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->

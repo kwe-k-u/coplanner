@@ -304,7 +304,7 @@
 
 
 		function get_destination_by_location($query){
-			$sql = "SELECT * FROM `destinations` WHERE `site_location` LIKE CONCAT('%',?,'%') or
+			$sql = "SELECT * FROM `destinations` WHERE `destination_location` LIKE CONCAT('%',?,'%') or
 			`country` LIKE CONCAT('%',?,'%')";
 			$this->prepare($sql);
 			$this->bind($query,$query);

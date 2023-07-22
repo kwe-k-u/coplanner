@@ -72,8 +72,8 @@
 					die();
 
 				case "add_tour_site":
-					$name = $_POST["site_name"];
-					$location = $_POST["site_location"];
+					$name = $_POST["destination_name"];
+					$location = $_POST["destination_location"];
 					$desc = $_POST["site_description"];
 					$country = $_POST["country"];
 					$activities =$_POST["activities"];

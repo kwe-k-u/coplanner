@@ -493,14 +493,14 @@ $logo = $info["curator_logo"];
 
 							foreach ($destinations as $site) {
 								$site_id = $site["destination_id"];
-								$site_name = $site["site_name"];
-								$site_location = $site["site_location"];
+								$destination_name = $site["destination_name"];
+								$destination_location = $site["destination_location"];
 								$site_country = $site["country"];
 								echo "
                                 <div class='location-card border p-4 rounded my-3'>
                                     <div class='header d-flex justify-content-between'>
-                                        <h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
-                                        <h5 class='easygo-fs-4 text-orange'>$site_location</h5>
+                                        <h1 class='easygo-fs-3 text-capitalize'>$destination_name</h1>
+                                        <h5 class='easygo-fs-4 text-orange'>$destination_location</h5>
                                     </div>
                                     <div class='text-gray-1 easygo-fs-6'>
                                         <!-- <div class='rating-and-info d-flex align-items-center gap-1'>
@@ -518,7 +518,7 @@ $logo = $info["curator_logo"];
                                             <span></span>
                                             &nbsp;
                                             &nbsp;
-                                            <span>$site_location</span>
+                                            <span>$destination_location</span>
                                         </div>
                                     </div>
                                     <div class='pt-3'>
@@ -536,16 +536,16 @@ $logo = $info["curator_logo"];
 							$site = $destinations[0];
 							$site_id = $site["destination_id"];
 							$site = get_destination_by_id($site_id);
-							$site_name = $site["site_name"];
+							$destination_name = $site["destination_name"];
 							$site_desc = $site["destination_description"];
-							$site_location = $site["site_location"];
+							$destination_location = $site["destination_location"];
 							$site_country = $site["country"];
 							$site_activities = $site["activities"];
 
 							$site_media = get_destination_media($site_id);
 
 
-							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
+							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$destination_name</h5>
                             <div class='loc-info'>
                                 <p class='easygo-fs-5' id='location-info-desc'>
                                 $site_desc

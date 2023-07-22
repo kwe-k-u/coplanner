@@ -28,9 +28,9 @@ function add_location_toggle(location_id = null){
 		location_info_div.classList.toggle("hide");
 		location_form_div.classList.toggle("hide");
 	}
-	if(location_id != null){ // prefill fields with location information
+	if(location_id != null){ // edit location
+		 // prefill fields with location information
 		//get location info
-		//TODO:: include location id
 		send_request("POST",
 		"processors/admin_processor.php/get_location_info?id="+location_id,
 		{},
@@ -39,9 +39,9 @@ function add_location_toggle(location_id = null){
 			const data = response["data"];
 
 			// document.getElementById("name");
-			name_field.value = data["site_name"];
+			name_field.value = data["destination_name"];
 			description_field.value = data["destination_description"];
-			location_field.value = data["site_location"];
+			location_field.value = data["destination_location"];
 			country_field.value = data["country"];
 			// owner_name.value = data[""];
 			// owner_number_field.value = data[""];
@@ -61,7 +61,9 @@ function add_location_toggle(location_id = null){
 			submit_loc_btn.setAttribute("value",location_id);
 		});
 
-	}else { // empty fields if data is existing in them
+	}else { // Add new location
+		// empty fields if data is existing in them
+
 		name_field.value = "";
 		description_field.value = "";
 		location_field.value = "";
@@ -70,7 +72,7 @@ function add_location_toggle(location_id = null){
 		//TODO:: remove social information about stuff like that
 		// submit_loc_btn.value = "edit";
 		submit_loc_btn.setAttribute("value","");
-		console.log("edit");
+		console.log("new location");
 	}
 }
 
@@ -104,7 +106,7 @@ function expand_location_info(id) {
 				"../assets/images/others/tour1.jpg"
 			];
 
-			title.innerText = json["site_name"];
+			title.innerText = json["destination_name"];
 			description.innerText = json["destination_description"];
 
 			reset_location_info_images(image_list);
@@ -251,8 +253,8 @@ function insert_result_element(location_list) {
 
 // creates and returns an html element for the result tile of tour sites
 function create_result_tile(map) {
-	var title = map["site_name"];
-	var location = map["site_location"];
+	var title = map["destination_name"];
+	var location = map["destination_location"];
 	var id = map["destination_id"];
 	const is_verified = map["is_verified"] == 1;
 
@@ -344,7 +346,7 @@ function create_result_tile(map) {
 
 //submits the location info
 function create_site(form){
-	console.log(form);
+	// console.log(form);
 	event.preventDefault();
 	const act_list = document.getElementById("add_loc_activity_list");
 	var activities = [];
@@ -357,16 +359,16 @@ function create_site(form){
 	// var images = locationImages.getFiles();
 
 	var payload = {
-			"site_name" : form.name.value,
-			"site_location" : form.location.value,
+			"destination_name" : form.name.value,
+			"destination_location" : form.location.value,
 			"site_description" : form.description.value,
-			// "images" : images,
 			"external_images" : get_ext_images(),
 			"site_id" : form.loc_id.value,
 			"country" : form.country.value,
 			"activities" : activities,
 			"owner_name" : form.owner.value,
 			"owner_number" : form.number.value,
+			"cordinates" : form.cordinates.value,
 			"tiktok" : form.tiktok.value,
 			"facebook" : form.facebook.value,
 			"instagram" : form.instagram.value,
@@ -375,7 +377,7 @@ function create_site(form){
 
 	send_request(
 		"POST",
-		"processors/admin_processor.php/" +(form.loc_id == "" ? "insert_destination" : "edit_destination"),
+		"processors/admin_processor.php/" +(form.loc_id.value == "" ? "insert_destination" : "edit_destination"),
 		payload,
 		(response) => {
 			alert(response['msg']);

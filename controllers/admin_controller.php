@@ -1,5 +1,6 @@
 <?php
 	require_once(__DIR__."/../classes/admin_class.php");
+	require_once(__DIR__."/../classes/campaign_class.php");
 
 	function get_upcoming_tours(){
 		$admin = new admin();
@@ -52,7 +53,44 @@
 		return array("new_verification" => $new_status,"destination_id"=>$id);
 	}
 
-	function update_location_info(){}
+	function update_destination_info(){}
+
+	function add_destination($id,$name,$desc,$loc,$country, $phone,$contact,$cord){
+		$admin = new admin();
+		$cord_array = explode(",",$cord); //0-> longitude, 1->latitude
+		return $admin->add_destination($id,$name,$desc,$loc,$country,$phone,$contact,$cord_array[0],$cord_array[1]);
+	}
+
+	function add_destination_activity($des_id,$activity,$fee = 0){
+		$camp = new campaign_class();
+		$act = $camp->get_activity_by_name($activity,true);
+		if($act){//link activity if exists
+			$activity_id = $act["activity_id"];
+		}else { //create activity and then link if exists
+			$camp->add_activity($activity);
+			$act = $camp->get_activity_by_name($activity,true);
+			$activity_id = $act['activity_id'];
+		}
+		$admin = new admin();
+		return $admin->add_destination_activity($des_id,$activity_id,$fee);
+	}
+
+	function add_destination_socials($des_id,$type,$link){
+		$admin = new admin();
+		return $admin->add_destination_socials($des_id,$type,$link);
+	}
+
+	function add_destination_media($des_id,$media_id,$is_foriegn){
+		$admin = new admin();
+		return $admin->add_destination_media($des_id,$media_id,$is_foriegn);
+	}
+
+	function add_media($media_id, $location, $type){
+		$admin = new admin();
+		return $admin->add_media($media_id, $location, $type);
+	}
+
+
 
 
 ?>

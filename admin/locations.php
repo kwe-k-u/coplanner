@@ -99,15 +99,15 @@ $logo = $info["curator_logo"];
 
 							foreach ($destinations as $site) {
 								$site_id = $site["destination_id"];
-								$site_name = $site["site_name"];
-								$site_location = $site["site_location"];
+								$destination_name = $site["destination_name"];
+								$destination_location = $site["destination_location"];
 								$site_country = $site["country"];
 								$verified_text = $site["is_verified"] == "1" ? "Verified (Click to Change)" : "Unverified(Click to Change)";
 								$star = $site["is_verified"] == "1" ? "full_star" : "empty_star";
 								echo "
 						<div class='location-card border p-4 rounded my-3'>
 							<div class='header d-flex justify-content-between'>
-								<h1 class='easygo-fs-3 text-capitalize'>$site_name</h1>
+								<h1 class='easygo-fs-3 text-capitalize'>$destination_name</h1>
 								<h5 class='easygo-fs-4 text-orange'>$site_country</h5>
 							</div>
 							<div class='text-gray-1 easygo-fs-6'>
@@ -121,7 +121,7 @@ $logo = $info["curator_logo"];
 									<span></span>
 									&nbsp;
 									&nbsp;
-									<span>$site_location</span>
+									<span>$destination_location</span>
 								</div>
 							</div>
 							<div class='d-flex gap-2 pt-3'>
@@ -141,9 +141,9 @@ $logo = $info["curator_logo"];
 							$site = $destinations[0];
 							$site_id = $site["destination_id"];
 							$site = get_destination_by_id($site_id);
-							$site_name = $site["site_name"];
+							$destination_name = $site["destination_name"];
 							$site_desc = $site["destination_description"];
-							$site_location = $site["site_location"];
+							$destination_location = $site["destination_location"];
 							$site_country = $site["country"];
 							$site_activities = $site["activities"];
 
@@ -153,18 +153,19 @@ $logo = $info["curator_logo"];
 							$site = "";
 							$site_id = "";
 							$site = "";
-							$site_name = "";
+							$destination_name = "";
 							$site_desc = "";
-							$site_location = "";
+							$destination_location = "";
 							$site_country = "";
 							$site_activities = [];
+
 
 							$site_media = [];
 
 						}
 
 
-							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$site_name</h5>
+							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$destination_name</h5>
 						<div class='loc-info'>
 							<p class='easygo-fs-5' id='location-info-desc'>
 							$site_desc
@@ -269,6 +270,11 @@ $logo = $info["curator_logo"];
 												<label class="text-gray-1 easygo-fs-4 ">Country</label>
 												<input class="px-4 py-2 flex-grow-1" type="text" id="country" name="country">
 											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">GPS Cordinates</label>
+												<input class="px-4 py-2 flex-grow-1" type="text" id="cordinates" name="cordinates">
+											</div>
 										</div>
 
 									</div>
@@ -281,7 +287,7 @@ $logo = $info["curator_logo"];
                                     <h3 class="easygo-fs-3 easygo-fw-1">Flyer</h3>
                                     <p class="text-gray-1 easygo-fs-5">Upload the flyer for the trip if you have any</p>
                                 </div> -->
-											<input type="file" name="images" id="images">
+											<input type="file" name="images" id="images" multiple>
 											<ul id="external-images">
 
 											</ul>

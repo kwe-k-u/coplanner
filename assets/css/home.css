@@ -70,6 +70,30 @@
   }
 }
 
+.carousel{
+  padding-top: 5rem;
+  /* margin-top: 3rem; */
+  padding-bottom: 15rem;
+  /* background-image: linear-gradient(white,blue); */
+}
+
+.carousel-item > img{
+  object-fit: cover;
+}
+
+
+/** media query for carousel **/
+@media only screen and (max-width: 768px) {
+  .carousel{
+    padding-bottom: 0rem;
+
+  }
+
+  .home-background{
+    min-height: 80vh!important;
+    max-height: 85vh!important;
+  }
+}
 /** main content **/
 .main-content {
   flex-grow: 1;

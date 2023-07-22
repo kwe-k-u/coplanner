@@ -18,46 +18,74 @@
 			send_json($res);
 			die();
 		case "/insert_destination":
-			var_dump($_FILES);
-			var_dump($_POST);
-			die();
-			$name = $_POST["site_name"];
-			$location = $_POST["site_location"];
+			$name = $_POST["destination_name"];
+			$location = $_POST["destination_location"];
 			$desc = $_POST["site_description"];
 			$country = $_POST["country"];
 			$activities =$_POST["activities"];
+			$gps = $_POST["cordinates"];
+			$phone = $_POST["owner_number"];
+			$contact = $_POST["owner_name"];
 			$site_id = generate_id();
 			//check if location name exists,
-			add_destination($site_id,$name,$desc,$location,$country);
+			add_destination($site_id,$name,$desc,$location,$country,$phone,$contact,$gps);
 
 			// Adding activities for the tour site
 			foreach ($activities as $name){
 				add_destination_activity($site_id,$name);
 			}
 
+			if($_POST["facebook"] != ""){
+				add_destination_socials($site_id,"facebook",$_POST["facebook"]);
+			}
+			if($_POST["instagram"] != ""){
+				add_destination_socials($site_id,"instagram",$_POST["instagram"]);
+			}
+			if($_POST["website"] != ""){
+				add_destination_socials($site_id,"website",$_POST["website"]);
+			}
+			if($_POST["tiktok"] != ""){
+				add_destination_socials($site_id,"tiktok",$_POST["tiktok"]);
+			}
+
+
+
 
 			//upload images for the destination
-			if(isset($_FILES["destination_images"])){
-				$num_files = count($_FILES["destination_images"]['name']);
-				$entry = $_FILES["destination_images"];
-				for ($i=0; $i < $num_files; $i++) {
+			foreach ($_FILES as $file) {
+				$image =$file["name"][0];
+				$tmp = $file["tmp_name"][0];
+				$id = generate_id();
+				$media_type = 'picture';
+				// var_dump($tmp);
+				// var_dump($image);
 
-					$image = $entry["name"][$i];
-					$tmp = $entry["tmp_name"][$i];
-					$id = generate_id();
-					$media_type = 'picture';
-					$location = upload_file("uploads",$media_type,$tmp,$image);
-					upload_destination_media_ctrl($id,$site_id,$location,false);
-				}
+				$location = upload_file("uploads",$media_type,$tmp,$image);
+				add_media($id, $location, $media_type);
+				add_destination_media($site_id,$id,false);
 			}
+
+			// $num_files = count($_FILES);
+			// $entry = $_FILES;
+			// for ($i=0; $i < $num_files; $i++) {
+
+			// 	$image = $entry["name"][$i];
+			// 	$tmp = $entry["tmp_name"][$i];
+			// 	$id = generate_id();
+			// 	$media_type = 'picture';
+			// 	$location = upload_file("uploads",$media_type,$tmp,$image);
+			// 	upload_destination_media_ctrl($id,$site_id,$location,false);
+			// }
 
 			//link images from other websites if provided
 			if(isset($_POST["external_images"])){
 				$image_links = $_POST["external_images"];
 
-				foreach ($image_links as $entry) {
-					$location = $entry["image_url"];
-					upload_destination_media_ctrl('',$site_id,$location,true);
+				foreach ($image_links as $location) {
+					// $location = $entry;
+					$media_id = generate_id();
+					add_media($media_id, $location, "picture");
+					add_destination_media($site_id,$media_id,true);
 				}
 			}
 
@@ -66,7 +94,8 @@
 			die();
 		case "/edit_destination":
 			// var_dump($_POST);
-			$name = $_POST["site_name"];
+			die();
+			$name = $_POST["destination_name"];
 			$id = $_POST["site_id"];
 			$desc = $_POST["site_description"];
 			$country = $_POST["country"];

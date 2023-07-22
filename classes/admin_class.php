@@ -107,5 +107,47 @@
 			$this->bind($new_status,$id);
 			return $this->db_query();
 		}
+
+		function add_destination($id,$name,$desc,$loc,$country,$phone,$contact,$lat,$long){
+			$sql = "INSERT INTO destinations (destination_id,destination_name,destination_description,
+			destination_location,country,is_verified,phone_number,contact_name, longitude,latitude)
+			 VALUES (?,?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($id,$name,$desc,$loc,$country,true,$phone,$contact,$lat,$long);
+			return $this->db_query();
+		}
+
+		function add_destination_activity($des_id,$act_id,$fee ){
+			$sql = "INSERT INTO destination_activity
+			(activity_id,destination_id,activity_fee,is_verified)
+			VALUES (?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($act_id,$des_id,$fee,true);
+			return $this->db_query();
+		}
+
+		function add_destination_socials($des_id,$type,$link){
+			$sql = "INSERT INTO destination_socials (destination_id,social_link,social_tYpe)
+			VALUES (?,?,?)";
+			$this->prepare($sql);
+			$this->bind($des_id,$link,$type);
+			return $this->db_query();
+		}
+
+		function add_destination_media($des_id,$media_id,$is_foriegn){
+			$sql = "INSERT INTO destination_media
+			VALUES (?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($des_id,$media_id,$is_foriegn,true);
+			return $this->db_query();
+		}
+
+		function add_media($media_id, $location, $type){
+			$sql = "INSERT INTO `media`(`media_id`, `media_location`, `media_type`)
+			VALUE (?,?,?)";
+			$this->prepare($sql);
+			$this->bind($media_id,$location,$type);
+			return $this->db_query();
+		}
 	}
 ?>

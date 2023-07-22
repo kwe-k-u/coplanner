@@ -26,7 +26,7 @@
 
 
 		function get_destination_by_name($name,$exact = false){
-			$sql = "SELECT * FROM `destinations` WHERE `site_name` LIKE ".($exact ? "?" : " CONCAT('%',?,'%')");
+			$sql = "SELECT * FROM `destinations` WHERE `destination_name` LIKE ".($exact ? "?" : " CONCAT('%',?,'%')");
 			$this->prepare($sql);
 			$this->bind($name);
 			return $exact ? $this->db_fetch_one() :$this->db_fetch_all();
@@ -72,7 +72,7 @@
 
 
 		function add_destination($site_id,$name,$desc,$location,$country){
-			$sql = "INSERT INTO `destinations`(`destination_id`,`site_name`,`destination_description`,`site_location`,`country`)
+			$sql = "INSERT INTO `destinations`(`destination_id`,`destination_name`,`destination_description`,`destination_location`,`country`)
 			VALUE (?, ?,?, ?,?)";
 			$this->prepare($sql);
 			$this->bind($site_id,$name,$desc,$location,$country);

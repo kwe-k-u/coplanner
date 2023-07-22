@@ -234,8 +234,8 @@
                                 $sites = get_destination_by_campaign($campaign_id);
                                 foreach($sites as $index => $entry){
                                     $site_desc = $entry["destination_description"];
-                                    $site_loc = $entry["site_location"];
-                                    $site_name = $entry["site_name"];
+                                    $site_loc = $entry["destination_location"];
+                                    $destination_name = $entry["destination_name"];
                                     $i = $index +1;
                                     echo "
                                     <div class='itinery-item py-3'>
@@ -247,7 +247,7 @@
                                         </div>
                                         <div class='col-11'>
                                             <div>
-                                                <h6 class='easygo-fw-2 easygo-fs-1'>$site_name</h6>
+                                                <h6 class='easygo-fw-2 easygo-fs-1'>$destination_name</h6>
                                                 <div class='text-gray-1 easygo-fs-2'>
                                                     <p>
                                                         $site_desc
@@ -597,8 +597,8 @@
                                                 <?php
                                                     foreach ($sites as $index => $entry) {
                                                         $site_desc = $entry["destination_description"];
-                                                        $site_loc = $entry["site_location"];
-                                                        $site_name = $entry["site_name"];
+                                                        $site_loc = $entry["destination_location"];
+                                                        $destination_name = $entry["destination_name"];
                                                         $i = $index +1;
 
 
@@ -613,7 +613,7 @@
                                                     </div>
                                                     <div class='col-11'>
                                                         <div class='ps-4'>
-                                                            <h6 class='easygo-fw-2 easygo-fs-3'>$site_name</h6>
+                                                            <h6 class='easygo-fw-2 easygo-fs-3'>$destination_name</h6>
                                                             <div class='text-gray-1 easygo-fs-4'>
                                                                 <p>$site_desc</p>
                                                                 <p>$site_loc</p
