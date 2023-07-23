@@ -262,9 +262,9 @@ function reset_password(form){
 	var password = form.password.value;
 	var token = url_params("token");
 
-	payload = "action=change_password";
-	payload += "&token="+token;
-	payload += "&password="+password;
+	// payload = "action=change_password";
+	// payload += "&token="+token;
+	// payload += "&password="+password;
 	let payload = {
 		"action" : "change_password",
 		"token" : token,

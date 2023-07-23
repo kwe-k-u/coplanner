@@ -269,13 +269,13 @@
 
 
 		function remove_expired_tokens(){
-			$sql = "REMOVE FROM `forgot_password_token` WHERE `expiry_date` < CURRENT_TIMESTAMP";
+			$sql = "DELETE FROM `forgot_password_token` WHERE `expiry_date` < CURRENT_TIMESTAMP";
 			$this->prepare($sql);
 			return $this->db_query($sql);
 		}
 
 		function remove_expired_curator_invites(){
-			$sql = "REMOVE FROM `curator_manager_invite` WHERE `invite_expiry` < CURRENT_TIMESTAMP";
+			$sql = "DELETE FROM `curator_manager_invite` WHERE `invite_expiry` < CURRENT_TIMESTAMP";
 			$this->prepare($sql);
 			$this->db_query();
 			// return $this->db_query($sql);

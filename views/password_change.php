@@ -1,3 +1,4 @@
+<?php require_once(__DIR__."/../utils/core.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,7 @@
             <img src="../assets/images/svgs/password_change_home.svg" alt="register image">
         </div>
         <div class="form-container container">
-            <form onsubmit="return request_password_reset(this)">
+            <form onsubmit="return reset_password(this)">
                 <div class="form-header">
                     <div class="logo">
                         <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="easygo logo">
@@ -32,13 +33,13 @@
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="pswd" type="password" placeholder="Password" class="border-blue">
+                        <input name="password" type="password" placeholder="Password" class="border-blue">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="con_pswd" type="password" placeholder="Confirm Password" class="border-blue">
+                        <input name="confirm_password" type="password" placeholder="Confirm Password" class="border-blue">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>

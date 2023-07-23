@@ -10,7 +10,7 @@
 
 		if ($request == "POST"){
 			if(!isset($_POST["action"])){
-				echo " <action> required";
+				send_json(array("msg"=> "<action> required"));
 				die();
 			}
 
@@ -194,7 +194,7 @@
 								break;
 							default:
 								// ECHO $_POST["type"];
-								echo "Not implemented";
+								send_json(array("msg"=> "Not implemented"));
 						}
 					}else {
 						$mailer->tourist_signup($email);
@@ -212,16 +212,16 @@
 					remove_expired_tokens();
 					$email = $_POST["email"];
 					if ($email == ""){
-						echo "No email provided";
+						send_json(array("msg"=> "No email provided"));
 						die();
 					}
 					//delete all expired links for the email
 					$token = get_password_token($email);
 					if ($token){
-						echo "Check your email for link to reset your password";
+						send_json(array("msg"=> "Check your email for the link to reset your password"));
 						$mailer->password_reset($email,$token);
 					}else {
-						echo 'Something went wrong. Try again soon';
+						send_json(array("msg"=> "Something went wrong. Try again soon or contact support at main.easygo@gmail.com"));
 					}
 					die();
 				case "change_password":
@@ -242,12 +242,12 @@
 							$u_id = $verify["user_id"];
 							$email = get_user_by_id($u_id)["email"];
 							$mailer->password_reset_confirmation($email);
-							echo "Password change successful. Login with your new password";
+							send_json(array("msg"=>"Password change successful. Login with your new password"));
 						}else {
-							echo "Password change failed.";
+							send_json(array("msg"=>"Password change failed."));
 						}
 					}else {
-						echo "The token has expired. Request a new token to be sent";
+						send_json(array("msg"=>"The token has expired. Request a new token to be sent"));
 					}
 					die();
 				case "change_password_logged_in":
@@ -315,16 +315,16 @@
 					send_json(array("msg"=>"Pending implementation"));
 					die();
 				default:
-					echo "No implementation for <". $_POST["action"] .">";
+					send_json(array("msg"=>"No implementation for <". $_POST["action"] .">"));
 				}
 				die();
 
 
 		}else{
-			echo "unsupported method";
+			send_json(array("msg"=>"unsupported method"));
 			die();
 		}
-		echo "EOF";
+		send_json(array("msg"=>"EOF"));
 		die();
 	}
 

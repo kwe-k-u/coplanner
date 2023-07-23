@@ -64,6 +64,13 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_curator_by_id($id){
+			$sql = "SELECT * FROM curators where curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_one();
+		}
+
 
 		function get_destination_info($id){
 			$sql = "SELECT * FROM `destinations` as t where t.destination_id = ?";
@@ -147,6 +154,48 @@
 			VALUE (?,?,?)";
 			$this->prepare($sql);
 			$this->bind($media_id,$location,$type);
+			return $this->db_query();
+		}
+
+		function get_unverified_curators(){
+			$sql = "SELECT curators.*, media.media_location as inc_doc
+			FROM curators
+			left join media on media.media_id = curators.curator_inc_doc
+			 where curators.is_verified = 0
+			";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_id_pending_curators(){
+			$sql = "SELECT
+			users.user_name,
+			users.user_id,
+			users.email,
+			curators.curator_id,
+			curators.curator_name,
+            (select media.media_location from media where media_id = curator_manager.gov_id_front) as id_front,
+            (select media.media_location from media where media_id = curator_manager.gov_id_back) as id_back
+			FROM curator_manager
+			INNER JOIN curators on curator_manager.curator_id = curators.curator_id
+			INNER JOIN users on users.user_id = curator_manager.user_id
+			WHERE curator_manager.id_verified = false";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+
+		function verify_curator_manager_id($user_id,$action){
+			$sql = "UPDATE curator_manager SET id_verified = ? where user_id =?";
+			$this->prepare($sql);
+			$this->bind($action,$user_id);
+			return $this->db_query();
+		}
+
+		function verify_curator_account($curator_id,$action){
+			$sql = "UPDATE curators SET is_verified = ? where curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($action,$curator_id);
 			return $this->db_query();
 		}
 	}

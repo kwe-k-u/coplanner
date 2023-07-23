@@ -4,9 +4,8 @@ $id = get_session_user_id();
 $info = get_collaborator_info($id);
 $curator_id = get_session_account_id();
 
-$balance = format_string_as_currency_fn(get_curator_statistics($id)["withdrawable_balance"]);
-$name = $info["user_name"];
-$company = $info["curator_name"];
+$name = "admin";//$info["user_name"];
+$company = "easyGo Tour Ltd";//$info["curator_name"];
 ?>
 <header class="dashboard-header d-none d-lg-flex">
 	<div class="dashlogo logo logo-medium">
@@ -21,7 +20,7 @@ $company = $info["curator_name"];
 		</form>
 		<div class="balance d-flex flex-column justify-content-center">
 
-			<?php echo "<h4 class='m-0 easygo-fs-3 easygo-fw-1'>GHC $balance</h4>"; ?>
+			<?php echo "<h4 class='m-0 easygo-fs-3 easygo-fw-1'>GHC 0.0</h4>"; ?>
 			<small class="easygo-fs-5 text-orange">Withdrawable balance</small>
 		</div>
 		<div class="user-menu d-flex gap-1">

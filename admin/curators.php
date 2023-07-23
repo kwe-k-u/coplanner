@@ -3,16 +3,16 @@ require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
-if (!is_session_user_curator()) {
+if (!is_session_logged_in()) {
     header("Location: ../views/home.php");
     die();
 }
 
-$info = get_collaborator_info(get_session_user_id());
+// $info = get_user_by_id(get_session_user_id());
 $curator_id = get_session_account_id();
-$user_name = $info["user_name"];
-$curator_name = $info["curator_name"];
-$logo = $info["curator_logo"];
+$user_name ="" ;//$info["user_name"];
+$curator_name = "admin";//$info["curator_name"];
+$logo = "";//$info["curator_logo"];
 
 
 
@@ -56,7 +56,7 @@ $logo = $info["curator_logo"];
                             <h5 class="title">Curators</h5>
                             <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Bookings</small>
                         </div>
-                        <p class="mt-4 mb-0">This table shows information about crator accounts.</p>
+                        <p class="mt-4 mb-0">This table shows information about curator accounts.</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
                         <div class="left-controls">

@@ -27,6 +27,11 @@
 		return $admin->get_curators();
 	}
 
+	function get_curator_by_id($id){
+		$admin = new admin();
+		return $admin->get_curator_by_id($id);
+	}
+
 
 	function get_location_info($location_id){
 		$admin = new admin();
@@ -91,6 +96,27 @@
 	}
 
 
+	function get_unverified_curators(){
+		$admin = new admin();
+		return $admin->get_unverified_curators();
+	}
+
+	function get_id_pending_curators(){
+		$admin = new admin();
+		return $admin->get_id_pending_curators();
+	}
+
+
+	function verify_curator_manager_id($user_id,$action){
+		$admin = new admin();
+		return $admin->verify_curator_manager_id($user_id,$action ? "1" : "0");
+	}
+
+
+	function verify_curator_account($curator_id,$action){
+		$admin = new admin();
+		return $admin->verify_curator_account($curator_id,$action ? "1" : "0");
+	}
 
 
 ?>

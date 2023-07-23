@@ -143,6 +143,35 @@
 
 
 			die();
+		case "/verify_curator_manager_id":
+			$curator_id = $_POST["curator_id"];
+			$action = $_POST["verify_action"] =="true";
+			$success = verify_curator_manager_id($curator_id,$action);
+			if($success){
+				if($action){
+					send_json(array("msg"=> "Curator account has been verified"));
+				}else {
+					send_json(array("msg"=> "Curator verification has been rejected"));
+				}
+			}else {
+				send_json(array("msg"=> "Something went wrong please try again"));
+			}
+			die();
+		case "/verify_curator_account":
+			$curator_id = $_POST["curator_id"];
+			$action = !(get_curator_by_id($curator_id)["is_verified"] == 1);
+
+			$success = verify_curator_account($curator_id,$action);
+			if($success){
+				if($action){
+					send_json(array("msg"=> "Curator account has been verified"));
+				}else {
+					send_json(array("msg"=> "Curator verification has been rejected"));
+				}
+			}else {
+				send_json(array("msg"=> "Something went wrong please try again"));
+			}
+			die();
 		default:
 			echo "No action";
 	}

@@ -46,7 +46,7 @@ $logo = "";//$info["curator_logo"];
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-        <?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
+			<?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
 
 
             <div class="main-content px-3">
@@ -59,24 +59,13 @@ $logo = "";//$info["curator_logo"];
                         <p class="mt-4 mb-0">This table shows all user info.</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
-                        <div class="left-controls">
+                        <div class="left-controls row">
                             <form id="dashboard-search">
                                 <div class="form-input-field">
                                     <input class="p-2" type="text" placeholder="search">
+
                                 </div>
                             </form>
-                        </div>
-                        <div class="right-controls d-flex gap-2 easygo-fs-5">
-                            <div class="dropdown">
-                                <button class="btn border dropdown-toggle px-5 easygo-fs-5 h-100" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Export
-                                </button>
-                                <ul class="dropdown-menu easygo-fs-5" aria-labelledby="export-menu">
-                                    <li><a class="dropdown-item" href="#">PDF</a></li>
-                                    <li><a class="dropdown-item" href="#">Excel</a></li>
-                                </ul>
-                            </div>
-                            <button class="easygo-btn-1 py-1 px-5">Print</button>
                         </div>
                     </div>
                     <div class="trip-listing">
@@ -85,20 +74,16 @@ $logo = "";//$info["curator_logo"];
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
                                 </div>
-                                <div class="inner-item">User ID</div>
-                                <div class="inner-item">User Name</div>
-                                <div class="inner-item">Email</div>
-                                <div class="inner-item">Phone</div>
+                                <div class="inner-item">Curator name</div>
+                                <div class="inner-item">Incorporation document</div>
                                 <div class="inner-item">Country</div>
-                                <div class="inner-item">Date Joined</div>
-                                <div class="inner-item">Last Login</div>
-                                <div class="inner-item">Bookings</div>
+                                <div class="inner-item">Actions</div>
                                 <div class="inner-item">Actions</div>
                             </div>
 
                             <?php
 
-                                $accounts = get_user_accounts();
+                                $accounts = get_unverified_curators();
 
                                 if (!$accounts){
                                     echo "<div class='list-item'>
@@ -109,37 +94,36 @@ $logo = "";//$info["curator_logo"];
                                     </div>";
                                 }else {
                                     foreach ($accounts as $entry) {
-										$id = $entry["user_id"];
-										$email = $entry["email"];
+										$id = $entry["curator_id"];
+										$curator = $entry['curator_name'];
+										$logo = isset($entry["logo"]) ? $entry["logo"] : "";
+										$doc = isset($entry["inc_doc"]) ? $entry["inc_doc"] : "";
 										$country = $entry["country"];
-										$username = $entry['user_name'];
-										$date_joined = format_string_as_date_fn($entry["date_created"]);
-										$phone = $entry["phone_number"];
-										$last_login = format_string_as_date_fn($entry["last_login"]);
-										$num_bookings = $entry["booking_count"];
 
                                         echo "
                                 <div class='list-item'>
-                                    <div class='item-bullet-container'>
-                                        <div class='item-bullet'></div>
+                                    <div class='item-bullet-container col'>
+                                         <div class='item-bullet'></div>
+										<div><img class='icon' src='$logo'></div>
                                     </div>
                                     <div class='inner-item'>
 										<div class='col'>
 											<div>
-												$username
+												$curator
 											</div>
 											<div>
 												$id
 											</div>
 										</div>
 									</div>
-                                    <div class='inner-item'>$email</div>
-                                    <div class='inner-item'>$phone </div>
+                                    <div class='inner-item'> <a href='$doc'>Document url</a></div>
                                     <div class='inner-item'>$country</div>
-                                    <div class='inner-item'>$date_joined</div>
-                                    <div class='inner-item'>$last_login</div>
-                                    <div class='inner-item'>$num_bookings bookings</div>
-                                    <div class='inner-item'>actions</div>
+                                    <div class='inner-item'>
+										<a href='#' onclick='toggle_curator_verification(\"$id\")'>Verify</a>
+									</div>
+                                    <div class='inner-item'>
+										<a href='#'>Block Logins</a>
+									</div>
                                 </div>
                                     ";
                                     }
@@ -186,8 +170,9 @@ $logo = "";//$info["curator_logo"];
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/admin/verification.js"></script>
 </body>
 
 </html>
