@@ -1,11 +1,21 @@
 <?php
 require_once(__DIR__."/../utils/core.php");
 require_once(__DIR__."/../utils/paystack.php");
-var_dump($_FILES);
-var_dump($_POST);
-// $pay = new paystack_custom();
-// $e = $pay->verify_transaction($_GET["id"]);
-// send_json($e);
+$location = upload_file("uploads",$media_type,$tmp,$image);
+var_dump($location);
+$location = upload_file("/var/www/html/easygo_v2/uploads",$media_type,$tmp,$image);
+var_dump($location);
+foreach ($_FILES as $file) {
+	$image =$file["name"][0];
+	$tmp = $file["tmp_name"][0];
+	$id = generate_id();
+	$media_type = 'picture';
+	// var_dump($tmp);
+	// var_dump($image);
+
+	$location = upload_file("uploads",$media_type,$tmp,$image);
+	var_dump($location);
+}
 ?>
 
 

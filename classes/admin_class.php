@@ -120,7 +120,7 @@
 			destination_location,country,is_verified,phone_number,contact_name, longitude,latitude)
 			 VALUES (?,?,?,?,?,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($id,$name,$desc,$loc,$country,true,$phone,$contact,$lat,$long);
+			$this->bind($id,$name,$desc,$loc,$country,1,$phone,$contact,$lat,$long);
 			return $this->db_query();
 		}
 
@@ -129,7 +129,7 @@
 			(activity_id,destination_id,activity_fee,is_verified)
 			VALUES (?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($act_id,$des_id,$fee,true);
+			$this->bind($act_id,$des_id,$fee,1);
 			return $this->db_query();
 		}
 
@@ -145,7 +145,7 @@
 			$sql = "INSERT INTO destination_media
 			VALUES (?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($des_id,$media_id,$is_foriegn,true);
+			$this->bind($des_id,$media_id,$is_foriegn,1);
 			return $this->db_query();
 		}
 

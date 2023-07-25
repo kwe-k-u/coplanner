@@ -62,7 +62,7 @@
 
 				$location = upload_file("uploads",$media_type,$tmp,$image);
 				add_media($id, $location, $media_type);
-				add_destination_media($site_id,$id,false);
+				add_destination_media($site_id,$id,0);
 			}
 
 			// $num_files = count($_FILES);
@@ -85,7 +85,7 @@
 					// $location = $entry;
 					$media_id = generate_id();
 					add_media($media_id, $location, "picture");
-					add_destination_media($site_id,$media_id,true);
+					add_destination_media($site_id,$media_id,1);
 				}
 			}
 
