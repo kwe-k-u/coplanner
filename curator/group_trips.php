@@ -70,12 +70,12 @@
                                         $c_name = $entry["title"];
                                         $c_count = $entry["trip_count"];
                                         $c_media = get_campaign_image($c_id)[0]["media_location"];
-                                        $c_trip = get_campaign_trips($c_id)[0];
+                                        $c_trip = get_campaign_tours($c_id)[0];
                                         $t_sdate = format_string_as_date_fn($c_trip["start_date"]);
                                         $t_edate = format_string_as_date_fn($c_trip["end_date"]);
                                         $t_fee = $c_trip["fee"];
                                         $t_currency = $c_trip["currency"];
-                                        $t_booking = count_trip_booking($c_trip["trip_id"])["booking_count"];
+                                        $t_booking = count_trip_booking($c_trip["tour_id"])["booking_count"];
                                         echo "
                                         <div class='col-lg-4 col-md-6 pb-4'>
                                 <div class='trip-card-2'>

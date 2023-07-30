@@ -27,7 +27,7 @@
 					if ($success){
 						//for count, add each trip
 						foreach ($trips as $current_trip) {
-							$trip_id = generate_id();
+							$tour_id = generate_id();
 							$start = $current_trip["start_date"];
 							$end = $current_trip["end_date"];
 							//TODO:: add pickup and dropoff locations
@@ -37,7 +37,7 @@
 							$fee = $current_trip["fee"];
 							$status = "published";
 							$currency = "GHS";
-							create_campaign_trip($trip_id,$camp_id,$pickup,$dropoff,$start,$end,$seats,$currency,$fee,$status);
+							create_campaign_trip($tour_id,$camp_id,$pickup,$dropoff,$start,$end,$seats,$currency,$fee,$status);
 						}
 
 							//add activities

@@ -57,7 +57,7 @@
 	// // 	"mode"=> "Test",
 	// // 	"payment_processor"=> "Test",
 	// // 	"transaction"=> "Credit",
-	// // 	"payload"=> array("payment_method"=>"momo","contact_name"=>"Mildred","contact_number"=>"0208162626","seats"=>"2","number"=>"0559582518","network"=>"MTN","user_id"=>"a6d783492bfac5fc426a552592d13e57","campaign_id"=>"36d61baa788777e446c0a0361aea6ef2","trip_id"=>"d1a10ba6198572ee80984e0fb17ae533","action"=>"trip_payment"),
+	// // 	"payload"=> array("payment_method"=>"momo","contact_name"=>"Mildred","contact_number"=>"0208162626","seats"=>"2","number"=>"0559582518","network"=>"MTN","user_id"=>"a6d783492bfac5fc426a552592d13e57","campaign_id"=>"36d61baa788777e446c0a0361aea6ef2","tour_id"=>"d1a10ba6198572ee80984e0fb17ae533","action"=>"trip_payment"),
 	// // 	"order_id"=> null,
 	// // 	"environment"=> "Development",
 	// // 	"callback_url"=> "https:\/\/www.easygo.com.gh\/processors\/callback.php?action=paybox&mode=",
@@ -87,7 +87,7 @@
 
 
 	// 		$user_id = $payload["user_id"];
-	// 		$trip_id = $payload["trip_id"];
+	// 		$tour_id = $payload["tour_id"];
 	// 		$campaign_id = $payload["campaign_id"];
 	// 		$action = $payload["action"];
 	// 		$payment_method=$payload["payment_method"];
@@ -98,7 +98,7 @@
 	// 		$seats = $payload["seats"];
 
 	// 		$user = get_user_by_id($user_id);
-	// 		$trip = get_campaign_trip_by_id($trip_id);
+	// 		$trip = get_campaign_trip_by_id($tour_id);
 
 	// 		$amount_expected = floatval($trip["fee"]) * intval($seats);
 	// 		$currency_expected = $trip["currency"];
@@ -132,7 +132,7 @@
 	// 					$booking_id = generate_id();
 	// 					record_transaction($token,$transaction_date,$amount_expected,"paybox",$data["fee"]);
 	// 					// record booking
-	// 					book_standard_trip($booking_id,$user_id,$trip_id,$seats,$token,$contact_name,$contact_number);
+	// 					book_standard_trip($booking_id,$user_id,$tour_id,$seats,$token,$contact_name,$contact_number);
 	// 			}
 	// 			// echo $response;
 	// 		}else {
@@ -152,5 +152,5 @@
 
 
 	//verify transaction and update booking status
-	//from payload get user_id, trip_id, $seats_booked
+	//from payload get user_id, tour_id, $seats_booked
 ?>

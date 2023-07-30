@@ -13,7 +13,7 @@
 			// $this->mode = "Bank";
 		}
 
-		//Add to payload, booking_id, seats_booked,$trip_id,$user_id
+		//Add to payload, booking_id, seats_booked,$tour_id,$user_id
 		function charge_momo($order_id, $email,$amount, $network, $number, $payload = []){
 			$body = array (
 				"payerEmail" => $email,

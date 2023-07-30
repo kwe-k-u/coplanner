@@ -24,7 +24,7 @@ $user_name = $user["user_name"];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard | Private Tour Quotes</title>
+    <title>easyGo - User Dashboard | Private Tour Quotes</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->

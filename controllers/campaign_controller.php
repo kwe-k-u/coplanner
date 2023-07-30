@@ -18,9 +18,9 @@
 	// }
 
 
-	// function get_campaign_trips($campaign_id){
+	// function get_campaign_tours($campaign_id){
 	// 	$campaign = new campaign_class();
-	// 	return $campaign->get_campaign_trips($campaign_id);
+	// 	return $campaign->get_campaign_tours($campaign_id);
 	// }
 
 	// function get_campaign_activities($campaign_id){
@@ -43,9 +43,9 @@
 		return $campaign->create_campaign($camp_id,$curator_id, $title,$description);
 	}
 
-	function create_campaign_trip($trip_id,$camp_id,$pickup,$dropoff,$start,$end,$seats,$currency, $fee,$status){
+	function create_campaign_trip($tour_id,$camp_id,$pickup,$dropoff,$start,$end,$seats,$currency, $fee,$status){
 		$camp = new campaign_class();
-		return $camp->create_campaign_trip($trip_id,$camp_id, $pickup,$dropoff,$start,$end,$seats,$currency,$fee,$status);
+		return $camp->create_campaign_trip($tour_id,$camp_id, $pickup,$dropoff,$start,$end,$seats,$currency,$fee,$status);
 	}
 
 	function add_destination($id,$name,$desc,$location,$country){

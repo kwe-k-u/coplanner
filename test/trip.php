@@ -72,14 +72,14 @@
 			$campaign_id = $trip["campaign_id"];
 			echo "<li>".$trip_name. "</li>";
 			echo "<ul>";
-			$occurances = get_campaign_trips($campaign_id);
+			$occurances = get_campaign_tours($campaign_id);
 			foreach ($occurances as $occurance) {
 				$start = format_string_as_date_fn($occurance["start_date"]);
 				$currency = $occurance["currency"];
-				$o_id = $occurance["trip_id"];
+				$o_id = $occurance["tour_id"];
 				$fee = $occurance["fee"];
 				echo "<li>".$start. " - ". $currency. $fee;
-				echo "<a href='booking.php?campaign_id=$campaign_id&trip_id=$o_id'>Book</a>
+				echo "<a href='booking.php?campaign_id=$campaign_id&tour_id=$o_id'>Book</a>
 				</li>";
 			}
 			echo "</ul>";

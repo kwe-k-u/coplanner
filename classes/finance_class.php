@@ -11,11 +11,11 @@
 
 
 		//===================================== INSERT =========================================
-		function book_standard_trip($booking_id, $user_id,$trip_id,$adult_seats,$kid_seats, $transaction_id, $contact_name,$contact_number){
-			$sql = "INSERT INTO `bookings`(`booking_id`, `user_id`, `trip_id`, `date_booked`, `adult_seats`,`child_seats`, `transaction_id`, `emergency_contact_name`, `emergency_contact_number`)
+		function book_standard_trip($booking_id, $user_id,$tour_id,$adult_seats,$kid_seats, $transaction_id, $contact_name,$contact_number){
+			$sql = "INSERT INTO `bookings`(`booking_id`, `user_id`, `tour_id`, `date_booked`, `adult_seats`,`child_seats`, `transaction_id`, `emergency_contact_name`, `emergency_contact_number`)
 			VALUES (?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($booking_id,$user_id,$trip_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
+			$this->bind($booking_id,$user_id,$tour_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
 			return $this->db_query();
 		}
 

@@ -7,7 +7,7 @@
 
 		//=============================SELECT======================
 		function get_campaign_tour_by_id($id){
-			$sql = "SELECT * FROM `campaign_trips` WHERE `trip_id`=?";
+			$sql = "SELECT * FROM `campaign_tours` WHERE `tour_id`=?";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_one();
@@ -61,12 +61,12 @@
 		}
 
 
-		function create_campaign_trip($trip_id,$campaign_id,$pickup_location, $dropoff_location, $start_date, $end_date,$seats, $currency, $fee,$status){
-			$sql = "INSERT INTO `campaign_trips`(`trip_id`, `campaign_id`, `pickup_location`, `dropoff_location`, `start_date`, `end_date`, `seats_available`, `currency`, `fee`, `publish_state`)
+		function create_campaign_trip($tour_id,$campaign_id,$pickup_location, $dropoff_location, $start_date, $end_date,$seats, $currency, $fee,$status){
+			$sql = "INSERT INTO `campaign_tours`(`tour_id`, `campaign_id`, `pickup_location`, `dropoff_location`, `start_date`, `end_date`, `seats_available`, `currency`, `fee`, `publish_state`)
 			VALUES
 			(?,?,?,?,?,?,?,?,?, ?)";
 			$this->prepare($sql);
-			$this->bind($trip_id,$campaign_id,$pickup_location,$dropoff_location,$start_date,$end_date,$seats,$currency,$fee,$status);
+			$this->bind($tour_id,$campaign_id,$pickup_location,$dropoff_location,$start_date,$end_date,$seats,$currency,$fee,$status);
 			return $this->db_query();
 		}
 

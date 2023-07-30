@@ -34,12 +34,24 @@
 
 	function get_current_campaigns($query = null){
 		$inte = new interaction_class();
-		return $inte->get_current_campaigns($query = null);
+		$data= $inte->get_current_campaigns($query);
+		if($data){
+			for($i = 0; $i < count($data); $i++){
+				$data[$i]["media"] = $inte->get_campaign_media($data[$i]["campaign_id"]);
+			}
+		}
+		return $data;
 	}
 
 	function get_past_campaigns(){
 		$inte = new interaction_class();
-		return $inte->get_past_campaigns();
+		$data = $inte->get_past_campaigns();
+		if($data){
+			for($i = 0; $i < count($data); $i++){
+				$data[$i]["media"] = $inte->get_campaign_media($data[$i]["campaign_id"]);
+			}
+		}
+		return $data;
 	}
 
 	function get_user_booking_history($user_id){
@@ -50,8 +62,9 @@
 
 	function get_campaign_by_id($id){
 		$inte = new interaction_class();
-		$data = $inte->get_campaign_by_id($id);
-		$data["media"] = $inte->get_campaign_media($data["campaign_id"]);
+		$data = $inte->get_campaign_by_id($id);if($data){
+			$data["media"] = $inte->get_campaign_media($data["campaign_id"]);
+		}
 		return $data;
 	}
 
@@ -72,9 +85,9 @@
 	}
 
 
-	function get_campaign_trips($campaign_id){
+	function get_campaign_tours($campaign_id){
 		$inte = new interaction_class();
-		return $inte->get_campaign_trips($campaign_id);
+		return $inte->get_campaign_tours($campaign_id);
 	}
 
 	function get_campaign_next_trip($id){
@@ -82,13 +95,18 @@
 		return $inte->get_campaign_next_trip($id);
 	}
 
+
 	function get_user_stats($user_id){
 		$inte = new interaction_class();
 		return $inte->get_user_stats($user_id);
 	}
-	function get_campaign_by_trip_id($trip_id){
+	function get_campaign_by_tour_id($tour_id){
 		$inte = new interaction_class();
-		return $inte->get_campaign_by_trip_id($trip_id);
+		$data = $inte->get_campaign_by_tour_id($tour_id);
+		if($data){
+			$data["media"] = $inte->get_campaign_media($data["campaign_id"]);
+		}
+		return $data;
 	}
 
 

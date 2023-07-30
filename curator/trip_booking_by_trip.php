@@ -84,7 +84,7 @@
                             <?php
 
                                 $campaign = get_campaign_by_id($campaign_id);
-                                $trips = get_campaign_trips($campaign_id);
+                                $trips = get_campaign_tours($campaign_id);
                                 $count = count($trips);
                                 $name = $campaign["title"];
 
@@ -132,11 +132,11 @@
                             foreach($trips as $trip){ //for each trip, show the booking list
                                 $start = format_string_as_date_fn($trip["start_date"]);
                                 $end = format_string_as_date_fn($trip["end_date"]);
-                                $trip_id = $trip["trip_id"];
+                                $tour_id = $trip["tour_id"];
 
                                 $inner_list = "";
 
-                                $bookings = get_trip_bookings($trip_id);
+                                $bookings = get_trip_bookings($tour_id);
                                 if(count($bookings) == 0){
                                     $inner_list = "<h5>You don't have any bookings yet for this tour yet</h5>";
                                 }

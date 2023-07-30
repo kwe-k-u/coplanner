@@ -24,7 +24,7 @@
 
 
 
-    $tour = get_campaign_by_trip_id($id);
+    $tour = get_campaign_by_tour_id($id);
     $name = $tour["title"];
     $fee = $tour["fee"];
     $currency = $tour["currency"];
@@ -32,6 +32,7 @@
     $vat = $fee * VAT_RATE;
     $tourism = $fee * TOURISM_LEVY;
     $total = $vat + $tourism + $fee;
+
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - Booking</title>
+    <title>easyGo - Booking</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -64,7 +65,7 @@
         <!--- ================================ -->
         <main>
             <div class="container mb-4" style="margin-top: 10rem;">
-                <a href="./trips.php">Trips</a> > Trip Details
+                <a href="./trips.php">Tours</a> > Tour Invoice
             </div>
             <!--- ================================ -->
             <!--- image display section [start] -->
@@ -299,14 +300,14 @@
                                                <b> $currency <span id='invoice_subtotal'>$fee</span></b>
                                             </div>
                                         </div>
-                                        <div class='row'>
+                                        <!-- <div class='row'>
                                             <div class='col-6 text-right'>
                                                 Value Added Tax <span class='text-gray-1'>(15%)</span>
                                             </div>
                                             <div class='text-align-righta col-6'>
                                                 $currency <span id='invoice_vat'>$vat</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class='row border-bottom'>
                                             <div class='col-6 text-right'>
                                                 Tourism Levy <span class='text-gray-1'>(1%)</span>

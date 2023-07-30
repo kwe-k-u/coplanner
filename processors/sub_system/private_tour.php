@@ -23,12 +23,12 @@
 					$state = $_POST["state"];
 					$count = $_POST["person_count"];
 					$type = $_POST["type"];
-					$trip_id = generate_id();
+					$tour_id = generate_id();
 
 
 					if ($type == "custom"){
 						$desc = $_POST["description"];
-						create_private_tour_custom($trip_id,$user_id,
+						create_private_tour_custom($tour_id,$user_id,
 							$currency,$min,$max,$desc,$start,$end,$state,$count);
 					}else {
 
@@ -119,7 +119,7 @@
 
 					$response = array(
 						"quote_id"=> $quote_id,
-						"vat" => $vat,
+						// "vat" => $vat,
 						"tourism_levy"=> $tourism,
 						"discount" => $discount,
 						"currency"=> $currency,

@@ -83,7 +83,7 @@
 
 
 /** media query for carousel **/
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .carousel{
     padding-bottom: 0rem;
 

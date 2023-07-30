@@ -52,7 +52,7 @@
 			b.booking_id,
 			b.user_id,
 			b.transaction_id,
-			b.trip_id,
+			b.tour_id,
 			ct.start_date,
 			ct.end_date,
 			b.adult_seats + b.child_seats as seats_booked,
@@ -64,7 +64,7 @@
 			b.date_booked
 			 FROM `bookings` as b
 			 join transactions as t on t.transaction_id = b.transaction_id
-			 join campaign_trips as ct on ct.trip_id = b.trip_id
+			 join campaign_tours as ct on ct.tour_id = b.tour_id
 			 WHERE b.user_id = ?";
 			$this->prepare($sql);
 			$this->bind($user_id);
@@ -76,7 +76,7 @@
 			$sql = "SELECT campaigns.*,
 			curators.curator_name
 			 FROM `campaigns`
-			JOIN `campaign_trips` on campaign_trips.campaign_id = campaigns.campaign_id
+			JOIN `campaign_tours` on campaign_tours.campaign_id = campaigns.campaign_id
 			JOIN curators on curators.curator_id = campaigns.campaign_id";
 			$this->prepare($sql);
 			return $this->db_fetch_all();
@@ -107,16 +107,16 @@
 			return $this->db_fetch_one();
 		}
 
-		function get_campaign_trips($campaign_id){
-			$sql = "SELECT * FROM `campaign_trips` WHERE
-			`campaign_id`=? AND `publish_state`='published'";
+		function get_campaign_tours($campaign_id){
+			$sql = "SELECT * FROM `campaign_tours` WHERE
+			`campaign_id`=? AND `publish_state`='published' ORDER BY `start_date` DESC";
 			$this->prepare($sql);
 			$this->bind($campaign_id);
 			return $this->db_fetch_all();
 		}
 
 		function get_campaign_next_trip($id){
-			$sql = "SELECT * FROM `campaign_trips`
+			$sql = "SELECT * FROM `campaign_tours`
 			where `campaign_id`=? AND start_date > CURRENT_TIMESTAMP";
 			$this->prepare($sql);
 			$this->bind($id);
@@ -146,12 +146,12 @@
 			return $this->db_fetch_one();
 		}
 
-		function get_campaign_by_trip_id($trip_id){
+		function get_campaign_by_tour_id($tour_id){
 			$sql = "SELECT * FROM `campaigns` as c
-			join campaign_trips ct on ct.campaign_id = c.campaign_id
-			WHERE ct.trip_id = ?";
+			join campaign_tours ct on ct.campaign_id = c.campaign_id
+			WHERE ct.tour_id = ?";
 			$this->prepare($sql);
-			$this->bind($trip_id);
+			$this->bind($tour_id);
 			return $this->db_fetch_one();
 		}
 

@@ -44,13 +44,13 @@
 			users.user_name,
 			users.user_id,
 			campaigns.title,
-			campaign_trips.start_date,
-			campaign_trips.end_date
+			campaign_tours.start_date,
+			campaign_tours.end_date
 			FROM bookings
 			JOIN transactions on transactions.transaction_id = bookings.transaction_id
 			JOIN users on users.user_id = bookings.user_id
-			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
-			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN campaign_tours on campaign_tours.tour_id = bookings.tour_id
+			JOIN campaigns on campaigns.campaign_id = campaign_tours.campaign_id
 			JOIN curators on campaigns.curator_id = curators.curator_id
 			WHERE curators.curator_id = ?
 			LIMIT 7";
@@ -60,13 +60,13 @@
 		}
 
 		function get_curator_trip_count($curator_id,$full){
-			$sql = "SELECT count(campaign_trips.trip_id) as upcoming_trip_count
-			FROM campaign_trips
-			JOIN campaigns on campaign_trips.campaign_id = campaigns.campaign_id
+			$sql = "SELECT count(campaign_tours.tour_id) as upcoming_trip_count
+			FROM campaign_tours
+			JOIN campaigns on campaign_tours.campaign_id = campaigns.campaign_id
 			WHERE campaigns.curator_id = ?
 			";
 			if(!$full){
-				$sql = $sql . " AND campaign_trips.start_date > CURRENT_TIMESTAMP";
+				$sql = $sql . " AND campaign_tours.start_date > CURRENT_TIMESTAMP";
 			}
 			$this->prepare($sql);
 			$this->bind($curator_id);
@@ -77,8 +77,8 @@
 		function get_curator_revenue($curator_id){
 			$sql = "SELECT sum(transactions.amount)  AS total_revenue FROM transactions
 			JOIN bookings on bookings.transaction_id = transactions.transaction_id
-			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
-			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN campaign_tours on campaign_tours.tour_id = bookings.tour_id
+			JOIN campaigns on campaigns.campaign_id = campaign_tours.campaign_id
 			WHERE campaigns.curator_id = ?";
 			$this->prepare($sql);
 			$this->bind($curator_id);
@@ -89,8 +89,8 @@
 		function get_curator_balance($curator_id){
 			$sql = "SELECT sum(transactions.amount)  AS withdrawable_balance FROM transactions
 			JOIN bookings on bookings.transaction_id = transactions.transaction_id
-			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
-			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN campaign_tours on campaign_tours.tour_id = bookings.tour_id
+			JOIN campaigns on campaigns.campaign_id = campaign_tours.campaign_id
 			WHERE campaigns.curator_id = ?";
 			$this->prepare($sql);
 			$this->bind($curator_id);
@@ -99,7 +99,7 @@
 
 		function get_curator_upcoming_trips($curator_id){
 			$sql = "SELECT * FROM campaigns
-			JOIN campaign_trips on campaign_trips.campaign_id = campaigns.campaign_id
+			JOIN campaign_tours on campaign_tours.campaign_id = campaigns.campaign_id
 			WHERE campaigns.curator_id = ?";
 			$this->prepare($sql);
 			$this->bind($curator_id);
@@ -122,13 +122,13 @@
 			users.user_name,
 			users.user_id,
 			campaigns.title,
-			campaign_trips.start_date,
-			campaign_trips.end_date
+			campaign_tours.start_date,
+			campaign_tours.end_date
 			FROM bookings
 			JOIN transactions on transactions.transaction_id = bookings.transaction_id
 			JOIN users on users.user_id = bookings.user_id
-			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
-			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN campaign_tours on campaign_tours.tour_id = bookings.tour_id
+			JOIN campaigns on campaigns.campaign_id = campaign_tours.campaign_id
 			JOIN curators on campaigns.curator_id = curators.curator_id
 			WHERE curators.curator_id = ?";
 			$this->prepare($sql);
@@ -142,7 +142,7 @@
 			count(r.review_id) as review_count
 			from reviews AS r
 			JOIN bookings as b on b.booking_id = r.booking_id
-			join campaign_trips as ct on ct.trip_id = b.trip_id
+			join campaign_tours as ct on ct.tour_id = b.tour_id
 			join campaigns as c on c.campaign_id = ct.campaign_id
 			where c.curator_id = ?
 			";
@@ -155,7 +155,7 @@
 
 		function get_curator_campaigns($curator_id){
 			$sql = "SELECT *,
-			(SELECT COUNT(*) FROM campaign_trips AS ct
+			(SELECT COUNT(*) FROM campaign_tours AS ct
 				JOIN campaigns AS c ON c.campaign_id = ct.campaign_id
 				WHERE c.curator_id = ?) AS trip_count
 		FROM campaigns WHERE curator_id = ?
@@ -173,7 +173,7 @@
 			FROM reviews as r
 			join bookings as b on b.booking_id = r.booking_id
 			join users as u on u.user_id = b.user_id
-			join campaign_trips as ct on ct.trip_id = b.trip_id
+			join campaign_tours as ct on ct.tour_id = b.tour_id
 			join campaigns as c on c.campaign_id = ct.campaign_id
 			WHERE c.curator_id = ?";
 			$this->prepare($sql);
@@ -194,8 +194,8 @@
 
 
 		function count_campaign_bookings($campaign_id){
-			$sql ="SELECT count(campaign_trips.trip_id) as booking_count FROM campaign_trips
-			WHERE campaign_trips.campaign_id = ?";
+			$sql ="SELECT count(campaign_tours.tour_id) as booking_count FROM campaign_tours
+			WHERE campaign_tours.campaign_id = ?";
 			$this->prepare($sql);
 			$this->bind($campaign_id);
 			return $this->db_fetch_one();
@@ -222,12 +222,12 @@
 			bookings.adult_seats + bookings.child_seats as seats_booked,
 			bookings.emergency_contact_name,
 			bookings.emergency_contact_number,
-			campaign_trips.start_date,
+			campaign_tours.start_date,
 			campaigns.title
 			FROM transactions
 			JOIN bookings on transactions.transaction_id = bookings.transaction_id
-			JOIN campaign_trips on campaign_trips.trip_id = bookings.trip_id
-			JOIN campaigns on campaigns.campaign_id = campaign_trips.campaign_id
+			JOIN campaign_tours on campaign_tours.tour_id = bookings.tour_id
+			JOIN campaigns on campaigns.campaign_id = campaign_tours.campaign_id
 			JOIN users on bookings.user_id = users.user_id
 			WHERE campaigns.curator_id = ?";
 			$this->prepare($sql);
@@ -350,14 +350,14 @@
 			return $this->db_fetch_all();
 		}
 
-		function get_trip_bookings($trip_id){
+		function get_trip_bookings($tour_id){
 			$sql = "SELECT bookings.*, users.user_name FROM
 			bookings
 			join users on users.user_id = bookings.user_id
-			where trip_id = ?
+			where tour_id = ?
 			";
 			$this->prepare($sql);
-			$this->bind($trip_id);
+			$this->bind($tour_id);
 			return $this->db_fetch_all();
 		}
 	}

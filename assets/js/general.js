@@ -36,6 +36,7 @@ $(document).ready(function () {
 
   // form listeners
   $(".date-input").focus(changeToDate);
+  $(".time-input").focus(changeToTime);
   $(".date-input").blur(changeToText);
   $(".select-menu-1").click(openSelectMenu);
   $(".select-menu-1").focusout(closeSelectMenu);
@@ -347,6 +348,30 @@ function changeNumInputVal() {
 function changeToDate() {
   $(this).attr("type", "date");
 }
+
+//to change time fields form type "text" to type "time"
+function changeToTime(){
+  $(this).attr("type","time");
+}
+
+//Changes date string and time string to sql datetime compatible string
+function changeToDateTimestr(date,timestr){
+  console.log(timestr)
+  time = timestr.split(" ")[0];
+  period = timestr.split(" ")[1];
+  hrs = time.split(":")[0];
+  mins = time.split(":")[1];
+  if(period.toLowerCase() === "pm" && hrs !== "12"){
+    hrs = String(Number(hrs)+12);
+  }else if (period.toLowerCase()=== "am" && hrs === "12"){
+    hrs = "00";
+  }
+  res = `${date} ${hrs.padStart(2,'0')}:${mins.padStart(2,"0")}:00`;
+  return res;
+}
+
+
+
 // to change type back to "text"
 function changeToText() {
   $(this).attr("type", "text");

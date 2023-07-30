@@ -86,7 +86,7 @@
 		event.preventDefault();
 		// alert(form.mode.value);
 		payload = "action=trip_payment";
-		payload += "&trip_id=" + url_params("trip_id");
+		payload += "&tour_id=" + url_params("tour_id");
 		payload += "&payment_method=" + form.mode.value;
 		payload += "&user_id="+user_id;
 		payload += "&seats="+form.seats.value;

@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - User Dashboard</title>
+    <title>easyGo - User Dashboard</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -205,8 +205,8 @@
 
                                                     foreach ($bookings as $entry) {
                                                         $booking_id = $entry["booking_id"];
-                                                        $trip_id = $entry["trip_id"];
-                                                        $trip_name =get_campaign_by_trip_id($trip_id)["title"];
+                                                        $tour_id = $entry["tour_id"];
+                                                        $trip_name =get_campaign_by_tour_id($tour_id)["title"];
                                                         $seats = $entry["seats_booked"];
                                                         $currency = $entry["currency"];
                                                         $amount = $entry["amount_due"];

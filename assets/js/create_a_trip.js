@@ -6,11 +6,13 @@ $("#seats").on("input", () => { on_occurance_edit("seats") });
 $("#fee").on("input", () => { on_occurance_edit("fee") });
 $("#end_date").on("input", () => { on_occurance_edit("end_date") });
 $("#start_date").on("input", () => { on_occurance_edit("start_date") });
+$("#end_time").on("input", () => { on_occurance_edit("end_time") });
+$("#start_time").on("input", () => { on_occurance_edit("start_time") });
 // script to prefill the page if a trip id is in the url (User wants to update tour information)
 $(document).ready (()=>{
 	if(window.location.search.includes("id")){
 		//TODO: Edit trip
-		const trip_id = url_params("id");
+		const tour_id = url_params("id");
 
 		//show loader
 		//get trip id from url params
@@ -85,6 +87,12 @@ function on_occurance_edit(id) {
 		case "end_date":
 			update_active_row("end_val", element.value);
 			break;
+		case "end_time":
+			update_active_row("end_time_val",element.value);
+			break;
+		case "start_time":
+			update_active_row("start_time_val",element.value);
+			break;
 		case "start_date":
 			update_active_row("start_val", element.value);
 			break;
@@ -95,7 +103,19 @@ function on_occurance_edit(id) {
 
 function update_active_row(section, value) {
 	var active = document.getElementById("active_occurance_row");
-	active.getElementsByClassName(section)[0].innerHTML = value;
+	if(section == "end_time_val" || section == "start_time_val"){
+		// split hour from minutes
+		[hrs,minutes] = value.split(":").map(Number);
+		ext = hrs >= 12 ? "PM" : "AM";
+		if(hrs> 12){
+			hrs = hrs - 12;
+		}
+
+		disVal = `${hrs.toString().padStart(2,"0")}:${minutes.toString().padStart(2,"0")} ${ext}`;
+	}else{
+		disVal = value;
+	}
+	active.getElementsByClassName(section)[0].innerHTML = disVal ;
 }
 
 
@@ -149,7 +169,9 @@ function create_active_row() {
 	newNode.setAttribute("id", "active_occurance_row")
 	newNode.classList.add("list-item");
 	newNode.innerHTML = "<div class='inner-item start_val'> </div> \
+	<div class='inner-item start_time_val'> </div> \
 	<div class='inner-item end_val'> </div> \
+	<div class='inner-item end_time_val'> </div> \
 	<div class='inner-item  fee_val'> </div> \
 	<div class='inner-item seats_val'> </div> \
 	<div class='inner-item row'> \
@@ -162,14 +184,16 @@ function create_active_row() {
 
 
 //Creates an occurance row with the values passed
-function create_entry_row(start, end, fee, seats) {
+function create_entry_row(start_date,start_time, end_date, end_time, fee, seats) {
 
 	var collection = document.getElementById("occurance_list");
 	var addButton = document.getElementById("add_button");
 	var newNode = document.createElement("div");
 	newNode.classList.add("list-item");
-	newNode.innerHTML = "<div class='inner-item start_val'>" + start + "</div> \
-	<div class='inner-item end_val'>"+ end + "</div> \
+	newNode.innerHTML = "<div class='inner-item start_val'>" + start_date + "</div> \
+	<div class='inner-item start_time_val'>"+ start_time + "</div> \
+	<div class='inner-item end_val'>"+ end_date + "</div> \
+	<div class='inner-item end_time_val'>"+ end_time + "</div> \
 	<div class='inner-item  fee_val'>" + fee + "</div> \
 	<div class='inner-item seats_val'>" + seats + "</div> \
 	<div class='inner-item row'> \
@@ -225,13 +249,14 @@ function get_occurance_entries() {
 //Reads the row element{element} and returns as a map the values for that occurance
 function get_occurance_row_values(element) {
 	return {
-		"start_date": element.getElementsByClassName("start_val")[0].innerText,
-		"end_date": element.getElementsByClassName("end_val")[0].innerText,
+		"start_date": changeToDateTimestr(element.getElementsByClassName("start_val")[0].innerText,  element.getElementsByClassName("start_time_val")[0].innerText),
+		"end_date": changeToDateTimestr(element.getElementsByClassName("end_val")[0].innerText,  element.getElementsByClassName("end_time_val")[0].innerText),
 		"fee": element.getElementsByClassName("fee_val")[0].innerText,
 		"seats": element.getElementsByClassName("seats_val")[0].innerText,
 	};
 
 }
+
 
 
 
@@ -444,7 +469,6 @@ function add_location_activity() {
 	var selected_location_list = document.getElementById("selected-locations");
 	var location_name = document.getElementById("location-info-title").innerText;
 	var add_location = true;
-	console.log(location_name);
 
 	for (var loc_index = 0; loc_index < selected_location_list.children.length; loc_index++){
 		var child = selected_location_list.children[loc_index];
@@ -603,6 +627,7 @@ function create_site(form){
 		"processors/processor.php",
 		payload,
 		(response) => {
+			console.log(response);
 			alert(response['msg']);
 
 		}
@@ -618,14 +643,14 @@ function add_loc_activity(){
 	var field = document.getElementById("add_loc_activity_input");
 	field.value = field.value.trim();
 	if(field.value.length < 4){
-		console.log("Too short a word for an activity");
+		alert("Too short a word for an activity");
 		return false;
 	}
 
 	for (var act_index = 0; act_index < acts.children.length; act_index++){
 		var child = acts.children[act_index];
 		if(child.innerText == field.value){
-			console.log("Already included");
+			alert("Already included");
 			return false;
 		}
 	}

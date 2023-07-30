@@ -178,6 +178,7 @@ $logo = $info["curator_logo"];
                                             <p class="text-gray-1 easygo-fs-5">Add trip occurence</p>
                                         </div>
                                         <div class="col-lg-7 d-flex flex-column gap-4">
+                                            <!-- Start date and time  -->
                                             <div class="row">
                                                 <div class="col-lg-6 pb-3 p-0 pe-lg-1">
                                                     <div class="form-input-field">
@@ -187,8 +188,23 @@ $logo = $info["curator_logo"];
                                                 </div>
                                                 <div class="col-lg-6 pb-3 p-0 ps-lg-1">
                                                     <div class="form-input-field">
+                                                        <h6 class="easygo-fs-4 text-gray-1">Pickup time</h6>
+                                                        <input id="start_time" class="time-input" type="text" pattern="(0[1-9]1[0-2]):[0-5][0-9] (am/pm)" placeholder="hrs:min --">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End date and time  -->
+                                            <div class="row">
+                                                <div class="col-lg-6 pb-3 p-0 pe-lg-1">
+                                                    <div class="form-input-field">
                                                         <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
                                                         <input id="end_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                    <div class="form-input-field">
+                                                        <h6 class="easygo-fs-4 text-gray-1">Expected Drop-off Time</h6>
+                                                        <input id="end_time" class="time-input" type="text" pattern="(0[1-9]1[0-2]):[0-5][0-9] (am/pm)" placeholder="hrs:min --">
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,7 +244,9 @@ $logo = $info["curator_logo"];
                                             <div id="occurance_list" class="easygo-list-3 list-striped">
                                                 <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                                     <div class="inner-item">Start Date</div>
+                                                    <div class="inner-item"></div>
                                                     <div class="inner-item">End Date</div>
+                                                    <div class="inner-item"></div>
                                                     <div class="inner-item">Fee</div>
                                                     <div class="inner-item">Number of seats</div>
                                                     <div class="inner-item">Actions</div>

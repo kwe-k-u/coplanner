@@ -3,18 +3,26 @@
 	require_once(__DIR__."/env_manager.php");
 
 //start session
-session_start();
+// if session isn't started then start session
+
 
 //for header redirection
-ob_start();
+//if header redirection isn't started then start header redirection
+if (ob_get_length() == 0){
+	ob_start();
+	if (session_status() == PHP_SESSION_NONE){
+
+		session_start();
+	}
+}
 
 
 
 
 	/*** RATES */
 	CONST TOURISM_LEVY = 0.01;
-	const VAT_RATE = 0.15;
-	const DOLLAR_RATE =12.5;
+	const VAT_RATE = 0;
+	const DOLLAR_RATE =11.5;
 
 
 

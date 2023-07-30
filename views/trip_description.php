@@ -16,7 +16,7 @@
     } else {
         $campaign_id= $_GET["campaign_id"];
         $next = get_campaign_next_trip($campaign_id);
-        $tour_id = $next["trip_id"];
+        $tour_id = $next["tour_id"];
     }
 
 
@@ -30,8 +30,10 @@
         $campaign = get_campaign_by_id($campaign_id);
         $title = $campaign["title"];
         $curator = $campaign["curator_name"];
+        $curator_id = $campaign["curator_id"];
         $desc = $campaign["description"];
         $start = format_string_as_date_fn($next["start_date"]);
+        $tours = get_campaign_tours($campaign_id);
         $end = format_string_as_date_fn($next["end_date"]);
         $pickup_location = $next["pickup_location"];
         $pickup_time = format_string_as_time_fn($next["start_date"]);
@@ -48,7 +50,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo "<title>easygo - $title</title>"; ?>
+    <?php echo "<title>easyGo - $title</title>"; ?>
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -74,7 +76,7 @@
         <!--- ================================ -->
         <main>
             <div class="container mb-4" style="margin-top: 10rem;">
-                <a href="./trips.php">Trips</a> > Trip Details
+                <a href="./trips.php">Tours</a> > Tour Details
             </div>
             <!--- ================================ -->
             <!--- image display section [start] -->
@@ -92,11 +94,6 @@
                                 }
                             ?>
 
-                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image"></div>
-                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image"></div>
-                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/tour3.jpg" alt="carousel image"></div>
-                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/portrait_scenery1.jpg" alt="carousel image"></div>
-                            <div class="swiper-slide h-100"><img class="h-100 w-100" src="../assets/images/others/portrait_scenery2.jpg" alt="carousel image"></div>
                         </div>
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
@@ -116,65 +113,85 @@
             <!--| for desktop [start] |-->
             <section class="trip-info py-5 d-none d-md-block">
                 <div class="container">
+
+                <?php
+                        echo "
+
+                        <div class='description-header d-flex justify-content-between'>
+                        <div>
+                        <h5 class='easygo-fw-1 easygo-h3'>$title</h5>
+                        <div class='easygo-fs-2 my-1'>Curated by <a href='curator_profile.php?id=$curator_id'>$curator</a></div>
+                            <!-- <div class='d-flex justify-content-start align-items-center gap-2'>
+                                <div class='stars'>
+                                    <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
+                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
+                                    <img src='../assets/images/svgs/empty_star.svg' alt='full star'>
+                                </div>
+                                <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
+                            </div> -->
+                    </div>
+                    <p>
+                        <span class='easygo-h2'>$currency $fee</span><span class='easygo-fs-2'>/Person</span>
+                    </p>
+                </div>
+                        ";
+                    ?>
+                </div>
+                <div class="container">
                     <ul class="nav nav-tabs easygo-nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="itineries-tab" data-bs-toggle="tab" data-bs-target="#itineries" type="button" role="tab" aria-controls="itineries" aria-selected="false">Locations</button>
+                            <button class="nav-link" id="itineries-tab" data-bs-toggle="tab" data-bs-target="#itineries" type="button" role="tab" aria-controls="itineries" aria-selected="false">Destinations</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="activities-tab" data-bs-toggle="tab" data-bs-target="#activities" type="button" role="tab" aria-controls="activities" aria-selected="false">Activities</button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                        <!-- <li class="nav-item" role="presentation">
                             <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
-                        </li>
+                        </li> -->
 
 
 
                     </ul>
-                    <div class="tab-content" id="myTabContent">
+                    <?php
+                        if(count($tours) > 1){
+                            echo "
+                        <div class='warning mt-5 d-flex align-items-center gap-3'>
+                            <img src='../assets/images/svgs/exclamation_orange.svg' alt='warning image'>
+                            <span>This tour has several upcoming dates. <a>Click here</a> to view the different dates</span>
+                        </div>
+                        ";
+                            //TODO:: show other dates
+                        }
+                        //TODO:: add option to book campaign as a private tour
+                    ?>
+
+                    <div class='tab-content' id="myTabContent">
                         <!--- ================================ -->
                         <!--- trip description [start] -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                             <div class="py-4">
-                                <div class="description-header d-flex justify-content-between">
-                                    <div>
+
+
                                         <?php
                                             echo "
-                                            <h5 class='easygo-fw-1 easygo-h3'>$title</h5>
-                                            <div class='easygo-fs-2 my-1'>Curated by $curator</div>
-                                            <div class='d-flex justify-content-start align-items-center gap-2'>
-                                                <div class='stars'>
-                                                    <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
-                                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                    <img src='../assets/images/svgs/full_star.svg' alt='full star'>
-                                                    <img src='../assets/images/svgs/empty_star.svg' alt='full star'>
-                                            </div>
-                                            <span class='easygo-fs-6 text-gray-1'>4 star rating</span>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        <span class='easygo-h2'>$currency $fee</span><span class='easygo-fs-2'>/Person</span>
-                                    </p>
-                                </div>
                                 <div class='d-flex justify-content-center gap-4 my-4'>
                                     <span class='easygo-fs-2'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'> $start - $end</span>
-                                    <span class='easygo-fs-2'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Seats available: $seats </span>
+                                    <!-- <span class='easygo-fs-2'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Seats available: $seats </span> -->
                                     <span class='easygo-fs-2'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Pickup Location: $pickup_location</span>
                                     <span class='easygo-fs-2'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Pickup Time: $pickup_time</span>
                                 </div>
                                 <div class='text-description easygo-fs-1'>
-                                $desc
+                                    $desc
                                 </div>
                             ";
                         ?>
 
-                                <div class="warning mt-5 d-flex align-items-center gap-3">
-                                    <img src="../assets/images/svgs/exclamation_orange.svg" alt="warning image">
-                                    <span>This tour has several upcoming dates. <a>Click here</a> to view the different dates</span>
-                                </div>
+
                             </div>
                             <!--- gallery [start] -->
                             <div class='my-5'>
@@ -224,6 +241,7 @@
                                                 <div class='text-gray-1 easygo-fs-2'>
                                                     <p>
                                                         We’ll get picked up from your apartments or hotels room
+                                                        <?php echo "The tours starts at the $pickup_location at $pickup_time"; ?>
                                                     </p>
                                                 </div>
                                             </div>
@@ -310,8 +328,8 @@
                         <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                             <div class="py-5">
                                 <div>
-                                    <h5 class="easygo-fw-1 easygo-fs-1">Customer reviews from past trips</h5>
-                                    <div class="easygo-fs-2 my-1">Curated by easygo events</div>
+                                    <h5 class="easygo-fw-1 easygo-fs-1">Customer reviews from past tours</h5>
+                                    <?php echo "<div class='easygo-fs-2 my-1'>Curated by <a href='curator_profile.php?id=$curator_id'>$curator</a></div>"; ?>
                                     <div class="d-flex justify-content-start align-items-center gap-2">
                                         <div class="stars">
                                             <img src="../assets/images/svgs/shooting_full_star.svg" alt="Shooting full star">
@@ -384,7 +402,7 @@
                                 </div>
                                 <div class="reviews-and-adds">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="user-reviews">
                                                 <h5 class="mb-3 easygo-fw-2">User Reviews</h5>
                                                 <div class="reviews">
@@ -921,12 +939,17 @@
                         </div>";
                             }
                         }
+                        if($start > date("Y-m-d")){
+                            echo "already started";
+                        }else {
 
                             echo "
                             <div class='col-lg-7 py-2'>
                                 <a href='./book_trip.php?tour_id=$tour_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Tour</a>
                             </div>
                                 ";
+                        }
+
                             ?>
                     </div>
                 </div>

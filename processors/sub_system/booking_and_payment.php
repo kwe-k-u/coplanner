@@ -20,8 +20,8 @@
 				case "book_trip":
 					$paybox = new paybox_custom();
 					$mode = $_POST["payment_method"];
-					$trip_id = $_POST["tour_id"];
-					$trip = get_campaign_trip_by_id($trip_id);
+					$tour_id = $_POST["tour_id"];
+					$trip = get_campaign_trip_by_id($tour_id);
 					$user_id = $_POST["user_id"];
 					$user = get_user_by_id($user_id);
 					$kids = $_POST["num_kids"];

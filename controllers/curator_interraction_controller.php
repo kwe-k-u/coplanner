@@ -162,19 +162,19 @@
 		return $class->get_campaign_by_id($c_id);
 	}
 
-	function count_trip_booking($trip_id){
+	function count_trip_booking($tour_id){
 		$class = new curator_interaction_class();
-		return $class->count_campaign_bookings($trip_id);
+		return $class->count_campaign_bookings($tour_id);
 	}
 
 
-	function get_campaign_trips($campaign_id){
+	function get_campaign_tours($campaign_id){
 		$class = new interaction_class();
-		return $class->get_campaign_trips($campaign_id);
+		return $class->get_campaign_tours($campaign_id);
 	}
 
-	function get_trip_bookings($trip_id){
+	function get_trip_bookings($tour_id){
 		$class = new curator_interaction_class();
-		return $class->get_trip_bookings($trip_id);
+		return $class->get_trip_bookings($tour_id);
 	}
 ?>

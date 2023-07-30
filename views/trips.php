@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easygo - Trips</title>
+    <title>easyGo - Tours</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -40,10 +40,9 @@
             <section style="margin-top: 10rem;">
                 <div class="container">
                     <div>
-                        <h1 class="easygo-fw-1 text-center easygo-h3">Your Next Tour Starts Here</h1>
+                        <h1 class="easygo-fw-1 text-center easygo-h3">Your Next Adventure Starts Here</h1>
                         <p class="easygo-fs-1 text-center">
-                            Book these experiences for a close-up look at Africa. Explore top
-                            options for your next tour.
+                            Book any of these tours to experience Ghana. Create your own unique experience <a href="./dashboard/private_tour.php">here</a>
                         </p>
                     </div>
                     <div>
@@ -61,6 +60,7 @@
                                     $title = $trip["title"];
                                     $desc = shorten($trip["description"]);
                                     $curator = $trip["curator_name"];
+                                    $curator_id = $trip["curator_id"];
                                     $next = get_campaign_next_trip($id);
                                     if (!$next){
                                         continue;
@@ -70,7 +70,7 @@
                                     $fee = $next["fee"];
                                     $currency = $next["currency"];
                                     $pickup_location = $next["pickup_location"];
-                                    $seats = $next["seats_available"];
+                                    // $seats = $next["seats_available"];
 
 
                                     echo "
@@ -89,7 +89,7 @@
                                                             <div class='trip-card-header border-0'>
                                                                 <div class='title'>
                                                                     <h5 class='easygo-fw-1'>$title</h5>
-                                                                    <div class='easygo-fs-4 mb-1'>Curated by <span class='text-blue'>$curator</span></div>
+                                                                    <div class='easygo-fs-4 mb-1'>Curated by <a class='text-blue' href='./curator_profile.php?id=$curator_id'>$curator</a></div>
                                                                     <div class='d-flex justify-content-start align-items-center gap-2'>
                                                                         <div class='stars'>
                                                                             <img src='../assets/images/svgs/shooting_full_star.svg' alt='Shooting full star'>
@@ -107,8 +107,8 @@
                                                             </div>
                                                             <div class='d-flex justify-content-between'>
                                                                 <span class='easygo-fs-5'><img src='../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Seats left: $seats</span>
-                                                                <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Pickup: $pickup_location</span>
+                                                                <!-- <span class='easygo-fs-5'><img src='../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Seats left: 0</span> -->
+                                                                <!-- <span class='easygo-fs-5'><img src='../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Pickup: $pickup_location</span> -->
                                                                 <span class='easygo-fs-5'></span>
                                                             </div>
                                                         </div>
@@ -130,9 +130,9 @@
 
                         </div>
                         <div class="py-5 text-center">
-                            <div class="d-flex justify-content-center mb-3">
-                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Load More Trips</button>
-                            </div>
+                            <!-- <div class="d-flex justify-content-center mb-3">
+                                <button class="easygo-btn-1 easygo-rounded-2 px-5">Load More Tours</button>
+                            </div> -->
                             <p class="easygo-fs-4">Are you looking to plan a private tour? <a href="dashboard/private_tour.php" style="text-decoration:underline">Book Here!</a> </p>
                         </div>
                     </div>
@@ -153,15 +153,16 @@
                             $past_trips = get_past_campaigns();
 
                             if($past_trips){
-                                echo "<div class='text-center easygo-h3'>Past Trips</div>";
+                                echo "<div class='text-center easygo-h3'>Past Tours</div>";
                             }
 
 
                             foreach ($past_trips as $trip) {
                                 $title = $trip["title"];
-                                $trip_id = $trip["campaign_id"];
+                                $tour_id = $trip["campaign_id"];
                                 $description = shorten($trip["description"]);
                                 $curator = $trip["curator_name"];
+                                $curator_id = $trip["curator_id"];
 
 
                                 echo "<div class='col-lg-4 col-md-6 py-3'>
@@ -171,7 +172,7 @@
                                         <div class='trip-card-header'>
                                             <div class='title'>
                                                 <h5 class='easygo-fw-1'>$title</h5>
-                                                <p class='text-gray-1 easygo-fs-5'>Curated by $curator</p>
+                                                <p class='text-gray-1 easygo-fs-5'>Curated by <a href='./curator_profile.php?id=$curator_id'>$curator</a></p>
                                             </div>
                                             <div class='location easygo-fs-4'>
                                                 Accra Ghana
@@ -182,7 +183,7 @@
                                         </div>
                                     </div>
                                     <div class='trip-card-footer'>
-                                        <a class='easygo-btn-1 w-100' href='trip_description?campaign_id=$trip_id'>View trip</a>
+                                        <a class='easygo-btn-1 w-100' href='trip_description?campaign_id=$tour_id'>View tour</a>
                                     </div>
                                 </div>
                             </div>";
