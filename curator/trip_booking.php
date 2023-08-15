@@ -52,7 +52,7 @@ $logo = $info["curator_logo"];
                     <div class="border-1 border-bottom py-3">
                         <div>
                             <h5 class="title">Trip Booking</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Bookings</small>
+                            <small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Trips</a> > Bookings</small>
                         </div>
                         <p class="mt-4 mb-0">This table contains all the booking information associated with your trips.</p>
                     </div>
@@ -190,7 +190,6 @@ $logo = $info["curator_logo"];
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
 </body>

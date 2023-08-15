@@ -47,7 +47,7 @@ $rating_count = $stats["review_count"];
     <div class="main-wrapper">
         <header class="dashboard-header d-none d-lg-flex py-4 bg-gray-3" class="box-shadow-1">
             <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+                <img class="img-fluid" src="../assets/images/site_images/logo.png" alt="easygo logo">
             </div>
             <div class="dashboard-title easygo-fs-2 easygo-fw-1">Account Settings</div>
         </header>

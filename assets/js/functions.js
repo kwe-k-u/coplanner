@@ -1,6 +1,5 @@
 
 
-
 //checks the get get parameters in the url for a matching key;
 function url_params(key){
 	url = window.location.search.substr(1);
@@ -310,6 +309,7 @@ function add_subscriber(event){
 }
 
 function goto_page(url, isRelative = true){
+	event.preventDefault();
 	if (isRelative){
 		window.location.href = baseurl + url;
 	}else {
@@ -355,6 +355,34 @@ function remove_from_wishlist(user_id,campaign_id){
 		}
 	);
 }
+
+
+function toggle_curator_follow(curator_id){
+	var button = event.target;
+	let payload = {
+		"action" : "toggle_curator_follow",
+		"curator_id" : curator_id
+	};
+	send_request("POST",
+	"processors/processor.php",
+	payload,
+	(response)=> {
+		console.log(response);
+		if(response.status != 200){ // something went wrong
+			alert(response.data.msg);
+		}
+		if(response.data.new_status){ // Change button to red unfollow
+			button.classList.toggle("easygo-btn-3");
+			button.classList.toggle("easygo-btn-1");
+			button.innerText = "Unfollow";
+		}else { // Change button to blue follow
+			button.classList.toggle("easygo-btn-3");
+			button.classList.toggle("easygo-btn-1");
+			button.innerText = "Follow";
+		}
+	});
+}
+
 
 // async function getFile() {
 // 	let myPromise = new Promise(function(resolve) {

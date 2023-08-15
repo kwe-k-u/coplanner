@@ -54,7 +54,7 @@ $logo = "";//$info["curator_logo"];
                     <div class="border-1 border-bottom py-3">
                         <div>
                             <h5 class="title">Curators</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Bookings</small>
+                            <small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Trips</a> > Bookings</small>
                         </div>
                         <p class="mt-4 mb-0">This table shows information about curator accounts.</p>
                     </div>

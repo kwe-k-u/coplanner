@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="./home.php">
-            <img class="logo-medium" src="../assets/images/svgs/logo.svg" alt="">
+            <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="">
         </a>
         <button class="navbar-toggler sidebar-toggler" type="button" data-target="main-sidebar">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
                     <a class="nav-link" href="./home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./trips.php">Tours</a>
+                    <a class="nav-link" href="./tours.php">Tours</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../curator/login.php">Curators</a>
@@ -75,7 +75,7 @@
 <aside id="main-sidebar" class="sidebar sidebar-right bg-white d-md-none">
     <div class="sidebar-header py-3">
         <div class="log">
-            <img class="logo-small" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+            <img class="logo-small" src="../assets/images/site_images/logo.png" alt="easygo logo">
         </div>
         <button class="crossbars close-sidebar btn" data-target="main-sidebar">
             <span class="bar"></span>
@@ -89,7 +89,7 @@
                     <a class="nav-link text-blue py-2 px-2 d-flex justify-content-between align-items-center" href="./home.php">Home <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <li class="s-nav-item  border-top">
-                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./trips.php">Trips <i class="fa-solid fa-angle-right"></i></a>
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./tours.php">Trips <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <!-- <li class="s-nav-item border-top">
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="https://easygo.substack.com/" target="_blank">Blog <i class="fa-solid fa-angle-right"></i></a>

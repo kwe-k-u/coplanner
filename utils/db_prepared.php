@@ -1,5 +1,7 @@
+
 <?php
 	require_once(__DIR__.'/env_manager.php');
+	require_once(__DIR__."/logger.php");
 
 
 
@@ -7,6 +9,7 @@
 
 		public $db;
 		public $statement;
+		private $string;
 
 
 		function __construct(){
@@ -21,17 +24,23 @@
 
 		function prepare($sql){
 			$this->statement = mysqli_prepare($this->db, $sql);
+			$this->string = $sql;
 		}
 
 		function bind(...$data){
 			$types = "";
 			foreach ($data as $value) {
+				// replace every ? with a the value
+				$this->string = preg_replace("/\?/", $value, $this->string, 1);
 				$types .= $this->get_type($value);
 			}
 			// echo "types $types";
 			// var_dump($data);
 			// var_dump(...$data);
 			mysqli_stmt_bind_param($this->statement, $types, ...$data);
+			// log query
+			$logger = new Logger();
+			$logger->sql_query_log($this->string);
 		}
 
 		private function get_type($value){
@@ -54,8 +63,8 @@
 			// mysqli_stmt_bind_result($this->statement, $result);
 			return $this->statement->execute();
 
-			/* fetch value */
-			return $this->statement->get_result();
+			// /* fetch value */
+			// return $this->statement->get_result();
 
 		}
 
@@ -63,6 +72,7 @@
 			$result = array();
 			/* execute query */
 			$this->statement->execute();
+
 
 			/* bind result variables */
 			// mysqli_stmt_bind_result($this->statement, $result);

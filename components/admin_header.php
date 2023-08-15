@@ -9,7 +9,7 @@ $company = "easyGo Tour Ltd";//$info["curator_name"];
 ?>
 <header class="dashboard-header d-none d-lg-flex">
 	<div class="dashlogo logo logo-medium">
-		<img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+		<img class="img-fluid" src="../assets/images/site_images/logo.png" alt="easygo logo">
 	</div>
 
 	<div class="right-sec">

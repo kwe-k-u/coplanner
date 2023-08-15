@@ -141,6 +141,7 @@
 	}
 
 
+
 	function get_destination_media($site_id){
 		$class = new curator_interaction_class();
 		return $class->get_destination_media($site_id);

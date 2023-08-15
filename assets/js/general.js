@@ -1,8 +1,48 @@
+//error catcher for all pages
+
+function logError(event){
+	// event.preventDefault();
+	// alert("We have detected that an error has occurred logged it. If the action you took is urgent, kindly send an email to us at main.easygo@gmail.com");
+
+	message = event.message
+	line = event.lineno;
+	error_stack = event.error.stack
+	page = window.location.href;
+	js_file = event.filename;
+
+	col_num = event.colno;
+
+	// console.log("message", message);
+	// console.log("line", line);
+	// console.log("js_file", js_file);
+	// console.log("error_stack", error_stack);
+	// console.log("page", page);
+	// console.log("col_num", col_num);
+
+	send_request(
+		"POST",
+		"processors/processor.php/log_error",
+	 {
+		"message":message,
+	  	"line":line,
+      "page":page,
+		"type" : "js",
+		"js_file":js_file,
+		 "error_stack":error_stack,
+		 "col_num":col_num
+	},
+	(response)=>{
+		console.log(response);
+	});
+}
+
+
 /*************** GLOBAL VARIABLES ****************/
 /*************** SELECTORS ****************/
 $(document).ready(function () {
   // -- Adding Listeners -- //
   // utility listeners
+  window.addEventListener("error", logError)
   $(".slide-down-btn").click(toggleSlideMenu);
   $(".dashlogo").click(open_curator_dashboard);
   $(".toggle-password-show").click(togglePasswordShow); // password toggle
@@ -59,11 +99,11 @@ $(document).ready(function () {
       const nav_page = window.location.pathname;
       if(nav_page.includes("home.php")){
         nav.getElementsByClassName("nav-link")[0].classList.add('text-blue');
-      } else if (nav_page.includes("trips.php")){
+      } else if (nav_page.includes("tours.php")){
         nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
-      } else if (nav_page.includes("trip_description.php")){
+      } else if (nav_page.includes("tour_description.php")){
         nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
-      } else if (nav_page.includes("book_trip.php")){
+      } else if (nav_page.includes("book_tour.php")){
         nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
       } else if (nav_page.includes("about.php")){
         nav.getElementsByClassName("nav-link")[3].classList.add('text-blue');
@@ -80,7 +120,7 @@ $(document).ready(function () {
     var side = document.getElementById("curator_side_bar");
     if (side != undefined){
       const page = window.location.pathname;
-      if (page.includes("group_trips.php") || page.includes("private_trips.php")){
+      if (page.includes("group_tours.php") || page.includes("private_tours.php")){
         document.getElementById("nav_trips").classList.toggle("text-blue");
         document.getElementById("nav_trips").style = select_style;
         // document.getElementById("nav_trips").classList.toggle("open");
@@ -356,7 +396,6 @@ function changeToTime(){
 
 //Changes date string and time string to sql datetime compatible string
 function changeToDateTimestr(date,timestr){
-  console.log(timestr)
   time = timestr.split(" ")[0];
   period = timestr.split(" ")[1];
   hrs = time.split(":")[0];

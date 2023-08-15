@@ -13,16 +13,41 @@
 			}
 
 			switch($_POST["action"]){
-				case "follow_curator":
-					$user_id = $_POST["user_id"];
-					$curator_id = $_POST["curator_id"];
-					follow_curator($user_id,$curator_id);
+				case "toggle_curator_follow":
+					if (is_session_logged_in()){
+						$user_id = get_session_user_id();
+						$curator_id = $_POST["curator_id"];
+						if (is_user_following_curator($user_id,$curator_id)){
+							unfollow_curator($user_id,$curator_id);
+							send_json(
+								array(
+									"new_status" => false,
+									"msg" => "curator has been unfollowed"
+								),
+							);
+						}else{
+							follow_curator($user_id,$curator_id);
+							send_json(
+								array(
+									"new_status" => true,
+									"msg" => "Curator is being followed"
+								),
+							);
+						}
+					}else{
+						send_json(array("msg"=> "You need to be logged in"), 201);
+					}
 					die();
-				case "unfollow_curator":
-					$user_id = $_POST["user_id"];
-					$curator_id = $_POST["curator_id"];
-					unfollow_curator($user_id,$curator_id);
-					die();
+				// case "follow_curator":
+				// 	$user_id = $_POST["user_id"];
+				// 	$curator_id = $_POST["curator_id"];
+				// 	follow_curator($user_id,$curator_id);
+				// 	die();
+				// case "unfollow_curator":
+				// 	$user_id = $_POST["user_id"];
+				// 	$curator_id = $_POST["curator_id"];
+				// 	unfollow_curator($user_id,$curator_id);
+				// 	die();
 				case "add_campaign_wishlist":
 					$user_id = $_POST["user_id"];
 					$campaign_id = $_POST["campaign_id"];

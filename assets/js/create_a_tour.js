@@ -8,6 +8,8 @@ $("#end_date").on("input", () => { on_occurance_edit("end_date") });
 $("#start_date").on("input", () => { on_occurance_edit("start_date") });
 $("#end_time").on("input", () => { on_occurance_edit("end_time") });
 $("#start_time").on("input", () => { on_occurance_edit("start_time") });
+$("#pickup_loc").on("input",()=> {on_occurance_edit("pickup_loc")});
+$("#dropoff_loc").on("input",()=> {on_occurance_edit("dropoff_loc")});
 // script to prefill the page if a trip id is in the url (User wants to update tour information)
 $(document).ready (()=>{
 	if(window.location.search.includes("id")){
@@ -87,14 +89,20 @@ function on_occurance_edit(id) {
 		case "end_date":
 			update_active_row("end_val", element.value);
 			break;
+		case "start_date":
+			update_active_row("start_val", element.value);
+			break;
 		case "end_time":
 			update_active_row("end_time_val",element.value);
 			break;
 		case "start_time":
 			update_active_row("start_time_val",element.value);
 			break;
-		case "start_date":
-			update_active_row("start_val", element.value);
+		case "pickup_loc":
+			update_active_row("pickup_val", element.value);
+			break;
+		case "dropoff_loc":
+			update_active_row("dropoff_val", element.value);
 			break;
 	}
 	//if not create one and in real time edit the value
@@ -134,7 +142,9 @@ function update_active_row(section, value) {
 // }
 
 function delete_occurance_entry(element) {
-	element.parentNode.parentNode.remove();
+	if(confirm("Are you sure you want to remove this tour?")){
+		element.parentNode.parentNode.parentNode.remove();
+	}
 }
 
 
@@ -154,8 +164,10 @@ function is_occurance_entry_complete() {
 	var end = document.getElementById("end_date").value;
 	var fee = document.getElementById("fee").value;
 	var seats = document.getElementById("seats").value;
+	var pickup = document.getElementById("pickup_loc").value;
+	var dropoff = document.getElementById("dropoff_loc").value;
 
-	return !(start.isEmpty() && end.isEmpty() && fee.isEmpty() && seats.isEmpty());
+	return !(start.isEmpty() && end.isEmpty() && fee.isEmpty() && seats.isEmpty()&& pickup.isEmpty()&& dropoff.isEmpty());
 }
 
 //Creates a row for a new occurance entry
@@ -167,16 +179,24 @@ function create_active_row() {
 	var addButton = document.getElementById("add_button");
 	var newNode = document.createElement("div");
 	newNode.setAttribute("id", "active_occurance_row")
-	newNode.classList.add("list-item");
-	newNode.innerHTML = "<div class='inner-item start_val'> </div> \
-	<div class='inner-item start_time_val'> </div> \
-	<div class='inner-item end_val'> </div> \
-	<div class='inner-item end_time_val'> </div> \
-	<div class='inner-item  fee_val'> </div> \
-	<div class='inner-item seats_val'> </div> \
-	<div class='inner-item row'> \
-		<div class='inner-item fa fa-edit' onclick='edit_occurance_entry(this)'></div> \
-		<div class='inner-item fa fa-trash' onclick='delete_occurance_entry(this)'></div> \
+	newNode.innerHTML =
+	"<div class='list-item'>\
+		<div class='inner-item start_val'> </div> \
+		<div class='inner-item start_time_val'> </div> \
+		<div class='inner-item end_val'> </div> \
+		<div class='inner-item end_time_val'> </div> \
+		<div class='inner-item  fee_val'> </div> \
+		<div class='inner-item seats_val'> </div> \
+		<div class='inner-item col'> \
+			<div class='inner-item fa fa-edit' onclick='edit_occurance_entry(this)'></div> \
+			<div class='inner-item fa fa-trash' onclick='delete_occurance_entry(this)'></div> \
+		</div>\
+	</div>\
+	<div>\
+		<p class='easygo-fs-5' style='margin-top:0px'>\
+			pickup location: <span style='margin-right: 16px' class='pickup_val'></span>\
+			drop-off location: <span class='dropoff_val'></span>\
+		</p>\
 	</div>";
 
 	collection.insertBefore(newNode, addButton);
@@ -184,21 +204,30 @@ function create_active_row() {
 
 
 //Creates an occurance row with the values passed
-function create_entry_row(start_date,start_time, end_date, end_time, fee, seats) {
+function create_entry_row(start_date,start_time, end_date, end_time, fee, seats, pickup,dropoff) {
 
 	var collection = document.getElementById("occurance_list");
 	var addButton = document.getElementById("add_button");
 	var newNode = document.createElement("div");
 	newNode.classList.add("list-item");
-	newNode.innerHTML = "<div class='inner-item start_val'>" + start_date + "</div> \
-	<div class='inner-item start_time_val'>"+ start_time + "</div> \
-	<div class='inner-item end_val'>"+ end_date + "</div> \
-	<div class='inner-item end_time_val'>"+ end_time + "</div> \
-	<div class='inner-item  fee_val'>" + fee + "</div> \
-	<div class='inner-item seats_val'>" + seats + "</div> \
-	<div class='inner-item row'> \
-		<div class='inner-item' onclick='edit_occurance_entry(this)'>d</div> \
-		<div class='inner-item' onclick='delete_occurance_entry(this)'>e</div> \
+	newNode.innerHTML =
+	"<div class='list-item'>\
+		<div class='inner-item start_val'>" + start_date + "</div> \
+		<div class='inner-item start_time_val'>"+ start_time + "</div> \
+		<div class='inner-item end_val'>"+ end_date + "</div> \
+		<div class='inner-item end_time_val'>"+ end_time + "</div> \
+		<div class='inner-item  fee_val'>" + fee + "</div> \
+		<div class='inner-item seats_val'>" + seats + "</div> \
+		<div class='inner-item row'> \
+			<div class='inner-item' onclick='edit_occurance_entry(this)'>d</div> \
+			<div class='inner-item' onclick='delete_occurance_entry(this)'>e</div> \
+		</div>\
+	</div>\
+	<div>\
+		<p class='easygo-fs-5' style='margin-top:0px'>\
+			pickup location: <span style='margin-right: 16px' class='pickup_val'>"+pickup+"</span>\
+			drop-off location: <span class='dropoff_val'>"+dropoff+"</span>\
+		</p>\
 	</div>";
 
 	collection.insertBefore(newNode, addButton);
@@ -249,10 +278,12 @@ function get_occurance_entries() {
 //Reads the row element{element} and returns as a map the values for that occurance
 function get_occurance_row_values(element) {
 	return {
-		"start_date": changeToDateTimestr(element.getElementsByClassName("start_val")[0].innerText,  element.getElementsByClassName("start_time_val")[0].innerText),
-		"end_date": changeToDateTimestr(element.getElementsByClassName("end_val")[0].innerText,  element.getElementsByClassName("end_time_val")[0].innerText),
-		"fee": element.getElementsByClassName("fee_val")[0].innerText,
-		"seats": element.getElementsByClassName("seats_val")[0].innerText,
+		"start_date": changeToDateTimestr(element.children[0].getElementsByClassName("start_val")[0].innerText,  element.children[0].getElementsByClassName("start_time_val")[0].innerText),
+		"end_date": changeToDateTimestr(element.children[0].getElementsByClassName("end_val")[0].innerText,  element.children[0].getElementsByClassName("end_time_val")[0].innerText),
+		"fee": element.children[0].getElementsByClassName("fee_val")[0].innerText,
+		"seats": element.children[0].getElementsByClassName("seats_val")[0].innerText,
+		"pickup" : element.children[1].getElementsByClassName("pickup_val")[0].innerText,
+		"dropoff" : element.children[1].getElementsByClassName("dropoff_val")[0].innerText
 	};
 
 }

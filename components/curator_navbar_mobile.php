@@ -1,7 +1,7 @@
 <header class="nav-menu d-lg-none">
 	<div class="nav-menu-title bg-blue text-white easygo-fw-1 py-3 ps-3 d-flex justify-content-between">
 		<div class=" logo logo-small">
-                <img class="dashlogo img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+                <img class="dashlogo img-fluid" src="../assets/images/site_images/logo.png" alt="easygo logo">
             </div>
 		<h6 class="m-0">Dashboard</h6>
 		<button data-target="dashboard-menu" class="burger-btn slide-down-btn">

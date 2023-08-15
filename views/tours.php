@@ -116,7 +116,7 @@
                                                             <p>
                                                                 <span class='easygo-h3'>$currency $fee</span><span class='easygo-fs-2'>/Person</span>
                                                             </p>
-                                                            <a href='./trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-5'>Go To Trip</a>
+                                                            <a href='./tour_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-5'>Go To Trip</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -183,7 +183,7 @@
                                         </div>
                                     </div>
                                     <div class='trip-card-footer'>
-                                        <a class='easygo-btn-1 w-100' href='trip_description?campaign_id=$tour_id'>View tour</a>
+                                        <a class='easygo-btn-1 w-100' href='tour_description.php?campaign_id=$tour_id'>View tour</a>
                                     </div>
                                 </div>
                             </div>";

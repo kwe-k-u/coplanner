@@ -3,7 +3,7 @@
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
-	
+
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
 
@@ -49,8 +49,7 @@
 	);
 
 	$interaction_actions = array(
-		"follow_curator",
-		"unfollow_curator",
+		"toggle_curator_follow",
 		"add_campaign_wishlist",
 		"remove_campaign_wishlist"
 	);
@@ -70,6 +69,16 @@
 	$contact_actions = array(
 		"send_contact_message"
 	);
+
+	$analytics = array(
+		"error_log"
+	);
+
+
+	if (isset($_SERVER["PATH_INFO"]) and $_SERVER["PATH_INFO"] == "/log_error"){
+		require_once(__DIR__."/sub_system/event_manager.php");
+		die();
+	}
 
 
 

@@ -1,7 +1,6 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
-
 if (!is_session_user_curator()) {
     header("Location: ../views/home.php");
     die();
@@ -40,7 +39,7 @@ $logo = $info["curator_logo"];
     <div class="main-wrapper">
         <header class="dashboard-header d-none d-lg-flex py-4 bg-gray-3" style="box-shadow: none;">
             <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+                <img class="img-fluid" src="../assets/images/site_images/logo.png" alt="easygo logo">
             </div>
             <?php
             $greeting = greet();
@@ -74,7 +73,7 @@ $logo = $info["curator_logo"];
                     <h5>Quick Actions</h5>
                     <div class="row">
                         <div>
-                            <button class="easygo-btn-5" onclick="goto_page('curator/create_a_trip.php')">Create Tour</button>
+                            <button class="easygo-btn-5" onclick="goto_page('curator/create_a_tour.php')">Create Tour</button>
                         </div>
                     </div>
                 </div>
@@ -176,7 +175,7 @@ $logo = $info["curator_logo"];
                                 </div>
                                 <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
                                     <span><i class='fa-solid fa-tag'></i> $currency $fee</span>
-                                    <a class='btn px-3 py-1 border easygo-fs-5' href='./create_a_trip.php?id=$camp_id'>Edit</a>
+                                    <a class='btn px-3 py-1 border easygo-fs-5' href='./create_a_tour.php?id=$camp_id'>Edit</a>
                                 </div>
                             </div>
                         </div>

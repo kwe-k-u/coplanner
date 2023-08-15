@@ -614,7 +614,7 @@ $logo = $info["curator_logo"];
 	<script src="../assets/js/general.js"></script>
 	<script src="../assets/js/functions.js"></script>
 	<script src="../assets/js/curator_general.js"></script>
-	<script src="../assets/js/create_a_trip.js"></script>
+	<script src="../assets/js/create_a_tour.js"></script>
 </body>
 
 </html>

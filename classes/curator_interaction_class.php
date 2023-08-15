@@ -268,6 +268,7 @@
 			return $this->db_fetch_all();
 		}
 
+
 		function get_destination_by_id($id){
 			$sql = "SELECT * FROM destinations ts
 			 WHERE ts.destination_id = ?";

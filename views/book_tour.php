@@ -5,7 +5,7 @@
     require_once(__DIR__."/../controllers/interaction_controller.php");
     require_once(__DIR__."/../controllers/auth_controller.php");
     if (!isset($_GET["tour_id"])){
-        header("Location: trips.php");
+        header("Location: tours.php");
         die();
     }
     $id = $_GET["tour_id"];
@@ -19,7 +19,7 @@
             die();
         }
     }else {
-        header("Location: login.php?redirect=book_trip.php?tour_id=$id");
+        header("Location: login.php?redirect=book_tour.php?tour_id=$id");
     }
 
 
@@ -65,7 +65,7 @@
         <!--- ================================ -->
         <main>
             <div class="container mb-4" style="margin-top: 10rem;">
-                <a href="./trips.php">Tours</a> > Tour Invoice
+                <a href="./tours.php">Tours</a> > Tour Invoice
             </div>
             <!--- ================================ -->
             <!--- image display section [start] -->

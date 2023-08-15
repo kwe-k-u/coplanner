@@ -25,7 +25,7 @@
             <form onsubmit="return reset_password(this)">
                 <div class="form-header">
                     <div class="logo">
-                        <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your new password</p>
                 </div>

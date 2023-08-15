@@ -10,12 +10,16 @@
 //if header redirection isn't started then start header redirection
 if (ob_get_length() == 0){
 	ob_start();
-	if (session_status() == PHP_SESSION_NONE){
+	// if (session_status() == PHP_SESSION_NONE){
 
-		session_start();
-	}
+	// 	session_start();
+	// }
 }
 
+if (session_status() == PHP_SESSION_NONE){
+
+	session_start();
+}
 
 
 

@@ -51,7 +51,7 @@
                             <h5 class="title easygo-fs-3 easygo-fw-1 m-0">All Trips</h5>
                             <small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Trips</a> <i class="fa-solid fa-chevron-right"></i> All Trips</small>
                         </div>
-                        <a href="create_a_trip.php" class="easygo-btn-1">Create a Trip</a>
+                        <a href="create_a_tour.php" class="easygo-btn-1">Create a Trip</a>
                     </div>
                     <!-- ============================== -->
                     <!-- tirp card listing [start] -->
@@ -63,7 +63,7 @@
                                 $trips = get_curator_campaigns($curator_id);
 
                                 if(!$trips){
-                                    echo "<h4>You don't have any listed tours. Click <a class='btn btn-primary' href='create_a_trip.php'> Here </a> to get started</h4>";
+                                    echo "<h4>You don't have any listed tours. Click <a class='btn btn-primary' href='create_a_tour.php'> Here </a> to get started</h4>";
                                 }else {
                                     foreach($trips as $entry){
                                         $c_id = $entry["campaign_id"];
@@ -94,9 +94,9 @@
                                         <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
                                             <span><i class='fa-solid fa-tag'></i> $t_currency $t_fee</span>
                                             <div>
-                                                <a class='btn px-3 py-1 border easygo-fs-5' href='../views/trip_description.php?campaign_id=$c_id'>Details</a>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='../views/tour_description.php?campaign_id=$c_id'>Details</a>
                                                 <a class='btn px-3 py-1 border easygo-fs-5' href='trip_booking_by_trip.php?campaign_id=$c_id'>Bookings</a>
-                                                <a class='btn px-3 py-1 border easygo-fs-5' href='create_a_trip.php?id=$c_id'>Edit</a>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='create_a_tour.php?id=$c_id'>Edit</a>
                                             </div>
                                         </div>
                                     </div>

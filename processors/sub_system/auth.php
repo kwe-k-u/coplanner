@@ -57,9 +57,11 @@
 							$url = server_base_url() . "admin/dashboard.php";
 							session_log_in_advanced($result["user_id"],$result["role"],NULL);
 						} else{
-							$url = server_base_url() . "views/trips.php";
+							// echo "user";
+							$url = server_base_url() . "views/tours.php";
 							session_log_in($result["user_id"],$result["role"]);
 						}
+						// var_dump($_SESSION);
 
 						send_json(array(
 							"msg" => "login success",

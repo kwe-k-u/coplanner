@@ -47,6 +47,20 @@
 		}
 
 
+		function get_curator_by_id($id){
+			$sql = "SELECT * FROM curators WHERE curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_one();
+		}
+
+		function get_campaigns_by_curator($curator_id){
+			$sql = "SELECT * FROM campaigns where curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
 		function get_user_booking_history($user_id){
 			$sql = "SELECT
 			b.booking_id,
@@ -73,11 +87,17 @@
 
 
 		function get_past_campaigns(){
-			$sql = "SELECT campaigns.*,
-			curators.curator_name
-			 FROM `campaigns`
-			JOIN `campaign_tours` on campaign_tours.campaign_id = campaigns.campaign_id
-			JOIN curators on curators.curator_id = campaigns.campaign_id";
+			$sql = "SELECT campaigns.*, curators.curator_name
+			FROM `campaigns`
+			INNER JOIN (
+				SELECT campaign_id, MAX(start_date) AS max_start_date
+				FROM campaign_tours
+				WHERE start_date <= NOW() -- Assuming you're comparing against the current date and time
+				GROUP BY campaign_id
+			) recent_campaign_tours ON campaigns.campaign_id = recent_campaign_tours.campaign_id
+			INNER JOIN campaign_tours ON campaign_tours.campaign_id = recent_campaign_tours.campaign_id AND campaign_tours.start_date = recent_campaign_tours.max_start_date
+			INNER JOIN curators ON curators.curator_id = campaigns.curator_id;
+			";
 			$this->prepare($sql);
 			return $this->db_fetch_all();
 		}
@@ -108,10 +128,21 @@
 		}
 
 		function get_campaign_tours($campaign_id){
-			$sql = "SELECT * FROM `campaign_tours` WHERE
-			`campaign_id`=? AND `publish_state`='published' ORDER BY `start_date` DESC";
+			$sql = "(SELECT *
+			FROM `campaign_tours`
+			WHERE `campaign_id` = ?
+				  AND `start_date` > NOW()
+			ORDER BY `start_date` ASC
+			LIMIT 1)
+			UNION
+			(SELECT *
+			FROM `campaign_tours`
+			WHERE `campaign_id` = ?
+			ORDER BY `start_date` DESC
+			LIMIT 1);
+			";
 			$this->prepare($sql);
-			$this->bind($campaign_id);
+			$this->bind($campaign_id,$campaign_id);
 			return $this->db_fetch_all();
 		}
 

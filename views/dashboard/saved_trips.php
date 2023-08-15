@@ -45,7 +45,7 @@
                 <aside id="userdashboard-sidebar" class="sidebar sidebar-left bg-white">
                     <div class="sidebar-header py-3">
                         <div class="logo m-md-auto" onclick="return goto_page('views/home.php')">
-                            <img class="logo-medium" src="../../assets/images/svgs/logo.svg" alt="easygo logo">
+                            <img class="logo-medium" src="../../assets/images/site_images/logo.png" alt="easygo logo">
                         </div>
                         <button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
                             <span class="bar"></span>
@@ -61,13 +61,13 @@
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./trip_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./saved_trips.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
@@ -202,7 +202,7 @@
                                                             <a href='#' onclick='remove_from_wishlist(\"$user_id\",\"$id\")' class='del-btn easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>
                                                                 <i class='fa-solid fa-trash'></i> Remove
                                                             </a>
-                                                            <a href='../trip_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
+                                                            <a href='../tour_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-4 py-2 easygo-fs-6 flex-grow-1 text-center'>Go To Trip</a>
                                                         </div>
                                                     </div>
                                                 </div>

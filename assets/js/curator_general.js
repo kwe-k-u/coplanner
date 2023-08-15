@@ -1,4 +1,4 @@
-// /****************** create_a_trip javascript ******************/
+// /****************** create_a_tour javascript ******************/
 // /* selectors */
 // const coverBtn = document.getElementById("coverphoto-upload-btn");
 // const tripsBtn = document.getElementById("tripimages-upload-btn");

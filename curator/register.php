@@ -32,7 +32,7 @@
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
-                        <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your credentials</p>
                 </div>
@@ -86,7 +86,7 @@
                 <!-- <button type="button" class="back-btn btn" style="position: absolute; top: 3%; left: 0"><i class="fa-solid fa-arrow-left easygo-fs-1"></i></button> -->
                 <div class="form-header">
                     <div class="logo">
-                        <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your credentials</p>
                 </div>

@@ -5,7 +5,7 @@
 
 
     if (!(isset($_GET["campaign_id"]) or isset($_GET["tour_id"]))){
-        header("Location: trips.php");
+        header("Location: tours.php");
     }
 
     if (isset($_GET["tour_id"])){
@@ -16,6 +16,9 @@
     } else {
         $campaign_id= $_GET["campaign_id"];
         $next = get_campaign_next_trip($campaign_id);
+        if(!$next){
+            $next = get_campaign_tours($campaign_id)[0];
+        }
         $tour_id = $next["tour_id"];
     }
 
@@ -76,7 +79,7 @@
         <!--- ================================ -->
         <main>
             <div class="container mb-4" style="margin-top: 10rem;">
-                <a href="./trips.php">Tours</a> > Tour Details
+                <a href="./tours.php">Tours</a> > Tour Details
             </div>
             <!--- ================================ -->
             <!--- image display section [start] -->
@@ -940,12 +943,12 @@
                             }
                         }
                         if($start > date("Y-m-d")){
-                            echo "already started";
+                            echo "<h4>You can't join this tour but you can request it as a private tour <a href='dashboard/private_tour.php'>here</a></h4>";
                         }else {
 
                             echo "
                             <div class='col-lg-7 py-2'>
-                                <a href='./book_trip.php?tour_id=$tour_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Tour</a>
+                                <a href='./book_tour.php?tour_id=$tour_id' class='easygo-btn-1 easygo-fs-1 easygo-rounded-1 py-3'>Book Tour</a>
                             </div>
                                 ";
                         }

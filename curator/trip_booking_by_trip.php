@@ -43,7 +43,7 @@
     <div class="main-wrapper">
         <header class="dashboard-header d-none d-lg-flex">
             <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/svgs/logo.svg" alt="easygo logo">
+                <img class="img-fluid" src="../assets/images/site_images/logo.png" alt="easygo logo">
             </div>
             <div class="dashboard-title">Dashboard</div>
             <div class="right-sec">
@@ -77,7 +77,7 @@
                     <div class="border-1 border-bottom py-3">
                         <div>
                             <h5 class="title">Trip Booking</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="all_trips.php">Trips</a> > Boooking</small>
+                            <small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Trips</a> > Boooking</small>
                         </div>
                         <p class="mt-4 mb-0">Bookings have been grouped based on the Trip. Click on a particular trip to view more information.</p>
                         <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">

@@ -36,7 +36,7 @@ if(is_session_user_curator()){
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
-                        <img src="../assets/images/svgs/logo.svg" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your login credentials</p>
                 </div>

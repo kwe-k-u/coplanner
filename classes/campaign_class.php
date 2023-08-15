@@ -62,9 +62,10 @@
 
 
 		function create_campaign_trip($tour_id,$campaign_id,$pickup_location, $dropoff_location, $start_date, $end_date,$seats, $currency, $fee,$status){
-			$sql = "INSERT INTO `campaign_tours`(`tour_id`, `campaign_id`, `pickup_location`, `dropoff_location`, `start_date`, `end_date`, `seats_available`, `currency`, `fee`, `publish_state`)
+			$sql = "INSERT INTO `campaign_tours`(`tour_id`, `campaign_id`, `pickup_location`, `dropoff_location`, `start_date`, `end_date`,
+			 `seats_available`, `currency`, `fee`, `publish_state`)
 			VALUES
-			(?,?,?,?,?,?,?,?,?, ?)";
+			(?,?,?,?,?,?,?,?,?,?)";
 			$this->prepare($sql);
 			$this->bind($tour_id,$campaign_id,$pickup_location,$dropoff_location,$start_date,$end_date,$seats,$currency,$fee,$status);
 			return $this->db_query();

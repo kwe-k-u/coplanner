@@ -17,6 +17,11 @@
 		return $inte->get_curator_name($curator_id)["curator_name"];
 	}
 
+	function get_curator_by_id($id){
+		$inte = new interaction_class();
+		return $inte->get_curator_by_id($id);
+	}
+
 	function get_private_trip_quotes($request_id){
 		$inte = new interaction_class();
 		return $inte->get_private_trip_quotes($request_id);
@@ -150,5 +155,17 @@
 	function remove_campaign_wishlist($user_id,$curator_id){
 		$inte = new interaction_class();
 		return $inte->remove_campaign_wishlist($user_id,$curator_id);
+	}
+
+	function get_campaigns_by_curator($curator_id){
+		$inte = new interaction_class();
+		$data = $inte->get_campaigns_by_curator($curator_id);
+		if($data){
+			for($i = 0; $i < count($data); $i++){
+				$data[$i]["media"] = $inte->get_campaign_media($data[$i]["campaign_id"]);
+				$data[$i]["campaign_tours"] = $inte->get_campaign_tours($data[$i]["campaign_id"]);
+			}
+		}
+		return $data;
 	}
 ?>

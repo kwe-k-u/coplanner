@@ -48,7 +48,7 @@
                         <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
                         <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                     </div>
-                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./trips.php" style="min-width: 50%;">
+                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./tours.php" style="min-width: 50%;">
                         <div class="d-flex">
                             <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
                             <button class="easygo-btn-1 rounded-0">Search</button>
@@ -100,7 +100,7 @@
                         <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
                         <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                     </div>
-                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./trips.php" style="min-width: 50%;">
+                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./tours.php" style="min-width: 50%;">
                         <div class="d-flex">
                             <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
                             <button class="easygo-btn-1 rounded-0">Search</button>
@@ -192,7 +192,7 @@
                             </div>
                             <div class='trip-card-footer'>
                                 <h3>$currency $fee</h3>
-                                <a href='trip_description.php?tour_id=$tour_id' class='easygo-btn-1'>View trip</a>
+                                <a href='tour_description.php?tour_id=$tour_id' class='easygo-btn-1'>View trip</a>
                             </div>
                         </div>
                     </div>
@@ -202,8 +202,8 @@
                         ?>
                     </div>
                     <div class='d-flex justify-content-end'>
-                        <a class='text-black d-none d-md-block' href='./trips.php'>View all tours <img src='../assets/images/svgs/arrow_45deg_black.svg' alt='45 degree arrow' style='width: 0.7rem;'></a>
-                        <a href='./trips.php' class='easygo-btn-1 d-block d-md-none w-100 text-center'>Go to tours &nbsp; <img src='../assets/images/svgs/arrow_45deg_white.svg' alt='45 degree arrow' style='width: 0.7rem;'></a>
+                        <a class='text-black d-none d-md-block' href='./tours.php'>View all tours <img src='../assets/images/svgs/arrow_45deg_black.svg' alt='45 degree arrow' style='width: 0.7rem;'></a>
+                        <a href='./tours.php' class='easygo-btn-1 d-block d-md-none w-100 text-center'>Go to tours &nbsp; <img src='../assets/images/svgs/arrow_45deg_white.svg' alt='45 degree arrow' style='width: 0.7rem;'></a>
                     </div>
                 </div>
             </section>
@@ -331,7 +331,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="container d-flex flex-column gap-4">
-                                <h5 class="text-orange">Testimonies</h5>
+                                <h5 class="text-orange">Testimonials</h5>
                                 <h1>What Our Customers Say About Us</h1>
                             </div>
                         </div>
@@ -438,6 +438,8 @@
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
+    <!-- Swiper bundle js -->
+    <script src="../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>

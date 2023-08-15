@@ -30,9 +30,8 @@
 							$tour_id = generate_id();
 							$start = $current_trip["start_date"];
 							$end = $current_trip["end_date"];
-							//TODO:: add pickup and dropoff locations
-							$pickup = "";
-							$dropoff = "";
+							$pickup = $current_trip["pickup"];
+							$dropoff = $current_trip["dropoff"];
 							$seats = $current_trip["seats"];
 							$fee = $current_trip["fee"];
 							$status = "published";

@@ -41,219 +41,258 @@ $logo = $info["curator_logo"];
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
         <?php require_once(__DIR__ . "/../components/curator_header.php") ?>
-            <?php require_once(__DIR__ . "/../components/curator_navbar_mobile.php"); ?>
-            <!-- ============================== -->
-            <!-- dashboard content [start] -->
-            <main class="dashboard-content">
-                <?php require_once(__DIR__ . "/../components/curator_navbar_desktop.php"); ?>
-                <div class="main-content px-3">
-                    <section class="create-trip">
-                        <div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
-                            <div>
-                                <h5 class="title">Create a trip</h5>
-                                <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Create Trip</small>
+        <?php require_once(__DIR__ . "/../components/curator_navbar_mobile.php"); ?>
+        <!-- ============================== -->
+        <!-- dashboard content [start] -->
+        <main class="dashboard-content">
+            <?php require_once(__DIR__ . "/../components/curator_navbar_desktop.php"); ?>
+            <div class="main-content px-3">
+                <section class="create-trip">
+                    <div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
+                        <div>
+                            <h5 class="title">Create a trip</h5>
+                            <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Create Trip</small>
+                        </div>
+                    </div>
+                    <form id="create_trip_form" onsubmit="return submit_tour(this)">
+
+                        <!-- Flyer upload -->
+                        <div class="row border-1 border-bottom py-4 pe-lg-5">
+                            <div class="col-lg-5">
+                                <h3 class="easygo-fs-3 easygo-fw-1">Flyer</h3>
+                                <p class="text-gray-1 easygo-fs-5">Upload the flyer for the trip if you have any</p>
+                            </div>
+                            <div class="col-lg-7 d-flex flex-column gap-4">
+                                <div>
+                                    <div id="coverphoto-upload-btn" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#cover-photo-upload-outer" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input visibility-changer">
+                                        <div class="upload-symbol">
+                                            <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
+                                        </div>
+                                        <a>Click to upload</a>
+                                        <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <form id="create_trip_form" onsubmit="return submit_tour(this)">
-
-                            <!-- Flyer upload -->
-                            <div class="row border-1 border-bottom py-4 pe-lg-5">
-                                <div class="col-lg-5">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Flyer</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Upload the flyer for the trip if you have any</p>
+                        <!-- Tour name  -->
+                        <div class="row border-1 border-bottom py-4 pe-lg-5">
+                            <div class="col-lg-5">
+                                <h3 class="easygo-fs-3 easygo-fw-1">Name of tour</h3>
+                                <p class="text-gray-1 easygo-fs-5">Give a short and catch name for the tour. Ideally, it should give a hint of what the tour is about. Eg: Experience Trident Island</p>
+                            </div>
+                            <div class="col-lg-7 d-flex flex-column gap-4">
+                                <div class="form-input-field">
+                                    <input type="text" name="title" placeholder="Name of your amazing tour">
                                 </div>
-                                <div class="col-lg-7 d-flex flex-column gap-4">
-                                    <div>
-                                        <div id="coverphoto-upload-btn" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#cover-photo-upload-outer" data-bs-toggle="modal" data-bs-target="#upload-img-modal" class="file-input visibility-changer">
-                                            <div class="upload-symbol">
-                                                <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
-                                            </div>
-                                            <a>Click to upload</a>
-                                            <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                            </div>
+                        </div>
+                        <!-- Tour description  -->
+                        <div class="row border-1 border-bottom py-4 pe-lg-5">
+                            <div class="col-lg-5">
+                                <h3 class="easygo-fs-3 easygo-fw-1">Trip Description</h3>
+                                <p class="text-gray-1 easygo-fs-5">Describe the trip in detail. Tell us about all the activities involved
+                                    in the trip. Tell us the locations you will be visiting, anything special about the trip you will like
+                                    tour goers to know? Here's an example (NB: AI generated)</p>
+                                <p class="text-gray-1 easygo-fs-5">
+                                    Our tour begins with a pick-up from your hotel in the city and a comfortable drive to the countryside, where you can breathe in the fresh air and take in the beauty of nature. Our first stop will be at a local farm, where you can see how the farmers cultivate the land and produce various crops.
+                                    Next, we'll take you to a breathtaking viewpoint, where you can capture panoramic views of the lush green hills and valleys. This spot is perfect for some stunning photos!
+                                    After taking in the beauty of the landscape, we'll continue our journey to a quaint little village. Here, you can explore the charming streets and learn about the local culture and traditions. We'll take you to a local restaurant where you can try some authentic, delicious food.
+                                    Our next stop will be a natural wonder - a cascading waterfall surrounded by dense forests. Take a dip in the cool waters or simply admire the cascading beauty of the waterfall.
+                                    Our final destination is a serene lake nestled amidst the hills. Here, you can enjoy a peaceful boat ride or simply sit by the banks and soak in the serene surroundings. As the sun sets over the horizon, we'll head back to the city.
+                                    This tour is perfect for those looking to escape the hustle and bustle of the city and immerse themselves in nature's beauty. With comfortable transportation, knowledgeable guides, and a carefully crafted itinerary, this tour promises to be an unforgettable experience!
+                                </p>
+                            </div>
+                            <div class="col-lg-7">
+                                <div>
+                                </div>
+                                <div class="form-input-field">
+                                    <textarea name="description" style="resize: none" cols="30" rows="14" placeholder="Trip description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tour images  -->
+                        <div class="row border-1 border-bottom py-4 pe-lg-5">
+                            <div class="col-lg-5">
+                                <h3 class="easygo-fs-3 easygo-fw-1">Trip Images</h3>
+                                <p class="text-gray-1 easygo-fs-5">Add images to your trip</p>
+                            </div>
+                            <div class="col-lg-7">
+                                <div>
+                                    <div id="tripimages-upload-btn" data-bs-toggle="modal" data-bs-target="#upload-img-modal" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#trip-imgs-upload-outer" class="file-input visibility-changer">
+                                        <div class="upload-symbol">
+                                            <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
+                                        </div>
+                                        <a>Click to upload</a>
+                                        <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
+                                        <div class="img-display">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Tour name  -->
-                            <div class="row border-1 border-bottom py-4 pe-lg-5">
-                                <div class="col-lg-5">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Name of tour</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Give a short and catch name for the tour. Ideally, it should give a hint of what the tour is about. Eg: Experience Trident Island</p>
-                                </div>
-                                <div class="col-lg-7 d-flex flex-column gap-4">
-                                    <div class="form-input-field">
-                                        <input type="text" name="title" placeholder="Name of your amazing tour">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Tour description  -->
-                            <div class="row border-1 border-bottom py-4 pe-lg-5">
-                                <div class="col-lg-5">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Trip Description</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Describe the trip in detail. Tell us about all the activities involved
-                                        in the trip. Tell us the locations you will be visiting, anything special about the trip you will like
-                                        tour goers to know? Here's an example (NB: AI generated)</p>
-                                    <p class="text-gray-1 easygo-fs-5">
-                                        Our tour begins with a pick-up from your hotel in the city and a comfortable drive to the countryside, where you can breathe in the fresh air and take in the beauty of nature. Our first stop will be at a local farm, where you can see how the farmers cultivate the land and produce various crops.
-                                        Next, we'll take you to a breathtaking viewpoint, where you can capture panoramic views of the lush green hills and valleys. This spot is perfect for some stunning photos!
-                                        After taking in the beauty of the landscape, we'll continue our journey to a quaint little village. Here, you can explore the charming streets and learn about the local culture and traditions. We'll take you to a local restaurant where you can try some authentic, delicious food.
-                                        Our next stop will be a natural wonder - a cascading waterfall surrounded by dense forests. Take a dip in the cool waters or simply admire the cascading beauty of the waterfall.
-                                        Our final destination is a serene lake nestled amidst the hills. Here, you can enjoy a peaceful boat ride or simply sit by the banks and soak in the serene surroundings. As the sun sets over the horizon, we'll head back to the city.
-                                        This tour is perfect for those looking to escape the hustle and bustle of the city and immerse themselves in nature's beauty. With comfortable transportation, knowledgeable guides, and a carefully crafted itinerary, this tour promises to be an unforgettable experience!
-                                    </p>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div>
-                                    </div>
-                                    <div class="form-input-field">
-                                        <textarea name="description" style="resize: none" cols="30" rows="14" placeholder="Trip description"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Tour images  -->
-                            <div class="row border-1 border-bottom py-4 pe-lg-5">
-                                <div class="col-lg-5">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Trip Images</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Add images to your trip</p>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div>
-                                        <div id="tripimages-upload-btn" data-bs-toggle="modal" data-bs-target="#upload-img-modal" data-visibility-target=".cover_or_trip-imgs" data-visibility-show="#trip-imgs-upload-outer" class="file-input visibility-changer">
-                                            <div class="upload-symbol">
-                                                <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
-                                            </div>
-                                            <a>Click to upload</a>
-                                            <span class="text-gray-1">SVG , PNG, JPG or GIF. (800 x 400 px)</span>
-                                            <div class="img-display">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                            echo "<input type='hidden' name='curator_id' value='$curator_id'>";
-                            ?>
+                        </div>
+                        <?php
+                        echo "<input type='hidden' name='curator_id' value='$curator_id'>";
+                        ?>
 
-                            <!-- Activities  -->
-                            <div class="row border-1 border-top py-4 pe-lg-5">
-                                <div class="col-lg-2">
-                                    <h3 class="easygo-fs-3 easygo-fw-1">Activities & Locations</h3>
-                                    <p class="text-gray-1 easygo-fs-5">Add activities and locations</p>
+                        <!-- Activities  -->
+                        <div class="row border-1 border-top py-4 pe-lg-5">
+                            <div class="col-lg-2">
+                                <h3 class="easygo-fs-3 easygo-fw-1">Activities & Locations</h3>
+                                <p class="text-gray-1 easygo-fs-5">Add activities and locations</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="location-list col " id="selected-locations">
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="location-list col " id="selected-locations">
-                                    </div>
+                            </div>
+                            <div class="col-lg-7 ">
+                                <button class="btn btn-default px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
+                                <div class="activity-list d-flex flex-wrap gap-2" id="selected-activities">
                                 </div>
-                                <div class="col-lg-7 ">
-                                    <button class="btn btn-default px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
-                                    <div class="activity-list d-flex flex-wrap gap-2" id="selected-activities">
-                                    </div>
-                                </div>
-                                <!-- <div class="col-lg-7 ">
+                            </div>
+                            <!-- <div class="col-lg-7 ">
                                     <button class="btn btn-default border px-5" type="button" data-bs-toggle="modal" data-bs-target="#activities-locations-modal"><img src="../assets/images/svgs/plus.svg" alt="plus sign"> &nbsp; Add Activities & Location</button>
                                 </div> -->
-                            </div>
+                        </div>
 
-                            <h3 class="easygo-fs-3 easygo-fw-1">Tour type</h3>
-                            <ul class="nav nav-tabs easygo-nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active easygo-fs-4 h-100" id="group-tour-tab" data-bs-toggle="tab" data-bs-target="#group-tour" type="button" role="tab" aria-controls="group-tour" aria-selected="false">Group Tour</button>
-                                </li>
-                                <!-- <li class="nav-item" role="presentation">
+                        <h3 class="easygo-fs-3 easygo-fw-1">Tour type</h3>
+                        <ul class="nav nav-tabs easygo-nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active easygo-fs-4 h-100" id="group-tour-tab" data-bs-toggle="tab" data-bs-target="#group-tour" type="button" role="tab" aria-controls="group-tour" aria-selected="false">Group Tour</button>
+                            </li>
+                            <!-- <li class="nav-item" role="presentation">
                                     <button class="nav-link  easygo-fs-4 h-100" id="private-tour-tab" data-bs-toggle="tab" data-bs-target="#private-tour" type="button" role="tab" aria-controls="private-tour" aria-selected="false">Private Tour</button>
                                 </li> -->
-                                <!-- <li class="nav-item" role="presentation">
+                            <!-- <li class="nav-item" role="presentation">
                                     <button class="nav-link easygo-fs-4 h-100" id="withdrawals-tab" data-bs-toggle="tab" data-bs-target="#withdrawals" type="button" role="tab" aria-controls="withdrawals" aria-selected="false">Withdrawals</button>
                                 </li> -->
-                            </ul>
-                            <div class="tab-content">
+                        </ul>
+                        <div class="tab-content">
 
 
-                                <div class="tab-pane fade show active" id="group-tour" role="tabpanel" aria-labelledby="group-tour-tab">
+                            <div class="tab-pane fade show active" id="group-tour" role="tabpanel" aria-labelledby="group-tour-tab">
 
-                                    <!-- Occurences  -->
-                                    <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
-                                        <div class="col-lg-5">
-                                            <h4 class="easygo-fs-4 easygo-fw-1">Trip Occurence</h4>
-                                            <p class="text-gray-1 easygo-fs-5">Add trip occurence</p>
+                                <!-- Occurences  -->
+                                <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
+                                    <div class="col-lg-5">
+                                        <h4 class="easygo-fs-4 easygo-fw-1">Trip Occurence</h4>
+                                        <p class="text-gray-1 easygo-fs-5">Add trip occurence</p>
+                                    </div>
+                                    <div class="col-lg-7 d-flex flex-column gap-4">
+                                        <!-- Start date and time  -->
+                                        <div class="row">
+                                            <div class="col-lg-6 pb-3 p-0 pe-lg-1">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Start Date</h6>
+                                                    <input id="start_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Pickup time</h6>
+                                                    <input id="start_time" class="time-input" type="text" pattern="(0[1-9]1[0-2]):[0-5][0-9] (am/pm)" placeholder="hrs:min --">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-7 d-flex flex-column gap-4">
-                                            <!-- Start date and time  -->
-                                            <div class="row">
-                                                <div class="col-lg-6 pb-3 p-0 pe-lg-1">
-                                                    <div class="form-input-field">
-                                                        <h6 class="easygo-fs-4 text-gray-1">Start Date</h6>
-                                                        <input id="start_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 pb-3 p-0 ps-lg-1">
-                                                    <div class="form-input-field">
-                                                        <h6 class="easygo-fs-4 text-gray-1">Pickup time</h6>
-                                                        <input id="start_time" class="time-input" type="text" pattern="(0[1-9]1[0-2]):[0-5][0-9] (am/pm)" placeholder="hrs:min --">
-                                                    </div>
+                                        <!-- End date and time  -->
+                                        <div class="row">
+                                            <div class="col-lg-6 pb-3 p-0 pe-lg-1">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
+                                                    <input id="end_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
                                                 </div>
                                             </div>
-                                            <!-- End date and time  -->
-                                            <div class="row">
-                                                <div class="col-lg-6 pb-3 p-0 pe-lg-1">
-                                                    <div class="form-input-field">
-                                                        <h6 class="easygo-fs-4 text-gray-1">End Date</h6>
-                                                        <input id="end_date" class="date-input" type="text" pattern="\d{2}-\d{2}-\d{4}" placeholder="DD/MM/YYYY">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 pb-3 p-0 ps-lg-1">
-                                                    <div class="form-input-field">
-                                                        <h6 class="easygo-fs-4 text-gray-1">Expected Drop-off Time</h6>
-                                                        <input id="end_time" class="time-input" type="text" pattern="(0[1-9]1[0-2]):[0-5][0-9] (am/pm)" placeholder="hrs:min --">
-                                                    </div>
+                                            <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Expected Drop-off Time</h6>
+                                                    <input id="end_time" class="time-input" type="text" pattern="(0[1-9]1[0-2]):[0-5][0-9] (am/pm)" placeholder="hrs:min --">
                                                 </div>
                                             </div>
-                                            <div class="row" id="occurance_field">
-                                                <div class="col-lg-6 p-0 pe-lg-1 pb-3">
-                                                    <div class="form-input-field">
-                                                        <h6 class="easygo-fs-4 text-gray-1">Fee</h6>
-                                                        <div class="d-flex">
-                                                            <div class="dropdown">
-                                                                <a id="currency_menu" style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    GHS
-                                                                </a>
-                                                                <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
-                                                                    <li onclick="on_option_select('currency_menu','GHS')">GHS</li>
-                                                                    <li onclick="on_option_select('currency_menu','USD')">USD</li>
-                                                                </ul>
-                                                            </div>
-                                                            <input id="fee" class="rounded-end rounded-0" type="text" placeholder="Fee">
+                                        </div>
+                                        <!-- [start] pickup and drop off locations  -->
+                                        <div class="row" id="occurance_field">
+                                            <div class="col-lg-6 p-0 pe-lg-1 pb-3">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Pickup location</h6>
+                                                    <input id="pickup_loc" class="rounded-end rounded-0" type="text" placeholder="location,city">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Drop-off location</h6>
+                                                    <input id="dropoff_loc" type="text" placeholder="location,city">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- [end] pickup and drop off locations  -->
+
+
+                                        <div class="row" id="occurance_field">
+                                            <div class="col-lg-6 p-0 pe-lg-1 pb-3">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Fee</h6>
+                                                    <div class="d-flex">
+                                                        <div class="dropdown">
+                                                            <a id="currency_menu" style="background: var(--easygo-gray-3); height: 100%; border: solid 1px var(--easygo-gray-2); gap: 3px; font-size: var(--font-size-4);" class="btn rounded-0 rounded-start border-end-0 d-flex align-items-center dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                GHS
+                                                            </a>
+                                                            <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
+                                                                <li onclick="on_option_select('currency_menu','GHS')">GHS</li>
+                                                                <li onclick="on_option_select('currency_menu','USD')">USD</li>
+                                                            </ul>
                                                         </div>
-                                                        <div class="d-flex align-items-start mt-3">
-                                                            <div class="icon"><img src="../assets/images/svgs/info.svg" alt="info icon"></div>
-                                                            <div class="easygo-fs-6">Total fee for each trip includes transportation, food & any other costs</div>
-                                                        </div>
+                                                        <input id="fee" class="rounded-end rounded-0" type="text" placeholder="Fee">
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-6 pb-3 p-0 ps-lg-1">
-                                                    <div class="form-input-field">
-                                                        <h6 class="easygo-fs-4 text-gray-1">Seats</h6>
-                                                        <input id="seats" type="number" min="1">
+                                                    <div class="d-flex align-items-start mt-3">
+                                                        <div class="icon"><img src="../assets/images/svgs/info.svg" alt="info icon"></div>
+                                                        <div class="easygo-fs-6">Total fee for each trip includes transportation, food & any other costs</div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- ======================================================================== -->
-                                            <!-- ==========================Start of entered occurances========================== -->
-                                            <p>Entered occurances</p>
-                                            <div id="occurance_list" class="easygo-list-3 list-striped">
-                                                <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                                    <div class="inner-item">Start Date</div>
-                                                    <div class="inner-item"></div>
-                                                    <div class="inner-item">End Date</div>
-                                                    <div class="inner-item"></div>
-                                                    <div class="inner-item">Fee</div>
-                                                    <div class="inner-item">Number of seats</div>
-                                                    <div class="inner-item">Actions</div>
+                                            <div class="col-lg-6 pb-3 p-0 ps-lg-1">
+                                                <div class="form-input-field">
+                                                    <h6 class="easygo-fs-4 text-gray-1">Seats</h6>
+                                                    <input id="seats" type="number" min="1">
                                                 </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- ======================================================================== -->
+                                        <!-- ==========================Start of entered occurances========================== -->
+                                        <p>Entered occurances</p>
+                                        <div id="occurance_list" class="easygo-list-3 list-striped">
+                                            <div class="list-item list-header bg-transparent" style="box-shadow: none;">
+                                                <div class="inner-item">Start Date</div>
+                                                <div class="inner-item"></div>
+                                                <div class="inner-item">End Date</div>
+                                                <div class="inner-item"></div>
+                                                <div class="inner-item">Fee</div>
+                                                <div class="inner-item">Number of seats</div>
+                                                <div class="inner-item">Actions</div>
+                                            </div>
+                                            <!-- <div id="active_occurance_row">
+                                                <div class="list-item" style="margin-bottom:0px;">
+                                                    <div class="inner-item start_val"> </div>
+                                                    <div class="inner-item start_time_val"> </div>
+                                                    <div class="inner-item end_val">2023-08-16</div>
+                                                    <div class="inner-item end_time_val">00:27 AM</div>
+                                                    <div class="inner-item  fee_val"> </div>
+                                                    <div class="inner-item seats_val"> </div>
+                                                    <div class="inner-item col">
+                                                        <div class="inner-item fa fa-edit" onclick="edit_occurance_entry(this)"></div>
+                                                        <div class="inner-item fa fa-trash" onclick="delete_occurance_entry(this)"></div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p class="easygo-fs-5"  style="margin-top:0px;">
+                                                        pickup location : <span style='margin-right:16px' id='pickup_val'>Tema, Accra</span>
+                                                        dropoff location: <span style='margin-right:16px' id='pickup_drop'>Tema Accra</span>
+                                                    </p>
+                                                </div>
+                                            </div> -->
 
 
-                                                <!-- <div class='list-item'>
+                                            <!-- <div class='list-item'>
                                                     <div class='inner-item start_val'>22 May 2023</div>
                                                     <div class='inner-item end_val'>22 May 2023</div>
                                                     <div class='inner-item  fee_val'>GHC 50</div>
@@ -265,39 +304,39 @@ $logo = $info["curator_logo"];
                                                 </div> -->
 
 
-                                                <!-- ======================================================================== -->
-                                                <!-- ==========================Start of entered occurances========================== -->
-                                                <div class='list-item' id="add_button" onclick="add_new_occurance()">
-                                                    <div class='inner-item '>Click to add another date for this tour</div>
-                                                </div>
-
-                                                <!-- ==========================Add new occurance========================== -->
-                                                <!-- ======================================================================== -->
-
-                                            </div>
-                                            <!-- ==========================End of entered occurances========================== -->
                                             <!-- ======================================================================== -->
+                                            <!-- ==========================Start of entered occurances========================== -->
+                                            <div class='list-item' id="add_button" onclick="add_new_occurance()">
+                                                <div class='inner-item '>Click to add another date for this tour</div>
+                                            </div>
+
+                                            <!-- ==========================Add new occurance========================== -->
+                                            <!-- ======================================================================== -->
+
                                         </div>
+                                        <!-- ==========================End of entered occurances========================== -->
+                                        <!-- ======================================================================== -->
                                     </div>
                                 </div>
-
-                                <div class="tab-pane fade " id="private-tour" role="tabpanel" aria-labelledby="private-tour-tab">
-                                    <h4>Private tour options</h4>
-                                </div>
                             </div>
 
-                            <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
-                                <!-- <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel"> -->
-                                <button type="reset" class="btn btn-default border px-4 easygo-fs-4">Cancel</button>
-                                <!-- <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" value="Create Trip"> -->
-                                <button class="easygo-btn-1 px-4 py2 easygo-fs-4" type="submit">Create Trip</button>
+                            <div class="tab-pane fade " id="private-tour" role="tabpanel" aria-labelledby="private-tour-tab">
+                                <h4>Private tour options</h4>
                             </div>
-                        </form>
-                    </section>
-                </div>
-            </main>
-            <!-- dashboard-content [end] -->
-            <!-- ============================== -->
+                        </div>
+
+                        <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
+                            <!-- <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel"> -->
+                            <button type="reset" class="btn btn-default border px-4 easygo-fs-4">Cancel</button>
+                            <!-- <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" value="Create Trip"> -->
+                            <button class="easygo-btn-1 px-4 py2 easygo-fs-4" type="submit">Create Trip</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <!-- dashboard-content [end] -->
+        <!-- ============================== -->
     </div>
     <!-- main-wrapper [end] -->
     <!-- ============================== -->
@@ -493,7 +532,7 @@ $logo = $info["curator_logo"];
             <div class="modal-content p-5">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h6>Add Trip And Activities</h6>
+                        <h6>Add Tour And Activities</h6>
                         <a data-bs-toggle="modal" data-bs-target="#add-location-modal" class='easygo-fs-5 mb-4'>Can't find a location? Create it here</a>
                         <div class="al-search">
                             <form onsubmit='location_search_submit(this)'>
@@ -775,14 +814,14 @@ $logo = $info["curator_logo"];
                                             <label class="text-gray-1 easygo-fs-4 ">
                                                 Facebook handle
                                                 <small class="text-gray-1 easygo-fs-6">(Optional)</small>
-                                        </label>
+                                            </label>
                                             <input class="px-4 py-2 flex-grow-1" type="text" name="facebook">
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Tour site extra info [end] -->
                                 <div>
-                                    <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5"  data-bs-dismiss="modal">Create Tour site</button>
+                                    <button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" data-bs-dismiss="modal">Create Tour site</button>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
                                     <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
@@ -811,7 +850,7 @@ $logo = $info["curator_logo"];
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/curator_general.js"></script>
-    <script src="../assets/js/create_a_trip.js"></script>
+    <script src="../assets/js/create_a_tour.js"></script>
 </body>
 
 </html>
