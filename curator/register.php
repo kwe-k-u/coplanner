@@ -1,4 +1,15 @@
-<?php require_once(__DIR__."/../utils/core.php") ?>
+<?php
+ require_once(__DIR__."/../utils/core.php");
+
+ if(isset($_GET["confirm"])){
+
+     $new = $_GET["confirm"] == encrypt(false.$_GET["hash"]);
+     $hash = $_GET["hash"];
+ }else{
+    $new = false;
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +68,10 @@
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                 </div>
+                <?php
+                //=====================[START] Hide if invited================================
+                    if(!$hash){
+                ?>
                 <div class="input-field">
                     <small class="input-title">Company profile</small>
                     <div class="d-flex">
@@ -73,8 +88,12 @@
                         <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name" >
                     </div>
                 </div>
+                <?php
+                    }
+                    //=====================[END] Hide if invited================================
+                ?>
                 <div class="input-field button-container">
-                    <button class="easygo-btn-1 next-btn" type="button">Continue</button>
+                    <button class="easygo-btn-1 next-btn" type="button" id="form-1-confirm-btn">Continue</button>
                     <a href="./login.php">Already have an account ?</a>
                 </div>
             </form>
@@ -90,6 +109,10 @@
                     </div>
                     <p class="instruction">Please enter your credentials</p>
                 </div>
+                <?php
+                //=====================[START] Hide if invited================================
+                    if(!$hash){
+                ?>
                 <div class="input-field">
                     <small class="text-gray-1">Upload company logo<span class="text-gray-2">(Optional)</span></small>
                     <div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo">
@@ -102,6 +125,10 @@
                         <div data-input-target="#company_logo" id="logo-display" class="img-display"></div>
                     </div>
                 </div>
+                <?php
+                    }
+                    //=====================[END] Hide if invited================================
+                ?>
                 <div class="input-field">
                     <small class="text-gray-1">Government Issued Identification Card</small>
                     <div class="inline-inputs">
@@ -123,6 +150,10 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                //=====================[START] Hide if invited================================
+                    if(!$hash){
+                ?>
                 <div class="input-field">
                     <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2">(Optional)</span></small>
                     <div class="file-input drag-n-drop type-doc" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" data-input-target="#inc_doc">
@@ -141,6 +172,10 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                    }
+                    //=====================[END] Hide if invited================================
+                ?>
                 <div class="agreement-check">
                     <input type="checkbox"><span>By creating an account, you agree to these <a href="">terms and conditions</a></span>
                 </div>
@@ -148,6 +183,7 @@
                     <button class="easygo-btn-1" type="submit">Register</button>
                     <a href="./login.php">Already have an account?</a>
                 </div>
+
             </form>
             <!-- company info upload [end] -->
         </div>
@@ -163,11 +199,24 @@
     <!-- easygo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
-    <script>
-
-    </script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/curator_auth.js"></script>
+    <?php
+
+ if(isset($_GET["hash"])){
+    // if true, the user already has an account  Skip the bio part of the form
+    // if ($new){
+    //     echo "
+    //     <script>
+    //     $(document).ready(function () {
+    //         document.getElementById('form-1-confirm-btn').click();
+    //     })
+    //     </script>
+    //     ";
+    // }
+ }
+
+    ?>
 </body>
 
 </html>

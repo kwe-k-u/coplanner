@@ -320,7 +320,7 @@ $logo = "";//$info["curator_logo"];
                             </div>
                         </div>
                         <div class="d-flex justify-content-end align-items-center p-3">
-                            <a href="./bookings.php" class="easygo-btn-1">View Bookings</a>
+                            <a href="./transactions.php" class="easygo-btn-1">View Bookings</a>
                         </div>
                     </div>
                 </section>

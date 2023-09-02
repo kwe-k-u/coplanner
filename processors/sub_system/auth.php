@@ -76,6 +76,60 @@
 					}
 					die();
 					break;
+				case "curator_invite_signup":
+					// var_dump($_REQUEST);
+					$hash = $_POST["invite_hash"];
+					$new_user = encrypt(false.$hash) == $_POST["invite_type_hash"];
+					$email = $_POST["email"];
+					$username = $_POST["user_name"];
+					$password = encrypt($_POST["password"]);
+					$phone = $_POST["phone_number"];
+					$mailer = new mailer();
+
+					if ($new_user){
+						// create account
+						$user_id = generate_id();
+						sign_up_user($user_id,$email,$username,$password,$phone);
+					}else {
+						// get_id
+						$user_id = get_user_by_email($email);
+					}
+
+
+					if(!$user_id){
+						send_json(array("msg"=> "We couldn't find your account. Make sure to use the same email that received the invite link"),201);
+						die();
+					}
+					$collaborator_invite = get_curator_invite_by_email($email);
+					if($collaborator_invite){
+						$user_id = get_user_by_email($email)["user_id"];
+						$curator_id = $collaborator_invite["curator_id"];
+						$privilege = $collaborator_invite["privilege"];
+
+						//uploading front side of government id
+						$gov_id_front = generate_id();
+						$image = $_FILES["gov_id_front"]["name"];
+						$tmp = $_FILES["gov_id_front"]["tmp_name"];
+						$location = upload_file("uploads","confidential",$tmp,$image);
+						upload_user_media_ctrl($gov_id_front,$user_id,$location);
+
+						//uploading back side of government id
+						$gov_id_back = generate_id();
+						$image = $_FILES["gov_id_back"]["name"];
+						$tmp = $_FILES["gov_id_back"]["tmp_name"];
+						$location = upload_file("uploads","confidential",$tmp,$image);
+						upload_user_media_ctrl($gov_id_back,$user_id,$location);
+
+						add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back,$privilege);
+						remove_curator_invite($email);
+						remove_expired_curator_invites();
+						$mailer->curator_invite_success($email);
+						send_json(array("msg"=>"Successfully added as a curator"));
+					}else{
+						send_json(array("msg"=>"Your invite link may have expired. Kindly request a new one"),201);
+					}
+					die();
+
 				case "signup":
 					$email = $_POST["email"];
 					$user_name = $_POST["user_name"];
@@ -272,8 +326,6 @@
 
 					die();
 				case "invite_curator_collaborator":
-					send_json(array("msg" => "Action blocked. Government registration required"),100);
-					die();
 					$email = $_POST["email"];
 					$curator_id = $_POST["curator_id"];
 					$privilege = $_POST["privilege"];
@@ -285,20 +337,19 @@
 						if($is_collaborator){
 							//send error saying user is a collaborator
 							send_json(array("msg"=>"user is a registered collaborator and can't manage several accounts"),100);
-						}else {
-							//add the managers
-							// add_curator_manager($curator_id,$user["user_id"],$privilege);
-							$mailer->curator_invite_success($email);
-							send_json(array("msg"=>"Added <$email> as collaborator"));
+							die();
 						}
 
-					}else {//user doesn't exist
+					}
 						//create invite entry
 						invite_curator_manager($curator_id,$email,$privilege);
-						$mailer->curator_invite($email);
+						$invite = get_curator_invite_by_email($email);
+						$date = $invite["invite_date"];
+						$curator_name = $invite["curator_name"];
+						$hash = encrypt($email.$curator_id);
+						$mailer->curator_invite($email,$hash,$date,$curator_name);
 						send_json(array("msg"=>"Invite sent to <$email>"));
 
-					}
 					die();
 				case "remove_curator_collaborator":
 					$curator_id = $_POST["curator_id"];

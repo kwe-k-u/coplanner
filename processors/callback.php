@@ -1,24 +1,55 @@
 <?php
-	require_once(__DIR__."/../utils/paybox.php");
+	// require_once(__DIR__."/../utils/paybox.php");
 	require_once(__DIR__."/../utils/core.php");
 	require_once(__DIR__."/../controllers/auth_controller.php");
 	require_once(__DIR__."/../controllers/campaign_controller.php");
 	require_once(__DIR__."/../controllers/finance_controller.php");
 
-	$paybox = new paybox_custom();
+
+	// $paybox = new paybox_custom();
 	if(!isset($_SERVER["PATH_INFO"])){
 		echo "No path provided";
 		die();
 	}
 
 	switch($_SERVER["PATH_INFO"]){
-		case "/verify_email":
-			if(!isset($_GET["token"])){
-				echo "No token provided. Kindly request a new invite link";
+		case "/curator_invite":
+
+			if(!isset($_GET["hash"]) or !isset($_GET["date"])){
+				echo "Your link seems broken. Kindly request a new one";
 				die();
 			}
-			$token = $_GET["token"];
-			$invite = get_curator_invite_by_token($token);
+
+
+
+			$date  = $_GET["date"];
+			$hash = $_GET["hash"];
+			$date = strtr($date,array("%"=>" "));
+
+
+			//get all invites sent on that day that match the hash
+			$invite = get_curator_invite_by_hash($hash,$date);
+			if(strtotime($invite["invite_expiry"] - time()) <0){
+				echo "Your invite has expired. Kindly request a new one";
+				die();
+			}
+			$email = get_user_by_email($invite["email_address"]) == true;
+			//encrypt with true if existing user; encrypt with false if new user
+			$hash2 = encrypt($email.$hash);
+
+
+			header("Location: ".server_base_url()."curator/register.php?hash=$hash&confirm=$hash2");
+			// var_dump($invite);
+			die();
+
+
+
+
+
+
+
+
+
 			if (!$token){
 				echo "This token does not exist. Kindly request a new token";
 				die();

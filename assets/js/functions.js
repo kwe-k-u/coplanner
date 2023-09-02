@@ -3,11 +3,12 @@
 //checks the get get parameters in the url for a matching key;
 function url_params(key){
 	url = window.location.search.substr(1);
+	let value = false;
 	params = url.split("&");
 	params.forEach(element => {
 		pair = element.split("=");
 		element_key = pair[0];
-		if(element_key= key){
+		if(element_key == key){
 			value = pair[1];
 		}
 	});

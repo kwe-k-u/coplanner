@@ -34,6 +34,7 @@ $logo = ""; //$info["curator_logo"];
 	<!-- easygo css -->
 	<link rel="stylesheet" href="../assets/css/general.css">
 	<link rel="stylesheet" href="../assets/css/dashboard.css">
+	<link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 
 <body>
@@ -118,17 +119,17 @@ $logo = ""; //$info["curator_logo"];
 
 									<div class='grid-7' style='max-height: 150px;' id='location-info-images'>
 										<div class='grid-item'>
-											<img class='w-100 h-100 rounded' src='$id_front' alt='scene 1'>
+											<a href='#' onclick='show_curator_id_modal(\"$id_front\",\"front\")'>View Front</a>
 										</div>
-											<div class='grid-item'>
-											<img class='w-100 h-100 rounded' src='$id_back' alt='scene 1'>
+										<div class='grid-item'>
+											<a href='#' onclick='show_curator_id_modal(\"$id_back\",\"back\")'>View Back</a>
 										</div>
 
 									</div>
                                     <div class='inner-item'>
 										<div >
 											<a href='#' onclick='verify_curator_manager_id(\"$id\",true)'>Approve </a>
-											<a href='#' onclick='verify_curator_manager_id(\"$id\",false)'>Reject </a>
+											<a href='#' class='text-red' onclick='verify_curator_manager_id(\"$id\",false)'>Reject </a>
 										</div>
 									</div>
                                 </div>
@@ -169,6 +170,22 @@ $logo = ""; //$info["curator_logo"];
 	<!-- main-wrapper [end] -->
 	<!-- ============================== -->
 
+
+	<!-- ============================== -->
+	<!-- main-wrapper [end] -->
+	<div id="curator_id_modal" class="modal">
+
+		<!-- The Close Button -->
+		<span class="modal_close" onclick="close_curator_id_modal()">&times;</span>
+
+		<!-- Modal Content (The Image) -->
+		<img class="modal-content" id="curator_id_img" style="height:85%; object-fit:contain">
+
+		<!-- Modal Caption (Image Text) -->
+		<div id="caption"></div>
+		</div>
+	<!-- main-wrapper [end] -->
+	<!-- ============================== -->
 
 	<!-- ============================== -->
 	<!-- Bootstrap js -->

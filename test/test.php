@@ -1,6 +1,19 @@
 <?php
+
+
+
 require_once(__DIR__."/../utils/core.php");
 require_once(__DIR__."/../utils/paystack.php");
+require_once(__DIR__."/../controllers/auth_controller.php");
+// $email=$_GET["email"];
+$curator_id="791f40acb7ce8843d0894ba2f00731e9";
+// $invite = get_curator_invite_by_email($email);
+// $date = $invite["invite_date"];
+// $curator_name = $invite["curator_name"];
+$hash = encrypt(false.$curator_id);
+echo $hash;
+
+die();
 $location = upload_file("uploads",$media_type,$tmp,$image);
 var_dump($location);
 $location = upload_file("/var/www/html/easygo_v2/uploads",$media_type,$tmp,$image);

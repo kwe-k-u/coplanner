@@ -109,10 +109,10 @@ $logo = "";//$info["curator_logo"];
                                     <div class='inner-item'>
 										<div class='col'>
 											<div>
-												$curator
+												$id
 											</div>
 											<div>
-												$id
+												$curator
 											</div>
 										</div>
 									</div>

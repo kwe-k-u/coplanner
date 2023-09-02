@@ -79,7 +79,7 @@ $rating_count = $stats["review_count"];
                                             <?php
                                             echo "
                                             <h3 class='easygo-fs-1 easygo-fw-1'>$user_name</h3>
-                                            <h5 class='easygo-fs-4 text-orange'>Trip Curator @$curator_name</h5>
+                                            <h5 class='easygo-fs-4 text-orange'> Curator @$curator_name</h5>
                                             ";
                                             ?>
                                         </div>
@@ -108,7 +108,7 @@ $rating_count = $stats["review_count"];
                                         </div>
                                         <div class="trip-rating">
                                             <div class="d-flex align-items-center gap-2 my-4">
-                                                <h6 class="text-gray-1 easygo-fs-5 m-0">Average Trip Rating</h6>
+                                                <h6 class="text-gray-1 easygo-fs-5 m-0">Average Tour Rating</h6>
                                                 <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
                                             </div>
                                             <div>
@@ -147,7 +147,7 @@ $rating_count = $stats["review_count"];
                                         <img src='../assets/images/svgs/bus_red_bg.svg' alt='bus image'>
                                     </div>
                                     <div class='info-content'>
-                                        <div class='text-gray-1 info-title easygo-fs-4'>Group Trips</div>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Group Tours</div>
                                         <div class='info-num easygo-fs-2 easygo-fw-1'>$group_count</div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ $rating_count = $stats["review_count"];
                                         <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                     </div>
                                     <div class='info-content'>
-                                        <div class='text-gray-1 info-title easygo-fs-4'>Private Trips</div>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Private Tours</div>
                                         <div class='info-num easygo-fs-2 easygo-fw-1'>$private_count</div>
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@ $rating_count = $stats["review_count"];
                                             $title = $entry["title"];
                                             $tour_count = $entry["trip_count"];
                                             $label = $tour_count > 1 ? "Tours" : "Tour";
-                                            $desc = $entry["description"];
+                                            $desc = shorten($entry["description"]);
                                             echo"
                                             <div class='list-item'>
                                                 <div class='col'>
@@ -244,87 +244,6 @@ $rating_count = $stats["review_count"];
                                 <!--- ================================ -->
                                 <!--- ================================ -->
                                 <!--- packages [start] -->
-                                <div class="tab-pane fade" id="packages" role="tabpanel" aria-labelledby="packages-tab">
-                                    <div class="easygo-list-3 list-striped" style="min-width: 992px;">
-                                        <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">Transaction ID</div>
-                                            <div class="inner-item">Sender Name</div>
-                                            <div class="inner-item">Recipient Name</div>
-                                            <div class="inner-item">Transaction Date</div>
-                                            <div class="inner-item">Amount</div>
-                                            <div class="inner-item">Status</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Pending</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!--- packages [end] -->
                                 <!--- ================================ -->
                                 <!--- ================================ -->

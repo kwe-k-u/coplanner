@@ -23,3 +23,25 @@ function toggle_curator_verification(curator_id){
 	}
 	);
 }
+
+
+function show_curator_id_modal(img_url,type){
+	// Get the image and insert it inside the modal - use its "alt" text as a caption
+	var modal_link = event.target;
+
+	var modal_img = document.getElementById("curator_id_img");
+	var captionText = document.getElementById("caption");
+
+	captionText.innerText = type + " of curator ID";
+
+	modal_img.src = img_url;
+
+	document.getElementById("curator_id_modal").style.display="block";
+
+	// Get the <span> element that closes the modal
+
+}
+
+function close_curator_id_modal(){
+	document.getElementById("curator_id_modal").style.display = "none";
+}

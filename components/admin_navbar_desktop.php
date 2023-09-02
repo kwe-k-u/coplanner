@@ -31,7 +31,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="bookings.php" id="nav_finance">
+			<a href="transactions.php" id="nav_finance">
 				<img src="../assets/images/svgs/finance.svg" alt="finance icon">
 				 Finance
 			</a>

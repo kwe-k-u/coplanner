@@ -19,6 +19,7 @@
 		"change_password",
 		"change_password_logged_in",
 		"invite_curator_collaborator",
+		"curator_invite_signup",
 		"remove_curator_collaborator",
 		"update_profile",
 		"resend_email_verification"

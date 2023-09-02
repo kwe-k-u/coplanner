@@ -50,7 +50,7 @@
 			$sql = "SELECT `token` FROM `forgot_password_token`
 			JOIN `users` on users.user_id = forgot_password_token.user_id
 			WHERE users.email = ?
-			 AND forgot_password_token.expiry_date < CURRENT_TIMESTAMP";
+			 AND forgot_password_token.expiry_date > CURRENT_TIMESTAMP";
 			// return $this->db_fetch_one($sql);
 
 			$this->prepare($sql);
@@ -111,20 +111,23 @@
 		}
 
 		function get_curator_invite_by_email($email){
-			$sql = "SELECT * FROM `curator_manager_invite` WHERE email_address = ?
-			AND `invite_expiry` < CURRENT_TIMESTAMP";
+			$sql = "SELECT cmi.*,curators.curator_name FROM `curator_manager_invite` as cmi
+			inner join curators on curators.curator_id = cmi.curator_id
+			WHERE cmi.email_address = ?
+			AND cmi.invite_expiry > CURRENT_TIMESTAMP";
 			$this->prepare($sql);
+
 			$this->bind($email);
 
 			return $this->db_fetch_one();
 		}
 
-		function get_curator_invite_by_token($token){
-			$sql = "SELECT * FROM `curator_manager_invite` WHERE token = ?";
+		function get_curator_invite_by_date($date){
+			$sql = "SELECT * FROM `curator_manager_invite` WHERE invite_date = ?";
 			$this->prepare($sql);
-			$this->bind($token);
+			$this->bind($date);
 
-			return $this->db_fetch_one();
+			return $this->db_fetch_all();
 		}
 
 

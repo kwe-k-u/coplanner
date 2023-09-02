@@ -160,7 +160,7 @@
                             if(!empty($tours)){
                                 foreach ($tours as $entry) {
                                     $title = $entry["title"];
-                                    $desc = $entry["description"];
+                                    $desc = shorten($entry["description"]);
                                     $curator_id = $entry["curator_id"];
                                     $id = $entry["campaign_id"];
                                     $curator_name = $entry["curator_name"];

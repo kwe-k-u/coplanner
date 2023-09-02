@@ -4,7 +4,7 @@
 	require_once(__DIR__."/../utils/core.php");
 
 	//Creates a user account with the information passed and returns the new user id. False if an error occurs
-	function sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country){
+	function sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country = "Ghana"){
 		$user = new auth_class();
 		return $user->sign_up_user($user_id,$email, $user_name,$password,$phone_number,$country);
 	}
@@ -89,9 +89,20 @@
 		return $auth->get_curator_invite_by_email($email);
 	}
 
-	function get_curator_invite_by_token($token){
+	function get_curator_invite_by_hash($hash,$date = Null){
 		$auth = new auth_class();
-		return $auth->get_curator_invite_by_token($token);
+		$invites = $auth->get_curator_invite_by_date($date);
+		// return $invites;
+		for($i = 0; $i< sizeof($invites); $i++){
+			$c = $invites[$i];
+			$email = $c["email_address"];
+			$curator_id = $c["curator_id"];
+			$c_hash = encrypt($email.$curator_id);
+			if($c_hash == $hash){
+				return $c;
+			}
+		}
+		return false;
 	}
 
 

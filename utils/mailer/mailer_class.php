@@ -12,9 +12,32 @@ use PHPMailer\PHPMailer\Exception;
 
 
 class mailer{
+	private $name;
+
+	function __construct($name = "easyGo Tours Ltd"){
+		$this->name = $name;
+
+	}
 
 	function send_email($destination, $subject, $message){
 		if (!is_env_remote()){
+			$path = __DIR__."/../../logs/test_email.log";
+			$data = "\n\n\n";
+			// $add timestamp for entry with milliseconds
+			$_name = $this->name;
+			$data = date("Y-m-d H:i:s")."\n============<START>================\n
+From: $_name
+To: $destination
+Subject: $subject\n
+Message: $message
+			";
+			$data .= "\n================<END>=========================\n";
+
+
+			$fp = fopen($path, 'a');
+			fwrite($fp, "\n".$data);
+			fclose($fp);
+
 			return null;
 		}
 
@@ -29,8 +52,8 @@ class mailer{
 		$mail->AddAddress($destination);
 		$mail->Username = email_username();
 		$mail->Password = email_password();
-		$mail->SetFrom(email_username(),'easyGo Tours Ltd');
-		$mail->AddReplyTo(email_username(),"easyGo Tours Ltd");
+		$mail->SetFrom(email_username(),$this->name);
+		$mail->AddReplyTo(email_username(),$this->name);
 		$mail->Subject = $subject;
 		$mail->Body = $message;
 		$mail->AltBody = $message;
@@ -61,7 +84,7 @@ class mailer{
 	}
 
 	/**Emails the invite token to an invited user */
-	function curator_invite($email){
+	function curator_invite($email,$hash,$date,$curator_name){
 		include_once(__DIR__."/messages/curator_invite.php");
 		return $this->send_email($email,$subject,$message);
 

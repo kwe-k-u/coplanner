@@ -243,7 +243,6 @@
                                                 <h6 class='easygo-fw-2 easygo-fs-1'>Starting Point</h6>
                                                 <div class='text-gray-1 easygo-fs-2'>
                                                     <p>
-                                                        We’ll get picked up from your apartments or hotels room
                                                         <?php echo "The tours starts at the $pickup_location at $pickup_time"; ?>
                                                     </p>
                                                 </div>
