@@ -36,7 +36,7 @@ function show_curator_id_modal(img_url,type){
 
 	modal_img.src = img_url;
 
-	document.getElementById("curator_id_modal").style.display="block";
+	// document.getElementById("curator_id_modal").style.display="block";
 
 	// Get the <span> element that closes the modal
 

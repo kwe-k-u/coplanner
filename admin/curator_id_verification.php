@@ -55,7 +55,7 @@ $logo = ""; //$info["curator_logo"];
 					<div class="border-1 border-bottom py-3">
 						<div>
 							<h5 class="title">Curator ID verification</h5>
-							<small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Trips</a> > Bookings</small>
+							<small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Admin</a> > Identification Approvals</small>
 						</div>
 						<p class="mt-4 mb-0">This table shows information about curator managers with pending id verifications.</p>
 					</div>
@@ -87,7 +87,7 @@ $logo = ""; //$info["curator_logo"];
                                         <div class='item-bullet-container'>
                                             <div class='item-bullet'></div>
                                         </div>
-                                        <div class='inner-item'>There are no bookings for any of your trips yet. </div>
+                                        <div class='inner-item'>There are no pending identification approvals for curators. </div>
                                     </div>";
 							} else {
 								foreach ($curators as $entry) {
@@ -119,10 +119,10 @@ $logo = ""; //$info["curator_logo"];
 
 									<div class='grid-7' style='max-height: 150px;' id='location-info-images'>
 										<div class='grid-item'>
-											<a href='#' onclick='show_curator_id_modal(\"$id_front\",\"front\")'>View Front</a>
+											<a href='#' onclick='show_curator_id_modal(\"$id_front\",\"front\")' data-bs-toggle='modal' data-bs-target='#id-modal'>View Front</a>
 										</div>
 										<div class='grid-item'>
-											<a href='#' onclick='show_curator_id_modal(\"$id_back\",\"back\")'>View Back</a>
+											<a href='#' onclick='show_curator_id_modal(\"$id_back\",\"back\")' data-bs-toggle='modal' data-bs-target='#id-modal'>View Back</a>
 										</div>
 
 									</div>
@@ -173,17 +173,18 @@ $logo = ""; //$info["curator_logo"];
 
 	<!-- ============================== -->
 	<!-- main-wrapper [end] -->
-	<div id="curator_id_modal" class="modal">
+	<div class="modal fade" id="id-modal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content p-5">
 
-		<!-- The Close Button -->
-		<span class="modal_close" onclick="close_curator_id_modal()">&times;</span>
+				<!-- Modal Content (The Image) -->
+				<img class="modal-image" id="curator_id_img">
 
-		<!-- Modal Content (The Image) -->
-		<img class="modal-content" id="curator_id_img" style="height:85%; object-fit:contain">
-
-		<!-- Modal Caption (Image Text) -->
-		<div id="caption"></div>
+				<!-- Modal Caption (Image Text) -->
+				<div id="caption"></div>
+			</div>
 		</div>
+	</div>
 	<!-- main-wrapper [end] -->
 	<!-- ============================== -->
 

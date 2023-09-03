@@ -8,11 +8,6 @@ if (!is_session_logged_in()) {
     die();
 }
 
-// $info = get_user_by_id(get_session_user_id());
-$curator_id = get_session_account_id();
-$user_name ="" ;//$info["user_name"];
-$curator_name = "admin";//$info["curator_name"];
-$logo = "";//$info["curator_logo"];
 
 
 
@@ -33,6 +28,7 @@ $logo = "";//$info["curator_logo"];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- easygo css -->
     <link rel="stylesheet" href="../assets/css/general.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
@@ -41,12 +37,11 @@ $logo = "";//$info["curator_logo"];
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
 
-            <?php require_once(__DIR__."/../components/admin_header.php"); ?>
-            <?php require_once(__DIR__."/../components/admin_navbar_mobile.php"); ?>
+        <?php require_once(__DIR__ . "/../components/admin_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-        <?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
+            <?php require_once(__DIR__ . "/../components/admin_navbar_desktop.php"); ?>
 
 
             <div class="main-content px-3">
@@ -54,7 +49,7 @@ $logo = "";//$info["curator_logo"];
                     <div class="border-1 border-bottom py-3">
                         <div>
                             <h5 class="title">Curators</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Trips</a> > Bookings</small>
+                            <small class="easygo-fs-5 text-gray-1"><a href="#">Admin</a> > Curator accounts</small>
                         </div>
                         <p class="mt-4 mb-0">This table shows information about curator accounts.</p>
                     </div>
@@ -68,7 +63,7 @@ $logo = "";//$info["curator_logo"];
                         </div>
                     </div>
                     <div class="trip-listing">
-                        <div class="easygo-list-3 list-striped" style="min-width: 992px;">
+                        <div class="easygo-list-3 list-striped accordion" style="min-width: 992px;">
                             <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
@@ -78,86 +73,92 @@ $logo = "";//$info["curator_logo"];
                                 <div class="inner-item">Country</div>
                                 <div class="inner-item">Number of tours</div>
                                 <div class="inner-item">Number of bookings</div>
-                                <div class="inner-item">Revenue from curator</div>
-                                <div class="inner-item">Number of admins</div>
                                 <div class="inner-item">Actions</div>
                             </div>
 
                             <?php
 
-                                $curators = get_curators();
+                            $curators = get_curators();
 
-                                if (!$curators){
-                                    echo "<div class='list-item'>
+                            if (!$curators) {
+                                echo "<div class='list-item'>
+                                            <div class='item-bullet-container'>
+                                                <div class='item-bullet'></div>
+                                            </div>
+                                            <div class='inner-item'>
+                                                There are no curator accounts.
+                                            </div>
+                                        </div>";
+                            } else {
+                                foreach ($curators as $entry) {
+                                    $revenue = $entry["revenue"] ?? 0;
+                                    $num_bookings = $entry["num_bookings"] ?? 0;
+                                    $curator_name = $entry["curator_name"];
+                                    $num_admins = $entry["num_admins"];
+                                    $country = $entry["country"];
+                                    $curator_id = $entry["curator_id"];
+                                    $num_tours = $entry["num_tours"] ?? 0;
+                                    $currency = "GHS";
+                                    $verified = $entry["is_verified"];
+                                    $c_id = $entry["curator_id"];
+
+                                    echo "
+                                <div class=' accordion-item'>
+                                    <div class='list-item'>
                                         <div class='item-bullet-container'>
-                                            <div class='item-bullet'></div>
+                                            <div class='item-bullet'></div> <!-- Verification ID -->
                                         </div>
-                                        <div class='inner-item'>There are no bookings for any of your trips yet. </div>
-                                    </div>";
-                                }else {
-                                    foreach ($curators as $entry) {
-                                        $revenue = $entry["revenue"];
-                                        $num_bookings = $entry["num_bookings"];
-                                        $curator_name = $entry["curator_name"];
-                                        $num_admins = $entry["num_admins"];
-                                        $country = $entry["country"];
-                                        $curator_id = $entry["curator_id"];
-                                        $num_tours = $entry["num_tours"];
-                                        $verified = $entry["is_verified"];
-
-                                        echo "
-                                <div class='list-item'>
-                                    <div class='item-bullet-container'>
-                                        <div class='item-bullet'></div>
-                                    </div>
-                                    <div class='inner-item'>logo</div>
-                                    <div class='inner-item'>
-                                        <div class='col'>
-                                            <div>
-                                                $curator_name
-                                            </div>
-                                            <div>
-                                                $curator_id
-                                            </div>
+                                        <div class='inner-item'>logo</div>
+                                        <div class='inner-item'>
+                                            $curator_name
+                                        </div>
+                                        <div class='inner-item text-capitalize'>$country</div>
+                                        <div class='inner-item '>$num_tours</div>
+                                        <div class='inner-item '>$num_bookings</div>
+                                        <div class='inner-item'>
+                                            <a href='#' data-bs-toggle='collapse' data-bs-target='#curator_info_$c_id'>Expand</a>
                                         </div>
                                     </div>
-                                    <div class='inner-item '>$country</div>
-                                    <div class='inner-item '>$num_tours</div>
-                                    <div class='inner-item '>$num_bookings</div>
-                                    <div class='inner-item'>$revenue</div>
-                                    <div class='inner-item'>$num_admins</div>
-                                    <div class='inner-item'>Actions</div>
+                                    <div class='accordion-collapse collapse show' id='curator_info_$c_id'>
+                                        <div class='accordion-body row'>
+                                            <div class='col-6'>
+                                                <div>Curator ID: $c_id</div>
+                                                <div>Revenue: $currency $revenue</div>
+                                            </div>
+                                            <div class='col-6'>
+                                                <div>
+                                                    <a href='#' class='easygo-fs-5 easygo-fw-2' data-bs-toggle='modal' data-bs-target='#invite-collaborator-modal' onclick='set_curator_invite_id(\"$c_id\")'>Invite collaborator</a>
+                                                </div>
+                                                <div><a href='group_tours.php?curator_id=$c_id' class='easygo-fs-5 easygo-fw-2'>View Listings</a></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class='list-item'>
+                                                <div class='inner-item'>email@user.com</div>
+                                                <div class='inner-item'>Person name</div>
+                                                <div class='inner-item'>Last Login: DD/ MMM /YYYY</div>
+                                                <div class='inner-item'><a href='#'>Suspend</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                     ";
-                                    }
                                 }
+                            }
                             ?>
 
 
+
+
                         </div>
-                    </div>
-                    <div class="pagination-section my-5">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="easygo-fs-5 h-100 d-flex align-items-center">Showing 1 - 20 of 100 trips</div>
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <nav aria-label="Page navigation m-auto">
-                                        <ul class="pagination gap-2">
-                                            <li class="page-item"><a class="page-link rounded" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link rounded" href="#">Next</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </section>
             </div>
+
+
+            <!-- Invite_collaborator_modal modal [end] -->
+            <!-- ============================== -->
         </main>
         <!-- dashboard-content [end] -->
         <!-- ============================== -->
@@ -172,9 +173,56 @@ $logo = "";//$info["curator_logo"];
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/admin/curators.js"></script>
+
+            <!-- ============================== -->
+            <!-- Curator invite modal [start] -->
+            <div class="modal fade" id="invite-collaborator-modal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content p-5">
+                        <div class="col">
+                            <div>
+                                <div style='overflow-x: auto;'>
+                                </div>
+                                <h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
+                                <small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
+                                <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+                                <form onsubmit='invite_collaborator(this)'>
+                                <input type="hidden" name="curator_id" id="invite_modal_curator_id">
+                                    <div class="col-lg-7 d-flex flex-column gap-4">
+                                        <div class="form-input-field">
+                                            <div class="text-gray-1 easygo-fs-4">Collaborator Email</div>
+                                            <input type="email" name="email" placeholder="example@easygo.com">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-7 d-flex flex-column gap-4">
+                                        <div class="form-input-field">
+                                            <div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
+
+                                            <select name="collaborator_role">
+                                                <option value="admin">Admin</option>
+                                                <option value="edit">Edit</option>
+                                                <option value="view">View</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                        <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Invite_collaborator_modal modal [end] -->
+                <!-- ============================== -->
+            </div>
 </body>
 
 </html>

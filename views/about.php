@@ -36,8 +36,7 @@
                             <div class="col-lg-6">
                                 <p class="easygo-fs-1 text-orange">About Us</p>
                                 <h1 class="easygo-h3 easygo-fw-1 text-blue">
-                                    Trips And Tours Are An
-                                    Expression Of Identity.
+                                    Tours Are An Expression Of Identity.
                                 </h1>
                                 <p>
                                     At easyGo we believe that each tour is a way for you to express your identity. Our tours go beyond visiting new places; they create lasting memories. Tours are tailor-made by curators to offer you great satisfaction as you engage with local communities through traditional meals, art and culture. With their in-dept knowledge on various destinations, including popular tourist attractions, cultural sites, and outdoor activities, curators on easyGo highlight the unique cultural and historical experiences.
@@ -125,7 +124,9 @@
                     <div class="d-flex gap-4" style="overflow-x: auto;">
                         <div>
                             <div class="easygo-card-1">
-                                <div class="img-holder"></div>
+                                <div class="img-holder">
+                                    <img src="../assets/images/site_images/venture-incubator.jpg" alt="" srcset="">
+                                </div>
                                 <div class="card-content">
                                     <small class="text-gray-1">Ashesi Entrepreneurship Center</small>
                                     <h5 class="text-capitalize easygo-fw-1">
@@ -137,22 +138,26 @@
                         </div>
                         <div>
                             <div class="easygo-card-1">
-                                <div class="img-holder"></div>
+                                <div class="img-holder">
+                                    <img src="../assets/images/site_images/career-fair-award.jpg" class="about-img">
+                                </div>
                                 <div class="card-content">
                                     <small class="text-gray-1">
-                                        Ashesi University</small>
-                                    <h5 class="text-capitalize easygo-fw-1">Community entrepreneurship
-                                        program
+                                        Ashesi Entrepreneurship Center</small>
+                                    <h5 class="text-capitalize easygo-fw-1">
+                                        Career Fair Recognition
                                     </h5>
-                                    <p>We have received funding and mentorship from Ashesi University's Community Entrepreneurship Program in May of 2022</p>
+                                    <p>We received recognition during Ashesi University's 2023 career fair as second runner-up for the Most Enterprising Business Pitch competition</p>
                                 </div>
                             </div>
                         </div>
                         <div>
                             <div class="easygo-card-1">
-                                <div class="img-holder"></div>
+                                <div class="img-holder">
+                                    <img src="../assets/images/site_images/d-lab-expo.jpg" alt="" class="about-img">
+                                </div>
                                 <div class="card-content">
-                                    <small class="text-gray-1">Aseshi Design Lab</small>
+                                    <small class="text-gray-1">Ashesi Design Lab</small>
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Ashesi Dlab: Expo
                                     </h5>

@@ -17,6 +17,11 @@
 		return $admin->get_bookings();
 	}
 
+	function get_campaigns($curator_id = null){
+		$admin = new admin();
+		return $admin->get_campaigns($curator_id);
+	}
+
 	function get_user_accounts(){
 		$admin = new admin();
 		return $admin->get_user_accounts();

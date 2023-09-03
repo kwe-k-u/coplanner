@@ -1,8 +1,8 @@
 <?php
 $id = get_session_user_id();
 
-$info = get_collaborator_info($id);
-$curator_id = get_session_account_id();
+// $info = get_collaborator_info($id);
+// $curator_id = get_session_account_id();
 
 $name = "admin";//$info["user_name"];
 $company = "easyGo Tour Ltd";//$info["curator_name"];
@@ -20,8 +20,6 @@ $company = "easyGo Tour Ltd";//$info["curator_name"];
 		</form>
 		<div class="balance d-flex flex-column justify-content-center">
 
-			<?php echo "<h4 class='m-0 easygo-fs-3 easygo-fw-1'>GHC 0.0</h4>"; ?>
-			<small class="easygo-fs-5 text-orange">Withdrawable balance</small>
 		</div>
 		<div class="user-menu d-flex gap-1">
 			<div class="user-icon">
@@ -30,8 +28,8 @@ $company = "easyGo Tour Ltd";//$info["curator_name"];
 			<div class="d-flex flex-column justify-content-center">
 				<?php
 				echo "
-                        <h5 class='easygo-fs-3'>$company</h5>
-                        <h6 class='text-orange easygo-fs-5'>$name</h6>
+                        <h5 class='easygo-fs-3'>company</h5>
+                        <h6 class='text-orange easygo-fs-5'>name</h6>
 						";
 
 				?>

@@ -18,6 +18,23 @@
 			return $this->db_fetch_all();
 		}
 
+
+		function get_campaigns($curator_id){
+			$sql = "SELECT * FROM campaigns";
+
+			if ($curator_id){
+				$sql .= " WHERE curator_id = ?";
+			}
+			$this->prepare($sql);
+
+			if($curator_id){
+				$this->bind($curator_id);
+			}
+
+			return $this->db_fetch_all();
+
+		}
+
 		function get_campaign_image($campaign_id){
 			$sql = "SELECT * FROM
 			media as m join campaign_media as cm
