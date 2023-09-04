@@ -1,11 +1,8 @@
 <?php
 $id = get_session_user_id();
+$name = get_user_accounts($id)[0]["user_name"];
+$role = $_SESSION["user_role"];
 
-// $info = get_collaborator_info($id);
-// $curator_id = get_session_account_id();
-
-$name = "admin";//$info["user_name"];
-$company = "easyGo Tour Ltd";//$info["curator_name"];
 ?>
 <header class="dashboard-header d-none d-lg-flex">
 	<div class="dashlogo logo logo-medium">
@@ -28,8 +25,8 @@ $company = "easyGo Tour Ltd";//$info["curator_name"];
 			<div class="d-flex flex-column justify-content-center">
 				<?php
 				echo "
-                        <h5 class='easygo-fs-3'>company</h5>
-                        <h6 class='text-orange easygo-fs-5'>name</h6>
+                        <h5 class='easygo-fs-3'>$name</h5>
+                        <h6 class='text-orange easygo-fs-5 text-capitalize'>$role</h6>
 						";
 
 				?>

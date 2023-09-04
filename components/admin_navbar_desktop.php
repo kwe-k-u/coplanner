@@ -8,9 +8,8 @@
 			<div class="slide-down-menu">
 				<a data-target="trips-submenu-sb" class="slide-down-btn" id="nav_trips" href="#"><img src="../assets/images//svgs/trips.svg" id="d" alt="dashboard image"> Trips <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
 				<ul id="trips-submenu-sb" class="sub-menu slide-down-sub-menu">
-					<li><a href="group_tours.php" id="nav_sub_groups">Group Trips</a></li>
-					<li><a href="private_tours.php" id="nav_sub_private">Private Trips</a></li>
-					<!-- <li><a href="all_tours.php">Trips</a></li> -->
+					<li><a href="group_tours.php" id="nav_sub_groups">Group Tours</a></li>
+					<li><a href="private_tours.php" id="nav_sub_private">Private Tours</a></li>
 				</ul>
 			</div>
 		</li>
@@ -42,9 +41,15 @@
 			<div class="slide-down-menu">
 				<a data-target="settings-submenu-sb" class="slide-down-btn" id="nav_account" href="#"><i class="fa-solid fa-gear"></i> Settings <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
 				<ul id="settings-submenu-sb" class="sub-menu slide-down-sub-menu">
-					<li><a href="curator_id_verification.php" id="nav_settings_curator_id">Curator ID approvals</a></li>
-					<li><a href="curator_verification.php" id="nav_settings_verification">Verification Requests</a></li>
-					<li><a href="users.php" id="nav_settings_media">Media management</a></li>
+					<li>
+						<a href="curator_id_verification.php" id="nav_settings_curator_id">Curator ID approvals</a>
+					</li>
+					<li>
+						<a href="curator_verification.php" id="nav_settings_verification">Verification Requests</a>
+					</li>
+					<li>
+						<a href="users.php" id="nav_settings_media">Media management</a>
+					</li>
 				</ul>
 			</div>
 		</li>

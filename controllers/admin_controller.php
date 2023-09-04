@@ -22,9 +22,9 @@
 		return $admin->get_campaigns($curator_id);
 	}
 
-	function get_user_accounts(){
+	function get_user_accounts($user_id = null){
 		$admin = new admin();
-		return $admin->get_user_accounts();
+		return $admin->get_user_accounts($user_id);
 	}
 
 	function get_curators(){
@@ -63,6 +63,7 @@
 		return array("new_verification" => $new_status,"destination_id"=>$id);
 	}
 
+	//TODO::
 	function update_destination_info(){}
 
 	function add_destination($id,$name,$desc,$loc,$country, $phone,$contact,$cord){

@@ -20,11 +20,17 @@
 
 
 		function get_campaigns($curator_id){
-			$sql = "SELECT * FROM campaigns";
+			$sql = "SELECT * FROM campaigns as c
+			left join campaign_tours as ct on c.campaign_id = ct.campaign_id
+			left join campaign_media as cm on cm.campaign_id = c.campaign_id
+			left join media as m on m.media_id = cm.media_id
+			";
 
 			if ($curator_id){
-				$sql .= " WHERE curator_id = ?";
+				$sql .= " WHERE c.curator_id = ? ";
 			}
+			$sql .=" GROUP BY c.campaign_id";
+
 			$this->prepare($sql);
 
 			if($curator_id){
@@ -59,14 +65,23 @@
 		}
 
 
-		function get_user_accounts(){
+		function get_user_accounts($user_id){
 			$sql = "SELECT *,
 			(select login_date from login_log where user_id = users.user_id   ORDER BY `login_date` DESC limit 1  )as last_login,
 			(select count(booking_id) from bookings where bookings.user_id = users.user_id) as booking_count
-			FROM users ORDER BY date_created DESC
+			FROM users ";
 
-			";
+			if($user_id){
+				$sql .= " where users.user_id = ?";
+			}
+
+			$sql .=" ORDER BY date_created DESC";
 			$this->prepare($sql);
+
+			if($user_id){
+				$this->bind($user_id);
+			}
+			
 			return $this->db_fetch_all();
 		}
 

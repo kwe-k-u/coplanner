@@ -380,7 +380,7 @@ function create_site(form){
 		"processors/admin_processor.php/" +(form.loc_id.value == "" ? "insert_destination" : "edit_destination"),
 		payload,
 		(response) => {
-			alert(response['msg']);
+			alert(response['data']['msg']);
 
 		},
 		form.images.files

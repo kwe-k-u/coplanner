@@ -850,9 +850,6 @@ input:disabled {
   border-color: white !important;
   background-color: var(--easygo-orange) !important;
 }
-/* .modal-backdrop {
-  display: none;
-} */
 /** rating bars **/
 .l5-rating-bar {
   display: flex;
