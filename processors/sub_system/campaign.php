@@ -142,7 +142,10 @@
 					$seats = intval($_POST["adult_seats"])+intval($_POST["kid_seats"]);
 					$tour = get_campaign_trip_by_id($tour_id);
 					$currency = $tour["currency"];
-					$amount = doubleval($tour["fee"]) * $seats;
+					$amount = (doubleval($tour["fee"]) * $seats);
+					$vat = $amount * VAT_RATE;
+					$tourism = $amount * TOURISM_LEVY;
+					$amount = $vat + $tourism + $amount;
 					send_json(array(
 						"tour_id"=> $tour_id,
 						"amount" => $amount,

@@ -941,7 +941,7 @@
                         </div>";
                             }
                         }
-                        if($start > date("Y-m-d")){
+                        if($start < date("Y-m-d")){
                             echo "<h4>You can't join this tour but you can request it as a private tour <a href='dashboard/private_tour.php'>here</a></h4>";
                         }else {
 
