@@ -172,7 +172,7 @@ $logo = ""; //$info["curator_logo"];
 
 
 	<!-- ============================== -->
-	<!-- main-wrapper [end] -->
+	<!-- ID modal [start] -->
 	<div class="modal fade" id="id-modal">
 		<div class="modal-dialog modal-xl">
 			<div class="modal-content p-5">
@@ -185,7 +185,7 @@ $logo = ""; //$info["curator_logo"];
 			</div>
 		</div>
 	</div>
-	<!-- main-wrapper [end] -->
+	<!-- ID modal [end] -->
 	<!-- ============================== -->
 
 	<!-- ============================== -->

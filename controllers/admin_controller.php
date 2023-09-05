@@ -17,6 +17,11 @@
 		return $admin->get_bookings();
 	}
 
+	function get_transactions($transaction_id = null){
+		$admin = new admin();
+		return $admin->get_transactions($transaction_id);
+	}
+
 	function get_campaigns($curator_id = null){
 		$admin = new admin();
 		return $admin->get_campaigns($curator_id);
@@ -29,7 +34,13 @@
 
 	function get_curators(){
 		$admin = new admin();
-		return $admin->get_curators();
+		$data = $admin->get_curators();
+		for ($i = 0; $i < sizeof($data); $i++) {
+			$entry = $data[$i];
+			$id = $entry["curator_id"];
+			$data[$i]["collaborators"] = $admin->get_curator_managers($id);
+		}
+		return $data;
 	}
 
 	function get_curator_by_id($id){
@@ -123,6 +134,18 @@
 		$admin = new admin();
 		return $admin->verify_curator_account($curator_id,$action ? "1" : "0");
 	}
+
+
+	function get_media($media_id = null){
+		$admin = new admin();
+		return $admin->get_media($media_id);
+	}
+
+	function update_media_location($id,$location){
+		$admin = new admin();
+		return $admin->update_media_location($id,$location);
+	}
+
 
 
 ?>

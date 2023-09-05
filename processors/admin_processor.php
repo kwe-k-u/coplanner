@@ -172,6 +172,28 @@
 				send_json(array("msg"=> "Something went wrong please try again"));
 			}
 			die();
+
+		case "/change_media":
+			$media_id = $_POST["media_id"];
+			$media = get_media($media_id);
+			if(sizeof($_FILES) == 0){
+				$location = $_POST["media"];
+				$is_foreign = true;
+			}else {
+				$is_foreign = false;
+				$file = $_FILES["media"];
+				$image = $file["name"];
+				$tmp = $file["tmp_name"];
+				$location = upload_file("uploads",$media["media_type"],$tmp,$image);
+
+			}
+			$success = update_media_location($media_id,$location);
+			if($success){
+				send_json(array("msg" => "Media update successful"));
+			}else {
+				send_json(array("msg" => "something went wrong"),201);
+			}
+			die();
 		default:
 			echo "No action";
 	}

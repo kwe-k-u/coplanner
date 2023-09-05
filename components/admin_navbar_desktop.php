@@ -30,10 +30,17 @@
 			</a>
 		</li>
 		<li>
-			<a href="transactions.php" id="nav_finance">
-				<img src="../assets/images/svgs/finance.svg" alt="finance icon">
-				 Finance
-			</a>
+			<div class="slide-down-menu">
+				<a data-target="finance-submenu-sb" class="slide-down-btn" id="nav_finance" href="#">
+					<img src="../assets/images//svgs/finance.svg" alt="dashboard image">
+					Finance
+					<span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
+				</a>
+				<ul id="finance-submenu-sb" class="sub-menu slide-down-sub-menu">
+					<li><a href="transactions.php" id="nav_sub_transactions">Transactions</a></li>
+					<li><a href="bookings.php" id="nav_sub_bookings">Bookings</a></li>
+				</ul>
+			</div>
 		</li>
 		<!-- <li><a href="notifications.php"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li> -->
 
@@ -48,7 +55,7 @@
 						<a href="curator_verification.php" id="nav_settings_verification">Verification Requests</a>
 					</li>
 					<li>
-						<a href="users.php" id="nav_settings_media">Media management</a>
+						<a href="media.php" id="nav_settings_media">Media management</a>
 					</li>
 				</ul>
 			</div>

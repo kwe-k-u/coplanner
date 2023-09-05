@@ -804,6 +804,12 @@ input:disabled {
   border-color: var(--easygo-blue);
 }
 
+.no-list-border .list-item{
+  border-color: transparent!important;
+  background-color: transparent!important;
+  margin: 0px!important;
+}
+
 .easygo-list-3 .list-item {
   margin: 1rem 0rem;
   padding: 1.25rem 0.75rem;

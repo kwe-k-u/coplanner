@@ -81,7 +81,7 @@
 			if($user_id){
 				$this->bind($user_id);
 			}
-			
+
 			return $this->db_fetch_all();
 		}
 
@@ -93,6 +93,67 @@
 			(select sum(amount) from transactions inner join bookings on bookings.transaction_id = transactions.transaction_id where bookings.transaction_id = transactions.transaction_id) as revenue
 			 FROM curators as c";
 			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_curator_managers($curator_id){
+			$sql = "SELECT * FROM curator_manager as cm
+			inner join users on users.user_id = cm.user_id
+			where cm.curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+
+		function get_transactions($transaction_id){
+			$sql = "SELECT *,
+			CASE
+				WHEN b.transaction_id is not null then 'booking'
+				else 'other'
+			END AS transaction_type
+			 FROM transactions as t
+			left join bookings as b on b.transaction_id = t.transaction_id";
+			if($transaction_id){
+				$sql .=" WHERE t.transaction_id = ? ";
+			}
+			$sql .=" ORDER BY t.transaction_date DESC";
+			$this->prepare($sql);
+
+			if ($transaction_id){
+				$this->bind($transaction_id);
+				$this->db_fetch_one();
+			}
+
+			return $this->db_fetch_all();
+		}
+
+
+		function get_media($media_id){
+			$sql = "SELECT *,
+			case
+				WHEN dm.media_id is not null then 'destination'
+				when cm.media_id is not null then 'curator'
+				when uu.media_id is not null then 'user upload'
+				else 'unlinked'
+			end as category
+			FROM media as m
+			left join destination_media as dm on dm.media_id = m.media_id
+			left join campaign_media as cm on cm.media_id = m.media_id
+			left join user_uploads as uu on uu.media_id = m.media_id
+			";
+			if($media_id){
+				$sql .= " where m.media_id = ? ";
+			}
+
+			$sql .=" ORDER BY m.upload_date DESC";
+			// print($sql);
+			$this->prepare($sql);
+			if ($media_id){
+				$this->bind($media_id);
+				return $this->db_fetch_one();
+			}
+
 			return $this->db_fetch_all();
 		}
 
@@ -230,5 +291,13 @@
 			$this->bind($action,$curator_id);
 			return $this->db_query();
 		}
+
+		function update_media_location($id,$location){
+			$sql = "UPDATE media set `media_location` = ?, `upload_date` = CURRENT_TIMESTAMP where `media_id` = ?";
+			$this->prepare($sql);
+			$this->bind($location,$id);
+			return $this->db_query();
+		}
 	}
+
 ?>

@@ -63,7 +63,7 @@ if (!is_session_logged_in()) {
                         </div>
                     </div>
                     <div class="trip-listing">
-                        <div class="easygo-list-3 list-striped accordion" style="min-width: 992px;">
+                        <div class="easygo-list-3 left-bordered-items accordion" style="min-width: 992px;">
                             <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
@@ -102,6 +102,21 @@ if (!is_session_logged_in()) {
                                     $verified = $entry["is_verified"];
                                     $c_id = $entry["curator_id"];
 
+                                    $managers_section = "";
+                                    foreach ($entry["collaborators"] as $manager) {
+                                        $m_email = $manager["email"];
+                                        $m_id = $manager["user_id"];
+                                        $m_name = $manager["user_name"];
+                                        $m_role = $manager["role"];
+                                        $managers_section .="
+                                        <div class='list-item'>
+                                            <div class='inner-item'>$m_name</div>
+                                            <div class='inner-item'>$m_email</div>
+                                            <div class='inner-item'>Role: $m_role</div>
+                                            <div class='inner-item'><a href='#$m_id'>Suspend</a></div>
+                                        </div>";
+                                    }
+
                                     echo "
                                 <div class=' accordion-item'>
                                     <div class='list-item'>
@@ -119,7 +134,7 @@ if (!is_session_logged_in()) {
                                             <a href='#' data-bs-toggle='collapse' data-bs-target='#curator_info_$c_id'>Expand</a>
                                         </div>
                                     </div>
-                                    <div class='accordion-collapse collapse show' id='curator_info_$c_id'>
+                                    <div class='accordion-collapse collapse' id='curator_info_$c_id'>
                                         <div class='accordion-body row'>
                                             <div class='col-6'>
                                                 <div>Curator ID: $c_id</div>
@@ -132,17 +147,13 @@ if (!is_session_logged_in()) {
                                                 <div><a href='group_tours.php?curator_id=$c_id' class='easygo-fs-5 easygo-fw-2'>View Listings</a></div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class='list-item'>
-                                                <div class='inner-item'>email@user.com</div>
-                                                <div class='inner-item'>Person name</div>
-                                                <div class='inner-item'>Last Login: DD/ MMM /YYYY</div>
-                                                <div class='inner-item'><a href='#'>Suspend</a></div>
-                                            </div>
+                                        <div class='easygo-list-3 no-list-border list-striped'>
+                                            $managers_section
                                         </div>
                                     </div>
                                 </div>
                                     ";
+
                                 }
                             }
                             ?>

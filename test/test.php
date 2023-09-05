@@ -1,7 +1,8 @@
 <?php
 
-
-
+var_dump($_REQUEST);
+var_dump($_FILES);
+die();
 require_once(__DIR__."/../utils/core.php");
 require_once(__DIR__."/../utils/paystack.php");
 require_once(__DIR__."/../controllers/auth_controller.php");
