@@ -1,0 +1,34 @@
+RewriteEngine On
+ServerSignature Off
+
+#set base directory
+RewriteBase /easygo_v2/
+
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh|config|bak|json|bak|sql|tpl|dist|env)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Block access to confidential directory
+RewriteRule .*confidential.* - [F]
+
+
+# Protect against SQL injection and other attacks (uncomment if using)
+# <IfModule mod_security.c>
+#   SecFilterEngine Off
+#   SecFilterScanPOST Off
+# </IfModule>
+
+# Default error page
+ErrorDocument 404 /easygo_v2/views/home.php
+
+
+# Block access to hidden files and directories
+RewriteRule "(^|/)\." - [F]
+
+
