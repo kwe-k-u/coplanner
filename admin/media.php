@@ -7,8 +7,7 @@
 		die();
 	}
 
-	$selected_curator = isset($_GET["curator_id"]) ? $_GET["curator_id"] : null;
-
+	$category = isset($_GET["category"]) ? $_GET["category"]: "all";
 
 
 
@@ -49,17 +48,17 @@
 					<div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
 						<div>
 							<h5 class="title easygo-fs-3 easygo-fw-1 m-0">All Media</h5>
-							<small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Admin</a> <i class="fa-solid fa-chevron-right"></i> Meida management</small>
+							<small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Admin</a> <i class="fa-solid fa-chevron-right"></i> media management</small>
 						</div>
 
 						<div class="form-input-field">
 							<div class="text-gray-1 easygo-fs-4">Categories</div>
 
-							<select name="collaborator_role" onchange="return select_curator()">
-								<option value="">All</option>
-								<option value="">Curator uploads</option>
-								<option value="">Campaign media</option>
-								<option value="">Destination media</option>
+							<select name="collaborator_role" onchange="return select_media_category(this)">
+								<option value="all" <?php  echo ($category == "all") ? "selected": "" ?>>All</option>
+								<option value="curator" <?php  echo ($category == "curator") ? "selected": "" ?>>Curator uploads</option>
+								<option value="campaign" <?php  echo ($category == "campaign") ? "selected": "" ?>>Campaign media</option>
+								<option value="destination" <?php  echo ($category == "destination") ? "selected": "" ?>>Destination media</option>
 							</select>
 						</div>
 						<!-- <a href="create_a_tour.php" class="easygo-btn-1">Create a Trip</a> -->
@@ -72,7 +71,12 @@
 							<!-- ============================== -->
 							<!-- tirp card [start] -->
 							<?php
-							$media = get_media();
+							if($category == "all"){
+
+								$media = get_media();
+							}else{
+								$media = get_media_by_category($category);
+							}
 							// $trips = null;
 							// var_dump($trips);
 
@@ -83,8 +87,8 @@
 									$id = $entry["media_id"];
 									$type = $entry["media_type"];
 									$location = $type == "confidential" ? "" : $entry["media_location"];
-									$is_foreign = $entry["is_foreign"];
-									$category = $entry["category"];
+									$is_foreign =  isset($entry["is_foreign"]) ? $entry["is_foreign"] : null;
+									$category = $category == "all" ? $entry["category"] : $category;
 									$date = format_string_as_date_fn($entry["upload_date"]);
 
 									echo "

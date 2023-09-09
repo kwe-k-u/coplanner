@@ -1,7 +1,9 @@
 <?php
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__. "/../../controllers/campaign_controller.php");
+	require_once(__DIR__. "/../../controllers/interaction_controller.php");
 	require_once(__DIR__. "/../../controllers/finance_controller.php");
+	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__. "/../../utils/core.php");
 	require_once(__DIR__."/../../utils/paybox.php");
 	require_once(__DIR__."/../../utils/paystack.php");
@@ -17,29 +19,29 @@
 			}
 
 			switch($_POST["action"]){
-				case "book_trip":
-					$paybox = new paybox_custom();
-					$mode = $_POST["payment_method"];
-					$tour_id = $_POST["tour_id"];
-					$trip = get_campaign_trip_by_id($tour_id);
-					$user_id = $_POST["user_id"];
-					$user = get_user_by_id($user_id);
-					$kids = $_POST["num_kids"];
-					$adults = $_POST["num_adults"];
-					$amount = floatval($trip["fee"]) * (intval($adults)+intval($kids));
+				// case "book_trip":
+				// 	$paybox = new paybox_custom();
+				// 	$mode = $_POST["payment_method"];
+				// 	$tour_id = $_POST["tour_id"];
+				// 	$trip = get_campaign_trip_by_id($tour_id);
+				// 	$user_id = $_POST["user_id"];
+				// 	$user = get_user_by_id($user_id);
+				// 	$kids = $_POST["num_kids"];
+				// 	$adults = $_POST["num_adults"];
+				// 	$amount = floatval($trip["fee"]) * (intval($adults)+intval($kids));
 
-					if ($mode == "momo"){
-						$network = $_POST["network"];
-						$number = $_POST["number"];
-						$payload = $_POST;
-						//issue payment
-						$e = $paybox->charge_momo(null,$user["email"],$amount,$network,$number,$payload);
-						echo $e;
+				// 	if ($mode == "momo"){
+				// 		$network = $_POST["network"];
+				// 		$number = $_POST["number"];
+				// 		$payload = $_POST;
+				// 		//issue payment
+				// 		$e = $paybox->charge_momo(null,$user["email"],$amount,$network,$number,$payload);
+				// 		echo $e;
 
-					} else if ($mode == "card"){
+				// 	} else if ($mode == "card"){
 
-					}
-					die();
+				// 	}
+				// 	die();
 				case "book_standard_tour":
 
 					$provider = $_POST["provider"];
@@ -48,6 +50,8 @@
 					$mailer = new mailer();
 
 					if ($provider == "paybox"){
+						send_json(array("msg"=> "Payment through PayBox has been discontinued"),500);
+						die();
 						$token = $_POST["token"];
 						$paybox = new paybox_custom();
 						$transaction = $paybox->get_transaction($token);
@@ -90,8 +94,12 @@
 							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$amount,$trans_fee,$tax);
 							book_standard_trip($booking_id,$user_id,$tour_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
 
-							$email = get_user_by_id($user_id)["email"];
+							$user = get_user_by_id($user_id);
+							$email = $user["email"];
+							$tour_name =get_campaign_by_tour_id($tour_id)["title"];
 							$mailer->booking_confirmation($email);
+							notify_booking($user["user_name"],$email,$tour_name,$booking_id,$adult_seats + $kid_seats);
+
 						}
 
 						send_json(array(

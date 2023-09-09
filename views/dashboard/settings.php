@@ -75,16 +75,13 @@ $email_verified = $user["email_verified"] == 1;
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Tours</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Tour wishlist</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>

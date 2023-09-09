@@ -184,7 +184,7 @@ if (session_status() == PHP_SESSION_NONE){
 	}
 
 	function format_string_as_currency_fn($string){
-		return $string;
+		return number_format((float)$string,2,"."," ");
 	}
 
 	function generate_id(){
@@ -212,6 +212,26 @@ if (session_status() == PHP_SESSION_NONE){
 		}
 		return false;
 
+	}
+
+	function get_file_type($filename){
+		switch(pathinfo($filename,PATHINFO_EXTENSION)){
+			// Images
+			case "jpg":
+			case "jpeg":
+			case "png":
+				$type = "picture";
+				break;
+			// Documents
+			case "doc":
+			case "docx":
+			case "pdf":
+				$type = "doc";
+			// Videos TODO:: add videos
+			default:
+				$type = "";
+		}
+		return $type;
 	}
 
 

@@ -1,6 +1,8 @@
 <?php
 
+	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__. "/../../controllers/interaction_controller.php");
+	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 
 	function interaction(){
@@ -17,7 +19,12 @@
 					if (is_session_logged_in()){
 						$user_id = get_session_user_id();
 						$curator_id = $_POST["curator_id"];
+						$user = get_user_by_id($user_id);
+						$user_name = $user["user_name"];
+						$email = $user["email"];
+						$curatorname = get_curator_name($curator_id);
 						if (is_user_following_curator($user_id,$curator_id)){
+							notify_curator_follow($user_name,$email,$curatorname,"unfollowed");
 							unfollow_curator($user_id,$curator_id);
 							send_json(
 								array(
@@ -26,6 +33,7 @@
 								),
 							);
 						}else{
+							notify_curator_follow($user_name,$email,$curatorname,"followed");
 							follow_curator($user_id,$curator_id);
 							send_json(
 								array(
@@ -52,7 +60,12 @@
 					$user_id = $_POST["user_id"];
 					$campaign_id = $_POST["campaign_id"];
 					$s = add_campaign_wishlist($user_id,$campaign_id);
-					echo $s;
+					$campaign_name = get_campaign_by_id($campaign_id)["title"];
+					$user = get_user_by_id($user_id);
+					$user_name = $user["user_name"];
+					$user_email = $user["email"];
+					notify_campaign_wishlist($user_name,$user_email,$campaign_name);
+					send_json(array("msg"=> "Added $campaign_name to your wishlist"));
 					die();
 				case "remove_campaign_wishlist":
 					$user_id = $_POST["user_id"];

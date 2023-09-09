@@ -1,6 +1,7 @@
 <?php
 
 	require_once(__DIR__. "/../../controllers/contact_controller.php");
+	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 
 	function contact(){
@@ -19,7 +20,8 @@
 					$message = $_POST["message"];
 					$number = $_POST["phone"];
 
-					$success = send_contact_message($email,$name,$message,$number);
+					// $success = send_contact_message($email,$name,$message,$number);
+					$success = notify_contact_message($name,$email,$number,$message);
 
 					send_json(array ("msg" => ($success ? "Success" : "Failed")));
 					die();

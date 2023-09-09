@@ -157,6 +157,37 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_media_by_category($category){
+			$sql = "SELECT * FROM media AS m";
+			switch($category){
+				case "curator":
+					$sql .= " INNER JOIN curator_uploads AS cu on m.media_id = cu.media_id";
+					break;
+					case "destination":
+						$sql .= " INNER JOIN destination_media AS dm on m.media_id = dm.media_id";
+					break;
+				case "campaign":
+					$sql .= " INNER JOIN campaign_media AS cm on cm.media_id = m.media_id";
+					break;
+				default:
+					"";
+
+			}
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+
+		function get_admin_stats(){
+			$sql = "select
+			(select sum(t.amount) from transactions as t inner join bookings as b on b.transaction_id = t.transaction_id) as booking_value,
+			(select count(tour_id) from campaign_tours where start_date > now()) as upcoming_tours,
+			(select count(user_id) from curator_manager as cm where cm.id_verified = 0) as pending_id_approval,
+			(select count(private_tour_id) from private_tour where date_start > now() and accepted_quote = null) as private_tour;";
+			$this->prepare($sql);
+			return $this->db_fetch_one();
+		}
+
 		function get_curator_by_id($id){
 			$sql = "SELECT * FROM curators where curator_id = ?";
 			$this->prepare($sql);

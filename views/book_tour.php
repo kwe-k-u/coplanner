@@ -32,6 +32,9 @@
     $vat = $fee * VAT_RATE;
     $tourism = $fee * TOURISM_LEVY;
     $total = $vat + $tourism + $fee;
+    $total = format_string_as_currency_fn($total);
+
+    $email = get_user_by_id(get_session_user_id())["email"];
 
 
 ?>
@@ -84,12 +87,12 @@
                                     <img class="h-100 w-100" src="../assets/images/others/scenery1.jpg" alt="carousel image">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item ">
                                 <div style="max-height: 400px;">
                                     <img class="h-100 w-100" src="../assets/images/others/tour1.jpg" alt="carousel image">
                                 </div>
                             </div>
-                            <div class="carousel-item active">
+                            <div class="carousel-item ">
                                 <div style="max-height: 400px;">
                                     <img class="h-100 w-100" src="../assets/images/others/tour2.jpg" alt="carousel image">
                                 </div>
@@ -97,11 +100,11 @@
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <!-- <span class="visually-hidden">Previous</span> -->
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <!-- <span class="visually-hidden">Next</span> -->
                         </button>
                     </div>
                 </div>
@@ -169,7 +172,10 @@
                                         <div class="form-input-field py-2">
                                             <div class="text-gray-1 easygo-fs-4">Invoice Email </div>
                                             <div class="easygo-num-input">
-                                                <input type="email" name="invoice_email" id="invoice_email" class="text-center border-blue">
+                                                <?php
+                                                    echo "<input type='email' name='invoice_email' id='invoice_email' class='text-center border-blue' value ='$email'>";
+                                                ?>
+
                                             </div>
                                         </div>
                                     </div>

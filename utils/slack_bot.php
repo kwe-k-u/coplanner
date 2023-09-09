@@ -4,13 +4,16 @@ use GuzzleHttp\Promise\Is;
 
 require_once(__DIR__."/../utils/env_manager.php");
 require_once(__DIR__."/env_manager.php");
+require_once(__DIR__."/logger.php");
 
 /**This class manages the interactions between easyGo events and a notification bot on slack. */
 	class slack_bot_class{
 
 
-		/**Sends message into the `Platform-monitoring` channel on Slack */
+		/**Sends message into the  channel on Slack corresponding to the webhook */
 		function send_update_cls($message, $webhook){
+			$logger = new Logger();
+			$logger->slack_log($message,$webhook);
 
 			/** Don't send notification to slack if function is initated on local host */
 			if (!is_env_remote()){
@@ -41,6 +44,32 @@ require_once(__DIR__."/env_manager.php");
 			return $response;
 		// echo $response;
 
+		}
+
+		function notify_error_log($message){
+			return $this->send_update_cls($message,slack_webhook_error_logs());
+		}
+
+		function notify_curator_log($message){
+			return $this->send_update_cls($message,slack_webhook_curator_logs());
+
+		}
+
+		function notify_private_tour_log($message){
+			return $this->send_update_cls($message,slack_webhook_private_tour_logs());
+
+		}
+
+		function notify_tourist_log($message){
+			return $this->send_update_cls($message,slack_webhook_tourist_logs());
+		}
+
+		function notify_transaction_log($message){
+			return $this->send_update_cls($message,slack_webhook_transactions());
+		}
+
+		function notify_support_log($message){
+			return $this->send_update_cls($message,slack_webhook_support());
 		}
 	}
 ?>

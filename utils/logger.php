@@ -4,9 +4,9 @@
 	class Logger{
 
 		function write_log($file, $entry){
-			if (!is_env_remote()){
-				return "logger disabled for testing profile";
-			}
+			// if (!is_env_remote()){
+			// 	return "logger disabled for testing profile";
+			// }
 			$path = __DIR__."/../logs/".$file;
 			$data = "\n\n\n";
 			// $add timestamp for entry with milliseconds
@@ -30,7 +30,7 @@
 				$data .= $key."<----->".$value."\n";
 			}
 
-			$this->write_log("js_error.log", $data);
+			$this->write_log("js_error".date("Ymd").".log", $data);
 		}
 
 		function general_log($data){
@@ -42,13 +42,32 @@
 			} else if (is_string($data)){
 				$entry = $data;
 			}
-			$this->write_log("general.log", $entry);
+			$this->write_log("general-".date("Ymd").".log", $entry);
 		}
 
 
 		function sql_query_log($query){
 			// convert prepared statement to string
-			$this->write_log(date("Ymd")."sql_queries.log", $query);
+			$this->write_log("sql_queries-".date("Ymd").".log", $query);
+		}
+
+		function email_log($from,$destination, $subject,$message){
+			// Log information of email
+			$string =
+			"From: $from
+			To: $destination
+			Subject: $subject\n
+			Message: $message";
+			$this->write_log("email-".date("Ymd").".log",$string);
+		}
+
+		function slack_log($message,$webhook){
+			$string =
+			"
+			Webhook: $webhook
+			Message: $message
+			";
+			return $this->write_log("slack_logs-".date("Ymd").".log",$string);
 		}
 	}
 ?>

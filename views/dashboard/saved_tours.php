@@ -62,16 +62,13 @@
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Tours</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Tour Wishlist</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
@@ -105,7 +102,7 @@
                 <main class="main-content bg-gray-3">
                     <div class="px-lg-5 px-2">
                         <div class="main-content-header d-flex justify-content-between align-items-center py-4 d-none d-md-flex">
-                            <h3 class="m-0">Saved Trips</h3>
+                            <h3 class="m-0">Saved Tours</h3>
                             <div class="d-flex justify-content-center my-3">
                                 <div class="d-flex gap-2">
                                     <?php
@@ -169,9 +166,6 @@
                                                             <div class='title'>
                                                                 <div class='d-flex justify-content-between align-items-center'>
                                                                     <h5 class='easygo-fw-1'>$title</h5>
-                                                                    <p class='d-lg-none d-block'>
-                                                                        <span class='easygo-fs-2'>$30</span><span class='easygo-fs-5'>/Person</span>
-                                                                    </p>
                                                                 </div>
                                                                 <div class='easygo-fs-4 mb-1'>Curated by easygo events</div>
                                                                 <div class='d-flex justify-content-start align-items-center gap-2'>
@@ -188,11 +182,6 @@
                                                         </div>
                                                         <div class='trip-card-content py-1'>
                                                             $desc
-                                                        </div>
-                                                        <div class='d-flex justify-content-between'>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/calendar_orange.svg' alt='orange calendar'> $start - $end</span>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/moon_orange.svg' alt='orange calendar'> Duration: 6hrs</span>
-                                                            <span class='easygo-fs-5'><img src='../../assets/images/svgs/globe_orange.svg' alt='orange calendar'> Language: English</span>
                                                         </div>
                                                     </div>
                                                     <div class='trip-card-footer px-0 py-3'>

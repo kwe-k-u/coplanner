@@ -20,24 +20,28 @@ class mailer{
 	}
 
 	function send_email($destination, $subject, $message){
-		if (!is_env_remote()){
-			$path = __DIR__."/../../logs/test_email.log";
-			$data = "\n\n\n";
-			// $add timestamp for entry with milliseconds
-			$_name = $this->name;
-			$data = date("Y-m-d H:i:s")."\n============<START>================\n
-From: $_name
-To: $destination
-Subject: $subject\n
-Message: $message
-			";
-			$data .= "\n================<END>=========================\n";
+// 			$path = __DIR__."/../../logs/email_log.log";
+// 			$data = "\n\n\n";
+// 			// $add timestamp for entry with milliseconds
+// 			$_name = $this->name;
+// 			$data = date("Y-m-d H:i:s")."\n============<START>================\n
+// From: $_name
+// To: $destination
+// Subject: $subject\n
+// Message: $message
+// 			";
+// 			$data .= "\n================<END>=========================\n";
 
 
-			$fp = fopen($path, 'a');
-			fwrite($fp, "\n".$data);
-			fclose($fp);
 
+// 			$fp = fopen($path, 'a');
+// 			fwrite($fp, "\n".$data);
+// 			fclose($fp);
+
+			$logger = new Logger();
+			$logger->email_log($this->name,$destination,$subject,$message);
+
+			if (!is_env_remote()){
 			return null;
 		}
 

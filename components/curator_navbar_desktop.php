@@ -6,11 +6,10 @@
 		</li>
 		<li>
 			<div class="slide-down-menu">
-				<a data-target="trips-submenu-sb" class="slide-down-btn" id="nav_trips" href="#"><img src="../assets/images//svgs/trips.svg" id="d" alt="dashboard image"> Trips <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
+				<a data-target="trips-submenu-sb" class="slide-down-btn" id="nav_trips" href="#"><img src="../assets/images//svgs/trips.svg" id="d" alt="dashboard image"> Tours <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
 				<ul id="trips-submenu-sb" class="sub-menu slide-down-sub-menu">
-					<li><a href="group_tours.php" id="nav_sub_groups">Group Trips</a></li>
-					<li><a href="private_tours.php" id="nav_sub_private">Private Trips</a></li>
-					<!-- <li><a href="all_tours.php">Trips</a></li> -->
+					<li><a href="group_tours.php" id="nav_sub_groups">Group Tours</a></li>
+					<li><a href="private_tours.php" id="nav_sub_private">Private Tours</a></li>
 				</ul>
 			</div>
 		</li>

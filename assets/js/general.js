@@ -1,8 +1,6 @@
 //error catcher for all pages
 
 function logError(event){
-	// event.preventDefault();
-	// alert("We have detected that an error has occurred logged it. If the action you took is urgent, kindly send an email to us at main.easygo@gmail.com");
 
 	message = event.message
 	line = event.lineno;
@@ -11,13 +9,6 @@ function logError(event){
 	js_file = event.filename;
 
 	col_num = event.colno;
-
-	// console.log("message", message);
-	// console.log("line", line);
-	// console.log("js_file", js_file);
-	// console.log("error_stack", error_stack);
-	// console.log("page", page);
-	// console.log("col_num", col_num);
 
 	send_request(
 		"POST",
@@ -32,7 +23,6 @@ function logError(event){
 		 "col_num":col_num
 	},
 	(response)=>{
-		console.log(response);
 	});
 }
 

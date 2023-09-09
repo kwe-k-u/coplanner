@@ -19,7 +19,7 @@
 
     <link rel="icon" href="../../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easyGo - Trip History</title>
+    <title>easyGo - Tour History</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -38,7 +38,7 @@
                 <button class="navbar-toggler sidebar-toggler border-0 text-black" type="button" data-target="userdashboard-sidebar">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <h5>Trips</h5>
+                <h5>Tour History</h5>
                 <button class="btn"><i class="fa-solid fa-bell"></i></button>
         </nav>
         <main>
@@ -69,16 +69,13 @@
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./tour_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./tour_history.php"><i class="fa-solid fa-bus"></i> Tours</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Tour wishlist</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
@@ -205,7 +202,8 @@
         </main>
     </div>
     <!-- main content end -->
-
+    <!-- Swiper js -->
+    <script src="../../assets/js/swiper-bundle.min.js"></script>
     <!-- Bootstrap js -->
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->

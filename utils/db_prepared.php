@@ -10,11 +10,13 @@
 		public $db;
 		public $statement;
 		private $string;
+		private $logger;
 
 
 		function __construct(){
 			mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 			$this->db = mysqli_connect(db_server(),db_username(),db_pass(),db_name());
+			$this->logger = new Logger();
 		}
 
 		function __destruct()
@@ -39,8 +41,6 @@
 			// var_dump(...$data);
 			mysqli_stmt_bind_param($this->statement, $types, ...$data);
 			// log query
-			$logger = new Logger();
-			$logger->sql_query_log($this->string);
 		}
 
 		private function get_type($value){
@@ -61,6 +61,7 @@
 
 			/* bind result variables */
 			// mysqli_stmt_bind_result($this->statement, $result);
+			$this->logger->sql_query_log($this->string);
 			return $this->statement->execute();
 
 			// /* fetch value */
@@ -72,6 +73,8 @@
 			$result = array();
 			/* execute query */
 			$this->statement->execute();
+
+			$this->logger->sql_query_log($this->string);
 
 
 			/* bind result variables */
@@ -92,6 +95,7 @@
 		function db_fetch_one(){
 			/* execute query */
 			$this->statement->execute();
+			$this->logger->sql_query_log($this->string);
 
 			/* bind result variables */
 			// mysqli_stmt_bind_result($this->statement, $result);

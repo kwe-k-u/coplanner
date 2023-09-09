@@ -9,10 +9,6 @@ if (!is_session_logged_in()) {
 }
 
 // $info = get_user_by_id(get_session_user_id());
-$curator_id = get_session_account_id();
-$user_name ="" ;//$info["user_name"];
-$curator_name = "admin";//$info["curator_name"];
-$logo = "";//$info["curator_logo"];
 
 
 
@@ -48,20 +44,20 @@ $logo = "";//$info["curator_logo"];
             $greeting = greet();
 
 
-            echo "
-                <div class='dashboard-title easygo-fs-1 '>$greeting, <span class='easygo-fw-1'>$user_name</span></div>
-            <div class='right-sec'>
-                <div class='user-menu d-flex gap-1'>
-                    <div class='user-icon'>
-                        <img src='../assets/images/others/profile.jpeg' alt=''>
-                    </div>
-                    <div class='d-flex flex-column justify-content-center'>
-                        <h5 class='easygo-fs-3'>$curator_name</h5>
-                        <h6 class='text-orange easygo-fs-5'>$user_name</h6>
-                    </div>
-                </div>
-            </div>
-                ";
+            // echo "
+            //     <div class='dashboard-title easygo-fs-1 '>$greeting, <span class='easygo-fw-1'>$user_name</span></div>
+            // <div class='right-sec'>
+            //     <div class='user-menu d-flex gap-1'>
+            //         <div class='user-icon'>
+            //             <img src='../assets/images/others/profile.jpeg' alt=''>
+            //         </div>
+            //         <div class='d-flex flex-column justify-content-center'>
+            //             <h5 class='easygo-fs-3'>$curator_name</h5>
+            //             <h6 class='text-orange easygo-fs-5'>$user_name</h6>
+            //         </div>
+            //     </div>
+            // </div>
+            //     ";
             ?>
 
         </header>
@@ -88,13 +84,12 @@ $logo = "";//$info["curator_logo"];
                 <section class="stat-cards pt-5">
                     <div class="row">
                         <?php
-                        $stats = get_curator_statistics(get_session_account_id());
-                        // var_dump($stats);
-                        // die();
-                        $upcoming = format_string_as_currency_fn($stats["upcoming_trip_count"]);
-                        $total_revenue = format_string_as_currency_fn($stats["total_revenue"]);
-                        $balance = format_string_as_currency_fn($stats["withdrawable_balance"]);
-                        $private_tour = 0; //$stats["private_trips"];
+                        $stats = get_admin_stats();
+
+                        $upcoming = $stats["upcoming_tours"];
+                        $bookings = format_string_as_currency_fn($stats["booking_value"]);
+                        $private_tour = $stats["private_tour"];
+                        $id_approvals = $stats["pending_id_approval"];
 
                         echo "
                         <div class='col-lg-3 col-sm-6 py-3'>
@@ -125,8 +120,8 @@ $logo = "";//$info["curator_logo"];
                                     <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Pending curator approval</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$private_tour</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Pending curator ID approval</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$id_approvals</div>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +132,7 @@ $logo = "";//$info["curator_logo"];
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Total Booking Value</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $total_revenue</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $bookings</div>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +143,7 @@ $logo = "";//$info["curator_logo"];
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Total Commission</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +154,7 @@ $logo = "";//$info["curator_logo"];
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Escrow Amount</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +165,7 @@ $logo = "";//$info["curator_logo"];
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Withdrawable Commission</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
                                 </div>
                             </div>
                         </div>

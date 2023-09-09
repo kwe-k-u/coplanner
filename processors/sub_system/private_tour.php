@@ -1,6 +1,9 @@
 <?php
+	require_once(__DIR__."/../../controllers/auth_controller.php");
 	require_once(__DIR__."/../../controllers/private_tour_controller.php");
 	require_once(__DIR__."/../../controllers/finance_controller.php");
+	require_once(__DIR__."/../../controllers/interaction_controller.php");
+	require_once(__DIR__."/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 	require_once(__DIR__."/../../utils/paystack.php");
 
@@ -32,7 +35,13 @@
 							$currency,$min,$max,$desc,$start,$end,$state,$count);
 					}else {
 
+						//TODO:: create a request for private tour from general tour and email the curator
+
 					}
+					$user = get_user_by_id($user_id);
+					$name = $user["user_name"];
+					$email = $user["email"];
+					notify_private_tour_request($name,$email);
 					//TODO: Email curators on posting of private tour request
 					send_json(array("msg"=>"Uploaded your private trip request. Curators will send quotes soon"));
 					die();
@@ -41,13 +50,16 @@
 					$comment = $_POST["comment"];
 					$fee = $_POST["fee"];
 					$currency = $_POST["currency"];
-					$curator = $_POST["curator_id"];
+					$curator_id = $_POST["curator_id"];
 					$b_id = generate_id();
 
-					$success = place_tour_request_bid($b_id,$curator,$request_id,$comment,$currency,$fee);
-					// echo $success;
-					// die();
+					$success = place_tour_request_bid($b_id,$curator_id,$request_id,$comment,$currency,$fee);
 					if($success){
+						$curator_name = get_curator_name($curator_id);
+
+
+						notify_private_tour_bid($curator_name,$request_id);
+
 						send_json(array("msg"=> 'Bid placed'));
 						//TODO: email user on bid received
 					} else {
@@ -153,6 +165,10 @@
 
 							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$amount,$trans_fee,$tax);
 							invoice_private_tour($transaction_id,$tour_id,$transaction_id,$trans_date);
+							$user = get_user_by_id(get_session_user_id());
+							$name = $user["user_name"];
+							$email = $user["email"];
+							notify_private_tour_accept($name,$email, $quote_id);
 						}
 					}
 

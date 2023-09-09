@@ -30,3 +30,14 @@ function change_media(form){
 function change_media_select(select){
 	document.getElementById("change_media_input").type = select.value;
 }
+
+
+function select_media_category(select){
+	let category = select.value;
+	console.log(select.value);
+	if(category == "all"){
+		goto_page("admin/media.php");
+	}else {
+		goto_page("admin/media.php?category="+category);
+	}
+}

@@ -49,10 +49,10 @@
                 <section class="all-trips">
                     <div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
                         <div>
-                            <h5 class="title easygo-fs-3 easygo-fw-1 m-0">All Trips</h5>
-                            <small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Trips</a> <i class="fa-solid fa-chevron-right"></i> All Trips</small>
+                            <h5 class="title easygo-fs-3 easygo-fw-1 m-0">All tours</h5>
+                            <small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Tours</a> <i class="fa-solid fa-chevron-right"></i> All Tours</small>
                         </div>
-                        <a href="create_a_tour.php" class="easygo-btn-1">Create a Trip</a>
+                        <a href="create_a_tour.php" class="easygo-btn-1">Create a Tour</a>
                     </div>
                     <!-- ============================== -->
                     <!-- tirp card listing [start] -->
@@ -131,7 +131,6 @@
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/general.js"></script>

@@ -1,4 +1,5 @@
 <?php
+die();
 	require_once(__DIR__."/../../utils/core.php");
 	require_once(__DIR__."/../../controllers/auth_controller.php");
 	require_once(__DIR__."/../../controllers/private_tour_controller.php");
@@ -78,9 +79,6 @@
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>

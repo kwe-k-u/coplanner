@@ -51,26 +51,54 @@ function email_password(){
 	return getenv("EMAIL_PASSWORD");
 }
 
-/** Returns the url for webhook of slack channel - Platform-monitoring */
-function slack_webhook_monitoring(){
-	return getenv("SLACK_PLATFORM_MONITORING_URL");
+function slack_webhook_support(){
+	return getenv("SLACK_WEBSITE_SUPPORT_URL");
 }
 
-/** Returns the url for webhook of slack channel - Platform-monitoring-claims */
-function slack_webhook_claims(){
-	return getenv("SLACK_PLATFORM_MONITORING_CLAIMS_URL");
+// /** [::Deprecated::]Returns the url for webhook of slack channel - Platform-monitoring */
+// function slack_webhook_monitoring(){
+// 	return getenv("SLACK_PLATFORM_MONITORING_URL");
+// }
+
+// /** [::Deprecated::]Returns the url for webhook of slack channel - Platform-monitoring-claims */
+// function slack_webhook_claims(){
+// 	return getenv("SLACK_PLATFORM_MONITORING_CLAIMS_URL");
+// }
+
+// /**
+//  * [::Deprecated::]Returns the url for webhook of slack channel - platform-monitoring-logs
+//  */
+// function slack_webhook_logs(){
+// 	return getenv("SLACK_PLATFORM_MONITORING_LOGS_URL");
+// }
+
+// /** [::Deprecated::] Returns the url for webhook of slack channel - Platform-monitoring-withdrawals */
+// function slack_webhook_withdrawals(){
+// 	return getenv("SLACK_PLATFORM_MONITORING_WITHDRAWALS_URL");
+// }
+
+function slack_webhook_cron_logs(){
+	return getenv("SLACK_WEBSITE_CRON_TASKS_URL");
 }
 
-/**
- * Returns the url for webhook of slack channel - platform-monitoring-logs
- */
-function slack_webhook_logs(){
-	return getenv("SLACK_PLATFORM_MONITORING_LOGS_URL");
+function slack_webhook_curator_logs(){
+	return getenv("SLACK_WEBSITE_CURATORS_LOG_URL");
 }
 
-/** Returns the url for webhook of slack channel - Platform-monitoring-withdrawals */
-function slack_webhook_withdrawals(){
-	return getenv("SLACK_PLATFORM_MONITORING_WITHDRAWALS_URL");
+function slack_webhook_error_logs(){
+	return getenv("SLACK_WEBSITE_ERRORS_URL");
+}
+
+function slack_webhook_private_tour_logs(){
+	return getenv("SLACK_WEBSITE_PRIVATE_TOUR_LOGS_URL");
+}
+
+function slack_webhook_tourist_logs(){
+	return getenv("SLACK_WEBSITE_TOURIST_LOGS_URL");
+}
+
+function slack_webhook_transactions(){
+	return getenv("SLACK_WEBSITE_TRANSACTIONS_URL");
 }
 
 /**Returns the paybox token */

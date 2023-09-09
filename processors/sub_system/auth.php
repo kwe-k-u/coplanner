@@ -2,6 +2,7 @@
 
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
+	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 	require_once(__DIR__."/../../utils/env_manager.php");
 
@@ -102,7 +103,8 @@
 					}
 					$collaborator_invite = get_curator_invite_by_email($email);
 					if($collaborator_invite){
-						$user_id = get_user_by_email($email)["user_id"];
+						$user = get_user_by_email($email);
+						$user_id = $user["user_id"];
 						$curator_id = $collaborator_invite["curator_id"];
 						$privilege = $collaborator_invite["privilege"];
 
@@ -111,19 +113,24 @@
 						$image = $_FILES["gov_id_front"]["name"];
 						$tmp = $_FILES["gov_id_front"]["tmp_name"];
 						$location = upload_file("uploads","confidential",$tmp,$image);
-						upload_user_media_ctrl($gov_id_front,$user_id,$location);
+						$type = get_file_type($image);
+						upload_user_media_ctrl($gov_id_front,$user_id,$location,$type);
 
 						//uploading back side of government id
 						$gov_id_back = generate_id();
 						$image = $_FILES["gov_id_back"]["name"];
 						$tmp = $_FILES["gov_id_back"]["tmp_name"];
 						$location = upload_file("uploads","confidential",$tmp,$image);
-						upload_user_media_ctrl($gov_id_back,$user_id,$location);
+						$type = get_file_type($image);
+						upload_user_media_ctrl($gov_id_back,$user_id,$location,$type);
 
 						add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back,$privilege);
 						remove_curator_invite($email);
 						remove_expired_curator_invites();
 						$mailer->curator_invite_success($email);
+						$curator_name = get_curator_by_id($curator_id)["curator_name"];
+						$name = $user["user_name"];
+						notify_curator_invite_signup($email,$name,$curator_name);
 						send_json(array("msg"=>"Successfully added as a curator"));
 					}else{
 						send_json(array("msg"=>"Your invite link may have expired. Kindly request a new one"),201);
@@ -149,7 +156,8 @@
 						$image = $_FILES["profile_img"]["name"];
 						$tmp = $_FILES["profile_img"]["tmp_name"];
 						$location = upload_file("uploads","picture",$tmp,$image);
-						upload_user_media_ctrl($media_id,$user_id,$location);
+						$type = get_file_type($image);
+						upload_user_media_ctrl($media_id,$user_id,$location,$type);
 						update_profile_image($user_id,$media_id);
 					}
 					//create email verification
@@ -175,14 +183,16 @@
 						$image = $_FILES["gov_id_front"]["name"];
 						$tmp = $_FILES["gov_id_front"]["tmp_name"];
 						$location = upload_file("uploads","confidential",$tmp,$image);
-						upload_user_media_ctrl($gov_id_front,$user_id,$location);
+						$type = get_file_type($image);
+						upload_user_media_ctrl($gov_id_front,$user_id,$location,$type);
 
 						//uploading back side of government id
 						$gov_id_back = generate_id();
 						$image = $_FILES["gov_id_back"]["name"];
 						$tmp = $_FILES["gov_id_back"]["tmp_name"];
 						$location = upload_file("uploads","confidential",$tmp,$image);
-						upload_user_media_ctrl($gov_id_back,$user_id,$location);
+						$type = get_file_type($image);
+						upload_user_media_ctrl($gov_id_back,$user_id,$location,$type);
 
 						add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back,$privilege);
 						remove_curator_invite($email);
@@ -233,17 +243,20 @@
 								$image = $_FILES["gov_id_front"]["name"];
 								$tmp = $_FILES["gov_id_front"]["tmp_name"];
 								$location = upload_file("uploads","confidential",$tmp,$image);
-								upload_user_media_ctrl($gov_id_front,$user_id,$location);
+								$type = get_file_type($image);
+								upload_user_media_ctrl($gov_id_front,$user_id,$location,$type);
 
 								//uploading back side of government id
 								$gov_id_back = generate_id();
 								$image = $_FILES["gov_id_back"]["name"];
 								$tmp = $_FILES["gov_id_back"]["tmp_name"];
 								$location = upload_file("uploads","confidential",$tmp,$image);
-								upload_user_media_ctrl($gov_id_back,$user_id,$location);
+								$type = get_file_type($image);
+								upload_user_media_ctrl($gov_id_back,$user_id,$location,$type);
 
 
 								add_curator_manager($curator_id,$user_id,$gov_id_front,$gov_id_back);
+								notify_new_curator($curator_name,$email,$user_name);
 								//TODO include national identification
 								$mailer->curator_signup($email);
 
@@ -254,6 +267,7 @@
 						}
 					}else {
 						$mailer->tourist_signup($email);
+						notify_tourist_signup($user_name,$email);
 					}
 
 					send_json($id_array);
@@ -348,13 +362,26 @@
 						$curator_name = $invite["curator_name"];
 						$hash = encrypt($email.$curator_id);
 						$mailer->curator_invite($email,$hash,$date,$curator_name);
+						$user_id = get_session_user_id();
+						$user = get_user_by_id($user_id);
+						$user_name = $user["user_name"];
+						$user_email = $user["email"];
+						notify_curator_invite($curator_name,$email,$user_name,$user_email);
 						send_json(array("msg"=>"Invite sent to <$email>"));
 
 					die();
 				case "remove_curator_collaborator":
 					$curator_id = $_POST["curator_id"];
-					$user_id = $_POST["user_id"];
-					remove_curator_collaborator($user_id,$curator_id);
+					$r_user_id = $_POST["user_id"];
+					$admin_user_id = get_session_user_id();
+					$removed_name = get_user_by_id($r_user_id)["user_name"];
+					$removed_email = get_user_by_id($r_user_id)["email"];
+					$admin_name = get_user_by_id($admin_user_id)["user_name"];
+					$admin_email = get_user_by_id($admin_user_id)["email"];
+					$curator_name = get_curator_name($curator_id);
+
+					remove_curator_collaborator($r_user_id,$curator_id);
+					notify_curator_collaborator_removal($curator_name,$admin_name,$admin_email,$removed_name,$removed_email);
 					die();
 				case "update_profile":
 					var_dump($_POST);
@@ -362,7 +389,8 @@
 					die();
 				case "resend_email_verification":
 					$user_id = $_POST["user_id"];
-					$mailer = new mailer();
+
+					// $mailer = new mailer();
 					// $mailer->email_verification($email,$token);
 					// TODO:: send verification email
 					send_json(array("msg"=>"Pending implementation"));

@@ -6,7 +6,9 @@
 		</li>
 		<li>
 			<div class="slide-down-menu">
-				<a data-target="trips-submenu-sb" class="slide-down-btn" id="nav_trips" href="#"><img src="../assets/images//svgs/trips.svg" id="d" alt="dashboard image"> Trips <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
+				<a data-target="trips-submenu-sb" class="slide-down-btn" id="nav_trips" href="#"><img src="../assets/images//svgs/trips.svg" id="d" alt="dashboard image">
+					Tours <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
+				</a>
 				<ul id="trips-submenu-sb" class="sub-menu slide-down-sub-menu">
 					<li><a href="group_tours.php" id="nav_sub_groups">Group Tours</a></li>
 					<li><a href="private_tours.php" id="nav_sub_private">Private Tours</a></li>
@@ -16,7 +18,9 @@
 
 		<li>
 			<div class="slide-down-menu">
-				<a data-target="users-submenu-sb" class="slide-down-btn" id="nav_users" href="#"><img src="../assets/images//svgs/trips.svg" alt="dashboard image"> Users <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
+				<a data-target="users-submenu-sb" class="slide-down-btn" id="nav_users" href="#">
+					<img src="../assets/images//svgs/trips.svg" alt="dashboard image"> Users <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
+				</a>
 				<ul id="users-submenu-sb" class="sub-menu slide-down-sub-menu">
 					<li><a href="curators.php" id="nav_sub_groups">Curators</a></li>
 					<li><a href="users.php" id="nav_sub_private">Tourists</a></li>
@@ -26,7 +30,7 @@
 		<li>
 			<a href="locations.php" id="nav_finance">
 				<img src="../assets/images/svgs/finance.svg" alt="finance icon">
-				 Locations
+				 Destinations
 			</a>
 		</li>
 		<li>

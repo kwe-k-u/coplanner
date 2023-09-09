@@ -7,7 +7,7 @@
 		return $media->get_media_by_id($id);
 	}
 
-	function upload_user_media_ctrl($media_id, $user_id,$location, $media_type = "picture" ){
+	function upload_user_media_ctrl($media_id, $user_id,$location, $media_type ){
 		$media = new media_class();
 
 		return $media->add_media_cls($media_id,$location, $media_type)

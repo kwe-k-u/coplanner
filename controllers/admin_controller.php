@@ -141,6 +141,16 @@
 		return $admin->get_media($media_id);
 	}
 
+	function get_admin_stats(){
+		$admin = new admin();
+		return $admin->get_admin_stats();
+	}
+
+	function get_media_by_category($category){
+		$admin = new admin();
+		return $admin->get_media_by_category($category);
+	}
+
 	function update_media_location($id,$location){
 		$admin = new admin();
 		return $admin->update_media_location($id,$location);

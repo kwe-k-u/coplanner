@@ -8,10 +8,10 @@
 	switch($_REQUEST["type"]){
 		case "js": #js logger
 			$logger->js_error($_REQUEST);
-
+			notify_error_log("js");
 		default:
 			$logger->general_log($_REQUEST);
-			$res = notify_error_log();
+			$res = notify_error_log("php");
 			send_json(array("msg"=> "logged error"));
 			break;
 			#general logger

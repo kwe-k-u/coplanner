@@ -115,7 +115,7 @@ function display_invoice(fee,max_seats){
 	var seat_price = document.getElementById("invoice_tour");
 	var discount = document.getElementById("invoice_discount");
 	var invoice_subtotal = document.getElementById("invoice_subtotal");
-	var invoice_vat = document.getElementById("invoice_vat");
+	// var invoice_vat = document.getElementById("invoice_vat");
 	var invoice_tourism = document.getElementById("invoice_tourism");
 	var invoice_total = document.getElementById("invoice_total");
 
@@ -147,16 +147,16 @@ function display_invoice(fee,max_seats){
 	var total_charge = sub_total_charge + vat_charge + tourism_charge;
 
 	//update fields
-	seats.innerText = total;
+	if(total > 1){
+		seats.innerText = total + " seats";
+	}else{
+		seats.innerText = total + " seat";
+	}
 	invoice_subtotal.innerText = sub_total_charge;
-	invoice_vat.innerText = vat_charge;
+	// invoice_vat.innerText = vat_charge;
 	invoice_tourism.innerText = tourism_charge;
 	invoice_total.innerText = total_charge;
 	seat_price.innerText = seat_charge;
-	console.log("change");
-
-
-	console.log(total);
 
 
 

@@ -2,6 +2,7 @@
 	require_once(__DIR__. "/../../controllers/campaign_controller.php");
 	require_once(__DIR__. "/../../controllers/curator_interraction_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
+	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__. "/../../utils/core.php");
 
 
@@ -62,6 +63,10 @@
 								upload_curator_media_ctrl($id,$curator_id,$location,$media_type);
 								link_campaign_media_ctrl($camp_id,$id);
 							}
+
+							$curator_name = get_curator_by_id($curator_id)["curator_name"];
+
+							notify_new_tour($curator_name,$title,$camp_id);
 						send_json(array("msg"=> "Tour created successful"));
 
 					}else {
@@ -77,7 +82,7 @@
 					$country = $_POST["country"];
 					$activities =$_POST["activities"];
 					$site_id = generate_id();
-					//check if location name exists,
+					//TODO:: check if location name exists,
 					add_destination($site_id,$name,$desc,$location,$country);
 
 					// Adding activities for the tour site

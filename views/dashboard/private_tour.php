@@ -44,7 +44,7 @@ $profile = get_user_profile_img($user_id);
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <h5>Private Tour</h5>
-                <button class="btn" onclick="goto_page('views/dashboard/notifications.php')"><i class="fa-solid fa-bell"></i></button>
+                <!-- <button class="btn" onclick="goto_page('views/dashboard/notifications.php')"><i class="fa-solid fa-bell"></i></button> -->
         </nav>
         <main>
             <div class="loader"></div>
@@ -70,16 +70,13 @@ $profile = get_user_profile_img($user_id);
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Trips</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./tour_history.php"><i class="fa-solid fa-bus"></i> Tours</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 easygo-btn-1" href="./private_tour.php"><i class="fa-solid fa-car"></i> Private Tour</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Saved Trips</a>
-                                </li>
-                                <li class="s-nav-item px-3 py-2">
-                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./notifications.php"><i class="fa-solid fa-bell"></i>Notifications</a>
+                                    <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3" href="./saved_tours.php"><i class="fa-solid fa-bookmark"></i>Tour Wishlist</a>
                                 </li>
                                 <li class="s-nav-item px-3 py-2">
                                     <a class="nav-link py-3 px-4 d-flex align-items-center justify-content-start gap-3 " href="./settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
