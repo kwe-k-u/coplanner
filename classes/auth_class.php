@@ -224,6 +224,23 @@
 			return $this->db_query();
 		}
 
+		function verify_user_email($token){
+			$sql = "UPDATE users as u
+			INNER JOIN email_verification as ev ON ev.user_id = u.user_id
+			SET u.email_verified = 1
+			WHERE ev.token = ?;";
+			$this->prepare($sql);
+			$this->bind($token);
+			return $this->db_query();
+		}
+
+		function check_email_verification_token($token){
+			$sql = "SELECT * FROM email_verification where token = ?";
+			$this->prepare($sql);
+			$this->bind($token);
+			return $this->db_fetch_one();
+		}
+
 
 		function change_user_account_status($user_id, $status){
 			$sql = "UPDATE `users` SET `account_status` = ? WHERE `user_id` = ?";

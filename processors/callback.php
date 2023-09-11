@@ -13,6 +13,16 @@
 	}
 
 	switch($_SERVER["PATH_INFO"]){
+		case "/verify_email":
+			$token = $_GET["token"];
+			$exists = check_email_verification_token($token);
+			if($exists){
+				$success = verify_user_email($token);
+				echo "Your email has been verified";
+			}else{
+				echo "your verification token may have expired. Kindly contact support at main.easygo@gmail.com";
+			}
+			die();
 		case "/curator_invite":
 
 			if(!isset($_GET["hash"]) or !isset($_GET["date"])){

@@ -40,6 +40,16 @@
 		return $auth->get_user_by_email($email);
 	}
 
+	function verify_user_email($token){
+		$auth = new auth_class();
+		return $auth->verify_user_email($token);
+	}
+
+	function check_email_verification_token($token){
+		$auth = new auth_class();
+		return $auth->check_email_verification_token($token) != null;
+	}
+
 
 	function get_user_by_id($id){
 		$auth = new auth_class();
@@ -118,8 +128,6 @@
 		$auth = new auth_class();
 		return $auth->change_password_by_user_id($user_id,$password);
 	}
-
-
 
 
 

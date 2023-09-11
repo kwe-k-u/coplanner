@@ -71,7 +71,7 @@
                 </div>
                 <?php
                 //=====================[START] Hide if invited================================
-                    if(!$hash){
+                    if(!isset($hash)){
                 ?>
                 <div class="input-field">
                     <small class="input-title">Company profile</small>
@@ -112,7 +112,7 @@
                 </div>
                 <?php
                 //=====================[START] Hide if invited================================
-                    if(!$hash){
+                    if(!isset($hash)){
                 ?>
                 <div class="input-field">
                     <small class="text-gray-1">Upload company logo<span class="text-gray-2">(Optional)</span></small>
@@ -153,7 +153,7 @@
                 </div>
                 <?php
                 //=====================[START] Hide if invited================================
-                    if(!$hash){
+                    if(!isset($hash)){
                 ?>
                 <div class="input-field">
                     <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2">(Optional)</span></small>
