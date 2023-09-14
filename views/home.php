@@ -45,7 +45,7 @@
                      within Ghana. We do this by providing a platform that allows seamless booking and payment for packaged tours,
                       curating personalised experiences and the outsourcing of team-bonding trips for departments of corporate bodies.
                     </p>
-                    <div class="d-flex gap-3 justify-content-center">
+                    <div class="d-flex gap-3 justify-content-center py-2">
                         <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
                         <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                     </div>
