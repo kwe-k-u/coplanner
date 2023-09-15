@@ -225,6 +225,7 @@ function login(form){
 			//check redirect
 			if (url_params("redirect")){
 				url = url_params("redirect");
+				//TODO:: redirect doesn't include the value of its GET parameters
 
 			}
 
@@ -250,7 +251,7 @@ function request_password_reset(form){
 	send_request("POST","processors/processor.php",
 	payload,
 	(response) =>{
-		alert(response);
+		alert(response.data.msg);
 	}
 	);
 }
@@ -276,7 +277,7 @@ function reset_password(form){
 		"processors/processor.php",
 		payload,
 		(response)=>{
-			alert(response);
+			alert(response.data.msg);
 		}
 	)
 }

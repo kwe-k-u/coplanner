@@ -159,7 +159,7 @@
 			die();
 		case "/verify_curator_account":
 			$curator_id = $_POST["curator_id"];
-			$action = !(get_curator_by_id($curator_id)["is_verified"] == 1);
+			$action = !(get_curator($curator_id)["is_verified"] == 1);
 
 			$success = verify_curator_account($curator_id,$action);
 			if($success){

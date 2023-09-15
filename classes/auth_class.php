@@ -69,6 +69,15 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_email_verification_by_email($email){
+			$sql = "SELECT ev.* FROM `email_verification` as ev
+			inner join users as u on u.user_id = ev.user_id
+			where u.email = ?";
+			$this->prepare($sql);
+			$this->bind($email);
+			return $this->db_fetch_one();
+		}
+
 		function get_user_by_email($email){
 			$sql = "SELECT * FROM `users` WHERE `email` = ?";
 			// return $this->db_fetch_one($sql);

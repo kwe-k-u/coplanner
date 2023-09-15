@@ -2,6 +2,7 @@
 
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
+	require_once(__DIR__. "/../../controllers/interaction_controller.php");
 	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 	require_once(__DIR__."/../../utils/env_manager.php");
@@ -44,6 +45,17 @@
 									die();
 								// Block access if curator has not verified their email
 							}else if ($result["email_verified"] == 0){
+								//TODO:: email verification
+								$verification = get_email_verification_by_email($email);
+								if(!$verification){
+									$token = generate_id();
+									create_email_verification_token($token,$result["user_id"]);
+								}else{
+									$token = $verification["token"];
+								}
+								$mailer = new mailer();
+								$mailer->email_verification($email,$token);
+								// if theres no email verification, create one and send that
 								send_json(
 									array(
 										"msg" => "You need to verify your email to proceed."
@@ -291,7 +303,8 @@
 						send_json(array("msg"=> "Check your email for the link to reset your password"));
 						$mailer->password_reset($email,$token);
 					}else {
-						send_json(array("msg"=> "Something went wrong. Try again soon or contact support at main.easygo@gmail.com"));
+						send_json(array("msg"=> "You may not have an account with us! Kindly contact support at main.easygo@gmail.com if you believe there' a problem"));
+						// send_json(array("msg"=> "Something went wrong. Try again soon or contact support at main.easygo@gmail.com"));
 					}
 					die();
 				case "change_password":

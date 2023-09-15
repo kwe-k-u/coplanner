@@ -57,6 +57,8 @@
                             }
 
                                 foreach ($campaigns as $trip) {
+                                    // var_dump($trip);
+                                    $image = $trip["media"][0]["media_location"];
                                     $id = $trip["campaign_id"];
                                     $title = $trip["title"];
                                     $desc = shorten($trip["description"]);
@@ -77,11 +79,11 @@
                                     echo "
                                          <!--- ================================ -->
                                         <!-- trip card horizontal [start] -->
-                                        <div class='col-12 my-4'>
-                                            <div class='row box-shadow-1 py-5 rounded'>
-                                                <div class='col-md-6'>
-                                                    <div class='rounded overflow-hidden h-100' style='max-width: 480px; margin: auto'>
-                                                        <img src='../assets/images/others/scenery2.jpg' class='img-fluid h-100' alt='trip card image'>
+                                        <div class='col-12 my-4 '>
+                                            <div class='row box-shadow-1 py-5 easygo-card-2 rounded'>
+                                                <div class='col-md-6 h-100'>
+                                                    <div class='rounded overflow-hidden' style='width: inherit; margin: auto'>
+                                                        <img src='$image' class='img-fluid' alt='Tour package image'>
                                                     </div>
                                                 </div>
                                                 <div class='col-md-6 d-flex justify-content-center align-content-center'>

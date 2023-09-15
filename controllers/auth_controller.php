@@ -50,6 +50,11 @@
 		return $auth->check_email_verification_token($token) != null;
 	}
 
+	function get_email_verification_by_email($email){
+		$auth = new auth_class();
+		return $auth->get_email_verification_by_email($email);
+	}
+
 
 	function get_user_by_id($id){
 		$auth = new auth_class();
@@ -64,7 +69,10 @@
 			$token = $token["token"];
 		}else{
 			$token = generate_id();
-			$user = $auth->get_user_by_email($email)["user_id"];
+			$user = $auth->get_user_by_email($email);
+			if(!$user){
+				return false;
+			}
 			$auth->create_password_reset_token($token,$user);
 		}
 		return $token;
@@ -89,10 +97,10 @@
 	}
 
 
-	function get_curator_collaborators($curator_id){
-		$auth = new auth_class();
-		return $auth->get_curator_collaborators($curator_id);
-	}
+	// function get_curator_collaborators($curator_id){
+	// 	$auth = new auth_class();
+	// 	return $auth->get_curator_collaborators($curator_id);
+	// }
 
 	function get_curator_invite_by_email($email){
 		$auth = new auth_class();

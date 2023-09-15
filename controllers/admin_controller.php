@@ -43,9 +43,9 @@
 		return $data;
 	}
 
-	function get_curator_by_id($id){
+	function get_curator($id){
 		$admin = new admin();
-		return $admin->get_curator_by_id($id);
+		return $admin->get_curator($id);
 	}
 
 

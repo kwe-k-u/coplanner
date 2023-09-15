@@ -4,7 +4,8 @@
     // require_once(__DIR__."/../controllers/campaign_controller.php");
     require_once(__DIR__."/../controllers/interaction_controller.php");
     require_once(__DIR__."/../controllers/auth_controller.php");
-    if (!isset($_GET["tour_id"])){
+    // if tour id is not set or the id is empty
+    if (!isset($_GET["tour_id"]) ||$_GET["tour_id"] == ""){
         header("Location: tours.php");
         die();
     }

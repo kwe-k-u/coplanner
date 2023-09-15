@@ -188,7 +188,7 @@
 			return $this->db_fetch_one();
 		}
 
-		function get_curator_by_id($id){
+		function get_curator($id){
 			$sql = "SELECT * FROM curators where curator_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);
