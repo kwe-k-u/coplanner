@@ -62,6 +62,10 @@
     height: 100vh;
 }
 
+#userdashboard-sidebar .logo{
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   #userdashboard-sidebar {
     position: static;
