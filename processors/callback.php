@@ -18,7 +18,7 @@
 			$exists = check_email_verification_token($token);
 			if($exists){
 				$success = verify_user_email($token);
-				echo "Your email has been verified";
+				echo "Your email has been verified. <a href='../../views/login.php'>Click here to return to login</a>";
 			}else{
 				echo "your verification token may have expired. Kindly contact support at main.easygo@gmail.com";
 			}

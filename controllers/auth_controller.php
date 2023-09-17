@@ -40,9 +40,12 @@
 		return $auth->get_user_by_email($email);
 	}
 
+	// verify and delete email token
 	function verify_user_email($token){
 		$auth = new auth_class();
-		return $auth->verify_user_email($token);
+		$success = $auth->verify_user_email($token);
+		$success = $success && $auth->remove_email_token($token);
+		return $success;
 	}
 
 	function check_email_verification_token($token){

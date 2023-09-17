@@ -327,7 +327,7 @@
 							$mailer->password_reset_confirmation($email);
 							send_json(array("msg"=>"Password change successful. Login with your new password"));
 						}else {
-							send_json(array("msg"=>"Password change failed."));
+							send_json(array("msg"=>"Password change failed."),100);
 						}
 					}else {
 						send_json(array("msg"=>"The token has expired. Request a new token to be sent"));
@@ -359,7 +359,7 @@
 					$mailer = new mailer();
 
 					$user = get_user_by_email($email);
-					if ($user){//user exists
+					if ($user && $user["role"] != 'admin'){//user exists
 						$is_collaborator = is_user_a_collaborator($user["user_id"]);
 						if($is_collaborator){
 							//send error saying user is a collaborator
@@ -376,10 +376,12 @@
 						$hash = encrypt($email.$curator_id);
 						$mailer->curator_invite($email,$hash,$date,$curator_name);
 						$user_id = get_session_user_id();
-						$user = get_user_by_id($user_id);
-						$user_name = $user["user_name"];
-						$user_email = $user["email"];
-						notify_curator_invite($curator_name,$email,$user_name,$user_email);
+						if ($user_id){
+							$user = get_user_by_id($user_id);
+							$user_name = $user["user_name"];
+							$user_email = $user["email"];
+							notify_curator_invite($curator_name,$email,$user_name,$user_email);
+						}
 						send_json(array("msg"=>"Invite sent to <$email>"));
 
 					die();

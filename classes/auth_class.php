@@ -326,5 +326,13 @@
 			return $this->db_query();
 			// return $this->db_query($sql);
 		}
+
+		function remove_email_token($token){
+			$sql = "DELETE FROM `email_verification`
+			WHERE token = ?";
+			$this->prepare($sql);
+			$this->bind($token);
+			return $this->db_query();
+		}
 	}
 ?>

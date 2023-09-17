@@ -83,6 +83,16 @@
 		return $admin->add_destination($id,$name,$desc,$loc,$country,$phone,$contact,$cord_array[0],$cord_array[1]);
 	}
 
+	function get_curator_by_name($name){
+		$admin = new admin();
+		return $admin->get_curator_by_name($name);
+	}
+
+	function add_curator($curator_id,$curator_name,$country){
+		$admin = new admin();
+		return $admin->add_curator($curator_id,$curator_name,$country);
+	}
+
 	function add_destination_activity($des_id,$activity,$fee = 0){
 		$camp = new campaign_class();
 		$act = $camp->get_activity_by_name($activity,true);

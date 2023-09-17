@@ -105,6 +105,20 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_curator_by_name($name){
+			$sql = "SELECT * FROM curators where curator_name = ?";
+			$this->prepare($sql);
+			$this->bind($name);
+			return $this->db_fetch_one();
+		}
+
+		function add_curator($id,$name,$country){
+			$sql = "INSERT INTO curators (`curator_id`, `curator_name`, `country`) values (?,?,?)";
+			$this->prepare($sql);
+			$this->bind($id,$name,$country);
+			return $this->db_query();
+		}
+
 
 		function get_transactions($transaction_id){
 			$sql = "SELECT *,
