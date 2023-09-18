@@ -1,7 +1,7 @@
 <?php
-    require_once(__DIR__."/../utils/core.php");
-    require_once(__DIR__."/../utils/env_manager.php");
-    require_once(__DIR__."/../controllers/interaction_controller.php");
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../utils/env_manager.php");
+require_once(__DIR__ . "/../controllers/interaction_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyGo - Home</title>
     <!-- Bootstrap css -->
@@ -35,17 +36,18 @@
         <main>
             <!--- ================================ -->
             <!--- introduction section [start] -->
-            <section class="intro py-7 home-background" >
+            <section class="intro py-7 home-background">
                 <div class="d-none d-lg-block d-xl-block intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px); background-image: linear-gradient(transparent,#7283e9);">
                     <h1>
                         You don't need to hassle to have a fun tour
                         <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
                     </h1>
                     <p>
-                                                easyGo is a tour curation platform that provides curated tour experiences for travellers and tourists within Ghana.
-                                                 We do this by providing a platform that allows seamless booking for packaged tours and the creation of personalised experiences.
+                        easyGo is a tour curation platform that provides curated tour experiences for travellers and tourists within Ghana.
+                        We do this by providing a platform that allows seamless booking for packaged tours and the creation of personalised experiences.
                     </p>
-                    <div class="d-flex gap-3 justify-content-center">
+
+                    <div class="d-flex gap-3 justify-content-center py-2">
                         <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Explore</button>
                         <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                     </div>
@@ -60,35 +62,35 @@
                     <div id="background-slider" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
                         <div class="carousel-indicators easygo-carousel-indicators">
                             <?php
-                                if(is_env_remote()){
+                            if (is_env_remote()) {
 
-                                    $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"]."/assets/images/carousel/*";
-                                }else{
+                                $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/assets/images/carousel/*";
+                            } else {
 
-                                    $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"]."/easygo_v2/assets/images/carousel/*";
-                                }
-                                $carousel = glob($dir);
-                                for ($i=0; $i < count($carousel); $i++) {
-                                    echo "
-                                    <button type='button' data-bs-target='#background-slider' data-bs-slide-to='$i' class='".($i == 0 ? "active" : "")."' aria-current='true' aria-label='Slide ".($i+1).")'></button>
+                                $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/easygo_v2/assets/images/carousel/*";
+                            }
+                            $carousel = glob($dir);
+                            for ($i = 0; $i < count($carousel); $i++) {
+                                echo "
+                                    <button type='button' data-bs-target='#background-slider' data-bs-slide-to='$i' class='" . ($i == 0 ? "active" : "") . "' aria-current='true' aria-label='Slide " . ($i + 1) . ")'></button>
                                     ";
-                                }
+                            }
                             ?>
                         </div>
                         <div class="carousel-inner w-100 h-100">
-                        <?php
-                                foreach($carousel as $index => $image){
-                                    if (is_env_remote()){
-                                        $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"],server_base_url(),$image);
-                                    }else{
-                                        $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/easygo_v2/",server_base_url(),$image);
-                                    }
-                                    echo "
-                            <div class='carousel-item ". ($index == 0 ? "active" : "") ." w-100 h-100'>
+                            <?php
+                            foreach ($carousel as $index => $image) {
+                                if (is_env_remote()) {
+                                    $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"], server_base_url(), $image);
+                                } else {
+                                    $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/easygo_v2/", server_base_url(), $image);
+                                }
+                                echo "
+                            <div class='carousel-item " . ($index == 0 ? "active" : "") . " w-100 h-100'>
                                 <img class='h-100 w-100' src='$image' alt='carousel image'>
                             </div>
                             ";
-                                }
+                            }
                             ?>
                         </div>
                     </div>
@@ -97,26 +99,26 @@
             </section>
 
             <div class="d-sm-block d-xl-none d-lg-none intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px); background-color: #7283e9;">
-                    <h1>
-                        You don't need to hassle to have a fun tour
-                        <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
-                    </h1>
-                    <p>
+                <h1>
+                    You don't need to hassle to have a fun tour
+                    <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
+                </h1>
+                <p>
                     easyGo is a tour booking platform that provides curated tour experiences for travellers and tourists
-                     within Ghana. We do this by providing a platform that allows seamless booking and payment for packaged tours,
-                      curating personalised experiences and the outsourcing of team-bonding trips for departments of corporate bodies.
-                    </p>
-                    <div class="d-flex gap-3 justify-content-center">
-                        <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
-                        <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
-                    </div>
-                    <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./tours.php" style="min-width: 50%;">
-                        <div class="d-flex">
-                            <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
-                            <button class="easygo-btn-1 rounded-0">Search</button>
-                        </div>
-                    </form>
+                    within Ghana. We do this by providing a platform that allows seamless booking and payment for packaged tours,
+                    curating personalised experiences and the outsourcing of team-bonding trips for departments of corporate bodies.
+                </p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
+                    <a href="./photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a>
                 </div>
+                <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./tours.php" style="min-width: 50%;">
+                    <div class="d-flex">
+                        <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
+                        <button class="easygo-btn-1 rounded-0">Search</button>
+                    </div>
+                </form>
+            </div>
             <!--- introduction section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
@@ -140,7 +142,7 @@
                                     to us, focus on enjoyment.
                                 </p>
                                 <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" onclick="goto_page('views/tours.php')" style="border-radius: 50px; word-spacing: 5px;">
-                                Get Started
+                                    Get Started
                                 </button>
                             </div>
                         </div>
@@ -160,34 +162,34 @@
                         <h5 class="text-orange">Tours</h5>
                         <?php
 
-                            $tours = get_current_campaigns();
-                            $label_text = "Upcoming Tours";
-                            if(empty($tours)){
-                                $tours = get_past_campaigns();
-                                $label_text = "Featured Tours";
-                            }
-                            echo "<h1>Featured Tours</h1>";
+                        $tours = get_current_campaigns();
+                        $label_text = "Upcoming Tours";
+                        if (empty($tours)) {
+                            $tours = get_past_campaigns();
+                            $label_text = "Featured Tours";
+                        }
+                        echo "<h1>Featured Tours</h1>";
                         ?>
 
                     </div>
                     <div class="row">
                         <?php
 
-                            if(!empty($tours)){
-                                foreach ($tours as $entry) {
-                                    $title = $entry["title"];
-                                    $desc = shorten($entry["description"]);
-                                    $curator_id = $entry["curator_id"];
-                                    $id = $entry["campaign_id"];
-                                    $curator_name = $entry["curator_name"];
+                        if (!empty($tours)) {
+                            foreach ($tours as $entry) {
+                                $title = $entry["title"];
+                                $desc = shorten($entry["description"]);
+                                $curator_id = $entry["curator_id"];
+                                $id = $entry["campaign_id"];
+                                $curator_name = $entry["curator_name"];
 
-                                    $next = get_campaign_tours($id)[0];
-                                    $tour_id = $next["tour_id"];
-                                    $currency = $next["currency"];
-                                    $fee = $next["fee"];
-                                    $image = $entry["media"][0]["media_location"];
+                                $next = get_campaign_tours($id)[0];
+                                $tour_id = $next["tour_id"];
+                                $currency = $next["currency"];
+                                $fee = $next["fee"];
+                                $image = $entry["media"][0]["media_location"];
 
-                                    echo "
+                                echo "
 
                         <div class='col-lg-4 col-md-6 p-3'>
                         <div class='trip-card'>
@@ -213,8 +215,8 @@
                         </div>
                     </div>
                                     ";
-                                }
                             }
+                        }
                         ?>
                     </div>
                     <div class='d-flex justify-content-end'>
@@ -464,7 +466,7 @@
     <!-- Swiper bundle js -->
     <script src="../assets/js/swiper-bundle.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/home.js"></script>
     <script src="../assets/js/functions.js"></script>
