@@ -8,11 +8,6 @@ if (!is_session_logged_in()) {
     die();
 }
 
-// $info = get_user_by_id(get_session_user_id());
-$curator_id = get_session_account_id();
-$user_name ="" ;//$info["user_name"];
-$curator_name = "admin";//$info["curator_name"];
-$logo = "";//$info["curator_logo"];
 
 
 
@@ -42,7 +37,6 @@ $logo = "";//$info["curator_logo"];
     <!-- main-wrapper [start] -->
     <div class="main-wrapper">
 
-            <?php require_once(__DIR__."/../components/admin_header.php"); ?>
             <?php require_once(__DIR__."/../components/admin_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
@@ -86,14 +80,11 @@ $logo = "";//$info["curator_logo"];
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
                                 </div>
-                                <div class="inner-item">User ID</div>
                                 <div class="inner-item">User Name</div>
                                 <div class="inner-item">Email</div>
                                 <div class="inner-item">Phone</div>
                                 <div class="inner-item">Country</div>
                                 <div class="inner-item">Date Joined</div>
-                                <div class="inner-item">Last Login</div>
-                                <div class="inner-item">Bookings</div>
                                 <div class="inner-item">Actions</div>
                             </div>
 
@@ -102,7 +93,8 @@ $logo = "";//$info["curator_logo"];
                                 $accounts = get_user_accounts();
 
                                 if (!$accounts){
-                                    echo "<div class='list-item'>
+                                    echo "
+                                    <div class='list-item'>
                                         <div class='item-bullet-container'>
                                             <div class='item-bullet'></div>
                                         </div>
@@ -118,29 +110,55 @@ $logo = "";//$info["curator_logo"];
 										$phone = $entry["phone_number"];
 										$last_login = format_string_as_date_fn($entry["last_login"]);
 										$num_bookings = $entry["booking_count"];
+                                        $email_verified = $entry['email_verified'] == 1;
 
                                         echo "
-                                <div class='list-item'>
-                                    <div class='item-bullet-container'>
-                                        <div class='item-bullet'></div>
+                                <div class='accordion-item'>
+                                    <div class='list-item'>
+                                        <div class='item-bullet-container'>
+                                            <div class='item-bullet'></div>
+                                        </div>
+                                        <div class='inner-item'>
+                                            <div class='col'>
+                                                <div>
+                                                    $username
+                                                </div>
+                                                <div>
+                                                    $id
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='inner-item'>$email</div>
+                                        <div class='inner-item'>$phone </div>
+                                        <div class='inner-item'>$country</div>
+                                        <div class='inner-item'>$date_joined</div>
+                                        <div class='inner-item'>
+                                            <a href='#' data-bs-toggle='collapse' data-bs-target='#user_info_$id'> Expand</a>
+                                        </div>
                                     </div>
-                                    <div class='inner-item'>
-										<div class='col'>
-											<div>
-												$username
-											</div>
-											<div>
-												$id
-											</div>
-										</div>
-									</div>
-                                    <div class='inner-item'>$email</div>
-                                    <div class='inner-item'>$phone </div>
-                                    <div class='inner-item'>$country</div>
-                                    <div class='inner-item'>$date_joined</div>
-                                    <div class='inner-item'>$last_login</div>
-                                    <div class='inner-item'>$num_bookings bookings</div>
-                                    <div class='inner-item'>actions</div>
+                                    <div class='accordion-collapse collapse' id='user_info_$id'>
+                                        <div class= 'accordion-body row'>
+                                            <div class='col-1'></div>
+                                            <div class='col-6'>
+                                                <div>
+                                                    Bookings: $num_bookings
+                                                </div>
+                                                <div>
+                                                    Last login: $last_login
+                                                </div>
+                                            </div>
+                                            <div class='col-5'>".
+                                            ($email_verified ? "" :
+                                                "<div>
+                                                    <a href='#' onclick='resend_email_verification(\"$id\")'>Send email verification</a>
+                                                </div>
+                                                ").
+                                                "<div>
+                                                    <a href='#' onclick='send_password_reset(\"$email\")'>Send password reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                     ";
                                     }
@@ -189,6 +207,7 @@ $logo = "";//$info["curator_logo"];
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/admin/users.js"></script>
 </body>
 
 </html>

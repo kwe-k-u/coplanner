@@ -552,19 +552,19 @@
                         </p>
                     </div>
                     <div class='row mb-5 mt-4'>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'> 4th November</span>
-                        </div>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Duration: 6hrs</span>
-                        </div>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Language: English</span>
-                        </div>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Start Time: 11am</span>
-
-                        </div>
+                        <?php
+                            echo "
+                            <div class='col-12 py-2'>
+                                <span class='easygo-fs-4'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'>$start - $end</span>
+                            </div>
+                            <div class='col-12 py-2'>
+                                <span class='easygo-fs-4'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Pickup: $pickup_location</span>
+                            </div>
+                            <div class='col-6 py-2'>
+                                <span class='easygo-fs-4'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Start Time: $pickup_time</span>
+                            </div>
+                            ";
+                        ?>
                     </div>
                     <div class='accordion accordion-flush' id='trip-info-accordion'>
                         <div class='accordion-item'>

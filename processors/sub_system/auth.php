@@ -45,7 +45,6 @@
 									die();
 								// Block access if curator has not verified their email
 							}else if ($result["email_verified"] == 0){
-								//TODO:: email verification
 								$verification = get_email_verification_by_email($email);
 								if(!$verification){
 									$token = generate_id();
@@ -405,10 +404,19 @@
 				case "resend_email_verification":
 					$user_id = $_POST["user_id"];
 
-					// $mailer = new mailer();
-					// $mailer->email_verification($email,$token);
-					// TODO:: send verification email
-					send_json(array("msg"=>"Pending implementation"));
+					$user = get_user_by_id($user_id);
+					$email = $user["email"];
+
+					$verification = get_email_verification_by_email($email);
+					if(!$verification){
+						$token = generate_id();
+						create_email_verification_token($token,$user_id);
+					}else{
+						$token = $verification["token"];
+					}
+					$mailer = new mailer();
+					$mailer->email_verification($email,$token);
+					send_json(array("msg"=> "Sent verification email to $email"));
 					die();
 				default:
 					send_json(array("msg"=>"No implementation for <". $_POST["action"] .">"));

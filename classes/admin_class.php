@@ -80,6 +80,7 @@
 
 			if($user_id){
 				$this->bind($user_id);
+				return $this->db_fetch_one();
 			}
 
 			return $this->db_fetch_all();

@@ -76,7 +76,7 @@
 			if(!$user){
 				return false;
 			}
-			$auth->create_password_reset_token($token,$user);
+			$auth->create_password_reset_token($token,$user["user_id"]);
 		}
 		return $token;
 	}
