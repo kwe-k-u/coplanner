@@ -1,6 +1,8 @@
 <?php
-	require_once(__DIR__. "/../../controllers/campaign_controller.php");
+	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__. "/../../controllers/curator_interraction_controller.php");
+	require_once(__DIR__. "/../../controllers/campaign_controller.php");
+	require_once(__DIR__. "/../../controllers/interaction_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
 	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__. "/../../utils/core.php");
@@ -50,18 +52,20 @@
 							}
 
 							//add images
-							$num_files = count($_FILES["images"]['name']);
-							$entry = $_FILES["images"];
-							for ($i=0; $i < $num_files; $i++) {
+							if (isset($_FILES["images"])){
+								$num_files = count($_FILES["images"]['name']);
+								$entry = $_FILES["images"];
+								for ($i=0; $i < $num_files; $i++) {
 
-								$image = $entry["name"][$i];
-								$tmp = $entry["tmp_name"][$i];
-								$id = generate_id();
-								$media_type = 'picture';
-								$location = upload_file("uploads",$media_type,$tmp,$image);
+									$image = $entry["name"][$i];
+									$tmp = $entry["tmp_name"][$i];
+									$id = generate_id();
+									$media_type = 'picture';
+									$location = upload_file("uploads",$media_type,$tmp,$image);
 
-								upload_curator_media_ctrl($id,$curator_id,$location,$media_type);
-								link_campaign_media_ctrl($camp_id,$id);
+									upload_curator_media_ctrl($id,$curator_id,$location,$media_type);
+									link_campaign_media_ctrl($camp_id,$id);
+								}
 							}
 
 							$curator_name = get_curator_by_id($curator_id)["curator_name"];
@@ -82,8 +86,11 @@
 					$country = $_POST["country"];
 					$activities =$_POST["activities"];
 					$site_id = generate_id();
+					$phone = $_POST["phone"];
+					$contact = $_POST["contact"];
+					$cordinates = $_POST["cordinates"] ?? "0.0";
 					//TODO:: check if location name exists,
-					add_destination($site_id,$name,$desc,$location,$country);
+					add_destination($site_id,$name,$desc,$location,$country, $phone,$contact,$cordinates);
 
 					// Adding activities for the tour site
 					foreach ($activities as $name){

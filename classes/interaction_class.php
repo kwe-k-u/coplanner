@@ -103,10 +103,11 @@
 		}
 
 		function get_destination_by_campaign($id){
-			$sql = "SELECT destinations.* from destinations
-			join destination_activity on destination_activity.destination_id = destinations.destination_id
-			join campaign_activities on destination_activity.activity_id = campaign_activities.activity_id
-			WHERE campaign_activities.campaign_id = ? ";
+			$sql = "SELECT d.* from destinations as d
+			inner join campaign_activities as ca on ca.destination_id = d.destination_id
+			inner join destination_activity as da on da.activity_id = ca.activity_id
+			WHERE ca.campaign_id = ?
+			group by d.destination_name ";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_all();

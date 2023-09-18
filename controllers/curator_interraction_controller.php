@@ -158,10 +158,12 @@
 		return $class->get_campaign_image($campaign_id);
 	}
 
-	function get_campaign_by_id($c_id){
-		$class = new interaction_class();
-		return $class->get_campaign_by_id($c_id);
-	}
+	// if(!function_exists('get_campaign_by_id')){
+	// 	function get_campaign_by_id($c_id){
+	// 		$class = new interaction_class();
+	// 		return $class->get_campaign_by_id($c_id);
+	// 	}
+	// }
 
 	function count_trip_booking($tour_id){
 		$class = new curator_interaction_class();
@@ -169,9 +171,11 @@
 	}
 
 
-	function get_campaign_tours($campaign_id){
-		$class = new interaction_class();
-		return $class->get_campaign_tours($campaign_id);
+	if(!function_exists('get_campaign_tours')){
+		function get_campaign_tours($campaign_id){
+			$class = new interaction_class();
+			return $class->get_campaign_tours($campaign_id);
+		}
 	}
 
 	function get_trip_bookings($tour_id){

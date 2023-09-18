@@ -24,7 +24,7 @@ if (session_status() == PHP_SESSION_NONE){
 
 
 	/*** RATES */
-	CONST TOURISM_LEVY = 0.01;
+	CONST TOURISM_LEVY = 0.0;
 	const VAT_RATE = 0;
 	const DOLLAR_RATE =11.5;
 

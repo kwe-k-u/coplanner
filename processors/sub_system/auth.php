@@ -2,6 +2,7 @@
 
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
+	require_once(__DIR__. "/../../controllers/interaction_controller.php");
 	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/core.php");
 	require_once(__DIR__."/../../utils/env_manager.php");
@@ -44,6 +45,16 @@
 									die();
 								// Block access if curator has not verified their email
 							}else if ($result["email_verified"] == 0){
+								$verification = get_email_verification_by_email($email);
+								if(!$verification){
+									$token = generate_id();
+									create_email_verification_token($token,$result["user_id"]);
+								}else{
+									$token = $verification["token"];
+								}
+								$mailer = new mailer();
+								$mailer->email_verification($email,$token);
+								// if theres no email verification, create one and send that
 								send_json(
 									array(
 										"msg" => "You need to verify your email to proceed."
@@ -291,7 +302,8 @@
 						send_json(array("msg"=> "Check your email for the link to reset your password"));
 						$mailer->password_reset($email,$token);
 					}else {
-						send_json(array("msg"=> "Something went wrong. Try again soon or contact support at main.easygo@gmail.com"));
+						send_json(array("msg"=> "You may not have an account with us! Kindly contact support at main.easygo@gmail.com if you believe there' a problem"));
+						// send_json(array("msg"=> "Something went wrong. Try again soon or contact support at main.easygo@gmail.com"));
 					}
 					die();
 				case "change_password":
@@ -314,7 +326,7 @@
 							$mailer->password_reset_confirmation($email);
 							send_json(array("msg"=>"Password change successful. Login with your new password"));
 						}else {
-							send_json(array("msg"=>"Password change failed."));
+							send_json(array("msg"=>"Password change failed."),100);
 						}
 					}else {
 						send_json(array("msg"=>"The token has expired. Request a new token to be sent"));
@@ -346,7 +358,7 @@
 					$mailer = new mailer();
 
 					$user = get_user_by_email($email);
-					if ($user){//user exists
+					if ($user && $user["role"] != 'admin'){//user exists
 						$is_collaborator = is_user_a_collaborator($user["user_id"]);
 						if($is_collaborator){
 							//send error saying user is a collaborator
@@ -363,10 +375,12 @@
 						$hash = encrypt($email.$curator_id);
 						$mailer->curator_invite($email,$hash,$date,$curator_name);
 						$user_id = get_session_user_id();
-						$user = get_user_by_id($user_id);
-						$user_name = $user["user_name"];
-						$user_email = $user["email"];
-						notify_curator_invite($curator_name,$email,$user_name,$user_email);
+						if ($user_id){
+							$user = get_user_by_id($user_id);
+							$user_name = $user["user_name"];
+							$user_email = $user["email"];
+							notify_curator_invite($curator_name,$email,$user_name,$user_email);
+						}
 						send_json(array("msg"=>"Invite sent to <$email>"));
 
 					die();
@@ -390,10 +404,19 @@
 				case "resend_email_verification":
 					$user_id = $_POST["user_id"];
 
-					// $mailer = new mailer();
-					// $mailer->email_verification($email,$token);
-					// TODO:: send verification email
-					send_json(array("msg"=>"Pending implementation"));
+					$user = get_user_by_id($user_id);
+					$email = $user["email"];
+
+					$verification = get_email_verification_by_email($email);
+					if(!$verification){
+						$token = generate_id();
+						create_email_verification_token($token,$user_id);
+					}else{
+						$token = $verification["token"];
+					}
+					$mailer = new mailer();
+					$mailer->email_verification($email,$token);
+					send_json(array("msg"=> "Sent verification email to $email"));
 					die();
 				default:
 					send_json(array("msg"=>"No implementation for <". $_POST["action"] .">"));

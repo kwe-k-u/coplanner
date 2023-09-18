@@ -90,9 +90,11 @@
 	}
 
 
-	function get_campaign_tours($campaign_id){
-		$inte = new interaction_class();
-		return $inte->get_campaign_tours($campaign_id);
+	if(!function_exists('get_campaign_tours')){
+		function get_campaign_tours($campaign_id){
+			$inte = new interaction_class();
+			return $inte->get_campaign_tours($campaign_id);
+		}
 	}
 
 	function get_campaign_next_trip($id){

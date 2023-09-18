@@ -69,6 +69,15 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_email_verification_by_email($email){
+			$sql = "SELECT ev.* FROM `email_verification` as ev
+			inner join users as u on u.user_id = ev.user_id
+			where u.email = ?";
+			$this->prepare($sql);
+			$this->bind($email);
+			return $this->db_fetch_one();
+		}
+
 		function get_user_by_email($email){
 			$sql = "SELECT * FROM `users` WHERE `email` = ?";
 			// return $this->db_fetch_one($sql);
@@ -316,6 +325,14 @@
 			$this->bind($user_id,$curator_id);
 			return $this->db_query();
 			// return $this->db_query($sql);
+		}
+
+		function remove_email_token($token){
+			$sql = "DELETE FROM `email_verification`
+			WHERE token = ?";
+			$this->prepare($sql);
+			$this->bind($token);
+			return $this->db_query();
 		}
 	}
 ?>

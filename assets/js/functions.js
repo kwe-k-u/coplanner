@@ -1,4 +1,42 @@
+//error catcher for all pages
 
+function logError(event){
+	// event.preventDefault();
+	  message = event.message
+	  line = event.lineno;
+	  error_stack = event.error.stack
+	  page = window.location.href;
+	  js_file = event.filename;
+
+	  col_num = event.colno;
+
+	  send_request(
+		  "POST",
+		  "processors/processor.php/log_error",
+	   {
+		  "message":message,
+			"line":line,
+		"page":page,
+		  "type" : "js",
+		  "js_file":js_file,
+		   "error_stack":error_stack,
+		   "col_num":col_num
+	  },
+	  (response)=>{
+	  console.log(response);
+	  });
+  }
+
+  $(document).ready(function () {
+	;//   // -- Adding Listeners -- //
+	//   // utility listeners
+	//   alert("ready");
+	  window.addEventListener("error", function(event){
+		event.preventDefault();
+		logError(event);
+	  }
+		);
+  });
 
 //checks the get get parameters in the url for a matching key;
 function url_params(key){
@@ -225,6 +263,7 @@ function login(form){
 			//check redirect
 			if (url_params("redirect")){
 				url = url_params("redirect");
+				//TODO:: redirect doesn't include the value of its GET parameters
 
 			}
 
@@ -250,7 +289,7 @@ function request_password_reset(form){
 	send_request("POST","processors/processor.php",
 	payload,
 	(response) =>{
-		alert(response);
+		alert(response.data.msg);
 	}
 	);
 }
@@ -276,7 +315,7 @@ function reset_password(form){
 		"processors/processor.php",
 		payload,
 		(response)=>{
-			alert(response);
+			alert(response.data.msg);
 		}
 	)
 }

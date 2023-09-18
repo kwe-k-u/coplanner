@@ -55,9 +55,10 @@ function change_password_signed_in(form){
 	 (response)=>{
 		alert(response);
 		var json = response;
-		if(json["status"]==100){
+		if(json["status"]!= 200){
 			event.preventDefault();
+		}else{
+			alert(json.data.msg)
 		}
-		alert(json)
 	});
 }

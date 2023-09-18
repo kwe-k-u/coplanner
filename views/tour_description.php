@@ -171,7 +171,6 @@
                         ";
                             //TODO:: show other dates
                         }
-                        //TODO:: add option to book campaign as a private tour
                     ?>
 
                     <div class='tab-content' id="myTabContent">
@@ -198,7 +197,7 @@
 
                             </div>
                             <!--- gallery [start] -->
-                            <div class='my-5'>
+                            <!-- <div class='my-5'>
                                 <div class='container'>
                                     <h1>Destination Gallery</h1>
                                     <div class='grid-2'>
@@ -222,7 +221,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!--- gallery [end] -->
                             <!--- ================================ -->
                         </div>
@@ -553,19 +552,19 @@
                         </p>
                     </div>
                     <div class='row mb-5 mt-4'>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'> 4th November</span>
-                        </div>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/crescent_black.svg' alt='crescent'> Duration: 6hrs</span>
-                        </div>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Language: English</span>
-                        </div>
-                        <div class='col-6 py-2'>
-                            <span class='easygo-fs-4'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Start Time: 11am</span>
-
-                        </div>
+                        <?php
+                            echo "
+                            <div class='col-12 py-2'>
+                                <span class='easygo-fs-4'><img src='../assets/images/svgs/calendar_black.svg' alt='calendar'>$start - $end</span>
+                            </div>
+                            <div class='col-12 py-2'>
+                                <span class='easygo-fs-4'><img src='../assets/images/svgs/globe_black.svg' alt='globe'> Pickup: $pickup_location</span>
+                            </div>
+                            <div class='col-6 py-2'>
+                                <span class='easygo-fs-4'><img src='../assets/images/svgs/clock_black.svg' alt='clock'> Start Time: $pickup_time</span>
+                            </div>
+                            ";
+                        ?>
                     </div>
                     <div class='accordion accordion-flush' id='trip-info-accordion'>
                         <div class='accordion-item'>
@@ -590,7 +589,7 @@
                         <div class='accordion-item'>
                             <h2 class='accordion-header' id='itineries-heading'>
                                 <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#itineries-collapse' aria-expanded='false' aria-controls='itineries-collapse'>
-                                    Itinery
+                                    Itinerary
                                 </button>
                             </h2>
                             <div id='itineries-collapse' class='accordion-collapse collapse' aria-labelledby='itineries-heading' data-bs-parent='#trip-info-accordion'>
@@ -663,6 +662,7 @@
                                                 </div>
                                             </div>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -675,7 +675,7 @@
                             <div id='activities-collapse' class='accordion-collapse collapse' aria-labelledby='activities-header' data-bs-parent='#trip-info-accordion'>
                                 <div class='accordion-body'>
                                     <div>
-                                        <h3 class='ps-2'>Activities included in trip:</h3>
+                                        <h3 class='ps-2'>Activities on this tour:</h3>
                                         <ul class='easygo-list-2'>
                                             <?php
                                                 foreach ($activities as $entry) {
@@ -688,7 +688,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class='accordion-item'>
+                        <div class='accordion-item d-none'>
                             <h2 class='accordion-header' id='reviews-header'>
                                 <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#reviews-collapse' aria-expanded='false' aria-controls='reviews-collapse'>
                                     Reviews
@@ -887,7 +887,7 @@
                     </div>
                     <!--- ================================ -->
                     <!--- gallery [start] -->
-                    <div class="my-5">
+                    <!-- <div class="my-5">
                         <div class="container">
                             <h1 class="easygo-fs-2">Destination Gallery</h1>
                             <div class="grid-2">
@@ -911,7 +911,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!--- gallery [end] -->
                     <!--- ================================ -->
                 </div>
@@ -942,7 +942,9 @@
                         </div>";
                             }
                         }
-                        if($start < date("Y-m-d")){
+
+
+                        if($next["start_date"] < date("Y-m-d")){
                             echo "<h4>You can't join this tour but you can request it as a private tour <a href='dashboard/private_tour.php'>here</a></h4>";
                         }else {
 

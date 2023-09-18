@@ -287,7 +287,7 @@ if (!is_session_logged_in()) {
                                             </div>
                                             <div class='inner-item'>$transaction_id</div>
                                             <div class='inner-item'>$date_booked</div>
-                                            <div class='inner-item'>$user_name</div>
+                                            <div class='inner-item'>$name</div>
                                             <div class='inner-item text-success'>$currency $transaction_amount</div>
                                             <div class='inner-item text-danger'>$currency $tax</div>
                                             <div class='inner-item text-danger'>$currency $charge</div>

@@ -1,38 +1,13 @@
-//error catcher for all pages
-
-function logError(event){
-
-	message = event.message
-	line = event.lineno;
-	error_stack = event.error.stack
-	page = window.location.href;
-	js_file = event.filename;
-
-	col_num = event.colno;
-
-	send_request(
-		"POST",
-		"processors/processor.php/log_error",
-	 {
-		"message":message,
-	  	"line":line,
-      "page":page,
-		"type" : "js",
-		"js_file":js_file,
-		 "error_stack":error_stack,
-		 "col_num":col_num
-	},
-	(response)=>{
-	});
-}
 
 
 /*************** GLOBAL VARIABLES ****************/
 /*************** SELECTORS ****************/
+
+
 $(document).ready(function () {
-  // -- Adding Listeners -- //
-  // utility listeners
-  window.addEventListener("error", logError)
+// -- Adding Listeners -- //
+// utility listeners
+
   $(".slide-down-btn").click(toggleSlideMenu);
   $(".dashlogo").click(open_curator_dashboard);
   $(".toggle-password-show").click(togglePasswordShow); // password toggle

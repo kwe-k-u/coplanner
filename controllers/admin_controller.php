@@ -43,9 +43,9 @@
 		return $data;
 	}
 
-	function get_curator_by_id($id){
+	function get_curator($id){
 		$admin = new admin();
-		return $admin->get_curator_by_id($id);
+		return $admin->get_curator($id);
 	}
 
 
@@ -81,6 +81,16 @@
 		$admin = new admin();
 		$cord_array = explode(",",$cord); //0-> longitude, 1->latitude
 		return $admin->add_destination($id,$name,$desc,$loc,$country,$phone,$contact,$cord_array[0],$cord_array[1]);
+	}
+
+	function get_curator_by_name($name){
+		$admin = new admin();
+		return $admin->get_curator_by_name($name);
+	}
+
+	function add_curator($curator_id,$curator_name,$country){
+		$admin = new admin();
+		return $admin->add_curator($curator_id,$curator_name,$country);
 	}
 
 	function add_destination_activity($des_id,$activity,$fee = 0){

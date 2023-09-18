@@ -80,6 +80,7 @@
 
 			if($user_id){
 				$this->bind($user_id);
+				return $this->db_fetch_one();
 			}
 
 			return $this->db_fetch_all();
@@ -103,6 +104,20 @@
 			$this->prepare($sql);
 			$this->bind($curator_id);
 			return $this->db_fetch_all();
+		}
+
+		function get_curator_by_name($name){
+			$sql = "SELECT * FROM curators where curator_name = ?";
+			$this->prepare($sql);
+			$this->bind($name);
+			return $this->db_fetch_one();
+		}
+
+		function add_curator($id,$name,$country){
+			$sql = "INSERT INTO curators (`curator_id`, `curator_name`, `country`) values (?,?,?)";
+			$this->prepare($sql);
+			$this->bind($id,$name,$country);
+			return $this->db_query();
 		}
 
 
@@ -188,7 +203,7 @@
 			return $this->db_fetch_one();
 		}
 
-		function get_curator_by_id($id){
+		function get_curator($id){
 			$sql = "SELECT * FROM curators where curator_id = ?";
 			$this->prepare($sql);
 			$this->bind($id);

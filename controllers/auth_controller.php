@@ -40,14 +40,22 @@
 		return $auth->get_user_by_email($email);
 	}
 
+	// verify and delete email token
 	function verify_user_email($token){
 		$auth = new auth_class();
-		return $auth->verify_user_email($token);
+		$success = $auth->verify_user_email($token);
+		$success = $success && $auth->remove_email_token($token);
+		return $success;
 	}
 
 	function check_email_verification_token($token){
 		$auth = new auth_class();
 		return $auth->check_email_verification_token($token) != null;
+	}
+
+	function get_email_verification_by_email($email){
+		$auth = new auth_class();
+		return $auth->get_email_verification_by_email($email);
 	}
 
 
@@ -64,8 +72,11 @@
 			$token = $token["token"];
 		}else{
 			$token = generate_id();
-			$user = $auth->get_user_by_email($email)["user_id"];
-			$auth->create_password_reset_token($token,$user);
+			$user = $auth->get_user_by_email($email);
+			if(!$user){
+				return false;
+			}
+			$auth->create_password_reset_token($token,$user["user_id"]);
 		}
 		return $token;
 	}
@@ -89,10 +100,10 @@
 	}
 
 
-	function get_curator_collaborators($curator_id){
-		$auth = new auth_class();
-		return $auth->get_curator_collaborators($curator_id);
-	}
+	// function get_curator_collaborators($curator_id){
+	// 	$auth = new auth_class();
+	// 	return $auth->get_curator_collaborators($curator_id);
+	// }
 
 	function get_curator_invite_by_email($email){
 		$auth = new auth_class();

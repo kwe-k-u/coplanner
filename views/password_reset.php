@@ -7,7 +7,7 @@
 
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easyGo - User Request Password Reset</title>
+    <title>easyGo - Request Password Reset</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -37,6 +37,7 @@
                 </div>
                 <div class="input-field button-container m-0">
                     <button class="easygo-btn-3 easygo-rounded-2" type="submit">Send reset link</button>
+                    <p class="easygo-fs-5 text-center mt-4">I remember my password! <a href="./login.php" class="easygo-fs-5 easygo-fw-3">Log me in</a></p>
                 </div>
             </form>
         </div>

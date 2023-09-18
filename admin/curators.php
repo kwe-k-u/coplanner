@@ -20,7 +20,8 @@ if (!is_session_logged_in()) {
 <head>
     <meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curators</title>
     <!-- Bootstrap css -->
@@ -61,6 +62,18 @@ if (!is_session_logged_in()) {
                                     <input class="p-2" type="text" placeholder="search">
                                 </div>
                             </form>
+                        </div>
+                        <div class="right-controls d-flex gap-2 easygo-fs-5">
+                            <!-- <div class="dropdown">
+                                <button class="btn border dropdown-toggle px-5 easygo-fs-5 h-100" type="button" id="export-menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Export
+                                </button>
+                                <ul class="dropdown-menu easygo-fs-5" aria-labelledby="export-menu">
+                                    <li><a class="dropdown-item" href="#">PDF</a></li>
+                                    <li><a class="dropdown-item" href="#">Excel</a></li>
+                                </ul>
+                            </div> -->
+                            <button class="btn border easygo-fs-4 py-1 px-3" data-bs-toggle='modal' data-bs-target='#create-collaborator-modal'>Add Curator</button>
                         </div>
                     </div>
                     <div class="trip-listing">
@@ -109,7 +122,7 @@ if (!is_session_logged_in()) {
                                         $m_id = $manager["user_id"];
                                         $m_name = $manager["user_name"];
                                         $m_role = $manager["role"];
-                                        $managers_section .="
+                                        $managers_section .= "
                                         <div class='list-item'>
                                             <div class='inner-item'>$m_name</div>
                                             <div class='inner-item'>$m_email</div>
@@ -154,7 +167,6 @@ if (!is_session_logged_in()) {
                                     </div>
                                 </div>
                                     ";
-
                                 }
                             }
                             ?>
@@ -190,51 +202,127 @@ if (!is_session_logged_in()) {
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/admin/curators.js"></script>
 
-            <!-- ============================== -->
-            <!-- Curator invite modal [start] -->
-            <div class="modal fade" id="invite-collaborator-modal">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content p-5">
-                        <div class="col">
-                            <div>
-                                <div style='overflow-x: auto;'>
+    <!-- ============================== -->
+    <!-- Curator invite modal [start] -->
+    <div class="modal fade" id="invite-collaborator-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content p-5">
+                <div class="col">
+                    <div>
+                        <div style='overflow-x: auto;'>
+                        </div>
+                        <h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
+                        <small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
+                        <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+                        <form onsubmit='invite_collaborator(this)'>
+                            <input type="hidden" name="curator_id" id="invite_modal_curator_id">
+                            <div class="col-lg-7 d-flex flex-column gap-4">
+                                <div class="form-input-field">
+                                    <div class="text-gray-1 easygo-fs-4">Collaborator Email</div>
+                                    <input type="email" name="email" placeholder="example@easygo.com">
                                 </div>
-                                <h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
-                                <small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
-                                <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-                                <form onsubmit='invite_collaborator(this)'>
-                                <input type="hidden" name="curator_id" id="invite_modal_curator_id">
-                                    <div class="col-lg-7 d-flex flex-column gap-4">
+                            </div>
+
+
+                            <div class="col-lg-7 d-flex flex-column gap-4">
+                                <div class="form-input-field">
+                                    <div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
+
+                                    <select name="collaborator_role">
+                                        <option value="admin">Admin</option>
+                                        <option value="edit">Edit</option>
+                                        <option value="view">View</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Invite_collaborator_modal modal [end] -->
+        <!-- ============================== -->
+    </div>
+
+    <!-- Curator invite modal [end] -->
+    <!-- ============================== -->
+
+    <!-- ============================== -->
+    <!-- Create curator modal [start] -->
+    <div class="modal fade" id="create-collaborator-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content p-5">
+                <div class="col">
+                    <div>
+                        <div style='overflow-x: auto;'>
+                        </div>
+                        <h6 class="easygo-fw-1 m-0">Create curator account</h6>
+                        <small class="text-gray-1 easygo-fs-6">(Add a curator to the platform)</small>
+                        <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+                        <form onsubmit='create_curator(this)'>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="col-lg-12 d-flex flex-column gap-4">
                                         <div class="form-input-field">
-                                            <div class="text-gray-1 easygo-fs-4">Collaborator Email</div>
-                                            <input type="email" name="email" placeholder="example@easygo.com">
+                                            <div class="text-gray-1 easygo-fs-4">Curator name</div>
+                                            <input type="text" name="curator_name" placeholder="easyGo Tours Ltd">
                                         </div>
                                     </div>
 
 
-                                    <div class="col-lg-7 d-flex flex-column gap-4">
+                                    <div class="col-lg-12 d-flex flex-column gap-4">
                                         <div class="form-input-field">
-                                            <div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
+                                            <div class="text-gray-1 easygo-fs-4">Country</div>
 
-                                            <select name="collaborator_role">
+                                            <select name="country">
+                                                <option value="admin">Ghana</option>
+                                                <option value="view">Nigeria</option>
+                                                <option value="edit">Zanzibar</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="col-lg-12 d-flex flex-column gap-4">
+                                        <div class="form-input-field">
+                                            <div class="text-gray-1 easygo-fs-4">Manager Email</div>
+                                            <input type="email" name="email" placeholder="main.easygo@gmail.com">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-12 d-flex flex-column gap-4">
+                                        <div class="form-input-field">
+                                            <div class="text-gray-1 easygo-fs-4">Role</div>
+
+                                            <select name="privilege">
                                                 <option value="admin">Admin</option>
                                                 <option value="edit">Edit</option>
                                                 <option value="view">View</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
-                                        <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                            <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Create account</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- Invite_collaborator_modal modal [end] -->
-                <!-- ============================== -->
             </div>
+        </div>
+        <!-- Invite_collaborator_modal modal [end] -->
+        <!-- ============================== -->
+    </div>
+
+    <!-- Create curator modal [end] -->
+    <!-- ============================== -->
 </body>
 
 </html>

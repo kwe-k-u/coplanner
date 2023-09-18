@@ -1,11 +1,10 @@
 <?php
 	require_once(__DIR__."/../utils/core.php");
 	require_once(__DIR__."/../controllers/admin_controller.php");
+	require_once(__DIR__."/../utils/http_handler.php");
 
 
 
-	// var_dump($_SERVER["PATH_INFO"]);
-	// die();
 	switch($_SERVER["PATH_INFO"]){
 		case "/get_location_info":
 			$id = $_GET["id"];
@@ -159,7 +158,7 @@
 			die();
 		case "/verify_curator_account":
 			$curator_id = $_POST["curator_id"];
-			$action = !(get_curator_by_id($curator_id)["is_verified"] == 1);
+			$action = !(get_curator($curator_id)["is_verified"] == 1);
 
 			$success = verify_curator_account($curator_id,$action);
 			if($success){
@@ -192,6 +191,31 @@
 				send_json(array("msg" => "Media update successful"));
 			}else {
 				send_json(array("msg" => "something went wrong"),201);
+			}
+			die();
+		case "/add_curator":
+			$curator_id = generate_id();
+			$curator_name = $_POST["name"];
+			$country = $_POST["country"];
+			$email = $_POST["email"];
+			$privilege = $_POST["privilege"];
+
+			if(get_curator_by_name($curator_name)){
+				send_json(array("msg"=> "A curator exists with that name"));
+			}else{
+				add_curator($curator_id,$curator_name,$country);
+				$http = new http_handler();
+				$response = $http->post(server_base_url()."/processors/processor.php",
+				array(
+					"action"=>"invite_curator_collaborator",
+					"email" => "$email",
+					"curator_id" => "$curator_id",
+					"privilege" => "$privilege"
+			));
+			send_json(
+				array("msg"=>"curator_invite",
+				"invite_response"=> $response)
+			);
 			}
 			die();
 		default:

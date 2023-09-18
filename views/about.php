@@ -172,6 +172,9 @@
             <!--- milestones [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
+            <?php
+                if (false){
+            ?>
             <!--- our team [start] -->
             <section class="mb-5 out-team" id="team" style="margin-top: 7rem;">
                 <div class="container">
@@ -211,6 +214,9 @@
             <!--- our team [end] -->
             <!--- ================================ -->
             <!--- News letter section [start] -->
+            <?php
+                }
+            ?>
             <section class="nl-subscribe my-5">
                 <div class="container">
                     <form class="nl-subscription-form py-5">

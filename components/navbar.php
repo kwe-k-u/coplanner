@@ -89,7 +89,7 @@
                     <a class="nav-link text-blue py-2 px-2 d-flex justify-content-between align-items-center" href="./home.php">Home <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <li class="s-nav-item  border-top">
-                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./tours.php">Trips <i class="fa-solid fa-angle-right"></i></a>
+                    <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./tours.php">Tours <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <!-- <li class="s-nav-item border-top">
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="https://easygo.substack.com/" target="_blank">Blog <i class="fa-solid fa-angle-right"></i></a>
