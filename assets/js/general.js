@@ -1,12 +1,9 @@
-
-
 /*************** GLOBAL VARIABLES ****************/
 /*************** SELECTORS ****************/
 
-
 $(document).ready(function () {
-// -- Adding Listeners -- //
-// utility listeners
+  // -- Adding Listeners -- //
+  // utility listeners
 
   $(".slide-down-btn").click(toggleSlideMenu);
   $(".dashlogo").click(open_curator_dashboard);
@@ -58,47 +55,49 @@ $(document).ready(function () {
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
   $(".profile_img-file").change(updateProfileImgDisp);
 
-  function nav_check(){
+  function nav_check() {
     var nav = document.getElementById("mynavbar");
-    if(nav != undefined){
+    if (nav != undefined) {
       const nav_page = window.location.pathname;
-      if(nav_page.includes("home.php")){
-        nav.getElementsByClassName("nav-link")[0].classList.add('text-blue');
-      } else if (nav_page.includes("tours.php")){
-        nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
-      } else if (nav_page.includes("tour_description.php")){
-        nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
-      } else if (nav_page.includes("book_tour.php")){
-        nav.getElementsByClassName("nav-link")[1].classList.add('text-blue');
-      } else if (nav_page.includes("about.php")){
-        nav.getElementsByClassName("nav-link")[3].classList.add('text-blue');
-      }else if (nav_page.includes("contact.php")){
-        nav.getElementsByClassName("nav-link")[4].classList.add('text-blue');
-      }else {
-        nav.getElementsByClassName("nav-link")[0].classList.add('text-blue');
+      if (nav_page.includes("home.php")) {
+        nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
+      } else if (nav_page.includes("tours.php")) {
+        nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
+      } else if (nav_page.includes("tour_description.php")) {
+        nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
+      } else if (nav_page.includes("book_tour.php")) {
+        nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
+      } else if (nav_page.includes("about.php")) {
+        nav.getElementsByClassName("nav-link")[3].classList.add("text-blue");
+      } else if (nav_page.includes("contact.php")) {
+        nav.getElementsByClassName("nav-link")[4].classList.add("text-blue");
+      } else {
+        nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
       }
     }
   }
 
-  function sidebar_check(){
+  function sidebar_check() {
     const select_style = "border-right: solid 2px var(--easygo-blue);";
     var side = document.getElementById("curator_side_bar");
-    if (side != undefined){
+    if (side != undefined) {
       const page = window.location.pathname;
-      if (page.includes("group_tours.php") || page.includes("private_tours.php")){
+      if (
+        page.includes("group_tours.php") ||
+        page.includes("private_tours.php")
+      ) {
         document.getElementById("nav_trips").classList.toggle("text-blue");
         document.getElementById("nav_trips").style = select_style;
         // document.getElementById("nav_trips").classList.toggle("open");
-      }else if (page.includes("transactions.php")){
+      } else if (page.includes("transactions.php")) {
         document.getElementById("nav_finance").classList.toggle("text-blue");
         document.getElementById("nav_finance").style = select_style;
-      }else if (page.includes("account_settings.php")){
+      } else if (page.includes("account_settings.php")) {
         document.getElementById("nav_account").classList.toggle("text-blue");
         document.getElementById("nav_account").style = select_style;
-      }else {
+      } else {
         document.getElementById("nav_dash").classList.toggle("text-blue");
         document.getElementById("nav_dash").style = select_style;
-
       }
     }
   }
@@ -355,26 +354,24 @@ function changeToDate() {
 }
 
 //to change time fields form type "text" to type "time"
-function changeToTime(){
-  $(this).attr("type","time");
+function changeToTime() {
+  $(this).attr("type", "time");
 }
 
 //Changes date string and time string to sql datetime compatible string
-function changeToDateTimestr(date,timestr){
+function changeToDateTimestr(date, timestr) {
   time = timestr.split(" ")[0];
   period = timestr.split(" ")[1];
   hrs = time.split(":")[0];
   mins = time.split(":")[1];
-  if(period.toLowerCase() === "pm" && hrs !== "12"){
-    hrs = String(Number(hrs)+12);
-  }else if (period.toLowerCase()=== "am" && hrs === "12"){
+  if (period.toLowerCase() === "pm" && hrs !== "12") {
+    hrs = String(Number(hrs) + 12);
+  } else if (period.toLowerCase() === "am" && hrs === "12") {
     hrs = "00";
   }
-  res = `${date} ${hrs.padStart(2,'0')}:${mins.padStart(2,"0")}:00`;
+  res = `${date} ${hrs.padStart(2, "0")}:${mins.padStart(2, "0")}:00`;
   return res;
 }
-
-
 
 // to change type back to "text"
 function changeToText() {
@@ -447,46 +444,44 @@ function disableInputs() {
   $(`${targets}`).prop("disabled", true);
 }
 
-
-
 //Returns the value of the option selected in the custom select dropdown
-function get_dropdown_value(dropdown_id){
+function get_dropdown_value(dropdown_id) {
   var element = document.getElementById(dropdown_id);
-  return element.href.split("#")[1]
+  return element.href.split("#")[1];
 }
 
 //Updates the custom dropdown value with the value of selected option
-function on_option_select(id,value){
-	var selected = document.getElementById(id);
+function on_option_select(id, value) {
+  var selected = document.getElementById(id);
   selected.innerText = value;
-	selected.href="#"+value;
+  selected.href = "#" + value;
 }
 
 //Shows a loader animation for 5 seconds
-function show_loader(hide_element = null, time=5000){
-	var fn = e => {e.preventDefault(); e.stopPropagation();};
+function show_loader(hide_element = null, time = 5000) {
+  var fn = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
-  if (hide_element != null){
+  if (hide_element != null) {
     hide_element.classList.toggle("hide");
     hide_element.classList.toggle("animate-bottom");
   }
-	document.getElementsByClassName("loader")[0].style.display= "inline";
-	document.addEventListener("click", fn, true);
-	var load_var = setTimeout(()=> {
-    if (hide_element != null){
+  document.getElementsByClassName("loader")[0].style.display = "inline";
+  document.addEventListener("click", fn, true);
+  var load_var = setTimeout(() => {
+    if (hide_element != null) {
       hide_element.classList.toggle("hide");
     }
-		document.getElementsByClassName("loader")[0].style.display= "none";
-		document.removeEventListener("click", fn, true);
-		// document.getElementsByClassName("loader")[0].classList.toggle("hide");
-	}, time);
+    document.getElementsByClassName("loader")[0].style.display = "none";
+    document.removeEventListener("click", fn, true);
+    // document.getElementsByClassName("loader")[0].classList.toggle("hide");
+  }, time);
   return load_var;
 }
 
-
-
-
-function open_curator_dashboard(){
+function open_curator_dashboard() {
   window.location.href = "./dashboard.php";
 }
 
@@ -501,7 +496,8 @@ function openDialog(message) {
   // if already appended, change message to new message and display
   if (oldWindow) {
     oldWindow.classList.add("dialog-show");
-    oldWindow.querySelector(".dialog-window .error-message").textContent = message;
+    oldWindow.querySelector(".dialog-window .error-message").textContent =
+      message;
   } else {
     // creating the dialog window, since it hasn't been appended to
     // document body
@@ -535,9 +531,7 @@ function openDialog(message) {
 
     // adding event listener to button
     btn.addEventListener("click", (event) => {
-      document
-        .querySelector(".dialog-window")
-        .classList.remove("dialog-show");
+      document.querySelector(".dialog-window").classList.remove("dialog-show");
     });
 
     document.body.appendChild(dialogWindow);
@@ -549,7 +543,77 @@ function openDialog(message) {
 
 /**
  * function to toggle form input error message display
+ * @param {list} inputData objects in the form {type, value, message_target, err_message}
+ * where type is the input type eg. email, password etc
+ * value is the actual value of the input
+ * message_target is the element which should contain and display the error message.
+ * Corresponding input elements must have their data-eg-target set to this value
+ * err_message is the error message to display.
+ * @returns {boolean} true if inputs pass validation, false otherwise
  */
-// function toggleFormInputErrorDisplay(){
+function validateFormInputs(...inputData) {
+  let valid = true;
+  for (let inputItem of inputData) {
+    let msgContainer = document.getElementById(inputItem.message_target);
+    if(!msgContainer){
+      msgContainer = createErrorMessageContainer(inputItem.message_target);
+    }
+    if (!testInput(inputItem.type, inputItem.value)) {
+      // display error message
+      if (msgContainer) {
+        msgContainer.textContent = inputItem.message;
+        msgContainer.classList.add("form-input-err-show");
+      }
+      valid = false;
+    } else {
+      // remove error message if being displayed
+      msgContainer.classList.remove("form-input-err-show");
+    }
+  }
+  return valid;
+}
 
-// }
+/**
+ *
+ * @param {string} dataTarget new id of error container to create. Main purpose
+ * is to find the parent element of the input element in order to append the error
+ * container
+ * @returns {HTMLElement} the newly created html element
+ */
+function createErrorMessageContainer(dataTarget) {
+  if (dataTarget) {
+    const parent = document.querySelector(
+      `[data-eg-target=${dataTarget}]`
+    ).parentElement;
+    const errContainer = document.createElement("p");
+    errContainer.classList.add("form-err-msg");
+    errContainer.id = dataTarget;
+    parent.appendChild(errContainer);
+    return errContainer;
+  }
+}
+
+/**
+ * All regex for input testing
+ */
+const FORM_INPUT_REGEX = {
+  EMAIL: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/,
+  PASSWORD: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*#?&]).{8,}/,
+};
+
+/**
+ *
+ * @param {string} type the type of input to consider when testing value
+ * @param {string} value the value of the given input
+ * @returns {boolean} true if test passed else false
+ */
+function testInput(type, value) {
+  switch (type) {
+    case "email":
+      return FORM_INPUT_REGEX["EMAIL"].test(value);
+    case "password":
+      return FORM_INPUT_REGEX["PASSWORD"].test(value);
+    default:
+      return false;
+  }
+}

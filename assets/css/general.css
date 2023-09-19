@@ -482,7 +482,13 @@ input:disabled {
   font-size: 10px;
   color: var(--easygo-red);
   margin: 0;
+  display: none;
 }
+.form-input-err-show{
+  display: block;
+}
+
+
 
 /** logo sizes **/
 .logo-small {
