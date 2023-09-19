@@ -18,7 +18,8 @@ if (!is_session_logged_in()) {
 <head>
 	<meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin || Destinations</title>
 	<!-- Bootstrap css -->
@@ -48,9 +49,9 @@ if (!is_session_logged_in()) {
 
 				<div class="border-1 border-bottom py-2">
 					<div>
-						<button class="btn easygo-btn-1" onclick='add_location_toggle()'>Add location</button>
+						<button class="btn easygo-btn-1" onclick='add_location_toggle()'>Add Destination</button>
 					</div>
-					<p class="mt-4 mb-0">All Tour locations on the platform.</p>
+					<p class="mt-4 mb-0">All destinations on the platform.</p>
 					<!-- locations search bar [start]  -->
 					<div class="al-search">
 						<form onsubmit='on_location_search(this)'>
@@ -58,7 +59,7 @@ if (!is_session_logged_in()) {
 
 								<div class="form-input-field">
 									<input class="px-4 py-2 flex-grow-1" type="text" placeholder="Search" name="query">
-									<small class="easygo-fs-5"><span id="site_search_result_count">4</span> results found in <span class="text-gray-1">Ghana</span></small>
+									<small class="easygo-fs-5"><span id="site_search_result_count">4</span> results found<span class="text-gray-1"></span></small>
 								</div>
 								<div class="dropdown">
 									<a id="location_search_filter" href="#Name" class="btn btn-default border dropdown-toggle text-blue px-4 py-2" type="button" id="citymenu" data-bs-toggle="dropdown" aria-expanded="false">

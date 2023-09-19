@@ -2,6 +2,7 @@
 	require_once(__DIR__."/../utils/core.php");
 	require_once(__DIR__."/../controllers/admin_controller.php");
 	require_once(__DIR__."/../utils/http_handler.php");
+	require_once(__DIR__."/../utils/mailer/mailer_class.php");
 
 
 
@@ -217,6 +218,26 @@
 				"invite_response"=> $response)
 			);
 			}
+			die();
+		case "/send_email":
+			$is_group = $_POST["type"] == "group";
+			$subject = $_POST["subject"];
+			$message = $_POST["message"];
+			$recipient = $_POST["recipient"];
+
+			if($is_group){
+				// get group emails;
+				$recipient = get_emails_from_group($recipient);
+			}else{
+				$recipient = explode(",",$recipient);
+			}
+			foreach ($recipient as $email) {
+				$mailer = new mailer();
+				// if(get_user_by_email($email)){
+					$mailer->send_email($email,$subject,$message);
+				// }
+			}
+			send_json(array("msg"=> "Emails scheduled"));
 			die();
 		default:
 			echo "No action";

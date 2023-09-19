@@ -349,7 +349,9 @@ function add_subscriber(event){
 }
 
 function goto_page(url, isRelative = true){
-	event.preventDefault();
+	if(event){
+		event.preventDefault();
+	}
 	if (isRelative){
 		window.location.href = baseurl + url;
 	}else {

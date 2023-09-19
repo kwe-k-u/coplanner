@@ -61,10 +61,8 @@
                         <div class="carousel-indicators easygo-carousel-indicators">
                             <?php
                                 if(is_env_remote()){
-
                                     $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"]."/assets/images/carousel/*";
                                 }else{
-
                                     $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"]."/easygo_v2/assets/images/carousel/*";
                                 }
                                 $carousel = glob($dir);

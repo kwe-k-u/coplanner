@@ -65,6 +65,28 @@
 		}
 
 
+		function get_emails_from_group($group){
+			$sql = "SELECT u.email from users as u ";
+			switch($group){
+				case "admin":
+					$sql .=" inner join admin_users as am on am.user_id = u.user_id";
+					break;
+				case "tourist":
+					$sql .= " LEFT JOIN admin_users AS au ON u.user_id = au.user_id
+					LEFT JOIN curator_manager AS cm ON u.user_id = cm.user_id
+					WHERE au.user_id IS NULL AND cm.user_id IS NULL;";
+					break;
+				case "curator":
+					$sql .=" inner join curator_manager as cm on cm.user_id = u.user_id";
+					break;
+				default:
+					$sql .= "";
+			}
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+
 		function get_user_accounts($user_id){
 			$sql = "SELECT *,
 			(select login_date from login_log where user_id = users.user_id   ORDER BY `login_date` DESC limit 1  )as last_login,
