@@ -489,3 +489,67 @@ function show_loader(hide_element = null, time=5000){
 function open_curator_dashboard(){
   window.location.href = "./dashboard.php";
 }
+
+/**
+ * Function to open dialog box to display error message
+ * @param {string} message the message to display in the dialog box
+ */
+function openDialog(message) {
+  const oldWindow = document.querySelector(".dialog-window");
+
+  // checking if dialog box already appended to page body
+  // if already appended, change message to new message and display
+  if (oldWindow) {
+    oldWindow.classList.add("dialog-show");
+    oldWindow.querySelector(".dialog-window .error-message").textContent = message;
+  } else {
+    // creating the dialog window, since it hasn't been appended to
+    // document body
+    const dialogWindow = document.createElement("div");
+    dialogWindow.classList.add("dialog-window");
+    const dialogBox = document.createElement("div");
+    dialogBox.classList.add("dialog-box");
+    const exclamationSign = document.createElement("div");
+    exclamationSign.classList.add("exclamation-sign");
+    const exCircle = document.createElement("div");
+    exCircle.classList.add("circle");
+    const exSign = document.createElement("span");
+    exSign.textContent = "!";
+    const errorMessage = document.createElement("div");
+    errorMessage.classList.add("error-message");
+    errorMessage.textContent = message;
+    const footer = document.createElement("div");
+    footer.classList.add("footer");
+    const btn = document.createElement("button");
+    btn.textContent = "OK";
+    btn.classList.add("easygo-btn-1", "easygo-rounded-2");
+
+    // building tree for dialog window
+    dialogWindow.appendChild(dialogBox);
+    dialogBox.appendChild(exclamationSign);
+    dialogBox.appendChild(errorMessage);
+    dialogBox.appendChild(footer);
+    exclamationSign.appendChild(exCircle);
+    exCircle.appendChild(exSign);
+    footer.appendChild(btn);
+
+    // adding event listener to button
+    btn.addEventListener("click", (event) => {
+      document
+        .querySelector(".dialog-window")
+        .classList.remove("dialog-show");
+    });
+
+    document.body.appendChild(dialogWindow);
+
+    // to allow for animation when dialog window first added to the document body
+    setTimeout(() => dialogWindow.classList.add("dialog-show"), 1);
+  }
+}
+
+/**
+ * function to toggle form input error message display
+ */
+// function toggleFormInputErrorDisplay(){
+
+// }

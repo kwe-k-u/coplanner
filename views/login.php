@@ -44,12 +44,14 @@
                 </div>
                 <div class="input-field">
                     <input type="text" class="border-blue" name="email" placeholder="Email">
+                    <!-- <p class="form-err-msg">Invalid email address</p> -->
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
                         <input name="password" type="password" placeholder="Password" class="border-blue">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
+                    <!-- <p class="form-err-msg">Password must be at least 8 characters long</p> -->
                 </div>
 
                 <div class="d-flex justify-content-between">

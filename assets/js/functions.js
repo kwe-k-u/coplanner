@@ -270,7 +270,8 @@ function login(form){
 			window.location.href = url;
 
 		}else {
-			alert(json["msg"]);
+			openDialog(json["msg"]);
+			// alert(json["msg"]);
 		}
 	 }
 	);
