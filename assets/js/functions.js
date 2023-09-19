@@ -219,6 +219,8 @@ function login(form) {
 
   var email = form.email.value;
   var password = form.password.value;
+
+  // ** input validation code [start] **//
   let didPassValidation = validateFormInputs(
     {
       type: "email",
@@ -235,6 +237,7 @@ function login(form) {
   );
 
   if(!didPassValidation) return false;
+  // ** input validation code [end] **//
 
   let payload = {
     action: "login",
