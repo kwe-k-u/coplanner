@@ -61,6 +61,9 @@
 					<li>
 						<a href="media.php" id="nav_settings_media">Media management</a>
 					</li>
+					<li>
+						<a href="emails.php" id="nav_settings_emails">Emails</a>
+					</li>
 				</ul>
 			</div>
 		</li>

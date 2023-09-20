@@ -1,6 +1,6 @@
 <?php
 $id = get_session_user_id();
-$name = get_user_accounts($id)[0]["user_name"];
+$name = get_user_accounts($id)["user_name"];
 $role = $_SESSION["user_role"];
 
 ?>
