@@ -6,7 +6,7 @@
 
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easyGo - curator signup</title>
+    <title>easyGo - curator login</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -42,11 +42,11 @@ if(is_session_user_curator()){
                     <p class="instruction">Please enter your login credentials</p>
                 </div>
                 <div class="input-field">
-                    <input type="text" placeholder="Email" name="email">
+                    <input type="text" placeholder="Email" name="email" data-eg-target="email-err">
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input type="password" placeholder="Password" name="password">
+                        <input type="password" placeholder="Password" name="password" data-eg-target="password-err">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                     <div class="text-end">
