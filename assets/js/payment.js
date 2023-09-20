@@ -1,5 +1,16 @@
 
+$(document).ready( ()=>{
+	//listeners for number of persons change
+	// icon-plus and icon-minust
+	document.getElementById("adult_plus").addEventListener("click", display_invoice);
+	document.getElementById("adult_minus").addEventListener("click", display_invoice);
+	document.getElementById("kid_plus").addEventListener("click", display_invoice);
+	document.getElementById("kid_minus").addEventListener("click", display_invoice);
+});
 
+function test(){
+	alert("changed");
+}
 async function book_trip(form) {
 	event.preventDefault();
 	// var payment_method = form.payment_method.value;
@@ -110,7 +121,7 @@ function payWithPaystack(currency, charge_amount,c_email,payload){
 		handler.openIframe();
 }
 
-function display_invoice(fee,max_seats){
+function display_invoice(){
 	var seats = document.getElementById("seat_span");
 	var seat_price = document.getElementById("invoice_tour");
 	var discount = document.getElementById("invoice_discount");
@@ -120,9 +131,11 @@ function display_invoice(fee,max_seats){
 	var invoice_total = document.getElementById("invoice_total");
 
 
+	//input fields for the number of adults and children on the booking
 	var adult_field = document.getElementById("num-adults");
 	var kid_field = document.getElementById("num-kids");
 
+	//total number of seats user intends to book
 	var total = parseInt(adult_field.value) + parseInt(kid_field.value)
 
 	if(total > max_seats){
@@ -152,6 +165,11 @@ function display_invoice(fee,max_seats){
 	}else{
 		seats.innerText = total + " seat";
 	}
+
+	//update the maximum number of seats for each field
+	//formula: seats available(max-current sum) + number of section seats
+	kid_field.setAttribute("max", parseInt(kid_field.value) + (max_seats-total));
+	adult_field.setAttribute("max", parseInt(adult_field.value) + (max_seats-total));
 	invoice_subtotal.innerText = sub_total_charge;
 	// invoice_vat.innerText = vat_charge;
 	invoice_tourism.innerText = tourism_charge;
