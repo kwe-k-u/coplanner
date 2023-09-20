@@ -161,7 +161,7 @@ $logo = $info["curator_logo"];
 
                             $trip_list_display .="
 
-                            <div class='trip-card-2'>
+                            <div class='trip-card-2' style='min-width: 400px; max-width: 550px;'>
                             <div class='trip-card-img'>
                                 <img src='$img' alt='tour 3'>
                             </div>
@@ -185,9 +185,7 @@ $logo = $info["curator_logo"];
                         echo "<section class='upcoming-trips pt-5'>
                         <h5 class='easygo-fs-4 easygo-fw-1'>Upcoming Trips</h5>
                         <div class='d-flex gap-2 w-100' style='overflow-x: auto;'>
-                            <div class='col-lg-4 col-md-6 pb-4'>
                                 $trip_list_display
-                            </div>
                         </div>
                     </section>";
 
