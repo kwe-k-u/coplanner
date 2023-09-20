@@ -228,13 +228,13 @@ function login(form) {
       message_target: form.email.getAttribute("data-eg-target"),
       message: "Invalid Email Address",
     },
-    {
-      type: "password",
-      value: form.password.value,
-      message_target: form.password.getAttribute("data-eg-target"),
-      message:
-        "Password must contain at least one of an uppercase letter, a lowercase letter, a special character and a digit and must be at least 8 characters long",
-    }
+    // {
+    //   type: "password",
+    //   value: form.password.value,
+    //   message_target: form.password.getAttribute("data-eg-target"),
+    //   message:
+    //     "Password must contain at least one of an uppercase letter, a lowercase letter, a special character and a digit and must be at least 8 characters long",
+    // }
   );
 
   if (!didPassValidation) return false;
