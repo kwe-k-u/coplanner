@@ -361,5 +361,21 @@
 			$this->bind($tour_id);
 			return $this->db_fetch_all();
 		}
+
+		function get_curator_followers($curator_id){
+			$sql = "SELECT * FROM curator_alert_list as cal
+			inner join users as u on u.user_id = cal.user_id ";
+
+			if ($curator_id){
+				$sql.=" where cal.curator_id = ?";
+			}
+			$this->prepare($sql);
+
+			if($curator_id){
+				$this->bind($curator_id);
+			}
+
+			return $this->db_fetch_all();
+		}
 	}
 ?>

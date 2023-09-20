@@ -5,6 +5,7 @@
 	require_once(__DIR__. "/../../controllers/interaction_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
 	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
+	require_once(__DIR__."/../../utils/mailer/mailer_class.php");
 	require_once(__DIR__. "/../../utils/core.php");
 
 
@@ -71,7 +72,14 @@
 							$curator_name = get_curator_by_id($curator_id)["curator_name"];
 
 							notify_new_tour($curator_name,$title,$camp_id);
-						send_json(array("msg"=> "Tour created successful"));
+							//notify follows of uploaded tour
+							$curator_followers = get_curator_followers($curator_id);
+							send_json(array("msg"=> "Tour created successful"));
+							$mailer = new mailer();
+							foreach($curator_followers as $follower){
+								$email = $follower["email"];
+								$mailer->notify_curator_alert_list($email,$curator_name,$camp_id);
+							}
 
 					}else {
 						send_json(array("msg" => "Could not create tour"),100);
