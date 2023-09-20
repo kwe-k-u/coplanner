@@ -48,6 +48,16 @@
 		return $admin->get_curator($id);
 	}
 
+	function get_emails_from_group($group){
+		$admin = new admin();
+		$result = array();
+		$data = $admin->get_emails_from_group($group);
+		foreach ($data as $entry) {
+			array_push($result,$entry["email"]);
+		}
+		return $result;
+	}
+
 
 	function get_location_info($location_id){
 		$admin = new admin();
