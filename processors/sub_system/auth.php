@@ -159,7 +159,10 @@
 
 					//generate user id
 					$user_id = generate_id();
-
+					if(get_user_by_email($email)){
+						send_json(array("msg"=> "You already have an account with this email"));
+						die();
+					}
 					$response = sign_up_user($user_id,$email, $user_name,$password,$number,$country);
 					// if a profile image is provide, upload it
 					if(isset($_FILES["profile_img"])){
