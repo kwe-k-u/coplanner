@@ -182,4 +182,9 @@
 		$class = new curator_interaction_class();
 		return $class->get_trip_bookings($tour_id);
 	}
+
+	function get_curator_followers($curator_id = null){
+		$class = new curator_interaction_class();
+		return $class->get_curator_followers($curator_id);
+	}
 ?>

@@ -150,10 +150,10 @@
                                         <div class="form-input-field py-2">
                                             <div class="text-gray-1 easygo-fs-4">Number of Adults</div>
                                             <div class="easygo-num-input">
-                                                <span data-input-target="#num-adults" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
-                                                <?php echo "<input id='num-adults' name='num_adults' onchange='display_invoice($fee,$max_seats)' type='number' class='border-blue text-center' value='1' min='0' max='$max_seats'>"; ?>
+                                                <span id="adult_plus" data-input-target="#num-adults" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
+                                                <?php echo "<input id='num-adults' name='num_adults' onchange='display_invoice()' type='number' class='border-blue text-center' value='1' min='0' max='$max_seats'>"; ?>
 
-                                                <span data-input-target="#num-adults" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                                <span id="adult_minus" data-input-target="#num-adults" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -161,10 +161,10 @@
                                         <div class="form-input-field py-2">
                                             <div class="text-gray-1 easygo-fs-4">Number of Children <span class="text-gray-2"> (Anyone below 18 years old)</span> </div>
                                             <div class="easygo-num-input">
-                                                <span data-input-target="#num-kids" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
-                                                <?php echo "<input onchange='display_invoice($fee,$max_seats)' id='num-kids' name='num_kids' type='number' class='border-blue text-center' value='0' min='0' max='$max_seats'>"; ?>
+                                                <span data-input-target="#num-kids" id="kid_plus" class="icon-left plus"><i class="fa-solid fa-circle-plus"></i></span>
+                                                <?php echo "<input onchange='display_invoice()' id='num-kids' name='num_kids' type='number' class='border-blue text-center' value='0' min='0' max='$max_seats'>"; ?>
 
-                                                <span data-input-target="#num-kids" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
+                                                <span data-input-target="#num-kids" id="kid_minus" class="icon-right minus"><i class="fa-solid fa-circle-minus"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -315,7 +315,7 @@
                                             <div class='text-align-righta col-6'>
                                                 $currency <span id='invoice_vat'>$vat</span>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <div class='row border-bottom'>
                                             <div class='col-6 text-right'>
                                                 Tourism Levy <span class='text-gray-1'>(1%)</span>
@@ -323,7 +323,7 @@
                                             <div class='text-align-righta col-6'>
                                                 $currency <span id='invoice_tourism'>$tourism</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class='row border-top border-bottom'>
                                             <div class='col-6 text-right'>
                                                 <h5><b>Total Fee: </b></h5>
@@ -374,6 +374,14 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <!-- easyGo js -->
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php
+    // Pricing values for javascript
+        echo "
+        <script>
+        const fee = $fee;
+        const max_seats = $max_seats;
+        </script>"
+    ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/payment.js">

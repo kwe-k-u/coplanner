@@ -157,5 +157,11 @@ class mailer{
 	}
 
 
+	function notify_curator_alert_list($email,$curator_name,$camp_id){
+		include_once(__DIR__."/messages/notify_curator_alert_list.php");
+		return $this->send_email($email,$subject,$message);
+	}
+
+
 
 }
