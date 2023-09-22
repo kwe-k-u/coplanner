@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+
+  <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
     <meta charset="UTF-8">
 
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
