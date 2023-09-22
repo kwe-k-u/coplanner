@@ -135,8 +135,9 @@
 		//get activities
 		$data["activities"] = $class->get_destination_activities($id);
 		//get media
-
 		$data["media"] = $class->get_destination_media($id);
+		//get socials
+		$data["socials"] = $class->get_destination_socials($id);
 		return $data;
 	}
 

@@ -9,6 +9,7 @@
 		case "js": #js logger
 			$logger->js_error($_REQUEST);
 			notify_error_log("js");
+			break;
 		default:
 			$logger->general_log($_REQUEST);
 			$res = notify_error_log("php");

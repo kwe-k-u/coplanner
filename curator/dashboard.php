@@ -72,8 +72,8 @@ $logo = $info["curator_logo"];
 
                 <div class="quick-actions col bg-white-1">
                     <h5>Quick Actions</h5>
-                    <div class="row">
-                        <div>
+                    <div class="d-flex gap-2 flex-xs-column flex-md-row">
+                        <div class="">
                             <button class="easygo-btn-5" onclick="goto_page('curator/create_a_tour.php')">Create Tour</button>
                         </div>
                     </div>

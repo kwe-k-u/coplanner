@@ -338,6 +338,20 @@
 			$sql = "SELECT";
 		}
 
+		function get_destination_socials($id){
+			$sql = "SELECT * FROM destination_socials where destination_id = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			$results = $this->db_fetch_all();
+			$data = array("destination_id"=> $id);
+
+			foreach ($results as $entry) {
+				array_push($data,array($entry["social_type"]=>$entry["social_link"]));
+			}
+
+			return $data;
+		}
+
 
 		function get_curator_collaborators($curator_id){
 			$sql = "SELECT

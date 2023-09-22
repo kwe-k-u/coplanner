@@ -7,9 +7,9 @@
 
 
 	switch($_SERVER["PATH_INFO"]){
-		case "/get_location_info":
+		case "/get_destination_info":
 			$id = $_GET["id"];
-			$result = get_location_info($id);
+			$result = get_destination_info($id);
 			send_json( $result);
 			die();
 		case "/toggle_location_verification":
@@ -65,18 +65,6 @@
 				add_destination_media($site_id,$id,0);
 			}
 
-			// $num_files = count($_FILES);
-			// $entry = $_FILES;
-			// for ($i=0; $i < $num_files; $i++) {
-
-			// 	$image = $entry["name"][$i];
-			// 	$tmp = $entry["tmp_name"][$i];
-			// 	$id = generate_id();
-			// 	$media_type = 'picture';
-			// 	$location = upload_file("uploads",$media_type,$tmp,$image);
-			// 	upload_destination_media_ctrl($id,$site_id,$location,false);
-			// }
-
 			//link images from other websites if provided
 			if(isset($_POST["external_images"])){
 				$image_links = $_POST["external_images"];
@@ -93,11 +81,10 @@
 			send_json(array("msg" => "Added tour site"));
 			die();
 		case "/edit_destination":
-			// var_dump($_POST);
-			die();
 			$name = $_POST["destination_name"];
-			$id = $_POST["site_id"];
+			$site_id = $_POST["site_id"];
 			$desc = $_POST["site_description"];
+			$loc = $_POST["destination_location"];
 			$country = $_POST["country"];
 			$owner_name = $_POST["owner_name"];
 			$owner_number = $_POST["owner_number"];
@@ -105,42 +92,84 @@
 			$tiktok = $_POST["tiktok"];
 			$facebook = $_POST["facebook"];
 			$website = $_POST["website"];
+			$activities = $_POST["activities"];
+			$cord = $_POST["cordinates"];
 
 			//determine which activities have been dropped and which have been added
-			$old_activities = get_location_activities($id);
-			$add_activities = array();
-			$remove_index = array();
-
-			// var_dump($remove_activities[1]);
+			$old_activities = get_location_activities($site_id);
+			// send_json(array("msg"=>"","data"=> $_POST));
 			// die();
 
-			foreach ($_POST["activities"] as $key => $entry) {
-				for ($i=0; $i < count($old_activities); $i++) {
-					$act_name = $old_activities[$i]["activity_name"];
-					if($act_name == $entry){
-						array_push($remove_index,$i);
+
+			$remove_list = array();
+			$add_list = array();
+
+			//mark activities missing from upload as remove
+			foreach($old_activities as $a){
+				$entry = $a["activity_name"];
+				if (!in_array($entry,$activities)){
+					array_push($remove_list,$entry);
+				}
+			}
+
+			//mark uploaded activities missing from old is as add
+			foreach($activities as $entry){
+				$temp = false;
+				foreach ($old_activities as $o) {
+
+					if ($o["activity_name"] == $entry){
+						$temp = true;
 						break;
 					}
 				}
-				//if activity isn't in the old activities add it
-				// $key = array_search($entry, $remove_activities);
-				// if (!$key){
-				// 	array_push($add_activities, $entry);
-				// }else {
-
-				// 	unset($remove_activities[$key]);
-				// }
-
-				// check if remove activities has an array with that activityname
+				if (!$temp){
+					array_push($add_list,$entry);
+				}
 			}
-			//TODO:: update activities
-			//TODO:: update location information
+
+			foreach($remove_list as $act){
+				remove_destination_activity($site_id,$act);
+			}
+
+			foreach ($add_list as $act){
+				add_destination_activity($site_id,$act);
+			}
+
+
+
+			//upload new localhost images
+			foreach ($_FILES as $file) {
+				$image =$file["name"][0];
+				$tmp = $file["tmp_name"][0];
+				$id = generate_id();
+				$media_type = 'picture';
+				// var_dump($tmp);
+				// var_dump($image);
+
+				$location = upload_file("uploads",$media_type,$tmp,$image);
+				add_media($id, $location, $media_type);
+				add_destination_media($site_id,$id,0);
+			}
+
+			//link images from other websites if provided
+			// if(isset($_POST["external_images"])){
+			// 	$image_links = $_POST["external_images"];
+
+			// 	foreach ($image_links as $location) {
+			// 		// $location = $entry;
+			// 		$media_id = generate_id();
+			// 		add_media($media_id, $location, "picture");
+			// 		add_destination_media($site_id,$media_id,1);
+			// 	}
+			// }
+
+
+			update_destination_info($name,$desc,$loc,$country,$owner_number,$owner_name,$cord,$site_id);
 			//TODO:: update images
-
-			// var_dump($remove_activities);
-			// var_dump($add_activities);
+			//todo update socials
 
 
+			send_json(array("msg"=> "end"));
 
 			die();
 		case "/verify_curator_manager_id":

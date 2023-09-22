@@ -48,6 +48,11 @@
 		return $admin->get_curator($id);
 	}
 
+	function remove_destination_activity($id,$activity_name){
+		$admin = new admin();
+		return $admin->remove_destination_activity($id,$activity_name);
+	}
+
 	function get_emails_from_group($group){
 		$admin = new admin();
 		$result = array();
@@ -59,7 +64,7 @@
 	}
 
 
-	function get_location_info($location_id){
+	function get_destination_info($location_id){
 		$admin = new admin();
 		$data = $admin->get_destination_info($location_id);
 		$data["activities"] = $admin->get_destination_activities($location_id);
@@ -85,7 +90,18 @@
 	}
 
 	//TODO::
-	function update_destination_info(){}
+	function update_destination_info($name,$desc,$loc,$country,$phone,$contact_name,$cord,$id){
+		$admin = new admin();
+		if(str_contains($cord,",")){
+			$split = explode(",",$cord);
+			$lat = $split[0];
+			$long = $split[1];
+		}else{
+			$lat = "";
+			$long = "";
+		}
+		return $admin->update_destination_info($name,$desc,$loc,$country,$phone,$contact_name,$long,$lat,$id);
+	}
 
 	function add_destination($id,$name,$desc,$loc,$country, $phone,$contact,$cord){
 		$admin = new admin();
