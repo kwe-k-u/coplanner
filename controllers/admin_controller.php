@@ -48,6 +48,11 @@
 		return $admin->get_curator($id);
 	}
 
+	function get_curator_invite($curator_id = null){
+		$admin = new admin();
+		return $admin->get_curator_invite($curator_id);
+	}
+
 	function remove_destination_activity($id,$activity_name){
 		$admin = new admin();
 		return $admin->remove_destination_activity($id,$activity_name);

@@ -330,6 +330,27 @@ $rating_count = $stats["review_count"];
                                         </div>
                                         ";
                                         }
+
+
+                                        $invites = get_pending_invites($curator_id);
+                                        if($invites){
+                                            echo "<h5>Pending invites</h5>";
+                                        }
+                                        foreach ($invites as $entry) {
+                                            $i_email = $pers["email"];
+                                            $i_date = format_string_as_date_fn($pers["invite_date"]);
+                                            $i_expiry = format_string_as_date_fn($pers["invite_expiry"]);
+                                            $i_privilege = $pers["privilege"];
+                                            echo "
+                                        <div class='list-item'>
+                                            <div class='inner-item text-capitalize'>$i_email</div>
+                                            <div class='inner-item'>$i_privilege</div>
+                                            <div class='inner-item'>$i_date</div>
+                                            <div class='inner-item'>$i_expiry</div>
+                                        </div>
+                                        ";
+                                        }
+
                                         ?>
                                     </div>
 

@@ -106,6 +106,14 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_pending_invites($curator_id){
+			$sql = "SELECT * FROM curator_manager_invite as cmi WHERE cmi.curator_id = ?";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+
+			return $this->db_fetch_all();
+		}
+
 		function get_curator_bookings($curator_id){
 			$sql = "SELECT
 			transactions.transaction_id,

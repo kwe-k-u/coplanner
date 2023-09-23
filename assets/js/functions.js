@@ -24,6 +24,7 @@ function logError(event) {
     },
     (response) => {
       console.log(response);
+      alert("Hmm something went wrong. The developers have been notified. Kindly reach out to main.easygo@gmail.com if you need immediate assitance!");
     }
   );
 }
@@ -121,8 +122,6 @@ function logout() {
     "processors/processor.php",
     { action: "logout" },
     (response) => {
-      console.log(response);
-      console.log(baseurl);
       window.location.href = baseurl;
     }
   );
@@ -255,14 +254,17 @@ function login(form) {
       url = json["url"];
       //check redirect
       if (url_params("redirect")) {
-        url = url_params("redirect");
+        // url = url_params("redirect");
+        //substring url for all text after redirect
+        url = window.location.href.substring(window.location.href.indexOf("redirect=")+9);
+        // url = window.location.
+        // url =
         //TODO:: redirect doesn't include the value of its GET parameters
       }
 
       window.location.href = url;
     } else {
       openDialog(json["msg"]);
-      // alert(json["msg"]);
     }
   });
 }

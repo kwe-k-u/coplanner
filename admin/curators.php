@@ -130,6 +130,22 @@ if (!is_session_logged_in()) {
                                             <div class='inner-item'><a href='#$m_id'>Suspend</a></div>
                                         </div>";
                                     }
+                                    $pending_invites = "";
+                                    $invites = get_curator_invite($c_id);
+                                    foreach ($invites as $invite) {
+                                        $email = $invite["email_address"];
+                                        $role = $invite["privilege"];
+                                        $exp_date = format_string_as_date_fn($invite["invite_expiry"]);
+                                        $inv_date = format_string_as_date_fn($invite["invite_date"]);
+                                        $pending_invites .= "
+                                        <div class='list-item'>
+                                            <div class='inner-item'>$email</div>
+                                            <div class='inner-item'>$role</div>
+                                            <div class='inner-item'>$inv_date</div>
+                                            <div class='inner-item'>$exp_date</div>
+                                            <div class='inner-item'><a href='#m_id'>Revoke</a></div>
+                                        </div>";
+                                    }
 
                                     echo "
                                 <div class=' accordion-item'>
@@ -163,6 +179,10 @@ if (!is_session_logged_in()) {
                                         </div>
                                         <div class='easygo-list-3 no-list-border list-striped'>
                                             $managers_section
+                                        </div>
+                                        <div class='easygo-list-3 no-list-border list-striped'>
+                                        <h5>Pending Invites</h5>
+                                            $pending_invites
                                         </div>
                                     </div>
                                 </div>

@@ -141,6 +141,11 @@
 		return $data;
 	}
 
+	function get_pending_invites($curator_id){
+		$class = new curator_interaction_class();
+		return $class->get_pending_invites($curator_id);
+	}
+
 
 
 	function get_destination_media($site_id){
