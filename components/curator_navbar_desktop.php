@@ -2,7 +2,7 @@
 	<ul class="main-list slide-down">
 		<li>
 				<a data-target="dashboard-submenu-sb" class="slide-down-btn" id="nav_dash" href="dashboard.php">
-				<img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard </a>
+				<img src="../assets/images/svgs/dashboard.svg" alt="dashboard image"> Dashboard </a>
 		</li>
 		<li>
 			<div class="slide-down-menu">
