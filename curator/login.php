@@ -1,3 +1,11 @@
+
+<?php
+require_once(__DIR__."/../utils/core.php");
+
+if(is_session_user_curator()){
+    header("Location: dashboard.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +14,7 @@
   <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>easyGo - Curator Sign Up</title>
+    <title>easyGo - Curator Login</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -16,13 +24,6 @@
 </head>
 
 <body>
-<?php
-require_once(__DIR__."/../utils/core.php");
-
-if(is_session_user_curator()){
-    header("Location: dashboard.php");
-}
-?>
     <!-- main content start -->
     <main class="form-page-main container">
         <div class="img-container d-none d-lg-block">
@@ -42,11 +43,11 @@ if(is_session_user_curator()){
                     <p class="instruction">Please enter your login credentials</p>
                 </div>
                 <div class="input-field">
-                    <input type="text" placeholder="Email" name="email">
+                    <input type="text" placeholder="Email" name="email" data-eg-target="email-err">
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input type="password" placeholder="Password" name="password">
+                        <input type="password" placeholder="Password" name="password" data-eg-target="password-err">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
                     </div>
                     <div class="text-end">
