@@ -20,7 +20,7 @@ $email_verified = $user["email_verified"] == 1;
 
 <head>
     <meta charset="UTF-8">
-
+  <?php include_once(__DIR__."/../../utils/analytics/google_tag.php") ?>
     <link rel="icon" href="../../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyGo - Account Settings</title>

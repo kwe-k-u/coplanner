@@ -141,8 +141,8 @@ if (!is_session_logged_in()) {
 							$destination_location = $site["destination_location"];
 							$site_country = $site["country"];
 							$site_activities = $site["activities"];
+							$site_media = $site["media"];
 
-							$site_media = get_destination_media($site_id);
 						}else {
 
 							$site = "";
@@ -170,16 +170,12 @@ if (!is_session_logged_in()) {
 							<div style='overflow-x: auto;'>
 								<div class='grid-7' style='max-height: 500px;' id='location-info-images'>
 									<?php
-									$site_media = array(
-										"../assets/images/others/scenery2.jpg",
-										"../assets/images/others/tour1.jpg"
-									);
-									foreach ($site_media as $media) {
+									foreach ($site_media as $entry) {
+										$media = $entry["media_location"];
 										// $media_location = $site_media[""];
 										echo "<div class='grid-item'>
-							<img class='w-100 h-100 rounded' src='../assets/images/others/scenery1.jpg' alt='scene 1'>
-						</div>
-							";
+							<img class='w-100 h-100 rounded' src='$media' alt='scene 1'>
+						</div>";
 									}
 									?>
 
@@ -188,7 +184,6 @@ if (!is_session_logged_in()) {
 							<div class="activity-listing" id="activity-listing">
 								<div class="d-flex align-items-center gap-2 my-4">
 									<h6 class="easygo-fw-1 m-0">Activities</h6>
-									<small class="text-gray-1 easygo-fs-6">(Select activities to include)</small>
 									<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
 								</div>
 								<div id="activity-list-div" class="activity-list d-flex flex-wrap gap-2">
@@ -378,7 +373,7 @@ if (!is_session_logged_in()) {
 									</div>
 									<!-- Tour site extra info [end] -->
 									<div>
-										<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Create Tour site</button>
+										<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
 									</div>
 									<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
 										<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>

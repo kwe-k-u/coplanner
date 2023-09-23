@@ -251,7 +251,7 @@
 		}
 
 		function get_destination_socials($id){
-			$sql = "SELECT * FROM destination_socials as ts
+			$sql = "SELECT ts.* FROM destination_socials as ts
 			inner join destinations as t on t.destination_id = ts.destination_id
 			 where t.destination_id = ?";
 			$this->prepare($sql);
@@ -310,6 +310,8 @@
 			return $this->db_query();
 		}
 
+
+
 		function add_media($media_id, $location, $type){
 			$sql = "INSERT INTO `media`(`media_id`, `media_location`, `media_type`)
 			VALUE (?,?,?)";
@@ -360,10 +362,29 @@
 			return $this->db_query();
 		}
 
+		function update_destination_info($name,$desc,$loc,$country,$phone,$contact_name,$long,$lat,$id){
+			$sql = "UPDATE `destinations` SET
+			`destination_name`=?,`destination_description`= ?,`destination_location`=?,
+			`country`=?,`phone_number`=?,`contact_name`=?,`longitude`=?,
+			`latitude`=? WHERE destination_id = ?";
+			$this->prepare($sql);
+			$this->bind($name,$desc,$loc,$country,$phone,$contact_name,$long,$lat,$id);
+			return $this->db_query();
+		}
+
 		function update_media_location($id,$location){
 			$sql = "UPDATE media set `media_location` = ?, `upload_date` = CURRENT_TIMESTAMP where `media_id` = ?";
 			$this->prepare($sql);
 			$this->bind($location,$id);
+			return $this->db_query();
+		}
+
+		function remove_destination_activity($id,$activity_name){
+			$sql = "DELETE da FROM destination_activity AS da
+			INNER JOIN activities AS a ON a.activity_id = da.activity_id
+			WHERE a.activity_name = ? AND da.destination_id = ?";
+			$this->prepare($sql);
+			$this->bind($activity_name,$id);
 			return $this->db_query();
 		}
 	}

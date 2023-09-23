@@ -109,6 +109,7 @@
 	}
 	else if(in_array($_REQUEST["action"],$newsletter_actions)){
 		include_once(__DIR__."/sub_system/newsletter.php");
+		die();
 	} else if (in_array($_REQUEST["action"], $contact_actions)){
 		include_once(__DIR__."/sub_system/contact.php");
 		die();

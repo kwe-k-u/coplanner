@@ -1,5 +1,12 @@
 <?php
+$array = array("one","two","three","four");
 
+foreach ($array as $num) {
+	if($num == "three"){
+		break;
+	}
+	echo $num;
+}
 var_dump($_REQUEST);
 var_dump($_FILES);
 die();

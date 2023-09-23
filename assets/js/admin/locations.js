@@ -1,24 +1,30 @@
 var location_info_div = document.getElementById("site_info_col");
 var location_form_div = document.getElementById("site_form_col");
 var location_search_results = document.getElementById("site_result_div");
-var acts = document.getElementById("add_loc_activity_list");
 var submit_loc_btn = document.getElementById("submit_loc_btn");
 
 var name_field = document.getElementById("name");
 var description_field = document.getElementById("description");
 var location_field = document.getElementById("location");
 var country_field = document.getElementById("country");
+var gps_field = document.getElementById("cordinates");
 var owner_name_field = document.getElementById("owner_name");
 var owner_number_field = document.getElementById("owner_number");
 var website_field = document.getElementById("website");
 var tiktok_field = document.getElementById("tiktok");
 var instagram_field = document.getElementById("instagram");
 var facebook_field = document.getElementById("facebook");
+var local_img = document.getElementById("images");
 
 
 var ext_img_list = document.getElementById("external-images");
 var ext_img_field = document.getElementById("external-image-field");
+var activity_list = document.getElementById("add_loc_activity_list");
+var activity_field = document.getElementById("add_loc_activity_input");
 
+
+var info_image_section = document.getElementById("location-info-images");
+var info_activity_list = document.getElementById("activity-list-div");
 
 // Switches the display of the location form. If the location edit is tapped
 // it prefills the form with the existing information
@@ -28,11 +34,48 @@ function add_location_toggle(location_id = null){
 		location_info_div.classList.toggle("hide");
 		location_form_div.classList.toggle("hide");
 	}
+
+
+	//reset fields
+
+	// empty fields if data is existing in them
+
+	name_field.value = "";
+	description_field.value = "";
+	location_field.value = "";
+	country_field.value = "";
+	gps_field.value = "";
+	activity_list.innerHTML = "";
+	activity_field.value = "";
+	ext_img_field.value = "";
+	ext_img_list.innerHTML = "";
+
+	owner_name_field.value = "";
+	owner_number.value = "";
+	website_field.value = "";
+	tiktok_field.value = "";
+	instagram_field.value = "";
+	facebook_field.value = "";
+
+	try{ //file reset
+
+		local_img.value = null;
+		//old browser reset
+		local_img.type = "text";
+		local_img.type = "file";
+	}catch(e){}
+
+
+
+
+	submit_loc_btn.setAttribute("value","");
+
 	if(location_id != null){ // edit location
+		submit_loc_btn.innerText = "Edit destination";
 		 // prefill fields with location information
 		//get location info
 		send_request("POST",
-		"processors/admin_processor.php/get_location_info?id="+location_id,
+		"processors/admin_processor.php/get_destination_info?id="+location_id,
 		{},
 		(response)=>{
 			// alert(response);
@@ -49,6 +92,27 @@ function add_location_toggle(location_id = null){
 			// tiktok_field.value = data[""];
 			// instagram_field.value = data[""];
 			// facebook_field.value = data[""];
+			data["socials"].forEach(element => {
+				switch(element.social_type){
+					case "instagram":
+						instagram_field.value = element.social_link;
+						break;
+					case "twitter":
+						twitter_field.value = element.social_link;
+						break;
+					case "facebook":
+						facebook_field.value = element.social_link;
+						break;
+					case "tiktok":
+						tiktok_field.value = element.social_link;
+						break;
+					case "website":
+						website_field.value = element.social_link;
+						break;
+					default:
+						console.log("unknown ");
+				}
+			});
 
 			for (let i = 0; i < data["activities"].length; i++) {
 				insert_location_element(data["activities"][i]["activity_name"], data["activities"][i]["activity_id"]);
@@ -61,18 +125,6 @@ function add_location_toggle(location_id = null){
 			submit_loc_btn.setAttribute("value",location_id);
 		});
 
-	}else { // Add new location
-		// empty fields if data is existing in them
-
-		name_field.value = "";
-		description_field.value = "";
-		location_field.value = "";
-		country_field.value = "";
-
-		//TODO:: remove social information about stuff like that
-		// submit_loc_btn.value = "edit";
-		submit_loc_btn.setAttribute("value","");
-		console.log("new location");
 	}
 }
 
@@ -101,28 +153,45 @@ function expand_location_info(id) {
 		(response) => {
 			var json = response["data"];
 			var activity = json["activities"];
-			var image_list = [
-				"../assets/images/others/scenery2.jpg",
-				"../assets/images/others/tour1.jpg"
-			];
+			var image_list = json.media;
 
 			title.innerText = json["destination_name"];
 			description.innerText = json["destination_description"];
 
 			reset_location_info_images(image_list);
+			//TODO:: implement activity display
 			reset_location_info_activities(activity);
-			$(".activity-span").on("click", activity_click);
+			// $(".activity-span").on("click", activity_click);
 		}
 	);
+}
 
+function reset_location_info_activities(activities){
+
+	info_activity_list.innerHTML = "";
+	activities.forEach(element => {
+		let newNode = document.createElement("span");
+		newNode.classList.add("px-3","py-1","border-blue","rounded","border","easygo-fs-5","text-capitalize","activity-span");
+		newNode.id = element.activity_id;
+		newNode.innerText = element.activity_name;
+		info_activity_list.appendChild(newNode);
+	});
+}
+
+function reset_location_info_images(images){
+	info_image_section.innerHTML = "";
+
+	images.forEach(element => {
+		let image_sec = document.createElement("div");
+		image_sec.classList.add("grid-item");
+		image_sec.innerHTML = "<img class='w-100 h-100 rounded' src='"+element.media_location+"' alt='scene 1'>";
+		info_image_section.appendChild(image_sec);
+	});
+
+	//TODO:: if no image, show a default ui
 
 }
 
-
-
-function location_edit(site_id){
-
-}
 
 function on_location_search(form) {
 	event.preventDefault();
@@ -189,28 +258,23 @@ function verification_toggle(site_id){
 // Adds an activity to the list for activities for a location
 function add_loc_activity(){
 	event.preventDefault();
-	var acts = document.getElementById("add_loc_activity_list");
-	var field = document.getElementById("add_loc_activity_input");
-	field.value = field.value.trim();
-	if(field.value.length < 4){
+	activity_field.value = activity_field.value.trim();
+	if(activity_field.value.length < 4){
 		console.log("Too short a word for an activity");
 		return false;
 	}
 
-	for (var act_index = 0; act_index < acts.children.length; act_index++){
-		var child = acts.children[act_index];
-		if(child.innerText == field.value){
+	for (var act_index = 0; act_index < activity_list.children.length; act_index++){
+		var child = activity_list.children[act_index];
+		if(child.innerText == activity_field.value){
 			console.log("Already included");
 			return false;
 		}
 	}
 
-	insert_location_element(field.value);
+	insert_location_element(activity_field.value);
 
-
-
-
-	field.value = '';
+	activity_field.value = '';
 	return true;
 }
 
@@ -219,12 +283,14 @@ function add_loc_activity(){
 function insert_location_element(value,id=null){
 
 	var newNode = document.createElement("li");
+
+	newNode.setAttribute("onclick", "removeExtLink(this)");
 	if(id != null){
 		newNode.setAttribute("id", id);
 	}
 	// newNode.setAttribute("onclick", "selectedActivityClick()");
 	newNode.innerText = value;
-	acts.appendChild(newNode);
+	activity_list.appendChild(newNode);
 
 }
 
@@ -348,11 +414,10 @@ function create_result_tile(map) {
 function create_site(form){
 	// console.log(form);
 	event.preventDefault();
-	const act_list = document.getElementById("add_loc_activity_list");
 	var activities = [];
 
-	for (var act_index = 0; act_index < act_list.children.length; act_index++){
-		var child = act_list.children[act_index];
+	for (var act_index = 0; act_index < activity_list.children.length; act_index++){
+		var child = activity_list.children[act_index];
 		activities.push(child.innerText);
 	}
 
@@ -381,6 +446,7 @@ function create_site(form){
 		payload,
 		(response) => {
 			alert(response['data']['msg']);
+			console.log(response);
 
 		},
 		form.images.files

@@ -21,7 +21,7 @@ $logo = $info["curator_logo"];
 
 <head>
     <meta charset="UTF-8">
-
+  <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curator - Dashboard</title>
@@ -72,8 +72,8 @@ $logo = $info["curator_logo"];
 
                 <div class="quick-actions col bg-white-1">
                     <h5>Quick Actions</h5>
-                    <div class="row">
-                        <div>
+                    <div class="d-flex gap-2 flex-xs-column flex-md-row">
+                        <div class="">
                             <button class="easygo-btn-5" onclick="goto_page('curator/create_a_tour.php')">Create Tour</button>
                         </div>
                     </div>
