@@ -100,7 +100,7 @@
 		function get_curator_upcoming_trips($curator_id){
 			$sql = "SELECT * FROM campaigns
 			JOIN campaign_tours on campaign_tours.campaign_id = campaigns.campaign_id
-			WHERE campaigns.curator_id = ?";
+			WHERE campaigns.curator_id = ? AND campaign_tours.start_date > CURRENT_TIMESTAMP";
 			$this->prepare($sql);
 			$this->bind($curator_id);
 			return $this->db_fetch_all();
