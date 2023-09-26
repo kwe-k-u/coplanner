@@ -1,6 +1,6 @@
 <?php
-    require_once(__DIR__ . "/../utils/core.php");
-    require_once(__DIR__ . "/../controllers/interaction_controller.php");
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../controllers/interaction_controller.php");
 
 
 ?>
@@ -11,7 +11,8 @@
   <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
     <meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyGo - Tours</title>
     <!-- Bootstrap css -->
@@ -50,45 +51,45 @@
                     <div>
                         <div class="row">
                             <?php
-                            if (isset($_GET["search"])){
+                            if (isset($_GET["search"])) {
                                 //TODO:: search for trips
                                 $campaigns = get_current_campaigns($_GET["search"]);
-                            }else {
+                            } else {
                                 $campaigns = get_current_campaigns();
                             }
 
-                                foreach ($campaigns as $trip) {
-                                    // var_dump($trip);
-                                    $image = $trip["media"][0]["media_location"];
-                                    $id = $trip["campaign_id"];
-                                    $title = $trip["title"];
-                                    $desc = shorten($trip["description"]);
-                                    $curator = $trip["curator_name"];
-                                    $curator_id = $trip["curator_id"];
-                                    $next = get_campaign_next_trip($id);
-                                    if (!$next){
-                                        continue;
-                                    }
-                                    $start = format_string_as_date_fn($next["start_date"]);
-                                    $end = format_string_as_date_fn($next["end_date"]);
-                                    $fee = $next["fee"];
-                                    $currency = $next["currency"];
-                                    $pickup_location = $next["pickup_location"];
-                                    // $seats = $next["seats_available"];
+                            foreach ($campaigns as $trip) {
+                                // var_dump($trip);
+                                $image = $trip["media"][0]["media_location"];
+                                $id = $trip["campaign_id"];
+                                $title = $trip["title"];
+                                $desc = shorten($trip["description"]);
+                                $curator = $trip["curator_name"];
+                                $curator_id = $trip["curator_id"];
+                                $next = get_campaign_next_trip($id);
+                                if (!$next) {
+                                    continue;
+                                }
+                                $start = format_string_as_date_fn($next["start_date"]);
+                                $end = format_string_as_date_fn($next["end_date"]);
+                                $fee = $next["fee"];
+                                $currency = $next["currency"];
+                                $pickup_location = $next["pickup_location"];
+                                // $seats = $next["seats_available"];
 
 
-                                    echo "
+                                echo "
                                          <!--- ================================ -->
                                         <!-- trip card horizontal [start] -->
                                         <div class='col-12 my-4 '>
-                                            <div class='row box-shadow-1 py-5 easygo-card-2 rounded'>
-                                                <div class='col-md-6 h-100'>
-                                                    <div class='rounded overflow-hidden' style='width: inherit; margin: auto'>
-                                                        <img src='$image' class='img-fluid' alt='Tour package image'>
+                                            <div class='row box-shadow-1 py-4 px-1 easygo-card-2 rounded'>
+                                                <div class='col-md-6'>
+                                                    <div class='rounded overflow-hidden h-100' style='margin: auto;'>
+                                                        <img src='$image' class='img-fluid h-100' alt='Tour package image'>
                                                     </div>
                                                 </div>
-                                                <div class='col-md-6 d-flex justify-content-center align-content-center'>
-                                                    <div>
+                                                <div class='col-md-6 d-flex justify-content-center align-items-center py-2'>
+                                                    <div class='w-100'>
                                                         <div>
                                                             <div class='trip-card-header border-0'>
                                                                 <div class='title'>
@@ -116,11 +117,14 @@
                                                                 <span class='easygo-fs-5'></span>
                                                             </div>
                                                         </div>
-                                                        <div class='trip-card-footer p-0'>
-                                                            <p>
-                                                                <span class='easygo-h3'>$currency $fee</span><span class='easygo-fs-2'>/Person</span>
-                                                            </p>
-                                                            <a href='./tour_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 px-5'>View Tour</a>
+
+                                                        <div class='row py-2'>
+                                                            <div class='col-12 col-md-6 d-flex align-items-center justify-content-md-start justify-content-center'>
+                                                            <p class='m-0'><span class='easygo-fs-1 fw-bold'>$currency $fee</span><span class='easygo-fs-2'>/Person</span></p>
+                                                            </div>
+                                                            <div class='col-12 col-md-6 d-flex align-items-center justify-content-start pt-3 pt-md-0'>
+                                                            <a href='./tour_description.php?campaign_id=$id' class='easygo-btn-1 easygo-rounded-2 w-100'>View Tour</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -129,7 +133,7 @@
                                         <!-- trip card horizontal [end] -->
                                         <!--- ================================ -->
                                     ";
-                                }
+                            }
                             ?>
 
                         </div>
@@ -154,22 +158,22 @@
 
                     <div class="row my-3">
                         <?php
-                            $past_trips = get_past_campaigns();
+                        $past_trips = get_past_campaigns();
 
-                            if($past_trips){
-                                echo "<div class='text-center easygo-h3'>Past Tours</div>";
-                            }
-
-
-                            foreach ($past_trips as $trip) {
-                                $title = $trip["title"];
-                                $tour_id = $trip["campaign_id"];
-                                $description = shorten($trip["description"]);
-                                $curator = $trip["curator_name"];
-                                $curator_id = $trip["curator_id"];
+                        if ($past_trips) {
+                            echo "<div class='text-center easygo-h3'>Past Tours</div>";
+                        }
 
 
-                                echo "<div class='col-lg-4 col-md-6 py-3'>
+                        foreach ($past_trips as $trip) {
+                            $title = $trip["title"];
+                            $tour_id = $trip["campaign_id"];
+                            $description = shorten($trip["description"]);
+                            $curator = $trip["curator_name"];
+                            $curator_id = $trip["curator_id"];
+
+
+                            echo "<div class='col-lg-4 col-md-6 py-3'>
                                 <div class='trip-card'>
                                     <img src='../assets/images/others/tour1.jpg' alt='trip card image'>
                                     <div class='trip-card-body'>
@@ -191,7 +195,7 @@
                                     </div>
                                 </div>
                             </div>";
-                            }
+                        }
                         ?>
 
                     </div>
@@ -306,7 +310,7 @@
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
 </body>
 

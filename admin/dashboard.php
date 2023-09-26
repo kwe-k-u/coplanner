@@ -20,7 +20,8 @@ if (!is_session_logged_in()) {
 <head>
     <meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Dashboard</title>
     <!-- Bootstrap css -->
@@ -61,20 +62,28 @@ if (!is_session_logged_in()) {
             ?>
 
         </header>
-            <?php require_once(__DIR__."/../components/admin_navbar_mobile.php"); ?>
+        <?php require_once(__DIR__ . "/../components/admin_navbar_mobile.php"); ?>
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-            <?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
+            <?php require_once(__DIR__ . "/../components/admin_navbar_desktop.php"); ?>
             <div class="main-content px-3 bg-gray-3">
 
-                <div class="quick-actions col bg-white-1">
+                <div class="quick-actions col bg-white-1 p-3">
                     <h5>Quick Actions</h5>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div>
                             <button class="easygo-btn-5" onclick="goto_page('curator/create_a_tour.php')">Create Tour</button>
                         </div>
                         <div>
+                            <button class="easygo-btn-5" onclick="goto_page('admin/locations.php')">Add Location</button>
+                        </div>
+                    </div> -->
+                    <div class="d-flex gap-2 flex-xs-column flex-md-row">
+                        <div class="">
+                            <button class="easygo-btn-5" onclick="goto_page('curator/create_a_tour.php')">Create Tour</button>
+                        </div>
+                        <div class="">
                             <button class="easygo-btn-5" onclick="goto_page('admin/locations.php')">Add Location</button>
                         </div>
                     </div>
@@ -179,21 +188,21 @@ if (!is_session_logged_in()) {
                 <!-- ============================== -->
                 <!-- upcoming trips [start] -->
                 <?php
-                    $upcoming_trips = get_upcoming_tours();
-                    if($upcoming_trips){
-                        $trip_list_display = "";
+                $upcoming_trips = get_upcoming_tours();
+                if ($upcoming_trips) {
+                    $trip_list_display = "";
 
-                        foreach ($upcoming_trips as $entry) {
-                            $title = $entry["title"];
-                            $camp_id = $entry["campaign_id"];
-                            $start_date = format_string_as_date_fn($entry["start_date"]);
-                            $end_date = format_string_as_date_fn($entry["end_date"]);
-                            $currency = $entry["currency"];
-                            $fee = $entry["fee"];
-                            $img = $entry["media"][0]["media_location"];
-                            $curator_name = $entry["curator_name"];
+                    foreach ($upcoming_trips as $entry) {
+                        $title = $entry["title"];
+                        $camp_id = $entry["campaign_id"];
+                        $start_date = format_string_as_date_fn($entry["start_date"]);
+                        $end_date = format_string_as_date_fn($entry["end_date"]);
+                        $currency = $entry["currency"];
+                        $fee = $entry["fee"];
+                        $img = $entry["media"][0]["media_location"];
+                        $curator_name = $entry["curator_name"];
 
-                            $trip_list_display .="
+                        $trip_list_display .= "
 
                             <div class='trip-card-2'>
                             <div class='trip-card-img'>
@@ -215,8 +224,8 @@ if (!is_session_logged_in()) {
                             </div>
                         </div>
                             ";
-                        }
-                        echo "<section class='upcoming-trips pt-5'>
+                    }
+                    echo "<section class='upcoming-trips pt-5'>
                         <h5 class='easygo-fs-4 easygo-fw-1'>Upcoming Trips</h5>
                         <div class='d-flex gap-2 w-100' style='overflow-x: auto;'>
                             <div class='col-lg-4 col-md-6 pb-4'>
@@ -224,8 +233,7 @@ if (!is_session_logged_in()) {
                             </div>
                         </div>
                     </section>";
-
-                    }
+                }
 
                 ?>
 
@@ -248,7 +256,7 @@ if (!is_session_logged_in()) {
                                 <?php
                                 $bookings = get_bookings();
 
-                                $bookings = array_slice($bookings,0,5);
+                                $bookings = array_slice($bookings, 0, 5);
 
                                 if ($bookings) {
                                     echo "
@@ -334,8 +342,8 @@ if (!is_session_logged_in()) {
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
-    <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
 </body>

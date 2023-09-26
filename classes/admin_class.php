@@ -111,12 +111,29 @@
 		function get_curators(){
 			$sql = "SELECT *,
 			(select count(curator_id) from curator_manager as cm where cm.curator_id = c.curator_id ) as num_admins,
-			(select count(tour_id) from campaign_tours as ct inner join campaigns as c where c.campaign_id = ct.campaign_id ) as num_tours,
+			(select count(tour_id) from campaign_tours as ct inner join campaigns as ca where ca.campaign_id = ct.campaign_id and c.curator_id = ca.curator_id ) as num_tours,
 			(select count(booking_id) from bookings as b inner join campaign_tours on campaign_tours.tour_id = b.tour_id inner join campaigns on campaigns.campaign_id = campaign_tours.campaign_id where campaigns.curator_id = c.curator_id) as num_bookings,
 			(select sum(amount) from transactions inner join bookings on bookings.transaction_id = transactions.transaction_id where bookings.transaction_id = transactions.transaction_id) as revenue
-			 FROM curators as c";
+			 FROM curators as c
+			 order by c.curator_name";
 			$this->prepare($sql);
 			return $this->db_fetch_all();
+		}
+
+		function get_curator_invite($curator_id){
+			$sql = "SELECT * FROM curator_manager_invite as cmi";
+			if($curator_id){
+				$sql .= " WHERE cmi.curator_id = ?";
+			}
+
+			$this->prepare($sql);
+
+			if($curator_id){
+				$this->bind($curator_id);
+			}
+
+			return $this->db_fetch_all();
+
 		}
 
 		function get_curator_managers($curator_id){
