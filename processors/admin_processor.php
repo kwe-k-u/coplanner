@@ -268,6 +268,19 @@
 			}
 			send_json(array("msg"=> "Emails scheduled"));
 			die();
+		case "/login_as_user":
+			$id = $_POST["user_id"];
+			$user = get_user_accounts($id);
+			if($user){
+				session_log_out();
+				send_json(array("msg"=> "User details retrieved",
+					"email" => $user["email"],
+					"password" => $user["password"]
+			));
+			}else{
+				send_json(array("msg"=> "Something went wrong"),201);
+			}
+			die();
 		default:
 			echo "No action";
 	}

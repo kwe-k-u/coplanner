@@ -17,9 +17,13 @@
 			}
 
 			switch($_POST["action"]){
+				case "admin_login":
+					$password = $_POST["password"];
 				case "login":
 					$email = $_POST["email"];
-					$password = encrypt($_POST["password"]);
+					if(!isset($password)){
+						$password = encrypt($_POST["password"]);
+					}
 					$result = log_in_user($email,$password);
 					if($result){
 						record_user_login($result["user_id"]);
