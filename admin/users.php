@@ -3,7 +3,7 @@ require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
-if (!is_session_logged_in()) {
+if (!is_session_user_admin()) {
     header("Location: ../views/home.php");
     die();
 }
@@ -20,7 +20,8 @@ if (!is_session_logged_in()) {
 <head>
     <meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
     <!-- Bootstrap css -->
@@ -139,7 +140,7 @@ if (!is_session_logged_in()) {
                                     <div class='accordion-collapse collapse' id='user_info_$id'>
                                         <div class= 'accordion-body row'>
                                             <div class='col-1'></div>
-                                            <div class='col-6'>
+                                            <div class='col-4'>
                                                 <div>
                                                     Bookings: $num_bookings
                                                 </div>
@@ -147,7 +148,7 @@ if (!is_session_logged_in()) {
                                                     Last login: $last_login
                                                 </div>
                                             </div>
-                                            <div class='col-5'>".
+                                            <div class='col-3'>".
                                             ($email_verified ? "" :
                                                 "<div>
                                                     <a href='#' onclick='resend_email_verification(\"$id\")'>Send email verification</a>
@@ -155,6 +156,11 @@ if (!is_session_logged_in()) {
                                                 ").
                                                 "<div>
                                                     <a href='#' onclick='send_password_reset(\"$email\")'>Send password reset</a>
+                                                </div>
+                                            </div>
+                                            <div class='col-3'>
+                                                <div>
+                                                    <a href='#' onclick='log_in_as_user(\"$id\")' > Log in as user</a>
                                                 </div>
                                             </div>
                                         </div>

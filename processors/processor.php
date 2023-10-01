@@ -17,6 +17,7 @@
 	// }
 	 $auth_actions = array (
 		"login",
+		"admin_login",
 		"signup",
 		"logout",
 		"request_password_reset",
