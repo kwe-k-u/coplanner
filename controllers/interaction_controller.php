@@ -69,6 +69,8 @@
 		$inte = new interaction_class();
 		$data = $inte->get_campaign_by_id($id);if($data){
 			$data["media"] = $inte->get_campaign_media($data["campaign_id"]);
+			$data["tours"] = $inte->get_campaign_tours($id);
+			$data["activities"] = $inte->get_campaign_activities($id);
 		}
 		return $data;
 	}

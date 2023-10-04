@@ -36,10 +36,12 @@
 
 	$campaign_actions = array(
 		"create_campaign",
+		"edit_campaign",
 		"add_tour_site",
 		"get_site_by_id",
 		"query_site",
-		"get_tour_charge"
+		"get_tour_charge",
+		"get_campaign"
 	);
 
 
@@ -82,6 +84,11 @@
 
 	if (isset($_SERVER["PATH_INFO"]) && $_SERVER["PATH_INFO"] == "/log_error"){
 		require_once(__DIR__."/sub_system/event_manager.php");
+		die();
+	}
+
+	if(!isset($_REQUEST["action"])){
+		send_json(array("msg"=> "No action defined"),502);
 		die();
 	}
 

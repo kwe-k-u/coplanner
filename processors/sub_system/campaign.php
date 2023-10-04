@@ -1,8 +1,8 @@
 <?php
 	require_once(__DIR__. "/../../controllers/auth_controller.php");
-	require_once(__DIR__. "/../../controllers/curator_interraction_controller.php");
 	require_once(__DIR__. "/../../controllers/campaign_controller.php");
 	require_once(__DIR__. "/../../controllers/interaction_controller.php");
+	require_once(__DIR__. "/../../controllers/curator_interraction_controller.php");
 	require_once(__DIR__. "/../../controllers/media_controller.php");
 	require_once(__DIR__. "/../../controllers/slack_bot_controller.php");
 	require_once(__DIR__."/../../utils/mailer/mailer_class.php");
@@ -19,6 +19,57 @@
 			}
 
 			switch($_POST["action"]){
+				case "get_campaign":
+					$id = $_POST["campaign_id"];
+					$camp = get_campaign_by_id($id);
+					send_json(array("campaign"=>$camp));
+					die();
+				case "edit_campaign":
+					$title = $_POST["title"];
+					$description = $_POST["description"];
+					$curator_id = $_POST["curator_id"];
+					$campaign_id = $_POST["campaign_id"];
+					$tours = json_decode($_POST["trips"],true);
+					$activities = json_decode($_POST["activities"],true);
+					update_campaign($title,$description,$campaign_id);
+
+					$existing = get_campaign_tours($campaign_id);
+					foreach($existing as $prev){
+						$remove = true;
+						foreach($tours as $entry){
+							if($prev["tour_id"] == $entry["tour_id"]){
+								$remove = false;
+								break;
+							}
+						}
+						if($remove){
+							//TODO:: check if people already have bookings for the tour
+							remove_campaign_tour($prev["tour_id"]);
+						}
+					}
+					//TODO:: ensure number of available seats is not less than number booked
+					foreach ($tours as $entry) {
+						$tour_id = $entry["tour_id" ];
+						$start_date = $entry["start_date"];
+						$end_date = $entry["end_date"];
+						$fee = $entry["fee"];
+						$seats = $entry["seats"];
+						$pickup_loc = $entry["pickup" ];
+						$dropoff_loc = $entry["dropoff" ];
+						$status = "published";
+						$currency = "GHS";
+
+						//todo check for removed campaigns
+						if($tour_id == ""){
+							$tour_id = generate_id();
+							create_campaign_trip($tour_id,$campaign_id,$pickup_loc,$dropoff_loc,$start_date,$end_date,$seats,$currency,$fee,$status);
+						}else{
+							update_campaign_tour($pickup_loc,$dropoff_loc,$start_date,$end_date,$seats,$fee,$currency,$tour_id);
+						}
+					}
+
+					send_json(array("msg"=> "Updated campaign"));
+					die();
 				case "create_campaign":
 					$title = $_POST["title"];
 					$description = $_POST["description"];

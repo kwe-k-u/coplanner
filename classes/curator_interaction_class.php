@@ -399,5 +399,30 @@
 
 			return $this->db_fetch_all();
 		}
+
+		function update_campaign($title,$description,$id){
+			$sql = "UPDATE `campaigns` SET
+			`title`=?,`description`=? WHERE campaign_id = ?";
+			$this->prepare($sql);
+			$this->bind($title,$description,$id);
+			return $this->db_query();
+		}
+
+		function update_campaign_tour($pickup_loc,$dropoff_loc,$start_date,$end_date,$seats,$fee,$currency,$tour_id){
+			$sql = "UPDATE `campaign_tours`
+			SET `pickup_location`=?,`dropoff_location`=?,`start_date`=?,
+			`end_date`=?,`seats_available`=?,`fee`=?, `currency`=?
+			WHERE `tour_id`=?";
+			$this->prepare($sql);
+			$this->bind($pickup_loc,$dropoff_loc,$start_date,$end_date,$seats,$fee,$currency,$tour_id);
+			return $this->db_query();
+		}
+
+		function remove_campaign_tour($tour_id){
+			$sql = "DELETE FROM campaign_tours where tour_id = ?";
+			$this->prepare($sql);
+			$this->bind($tour_id);
+			return $this->db_query();
+		}
 	}
 ?>

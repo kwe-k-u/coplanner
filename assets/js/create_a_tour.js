@@ -10,24 +10,48 @@ $("#end_time").on("input", () => { on_occurance_edit("end_time") });
 $("#start_time").on("input", () => { on_occurance_edit("start_time") });
 $("#pickup_loc").on("input",()=> {on_occurance_edit("pickup_loc")});
 $("#dropoff_loc").on("input",()=> {on_occurance_edit("dropoff_loc")});
-// script to prefill the page if a trip id is in the url (User wants to update tour information)
-$(document).ready (()=>{
-	if(window.location.search.includes("id")){
-		//TODO: Edit trip
-		const tour_id = url_params("id");
 
-		//show loader
-		//get trip id from url params
-		//get trip information from database
-		// fill the input fields
-		// image displays
-		//hide the loade
-	}
-});
+// Variables for the fields
+let tour_name_field = document.getElementById("tour_name");
+let tour_description_field = document.getElementById("description_field");
+// let tour_image_field = document.getElementById("");
+// let tour_activity_field = document.getElementById("");
+var added_activities_list = document.getElementById("selected-activities");
 // Holds the list of locations and their associated activities
 var location_activity_set = {} //{location : {activity_id, activity_name}}
 // the location whose activites are shown on the main form
 var active_location_name = "";
+
+
+//text fields for occurances
+const seats_txt_field = document.getElementById("seats")
+const fee_txt_field =document.getElementById("fee");
+const end_date_txt_field = document.getElementById("end_date");
+const start_date_txt_field = document.getElementById("start_date");
+const end_time_txt_field = document.getElementById("end_time");
+const start_time_txt_field = document.getElementById("start_time");
+const pickup_txt_field = document.getElementById("pickup_loc");
+const dropoff_txt_field = document.getElementById("dropoff_loc");
+const hidden_occurance_id = document.getElementById("hidden_occurance_id");
+
+
+
+
+
+
+// script to prefill the page if a trip id is in the url (User wants to update tour information)
+$(document).ready (()=>{
+	if(window.location.search.includes("id")){
+		const campaign_id = url_params("id");
+		if(campaign_id){
+			//TODO:: show loader while running
+			populate_campaign_form(campaign_id);
+		}
+
+		//get trip information from database
+		// image displays
+	}
+});
 
 function submit_tour(form) {
 	event.preventDefault();
@@ -53,7 +77,8 @@ function submit_tour(form) {
 		// "test/test.php",
 		"processors/processor.php",
 		{
-			"action" : "create_campaign",
+			"action" : url_params("id") ? "edit_campaign": "create_campaign",
+			"campaign_id" : url_params("id"),
 			"images": images,
 			"title" : title,
 			"curator_id" : curator_id,
@@ -62,8 +87,8 @@ function submit_tour(form) {
 			"activities" : JSON.stringify(location_activity_set)
 		},
 		(response) => {
-			alert(response);
-			// alert(response["data"]);
+			console.log(response);
+			openDialog(response.data.msg);
 		}
 	)
 
@@ -110,7 +135,15 @@ function on_occurance_edit(id) {
 }
 
 function update_active_row(section, value) {
-	var active = document.getElementById("active_occurance_row");
+	var disVal = "";
+	if(hidden_occurance_id.value != ""){
+		var active = document.getElementById(hidden_occurance_id.value).parentNode;
+	}else{
+
+		var active = document.getElementById("active_occurance_row");
+	}
+
+
 	if(section == "end_time_val" || section == "start_time_val"){
 		// split hour from minutes
 		[hrs,minutes] = value.split(":").map(Number);
@@ -129,27 +162,44 @@ function update_active_row(section, value) {
 
 
 
-//clears the entry field and adds the
-// occurance entry if the all values have been entered
-// function new_occurance_entry() {
-// 	// create_entry_row("start","end","fee","ee");
-// 	if (is_occurance_entry_complete()) {
-// 		var values = get_occurance_entry();
-// 		create_entry_row(values["start_date"], values["end_date"], values["fee"], values["seats"]);
-// 	} else { // Some fields are empty
-// 		alert("You need to provide all these values: Start Date, End Date, Fee, Number of seats");
-// 	}
-// }
-
 function delete_occurance_entry(element) {
 	if(confirm("Are you sure you want to remove this tour?")){
 		element.parentNode.parentNode.parentNode.remove();
 	}
 }
-
+ function prefill_occurance_field(seats,fee,end_date,start_date,end_time,start_time,pickup,dropoff){
+	seats_txt_field.value = seats;
+	fee_txt_field.value = fee;
+	end_date_txt_field.value = end_date;
+	start_date_txt_field.value = start_date;
+	end_time_txt_field.value = end_time;
+	start_time_txt_field.value = start_time;
+	pickup_txt_field.value = pickup;
+	dropoff_txt_field.value = dropoff;
+ }
 
 function edit_occurance_entry(element) {
+	let occurance_element = element.parentNode.parentNode;
+	remove_active_row();
+	function get_value(obj,classname) {
+		return obj.getElementsByClassName(classname)[0].innerText;
+	}
 
+	// console.log("Id",occurance_element.id);
+	// prefill the occurance text fields with the values for the tour
+	seats_txt_field.value = get_value(occurance_element,"seats_val");
+	fee_txt_field.value = get_value(occurance_element,"fee_val");
+	end_date_txt_field.value = get_value(occurance_element,"end_val");
+	start_date_txt_field.value = get_value(occurance_element,"start_val");
+	end_time_txt_field.value = get_value(occurance_element,"end_time_val");
+	start_time_txt_field.value = get_value(occurance_element,"start_time_val");
+	pickup_txt_field.value = get_value(occurance_element.parentNode,"pickup_val");
+	dropoff_txt_field.value = get_value(occurance_element.parentNode,"dropoff_val");
+	hidden_occurance_id.value = occurance_element.id;
+
+
+	//move window to #group-tours
+	window.location.href = "#group-tour";
 
 }
 
@@ -160,27 +210,27 @@ function is_occurance_entry_complete() {
 	String.prototype.isEmpty = function () {
 		return (this.length == 0 || !this.trim());
 	}
-	var start = document.getElementById("start_date").value;
-	var end = document.getElementById("end_date").value;
-	var fee = document.getElementById("fee").value;
-	var seats = document.getElementById("seats").value;
-	var pickup = document.getElementById("pickup_loc").value;
-	var dropoff = document.getElementById("dropoff_loc").value;
+	var start = start_date_txt_field.value;
+	var end = end_date_txt_field.value;
+	var fee = fee_txt_field.value;
+	var seats = seats_txt_field.value;
+	var pickup = pickup_txt_field.value;
+	var dropoff = dropoff_txt_field.value;
 
 	return !(start.isEmpty() && end.isEmpty() && fee.isEmpty() && seats.isEmpty()&& pickup.isEmpty()&& dropoff.isEmpty());
 }
 
 //Creates a row for a new occurance entry
-function create_active_row() {
+function create_active_row(tour_id = null) {
 	var collection = document.getElementById("occurance_list");
 
+	let id_text = tour_id ? `id='${tour_id}'` : "";
 
-	var collection = document.getElementById("occurance_list");
 	var addButton = document.getElementById("add_button");
 	var newNode = document.createElement("div");
 	newNode.setAttribute("id", "active_occurance_row")
 	newNode.innerHTML =
-	"<div class='list-item'>\
+	"<div class='list-item' "+id_text+">\
 		<div class='inner-item start_val'> </div> \
 		<div class='inner-item start_time_val'> </div> \
 		<div class='inner-item end_val'> </div> \
@@ -203,36 +253,6 @@ function create_active_row() {
 }
 
 
-//Creates an occurance row with the values passed
-function create_entry_row(start_date,start_time, end_date, end_time, fee, seats, pickup,dropoff) {
-
-	var collection = document.getElementById("occurance_list");
-	var addButton = document.getElementById("add_button");
-	var newNode = document.createElement("div");
-	newNode.classList.add("list-item");
-	newNode.innerHTML =
-	"<div class='list-item'>\
-		<div class='inner-item start_val'>" + start_date + "</div> \
-		<div class='inner-item start_time_val'>"+ start_time + "</div> \
-		<div class='inner-item end_val'>"+ end_date + "</div> \
-		<div class='inner-item end_time_val'>"+ end_time + "</div> \
-		<div class='inner-item  fee_val'>" + fee + "</div> \
-		<div class='inner-item seats_val'>" + seats + "</div> \
-		<div class='inner-item row'> \
-			<div class='inner-item' onclick='edit_occurance_entry(this)'>d</div> \
-			<div class='inner-item' onclick='delete_occurance_entry(this)'>e</div> \
-		</div>\
-	</div>\
-	<div>\
-		<p class='easygo-fs-5' style='margin-top:0px'>\
-			pickup location: <span style='margin-right: 16px' class='pickup_val'>"+pickup+"</span>\
-			drop-off location: <span class='dropoff_val'>"+dropoff+"</span>\
-		</p>\
-	</div>";
-
-	collection.insertBefore(newNode, addButton);
-
-}
 
 function add_new_occurance() {
 	//check if all entries are filled
@@ -248,28 +268,44 @@ function add_new_occurance() {
 
 //Disables the active row
 function remove_active_row() {
-	document.getElementById("active_occurance_row").removeAttribute("id");
+	if(hidden_occurance_id.value == ""){
+		if(document.getElementById("active_occurance_row") != null){
+			document.getElementById("active_occurance_row").removeAttribute("id");
+		}
+	}else{
+			document.getElementById("active_occurance_row").setAttribute("id",hidden_occurance_id.value);
+	}
 }
 
 
 //Removes the values in the textfields for trip occurances
 function clear_occurance_fields() {
-	document.getElementById("start_date").value = "";
-	document.getElementById("seats").value = "";
-	document.getElementById("fee").value = "";
-	document.getElementById("end_date").value = "";
+	start_date_txt_field.value = "";
+	seats_txt_field.value = "";
+	fee_txt_field.value = "";
+	end_date_txt_field.value = "";
+	start_time_txt_field.value = "";
+	end_time_txt_field.value = "";
+	dropoff_txt_field.value = "";
+	pickup_txt_field.value = "";
+	hidden_occurance_id.value = "";
 }
 
 
 // Returns the values for all entered occurances as a list of json
-function get_occurance_entries() {
+function get_occurance_entries(occurance_id = null) {
 	var array = [];
 	var collection = document.getElementById("occurance_list");
-	for (index = 1; index < collection.children.length - 1; index++) {
-		var child = collection.children[index];
-		var values = get_occurance_row_values(child);
+	if(occurance_id){
+		values = get_occurance_row_values(document.getElementById(occurance_id));
 		array.push(values);
-		// array.push(JSON.stringify(values));
+	}else{
+
+		for (index = 1; index < collection.children.length - 1; index++) {
+			var child = collection.children[index];
+			var values = get_occurance_row_values(child);
+			array.push(values);
+		}
 	}
 	return array;
 }
@@ -283,7 +319,8 @@ function get_occurance_row_values(element) {
 		"fee": element.children[0].getElementsByClassName("fee_val")[0].innerText,
 		"seats": element.children[0].getElementsByClassName("seats_val")[0].innerText,
 		"pickup" : element.children[1].getElementsByClassName("pickup_val")[0].innerText,
-		"dropoff" : element.children[1].getElementsByClassName("dropoff_val")[0].innerText
+		"dropoff" : element.children[1].getElementsByClassName("dropoff_val")[0].innerText,
+		"tour_id" : element.children[0].id
 	};
 
 }
@@ -494,33 +531,35 @@ function update_location_results(location_list) {
 	}
 }
 
-
-function add_location_activity() {
-	//filling location section of page
+function add_selected_destination(destination_name){
 	var selected_location_list = document.getElementById("selected-locations");
-	var location_name = document.getElementById("location-info-title").innerText;
 	var add_location = true;
 
 	for (var loc_index = 0; loc_index < selected_location_list.children.length; loc_index++){
 		var child = selected_location_list.children[loc_index];
-		if (child.innerText == location_name){
+		if (child.innerText == destination_name){
 			add_location = false
 			break;
 		}
 	}
+
 	//if the list of added locations does not include current location,
 	//then it should be added
 	if (add_location){ // if location has already been added update its list data
 		var newNode = document.createElement("span");
 		newNode.setAttribute("class","location_name mx-1 my-1 px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize location-span");
 		// newNode.setAttribute("onclick", "selectedActivityClick()");
-		newNode.innerText = location_name;
+		newNode.innerText = destination_name;
 		selected_location_list.appendChild(newNode);
-		location_activity_set[location_name] = {};
 	}
+}
+
+
+function add_location_activity() {
+	//filling location section of page
+	var location_name = document.getElementById("location-info-title").innerText;
 
 	//filling activity section of page
-	var added_activities_list = document.getElementById("selected-activities");
 	//for every activity the location has,
 	for (var index = 0; index < document.getElementById("activity-list-div").children.length; index++) {
 		var element = document.getElementById("activity-list-div").children[index];
@@ -536,33 +575,34 @@ function add_location_activity() {
 		}
 
 		if (element.classList.contains("easygo-btn-1") && !already_added) {
-			var newNode = document.createElement("span");
-			newNode.setAttribute("id", element.id);
-			newNode.setAttribute("class", "px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
-			// newNode.setAttribute("onclick", "selectedActivityClick()");
-			newNode.innerText = element.innerText;
-			added_activities_list.appendChild(newNode);
-
-			location_activity_set[location_name][element.id] = element.innerText;
+			create_selected_destination_activity_span(element.id,element.innerText, location_name);
 		}
 
-		setActiveLocation(location_name)
 
 	};
 
 
 	$(".activity-span-selected").on("click", selectedActivityClick);
-	$(".location-span").on("click",selectedLocationClick);
 }
 
-function selectedLocationClick(element){
-	// setActiveLocation(element.target.innerText);
+function create_selected_destination_activity_span(activity_id,activity_name,location_name){
+
+	add_selected_destination(location_name);
+
+	var newNode = document.createElement("span");
+	newNode.setAttribute("id", activity_id);
+	newNode.setAttribute("class", "px-3 py-1 border-blue rounded border easygo-fs-5 text-capitalize activity-span-selected");
+	// newNode.setAttribute("onclick", "selectedActivityClick()");
+	newNode.innerText = activity_name;
+	added_activities_list.appendChild(newNode);
+	if(!location_activity_set[location_name]){
+		location_activity_set[location_name] = {};
+	}
+
+	location_activity_set[location_name][activity_id] = activity_name;
 }
+
 // Sets the location whose activites are shown
-function setActiveLocation(element){
-	// var location_name = element.target.innerText;
-	// console.log(location_name);
-}
 
 // creates and returns an html element for the result tile of tour sites
 function create_location_tile(map) {
@@ -658,7 +698,6 @@ function create_site(form){
 		"processors/processor.php",
 		payload,
 		(response) => {
-			console.log(response);
 			alert(response['msg']);
 
 		}
@@ -695,4 +734,61 @@ function add_loc_activity(){
 
 	field.value = '';
 	return true;
+}
+
+
+function fill_occurance_fields(seats,fee,end_date,start_date,pickup_loc,dropoff_loc,tour_id){
+	seats_txt_field.value = seats;
+	fee_txt_field.value = fee;
+	end_date_txt_field.value = end_date.split(" ")[0];
+	start_date_txt_field.value = start_date.split(" ")[0];
+	end_time_txt_field.value = end_date.split(" ")[1];
+	start_time_txt_field.value = start_date.split(" ")[1];
+	pickup_txt_field.value = pickup_loc;
+	dropoff_txt_field.value = dropoff_loc;
+	document.getElementById("tour_id").value = tour_id;
+	["seats","fee","end_date","start_date","end_time","start_time","pickup_loc","dropoff_loc"].forEach(value => {
+		on_occurance_edit(value);
+	});
+}
+
+function populate_campaign_form(campaign_id){
+	send_request("POST",
+	"processors/processor.php",
+	{
+		"action" : "get_campaign",
+		"campaign_id" : campaign_id
+	},
+	(response)=>{
+		// console.log(response);
+		const campaign = response.data.campaign;
+		const activities = campaign.activities;
+		tour_name_field.value = campaign.title;
+		tour_description_field.value = campaign.description;
+
+		//insert tours
+		console.log(campaign);
+		campaign.tours.forEach(element => {
+			create_active_row(element.tour_id)
+			prefill_occurance_field(element.seats_available,element.fee,element.end_date.split(" ")[0],element.start_date.split(" ")[0],element.end_date.split(" ")[1],element.start_date.split(" ")[1],element.pickup_location,element.dropoff_location);
+			["seats","fee","end_date","start_date","end_time","start_time","pickup_loc","dropoff_loc"].forEach(value =>{
+				on_occurance_edit(value);
+			});
+			add_new_occurance();
+
+		});
+
+		activities.forEach(element => {
+			create_selected_destination_activity_span(element.activity_id,element.activity_name,element.destination_name);
+		});
+
+		// tripimages_upload_display.addItemsToAltDisplay(campaign.images);
+		//TODO:: update image class to display files from the web
+
+		//remove the active row
+		document.getElementById("active_occurance_row").remove();
+
+		document.getElementById("submit_btn").innerText = "Update Tour";
+	}
+	);
 }

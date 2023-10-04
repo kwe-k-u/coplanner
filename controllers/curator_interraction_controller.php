@@ -184,6 +184,17 @@
 		}
 	}
 
+	if(!function_exists('get_campaign_by_id')){
+		function get_campaign_by_id($campaign_id){
+			$class = new interaction_class();
+			$data = $class->get_campaign_by_id($campaign_id);
+			$data["tours"] = $class->get_campaign_tours($campaign_id);
+			$data["activities"] = $class->get_campaign_activities($campaign_id);
+			$data["destinations"] = $class->get_destination_by_campaign($campaign_id);
+			return $data;
+		}
+	}
+
 	function get_trip_bookings($tour_id){
 		$class = new curator_interaction_class();
 		return $class->get_trip_bookings($tour_id);
@@ -192,5 +203,20 @@
 	function get_curator_followers($curator_id = null){
 		$class = new curator_interaction_class();
 		return $class->get_curator_followers($curator_id);
+	}
+
+	function update_campaign($title,$description,$campaign_id){
+		$class = new curator_interaction_class();
+		return $class->update_campaign($title,$description,$campaign_id);
+	}
+
+	function update_campaign_tour($pickup_loc,$dropoff_loc,$start_date,$end_date,$seats,$fee,$currency,$tour_id){
+		$class  = new curator_interaction_class();
+		return $class->update_campaign_tour($pickup_loc,$dropoff_loc,$start_date,$end_date,$seats,$fee,$currency,$tour_id);
+	}
+
+	function remove_campaign_tour($tour_id){
+		$class = new curator_interaction_class();
+		return $class->remove_campaign_tour($tour_id);
 	}
 ?>

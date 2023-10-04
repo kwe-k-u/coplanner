@@ -17,4 +17,6 @@
 			break;
 			#general logger
 	}
+	send_json(array("msg"=> "logged error"));
+	die();
 ?>
