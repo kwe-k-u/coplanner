@@ -42,6 +42,9 @@
 
 				// 	}
 				// 	die();
+				case "verify_payment":
+					
+					die();
 				case "book_standard_tour":
 
 					$provider = $_POST["provider"];
@@ -91,6 +94,7 @@
 							$amount = $trans_amount/ (1+VAT_RATE + TOURISM_LEVY);
 							$tax = $trans_amount - $amount;
 							$currency = $data["currency"];
+
 							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$amount,$trans_fee,$tax);
 							book_standard_trip($booking_id,$user_id,$tour_id,$adult_seats,$kid_seats,$transaction_id,$contact_name,$contact_number);
 

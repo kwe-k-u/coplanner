@@ -91,6 +91,7 @@ function payWithPaystack(currency, charge_amount,c_email,payload){
 		email: c_email,
 		amount: charge_amount,
 		currency: currency,
+		metadata : payload,
 		// ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
 		// label: "Optional string that replaces customer email"
 
@@ -100,21 +101,26 @@ function payWithPaystack(currency, charge_amount,c_email,payload){
 
 		callback: function(response){
 			// Confirm payment receipt
-			send_request(
-				"POST",
-				"processors/processor.php",
-				{
-					"action" : "book_standard_tour",
-					"provider" : "paystack",
-					"amount_expected" : charge_amount,
-					"currency_expected" : currency,
-					"payload": JSON.stringify(payload),
-					"response" : JSON.stringify(response)
-				},
-				(res)=>{
-					console.log(res);
-				}
-			)
+			// send_request(
+			// 	"POST",
+			// 	"processors/processor.php",
+			// 	{
+			// 		"action" : "book_standard_tour",
+			// 		"provider" : "paystack",
+			// 		"amount_expected" : charge_amount,
+			// 		"currency_expected" : currency,
+			// 		"payload": JSON.stringify(payload),
+			// 		"response" : JSON.stringify(response)
+			// 	},
+			// 	(res)=>{
+			// 		console.log(res);
+			// 	}
+			// )
+
+			// TODO:: check status for payment and go to redirect page
+
+			console.log("callback",response);
+			window.location.href=response.redirecturl;
 		}
 		});
 

@@ -21,6 +21,7 @@
         }
     }else {
         header("Location: login.php?redirect=book_tour.php?tour_id=$id");
+        die();
     }
 
 

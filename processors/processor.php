@@ -4,9 +4,16 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-	header('Access-Control-Allow-Origin: https://easygo.com.gh');
+	$http_origin = $_SERVER['HTTP_ORIGIN'];
+if ($http_origin == "http://easygo.com.gh" ||
+	 $http_origin == "http://www.easygo.com.gh" ||
+	 $http_origin == "https://easygo.com.gh" ||
+	 $http_origin == "https://www.easygo.com.gh")
+{
+    header("Access-Control-Allow-Origin: $http_origin");
 	header('Access-Control-Allow-Methods: GET, POST');
 	header("Access-Control-Allow-Headers: X-Requested-With");
+}
 
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
