@@ -4,9 +4,16 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-	header('Access-Control-Allow-Origin: https://easygo.com.gh');
+	$http_origin = $_SERVER['HTTP_ORIGIN'];
+if ($http_origin == "http://easygo.com.gh" ||
+	 $http_origin == "http://www.easygo.com.gh" ||
+	 $http_origin == "https://easygo.com.gh" ||
+	 $http_origin == "https://www.easygo.com.gh")
+{
+    header("Access-Control-Allow-Origin: $http_origin");
 	header('Access-Control-Allow-Methods: GET, POST');
 	header("Access-Control-Allow-Headers: X-Requested-With");
+}
 
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
@@ -36,10 +43,12 @@
 
 	$campaign_actions = array(
 		"create_campaign",
+		"edit_campaign",
 		"add_tour_site",
 		"get_site_by_id",
 		"query_site",
-		"get_tour_charge"
+		"get_tour_charge",
+		"get_campaign"
 	);
 
 
@@ -82,6 +91,11 @@
 
 	if (isset($_SERVER["PATH_INFO"]) && $_SERVER["PATH_INFO"] == "/log_error"){
 		require_once(__DIR__."/sub_system/event_manager.php");
+		die();
+	}
+
+	if(!isset($_REQUEST["action"])){
+		send_json(array("msg"=> "No action defined"),502);
 		die();
 	}
 

@@ -1,10 +1,13 @@
 <?php
 	// require_once(__DIR__."/../utils/paybox.php");
 	require_once(__DIR__."/../utils/core.php");
+	require_once(__DIR__."/../utils/paystack.php");
 	require_once(__DIR__."/../controllers/auth_controller.php");
 	require_once(__DIR__."/../controllers/campaign_controller.php");
+	require_once(__DIR__."/../controllers/interaction_controller.php");
 	require_once(__DIR__."/../controllers/finance_controller.php");
-
+	require_once(__DIR__."/../controllers/slack_bot_controller.php");
+	require_once(__DIR__."/../utils/mailer/mailer_class.php");
 
 	// $paybox = new paybox_custom();
 	if(!isset($_SERVER["PATH_INFO"])){
@@ -12,13 +15,26 @@
 		die();
 	}
 
+
+	$paystack = new paystack_custom();
+	$mailer = new mailer();
+
 	switch($_SERVER["PATH_INFO"]){
+		case "/verify_payment":
+			$reference = $_GET["reference"];
+			$response = $paystack->verify_transaction($reference);
+			if($response["status"]){
+				echo "We have received payment. You should get an email from us confirming your seat! Contact support at main.easygo@gmail.com if you don't recieve a reciept";
+			}else{
+				echo "Hmm.. We haven't received payment! If you are still completing payment, refresh the page when you're done or contact support at main.easygo@gmail.com if you believe this is a mistake";
+			}
+			die();
 		case "/verify_email":
 			$token = $_GET["token"];
 			$exists = check_email_verification_token($token);
 			if($exists){
 				$success = verify_user_email($token);
-				echo "Your email has been verified. <a href='../../views/login.php'>Click here to return to login</a>";
+				echo "Your email has been verified. <a href='".server_base_url()."views/login.php'>Click here to return to login</a>";
 			}else{
 				echo "your verification token may have expired. Kindly contact support at main.easygo@gmail.com";
 			}
@@ -79,119 +95,62 @@
 
 
 			die();
+		case "/paystack_callback":
+			$_POST = json_decode(file_get_contents("php://input"),true);
+
+			$meta = $_POST["data"]["metadata"];
+			$data = $_POST["data"];
+
+			$reference = $data["reference"];
+
+			// check the transaction status
+			$res = $paystack->verify_transaction($reference);
+			$status = $res["status"];
+
+			//If payment was successful record data and send invoice
+			if($status){
+				// Check what the payment is for
+				$action = $meta["action"];
+				switch($action){
+					case "book_standard_tour":
+						$contact_name = $meta["contact_name"];
+						$contact_number = $meta["contact_number"];
+						$transaction_id = $data["id"];
+						$kids = $meta["num_kids"];
+						$adults = $meta["num_adults"];
+						$trans_amount = $data["amount"]/100;
+						$easygo_amount = $trans_amount/ (1+VAT_RATE + TOURISM_LEVY);
+						$tax = $trans_amount - $easygo_amount;
+						$currency = $data["currency"];
+						$booking_id = generate_id();
+						$user_id = $meta["user_id"];
+						$tour_id = $meta["tour_id"];
+						$trans_fee = $data["fees"] / 100;
+						$trans_date = $data["paid_at"];
+
+						// record transaction
+							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$easygo_amount,$trans_fee,$tax);
+							book_standard_trip($booking_id,$user_id,$tour_id,$adults,$kids,$transaction_id,$contact_name,$contact_number);
+
+							$user = get_user_by_id($user_id);
+							$email = $user["email"];
+							$tour_name =get_campaign_by_tour_id($tour_id)["title"];
+							$mailer->booking_confirmation($email);
+							notify_booking($user["user_name"],$email,$tour_name,$booking_id,$adults + $kids);
+
+						send_json(array("response"=> "received"));
+						die();
+					default:
+					//TODO:: record data and log error
+					die();
+				}
+
+			}
+
+			die();
 		default:
 			die();
 	}
 
 
-	switch($_REQUEST["action"]){
-	// 	case "paybox":
-	// // 		$_POST=
-	// // 	array("status"=> "Success",
-	// // 	"message"=> "Test Payment Initiated",
-	// // 	"token"=> "bhIYQ0shG0",
-	// // 	"timestamp"=> "2022-12-23T03:52:38.000000Z",
-	// // 	"currency"=> "GHS",
-	// // 	"exchange"=> null,
-	// // 	"amount"=> 400,
-	// // 	"fee"=> 7.6,
-	// // 	"mode"=> "Test",
-	// // 	"payment_processor"=> "Test",
-	// // 	"transaction"=> "Credit",
-	// // 	"payload"=> array("payment_method"=>"momo","contact_name"=>"Mildred","contact_number"=>"0208162626","seats"=>"2","number"=>"0559582518","network"=>"MTN","user_id"=>"a6d783492bfac5fc426a552592d13e57","campaign_id"=>"36d61baa788777e446c0a0361aea6ef2","tour_id"=>"d1a10ba6198572ee80984e0fb17ae533","action"=>"trip_payment"),
-	// // 	"order_id"=> null,
-	// // 	"environment"=> "Development",
-	// // 	"callback_url"=> "https:\/\/www.easygo.com.gh\/processors\/callback.php?action=paybox&mode=",
-	// // 	"redirect_url"=> "https:\/\/www.easygo.com.gh\/settings\/test_prod.php",
-	// // 	"payer_name"=> null,
-	// // 	"payer_email"=> "easy@go",
-	// // 	"payer_phone"=> null,
-	// // 	"customer_id"=> null
-	// // );
-	// 		$success = $_POST["status"] == "Success";
-
-	// 		if (!$success){
-	// 			echo "end";
-	// 			die();
-	// 		}
-
-	// 		$payload = $_POST["payload"];
-	// 		// echo (json_encode($payload));
-	// 		// die();
-	// 		$payload = is_string($payload) ? json_encode($payload): $payload;
-	// 		$payload = $_POST["payload"];
-	// 		$token = $_POST["token"];
-	// 		$currency = $_POST["currency"];
-	// 		$time = $_POST["timestamp"];
-	// 		$transaction_amount = $_POST["amount"];
-	// 		$transaction_fee = $_POST["fee"];
-
-
-	// 		$user_id = $payload["user_id"];
-	// 		$tour_id = $payload["tour_id"];
-	// 		$campaign_id = $payload["campaign_id"];
-	// 		$action = $payload["action"];
-	// 		$payment_method=$payload["payment_method"];
-	// 		$contact_name = $payload["contact_name"];
-	// 		$contact_number = $payload["contact_number"];
-	// 		$network = $payload["network"];
-	// 		$number = $payload["number"];
-	// 		$seats = $payload["seats"];
-
-	// 		$user = get_user_by_id($user_id);
-	// 		$trip = get_campaign_trip_by_id($tour_id);
-
-	// 		$amount_expected = floatval($trip["fee"]) * intval($seats);
-	// 		$currency_expected = $trip["currency"];
-
-	// 		$body = array (
-	// 			"action" => "verify_payment",
-	// 			"amount_expected" => $amount_expected,
-	// 			"currency_expected" => $currency_expected,
-	// 			"provider" => "paybox",
-	// 			"token" => $token
-	// 		);
-
-	// 		$http = new http_handler();
-	// 		//check if payment was successful
-	// 		$response = $http->post(
-	// 			"localhost/easygo_v2/processors/processor.php",
-	// 			$body
-	// 		);
-
-	// 		$response = json_decode($response, true);
-
-	// 		// var_dump($response);
-	// 		// die();
-
-	// 		if ($response["status"] == "success"){// record transaction
-	// 			switch($action){
-	// 				case "trip_payment":
-	// 					$data = $response["data"];
-	// 					// record transaction
-	// 					$transaction_date = $data["timestamp"];
-	// 					$booking_id = generate_id();
-	// 					record_transaction($token,$transaction_date,$amount_expected,"paybox",$data["fee"]);
-	// 					// record booking
-	// 					book_standard_trip($booking_id,$user_id,$tour_id,$seats,$token,$contact_name,$contact_number);
-	// 			}
-	// 			// echo $response;
-	// 		}else {
-	// 			echo "failed";
-	// 		}
-
-	// 		//if it was record the transaction and create booking
-
-
-	}
-
-	// $e = $paybox->withdraw(0.1,"0150509995000","300302","Kweku","main.easygo@gmail.com","2");
-
-
-// echo $response;
-	// var_dump($e);
-
-
-	//verify transaction and update booking status
-	//from payload get user_id, tour_id, $seats_booked
 ?>

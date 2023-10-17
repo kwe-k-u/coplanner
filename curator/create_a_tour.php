@@ -14,6 +14,8 @@ $curator_name = $info["curator_name"];
 $logo = $info["curator_logo"];
 
 
+
+//
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,8 @@ $logo = $info["curator_logo"];
 <head>
     <meta charset="UTF-8">
   <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curator | Create tour</title>
     <!-- Bootstrap css -->
@@ -51,8 +54,8 @@ $logo = $info["curator_logo"];
                 <section class="create-trip">
                     <div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
                         <div>
-                            <h5 class="title">Create a trip</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="#">Trips</a> > Create Trip</small>
+                            <h5 class="title">Upload a tour</h5>
+                            <small class="easygo-fs-5 text-gray-1"><a href="#">Tours</a> > Upload a tour</small>
                         </div>
                     </div>
                     <form id="create_trip_form" onsubmit="return submit_tour(this)">
@@ -61,7 +64,7 @@ $logo = $info["curator_logo"];
                         <div class="row border-1 border-bottom py-4 pe-lg-5">
                             <div class="col-lg-5">
                                 <h3 class="easygo-fs-3 easygo-fw-1">Flyer</h3>
-                                <p class="text-gray-1 easygo-fs-5">Upload the flyer for the trip if you have any</p>
+                                <p class="text-gray-1 easygo-fs-5">Upload the flyer for the tour if you have any</p>
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div>
@@ -83,16 +86,16 @@ $logo = $info["curator_logo"];
                             </div>
                             <div class="col-lg-7 d-flex flex-column gap-4">
                                 <div class="form-input-field">
-                                    <input type="text" name="title" placeholder="Name of your amazing tour">
+                                    <input type="text" id="tour_name" name="title" placeholder="Name of your amazing tour">
                                 </div>
                             </div>
                         </div>
                         <!-- Tour description  -->
                         <div class="row border-1 border-bottom py-4 pe-lg-5">
                             <div class="col-lg-5">
-                                <h3 class="easygo-fs-3 easygo-fw-1">Trip Description</h3>
-                                <p class="text-gray-1 easygo-fs-5">Describe the trip in detail. Tell us about all the activities involved
-                                    in the trip. Tell us the locations you will be visiting, anything special about the trip you will like
+                                <h3 class="easygo-fs-3 easygo-fw-1">Tour Description</h3>
+                                <p class="text-gray-1 easygo-fs-5">Describe the tour in detail. Tell us about all the activities involved
+                                    in the tour. Tell us the locations you will be visiting, anything special about the tour you will like
                                     tour goers to know? Here's an example (NB: AI generated)</p>
                                 <p class="text-gray-1 easygo-fs-5">
                                     Our tour begins with a pick-up from your hotel in the city and a comfortable drive to the countryside, where you can breathe in the fresh air and take in the beauty of nature. Our first stop will be at a local farm, where you can see how the farmers cultivate the land and produce various crops.
@@ -107,15 +110,15 @@ $logo = $info["curator_logo"];
                                 <div>
                                 </div>
                                 <div class="form-input-field">
-                                    <textarea name="description" style="resize: none" cols="30" rows="14" placeholder="Trip description"></textarea>
+                                    <textarea id="description_field" name="description" style="resize: none" cols="30" rows="14" placeholder="tour description"></textarea>
                                 </div>
                             </div>
                         </div>
                         <!-- Tour images  -->
                         <div class="row border-1 border-bottom py-4 pe-lg-5">
                             <div class="col-lg-5">
-                                <h3 class="easygo-fs-3 easygo-fw-1">Trip Images</h3>
-                                <p class="text-gray-1 easygo-fs-5">Add images to your trip</p>
+                                <h3 class="easygo-fs-3 easygo-fw-1">tour Images</h3>
+                                <p class="text-gray-1 easygo-fs-5">Add images to your tour</p>
                             </div>
                             <div class="col-lg-7">
                                 <div>
@@ -175,9 +178,10 @@ $logo = $info["curator_logo"];
                                 <!-- Occurences  -->
                                 <div class="row border-1 border-top border-bottom py-4 pe-lg-5">
                                     <div class="col-lg-5">
-                                        <h4 class="easygo-fs-4 easygo-fw-1">Trip Occurence</h4>
-                                        <p class="text-gray-1 easygo-fs-5">Add trip occurence</p>
+                                        <h4 class="easygo-fs-4 easygo-fw-1">Tour Occurrence</h4>
+                                        <p class="text-gray-1 easygo-fs-5">Add tour occurrence</p>
                                     </div>
+                                    <input type="hidden" id="hidden_occurance_id">
                                     <div class="col-lg-7 d-flex flex-column gap-4">
                                         <!-- Start date and time  -->
                                         <div class="row">
@@ -246,7 +250,7 @@ $logo = $info["curator_logo"];
                                                     </div>
                                                     <div class="d-flex align-items-start mt-3">
                                                         <div class="icon"><img src="../assets/images/svgs/info.svg" alt="info icon"></div>
-                                                        <div class="easygo-fs-6">Total fee for each trip includes transportation, food & any other costs</div>
+                                                        <div class="easygo-fs-6">Total fee for each tour includes transportation, food & any other costs</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -329,8 +333,8 @@ $logo = $info["curator_logo"];
                         <div class="input-field py-5 pe-5 d-flex justify-content-end gap-3">
                             <!-- <input class="btn btn-default border px-4 py-2 easygo-fs-4" type="reset" value="cancel"> -->
                             <button type="reset" class="btn btn-default border px-4 easygo-fs-4">Cancel</button>
-                            <!-- <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" value="Create Trip"> -->
-                            <button class="easygo-btn-1 px-4 py2 easygo-fs-4" type="submit">Create Trip</button>
+                            <!-- <input class="easygo-btn-1 px-4 py-2 easygo-fs-4" value="Create tour"> -->
+                            <button  id="submit_btn" class="easygo-btn-1 px-4 py2 easygo-fs-4" type="submit">Create tour</button>
                         </div>
                     </form>
                 </section>
@@ -382,7 +386,7 @@ $logo = $info["curator_logo"];
                             <!-- cover photo upload file input [end] -->
                             <!-- ============================== -->
                             <!-- ============================== -->
-                            <!-- trip images  upload file input [start] -->
+                            <!-- tour images  upload file input [start] -->
                             <div style="height: 200px;" id="trip-imgs-upload-outer" class="cover_or_trip-imgs">
                                 <div id="trip-imgs-upload" id="upload-display" class="eh_img-upload-display border-gray-2">
                                     <div class="eh_iu-label">
@@ -395,7 +399,7 @@ $logo = $info["curator_logo"];
                                     <input id="file" type="file" multiple />
                                 </div>
                             </div>
-                            <!-- trip images  upload file input [end] -->
+                            <!-- tour images  upload file input [end] -->
                             <!-- ============================== -->
                             <!-- <div id="trip-imgs-upload" class="file-input py-5 cover_or_trip-imgs" visible-mode="flex">
                                 <div class="upload-symbol">
@@ -853,5 +857,6 @@ $logo = $info["curator_logo"];
     <script src="../assets/js/curator_general.js"></script>
     <script src="../assets/js/create_a_tour.js"></script>
 </body>
+<!-- TODO:: Cancel button on main page should go to the dashboard  -->
 
 </html>
