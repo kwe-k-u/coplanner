@@ -1567,6 +1567,76 @@ input:disabled {
   font-weight: var(--font-weight-1);
 }
 
+/** Itinerary card **/
+.itinerary-cards-container{
+  display: flex;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.itinerary-card{
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 6px 8px 4px 0 rgba(0,0,0,0.25);
+  border-radius: 20px;
+}
+
+.itinerary-card .itinerary-card-top-note{
+  background-color: var(--easygo-orange);
+  color: white;
+  font-size: var(--font-size-3);
+  width: 30%;
+  height: 14%;
+  margin-right: 10%;
+  margin-left: auto;
+  padding: 0rem 0.1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.itinerary-card .itinerary-card-body{
+  flex: 0 0 75%;
+  padding: 1rem 2rem;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.itinerary-card-body .price-and-people{
+  display: flex;
+  justify-content: space-between;
+  color: var(--easygo-gray-1);
+}
+
+.itinerary-card .itinerary-desc{
+  font-size: var(--font-size-5);
+  max-height: 50%;
+  overflow: auto;
+}
+
+.itinerary-card .itinerary-activities{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.itinerary-card .itinerary-activities .activity{
+  background-color: var(--easygo-blue);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-size: var(--font-size-5)
+}
+
 
 /** styles for DIALOG BOX ***/
 * {
