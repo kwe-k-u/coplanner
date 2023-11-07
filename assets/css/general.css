@@ -926,6 +926,20 @@ input:disabled {
   color: var(--easygo-blue);
 }
 
+.easygo-nav-tabs-alt {
+  border: none;
+}
+.easygo-nav-tabs-alt .nav-link {
+  border: none;
+  color: var(--easygo-blue);
+}
+
+.easygo-nav-tabs-alt .nav-link.active {
+  background-color: transparent;
+  border-bottom: solid 1px var(--easygo-orange);
+  color: var(--easygo-orange);
+}
+
 /** easygo cards **/
 .easygo-card-1 {
   display: flex;
@@ -1570,13 +1584,15 @@ input:disabled {
 /** Itinerary card **/
 .itinerary-cards-container{
   display: flex;
-  overflow: hidden;
+  gap: 2rem;
+  overflow: auto;
   padding: 2rem;
 }
 
 .itinerary-card{
   width: 400px;
   height: 300px;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
