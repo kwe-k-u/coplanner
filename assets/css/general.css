@@ -275,6 +275,25 @@ i {
   border-radius: 50%;
 }
 
+.easygo-icon-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px var(--easygo-blue);
+  border-radius: 10px;
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 3px 3px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+}
+
+.easygo-icon-btn:hover{
+  transform: translateY(10px);
+  box-shadow: 0 4px 3px 3px rgba(0,0,0,0);
+}
+
 /** forms **/
 form .inline-inputs {
   display: flex;
