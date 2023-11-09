@@ -155,7 +155,46 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="tour-type-selection-page" data-transit-parent="tool-selection-page" style="max-width: 300px;">Next</button>
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="duration-selection-page" data-transit-parent="tour-type-selection-page" style="max-width: 300px;">Next</button>
+                        </div>
+                    </div>
+                </section>
+                <section id="duration-selection-page" class="eh-transition-page">
+                    <div class="mb-4">
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tour-type-selection-page" data-transit-parent="duration-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    </div>
+                    <div>
+                        <div class="mt-auto">
+                            <h4 class="text-center fw-bold mb-5">How long do you want your tour?</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" name="tour-duration-selection" id="single-day-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="single-day-select">
+                                        <h3>Single Day</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" name="tour-duration-selection" id="2-to-3-days-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="2-to-3-days-select">
+                                        <h3>2-3 Days</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" name="tour-duration-selection" id="week-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="week-select">
+                                        <h3>About a week</h3>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 d-flex justify-content-center">
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="accomodation-selection-page" data-transit-parent="duration-selection-page" style="max-width: 300px;">Next</button>
                         </div>
                     </div>
                 </section>
