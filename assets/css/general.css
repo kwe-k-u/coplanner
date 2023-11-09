@@ -287,12 +287,24 @@ i {
   padding: 1rem;
   box-shadow: 0 4px 3px 3px rgba(0,0,0,0.3);
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .easygo-icon-btn:hover{
   transform: translateY(10px);
   box-shadow: 0 4px 3px 3px rgba(0,0,0,0);
 }
+
+.easygo-radio-btn-1 input[type="radio"]{
+  display: none;
+}
+
+.easygo-radio-btn-1 input[type="radio"]:checked + label{
+  background-color: var(--easygo-orange);
+  color: white !important;
+}
+
+
 
 /** forms **/
 form .inline-inputs {
