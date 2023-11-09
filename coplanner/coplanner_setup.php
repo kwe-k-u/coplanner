@@ -198,6 +198,37 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                         </div>
                     </div>
                 </section>
+                <section id="accomodation-selection-page" class="eh-transition-page">
+                    <div class="mb-4">
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="accomodation-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    </div>
+                    <div>
+                        <div class="mt-auto">
+                            <h4 class="text-center fw-bold mb-5">How long do you want your tour?</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" name="tour-accomodation-selection" id="individual-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="individual-select">
+                                        <h3>Individual</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" name="tour-accomodation-selection" id="shared-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="shared-select">
+                                        <h3>Shared</h3>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 d-flex justify-content-center">
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="activities-selection-page" data-transit-parent="accomodation-selection-page" style="max-width: 300px;">Next</button>
+                        </div>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
