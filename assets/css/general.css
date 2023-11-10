@@ -305,6 +305,16 @@ i {
 }
 
 
+.easygo-checkbox-btn-1 input[type="checkbox"]{
+  display: none;
+}
+
+.easygo-checkbox-btn-1 input[type="checkbox"]:checked + label{
+  background-color: var(--easygo-orange);
+  color: white !important;
+}
+
+
 
 /** forms **/
 form .inline-inputs {
