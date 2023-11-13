@@ -12,7 +12,7 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coplanner - Home 2</title>
+    <title>Coplanner - Home 3</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -32,7 +32,7 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
         ?>
         <!-- navbar [end] -->
         <!--- ================================ -->
-        <main class="container" style="margin-top: 7rem;">
+        <main style="margin-top: 7rem;">
             <div class="container bg-white px-4">
                 <div class="pt-5">
                     <a class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent"><i class="fa-solid fa-arrow-left"></i> Back</a>
@@ -54,171 +54,78 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                             </p>
                         </div>
                         <div class="col-lg-6 p-3">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    GHC 500 <br>
-                                    Single day
+                            <div class="position-relative">
+                                <div class="w-100 h-100 position-absolute d-flex align-items-center" style="background-color: rgba(255,255,255,0.9)">
+                                    <div>
+                                        <div class="mb-4">
+                                            The creator of the itinerary has set it as pay to view. You can only view the full itinerary by paying a GHS 5 fee.
+                                        </div>
+                                        <div>
+                                            <a href="#" class="easygo-btn-5 bg-blue text-white easygo-fs-3">
+                                                Pay&nbsp;<span class="text-orange">GHC 5</span>&nbsp;to view
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
-                                    3-5 People <br>
-                                    Single day
+                                    <div class="my-4">
+                                        <h3 class="easygo-fw-1 m-0">Day one - some name description</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 col-12 py-3 d-flex justify-content-center">
+                                                <div>
+                                                    <h4 class="m-0">Destination Name</h4>
+                                                    <div>Greater Accra, Ghana</div>
+                                                    <div class="text-blue easygo-fs-2 py-2">
+                                                        <i class="fa-solid fa-wifi"></i> &nbsp;
+                                                        <i class="fa-solid fa-bath"></i> &nbsp;
+                                                        <i class="fa-solid fa-person-swimming"></i>
+                                                    </div>
+                                                    <div class="itinerary-activities">
+                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="my-4">
+                                        <h3 class="easygo-fw-1 m-0">Day one - some name description</h3>
+                                        <div class="row">
+                                            <div class="col-md-6 col-12 py-3 d-flex justify-content-center">
+                                                <div>
+                                                    <h4 class="m-0">Destination Name</h4>
+                                                    <div>Greater Accra, Ghana</div>
+                                                    <div class="text-blue easygo-fs-2 py-2">
+                                                        <i class="fa-solid fa-wifi"></i> &nbsp;
+                                                        <i class="fa-solid fa-bath"></i> &nbsp;
+                                                        <i class="fa-solid fa-person-swimming"></i>
+                                                    </div>
+                                                    <div class="itinerary-activities">
+                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="my-5">
-                                <h1 class="easygo-fw-1">GHC 500</h1>
-                                <p class="easygo-fs-4">Estimated cost</p>
-                            </div>
-                            <div class='d-flex justify-content-between gap-4'>
-                                <a href='#' class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50'>Use Itinerary</a>
-                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Add to Wishlist</a>
                             </div>
                         </div>
                     </div>
                 </section>
                 <!--- Section 1 [end] -->
                 <!--- ================================ -->
-                <!--- ================================ -->
-                <!--- Section 2 [start] -->
-                <section class="my-5">
-                    <div class="my-4">
-                        <h3 class="easygo-fw-1 m-0">Day one - some name description</h3>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="my-4">
-                        <h3 class="easygo-fw-1 m-0">Day one - some name description</h3>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 py-3 d-flex justify-content-center">
-                                <div>
-                                    <h4 class="m-0">Destination Name</h4>
-                                    <div>Greater Accra, Ghana</div>
-                                    <div class="text-blue easygo-fs-2 py-2">
-                                        <i class="fa-solid fa-wifi"></i> &nbsp;
-                                        <i class="fa-solid fa-bath"></i> &nbsp;
-                                        <i class="fa-solid fa-person-swimming"></i>
-                                    </div>
-                                    <div class="itinerary-activities">
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="my-4 text-center easygo-fs-5">
-                        <a href="#">Click to expand more locations</a>
-                    </div>
-                </section>
-                <!--- Section 2 [end] -->
-                <!--- ================================ -->
             </div>
             <!--- ================================ -->
-            <!--- Section 4 [start] -->
+            <!--- Section 2 [start] -->
+            <section class="container px-4 my-5 py-5">
+                <div class="d-flex justify-content-center align-items-center easygo-fs-5">
+                    Click to expand remaining locations
+                </div>
+            </section>
+            <!--- Section 2 [end] -->
+            <!--- ================================ -->
+            <!--- Section 3 [start] -->
             <section class="container px-4 my-5 py-5">
                 <h2 class="mb-4">View other itineraries created by other people</h2>
                 <nav>
@@ -461,7 +368,7 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                     </div>
                 </div>
             </section>
-            <!--- Section 4 [end] -->
+            <!--- Section 3 [end] -->
             <!--- ================================ -->
         </main>
     </div>
