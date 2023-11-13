@@ -171,11 +171,12 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                             $description = shorten($trip["description"]);
                             $curator = $trip["curator_name"];
                             $curator_id = $trip["curator_id"];
+                            $image = $trip["media"][0]["media_location"];
 
 
                             echo "<div class='col-lg-4 col-md-6 py-3'>
                                 <div class='trip-card'>
-                                    <img src='../assets/images/others/tour1.jpg' alt='trip card image'>
+                                    <img src='$image' alt='trip card image'>
                                     <div class='trip-card-body'>
                                         <div class='trip-card-header'>
                                             <div class='title'>
