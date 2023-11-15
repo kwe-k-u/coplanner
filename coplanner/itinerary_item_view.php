@@ -34,9 +34,9 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
         <!--- ================================ -->
         <main class="container-fluid" style="margin-top: 7rem;">
             <div class="row my-4">
-                <div class="col-4 d-flex justify-content-between">
+                <div class="col-lg-4 py-2 d-flex justify-content-between">
                 </div>
-                <div class="col-4 d-flex justify-content-between">
+                <div class="col-lg-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
                             Itinerary Name/Day one
@@ -46,8 +46,15 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                         </div>
                     </div>
                 </div>
-                <div class="col-4 d-flex justify-content-center">
-                    <div>Work with Coplanner</div>
+                <div class="col-lg-4 py-2 d-flex justify-content-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="box-shadow-3 d-flex justify-content-center align-items-center" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.74967 4.33325L12.458 10.2916L18.4163 12.9999L12.458 15.7083L9.74967 21.6666L7.04134 15.7083L1.08301 12.9999L7.04134 10.2916L9.74967 4.33325ZM9.74967 9.56575L8.66634 11.9166L6.31551 12.9999L8.66634 14.0833L9.74967 16.4341L10.833 14.0833L13.1838 12.9999L10.833 11.9166L9.74967 9.56575ZM20.583 9.74992L19.218 6.78159L16.2497 5.41658L19.218 4.06242L20.583 1.08325L21.9372 4.06242L24.9163 5.41658L21.9372 6.78159L20.583 9.74992ZM20.583 24.9166L19.218 21.9482L16.2497 20.5833L19.218 19.2291L20.583 16.2499L21.9372 19.2291L24.9163 20.5833L21.9372 21.9482L20.583 24.9166Z" fill="#1204B5" />
+                            </svg>
+                        </span>
+                        Work with Coplanner
+                    </div>
                 </div>
             </div>
             <div class="position-relative" style="overflow-x: hidden">
