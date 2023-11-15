@@ -297,6 +297,11 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                 </section>
                 <!-- main-content [end] -->
                 <!--- ================================ -->
+                <section class="py-5">
+                    <div class="d-flex justify-content-center mt-3">
+                        <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5">Finalize</button>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
