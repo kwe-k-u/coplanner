@@ -1112,6 +1112,22 @@ input:disabled {
   left: 0;
 }
 
+.sidebar-alt-280{
+  width: 280px !important;
+}
+.sidebar-alt-280.sidebar-left{
+  left: -280px !important;
+}
+.sidebar-alt-280.sidebar-right{
+  right: -280px !important;
+}
+.sidebar-alt-280.sidebar-left.open{
+  left: 0 !important;
+}
+.sidebar-alt-280.sidebar-right.open{
+  right: 0 !important;
+}
+
 /** profile image styles **/
 .profile_img-upload {
   display: flex;

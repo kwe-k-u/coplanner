@@ -35,9 +35,6 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
         <main class="container-fluid" style="margin-top: 7rem;">
             <div class="row my-4">
                 <div class="col-4 d-flex justify-content-between">
-                    <button class="sidebar-toggler" type="button" data-target="itinerary-sidebar">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
                 </div>
                 <div class="col-4 d-flex justify-content-between">
                     <div class="d-flex gap-2 align-items-center">
@@ -53,16 +50,16 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                     <div>Work with Coplanner</div>
                 </div>
             </div>
-            <div class="position-relative">
+            <div class="position-relative" style="overflow-x: hidden">
                 <!--- ================================ -->
                 <!-- sidebar [start] -->
-                <aside id="itinerary-sidebar" class="sidebar sidebar-left position-absolute bg-white" style="max-width: 300px;">
-                    <div class="bg-blue p-2">
-                        <div class="d-flex flex-column align-items-start gap-1">
+                <aside id="itinerary-sidebar" class="sidebar sidebar-left sidebar-alt-280 position-absolute bg-white">
+                    <div class="bg-blue position-relative" style="height: 2rem;">
+                        <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 position-absolute h-100 border-0 sidebar-toggler" style="right: -2.8rem; top: 0;" data-target="itinerary-sidebar">
                             <div class="bg-white" style="padding: 0.1rem 1rem;"></div>
                             <div class="bg-white" style="padding: 0.1rem 1rem;"></div>
                             <div class="bg-white" style="padding: 0.1rem 1rem;"></div>
-                        </div>
+                        </button>
                     </div>
                     <div class="px-2 bg-white">
                         <div class="border-bottom border-blue border-2 py-3">
