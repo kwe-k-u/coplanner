@@ -248,64 +248,116 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                         <!-- Itinerary Exp [end] -->
                         <!--- ================================ -->
                         <!--- ================================ -->
-                        <!-- Suggestions [start] -->
+                        <!-- Sentiment Analysis [start] -->
                         <div class="col-lg-6 p-3">
                             <div class="bg-white p-5 box-shadow-3">
-                                <h3 class="easygo-fw-1">
-                                    Itinerary Poll
-                                </h3>
-                                <div>A change has been suggested by a collaborator. You can choose option to maintain</div>
-                                <div class="suggestion-cards-container">
-                                    <div class="suggestion-card my-3">
-                                        <div class="suggestion-card-header">
-                                            Suggested by <span class="text-blue">Kweku</span>
-                                        </div>
-                                        <div class="suggestion-card-location">
-                                            Shai Hills
-                                        </div>
-                                        <div class="suggestion-card-body">
-                                            <p>
-                                                Here is the summary of the activities and destinations selected for the day
-                                            </p>
-                                            <div class="suggestion-card-activities">
-                                                <div class="mt-2">
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
+                                <div>
+                                    <h3 class="m-0">
+                                        Destination Suggestions
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-6 p-2">
+                                            <div class="p-2">
+                                                <div class="row p-3 border border-1 border-blue rounded-3">
+                                                    <div class="col-3">
+                                                        <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h6 class="easygo-fw-1">Intense Activity</h6>
+                                                        <p class="easygo-fs-4">The activities you have included are physically exhausting</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-end mt-3">
-                                            <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
+                                        <div class="col-6 p-2">
+                                            <div class="p-2">
+                                                <div class="row p-3 border border-1 border-blue rounded-3">
+                                                    <div class="col-3">
+                                                        <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h6 class="easygo-fw-1">Number of days</h6>
+                                                        <p class="easygo-fs-4">You may need to add an extra day to avoid rushing through activities</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="suggestion-card my-3">
-                                        <div class="suggestion-card-header">
-                                            Suggested by <span class="text-blue">Kweku</span>
-                                        </div>
-                                        <div class="suggestion-card-location">
-                                            Shai Hills
-                                        </div>
-                                        <div class="suggestion-card-body">
-                                            <p>
-                                                Here is the summary of the activities and destinations selected for the day
-                                            </p>
-                                            <div class="suggestion-card-activities">
-                                                <div class="mt-2">
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
+                                </div>
+                                <hr class="border-blue border border-1 opacity-100">
+                                <div>
+                                    <h3 class="m-0">
+                                        Sentiment Analysis
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-6 p-2">
+                                            <div class="p-2">
+                                                <div class="row p-3 border border-1 border-blue rounded-3">
+                                                    <div class="col-3">
+                                                        <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h6 class="easygo-fw-1">Intense Activity</h6>
+                                                        <p class="easygo-fs-4">The activities you have included are physically exhausting</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex justify-content-end mt-3">
-                                            <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
+                                        <div class="col-6 p-2">
+                                            <div class="p-2">
+                                                <div class="row p-3 border border-1 border-blue rounded-3">
+                                                    <div class="col-3">
+                                                        <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h6 class="easygo-fw-1">Number of days</h6>
+                                                        <p class="easygo-fs-4">You may need to add an extra day to avoid rushing through activities</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="#">Expand</a>
+                                    </div>
+                                </div>
+                                <hr class="border-blue border border-1 opacity-100">
+                                <div>
+                                    <h3 class="m-0">
+                                        Activity Suggestions
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-6 p-2">
+                                            <div class="p-2">
+                                                <div class="row p-3 border border-1 border-blue rounded-3">
+                                                    <div class="col-3">
+                                                        <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h6 class="easygo-fw-1">Intense Activity</h6>
+                                                        <p class="easygo-fs-4">The activities you have included are physically exhausting</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 p-2">
+                                            <div class="p-2">
+                                                <div class="row p-3 border border-1 border-blue rounded-3">
+                                                    <div class="col-3">
+                                                        <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h6 class="easygo-fw-1">Number of days</h6>
+                                                        <p class="easygo-fs-4">You may need to add an extra day to avoid rushing through activities</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Suggestions [end] -->
+                        <!-- Sentiment Analysis [end] -->
                         <!--- ================================ -->
                     </div>
                 </section>
