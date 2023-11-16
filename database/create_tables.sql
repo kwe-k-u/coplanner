@@ -1,3 +1,8 @@
+/*--------------------------------------------------------------------------------------------------
+-------------------------- TABLES -----------------------------------------------------------------
+--------------------------------------------------------------------------------------------------*/
+
+
 
 -- Drop database if it exists
 DROP DATABASE IF EXISTS coplanner;
@@ -38,13 +43,15 @@ CREATE TABLE activities(
 CREATE TABLE users (
     user_id VARCHAR(100) PRIMARY KEY,
     user_name VARCHAR(150),
-    date_registered DATETIME
+    date_registered DATETIME DEFAULT CURRENT_TIMESTAMP,
+    account_status ENUM ("active","suspended","deleted") DEFAULT "active"
 );
 
 -- Tracks the password hash for users logging in with passwords
 CREATE TABLE email_users (
     user_id VARCHAR(100) PRIMARY KEY,
     email VARCHAR(100) UNIQUE,
+    email_verified TINYINT(1) DEFAULT 0,
     password_hash VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -69,25 +76,18 @@ CREATE TABLE login_history (
     user_id VARCHAR(100),
     login_timestamp TIMESTAMP,
     login_method VARCHAR(50),
-    success_type ENUM("successful", "failed") DEFAULT "failed",
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
--- Tracks reasons for password failures
-CREATE TABLE login_failure_reason(
-    attempt_id VARCHAR(150),
-    reason TEXT,
-    FOREIGN KEY (attempt_id) REFERENCES login_history(attempt_id)
-);
 
 -- Keeps information about the destinations that can be added to itineraries
 CREATE TABLE destinations(
     destination_id VARCHAR(100) PRIMARY KEY,
     destination_name VARCHAR(200),
-    location VARCHAR(255),
+    location VARCHAR(100),
     latitude FLOAT,
     longitude FLOAT,
-    rating FLOAT CHECK(rating >= 1 AND rating <= 5)
+    rating FLOAT CHECK(rating >= 1 AND rating <= 5) DEFAULT 1
 );
 
 -- Allows tracking of activities available at each destination
@@ -125,28 +125,31 @@ CREATE TABLE destination_operating_hours(
     destination_id VARCHAR(100),
     day_of_week ENUM ("monday","tuesday","wednesday","thursday","friday","saturday","sunday"),
     start_time TIME,
-    end_time TIME,
+    end_time TIME check (end_time > start_time),
     PRIMARY KEY (destination_id,day_of_week),
     FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
 );
 
--- ... (rest of the tables remain the same)
 
 
 CREATE TABLE destination_rating(
 	destination_id VARCHAR(100),
 	user_id INT,
-	rating DOUBLE,/* check between 1 and 5*/
+	rating DOUBLE CHECK (rating >=1 and rating <=5),
+    comments TEXT,
 	PRIMARY KEY (destination_id,user_id),
 	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
 );
 
+
 -- Tracks the different itineraries that are created by users
 CREATE TABLE itinerary(
 	itinerary_id VARCHAR(100) PRIMARY KEY,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
 	end_date DATETIME CHECK (end_date >= start_date),
-	num_of_participants INT DEFAULT 1 CHECK(num_of_participants >0)
+	num_of_participants INT DEFAULT 1 CHECK(num_of_participants >0),
+    visibilty ENUM("private","public") DEFAULT "public"
 );
 
 
@@ -200,6 +203,7 @@ CREATE TABLE itinerary_collaborators(
 	itinerary_id VARCHAR(100),
 	user_id VARCHAR(100),
 	role ENUM ("owner", "viewer") DEFAULT "owner",
+    date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(itinerary_id,user_id),
 	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -222,7 +226,7 @@ CREATE TABLE media(
 	media_id VARCHAR(100) PRIMARY KEY,
 	media_location TEXT,
 	media_type ENUM("video","image") DEFAULT "image",
-	upload_date DATETIME DEFAULT CURRENT_TIMESTAMP(),
+	upload_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 	is_foreign TINYINT(1) DEFAULT 0
 );
 
@@ -235,3 +239,35 @@ CREATE TABLE destination_media(
 	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
 
 );
+
+
+
+/*--------------------------------------------------------------------------------------------------
+-------------------------- VIEWS -----------------------------------------------------------------
+--------------------------------------------------------------------------------------------------*/
+
+
+-- Returns all relevant user information for login and such
+CREATE VIEW vw_users AS
+SELECT
+    u.*,
+    a.apple_id,
+    e.email,
+    e.password_hash,
+    g.google_id
+FROM
+    users AS u
+INNER JOIN
+    google_users AS g ON g.user_id = u.user_id
+INNER JOIN
+    apple_users AS a ON a.user_id = u.user_id
+INNER JOIN
+    email_users AS e ON e.user_id = u.user_id;
+
+
+
+
+
+
+-- Returns the wishlist information with the itinerary data
+
