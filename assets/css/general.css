@@ -519,6 +519,20 @@ input:disabled {
   padding-right: 0.5rem;
 }
 
+.easygo-text-input-1{
+  border: solid 1px var(--easygo-blue);
+  border-radius: 5px;
+  padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.easygo-text-input-1 input{
+  outline: none;
+  border: none;
+  flex: 1 1 auto;
+}
+
 /** form error messages **/
 .form-err-msg{
   font-size: 10px;
