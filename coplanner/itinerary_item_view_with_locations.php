@@ -259,7 +259,12 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                                         </div>
                                     </div>
                                     <button class="col-2 text-blue d-flex align-items-center easygo-h3 bg-transparent border-0">
-                                        <i class="fa-solid fa-filter"></i>
+                                        <!-- <i class="fa-solid fa-filter"></i> -->
+                                        <div class="filter-icon">
+                                            <div class="line"></div>
+                                            <div class="line"></div>
+                                            <div class="line"></div>
+                                        </div>
                                     </button>
                                 </div>
                                 <!--- ================================ -->
