@@ -1674,6 +1674,18 @@ input:disabled {
   display: none;
 }
 
+/** dropdown menus **/
+.dropdown-toggle-alt{
+  padding: 0;
+}
+.dropdown-toggle-alt::after{
+  border: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  content: url("../images/svgs/arrow_down_alt.svg")
+}
+
 /** trip cards **/
 .trip-card {
   display: flex;
