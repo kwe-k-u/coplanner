@@ -363,8 +363,18 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                     </div>
                     <div>
                         <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-3">What&apos; your budget ?</h4>
-                            <h4 class="d-flex justify-content-center">GHS <Select></Select></h4>
+                            <h4 class="text-center fw-bold mb-3">What&apos;s your budget ?</h4>
+                            <div class="d-flex justify-content-center">
+                                <div class="dropdown d-flex align-items-center gap-2 border border-1 border-blue rounded-1 px-2">
+                                    GHS
+                                    <button class="btn btn-secondary dropdown-toggle dropdown-toggle-alt bg-transparent border-0 text-black d-flex align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">3000</a></li>
+                                        <li><a class="dropdown-item" href="#">100</a></li>
+                                        <li><a class="dropdown-item" href="#">20</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 p-3">
