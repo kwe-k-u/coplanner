@@ -576,7 +576,7 @@ input:disabled {
   gap: 0.3rem;
   padding: 0.5rem;
 }
-.filter-icon:active .line{
+.filter-icon:active .line {
   background-color: var(--easygo-orange);
 }
 .filter-icon .line {
@@ -1675,15 +1675,15 @@ input:disabled {
 }
 
 /** dropdown menus **/
-.dropdown-toggle-alt{
+.dropdown-toggle-alt {
   padding: 0;
 }
-.dropdown-toggle-alt::after{
+.dropdown-toggle-alt::after {
   border: none;
   height: 100%;
   display: flex;
   align-items: center;
-  content: url("../images/svgs/arrow_down_alt.svg")
+  content: url("../images/svgs/arrow_down_alt.svg");
 }
 
 /** trip cards **/
@@ -1942,4 +1942,12 @@ input:disabled {
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s linear;
+}
+
+/******************** MEDIA QUERY STYLING ********************/
+@media only screen and (min-width: 992px) {
+  .border-lg-end {
+    border-right: var(--bs-border-width) var(--bs-border-style)
+      var(--bs-border-color);
+  }
 }

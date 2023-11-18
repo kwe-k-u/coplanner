@@ -41,7 +41,7 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                 <!--- Section 1 [start] -->
                 <section>
                     <div class="row">
-                        <div class="col-lg-6 p-3 border-end border-blue">
+                        <div class="col-lg-6 p-3 border-lg-end border-blue">
                             <div style="height: 300px; background-color: var(--easygo-gray-2);">
                             </div>
                             <div class="my-3 d-flex justify-content-between">
