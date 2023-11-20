@@ -1,0 +1,322 @@
+{
+    "0": {
+        "name": "Mfantseman Beach Resort",
+        "place_id": "ChIJN9QvDlMF3g8R16veNPMhMVE",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 36,
+        "rating": 4,
+        "vicinity": "6W2X+WC6, saltpond Central region, Cape Coast",
+        "location": {
+            "lat": 5.2022899,
+            "lng": -1.051491
+        }
+    },
+    "1": {
+        "name": "Sisimbo Beach Resort",
+        "place_id": "ChIJT6QUu_Ma3g8Rm3pTzNUZ15s",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.2,
+        "vicinity": "6X2F+J9R, Ankaful",
+        "location": {
+            "lat": 5.2016073,
+            "lng": -1.0266092
+        }
+    },
+    "2": {
+        "name": "Dankwa Royal GuestHouse",
+        "place_id": "ChIJ34nDXKUR3g8RJtO8sDsuTtU",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 28,
+        "rating": 3.8,
+        "vicinity": "7XHC+FC5, Near Happy Spot, Off Fosu-Kumasi, Mankesim",
+        "location": {
+            "lat": 5.278638,
+            "lng": -1.028895
+        }
+    },
+    "3": {
+        "name": "Manna Heights Hotel and Conference Center",
+        "place_id": "ChIJk65FHfcQ3g8RugEEUzZa_Cg",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 389,
+        "rating": 4.1,
+        "vicinity": "Accra - Cape Coast Road, Mankessim",
+        "location": {
+            "lat": 5.254366300000001,
+            "lng": -1.0167268
+        }
+    },
+    "4": {
+        "name": "Blakee Guest House",
+        "place_id": "ChIJ52xXoEoF3g8RjoN3OaHKfxw",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 2.6,
+        "vicinity": "6W4R+247, Saltpond",
+        "location": {
+            "lat": 5.2050252,
+            "lng": -1.0597011
+        }
+    },
+    "5": {
+        "name": "Rama beach resort",
+        "place_id": "ChIJleKZ37Uj3g8RMxPuSp_SWfo",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 3.6,
+        "vicinity": "Etibedu",
+        "location": {
+            "lat": 5.211419999999999,
+            "lng": -0.8361417999999999
+        }
+    },
+    "6": {
+        "name": "Breezes Beach Resort",
+        "place_id": "ChIJM7bR8OoZ3g8R1g3SkwQE6GY",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 41,
+        "rating": 4.6,
+        "vicinity": "Beach Road, Ekumfi Narkwa",
+        "location": {
+            "lat": 5.204409099999999,
+            "lng": -0.9438165000000001
+        }
+    },
+    "7": {
+        "name": "Bawansah Cottage Limited",
+        "place_id": "ChIJ6ZgQoRgX3g8RNsSlJyDFmaI",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 4.5,
+        "vicinity": "No. 1 Bawansah Avenue",
+        "location": {
+            "lat": 5.2446736,
+            "lng": -0.9137845000000001
+        }
+    },
+    "8": {
+        "name": "Council Palm Resort",
+        "place_id": "ChIJp8LRDpol3g8RD3il73x-tAo",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.6,
+        "vicinity": "Srafa Aboano, Otuam",
+        "location": {
+            "lat": 5.222649399999999,
+            "lng": -0.8066282999999999
+        }
+    },
+    "9": {
+        "name": "CENTRAL PARADISE REST STOP",
+        "place_id": "ChIJl7qYFooX3g8RCnvdeSrNpxc",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 106,
+        "rating": 3.9,
+        "vicinity": "",
+        "location": {
+            "lat": 5.2814198,
+            "lng": -0.9352850999999999
+        }
+    },
+    "10": {
+        "name": "Ocean Green Beach Saltpond",
+        "place_id": "ChIJM-3xmfYb3g8Ry83gTZ68Uag",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.7,
+        "vicinity": "6X2J+G6M, Mfantsiman",
+        "location": {
+            "lat": 5.201345299999999,
+            "lng": -1.0194641
+        }
+    },
+    "11": {
+        "name": "Masroor Hostel",
+        "place_id": "ChIJIdCezpIQ3g8RKTJn222UzkI",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 28,
+        "rating": 4.3,
+        "vicinity": "6XWR+H84",
+        "location": {
+            "lat": 5.2463979,
+            "lng": -1.0091741
+        }
+    },
+    "12": {
+        "name": "fb. x",
+        "place_id": "ChIJTXMo2VIR3g8Rexm66Z74yvs",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "72C4+X9, Mankessim",
+        "location": {
+            "lat": 5.2724375,
+            "lng": -0.9940625
+        }
+    },
+    "13": {
+        "name": "JOTAW GUEST HOUSE",
+        "place_id": "ChIJnUEjXUE73g8RzlsORE8mkEg",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "76CJ+HMM",
+        "location": {
+            "lat": 5.271464099999999,
+            "lng": -0.7683302
+        }
+    },
+    "14": {
+        "name": "Asomdwee Fie Guest House & Bar",
+        "place_id": "ChIJxVldrvs73g8RTtePoU_vgxs",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "767Q+934, Mumford",
+        "location": {
+            "lat": 5.2634105,
+            "lng": -0.7622676
+        }
+    },
+    "15": {
+        "name": "Asomdwee Rental House",
+        "place_id": "ChIJ8VWWBGsR3g8RLv0ZaznQ5xQ",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3.5,
+        "vicinity": "7X9R+35Q",
+        "location": {
+            "lat": 5.267709900000001,
+            "lng": -1.009523
+        }
+    },
+    "16": {
+        "name": "Peace Guest House",
+        "place_id": "ChIJkYO_K5s73g8RxNsywGidllI",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.7,
+        "vicinity": "766R+76H, Mumford",
+        "location": {
+            "lat": 5.260699700000001,
+            "lng": -0.7593888000000001
+        }
+    },
+    "17": {
+        "name": "Engen Hotel",
+        "place_id": "ChIJ_RYGqP0Q3g8RfkvBe5Mm0b0",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 49,
+        "rating": 3.7,
+        "vicinity": "7X8P+7P4, Off Accra - Mankessim road, Mankessim",
+        "location": {
+            "lat": 5.26565,
+            "lng": -1.0131812
+        }
+    },
+    "18": {
+        "name": "Angola Hotel",
+        "place_id": "ChIJzxkGqP0Q3g8RyzEDWYuE7O4",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 3.2,
+        "vicinity": "7X8Q+W3Q, After the Round About Opposite the Obama Hostel, Mankessim",
+        "location": {
+            "lat": 5.2673288,
+            "lng": -1.0122604
+        }
+    },
+    "19": {
+        "name": "Ernestina Guesthouse",
+        "place_id": "ChIJd0HkLB0R3g8RzvHjjafvFPU",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 65,
+        "rating": 3.4,
+        "vicinity": "Near Perez Chapel, School Kesim, Mankessim",
+        "location": {
+            "lat": 5.2697769,
+            "lng": -1.0106561
+        }
+    }
+}

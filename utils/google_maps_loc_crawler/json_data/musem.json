@@ -1,0 +1,318 @@
+{
+    "0": {
+        "name": "Second Chance Prayer Center Katapor",
+        "place_id": "ChIJT0i-HpXR3w8RBDVTzbmARlg",
+        "types": [
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Ghana",
+        "location": {
+            "lat": 5.2114082,
+            "lng": -0.5229060000000001
+        }
+    },
+    "1": {
+        "name": "Esbee Pub(Mama Gee Joint)",
+        "place_id": "ChIJSYnOiUDN3w8RLA9cIjhEtns",
+        "types": [
+            "restaurant",
+            "food",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7F7C+6J6, Winneba",
+        "location": {
+            "lat": 5.2630262,
+            "lng": -0.5284906999999999
+        }
+    },
+    "2": {
+        "name": "Vidette Collection",
+        "place_id": "ChIJBWLwHh7J3w8RAPv6Zi2qbG4",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "White cross New, Weija",
+        "location": {
+            "lat": 5.3463755,
+            "lng": -0.4778414
+        }
+    },
+    "3": {
+        "name": "GN Bank Billboard Mankessim",
+        "place_id": "ChIJifvKgx8R3g8ROhppPZ2NL-8",
+        "types": [
+            "bank",
+            "finance",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 1.5,
+        "vicinity": "5\u00b016'12. 1\u00b000'05., 6 Street 3",
+        "location": {
+            "lat": 5.2700833,
+            "lng": -1.0015556
+        }
+    },
+    "4": {
+        "name": "Petro Afrique",
+        "place_id": "ChIJv1inyR8R3g8RHRAp-eK3L3o",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 3.5,
+        "vicinity": "7X9W+GQ6, Mankessim",
+        "location": {
+            "lat": 5.268798599999999,
+            "lng": -1.0031023
+        }
+    },
+    "5": {
+        "name": "Titanic Beach",
+        "place_id": "ChIJ8f51rZw63g8RRaiyQU4pbhg",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 3.6,
+        "vicinity": "764V+X22, Mumford",
+        "location": {
+            "lat": 5.2573775,
+            "lng": -0.7574964000000002
+        }
+    },
+    "6": {
+        "name": "Spanish Villa",
+        "place_id": "ChIJP2YiNIQ63g8R-pxhUkeSStw",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 27,
+        "rating": 4,
+        "vicinity": "Mumford",
+        "location": {
+            "lat": 5.2609021,
+            "lng": -0.7588615999999999
+        }
+    },
+    "7": {
+        "name": "Mankessim Assembly Hall of Jehovah's Witnesses",
+        "place_id": "ChIJLaSN4fcQ3g8R4i2_24UIf9c",
+        "types": [
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 21,
+        "rating": 4.1,
+        "vicinity": "2",
+        "location": {
+            "lat": 5.256155000000001,
+            "lng": -1.020237
+        }
+    },
+    "8": {
+        "name": "Central Brent Petroleum",
+        "place_id": "ChIJkRmFhv0Q3g8R_WrI7o1nIJo",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4.5,
+        "vicinity": "7X8P+WHX, Mankessim - Accra Road, Accra",
+        "location": {
+            "lat": 5.267352499999999,
+            "lng": -1.0135306
+        }
+    },
+    "9": {
+        "name": "Sanford World Clinic Mankessim",
+        "place_id": "ChIJjzUtgv8Q3g8RhnXenVmDut8",
+        "types": [
+            "health",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4.5,
+        "vicinity": "No 1 Block 172 New Kusukum by the Accra-Cape Coast Highway, CP GH, Mankessim",
+        "location": {
+            "lat": 5.267345,
+            "lng": -1.0141661
+        }
+    },
+    "10": {
+        "name": "Dominion Cedicare Ghana",
+        "place_id": "ChIJTwfXowQR3g8RfThDCC_WvEU",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 16,
+        "rating": 4.5,
+        "vicinity": "Mankessim, Central Region, Cape Coast, Mankessim- Ajumako Rd",
+        "location": {
+            "lat": 5.2731872,
+            "lng": -1.0117722
+        }
+    },
+    "11": {
+        "name": "Microfin Rural Bank (Mankessim Branch)",
+        "place_id": "ChIJgdhYAgIR3g8RUsY32L6-iH0",
+        "types": [
+            "bank",
+            "finance",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "7X9M+6RJ, Mankessim",
+        "location": {
+            "lat": 5.268088199999999,
+            "lng": -1.0154777
+        }
+    },
+    "12": {
+        "name": "Saltpond Community Information Center Information Communication And Technology Club",
+        "place_id": "ChIJvX5PVMAa3g8RbOSjQ3C0GzE",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 3.9,
+        "vicinity": "CIC, Saltpond",
+        "location": {
+            "lat": 5.202541699999999,
+            "lng": -1.0416707
+        }
+    },
+    "13": {
+        "name": "Vigin Trinity",
+        "place_id": "ChIJi4ImAcEa3g8R8DDmn56PoGI",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "6X25+R5H, Saltpond",
+        "location": {
+            "lat": 5.2020529,
+            "lng": -1.0420248
+        }
+    },
+    "14": {
+        "name": "Ayait Computer Institute",
+        "place_id": "ChIJT1VVJP4Q3g8R1FQrzuqyYks",
+        "types": [
+            "school",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3.5,
+        "vicinity": "7XCJ+XGW, Mankessim",
+        "location": {
+            "lat": 5.2724989,
+            "lng": -1.0186774
+        }
+    },
+    "15": {
+        "name": "Mankessim Kingdom Hall - New Nkusukum",
+        "place_id": "ChIJ2V_L2qoR3g8RgHQpJjqh740",
+        "types": [
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4.8,
+        "vicinity": "7X9H+85R, Mankessim",
+        "location": {
+            "lat": 5.2683646,
+            "lng": -1.0221211
+        }
+    },
+    "16": {
+        "name": "Cluster Farming Holding Ltd",
+        "place_id": "ChIJK1Ho95AV3g8Rn_xads26chE",
+        "types": [
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 4.4,
+        "vicinity": "FG18 JK Odoom Road Ghana Post GPS CJ-1688-7159, Ekrawfo",
+        "location": {
+            "lat": 5.3381078,
+            "lng": -0.9177698
+        }
+    },
+    "17": {
+        "name": "PEG Ghana, Mankessim Service Center",
+        "place_id": "ChIJQ3DL_KkR3g8RjGcP0Y1ipkU",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "7XFH+CPG, Mankessim",
+        "location": {
+            "lat": 5.273550800000001,
+            "lng": -1.020675
+        }
+    },
+    "18": {
+        "name": "Saltpond Geological Survey Department",
+        "place_id": "ChIJW8kpU7ca3g8RYhCz3mkGcgM",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 19,
+        "rating": 3.3,
+        "vicinity": "Saltpond",
+        "location": {
+            "lat": 5.2100539,
+            "lng": -1.049529
+        }
+    },
+    "19": {
+        "name": "Mankessim",
+        "place_id": "ChIJx6_6HQcR3g8RATz3p6YcbAI",
+        "types": [
+            "locality",
+            "political"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    }
+}

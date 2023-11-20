@@ -87,7 +87,7 @@ CREATE TABLE destinations(
     location VARCHAR(100),
     latitude FLOAT,
     longitude FLOAT,
-    rating FLOAT CHECK(rating >= 1 AND rating <= 5) DEFAULT 1
+    rating FLOAT CHECK(rating >= 1 AND rating <= 5)
 );
 
 -- Allows tracking of activities available at each destination
@@ -247,6 +247,7 @@ CREATE TABLE destination_media(
 --------------------------------------------------------------------------------------------------*/
 
 
+DROP VIEW IF EXISTS vw_users;
 -- Returns all relevant user information for login and such
 CREATE VIEW vw_users AS
 SELECT
@@ -257,11 +258,11 @@ SELECT
     g.google_id
 FROM
     users AS u
-INNER JOIN
+RIGHT JOIN
     google_users AS g ON g.user_id = u.user_id
-INNER JOIN
+RIGHT JOIN
     apple_users AS a ON a.user_id = u.user_id
-INNER JOIN
+RIGHT JOIN
     email_users AS e ON e.user_id = u.user_id;
 
 

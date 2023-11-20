@@ -1,0 +1,38 @@
+{
+    "0": {
+        "name": "Vienna Lounge & Bar",
+        "place_id": "ChIJubx8wFZ35w8RUFjemBYavhw",
+        "types": [
+            "casino",
+            "night_club",
+            "restaurant",
+            "food",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 833,
+        "rating": 3.8,
+        "vicinity": "Vienna Lounge & Bar, Axim Road, Takoradi",
+        "location": {
+            "lat": 4.8876243,
+            "lng": -1.7601824
+        }
+    },
+    "1": {
+        "name": "HONG TU CASINO LTD",
+        "place_id": "ChIJT5QfyE935w8R7YeIUgS94NM",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 3.6,
+        "vicinity": "8 Services School Street, Takoradi",
+        "location": {
+            "lat": 4.878768099999999,
+            "lng": -1.762118
+        }
+    }
+}

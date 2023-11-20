@@ -1,0 +1,18 @@
+{
+    "0": {
+        "name": "asradburkinafaso",
+        "place_id": "ChIJ3WtFtmITLQ4RowivoaCZodw",
+        "types": [
+            "aquarium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "110, L\u00e9o",
+        "location": {
+            "lat": 11.0978809,
+            "lng": -2.0959429
+        }
+    }
+}

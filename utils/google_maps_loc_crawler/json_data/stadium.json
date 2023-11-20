@@ -1,0 +1,117 @@
+{
+    "0": {
+        "name": "Osei - Betika Community Stadium",
+        "place_id": "ChIJU_zE6qc73g8ROg3b9hxLTSU",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "768P+6Q8, Mumford",
+        "location": {
+            "lat": 5.2659364,
+            "lng": -0.7624213000000001
+        }
+    },
+    "1": {
+        "name": "St. Lawrence Catholic School Park",
+        "place_id": "ChIJT_RWeGf_3Q8R0Ez6SJre-Xw",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PMF+JP5, Cape Coast",
+        "location": {
+            "lat": 5.134019700000001,
+            "lng": -1.2756371
+        }
+    },
+    "2": {
+        "name": "Robert Mensah Stadium",
+        "place_id": "ChIJQc87Y_D-3Q8RhPdisMg0EKE",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 152,
+        "rating": 3.8,
+        "vicinity": "70 Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.110718899999999,
+            "lng": -1.2577663
+        }
+    },
+    "3": {
+        "name": "BOMAA TOWN PARK",
+        "place_id": "ChIJ987bBA4H3g8RtVZnDcRwybk",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Near Yamoransa model lab 9, Yamoransa",
+        "location": {
+            "lat": 5.165540599999999,
+            "lng": -1.200118
+        }
+    },
+    "4": {
+        "name": "Basketball Court",
+        "place_id": "ChIJy688_qz-3Q8R-Ucmb2G1Fug",
+        "types": [
+            "stadium",
+            "premise",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.1341817,
+            "lng": -1.2869218
+        }
+    },
+    "5": {
+        "name": "New Court",
+        "place_id": "ChIJf6bQrcj-3Q8RrMzg6GLOTQw",
+        "types": [
+            "stadium",
+            "premise",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.1161653,
+            "lng": -1.2799634
+        }
+    },
+    "6": {
+        "name": "Mfantsipim Basketball Court",
+        "place_id": "ChIJ4elmal_-3Q8REZ64m70NNTU",
+        "types": [
+            "stadium",
+            "premise",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.117283,
+            "lng": -1.2495855
+        }
+    }
+}

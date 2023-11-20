@@ -1,0 +1,130 @@
+{
+    "0": {
+        "name": "Netflix",
+        "place_id": "ChIJQWzITnD_3Q8RJVgNWnmnebM",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Ab172",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "1": {
+        "name": "Sefa codex",
+        "place_id": "ChIJ0YOee07_3Q8RtJiJM2LSV_w",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 29,
+        "rating": 3.6,
+        "vicinity": "Abura Community, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "2": {
+        "name": "Movie House",
+        "place_id": "ChIJOy2OYdX_3Q8RYQO_WndloMQ",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 19,
+        "rating": 4,
+        "vicinity": "4PHC+3FH, Cape Coast",
+        "location": {
+            "lat": 5.1276774,
+            "lng": -1.2787587
+        }
+    },
+    "3": {
+        "name": "Tsirkormpam Dance Theatre",
+        "place_id": "ChIJTVMpvO3_3Q8RCOJPUQzDxxU",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "OLA Training College Administration Block, Cape Coast",
+        "location": {
+            "lat": 5.104296199999999,
+            "lng": -1.2737958
+        }
+    },
+    "4": {
+        "name": "Cinemal Hall",
+        "place_id": "ChIJDeXlE8YB3g8RtzPaD6vWrUA",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3.8,
+        "vicinity": "4QHX+84Q, Unnamed Road, Moree",
+        "location": {
+            "lat": 5.128331399999999,
+            "lng": -1.2021258
+        }
+    },
+    "5": {
+        "name": "Soccabet Anomabo",
+        "place_id": "ChIJ_SY3YJEF3g8RtvCgz_sazAc",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4,
+        "vicinity": "5VGH+V9C, N1, Anomabo",
+        "location": {
+            "lat": 5.177193199999999,
+            "lng": -1.1216098
+        }
+    },
+    "6": {
+        "name": "Community Centre- COA",
+        "place_id": "ChIJ9f_7UZkF3g8RkmafY17Y_aQ",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 12,
+        "rating": 3.2,
+        "vicinity": "5WXC+7M5, Kormantse",
+        "location": {
+            "lat": 5.198127999999999,
+            "lng": -1.0782616
+        }
+    },
+    "7": {
+        "name": "Adwen Pa Yie",
+        "place_id": "ChIJT-qGzXMN3g8R1iPI4kxsnyc",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "9WF7+39G",
+        "location": {
+            "lat": 5.37268,
+            "lng": -1.0865424
+        }
+    }
+}

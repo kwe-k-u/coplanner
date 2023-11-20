@@ -1,0 +1,354 @@
+{
+    "0": {
+        "name": "LIT'S SHARP TEST",
+        "place_id": "ChIJTaV95C4R3g8R7TFCDTh5GUU",
+        "types": [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "15 N1, Mankessim",
+        "location": {
+            "lat": 5.267620400000001,
+            "lng": -1.0157072
+        }
+    },
+    "1": {
+        "name": "Bamfo Computers",
+        "place_id": "ChIJW12ibygR3g8RJS7OnrEOr7o",
+        "types": [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "jb store no. 57 opposit opportunity bank, Mankessim",
+        "location": {
+            "lat": 5.267994400000001,
+            "lng": -1.0182671
+        }
+    },
+    "2": {
+        "name": "Me3 Cafe and Pastry Shop",
+        "place_id": "ChIJW8oH2kL_3Q8R3A92mjY8SR8",
+        "types": [
+            "restaurant",
+            "bakery",
+            "cafe",
+            "point_of_interest",
+            "store",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 68,
+        "rating": 4.3,
+        "vicinity": "Opposite Wesley Girls High School, Above Sonturk Supermarket, Kakumdu",
+        "location": {
+            "lat": 5.139637,
+            "lng": -1.2819185
+        }
+    },
+    "3": {
+        "name": "Algorithm Coffee and Juice",
+        "place_id": "ChIJzZr9sq7_3Q8Re4Io7wUg2xU",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "4PJC+J62, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "4": {
+        "name": "Queen's City Refreshment Centre Abura",
+        "place_id": "ChIJySSv76T-3Q8RIXipmXUC94M",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PMF+8FJ, R82, Cape Coast",
+        "location": {
+            "lat": 5.133345800000001,
+            "lng": -1.2763532
+        }
+    },
+    "5": {
+        "name": "Mr. M's Grilled & Fried Pork",
+        "place_id": "ChIJY72NN8v-3Q8R8SpwodARhdc",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.6,
+        "vicinity": "4P86+RHQ, Cape Coast",
+        "location": {
+            "lat": 5.1170877,
+            "lng": -1.2885079
+        }
+    },
+    "6": {
+        "name": "Algorithm Coffee & Juice",
+        "place_id": "ChIJK2W4OMv-3Q8R6G3X-WSqr1g",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 218,
+        "rating": 4.1,
+        "vicinity": "Senior Clubhouse University of, Cape Coast",
+        "location": {
+            "lat": 5.1171655,
+            "lng": -1.2883156
+        }
+    },
+    "7": {
+        "name": "Kwame Nkrumah Hall Hybrid Library",
+        "place_id": "ChIJm-uTF5X_3Q8RbFoCO0qxBks",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Kwame Nkrumah Hall, Cape Coast",
+        "location": {
+            "lat": 5.116326299999999,
+            "lng": -1.2806202
+        }
+    },
+    "8": {
+        "name": "Lismic Internet Cafe",
+        "place_id": "ChIJczsV0PH-3Q8RYAHV0w1UoQk",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P7R+G4J, Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.113849999999998,
+            "lng": -1.2597274
+        }
+    },
+    "9": {
+        "name": "Cape Cafe",
+        "place_id": "ChIJS2Cv21H-3Q8R191fLzyfd88",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 3.8,
+        "vicinity": "4Q45+WC8, Cape Coast",
+        "location": {
+            "lat": 5.107289,
+            "lng": -1.2414068
+        }
+    },
+    "10": {
+        "name": "Jeff Sanders. P..O. Box CC-341. Cape Coast, Ghana",
+        "place_id": "ChIJc-a9NLL_3Q8RuHUklK4Z3nA",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "store",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Frontline Victoria Street near Cpae Coast Castle, and Orange Beach Resort, Cape Coast",
+        "location": {
+            "lat": 5.1038362,
+            "lng": -1.2428288
+        }
+    },
+    "11": {
+        "name": "Ancestral Flavours",
+        "place_id": "ChIJNz2jY5n_3Q8RQdNI8Ot1cZ8",
+        "types": [
+            "meal_takeaway",
+            "cafe",
+            "bar",
+            "restaurant",
+            "point_of_interest",
+            "liquor_store",
+            "store",
+            "food",
+            "health",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "13-11 Victoria Road, Cape Coast",
+        "location": {
+            "lat": 5.10313,
+            "lng": -1.240629
+        }
+    },
+    "12": {
+        "name": "Erica's Mini mart",
+        "place_id": "ChIJuWttfOL_3Q8RBM78KDXMzIk",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 2,
+        "vicinity": "4QHG+WJ5, Cape Coast",
+        "location": {
+            "lat": 5.1297575,
+            "lng": -1.223384
+        }
+    },
+    "13": {
+        "name": "Kingdan.org",
+        "place_id": "ChIJTyxvaJwH3g8RONVw_pXhlUo",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "5Q6X+6F2, Yamoransa, Cape Coast",
+        "location": {
+            "lat": 5.160500999999999,
+            "lng": -1.2013708
+        }
+    },
+    "14": {
+        "name": "Bamfo Computers",
+        "place_id": "ChIJW12ibygR3g8RJS7OnrEOr7o",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "jb store no. 57 opposit opportunity bank, Mankessim",
+        "location": {
+            "lat": 5.267994400000001,
+            "lng": -1.0182671
+        }
+    },
+    "15": {
+        "name": "LIT'S SHARP TEST",
+        "place_id": "ChIJTaV95C4R3g8R7TFCDTh5GUU",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "15 N1, Mankessim",
+        "location": {
+            "lat": 5.267620400000001,
+            "lng": -1.0157072
+        }
+    },
+    "16": {
+        "name": "Rock Moni Yrn",
+        "place_id": "ChIJ33OdMlFj5w8RACwqurok8Pk",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "289P+WJG, Shama",
+        "location": {
+            "lat": 5.019800499999999,
+            "lng": -1.6634192
+        }
+    },
+    "17": {
+        "name": "VMinc Cafe",
+        "place_id": "ChIJKfZFXuR55w8RgNZW7WZdzd4",
+        "types": [
+            "cafe",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 36,
+        "rating": 4.6,
+        "vicinity": "25 Busumakura Boulevard, Takoradi",
+        "location": {
+            "lat": 4.8966373,
+            "lng": -1.7624463
+        }
+    },
+    "18": {
+        "name": "Second Cup Coffee",
+        "place_id": "ChIJmRyaMON55w8RGbS2QugJErM",
+        "types": [
+            "cafe",
+            "store",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 5,
+        "vicinity": "Axim Road, Takoradi",
+        "location": {
+            "lat": 4.8947181,
+            "lng": -1.7641913
+        }
+    },
+    "19": {
+        "name": "Hybridsat and computers",
+        "place_id": "ChIJq5EL7x935w8RSgD8Hnin1sg",
+        "types": [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 2,
+        "vicinity": "V5PM+WR2, Takoradi - Agona Road, Apowa",
+        "location": {
+            "lat": 4.887256999999999,
+            "lng": -1.815495
+        }
+    }
+}

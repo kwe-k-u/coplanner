@@ -1,0 +1,345 @@
+{
+    "0": {
+        "name": "Davies Nite Club",
+        "place_id": "ChIJF-ScTbUa3g8RjZHk7don-tw",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6W4R+7JM, Saltpond",
+        "location": {
+            "lat": 5.205700800000001,
+            "lng": -1.0584435
+        }
+    },
+    "1": {
+        "name": "Ocean City Sports Bar & Lounge",
+        "place_id": "ChIJE2TlARm73w8RU3Ydp2uPAs0",
+        "types": [
+            "night_club",
+            "bar",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 5,
+        "vicinity": "beach Near Victoria Park, Saltpond",
+        "location": {
+            "lat": 5.1995764,
+            "lng": -1.0595617
+        }
+    },
+    "2": {
+        "name": "Davos Pub & Restaurant",
+        "place_id": "ChIJCY4eqlD_3Q8R27NczX-Gldc",
+        "types": [
+            "restaurant",
+            "night_club",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJC+J62, Second Atta Mills Avenue Adjacent Atta Mills library opposite Cape Coast castle, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "3": {
+        "name": "Ebony Bar and Lounge",
+        "place_id": "ChIJgxUTc4r_3Q8RSoN52LcS4Vo",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cedar Street, Cape Coast",
+        "location": {
+            "lat": 5.1316869,
+            "lng": -1.2783294
+        }
+    },
+    "4": {
+        "name": "Fays Lounge",
+        "place_id": "ChIJf8GmNCv_3Q8RIBx0rx80pcI",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 36,
+        "rating": 4.3,
+        "vicinity": "4Q63+MQG, Kotokuraba Road, Cape Coast",
+        "location": {
+            "lat": 5.111644099999999,
+            "lng": -1.2455672
+        }
+    },
+    "5": {
+        "name": "The Bar",
+        "place_id": "ChIJWzljS7n_3Q8RCdSMHw8iy8E",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 4.7,
+        "vicinity": "Heritage House, Opposite, Garden Street, Cape Coast",
+        "location": {
+            "lat": 5.106273499999999,
+            "lng": -1.2427713
+        }
+    },
+    "6": {
+        "name": "Amanful Catholic Boys School",
+        "place_id": "ChIJa0MbEJz_3Q8R7upiNCuGP48",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "35 Sam Road, Cape Coast",
+        "location": {
+            "lat": 5.1095443,
+            "lng": -1.2348988
+        }
+    },
+    "7": {
+        "name": "SHEBEEN-AUNT MERCY'S KITCHEN AND LOUNGE",
+        "place_id": "ChIJcVCIwln_3Q8RRqCVtZlKjjg",
+        "types": [
+            "night_club",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "CC-103-4598 OPPOSITE HILBBY'S HOTEL, F425 GREENHILL 23RD CL, Cape Coast",
+        "location": {
+            "lat": 5.1210229,
+            "lng": -1.2133308
+        }
+    },
+    "8": {
+        "name": "Ocean City Sports Bar & Lounge",
+        "place_id": "ChIJE2TlARm73w8RU3Ydp2uPAs0",
+        "types": [
+            "night_club",
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 5,
+        "vicinity": "beach Near Victoria Park, Saltpond",
+        "location": {
+            "lat": 5.1995764,
+            "lng": -1.0595617
+        }
+    },
+    "9": {
+        "name": "Pikumsco Lounge",
+        "place_id": "ChIJJcZ-f41j5w8RFYmStVc7gXE",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "2969+CQ2, Shama",
+        "location": {
+            "lat": 5.011000699999999,
+            "lng": -1.6305993
+        }
+    },
+    "10": {
+        "name": "James Cromwell",
+        "place_id": "ChIJ9Ytj0YF55w8RsBM_sO_vxCM",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "W6F8+PJG, E. Akufo-Addo Road, Takoradi",
+        "location": {
+            "lat": 4.924321199999999,
+            "lng": -1.7834073
+        }
+    },
+    "11": {
+        "name": "showers sounds",
+        "place_id": "ChIJNbwcg1B55w8RONM3O-0dlsU",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "W6FR+FGM, Joe Bouluuro Crescent, Takoradi",
+        "location": {
+            "lat": 4.9237202,
+            "lng": -1.7586904
+        }
+    },
+    "12": {
+        "name": "Okatakyie Lounge",
+        "place_id": "ChIJOdkVUZd75w8Rt3-1rWIX2os",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Dandelion Avenue, Takoradi",
+        "location": {
+            "lat": 4.9170589,
+            "lng": -1.7532802
+        }
+    },
+    "13": {
+        "name": "Game Center",
+        "place_id": "ChIJJ7tRUY155w8Re4UJ1zbRQ0o",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3.5,
+        "vicinity": "W66P+WMR, Takoradi",
+        "location": {
+            "lat": 4.9123546,
+            "lng": -1.7633691
+        }
+    },
+    "14": {
+        "name": "The Arena Lounge and Club",
+        "place_id": "ChIJ59eVelp55w8RHG2AoIOtqtI",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.1,
+        "vicinity": "27 Independence Avenue, Takoradi",
+        "location": {
+            "lat": 4.906809,
+            "lng": -1.7701874
+        }
+    },
+    "15": {
+        "name": "Vienna Lounge & Bar",
+        "place_id": "ChIJubx8wFZ35w8RUFjemBYavhw",
+        "types": [
+            "casino",
+            "night_club",
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 833,
+        "rating": 3.8,
+        "vicinity": "Vienna Lounge & Bar, Axim Road, Takoradi",
+        "location": {
+            "lat": 4.8876243,
+            "lng": -1.7601824
+        }
+    },
+    "16": {
+        "name": "Vienna City Beach",
+        "place_id": "ChIJt4iV97Jw5w8RBJIVmGVZDg0",
+        "types": [
+            "restaurant",
+            "night_club",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1659,
+        "rating": 3.9,
+        "vicinity": "Beach Road. Harbor Area. Takoradi, Dixcove Road, Takoradi",
+        "location": {
+            "lat": 4.8789628,
+            "lng": -1.7520387
+        }
+    },
+    "17": {
+        "name": "EL CENTRO",
+        "place_id": "ChIJ22TnDCFx5w8RKtreUKLGwJE",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "V6MX+7H5, Groyne Avenue, Takoradi",
+        "location": {
+            "lat": 4.883128999999999,
+            "lng": -1.7510019
+        }
+    },
+    "18": {
+        "name": "Mouds Bar and Dine Bar",
+        "place_id": "ChIJOxpW3sxx5w8RoX4afW0eZRA",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7 Nana Panya Avenue, Takoradi",
+        "location": {
+            "lat": 4.881588199999999,
+            "lng": -1.7533419
+        }
+    },
+    "19": {
+        "name": "EmmanuelYeboah",
+        "place_id": "ChIJXcg2G2MN3Q8R3L0LLGN2A3s",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "232/33/334, Huni Valley",
+        "location": {
+            "lat": 5.469501200000001,
+            "lng": -1.9148091
+        }
+    }
+}

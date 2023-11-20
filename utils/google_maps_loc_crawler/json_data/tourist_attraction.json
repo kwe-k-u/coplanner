@@ -1,0 +1,331 @@
+{
+    "0": {
+        "name": "Okyere Nkwanta",
+        "place_id": "ChIJ3wsYkXM_3g8RQMQxm7gB6C4",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "N 1",
+        "location": {
+            "lat": 5.327362799999999,
+            "lng": -0.8362672
+        }
+    },
+    "1": {
+        "name": "Elmina - Java Museum",
+        "place_id": "ChIJB79_p0r43Q8RstUne4KjDjk",
+        "types": [
+            "tourist_attraction",
+            "museum",
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 131,
+        "rating": 3.8,
+        "vicinity": "61/21 Cape Coast - Takoradi Road, Elmina",
+        "location": {
+            "lat": 5.0994989,
+            "lng": -1.3468684
+        }
+    },
+    "2": {
+        "name": "Kakum National Park",
+        "place_id": "ChIJg-S157zd3Q8RUzFqmSmD8Zk",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2571,
+        "rating": 4.4,
+        "vicinity": "R82",
+        "location": {
+            "lat": 5.350060399999999,
+            "lng": -1.3819499
+        }
+    },
+    "3": {
+        "name": "Cape Coast Castle",
+        "place_id": "ChIJZ9haelL-3Q8RItrirlfbyKY",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3598,
+        "rating": 4.5,
+        "vicinity": "Victoria Road, Cape Coast",
+        "location": {
+            "lat": 5.103646599999999,
+            "lng": -1.2410604
+        }
+    },
+    "4": {
+        "name": "K Dungeon Experience",
+        "place_id": "ChIJA-bMLcb53Q8RHHGO-MZfsaI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "10 Abena Rd, Elmina",
+        "location": {
+            "lat": 5.105337799999999,
+            "lng": -1.3421032
+        }
+    },
+    "5": {
+        "name": "Kakum estuary",
+        "place_id": "ChIJc2a-lpT53Q8RTHWiXXifWdo",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "23 Cape Coast - Takoradi Road, Elmina",
+        "location": {
+            "lat": 5.09746,
+            "lng": -1.32208
+        }
+    },
+    "6": {
+        "name": "DUAKOR",
+        "place_id": "ChIJd7QrZhT_3Q8RR0zS4pH3GtI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "4P26+3FQ, Cape Coast",
+        "location": {
+            "lat": 5.1002046,
+            "lng": -1.2887589
+        }
+    },
+    "7": {
+        "name": "Dutch Cemetery",
+        "place_id": "ChIJx3vQuDv43Q8RqDQK5vdCtK8",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 126,
+        "rating": 3.9,
+        "vicinity": "Elmina",
+        "location": {
+            "lat": 5.0858398,
+            "lng": -1.3530056
+        }
+    },
+    "8": {
+        "name": "Gha Adventures Travel and Tours",
+        "place_id": "ChIJg3rP_9D53Q8R1xm-nt1Xtp4",
+        "types": [
+            "tourist_attraction",
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Elmina",
+        "location": {
+            "lat": 5.093618999999999,
+            "lng": -1.380105
+        }
+    },
+    "9": {
+        "name": "Esther's Joint",
+        "place_id": "ChIJ0-NTQcH_3Q8RgHcgGknE-rg",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "102 Beulah Road, Cape Coast",
+        "location": {
+            "lat": 5.1003633,
+            "lng": -1.2820083
+        }
+    },
+    "10": {
+        "name": "Elmina Boat Cruise",
+        "place_id": "ChIJw0_6j8b53Q8RxEYesKf4Uqg",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 23,
+        "rating": 4.8,
+        "vicinity": "Castle, Elmina",
+        "location": {
+            "lat": 5.0828055,
+            "lng": -1.3481258
+        }
+    },
+    "11": {
+        "name": "Fosu Lagoon",
+        "place_id": "ChIJKZG9Nsv_3Q8RGYIubGmLuDE",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "4P5R+6J, Cape Coast",
+        "location": {
+            "lat": 5.10806,
+            "lng": -1.2583983
+        }
+    },
+    "12": {
+        "name": "Ghana Heritage Conservation Trust (GHCT)",
+        "place_id": "ChIJg3s7qfL_3Q8RbCP1dwvIt78",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "1515-8916, GPS CH, 10 Garden Street, Cape Coast",
+        "location": {
+            "lat": 5.106391299999999,
+            "lng": -1.2430859
+        }
+    },
+    "13": {
+        "name": "Fort Nassau",
+        "place_id": "ChIJQzRl9rAA3g8RNO9oseJRhCk",
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 30,
+        "rating": 4.3,
+        "vicinity": "Unnamed Road, Cape Coast",
+        "location": {
+            "lat": 5.130923799999999,
+            "lng": -1.198878
+        }
+    },
+    "14": {
+        "name": "International Stingless Bee Centre",
+        "place_id": "ChIJ_30ixI_o3Q8RtycmHuTXMS8",
+        "types": [
+            "tourist_attraction",
+            "amusement_park",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 75,
+        "rating": 4,
+        "vicinity": "Odumase Abrafo",
+        "location": {
+            "lat": 5.336580999999999,
+            "lng": -1.3808533
+        }
+    },
+    "15": {
+        "name": "Kakum National Park Entrance Gate Ghana",
+        "place_id": "ChIJpdoEhYro3Q8RCXffBg11ElY",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 714,
+        "rating": 4.4,
+        "vicinity": "11 Garden Street, Cape Coast",
+        "location": {
+            "lat": 5.3489226,
+            "lng": -1.3839134
+        }
+    },
+    "16": {
+        "name": "Amotoe",
+        "place_id": "ChIJ8TIpyKtf5w8R63blUT0tEvI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "3G26+HM, Komenda",
+        "location": {
+            "lat": 5.0513775,
+            "lng": -1.4882525
+        }
+    },
+    "17": {
+        "name": "Puupuudo",
+        "place_id": "ChIJ-wZu6alf5w8RAVhxDZrJR2Y",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "3G44+68C, Komenda",
+        "location": {
+            "lat": 5.055555699999999,
+            "lng": -1.4942426
+        }
+    },
+    "18": {
+        "name": "Fort William, Ghana",
+        "place_id": "ChIJ9b9EcDcE3g8RsKdcwyhMoY4",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 141,
+        "rating": 4.2,
+        "vicinity": "Anomabo",
+        "location": {
+            "lat": 5.1743463,
+            "lng": -1.1190462
+        }
+    },
+    "19": {
+        "name": "Fort Amsterdam",
+        "place_id": "ChIJ8TEjoggF3g8RC_niRYIwTeU",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 206,
+        "rating": 4,
+        "vicinity": "5WR4+XQF, Kormantin- in the, Abandze",
+        "location": {
+            "lat": 5.1924465,
+            "lng": -1.0930705
+        }
+    }
+}

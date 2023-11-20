@@ -6,23 +6,30 @@
 	class public_class extends db_prepared{
 
 		function email_signup($name,$email,$password){
-			$sql = "SELECT email_signup('$name','$email','$password');";
+			$sql = "SELECT email_signup(?,?,?);";
 			$this->prepare($sql);
-			// $this->bind($name,$email,$password);
+			$this->bind($name,$email,$password);
 			return $this->db_fetch_one();
 		}
 
-		function google_signup($name,$id){
-			$sql = "SELECT provider_signup('google',?,?);";
+		function provider_signup($provider,$name,$id){
+			$sql = "SELECT provider_signup(?,?,?);";
 			$this->prepare($sql);
-			$this->bind($name,$id);
+			$this->bind($provider,$name,$id);
 			return $this->db_fetch_one();
 		}
 
-		function apple_signup($name,$id){
-			$sql = "SELECT provider_signup('apple',?,?);";
+		function email_login($email,$password){
+			$sql = "SELECT  user_id from vw_users where email = ? and password_hash = ?";
 			$this->prepare($sql);
-			$this->bind($name,$id);
+			$this->bind($email,$password);
+			return $this->db_fetch_one();
+		}
+
+		function provider_login($provider_col,$provider_id){
+			$sql = "SELECT user_id FROM vw_users WHERE `$provider_col` = ?";
+			$this->prepare($sql);
+			$this->bind($provider_id);
 			return $this->db_fetch_one();
 		}
 
@@ -47,6 +54,34 @@
 			$this->bind($day_id,$destination_id);
 			return $this->db_fetch_one();
 		}
+
+		function get_destinations_by_name($name){
+			$sql = "SELECT * FROM destinations ";
+			if($name){
+				$sql .=" where destination_name like ? ";
+			}
+			$this->prepare($sql);
+
+			if($name){
+				$this->bind("%$name%");
+			}
+			return $this->db_fetch_all();
+		}
+
+		function get_destination_by_id($id){
+			$sql = "SELECT * FROM destinations where destination_id = ?";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_one();
+		}
+
+		function get_user_itineraries($user_id){
+			$sql = "SELECT * FROM itineraries where owner_id = ?";
+			$this->prepare($sql);
+			$this->bind($user_id);
+			return $this->db_fetch_all();
+		}
+
 
 	}
 ?>
