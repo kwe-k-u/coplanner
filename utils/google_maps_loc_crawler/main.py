@@ -5,10 +5,20 @@ import math
 import requests
 import json
 import multiprocessing
+import threading
 from random import randint
 from time import sleep
 
-
+destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
+search_queries = ["things to do","places to visit","tour sites"]
+max_km = 50
+ghana_tl = (11.02603066883424, -3.1447569426908735)
+ghana_tr = (11.11026093989852, 0.3312241000695119)
+ghana_bl = (4.681113101193597, -2.98740800659884)
+ghana_br = (4.7238819932005525, 0.874793152023812)
+current_position = ghana_tl
+#using min because left most is the smaller number
+start_pos = min(ghana_tl[1],ghana_bl[1])
 
 def calculate_distance(lat1, lon1, lat2, lon2):
 	earth_radius = 6371  # Earth's radius in kilometers
@@ -31,6 +41,8 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 
 def get_destinations(query,center, category):
+	# print("getting destination")
+	return {query: category}
 	save_data = {}
 	maps_api_key = ""
 	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+maps_api_key+"&keyword="+query+"&location="+str(center[0])+", "+str(center[1])+"&type="+category+"&radius=50000"
@@ -95,20 +107,49 @@ def move_right(cu):
 	return move(cu)
 
 
+def run_get_threads(position,typ,result):
+	for query in search_queries:
+		_ =get_destinations(query,position,typ)
+		result.append(_)
+
 def run_destination_search(vert_steps,hor_steps,position,typ):
 	wait_time = randint(1,3)
 	print("wait",wait_time)
 	sleep(wait_time)
-	return {}
+	# return {}
 	current_position = position
 	des = {}
-	for v in range(vert_steps):
-		for h in range(hor_steps):
-			for query in search_queries:
-				_ =get_destinations(query,current_position,typ)
-				des.update(_)
+	num_threads = vert_steps * hor_steps
+	threads = []
+	thread_result = []
+	print("Spawning",num_threads," threads for destination retrieval")
+	for i in range(num_threads):
+			t = threading.Thread(target=run_get_threads,args=(position,typ,thread_result))
+			threads.append(t)
+			t.start()
 			current_position = move_right(current_position)
-		current_position = next_line(current_position,start_pos)
+
+			if i%hor_steps == 0:
+				current_position = next_line(current_position,start_pos)
+
+	for _ in threads:
+		_.join()
+
+	for _ in thread_result:
+		des.update(_)
+		
+	print("result_thread",len(thread_result))
+	# for i in thread_result:
+	# 	des.update(i)
+	# for v in range(vert_steps):
+	# 	for h in range(hor_steps):
+	# 		for query in search_queries:
+	# 			_ =get_destinations(query,current_position,typ)
+	# 			print("Get result",_)
+	# 			des.update(_)
+	# 		current_position = move_right(current_position)
+	# 	current_position = next_line(current_position,start_pos)
+
 	return des
 
 
@@ -133,16 +174,6 @@ def save_file(filename,data):
 
 if  __name__ == "__main__":
 
-	max_km = 50
-	destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
-	search_queries = ["things to do","places to visit","tour sites"]
-	ghana_tl = (11.02603066883424, -3.1447569426908735)
-	ghana_tr = (11.11026093989852, 0.3312241000695119)
-	ghana_bl = (4.681113101193597, -2.98740800659884)
-	ghana_br = (4.7238819932005525, 0.874793152023812)
-	current_position = ghana_tl
-	#using min because left most is the smaller number
-	start_pos = min(ghana_tl[1],ghana_bl[1])
 
 	current_position = ghana_tl
 
@@ -157,7 +188,9 @@ if  __name__ == "__main__":
 	process_results = {}
 	process_queue = multiprocessing.Queue()
 
-	for type_check in destination_types:
+	print("Spinning up",len(destination_types), "pocesses")
+
+	for type_check in destination_types[:1]:
 		process_results[type_check] = []
 
 
@@ -169,7 +202,7 @@ if  __name__ == "__main__":
 
 	while len(process_results.keys()) != len(process_list.keys()):
 		type_check,_ = process_queue.get()
-		print("result check",_)
+		print("result check",type_check,_)
 		process_results[type_check] = _
 	for p in process_list.values():
 		# print(p)
