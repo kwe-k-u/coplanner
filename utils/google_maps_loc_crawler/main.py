@@ -31,10 +31,10 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 
 
-def get_destinations(center, category):
+def get_destinations(query,center, category):
 	save_data = {}
 	maps_api_key = "";
-	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+maps_api_key+"&keyword=&location="+str(center[0])+", "+str(center[1])+"&type="+category+"&radius=50000"
+	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+maps_api_key+"&keyword="+query+"&location="+str(center[0])+", "+str(center[1])+"&type="+category+"&radius=50000"
 
 	payload = {}
 	headers = {}
@@ -96,6 +96,17 @@ def move_right(cu):
 	return move(cu)
 
 
+def run_destination_search(vert_steps,hor_steps,position,typ):
+	current_position = position
+	des = {}
+	for v in range(vert_steps):
+		for h in range(hor_steps):
+			for query in search_queries:
+				_ =get_destinations(query,current_position,typ)
+				des.update(_)
+			current_position = move_right(current_position)
+		current_position = next_line(current_position,start_pos)
+	return des
 
 def save_file(filename,data):
 	print("saving file")
@@ -105,12 +116,15 @@ def save_file(filename,data):
 		with open(filename+".json", 'a') as file:
 			file.write("\n")
 
-for type_check in ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]:
-	ghana_tl = (11.02603066883424, -3.1447569426908735)
-	ghana_tr = (11.11026093989852, 0.3312241000695119)
-	ghana_bl = (4.681113101193597, -2.98740800659884)
-	ghana_br = (4.7238819932005525, 0.874793152023812)
-	current_position = ghana_tl
+destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
+search_queries = ["things to do","places to visit","tour sites"]
+ghana_tl = (11.02603066883424, -3.1447569426908735)
+ghana_tr = (11.11026093989852, 0.3312241000695119)
+ghana_bl = (4.681113101193597, -2.98740800659884)
+ghana_br = (4.7238819932005525, 0.874793152023812)
+current_position = ghana_tl
+
+for type_check in destination_types:
 
 	#using min because left most is the smaller number
 	start_pos = min(ghana_tl[1],ghana_bl[1])
@@ -122,16 +136,11 @@ for type_check in ["amusement_park","aquarium","art_gallery","bowling_alley","ca
 	height = calculate_distance(ghana_tl[0],ghana_tl[1],ghana_bl[0],ghana_bl[1])
 	# print("Ghana width and height", width,height)
 
-	vert_steps = int(height / max_km)
-	hor_steps = int(width / max_km)
+	v_steps = int(height / max_km) # vertical steps
+	h_steps = int(width / max_km) # horizontal steps
 
 	all_location_data = {}
-
-	for v in range(vert_steps):
-		for h in range(hor_steps):
-			des =get_destinations(current_position,type_check)
-			all_location_data.update(des)
-			current_position = move_right(current_position)
-		current_position = next_line(current_position,start_pos)
+	res = run_destination_search(v_steps,h_steps,current_position,type_check)
+	all_location_data.update(res)
 
 	save_file(type_check,all_location_data)
