@@ -57,260 +57,302 @@ require_once(__DIR__ . "/../controllers/interaction_controller.php");
                     </div>
                 </div>
             </div>
-            <div class="position-relative" style="overflow-x: hidden">
-                <!--- ================================ -->
-                <!-- sidebar [start] -->
-                <aside id="itinerary-sidebar" class="sidebar sidebar-left sidebar-alt-280 position-absolute bg-white">
-                    <div class="bg-blue position-relative" style="height: 2rem;">
-                        <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 position-absolute h-100 border-0 sidebar-toggler" style="right: -2.8rem; top: 0;" data-target="itinerary-sidebar">
-                            <div class="bg-white" style="padding: 0.1rem 1rem;"></div>
-                            <div class="bg-white" style="padding: 0.1rem 1rem;"></div>
-                            <div class="bg-white" style="padding: 0.1rem 1rem;"></div>
-                        </button>
-                    </div>
-                    <div class="px-2 bg-white">
-                        <div class="border-bottom border-blue border-2 py-3">
-                            <h5 class="easygo-fw-1 py-2">Itinerary Overview</h5>
-                            <div class="row py-2">
-                                <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-                                    <div><i class="fa-solid fa-wallet text-blue easygo-fs-1"></i></div>
-                                    <div class="easygo-fs-4">Budget</div>
-                                </div>
-                                <div class="col-9 d-flex align-items-center">
-                                    <h5>GHS 2500</h5>
-                                </div>
-                            </div>
-                            <div class="row py-2">
-                                <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-                                    <div><i class="fa-solid fa-calendar text-blue easygo-fs-1"></i></div>
-                                    <div class="easygo-fs-4">Calendar</div>
-                                </div>
-                                <div class="col-9 d-flex align-items-center">
-                                    <h5>2 days</h5>
-                                </div>
-                            </div>
-                            <div class="row py-2">
-                                <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-                                    <div><i class="fa-solid fa-users text-blue easygo-fs-1"></i></div>
-                                    <div class="easygo-fs-4">People</div>
-                                </div>
-                                <div class="col-9 d-flex align-items-center">
-                                    <h5>2 people</h5>
-                                </div>
-                            </div>
+            <div>
+                <div class="d-flex gap-2">
+                    <!--- ================================ -->
+                    <!--- ================================ -->
+                    <!-- sidebar [start] -->
+                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 pt-3" style="max-height: 100%">
+                        <div class="bg-blue position-relative" style="height: 2rem">
+                            <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler" style="right: -2.8rem; top: 0" data-target="itinerary-sidebar">
+                                <div class="bg-white" style="padding: 0.1rem 1rem"></div>
+                                <div class="bg-white" style="padding: 0.1rem 1rem"></div>
+                                <div class="bg-white" style="padding: 0.1rem 1rem"></div>
+                            </button>
                         </div>
-                        <div class="border-bottom border-blue border-2 py-3">
-                            <h5 class="py-2">Additional Services</h5>
-                            <div class="row py-3">
-                                <div class="col-3 d-flex align-items-center justify-content-center">
-                                    <div class="user-icon bg-gray-1"></div>
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-center">
-                                    <h6 class="easygo-fw-1 mb-0">Curator</h6>
-                                    <div>easyGo Tours</div>
-                                </div>
-                            </div>
-                            <div class="row py-3">
-                                <div class="col-3 d-flex align-items-center justify-content-center">
-                                    <div class="user-icon bg-gray-1"></div>
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-center">
-                                    <h6 class="easygo-fw-1 mb-0">Accomodation</h6>
-                                    <div>
-                                        <div class="easygo-fs-4">AH Hotel</div>
-                                        <div class="easygo-fs-5">Day 1</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row py-3">
-                                <div class="col-3 d-flex align-items-center justify-content-center">
-                                    <div class="user-icon bg-gray-1"></div>
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-center">
-                                    <h6 class="easygo-fw-1 mb-0">Transportation</h6>
-                                    <div>
-                                        <div class="easygo-fs-4">AH Hotel</div>
-                                        <div class="easygo-fs-5">Day 1</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="py-3">
-                            <div class="row py-3">
-                                <div class="col-3 d-flex align-items-center justify-content-center">
-                                    <div class="user-icon bg-gray-1"></div>
-                                </div>
-                                <div class="col-9 d-flex flex-column justify-content-center">
-                                    <h6 class="easygo-fw-1 mb-0">Collab Chat</h6>
-                                    <div class="easygo-fs-5">5 new messages</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-                <!-- sidebar [end] -->
-                <!--- ================================ -->
-                <!--- ================================ -->
-                <!-- main-content [start] -->
-                <section>
-                    <div class="row">
-                        <!--- ================================ -->
-                        <!-- Itinerary Exp [start] -->
-                        <div class="col-lg-6 p-3">
-                            <div class="bg-white p-5 box-shadow-3">
-                                <h3 class="easygo-fw-1">
-                                    Day One
-                                </h3>
-                                <div>Here is the summary of the activities and destinations selected for the day </div>
-                                <ul class="easygo-list-4">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <h5>Shai Hills</h5>
-                                                <p class="easygo-fs-5">8:00 AM</p>
+                        <div class="bg-white">
+                            <div class=" py-3">
+                                <h5 class="easygo-fw-1 py-2 sec-title"><span class="expand-d-none">Itinerary</span> <span>Overview</span></h5>
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <div>
+                                                <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
                                             </div>
-                                            <div class="col-8">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                            <div class="easygo-fs-4 expand-toggle">Budget</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev">GHS 2500</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="d-flex align-items-center h-100">
+                                            <h5>GHS 2500</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <div>
+                                                <i class="fa-solid fa-calendar text-blue easygo-fs-1"></i>
+                                            </div>
+                                            <div class="easygo-fs-4 expand-toggle">Calendar</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev">2 days</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="d-flex align-items-center h-100">
+                                            <h5>2 days</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column justify-content-center align-items-center">
+                                            <div>
+                                                <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
+                                            </div>
+                                            <div class="easygo-fs-4 expand-toggle">People</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev">2 People</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="d-flex align-items-center h-100">
+                                            <h5>2 people</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="border-3 border-blue opacity-100 mx-2">
+                                <h5 class="py-2 sec-title"><span class="expand-d-none">Additional</span> <span>Services</span></h5>
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <div class="user-icon bg-gray-1"></div>
+                                            <div class="easygo-fs-5 expand-toggle-rev">Curator</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="d-flex flex-column justify-content-center h-100">
+                                            <h6 class="easygo-fw-1 mb-0">Curator</h6>
+                                            <div>easyGo Tours</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <div class="user-icon bg-gray-1"></div>
+                                            <div class="easygo-fs-5 expand-toggle-rev">Accomodation</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="easygo-fw-1 mb-0">Accomodation</h6>
+                                            <div>
+                                                <div class="easygo-fs-4">AH Hotel</div>
+                                                <div class="easygo-fs-5">Day 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <div class="user-icon bg-gray-1"></div>
+                                            <div class="easygo-fs-5 expand-toggle-rev">Transportation</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="easygo-fw-1 mb-0">Transportation</h6>
+                                            <div>
+                                                <div class="easygo-fs-4">AH Hotel</div>
+                                                <div class="easygo-fs-5">Day 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="border-3 border-blue opacity-100 mx-2">
+                                <div class="ss-section">
+                                    <div class="ss-left">
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <div class="user-icon bg-gray-1"></div>
+                                            <div class="easygo-fs-5 expand-toggle-rev text-center">5 new <br>messages</div>
+                                        </div>
+                                    </div>
+                                    <div class="ss-right">
+                                        <div class="col-9 d-flex flex-column justify-content-center">
+                                            <h6 class="easygo-fw-1 mb-0">Collab Chat</h6>
+                                            <div class="easygo-fs-5">5 new messages</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                    <!-- sidebar [end] -->
+                    <!--- ================================ -->
+                    <!--- ================================ -->
+                    <!-- main-content [start] -->
+                    <section style="flex: 1">
+                        <div class="row">
+                            <!--- ================================ -->
+                            <!-- Itinerary Exp [start] -->
+                            <div class="col-lg-6 p-3">
+                                <div class="bg-white p-5 box-shadow-3">
+                                    <h3 class="easygo-fw-1">
+                                        Day One
+                                    </h3>
+                                    <div>Here is the summary of the activities and destinations selected for the day </div>
+                                    <ul class="easygo-list-4">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <h5>Shai Hills</h5>
+                                                    <p class="easygo-fs-5">8:00 AM</p>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                    <div class="mt-3">
+                                                        Here is the summary of the activities and destinations selected for the day
                                                     </div>
                                                 </div>
-                                                <div class="mt-3">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <h5>Asenema Waterfall</h5>
+                                                    <p class="easygo-fs-5">8:00 AM</p>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        Here is the summary of the activities and destinations selected for the day
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <h5>Shai Hills</h5>
+                                                    <p class="easygo-fs-5">8:00 AM</p>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        Here is the summary of the activities and destinations selected for the day
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="py-2 text-end">
+                                        <a href="#">Add More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Itinerary Exp [end] -->
+                            <!--- ================================ -->
+                            <!--- ================================ -->
+                            <!-- Suggestions [start] -->
+                            <div class="col-lg-6 p-3">
+                                <div class="bg-white p-5 box-shadow-3">
+                                    <h3 class="easygo-fw-1">
+                                        Itinerary Poll
+                                    </h3>
+                                    <div>A change has been suggested by a collaborator. You can choose option to maintain</div>
+                                    <div class="suggestion-cards-container">
+                                        <div class="suggestion-card my-3">
+                                            <div class="suggestion-card-header">
+                                                Suggested by <span class="text-blue">Kweku</span>
+                                            </div>
+                                            <div class="suggestion-card-location">
+                                                Shai Hills
+                                            </div>
+                                            <div class="suggestion-card-body">
+                                                <p>
                                                     Here is the summary of the activities and destinations selected for the day
+                                                </p>
+                                                <div class="suggestion-card-activities">
+                                                    <div class="mt-2">
+                                                        <span class="activity">Hike</span>
+                                                        <span class="activity">Hike</span>
+                                                        <span class="activity">Hike</span>
+                                                    </div>
                                                 </div>
+                                            </div>
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
                                             </div>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <h5>Asenema Waterfall</h5>
-                                                <p class="easygo-fs-5">8:00 AM</p>
+                                        <div class="suggestion-card my-3">
+                                            <div class="suggestion-card-header">
+                                                Suggested by <span class="text-blue">Kweku</span>
                                             </div>
-                                            <div class="col-8">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="mt-3">
+                                            <div class="suggestion-card-location">
+                                                Shai Hills
+                                            </div>
+                                            <div class="suggestion-card-body">
+                                                <p>
                                                     Here is the summary of the activities and destinations selected for the day
-                                                </div>
-                                                <div class="mt-2">
-                                                    <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                                    <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <h5>Shai Hills</h5>
-                                                <p class="easygo-fs-5">8:00 AM</p>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                </p>
+                                                <div class="suggestion-card-activities">
+                                                    <div class="mt-2">
+                                                        <span class="activity">Hike</span>
+                                                        <span class="activity">Hike</span>
+                                                        <span class="activity">Hike</span>
                                                     </div>
                                                 </div>
-                                                <div class="mt-3">
-                                                    Here is the summary of the activities and destinations selected for the day
-                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="py-2 text-end">
-                                    <a href="#">Add More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Itinerary Exp [end] -->
-                        <!--- ================================ -->
-                        <!--- ================================ -->
-                        <!-- Suggestions [start] -->
-                        <div class="col-lg-6 p-3">
-                            <div class="bg-white p-5 box-shadow-3">
-                                <h3 class="easygo-fw-1">
-                                    Itinerary Poll
-                                </h3>
-                                <div>A change has been suggested by a collaborator. You can choose option to maintain</div>
-                                <div class="suggestion-cards-container">
-                                    <div class="suggestion-card my-3">
-                                        <div class="suggestion-card-header">
-                                            Suggested by <span class="text-blue">Kweku</span>
-                                        </div>
-                                        <div class="suggestion-card-location">
-                                            Shai Hills
-                                        </div>
-                                        <div class="suggestion-card-body">
-                                            <p>
-                                                Here is the summary of the activities and destinations selected for the day
-                                            </p>
-                                            <div class="suggestion-card-activities">
-                                                <div class="mt-2">
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
-                                                </div>
+                                            <div class="d-flex justify-content-end mt-3">
+                                                <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
                                             </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end mt-3">
-                                            <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
-                                        </div>
-                                    </div>
-                                    <div class="suggestion-card my-3">
-                                        <div class="suggestion-card-header">
-                                            Suggested by <span class="text-blue">Kweku</span>
-                                        </div>
-                                        <div class="suggestion-card-location">
-                                            Shai Hills
-                                        </div>
-                                        <div class="suggestion-card-body">
-                                            <p>
-                                                Here is the summary of the activities and destinations selected for the day
-                                            </p>
-                                            <div class="suggestion-card-activities">
-                                                <div class="mt-2">
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
-                                                    <span class="activity">Hike</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end mt-3">
-                                            <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Suggestions [end] -->
+                            <!--- ================================ -->
                         </div>
-                        <!-- Suggestions [end] -->
-                        <!--- ================================ -->
-                    </div>
-                </section>
-                <!-- main-content [end] -->
-                <!--- ================================ -->
+                    </section>
+                    <!-- main-content [end] -->
+                    <!--- ================================ -->
+                </div>
                 <section class="py-5">
                     <div class="d-flex justify-content-center mt-3">
                         <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5">Finalize</button>

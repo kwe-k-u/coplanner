@@ -31,6 +31,7 @@ $(document).ready(function () {
   $(".doc-display .doc-display-item .item-remove").click(removeDocName);
   $(".pad-item-add").click(padListAdd);
   $(".sidebar-toggler").click(toggleSidebar); // to open and close side bar
+  $(".shrinkable-sidebar-toggler").click(toggleShrinkableSidebar); // to expand and shrink sidebar
   $(".close-sidebar").click(closeSidebar); // close side bar
   $(".page-reloader").click(function () {
     window.location.reload();
@@ -135,6 +136,13 @@ function closeSidebar() {
   let target = $(this).attr("data-target");
   $(`#${target}`).removeClass("open");
 }
+
+// function to toggle shrinkable sidebar
+function toggleShrinkableSidebar(){
+  let target = $(this).attr("data-target");
+  $(`#${target}`).toggleClass("expand");
+}
+
 
 // function to create img-dislay item
 function createImgDispItem(file) {
