@@ -1,0 +1,132 @@
+{
+    "musem": [
+        [
+            {
+                "name": "Lawra Naa Palace",
+                "place_id": "ChIJTfDLWvvMMg4RaX6jdYBI1w0",
+                "types": [
+                    "museum",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 91,
+                "rating": 3.8,
+                "vicinity": "J4R5+C53, Lawra",
+                "location": {
+                    "lat": 10.6411355,
+                    "lng": -2.8920822
+                }
+            }
+        ]
+    ],
+    "shopping_mall": [
+        [
+            {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        ]
+    ],
+    "tourist_attraction": [
+        [
+            {
+                "name": "Pakor Tang",
+                "place_id": "ChIJ_cEbsrW5Mg4R0TwmEQlLUOI",
+                "types": [
+                    "tourist_attraction",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 0,
+                "rating": 0,
+                "vicinity": "R76R+8G, Gwo",
+                "location": {
+                    "lat": 10.810865,
+                    "lng": -2.708665
+                }
+            },
+            {
+                "name": "Barrage de Djapi\u00e9ni",
+                "place_id": "ChIJK02VHIpfMg4Rxa2TmAmx0GQ",
+                "types": [
+                    "tourist_attraction",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 0,
+                "rating": 0,
+                "vicinity": "4, Ton\u00e9",
+                "location": {
+                    "lat": 11.3749775,
+                    "lng": -2.7798581
+                }
+            },
+            {
+                "name": "\u00c9levage Emaf",
+                "place_id": "ChIJ37GO0gcZMw4RkkjvPt9K00s",
+                "types": [
+                    "tourist_attraction",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 4,
+                "rating": 4,
+                "vicinity": "XQM5+F44, Diebougou",
+                "location": {
+                    "lat": 10.9836255,
+                    "lng": -3.2421688
+                }
+            },
+            {
+                "name": "Niceo",
+                "place_id": "ChIJxReoQkVBMw4RTl6hEUHuLoU",
+                "types": [
+                    "tourist_attraction",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 1,
+                "rating": 5,
+                "vicinity": "R 20",
+                "location": {
+                    "lat": 10.9307391,
+                    "lng": -3.4288384
+                }
+            }
+        ]
+    ],
+    "restaurant": [
+        [
+            {
+                "name": "Mamma Mia Royal Hotel",
+                "place_id": "ChIJ-WnAYZC4Mg4RqjSK23ido2Q",
+                "types": [
+                    "lodging",
+                    "restaurant",
+                    "food",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 132,
+                "rating": 3.9,
+                "vicinity": "St Theresa's Guest House Rd, Nandom",
+                "location": {
+                    "lat": 10.8537512,
+                    "lng": -2.7646594
+                }
+            }
+        ]
+    ]
+}

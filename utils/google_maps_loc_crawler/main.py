@@ -96,10 +96,7 @@ def move_right(cu):
 
 
 def run_destination_search(vert_steps,hor_steps,position,typ):
-	wait_time = randint(1,3)
-	print("wait",wait_time)
-	sleep(wait_time)
-	return {}
+
 	current_position = position
 	des = {}
 	for v in range(vert_steps):
@@ -119,9 +116,6 @@ def spin_thread(func,args = [],result_queue = None):
 		result_queue.put(result)
 
 def save_file(filename,data):
-	print("saving file")
-	print(filename+".json",data)
-	return 0
 	with open(filename+".json", 'a') as file:
 		json.dump(data, file, indent=4)
 	if filename == "error":

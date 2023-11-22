@@ -1,0 +1,2844 @@
+[
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {}
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ],
+    [
+        "shopping_mall",
+        {
+            "0": {
+                "name": "BOUTIQUE MWIN-MALO",
+                "place_id": "ChIJe3Zm59v9Mg4R0CGmMmtkvNg",
+                "types": [
+                    "shopping_mall",
+                    "point_of_interest",
+                    "establishment"
+                ],
+                "user_ratings_total": 14,
+                "rating": 3.6,
+                "vicinity": "4WWH+H9G, Unnamed Road, Dano",
+                "location": {
+                    "lat": 11.1464423,
+                    "lng": -3.0715464
+                }
+            }
+        }
+    ]
+]
