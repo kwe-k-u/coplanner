@@ -81,7 +81,7 @@ img {
 }
 
 /** other styles **/
-i {
+i,svg {
   pointer-events: none;
 }
 
@@ -312,6 +312,25 @@ i {
 .easygo-checkbox-btn-1 input[type="checkbox"]:checked + label {
   background-color: var(--easygo-orange);
   color: white !important;
+}
+
+/** scroll bar **/
+.easygo-scroll-bar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.easygo-scroll-bar::-webkit-scrollbar-track {
+  background: #F8973A;
+}
+
+/* Handle */
+.easygo-scroll-bar::-webkit-scrollbar-thumb {
+  background: #1204B5;
+}
+
+/* Handle on hover */
+.easygo-scroll-bar::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /** forms **/
@@ -1160,6 +1179,59 @@ input:disabled {
 }
 .sidebar-alt-280.sidebar-right.open {
   right: 0 !important;
+}
+
+.shrinkable-sidebar-280 {
+  width: 100px;
+  transition: all 0.3s;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-x: hidden;
+}
+.shrinkable-sidebar-280.expand {
+  width: 280px;
+}
+.shrinkable-sidebar-280 .ss-section {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  margin: 2rem 0;
+}
+.shrinkable-sidebar-280 .ss-section .ss-left {
+  min-width: 100px;
+}
+
+.shrinkable-sidebar-280:not(.expand) .ss-section .ss-right {
+  display: none !important;
+}
+
+.shrinkable-sidebar-280 .sec-title{
+  padding: 0 0.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.shrinkable-sidebar-280:not(.expand) .expand-d-none{
+  display: none;
+}
+
+.shrinkable-sidebar-280:not(.expand) .expand-d-block{
+  display: block;
+}
+
+.shrinkable-sidebar-280:not(.expand) .expand-toggle{
+  display: none;
+}
+.shrinkable-sidebar-280.expand .expand-toggle{
+  display: block;
+}
+
+.shrinkable-sidebar-280:not(.expand) .expand-toggle-rev{
+  display: block;
+}
+.shrinkable-sidebar-280.expand .expand-toggle-rev{
+  display: none;
 }
 
 /** profile image styles **/
