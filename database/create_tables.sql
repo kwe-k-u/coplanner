@@ -272,3 +272,9 @@ RIGHT JOIN
 
 -- Returns the wishlist information with the itinerary data
 
+
+
+INSERT INTO types_of_utility(type_name) VALUES
+("road access"),
+("swimming pool"),
+("wifi");
