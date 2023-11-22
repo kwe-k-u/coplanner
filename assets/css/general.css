@@ -81,7 +81,7 @@ img {
 }
 
 /** other styles **/
-i {
+i,svg {
   pointer-events: none;
 }
 
