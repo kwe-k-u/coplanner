@@ -1,0 +1,46 @@
+RewriteEngine On
+ServerSignature Off
+
+#set base directory
+RewriteBase /easygo_v2/
+
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh|config|bak|json|bak|sql|tpl|dist|env)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+
+
+# Dashboard to access confidential directory
+
+# RewriteCond %{HTTP_REFERER} !^http://www\.easygo.com.gh\.com$ [NC]
+# RewriteRule ^*/admin/ - [L]
+
+
+# Block access to confidential directory
+RewriteCond %{HTTP_REFERER} ^(https://www\.easygo\.com\.gh/admin/.*$|https://easygo\.com\.gh/admin/.*$) [NC]
+RewriteRule ^ - [L,S=1]
+RewriteRule .*confidential.* - [F]
+
+# RewriteCond %{HTTP_REFERER} !^https://easygo.com.gh\.com/admin/.*$ [NC]
+
+
+# Protect against SQL injection and other attacks (uncomment if using)
+# <IfModule mod_security.c>
+#   SecFilterEngine Off
+#   SecFilterScanPOST Off
+# </IfModule>
+
+# Default error page
+# ErrorDocument 404 /easygo_v2/views/home.php
+
+
+# Block access to hidden files and directories
+RewriteRule "(^|/)\." - [F]
+
+

@@ -1,0 +1,115 @@
+/* * styling for various sections of home page **/
+.intro,
+.get-started,
+.about-us {
+  min-height: 100vh;
+}
+
+.gallery {
+  min-height: 50vh;
+}
+
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: self-end;
+}
+
+.intro .intro-card {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0rem 1rem;
+  position: relative;
+  z-index: 5;
+}
+
+.get-started,
+.about-us {
+  display: flex;
+  align-items: center;
+}
+
+/* * styling trip description page **/
+.trip-info {
+  min-height: 70vh;
+}
+
+/***** utility classes for home *****/
+/** swiper **/
+.swiper-slide {
+  border-radius: var(--easygo-br-3);
+  overflow: hidden;
+  max-width: 800px;
+}
+.swiper-slide.portrait {
+  max-width: 400px;
+}
+
+/************** User Dashboard Styles ****************/
+/** dashboard content **/
+.dashboard-content {
+    display: flex;
+    /* overflow-y: auto; */
+  }
+
+/** sidebar **/
+#userdashboard-sidebar{
+    box-shadow: var(--box-shadow-1);
+    overflow-y: auto;
+    height: 100vh;
+}
+
+#userdashboard-sidebar .logo{
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  #userdashboard-sidebar {
+    position: static;
+    width: 300px;
+    flex: 0 0 auto;
+  }
+}
+
+.carousel{
+  padding-top: 5rem;
+  /* margin-top: 3rem; */
+  padding-bottom: 15rem;
+  /* background-image: linear-gradient(white,blue); */
+}
+
+.carousel-item > img{
+  object-fit: cover;
+}
+
+
+/** media query for carousel **/
+@media only screen and (max-width: 992px) {
+  .carousel{
+    padding-bottom: 0rem;
+
+  }
+
+  .home-background{
+    min-height: 80vh!important;
+    max-height: 85vh!important;
+  }
+}
+/** main content **/
+.main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/** components **/
+.del-btn{
+    border: none;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--easygo-lred-1);
+    color: var(--easygo-red);
+    border-radius: var(--easygo-br-4);
+}

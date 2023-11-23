@@ -1,0 +1,16 @@
+*.sql
+*.log
+*.env
+*.md
+*.lock
+*.json
+.gitignore
+uploads/
+chat/
+logs/
+vendor/
+PHPMailer/
+.git/
+automations/
+transfer/
+test/
