@@ -2,7 +2,7 @@ RewriteEngine On
 ServerSignature Off
 
 #set base directory
-RewriteBase /easygo_v2/
+RewriteBase /coplanner/
 
 
 # Prevent directory listing
@@ -18,16 +18,16 @@ Options -Indexes
 
 # Dashboard to access confidential directory
 
-# RewriteCond %{HTTP_REFERER} !^http://www\.easygo.com.gh\.com$ [NC]
+# RewriteCond %{HTTP_REFERER} !^http://www\.coplanner\.easygo.com.gh\.com$ [NC]
 # RewriteRule ^*/admin/ - [L]
 
 
 # Block access to confidential directory
-RewriteCond %{HTTP_REFERER} ^(https://www\.easygo\.com\.gh/admin/.*$|https://easygo\.com\.gh/admin/.*$) [NC]
+RewriteCond %{HTTP_REFERER} ^(https://www\.coplanner\.easygo\.com\.gh/admin/.*$|https://coplanner\.easygo\.com\.gh/admin/.*$) [NC]
 RewriteRule ^ - [L,S=1]
 RewriteRule .*confidential.* - [F]
 
-# RewriteCond %{HTTP_REFERER} !^https://easygo.com.gh\.com/admin/.*$ [NC]
+# RewriteCond %{HTTP_REFERER} !^https://coplanner\.easygo.com.gh\.com/admin/.*$ [NC]
 
 
 # Protect against SQL injection and other attacks (uncomment if using)
