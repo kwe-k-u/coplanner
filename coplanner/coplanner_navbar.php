@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="./home.php">
-            <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="">
+        <a class="navbar-brand" href="../coplanner_home.php">
+            <img class="logo-medium" srcset="../assets/images/site_images/logo.png,assets/images/site_images/logo.png" alt="">
         </a>
         <!-- <div class="justify-content-end">
             <div class='d-flex gap-4'>
@@ -11,16 +11,15 @@
         </div> -->
         <div class="d-flex gap-2 align-items-center">
             <div class="user-icon bg-blue">
-                <img src="http://localhost:81/internship/easygo23/assets/images/others/profile.jpeg" alt="Profile image">
+                <img src="../assets/images/others/profile.jpeg" alt="Profile image">
             </div>
             <div class="d-flex align-items-center gap-1">
                 <h3 class="easygo-fs-3 m-0">Kweku</h3>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle dropdown-toggle-alt bg-transparent border-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
                     </ul>
                 </div>
             </div>

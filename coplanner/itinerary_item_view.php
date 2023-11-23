@@ -40,7 +40,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             Itinerary Name/Day one
                         </div>
                         <div>
-                            <a href='../views/login.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a>
+                            <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a>
                         </div>
                     </div>
                 </div>
@@ -485,6 +485,7 @@ require_once(__DIR__ . "/../utils/core.php");
                 </section>
             </div>
         </main>
+        <?php require_once(__DIR__."/../components/footer.php") ?>
     </div>
     <!-- main content end -->
 
@@ -492,11 +493,10 @@ require_once(__DIR__ . "/../utils/core.php");
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
-    <!-- <script src="../assets/js/swiper-bundle.min.js"></script> -->
     <!-- easygo js -->
     <!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
     <script src="../assets/js/general.js"></script>
-    <!-- <script src="../assets/js/home.js"></script> -->
+    <!--  -->
     <!-- <script src="../assets/js/functions.js"></script> -->
     <script>
         [].slice
