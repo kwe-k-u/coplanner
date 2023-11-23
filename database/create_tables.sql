@@ -42,40 +42,46 @@ CREATE TABLE activities(
 -- Allows user information tracking
 CREATE TABLE users (
     user_id VARCHAR(100) PRIMARY KEY,
-    user_name VARCHAR(150),
-    date_registered DATETIME DEFAULT CURRENT_TIMESTAMP,
+    user_name VARCHAR(150) NOT NULL,
+    date_registered DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     account_status ENUM ("active","suspended","deleted") DEFAULT "active"
 );
+
+CREATE TABLE admin_users(
+    user_id VARCHAR(100) primary key,
+    privilege ENUM ("super","view") DEFAULT "view" NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+)
 
 -- Tracks the password hash for users logging in with passwords
 CREATE TABLE email_users (
     user_id VARCHAR(100) PRIMARY KEY,
-    email VARCHAR(100) UNIQUE,
+    email VARCHAR(100) UNIQUE NOT NULL,
     email_verified TINYINT(1) DEFAULT 0,
-    password_hash VARCHAR(255),
+    password_hash VARCHAR(255) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 -- Tracks the Google id for users logging in with Google
 CREATE TABLE google_users (
     user_id VARCHAR(100) PRIMARY KEY,
-    google_id VARCHAR(255) UNIQUE,
+    google_id VARCHAR(255) UNIQUE NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 -- Tracks the Apple id for users logging in with Apple sign-in
 CREATE TABLE apple_users (
     user_id VARCHAR(100) PRIMARY KEY,
-    apple_id VARCHAR(255) UNIQUE,
+    apple_id VARCHAR(255) UNIQUE NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
--- Tracks user login attempts
+-- Tracks successful user login attempts
 CREATE TABLE login_history (
     attempt_id VARCHAR(150) PRIMARY KEY,
-    user_id VARCHAR(100),
-    login_timestamp TIMESTAMP,
-    login_method VARCHAR(50),
+    user_id VARCHAR(100) NOT NULL,
+    login_timestamp TIMESTAMP NOT NULL,
+    login_method VARCHAR(50) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
@@ -83,7 +89,7 @@ CREATE TABLE login_history (
 -- Keeps information about the destinations that can be added to itineraries
 CREATE TABLE destinations(
     destination_id VARCHAR(100) PRIMARY KEY,
-    destination_name VARCHAR(200),
+    destination_name VARCHAR(200) NOT NULL,
     location VARCHAR(100),
     latitude FLOAT,
     longitude FLOAT,
@@ -224,8 +230,8 @@ CREATE TABLE wishlist(
 -- Keeps track of all the media uploaded to the platform
 CREATE TABLE media(
 	media_id VARCHAR(100) PRIMARY KEY,
-	media_location TEXT,
-	media_type ENUM("video","image") DEFAULT "image",
+	media_location TEXT NOT NULL,
+	media_type ENUM("video","image") DEFAULT "image" NOT NULL,
 	upload_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 	is_foreign TINYINT(1) DEFAULT 0
 );
@@ -278,3 +284,28 @@ INSERT INTO types_of_utility(type_name) VALUES
 ("road access"),
 ("swimming pool"),
 ("wifi");
+
+INSERT INTO types_of_destination(type_name) VALUES
+("amusement_park"),
+("aquarium"),
+("art gallery"),
+("bowling alley"),
+("beach"),
+("botanical garden"),
+("cafe"),
+("casino"),
+("campground"),
+("library"),
+("lodging"),
+('hotel'),
+("movie theater"),
+("musem"),
+("night_club"),
+("park"),
+("stadium"),
+("shopping mall"),
+("restaurant"),
+("waterfall"),
+("tourist attraction");
+("zoo"),
+
