@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="../coplanner_home.php">
-            <img class="logo-medium" srcset="../assets/images/site_images/logo.png,assets/images/site_images/logo.png" alt="">
+        <a class="navbar-brand" href="../index.php">
+            <img class="logo-medium" src="../assets/images/site_images/logo.png" onerror="this.onerror=null; this.remove();" alt="">
         </a>
         <!-- <div class="justify-content-end">
             <div class='d-flex gap-4'>
