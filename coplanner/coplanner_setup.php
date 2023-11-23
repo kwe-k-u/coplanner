@@ -401,7 +401,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page" style="max-width: 300px;">Next</button>
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page" style="max-width: 300px;"  onclick="goto_page('coplanner/itinerary_item_view.php')">Next</button>
                         </div>
                     </div>
                 </section>
@@ -414,12 +414,11 @@ require_once(__DIR__ . "/../utils/core.php");
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
-    <!-- <script src="../assets/js/swiper-bundle.min.js"></script> -->
     <!-- easygo js -->
-    <!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/home.js"></script>
-    <script src="../assets/js/functions.js"></script> -->
+
+    <script src="../assets/js/functions.js"></script>
     <script>
         class EhPageTransition {
             constructor(container_id) {

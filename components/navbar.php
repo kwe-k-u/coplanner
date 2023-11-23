@@ -8,10 +8,10 @@
         require_once(__DIR__. "/../controllers/media_controller.php");
 
         $current_user = get_session_user_id();
-        $current_user = get_user_by_id($current_user);
+        $current_user = "";
 
-        $user_name = $current_user["user_name"];
-        $profile_img = get_media_by_id($current_user["profile_image"])["media_location"] ?? get_default_profile_img();
+        $user_name = "Username";
+        $profile_img = "";
     }
 ?>
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">

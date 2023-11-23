@@ -29,22 +29,22 @@ function logError(event) {
   );
 }
 
-$(document).ready(function () {
-  //   // -- Adding Listeners -- //
-  //   // utility listeners
-  //   alert("ready");
-  window.addEventListener("error", function (event) {
-    event.preventDefault();
-    logError(event);
-  });
-});
+// $(document).ready(function () {
+//   //   // -- Adding Listeners -- //
+//   //   // utility listeners
+//   //   alert("ready");
+//   window.addEventListener("error", function (event) {
+//     event.preventDefault();
+//     logError(event);
+//   });
+// });
 
 //checks the get get parameters in the url for a matching key;
 function url_params(key) {
   if (!window.location.search.includes(key)){
     return false;
   }
-  
+
   url = window.location.search.substr(1);
   let value = false;
   params = url.split("&");
