@@ -1,7 +1,5 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../utils/env_manager.php");
-require_once(__DIR__ . "/../controllers/interaction_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
