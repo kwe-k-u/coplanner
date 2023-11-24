@@ -42,9 +42,9 @@ require_once(__DIR__ . "/../utils/core.php");
                 <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
-                            Itinerary Name/Day one
+                            <span class="easygo-editable-text">Untitled</span>/Day one
                         </div>
-                        <div class="d-none d-md-block">
+                        <div class="d-none d-lg-block">
                             <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a>
                         </div>
                     </div>
