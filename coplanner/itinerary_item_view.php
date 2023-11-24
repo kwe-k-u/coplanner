@@ -94,7 +94,7 @@ require_once(__DIR__ . "/../utils/core.php");
                     <!--- ================================ -->
                     <!--- ================================ -->
                     <!-- sidebar [start] -->
-                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 pt-3 d-none d-lg-block" style="max-height: 100%">
+                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
                         <div class="bg-blue position-relative" style="height: 2rem">
                             <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler" style="right: -2.8rem; top: 0" data-target="itinerary-sidebar">
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
@@ -403,8 +403,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </h3>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -416,8 +416,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -437,8 +437,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </h3>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -450,8 +450,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -474,8 +474,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </h3>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -487,8 +487,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -600,7 +600,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             Destination Suggestions
                         </h3>
                         <div class="row">
-                            <div class="col-6 p-2">
+                            <div class="col-lg-6 p-2">
                                 <div class="p-2">
                                     <div class="row p-3 border border-1 border-blue rounded-3">
                                         <div class="col-3">
@@ -613,7 +613,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 p-2">
+                            <div class="col-lg-6 p-2">
                                 <div class="p-2">
                                     <div class="row p-3 border border-1 border-blue rounded-3">
                                         <div class="col-3">
@@ -634,7 +634,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             Sentiment Analysis
                         </h3>
                         <div class="row">
-                            <div class="col-6 p-2">
+                            <div class="col-lg-6 p-2">
                                 <div class="p-2">
                                     <div class="row p-3 border border-1 border-blue rounded-3">
                                         <div class="col-3">
@@ -647,7 +647,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 p-2">
+                            <div class="col-lg-6 p-2">
                                 <div class="p-2">
                                     <div class="row p-3 border border-1 border-blue rounded-3">
                                         <div class="col-3">
@@ -671,7 +671,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             Activity Suggestions
                         </h3>
                         <div class="row">
-                            <div class="col-6 p-2">
+                            <div class="col-lg-6 p-2">
                                 <div class="p-2">
                                     <div class="row p-3 border border-1 border-blue rounded-3">
                                         <div class="col-3">
@@ -684,7 +684,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 p-2">
+                            <div class="col-lg-6 p-2">
                                 <div class="p-2">
                                     <div class="row p-3 border border-1 border-blue rounded-3">
                                         <div class="col-3">
