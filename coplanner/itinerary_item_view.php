@@ -33,7 +33,7 @@ require_once(__DIR__ . "/../utils/core.php");
         <main class="container-fluid" style="margin-top: 7rem;">
             <div class="row my-4">
                 <div class="col-4 py-2 d-flex justify-content-center">
-                    <button class="d-flex flex-column justify-content-center align-items-center gap-1 border-0 rounded-circle box-shadow-3 d-md-none" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas" data-bs-target="#itineraryPollCanvas" aria-controls="itineraryPollCanvas">
+                    <button class="d-flex flex-column justify-content-center align-items-center gap-1 border-0 rounded-circle box-shadow-3 d-lg-none" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas" data-bs-target="#itineraryPollCanvas" aria-controls="itineraryPollCanvas">
                         <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
                         <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
                         <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
