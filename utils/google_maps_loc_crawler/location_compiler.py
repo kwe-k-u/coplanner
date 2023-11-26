@@ -1,6 +1,6 @@
 import os
 import json
-
+from time import time
 
 def save_file(filename,data):
 	print("saving file")
@@ -16,7 +16,7 @@ def save_file(filename,data):
 
 
 
-folder_path = os.getcwd()+"/json_data"
+folder_path = os.getcwd()+"/tuples/destination_tuples"
 no_duplicates = {}
 num_locations, num_duplicates,num_entries = 0,0,0
 
@@ -51,4 +51,5 @@ for filename in os.listdir(folder_path):
 print("Total number of Entries",num_entries)
 print("Total number of Duplicates",num_duplicates)
 print("Total number of Added locations",num_locations)
-save_file("all_destinations",no_duplicates)
+save_file("all_destinations-" + str(time()),no_duplicates)
+input("Click any key to end")

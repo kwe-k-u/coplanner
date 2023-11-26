@@ -1,6 +1,7 @@
+# Script that is run first.
 
-# adsfjjal
-# wfsd
+
+
 import math
 import requests
 import json
@@ -120,7 +121,7 @@ def run_destination_search(vert_steps,hor_steps,position,typ):
 	thread_result = []
 	print("Spawning",num_threads," threads for destination retrieval")
 	for i in range(num_threads):
-		t = threading.Thread(target=run_get_threads,args=(position,typ,thread_result))
+		t = threading.Thread(target=run_get_threads,args=(current_position,typ,thread_result))
 		threads.append(t)
 		t.start()
 		current_position = move_right(current_position)
@@ -131,7 +132,7 @@ def run_destination_search(vert_steps,hor_steps,position,typ):
 	for _ in threads:
 		_.join()
 	print("Threads finished",thread_result)
-	save_file("tuples/tuples",thread_result)
+	save_file("tuples/destination_tuples",thread_result)
 	for _ in thread_result:
 		des.update(_[1])
 
