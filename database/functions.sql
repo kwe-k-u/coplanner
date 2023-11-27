@@ -144,7 +144,11 @@ DELIMITER ;
 DROP FUNCTION IF EXISTS create_destination;
 -- Function that adds a destination to the database
 DELIMITER //
-CREATE FUNCTION create_destination(in_name VARCHAR(100), in_location VARCHAR(100), lat FLOAT, lon FLOAT, in_rating TINYINT(3) ) RETURNS VARCHAR(100)
+CREATE FUNCTION create_destination(
+  in_name VARCHAR(100),
+   in_location VARCHAR(100),
+    lat FLOAT, lon FLOAT,
+     in_rating TINYINT(3) ) RETURNS VARCHAR(100)
 BEGIN
   DECLARE new_id VARCHAR(100);
   /*Return null if a destination with the same name exists*/
@@ -345,6 +349,30 @@ END //
 
 DELIMITER ;
 
+DROP FUNCTION IF EXISTS add_type_of_utility;
+DELIMITER //
+/*Creates a type of utlity that a destination may have*/
+CREATE FUNCTION add_type_of_utility(
+  utility_name VARCHAR(100)
+) RETURNS INT
+BEGIN
+  INSERT INTO types_of_utility(type_name) VALUE (utility_name);
+  return LAST_INSERT_ID();
+
+END //
+DELIMITER ;
 
 
+DROP FUNCTION IF EXISTS add_destination_utility;
+DELIMITER //
+CREATE FUNCTION add_destination_utility(
+  destination_id VARCHAR(150),
+  utility_id INT
+) returns tinyint(1)
+BEGIN
+  INSERT INTO `destination_utilities`(`destination_id`, `type_id`, `rating`)
+  VALUES (destination_id,utility_id,3);
+  return 1;
+END //
+DELIMITER ;
 

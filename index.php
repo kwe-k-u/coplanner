@@ -136,7 +136,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -162,7 +162,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -188,7 +188,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -218,7 +218,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -244,7 +244,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -274,7 +274,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -304,7 +304,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">
@@ -334,7 +334,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                     <div>
                                         <h6 class="easygo-fw-1">Shared Itineries</h6>
                                         <p class="itinerary-desc">
-                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+                                            An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
                                         </p>
                                     </div>
                                     <div class="itinerary-activities">

@@ -31,4 +31,19 @@
 		$admin = new admin_class();
 		return $admin->add_destination_activity($destination_id,$activity_name,$price);
 	}
+
+	function get_utility_types(){
+		$admin = new admin_class();
+		return $admin->get_utility_types();
+	}
+
+	function add_type_of_utility($name){
+		$admin = new admin_class();
+		return $admin->add_type_of_utility($name);
+	}
+
+	function add_destination_utility($destination_id, $utility_id){
+		$admin = new admin_class();
+		return $admin->add_destination_utility($destination_id, $utility_id);
+	}
 ?>

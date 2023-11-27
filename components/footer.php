@@ -4,7 +4,9 @@
             <div class="col-lg-3 col-12 mb-3 mb-lg-0">
                 <div class="d-flex justify-content-center flex-column align-items-center gap-1">
                     <div class="">
-                        <img class="logo-medium" src="../assets/images/site_images/logo_white_bg.png" alt="easygo logo">
+                        <?php
+                            echo "<img class='logo-medium' src='".server_base_url()."assets/images/site_images/logo_white_bg.png' alt='easygo logo'>";
+                        ?>
                     </div>
                     <h6>Tour Curation platform</h6>
                 </div>
@@ -21,7 +23,7 @@
             <div class="col-lg-2 col-6 py-3">
                 <h5 class="easygo-fw-2">Tour Curators</h5>
                 <div class="d-flex flex-column">
-                    <a class="text-white easygo-fs-4 text-hover-orange" href="../curator/login.php">Become a curator</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="https://www.easygo.com.gh/curator/login.php">Become a curator</a>
                     <!-- <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Value added services</a> -->
                     <a class="text-white easygo-fs-4 text-hover-orange" href="javascript:void(0)">Terms and conditions</a>
                 </div>
@@ -29,7 +31,7 @@
             <div class="col-lg-2 col-6 py-3">
                 <h5 class="easygo-fw-2">Products</h5>
                 <div class="d-flex flex-column">
-                    <a class="text-white easygo-fs-4 text-hover-orange" href="tours.php">easyGo Booking</a>
+                    <a class="text-white easygo-fs-4 text-hover-orange" href="https://www.easygo.com.gh">easyGo Booking</a>
                 </div>
             </div>
             <div class="col-lg-2 col-6 py-3">

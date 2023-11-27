@@ -174,6 +174,8 @@ def get_recommendations(user_choices,itinerary_options, num_choices = 3):
 				for activity in value: # for every possible activity calculate the similarity value
 					for itinerary_activity in itinerary[key]:
 						result += get_option_value(activity,itinerary_activity,similarity_matrix[key])
+				if sorted(value) == sorted(itinerary[key]):
+					result *=4
 			else:
 				# print("first")
 				result = get_option_value(value,itinerary[key],similarity_matrix[key])

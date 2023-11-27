@@ -62,4 +62,9 @@
 		$public = new public_class();
 		return $public->get_destinations_by_name($name);
 	}
+
+	function get_user_info($user_id){
+		$public = new public_class();
+		return $public->get_user_info($user_id);
+	}
 ?>

@@ -264,11 +264,11 @@ SELECT
     g.google_id
 FROM
     users AS u
-RIGHT JOIN
+LEFT JOIN
     google_users AS g ON g.user_id = u.user_id
-RIGHT JOIN
+LEFT JOIN
     apple_users AS a ON a.user_id = u.user_id
-RIGHT JOIN
+LEFT JOIN
     email_users AS e ON e.user_id = u.user_id;
 
 
@@ -283,6 +283,7 @@ RIGHT JOIN
 INSERT INTO types_of_utility(type_name) VALUES
 ("road access"),
 ("swimming pool"),
+("washroom"),
 ("wifi");
 
 INSERT INTO types_of_destination(type_name) VALUES
@@ -306,6 +307,5 @@ INSERT INTO types_of_destination(type_name) VALUES
 ("shopping mall"),
 ("restaurant"),
 ("waterfall"),
-("tourist attraction");
-("zoo"),
-
+("tourist attraction"),
+("zoo");

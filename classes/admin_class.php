@@ -4,7 +4,7 @@
 	class admin_class extends db_prepared{
 
 		function create_destination($name,$location,$lat,$long,$rating){
-			$sql = "SELECT create_destination(?,?,?,?,?)";
+			$sql = "SELECT create_destination(?,?,?,?,?) as destination_id";
 			$this->prepare($sql);
 			$this->bind($name,$location,$lat,$long,$rating);
 			return $this->db_fetch_one();
@@ -42,6 +42,26 @@
 			$sql = "SELECT add_destination_activity(?,?,?)";
 			$this->prepare($sql);
 			$this->bind($destination_id,$activity_name,$price);
+			return $this->db_fetch_one();
+		}
+
+		function get_utility_types(){
+			$sql = "SELECT * FROM types_of_utility";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function add_type_of_utility($name){
+			$sql = "SELECT add_type_of_utility(?) as utility_id";
+			$this->prepare($sql);
+			$this->bind($name);
+			return $this->db_fetch_one();
+		}
+
+		function add_destination_utility($destination_id, $utility_id){
+			$sql = "SELECT add_destination_utility(?,?)";
+			$this->prepare($sql);
+			$this->bind($destination_id,$utility_id);
 			return $this->db_fetch_one();
 		}
 	}

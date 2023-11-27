@@ -82,6 +82,13 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_user_info($user_id){
+			$sql = "SELECT * FROM vw_users where user_id = ?";
+			$this->prepare($sql);
+			$this->bind($user_id);
+			return $this->db_fetch_one();
+		}
+
 
 	}
 ?>

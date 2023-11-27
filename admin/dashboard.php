@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/admin_controller.php");
-require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+// require_once(__DIR__ . "/../controllers/admin_controller.php");
+// require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 
-if (!is_session_user_admin()) {
-    header("Location: ../views/home.php");
-    die();
-}
+// if (!is_session_user_admin()) {
+//     header("Location: ../views/home.php");
+//     die();
+// }
 
 // $info = get_user_by_id(get_session_user_id());
 
@@ -93,12 +93,12 @@ if (!is_session_user_admin()) {
                 <section class="stat-cards pt-5">
                     <div class="row">
                         <?php
-                        $stats = get_admin_stats();
+                        // $stats = get_admin_stats();
 
-                        $upcoming = $stats["upcoming_tours"];
-                        $bookings = format_string_as_currency_fn($stats["booking_value"]);
-                        $private_tour = $stats["private_tour"];
-                        $id_approvals = $stats["pending_id_approval"];
+                        $upcoming = 0;//$stats["upcoming_tours"];
+                        $bookings = 0;//format_string_as_currency_fn($stats["booking_value"]);
+                        $private_tour = 0;//$stats["private_tour"];
+                        $id_approvals = 0;//$stats["pending_id_approval"];
 
                         echo "
                         <div class='col-lg-3 col-sm-6 py-3'>
@@ -107,7 +107,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/bus_red_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Upcoming Tours</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Number of Users</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>$upcoming</div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Private Tours</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Signups this week</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>$private_tour</div>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Pending curator ID approval</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Itineraries created</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>$id_approvals</div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/barchart_blue_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Booking Value</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Number of destinations</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $bookings</div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Commission</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Itinerary Value</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Escrow Amount</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Average itinerary Value</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@ if (!is_session_user_admin()) {
                                     <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Withdrawable Commission</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Average number of participants</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ if (!is_session_user_admin()) {
                 <!-- ============================== -->
                 <!-- upcoming trips [start] -->
                 <?php
-                $upcoming_trips = get_upcoming_tours();
+                $upcoming_trips = null;//get_upcoming_tours();
                 if ($upcoming_trips) {
                     $trip_list_display = "";
 
@@ -226,7 +226,7 @@ if (!is_session_user_admin()) {
                             ";
                     }
                     echo "<section class='upcoming-trips pt-5'>
-                        <h5 class='easygo-fs-4 easygo-fw-1'>Upcoming Trips</h5>
+                        <h5 class='easygo-fs-4 easygo-fw-1'>Most Viewed Destinations</h5>
                         <div class='d-flex gap-2 w-100' style='overflow-x: auto;'>
                             <div class='col-lg-4 col-md-6 pb-4'>
                                 $trip_list_display
@@ -254,7 +254,7 @@ if (!is_session_user_admin()) {
                         <div class="p-3" style="overflow-x: auto;">
                             <div class="easygo-list-3" style="min-width: 992px;">
                                 <?php
-                                $bookings = get_bookings();
+                                $bookings = array();//get_bookings();
 
                                 $bookings = array_slice($bookings, 0, 5);
 
@@ -342,7 +342,6 @@ if (!is_session_user_admin()) {
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
