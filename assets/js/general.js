@@ -138,11 +138,10 @@ function closeSidebar() {
 }
 
 // function to toggle shrinkable sidebar
-function toggleShrinkableSidebar(){
+function toggleShrinkableSidebar() {
   let target = $(this).attr("data-target");
   $(`#${target}`).toggleClass("expand");
 }
-
 
 // function to create img-dislay item
 function createImgDispItem(file) {
@@ -549,6 +548,63 @@ function openDialog(message) {
   }
 }
 
+// class for editable text
+class EditableText {
+  constructor(element) {
+    this.element = element;
+    this.currentValue = this.element.textContent;
+    this.element.textContent = "";
+
+    // creating element to hold text
+    this.textHolder = document.createElement("span");
+    this.textHolder.textContent = this.currentValue;
+    this.element.appendChild(this.textHolder);
+
+    // creating the input element
+    this.inputEl = document.createElement("input");
+    this.inputEl.value = this.currentValue;
+    this.inputEl.style.display = "none";
+    this.element.appendChild(this.inputEl);
+    console.log(this.element);
+
+    // adding click event listener to element
+    this.element.addEventListener("click", () => {
+      this.#editValue();
+    });
+
+    // adding event listener to update with new value
+    this.inputEl.addEventListener("change", () => {
+      this.#updateValue();
+    });
+
+    // adding event listener when focus out
+    this.inputEl.addEventListener("focusout", () => {
+      this.#updateValue();
+    });
+  }
+
+  #editValue() {
+    this.textHolder.textContent = "";
+    this.inputEl.style.display = "inline";
+    this.inputEl.focus();
+  }
+
+  #updateValue() {
+    if (this.inputEl.value != "")
+      this.textHolder.textContent = this.inputEl.value;
+    else this.textHolder.textContent = "Untitled";
+
+    this.inputEl.style.display = "none";
+  }
+}
+
+// instantiating for all editable text in page
+[].slice
+  .call(document.querySelectorAll(".easygo-editable-text"))
+  .forEach((element) => {
+    new EditableText(element);
+  });
+
 /**
  * function to toggle form input error message display
  * @param {list} inputData objects in the form {type, value, message_target, err_message}
@@ -563,7 +619,7 @@ function validateFormInputs(...inputData) {
   let valid = true;
   for (let inputItem of inputData) {
     let msgContainer = document.getElementById(inputItem.message_target);
-    if(!msgContainer){
+    if (!msgContainer) {
       msgContainer = createErrorMessageContainer(inputItem.message_target);
     }
     if (!testInput(inputItem.type, inputItem.value)) {
