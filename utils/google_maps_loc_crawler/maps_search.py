@@ -10,8 +10,8 @@ import threading
 from random import randint
 from time import sleep, time
 
-destination_types = ["shopping_mall","restaurant","zoo","tourist_attraction"]
-# destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
+# destination_types = ["shopping_mall","restaurant","zoo","tourist_attraction"]
+destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
 search_queries = ["things to do","places to visit","tour sites"]
 max_km = 50
 ghana_tl = (11.02603066883424, -3.1447569426908735)

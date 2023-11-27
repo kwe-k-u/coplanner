@@ -3,10 +3,10 @@
 
 	class admin_class extends db_prepared{
 
-		function create_destination($name,$location,$lat,$long,$rating){
-			$sql = "SELECT create_destination(?,?,?,?,?) as destination_id";
+		function create_destination($name,$location,$lat,$long,$rating,$num_ratings){
+			$sql = "SELECT create_destination(?,?,?,?,?,?) as destination_id";
 			$this->prepare($sql);
-			$this->bind($name,$location,$lat,$long,$rating);
+			$this->bind($name,$location,$lat,$long,$rating,$num_ratings);
 			return $this->db_fetch_one();
 		}
 
@@ -59,7 +59,7 @@
 		}
 
 		function add_destination_utility($destination_id, $utility_id){
-			$sql = "SELECT add_destination_utility(?,?)";
+			$sql = "SELECT add_destination_utility(?,?) AS result LIMIT 1";
 			$this->prepare($sql);
 			$this->bind($destination_id,$utility_id);
 			return $this->db_fetch_one();

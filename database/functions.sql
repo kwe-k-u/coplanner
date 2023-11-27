@@ -146,9 +146,11 @@ DROP FUNCTION IF EXISTS create_destination;
 DELIMITER //
 CREATE FUNCTION create_destination(
   in_name VARCHAR(100),
-   in_location VARCHAR(100),
-    lat FLOAT, lon FLOAT,
-     in_rating TINYINT(3) ) RETURNS VARCHAR(100)
+  in_location VARCHAR(100),
+  lat FLOAT, lon FLOAT,
+  in_rating TINYINT(3),
+  in_num_ratings INT
+      ) RETURNS VARCHAR(100)
 BEGIN
   DECLARE new_id VARCHAR(100);
   /*Return null if a destination with the same name exists*/
@@ -157,8 +159,8 @@ BEGIN
     RETURN NULL;
   end if;
   SET new_id = UUID();
-  INSERT INTO `destinations`(`destination_id`, `destination_name`, `location`, `latitude`, `longitude`, `rating`)
-  VALUES (new_id, in_name,in_location,lat,lon,in_rating);
+  INSERT INTO `destinations`(`destination_id`, `destination_name`, `location`, `latitude`, `longitude`, `rating`, `num_ratings`)
+  VALUES (new_id, in_name,in_location,lat,lon,in_rating,in_num_ratings);
   RETURN new_id;
 END //
 DELIMITER ;
@@ -348,17 +350,19 @@ BEGIN
 END //
 
 DELIMITER ;
-
 DROP FUNCTION IF EXISTS add_type_of_utility;
 DELIMITER //
-/*Creates a type of utlity that a destination may have*/
 CREATE FUNCTION add_type_of_utility(
   utility_name VARCHAR(100)
 ) RETURNS INT
 BEGIN
-  INSERT INTO types_of_utility(type_name) VALUE (utility_name);
-  return LAST_INSERT_ID();
-
+  DECLARE new_id INT;
+  SELECT type_id INTO new_id FROM types_of_utility WHERE type_name = utility_name;
+  IF new_id IS NULL THEN
+    INSERT INTO types_of_utility(type_name) VALUES (utility_name);
+    SET new_id = LAST_INSERT_ID();
+  END IF;
+  RETURN new_id;
 END //
 DELIMITER ;
 
@@ -367,12 +371,21 @@ DROP FUNCTION IF EXISTS add_destination_utility;
 DELIMITER //
 CREATE FUNCTION add_destination_utility(
   destination_id VARCHAR(150),
-  utility_id INT
-) returns tinyint(1)
+  in_utility VARCHAR(60)
+) RETURNS TINYINT
 BEGIN
-  INSERT INTO `destination_utilities`(`destination_id`, `type_id`, `rating`)
-  VALUES (destination_id,utility_id,3);
-  return 1;
+  DECLARE utility_id INT;
+
+  SELECT type_id INTO utility_id FROM types_of_utility WHERE type_id = in_utility OR type_name = in_utility limit 1;
+
+  IF utility_id IS NULL OR NOT in_utility REGEXP '^[0-9]+$' THEN
+    SELECT add_type_of_utility(in_utility) INTO utility_id;
+    SELECT type_id INTO utility_id FROM types_of_utility WHERE type_id = in_utility OR type_name = in_utility limit 1;
+  END IF;
+
+  INSERT INTO destination_utilities(destination_id, type_id, rating)
+  VALUES (destination_id, utility_id, 3);
+
+  RETURN 1;
 END //
 DELIMITER ;
-

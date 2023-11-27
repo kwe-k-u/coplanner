@@ -2,9 +2,9 @@
 	require_once(__DIR__."/../classes/admin_class.php");
 	require_once(__DIR__."/../utils/core.php");
 
-	function create_destination($name,$location,$lat,$long,$rating){
+	function create_destination($name,$location,$lat,$long,$rating,$num_ratings = 1){
 		$admin = new admin_class();
-		return $admin->create_destination($name,$location,$lat,$long,$rating);
+		return $admin->create_destination($name,$location,$lat,$long,$rating,$num_ratings);
 	}
 
 	// function create_itinerary($user_id,$num_people,$status){
@@ -46,4 +46,5 @@
 		$admin = new admin_class();
 		return $admin->add_destination_utility($destination_id, $utility_id);
 	}
+
 ?>

@@ -51,7 +51,7 @@ CREATE TABLE admin_users(
     user_id VARCHAR(100) primary key,
     privilege ENUM ("super","view") DEFAULT "view" NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-)
+);
 
 -- Tracks the password hash for users logging in with passwords
 CREATE TABLE email_users (
@@ -93,7 +93,8 @@ CREATE TABLE destinations(
     location VARCHAR(100),
     latitude FLOAT,
     longitude FLOAT,
-    rating FLOAT CHECK(rating >= 1 AND rating <= 5)
+    rating FLOAT CHECK(rating >= 1 AND rating <= 5),
+    num_ratings INT CHECK(num_ratings >= 0)
 );
 
 -- Allows tracking of activities available at each destination

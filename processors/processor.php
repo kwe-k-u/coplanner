@@ -80,8 +80,7 @@
 			}
 			break;
 		case "/create_destination":
-			$name = generate_id();
-			// $name = $_POST["destination_name"];
+			$name = $_POST["destination_name"];
 			$location = $_POST["destination_location"];
 			$description = $_POST["site_description"]; //TODO:: add to sql
 			$country = $_POST["country"]; //TODO:: add to sql
@@ -104,6 +103,57 @@
 				add_destination_utility($destination_id,$id);
 			}
 			send_json(array("msg"=> "Added destination"));
+			die();
+		case "/google_maps_upload":
+			$type_association = array(
+				"amusement_park"=> "Amusement Park",
+				"aquarium"=> "Aquarium",
+				"art_gallery"=> "Art Gallery",
+				"bowling_alley"=> "Bowling Alley",
+				"cafe"=> "Cafe",
+				"campground"=> "Campground",
+				"library"=> "Library",
+				"lodging"=> "Accommodation",
+				"movie_theater"=> "Movie Theater",
+				"musem"=> "Museum",
+				"night_club"=> "Night Club",
+				"park"=> "Park",
+				"casino"=> "Casino",
+				"stadium"=> "Stadium",
+				"shopping_mall"=> "Shopping Mall",
+				"restaurant"=> "Restaurant",
+				"zoo"=> "Zoo",
+				"tourist_attraction"=> "Tourist Attraction"
+
+		);
+			$data = json_decode(file_get_contents('php://input'),true)["data"];
+			foreach($data as $_ => $json){
+				// $json = json_decode($value,true);
+				$name = ucfirst(strtolower($json["name"]));
+				$rating = $json["rating"];
+				$num_rating = $json["user_ratings_total"];
+				$location = $json["vicinity"];
+				$latitude = $json["location"]["lat"];
+				$longitude = $json["location"]["lng"];
+				$types = $json["types"];
+
+				if($num_rating > 100){
+					$destination_id = create_destination($name,$location,$latitude,$longitude,$rating,$num_rating)["destination_id"];
+					if(!$destination_id){
+						// echo("Destination with same name<$name> exists! Additions skipped");
+						continue;
+					}
+
+					foreach ($types as $key){
+						if(key_exists($key,$type_association)){
+							add_destination_utility($destination_id,$type_association[$key]);
+						}
+					}
+					// echo"$name added\n";
+				}
+
+			}
+			send_json(array("msg"=> "Received"));
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
