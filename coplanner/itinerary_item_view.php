@@ -32,27 +32,61 @@ require_once(__DIR__ . "/../utils/core.php");
         <!--- ================================ -->
         <main class="container-fluid" style="margin-top: 7rem;">
             <div class="row my-4">
-                <div class="col-lg-4 py-2 d-flex justify-content-between">
+                <div class="col-4 py-2 d-flex justify-content-center">
+                    <button class="d-flex flex-column justify-content-center align-items-center gap-1 border-0 rounded-circle box-shadow-3 d-lg-none" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas" data-bs-target="#itineraryPollCanvas" aria-controls="itineraryPollCanvas">
+                        <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
+                        <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
+                        <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
+                    </button>
                 </div>
-                <div class="col-lg-4 py-2 d-flex justify-content-center">
+                <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
-                            Itinerary Name/Day one
+                            <span class="easygo-editable-text">Untitled</span>/Day one
                         </div>
-                        <div>
+                        <div class="d-none d-lg-block">
                             <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 py-2 d-flex justify-content-center">
+                <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex align-items-center gap-2">
-                        <button class="box-shadow-3 d-flex justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab">
+                        <button class="box-shadow-3 d-none d-lg-flex justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab">
                             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.74967 4.33325L12.458 10.2916L18.4163 12.9999L12.458 15.7083L9.74967 21.6666L7.04134 15.7083L1.08301 12.9999L7.04134 10.2916L9.74967 4.33325ZM9.74967 9.56575L8.66634 11.9166L6.31551 12.9999L8.66634 14.0833L9.74967 16.4341L10.833 14.0833L13.1838 12.9999L10.833 11.9166L9.74967 9.56575ZM20.583 9.74992L19.218 6.78159L16.2497 5.41658L19.218 4.06242L20.583 1.08325L21.9372 4.06242L24.9163 5.41658L21.9372 6.78159L20.583 9.74992ZM20.583 24.9166L19.218 21.9482L16.2497 20.5833L19.218 19.2291L20.583 16.2499L21.9372 19.2291L24.9163 20.5833L21.9372 21.9482L20.583 24.9166Z" fill="#1204B5" />
                             </svg>
                         </button>
-                        Work with Coplanner
+                        <button class="box-shadow-3 d-flex d-lg-none justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.74967 4.33325L12.458 10.2916L18.4163 12.9999L12.458 15.7083L9.74967 21.6666L7.04134 15.7083L1.08301 12.9999L7.04134 10.2916L9.74967 4.33325ZM9.74967 9.56575L8.66634 11.9166L6.31551 12.9999L8.66634 14.0833L9.74967 16.4341L10.833 14.0833L13.1838 12.9999L10.833 11.9166L9.74967 9.56575ZM20.583 9.74992L19.218 6.78159L16.2497 5.41658L19.218 4.06242L20.583 1.08325L21.9372 4.06242L24.9163 5.41658L21.9372 6.78159L20.583 9.74992ZM20.583 24.9166L19.218 21.9482L16.2497 20.5833L19.218 19.2291L20.583 16.2499L21.9372 19.2291L24.9163 20.5833L21.9372 21.9482L20.583 24.9166Z" fill="#1204B5" />
+                            </svg>
+                        </button>
+                        <span class="d-none d-lg-inline">Work with Coplanner</span>
                     </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between p-3 box-shadow-3 mx-auto rounded-3 gap-5 d-lg-none w-100" style="max-width: 500px;">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
+                    </div>
+                    <div class="easygo-fs-4 expand-toggle-rev">GHS 2500</div>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <i class="fa-solid fa-calendar text-blue easygo-fs-1"></i>
+                    </div>
+                    <div class="easygo-fs-4 expand-toggle-rev">2 days</div>
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                        <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
+                    </div>
+                    <div class="easygo-fs-4 expand-toggle-rev">2 People</div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
+                    <div class="easygo-fs-5 expand-toggle-rev">Services</div>
                 </div>
             </div>
             <div>
@@ -60,12 +94,12 @@ require_once(__DIR__ . "/../utils/core.php");
                     <!--- ================================ -->
                     <!--- ================================ -->
                     <!-- sidebar [start] -->
-                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 pt-3" style="max-height: 100%">
+                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
                         <div class="bg-blue position-relative" style="height: 2rem">
                             <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler" style="right: -2.8rem; top: 0" data-target="itinerary-sidebar">
-                                <div class="bg-white" style="padding: 0.1rem 1rem"></div>
-                                <div class="bg-white" style="padding: 0.1rem 1rem"></div>
-                                <div class="bg-white" style="padding: 0.1rem 1rem"></div>
+                                <div class="bg-white" style="padding: 0.06rem 1rem"></div>
+                                <div class="bg-white" style="padding: 0.06rem 1rem"></div>
+                                <div class="bg-white" style="padding: 0.06rem 1rem"></div>
                             </button>
                         </div>
                         <div class="bg-white">
@@ -295,7 +329,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             <!--- ================================ -->
                             <!--- ================================ -->
                             <!-- Suggestions [start] -->
-                            <div class="col-lg-6 p-3">
+                            <div class="d-none d-lg-block col-lg-6 p-3">
                                 <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link active" id="itinerary-poll-tab" data-bs-toggle="tab" data-bs-target="#itinerary-poll-tab-pane" type="button" role="tab" aria-controls="itinerary-poll-tab-pane" aria-selected="true">Home</button>
@@ -369,8 +403,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </h3>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -382,8 +416,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -403,8 +437,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </h3>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -416,8 +450,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -440,8 +474,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </h3>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -453,8 +487,8 @@ require_once(__DIR__ . "/../utils/core.php");
                                                         </div>
                                                     </div>
                                                     <div class="col-6 p-2">
-                                                        <div class="p-2">
-                                                            <div class="row p-3 border border-1 border-blue rounded-3">
+                                                        <div class="p-2 h-100">
+                                                            <div class="row py-3 px-2 border border-1 border-blue rounded-3 h-100">
                                                                 <div class="col-3">
                                                                     <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
                                                                 </div>
@@ -485,7 +519,192 @@ require_once(__DIR__ . "/../utils/core.php");
                 </section>
             </div>
         </main>
-        <?php require_once(__DIR__."/../components/footer.php") ?>
+        <!--- ================================ -->
+        <!-- offcanvases [start] -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="itineraryPollCanvas" aria-labelledby="itineraryPollCanvasLabel">
+            <div class="offcanvas-header">
+                <h3 class="easygo-fw-1" class="offcanvas-title" id="itineraryPollCanvasLabel">
+                    Itinerary Poll
+                </h3>
+
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="bg-white p-2">
+                    <!-- <h3 class="easygo-fw-1">
+                        Itinerary Poll
+                    </h3> -->
+                    <div>A change has been suggested by a collaborator. You can choose option to maintain</div>
+                    <div class="suggestion-cards-container">
+                        <div class="suggestion-card my-3">
+                            <div class="suggestion-card-header">
+                                Suggested by <span class="text-blue">Kweku</span>
+                            </div>
+                            <div class="suggestion-card-location">
+                                Shai Hills
+                            </div>
+                            <div class="suggestion-card-body">
+                                <p>
+                                    Here is the summary of the activities and destinations selected for the day
+                                </p>
+                                <div class="suggestion-card-activities">
+                                    <div class="mt-2">
+                                        <span class="activity">Hike</span>
+                                        <span class="activity">Hike</span>
+                                        <span class="activity">Hike</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-3">
+                                <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
+                            </div>
+                        </div>
+                        <div class="suggestion-card my-3">
+                            <div class="suggestion-card-header">
+                                Suggested by <span class="text-blue">Kweku</span>
+                            </div>
+                            <div class="suggestion-card-location">
+                                Shai Hills
+                            </div>
+                            <div class="suggestion-card-body">
+                                <p>
+                                    Here is the summary of the activities and destinations selected for the day
+                                </p>
+                                <div class="suggestion-card-activities">
+                                    <div class="mt-2">
+                                        <span class="activity">Hike</span>
+                                        <span class="activity">Hike</span>
+                                        <span class="activity">Hike</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-3">
+                                <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Accept</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h3 class="offcanvas-title easygo-fw-1" id="offcanvasRightLabel">
+                    Sentiment Analysis
+                </h3>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="bg-white p-2">
+                    <div>
+                        <h3 class="m-0">
+                            Destination Suggestions
+                        </h3>
+                        <div class="row">
+                            <div class="col-lg-6 p-2">
+                                <div class="p-2">
+                                    <div class="row p-3 border border-1 border-blue rounded-3">
+                                        <div class="col-3">
+                                            <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <h6 class="easygo-fw-1">Intense Activity</h6>
+                                            <p class="easygo-fs-4">The activities you have included are physically exhausting</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-2">
+                                <div class="p-2">
+                                    <div class="row p-3 border border-1 border-blue rounded-3">
+                                        <div class="col-3">
+                                            <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <h6 class="easygo-fw-1">Number of days</h6>
+                                            <p class="easygo-fs-4">You may need to add an extra day to avoid rushing through activities</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-blue border border-1 opacity-100">
+                    <div>
+                        <h3 class="m-0">
+                            Sentiment Analysis
+                        </h3>
+                        <div class="row">
+                            <div class="col-lg-6 p-2">
+                                <div class="p-2">
+                                    <div class="row p-3 border border-1 border-blue rounded-3">
+                                        <div class="col-3">
+                                            <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <h6 class="easygo-fw-1">Intense Activity</h6>
+                                            <p class="easygo-fs-4">The activities you have included are physically exhausting</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-2">
+                                <div class="p-2">
+                                    <div class="row p-3 border border-1 border-blue rounded-3">
+                                        <div class="col-3">
+                                            <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <h6 class="easygo-fw-1">Number of days</h6>
+                                            <p class="easygo-fs-4">You may need to add an extra day to avoid rushing through activities</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a href="#">Expand</a>
+                        </div>
+                    </div>
+                    <hr class="border-blue border border-1 opacity-100">
+                    <div>
+                        <h3 class="m-0">
+                            Activity Suggestions
+                        </h3>
+                        <div class="row">
+                            <div class="col-lg-6 p-2">
+                                <div class="p-2">
+                                    <div class="row p-3 border border-1 border-blue rounded-3">
+                                        <div class="col-3">
+                                            <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <h6 class="easygo-fw-1">Intense Activity</h6>
+                                            <p class="easygo-fs-4">The activities you have included are physically exhausting</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-2">
+                                <div class="p-2">
+                                    <div class="row p-3 border border-1 border-blue rounded-3">
+                                        <div class="col-3">
+                                            <i class="fa-solid fa-person-hiking easygo-h3 text-blue"></i>
+                                        </div>
+                                        <div class="col-9">
+                                            <h6 class="easygo-fw-1">Number of days</h6>
+                                            <p class="easygo-fs-4">You may need to add an extra day to avoid rushing through activities</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- offcanvases [end] -->
+        <!--- ================================ -->
+        <?php require_once(__DIR__ . "/../components/footer.php") ?>
     </div>
     <!-- main content end -->
 
@@ -505,7 +724,6 @@ require_once(__DIR__ . "/../utils/core.php");
                 proxy.addEventListener("click", (event) => {
                     let target = document.getElementById(event.target.getAttribute("data-proxy-target"))
                     target.click()
-                    console.log(target)
                 })
             });
     </script>
