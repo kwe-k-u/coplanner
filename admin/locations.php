@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 
 // if (!is_session_user_admin()) {
 // 	header("Location: ../views/home.php");
@@ -89,13 +90,15 @@ require_once(__DIR__ . "/../controllers/admin_controller.php");
 						<div class='location-listing py-4' id="site_result_div">
 							<?php
 
-							$destinations = array(); //get_destinations();
+							$destinations = get_destinations();
 
-							foreach ($destinations as $site) {
-								$site_id = "some"; //$site["destination_id"];
-								$destination_name = "some"; //$site["destination_name"];
-								$destination_location = "some"; //$site["destination_location"];
-								$site_country = "some"; //$site["country"];
+							foreach (array_slice($destinations,0,5) as $site) {
+								$site_id = $site["destination_id"];
+								$destination_name = $site["destination_name"];
+								$destination_location = $site["location"];
+								$rating = $site["rating"];
+								$rating_count = $site["num_ratings"];
+								$site_country = "$rating from $rating_count ratings"; //$site["country"];
 								$verified_text = true ? "Verified (Click to Change)" : "Unverified(Click to Change)";
 								$star = true ? "full_star" : "empty_star";
 								echo "
@@ -303,7 +306,7 @@ require_once(__DIR__ . "/../controllers/admin_controller.php");
 
 										<div class="form-input-field">
 											<label class="text-gray-1 easygo-fs-4 ">Activity</label>
-											
+
 											<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
 											<div class="col">
 												<ul id='add_loc_activity_list'>

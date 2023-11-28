@@ -89,6 +89,26 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_destinations(){
+			$sql = "CALL get_destinations()";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_destination_activities($destination_id){
+			$sql = "CALL get_destination_activities(?)";
+			$this->prepare($sql);
+			$this->bind($destination_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_destination_utilities($destination_id){
+			$sql = "CALL get_destination_utilities(?)";
+			$this->prepare($sql);
+			$this->bind($destination_id);
+			return $this->db_fetch_all();
+		}
+
 
 	}
 ?>

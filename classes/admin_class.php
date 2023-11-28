@@ -64,5 +64,13 @@
 			$this->bind($destination_id,$utility_id);
 			return $this->db_fetch_one();
 		}
+
+		function get_stats(){
+			$sql = "CALL get_stats_summary()";
+			$this->prepare($sql);
+			return $this->db_fetch_one();
+		}
+
+		
 	}
 ?>

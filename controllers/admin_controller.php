@@ -47,4 +47,9 @@
 		return $admin->add_destination_utility($destination_id, $utility_id);
 	}
 
+	function get_stats(){
+		$admin = new admin_class();
+		return $admin->get_stats();
+	}
+
 ?>

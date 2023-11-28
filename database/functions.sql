@@ -389,3 +389,50 @@ BEGIN
   RETURN 1;
 END //
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_stats_summary;
+DELIMITER //
+CREATE PROCEDURE get_stats_summary()
+begin
+    SELECT
+        (SELECT COUNT(*) FROM users) AS user_count,
+        (SELECT COUNT(*) FROM itinerary) AS itinerary_count,
+        (SELECT COUNT(*) FROM users WHERE date_registered >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)) AS signup_count,
+        (SELECT COUNT(*) FROM destinations) AS destination_count,
+        (SELECT 0) AS total_itinerary_value,
+        (SELECT 0) AS average_itinerary_value,
+        (SELECT 0) AS average_itinerary_participants
+;
+end
+//
+
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_destinations;
+DELIMITER //
+CREATE PROCEDURE get_destinations()
+begin
+  SELECT * from destinations;
+
+end //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_destination_activities;
+DELIMITER //
+CREATE PROCEDURE  get_destination_activities(in_destination_id VARCHAR(100))
+BEGIN
+SELECT * from destination_activites as da left join activities as a on a.activity_id = da.activity_id where da.destination_id = in_destination_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_destination_utilities;
+DELIMITER //
+CREATE PROCEDURE get_destination_utilities( in_destination_id VARCHAR(100))
+BEGIN
+SELECT * FROM destination_utilities as du inner join types_of_utility as tu on tu.type_id = du.type_id where du.destination_id = in_destination_id;
+END //
+DELIMITER ;

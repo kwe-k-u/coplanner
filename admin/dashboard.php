@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-// require_once(__DIR__ . "/../controllers/admin_controller.php");
+require_once(__DIR__ . "/../controllers/admin_controller.php");
 // require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 
 // if (!is_session_user_admin()) {
@@ -93,12 +93,16 @@ require_once(__DIR__ . "/../utils/core.php");
                 <section class="stat-cards pt-5">
                     <div class="row">
                         <?php
-                        // $stats = get_admin_stats();
+                        $stats = get_stats();
 
-                        $upcoming = 0;//$stats["upcoming_tours"];
-                        $bookings = 0;//format_string_as_currency_fn($stats["booking_value"]);
-                        $private_tour = 0;//$stats["private_tour"];
-                        $id_approvals = 0;//$stats["pending_id_approval"];
+                        $user_count = $stats["user_count"];
+                        $itinerary_count = $stats["itinerary_count"];
+                        $signup_count = $stats["signup_count"];
+                        $destination_count = $stats["destination_count"];
+                        $total_itinerary_value = $stats["total_itinerary_value"];
+                        $average_itinerary_value = $stats["average_itinerary_value"];
+                        $average_itinerary_participants = $stats["average_itinerary_participants"];
+
 
                         echo "
                         <div class='col-lg-3 col-sm-6 py-3'>
@@ -108,7 +112,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Number of Users</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$upcoming</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$user_count</div>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +123,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Signups this week</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$private_tour</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$signup_count</div>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +134,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Itineraries created</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$id_approvals</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$itinerary_count</div>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +145,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Number of destinations</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $bookings</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'> $destination_count</div>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +156,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Total Itinerary Value</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $total_itinerary_value</div>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +167,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Average itinerary Value</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $average_itinerary_value</div>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +178,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                                 <div class='info-content'>
                                     <div class='text-gray-1 info-title easygo-fs-4'>Average number of participants</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS -1</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$average_itinerary_participants</div>
                                 </div>
                             </div>
                         </div>

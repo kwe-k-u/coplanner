@@ -67,4 +67,19 @@
 		$public = new public_class();
 		return $public->get_user_info($user_id);
 	}
+
+	function get_destinations(){
+		$public = new public_class();
+		return $public->get_destinations();
+	}
+
+	function get_destination_activities($destination_id){
+		$public = new public_class();
+		return $public->get_destination_activities($destination_id);
+	}
+
+	function get_destination_utilities($destination_id){
+		$public = new public_class();
+		return $public->get_destination_utilities($destination_id);
+	}
 ?>
