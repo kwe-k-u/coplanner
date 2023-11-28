@@ -52,4 +52,9 @@
 		return $admin->get_stats();
 	}
 
+	function get_users(){
+		$admin = new admin_class();
+		return $admin->get_users();
+	}
+
 ?>

@@ -152,6 +152,7 @@ CREATE TABLE destination_rating(
 -- Tracks the different itineraries that are created by users
 CREATE TABLE itinerary(
 	itinerary_id VARCHAR(100) PRIMARY KEY,
+    itinerary_name VARCHAR(60),
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
 	end_date DATETIME CHECK (end_date >= start_date),
@@ -261,8 +262,10 @@ SELECT
     u.*,
     a.apple_id,
     e.email,
+    e.email_verified,
     e.password_hash,
-    g.google_id
+    g.google_id,
+    (select login_timestamp from login_history as lh where lh.user_id = u.user_id  order by login_timestamp desc limit 1) as last_login
 FROM
     users AS u
 LEFT JOIN
@@ -271,8 +274,6 @@ LEFT JOIN
     apple_users AS a ON a.user_id = u.user_id
 LEFT JOIN
     email_users AS e ON e.user_id = u.user_id;
-
-
 
 
 

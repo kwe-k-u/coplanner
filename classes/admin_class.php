@@ -71,6 +71,10 @@
 			return $this->db_fetch_one();
 		}
 
-		
+		function get_users(){
+			$sql = "CALL get_users()";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
 	}
 ?>

@@ -436,3 +436,40 @@ BEGIN
 SELECT * FROM destination_utilities as du inner join types_of_utility as tu on tu.type_id = du.type_id where du.destination_id = in_destination_id;
 END //
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_users;
+DELIMITER //
+CREATE PROCEDURE get_users()
+BEGIN
+  SELECT * FROM vw_users;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_itineraries;
+DELIMITER //
+CREATE PROCEDURE get_itineraries(IN in_user_id VARCHAR(100) )
+BEGIN
+    IF in_user_id IS NULL THEN
+        SELECT * FROM itinerary;
+    ELSE
+        SELECT * FROM itinerary WHERE owner_id = in_user_id;
+    END IF;
+END //
+
+DELIMITER ;
+
+
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_collaborators;
+DELIMITER //
+
+CREATE PROCEDURE get_itinerary_collaborators(IN in_itinerary_id VARCHAR(100))
+BEGIN
+    SELECT * FROM itinerary_collaborators WHERE itinerary_id = in_itinerary_id;
+END //
+
+DELIMITER ;

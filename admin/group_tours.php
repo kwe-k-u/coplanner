@@ -1,20 +1,9 @@
 <?php
 	require_once(__DIR__ . "/../utils/core.php");
 	require_once(__DIR__ . "/../controllers/admin_controller.php");
-
-	if (!is_session_user_admin()) {
-		header("Location: ../views/home.php");
-		die();
-	}
-
-	$selected_curator = isset($_GET["curator_id"]) ? $_GET["curator_id"] : null;
-
-
-
-
-
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +12,7 @@
 
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Admin || Group Tours</title>
+	<title>Admin || Itineraries</title>
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
@@ -48,27 +37,19 @@
 				<section class="all-trips">
 					<div class="d-flex justify-content-between align-items-center border-1 border-bottom py-3">
 						<div>
-							<h5 class="title easygo-fs-3 easygo-fw-1 m-0">All Trips</h5>
-							<small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Trips</a> <i class="fa-solid fa-chevron-right"></i> All Trips</small>
+							<h5 class="title easygo-fs-3 easygo-fw-1 m-0">All Itineraries</h5>
+							<small class="easygo-fs-5 text-gray-1 align-middle"><a href="#">Itineraries</a> <i class="fa-solid fa-chevron-right"></i> All Itineraries</small>
 						</div>
 
 						<div class="form-input-field">
-							<div class="text-gray-1 easygo-fs-4">Curator</div>
+							<div class="text-gray-1 easygo-fs-4">Category</div>
 
 							<select name="collaborator_role" onchange="return select_curator()">
 								<option value="">All</option>
-								<?php
-									$curators = get_curators();
-									foreach($curators as $c){
-										$c_id = $c["curator_id"];
-										$c_name = $c["curator_name"];
-										$selected = $c_id == $selected_curator ? "selected" : "";
-										echo "<option value='$c_id' $selected>$c_name</option>";
-									}
-								?>
+								<option value="template"> Templates </option>
 							</select>
 						</div>
-						<a href="create_a_tour.php" class="easygo-btn-1">Create a Trip</a>
+						<a href="../coplanner/itinerary_item_view.php" class="easygo-btn-1">Create Itinerary</a>
 
 					</div>
 					<!-- ============================== -->
@@ -78,14 +59,14 @@
 							<!-- ============================== -->
 							<!-- tirp card [start] -->
 							<?php
-							$trips = get_campaigns($selected_curator);
+							$itineraries = get_itineraries();
 							// $trips = null;
 							// var_dump($trips);
 
-							if (!$trips) {
-								echo "<h4>There aren't any listed campaigns by curators</h4>";
+							if (!$itineraries) {
+								echo "<h4>There aren't any itineraries on the platform</h4>";
 							} else {
-								foreach ($trips as $entry) {
+								foreach ($itineraries as $entry) {
 									$c_id = $entry["campaign_id"];
 									$c_name = $entry["title"];
 									$c_media = $entry["media_location"];

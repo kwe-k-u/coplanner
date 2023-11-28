@@ -109,6 +109,20 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_itineraries($user_id){
+			$sql = "CALL get_itineraries(?)";
+			$this->prepare($sql);
+			$this->bind($user_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_itinerary_collaborators($itinerary_id){
+			$sql = "CALL get_itinerary_collaborators(?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id);
+			return $this->db_fetch_all();
+		}
+
 
 	}
 ?>

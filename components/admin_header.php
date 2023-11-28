@@ -3,7 +3,6 @@ require_once(__DIR__."/../controllers/public_controller.php");
 require_once(__DIR__."/../controllers/admin_controller.php");
 $id = get_session_user_id();
 $name = get_user_info($id)["user_name"];
-$role = "";//$_SESSION["user_role"];
 
 ?>
 <header class="dashboard-header d-none d-lg-flex">

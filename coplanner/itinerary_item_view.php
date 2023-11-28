@@ -44,8 +44,12 @@ require_once(__DIR__ . "/../utils/core.php");
                         <div class="easygo-fs-4">
                             <span class="easygo-editable-text">Untitled</span>/Day one
                         </div>
-                        <div class="d-none d-lg-block">
-                            <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a>
+                        <div class="d-none d-lg-block " id='itineray_day_dropdown' data-bs-toggle='dropdown' >
+                            <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle'>Select Day</a>
+                            <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='itineray_day_dropdown'>
+                                <li><a class='dropdown-item' href='#'>Day One</a></li>
+                                <li><a class='dropdown-item' href='#'><span class='text-orange'>Add Extra Day</span></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -94,7 +98,7 @@ require_once(__DIR__ . "/../utils/core.php");
                     <!--- ================================ -->
                     <!--- ================================ -->
                     <!-- sidebar [start] -->
-                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
+                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 mt-3 d-none d-lg-block box-shadow-1" style="max-height: 100%">
                         <div class="bg-blue position-relative" style="height: 2rem">
                             <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler" style="right: -2.8rem; top: 0" data-target="itinerary-sidebar">
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
@@ -259,6 +263,10 @@ require_once(__DIR__ . "/../utils/core.php");
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class='py-2 bg-lblue-1 text-blue text-center'>
+                                                <a href='#'>--- Add activities ---</a>
+                                            </div>
                                         </li>
                                         <li>
                                             <div class="row">
@@ -295,33 +303,9 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <h5>Shai Hills</h5>
-                                                    <p class="easygo-fs-5">8:00 AM</p>
-                                                </div>
-                                                <div class="col-8">
-                                                    <div class="row">
-                                                        <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        Here is the summary of the activities and destinations selected for the day
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                     <div class="py-2 text-end">
-                                        <a href="#">Add More</a>
+                                        <a href="#"  data-proxy-target="destination-tab">Add More</a>
                                     </div>
                                 </div>
                             </div>
@@ -332,14 +316,19 @@ require_once(__DIR__ . "/../utils/core.php");
                             <div class="d-none d-lg-block col-lg-6 p-3">
                                 <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="itinerary-poll-tab" data-bs-toggle="tab" data-bs-target="#itinerary-poll-tab-pane" type="button" role="tab" aria-controls="itinerary-poll-tab-pane" aria-selected="true">Home</button>
+                                        <button class="nav-link active" id="itinerary-poll-tab" data-bs-toggle="tab" data-bs-target="#itinerary-poll-tab-pane" type="button" role="tab" aria-controls="itinerary-poll-tab-pane" aria-selected="false">Home</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="sentiment-tab" data-bs-toggle="tab" data-bs-target="#sentiment-tab-pane" type="button" role="tab" aria-controls="sentiment-tab-pane" aria-selected="false">Profile</button>
                                     </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="destination-tab" data-bs-toggle="tab" data-bs-target="#destination-tab-pane" type="button" role="tab" aria-controls="destination-tab-pane" aria-selected="true">Profile</button>
+                                    </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="itinerary-poll-tab-pane" role="tabpanel" aria-labelledby="itinerary-poll-tab-pane">
+                                    <!--- ================================ -->
+                                    <!-- Itinerary Poll [start] -->
+                                    <div class="tab-pane fade" id="itinerary-poll-tab-pane" role="tabpanel" aria-labelledby="itinerary-poll-tab-pane">
                                         <div class="bg-white p-5 box-shadow-3">
                                             <h3 class="easygo-fw-1">
                                                 Itinerary Poll
@@ -395,12 +384,18 @@ require_once(__DIR__ . "/../utils/core.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="sentiment-tab-pane" role="tabpanel" aria-labelledby="sentiment-tab-pane">
+                                    <!-- Itinerary Poll [end] -->
+                                    <!--- ================================ -->
+
+
+                                    <!--- ================================ -->
+                                    <!-- Coplanner AI panel  [start] -->
+                                    <div class="tab-pane fade " id="sentiment-tab-pane" role="tabpanel" aria-labelledby="sentiment-tab-pane">
                                         <div class="bg-white p-5 box-shadow-3">
                                             <div>
-                                                <h3 class="m-0">
-                                                    Destination Suggestions
-                                                </h3>
+                                                <h5 class="m-0">
+                                                    General Suggestions
+                                                </h5>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
                                                         <div class="p-2 h-100">
@@ -432,9 +427,9 @@ require_once(__DIR__ . "/../utils/core.php");
                                             </div>
                                             <hr class="border-blue border border-1 opacity-100">
                                             <div>
-                                                <h3 class="m-0">
-                                                    Sentiment Analysis
-                                                </h3>
+                                                <h5 class="m-0">
+                                                    Destination Suggestions
+                                                </h5>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
                                                         <div class="p-2 h-100">
@@ -469,9 +464,9 @@ require_once(__DIR__ . "/../utils/core.php");
                                             </div>
                                             <hr class="border-blue border border-1 opacity-100">
                                             <div>
-                                                <h3 class="m-0">
+                                                <h5 class="m-0">
                                                     Activity Suggestions
-                                                </h3>
+                                                </h5>
                                                 <div class="row">
                                                     <div class="col-6 p-2">
                                                         <div class="p-2 h-100">
@@ -503,6 +498,75 @@ require_once(__DIR__ . "/../utils/core.php");
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Coplanner AI panel  [end] -->
+                                    <!--- ================================ -->
+                                    <!--- ================================ -->
+                                    <!-- Destination selection panel  [end] -->
+                                    <div class="tab-pane fade show active" id="destination-tab-pane" role="tabpanel" aria-labelledby="destination-tab-pane">
+                                        <div class="bg-white p-5 box-shadow-1">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="easygo-text-input-1">
+                                                        <input type="text" placeholder="Search for destination by name or activity">
+                                                        <button class="easygo-btn-1 oy-1">SEARCH</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--- ================================ -->
+                                            <!-- cards [start] -->
+                                            <div class="my-4">
+                                                <?php
+                                                for ($i = 0; $i < 2; $i++) {
+                                                    echo "
+                                                        <div class='my-4 border border-1 border-blue rounded-1 overflow-hidden box-shadow-3'>
+                                                            <div class='p-3'>
+                                                                <div class='row'>
+                                                                    <div class='col-5'>
+                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt='' style='max-height: 150px;'>
+                                                                    </div>
+                                                                    <div class='col-7'>
+                                                                        <div>
+                                                                            <h4 class='m-0'>Shai Hills</h4>
+                                                                            <div>Greater Accra, Ghana</div>
+                                                                            <div class='text-blue easygo-fs-2 py-2'>
+                                                                                <i class='fa-solid fa-wifi'></i> &nbsp;
+                                                                                <i class='fa-solid fa-bath'></i> &nbsp;
+                                                                                <i class='fa-solid fa-person-swimming'></i>
+                                                                            </div>
+                                                                            <div>
+                                                                                4 stars in 1k+ reviews
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p class='my-3'>
+                                                                    Here is the summary of the activities and destinations selected
+                                                                    for the day
+                                                                </p>
+                                                                <div class='d-flex justify-content-end'>
+                                                                    <div class='mt-2 easygo-fw-4 easygo-fs-2'>
+                                                                        <span class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>Hike</span>
+                                                                        <span class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>Hike</span>
+                                                                        <span class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>Hike</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class='py-2 bg-lblue-1 text-blue text-center'>
+                                                                <a href='#'>--- View more ---</a>
+                                                            </div>
+                                                        </div>
+                                                        ";
+                                                }
+                                                ?>
+
+                                            </div>
+                                            <!-- cards [end] -->
+                                            <!--- ================================ -->
+                                        </div>
+                                    </div>
+                                    <!-- Destination selection panel  [end] -->
+                                    <!--- ================================ -->
                                 </div>
                             </div>
                             <!-- Suggestions [end] -->
@@ -512,7 +576,7 @@ require_once(__DIR__ . "/../utils/core.php");
                     <!-- main-content [end] -->
                     <!--- ================================ -->
                 </div>
-                <section class="py-5">
+                <section class="py-3">
                     <div class="d-flex justify-content-center mt-3">
                         <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5">Finalize</button>
                     </div>

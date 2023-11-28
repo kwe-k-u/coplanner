@@ -82,4 +82,14 @@
 		$public = new public_class();
 		return $public->get_destination_utilities($destination_id);
 	}
+
+	function get_itineraries($user_id = null){
+		$public = new public_class();
+		return $public->get_itineraries($user_id);
+	}
+
+	function get_itinerary_collaborators($itinerary_id){
+		$public = new public_class();
+		return $public->get_itinerary_collaborators($itinerary_id);
+	}
 ?>
