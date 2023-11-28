@@ -4,133 +4,160 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-	$http_origin = $_SERVER['HTTP_ORIGIN'];
-if ($http_origin == "http://easygo.com.gh" ||
-	 $http_origin == "http://www.easygo.com.gh" ||
-	 $http_origin == "https://easygo.com.gh" ||
-	 $http_origin == "https://www.easygo.com.gh")
-{
-    header("Access-Control-Allow-Origin: $http_origin");
-	header('Access-Control-Allow-Methods: GET, POST');
-	header("Access-Control-Allow-Headers: X-Requested-With");
-}
+	// $http_origin = $_SERVER['HTTP_ORIGIN'];
+// if ($http_origin == "http://easygo.com.gh" ||
+// 	 $http_origin == "http://www.easygo.com.gh" ||
+// 	 $http_origin == "https://easygo.com.gh" ||
+// 	 $http_origin == "https://www.easygo.com.gh")
+// {
+//     header("Access-Control-Allow-Origin: $http_origin");
+// 	header('Access-Control-Allow-Methods: GET, POST');
+// 	header("Access-Control-Allow-Headers: X-Requested-With");
+// }
 
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
+	require_once(__DIR__."/../utils/core.php");
+	require_once(__DIR__."/../controllers/public_controller.php");
+	require_once(__DIR__."/../controllers/admin_controller.php");
 
+	switch ($_SERVER["PATH_INFO"]) {
+		case '/register':
+			$method = $_POST["method"];
+			$name = $_POST["name"];
+			switch($method){
+				case "email":
+					$email = $_POST["email"];
+					$password = encrypt($_POST["password"]);
+					$result = signup_controller($method,$name,$email,$password);
+					if($result){
+						send_json(array("msg"=> "Signup successful"));
+					}else{
+						send_json(array("msg"=> "Signup Failed"),201);
+					}
+					break;
+				case "google":
+				case "apple":
+					send_json(array("msg"=> "Authentication method pending implementation"),201);
+					break;
+				default:
+					send_json(array("msg"=> "Unknown authentication method"),401);
+			}
+			break;
+		case "/login":
+			$method = $_POST["method"];
+			switch($method){
+				case "email":
+					$email = $_POST["email"];
+					$password = encrypt($_POST["password"]);
+					$success = email_login($email,$password);
+					if($success){
+						session_log_in($success["user_id"]);
+						send_json(array("msg"=> "Log in successful", "user_id"=> $success["user_id"]));
+					}else{
+						send_json(array("msg"=> "Log in Failed"),201);
+					}
+					break;
+				case "google":
+				case "apple":
+					send_json(array("msg"=> "Authentication method pending implementation"),201);
+					break;
+				default:
+					send_json(array("msg"=> "Unknown authentication method"),401);
+			}
+			break;
+		case "/signout":
+			session_log_out();
+			send_json(array("msg"=> "Signed out"));
+			break;
+		case "/create_utility":
+			$name = $_POST["utility_name"];
+			$utility_id = add_type_of_utility($name);
+			if($utility_id){
+				send_json(array("msg"=> "Utility Added", "utility_id"=> $utility_id,"utility_name"=> $name));
+			}else{
+				send_json(array("msg"=> "Something went wrong"),201);
+			}
+			break;
+		case "/create_destination":
+			$name = $_POST["destination_name"];
+			$location = $_POST["destination_location"];
+			$description = $_POST["site_description"]; //TODO:: add to sql
+			$country = $_POST["country"]; //TODO:: add to sql
+			$activities = $_POST["activities"];
+			$utilities = json_decode($_POST["utilities"],true);
+			$latitude = explode(",",$_POST["cordinates"])[0];
+			$longitude = explode(",",$_POST["cordinates"])[1];
+			$rating = $_POST["rating"];
 
-	// if (!isset($_SERVER["PATH_INFO"])){
-	// 	respond("No subsystem specified",false);
-	// }
-	 $auth_actions = array (
-		"login",
-		"admin_login",
-		"signup",
-		"logout",
-		"request_password_reset",
-		"change_password",
-		"change_password_logged_in",
-		"invite_curator_collaborator",
-		"curator_invite_signup",
-		"remove_curator_collaborator",
-		"update_profile",
-		"resend_email_verification"
-	);
-	$booking_actions = array(
-		"book_trip",
-		"book_standard_tour"
-	);
+			$destination_id = create_destination($name,$location,$latitude,$longitude,$rating)["destination_id"];
+			if(!$destination_id){
+				send_json(array("msg"=> "Destination with same name exists! Creation failed"),201);
+				die();
+			}
+			foreach ($activities as $value){
+				add_destination_activity($destination_id,$value);
+			}
 
-	$campaign_actions = array(
-		"create_campaign",
-		"edit_campaign",
-		"add_tour_site",
-		"get_site_by_id",
-		"query_site",
-		"get_tour_charge",
-		"get_campaign"
-	);
+			foreach ($utilities as $id => $utility_name){
+				add_destination_utility($destination_id,$id);
+			}
+			send_json(array("msg"=> "Added destination"));
+			die();
+		case "/google_maps_upload":
+			$type_association = array(
+				"amusement_park"=> "Amusement Park",
+				"aquarium"=> "Aquarium",
+				"art_gallery"=> "Art Gallery",
+				"bowling_alley"=> "Bowling Alley",
+				"cafe"=> "Cafe",
+				"campground"=> "Campground",
+				"library"=> "Library",
+				"lodging"=> "Accommodation",
+				"movie_theater"=> "Movie Theater",
+				"musem"=> "Museum",
+				"night_club"=> "Night Club",
+				"park"=> "Park",
+				"casino"=> "Casino",
+				"stadium"=> "Stadium",
+				"shopping_mall"=> "Shopping Mall",
+				"restaurant"=> "Restaurant",
+				"zoo"=> "Zoo",
+				"tourist_attraction"=> "Tourist Attraction"
 
+		);
+			$data = json_decode(file_get_contents('php://input'),true)["data"];
+			foreach($data as $_ => $json){
+				// $json = json_decode($value,true);
+				$name = ucfirst(strtolower($json["name"]));
+				$rating = $json["rating"];
+				$num_rating = $json["user_ratings_total"];
+				$location = $json["vicinity"];
+				$latitude = $json["location"]["lat"];
+				$longitude = $json["location"]["lng"];
+				$types = $json["types"];
 
-	$private_tour_actions = array(
-		"request_private_tour",
-		"bid_private_tour",
-		"get_custom_private_request",
-		"get_campaign_private_request",
-		"edit_private_tour",
-		"delete_private_tour",
-		"react_to_quote",
-		"get_private_tour_charge"
-	);
+				if($num_rating > 100){
+					$destination_id = create_destination($name,$location,$latitude,$longitude,$rating,$num_rating)["destination_id"];
+					if(!$destination_id){
+						// echo("Destination with same name<$name> exists! Additions skipped");
+						continue;
+					}
 
-	$interaction_actions = array(
-		"toggle_curator_follow",
-		"add_campaign_wishlist",
-		"remove_campaign_wishlist"
-	);
-	$media_actions = array(
-		"upload_media",
-		"link_curator_manager_id",
-		"update_curator_logo",
-		"update_user_profile_image"
-	);
+					foreach ($types as $key){
+						if(key_exists($key,$type_association)){
+							add_destination_utility($destination_id,$type_association[$key]);
+						}
+					}
+					// echo"$name added\n";
+				}
 
-	$newsletter_actions = array(
-		"add_subscriber",
-		"get_subscribers",
-		"clear_subscribers"
-	);
-
-	$contact_actions = array(
-		"send_contact_message"
-	);
-
-	$analytics = array(
-		"error_log"
-	);
-
-	if (isset($_SERVER["PATH_INFO"]) && $_SERVER["PATH_INFO"] == "/log_error"){
-		require_once(__DIR__."/sub_system/event_manager.php");
-		die();
+			}
+			send_json(array("msg"=> "Received"));
+			die();
+		default:
+			send_json(array("msg"=> "Method not implemented"));
+			break;
 	}
 
-	if(!isset($_REQUEST["action"])){
-		send_json(array("msg"=> "No action defined"),502);
-		die();
-	}
-
-
-
-
-	if(in_array($_REQUEST["action"],$auth_actions)){
-		include_once(__DIR__."/sub_system/auth.php");
-		die();
-	}
-	else if(in_array($_REQUEST["action"],$campaign_actions)){
-		include_once(__DIR__."/sub_system/campaign.php");
-		die();
-	}
-	else if(in_array($_REQUEST["action"],$private_tour_actions)){
-		include_once(__DIR__."/sub_system/private_tour.php");
-		die();
-	}
-	else if(in_array($_REQUEST["action"],$interaction_actions)){
-		include_once(__DIR__."/sub_system/user_interaction.php");
-		die();
-	}
-	else if(in_array($_REQUEST["action"],$booking_actions)){
-		include_once(__DIR__."/sub_system/booking_and_payment.php");
-		die();
-	}
-	else if(in_array($_REQUEST["action"],$media_actions)){
-		include_once(__DIR__."/sub_system/media.php");
-		die();
-	}
-	else if(in_array($_REQUEST["action"],$newsletter_actions)){
-		include_once(__DIR__."/sub_system/newsletter.php");
-		die();
-	} else if (in_array($_REQUEST["action"], $contact_actions)){
-		include_once(__DIR__."/sub_system/contact.php");
-		die();
-	}
 ?>

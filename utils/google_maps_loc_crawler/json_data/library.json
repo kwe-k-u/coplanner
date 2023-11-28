@@ -1,0 +1,306 @@
+{
+    "0": {
+        "name": "Sam Jonah Library",
+        "place_id": "ChIJn7r-jzT53Q8RTbvq8VsYq1U",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 152,
+        "rating": 4.3,
+        "vicinity": "4P85+MJC, Cape Coast",
+        "location": {
+            "lat": 5.116697299999999,
+            "lng": -1.2909944
+        }
+    },
+    "1": {
+        "name": "Library Complex",
+        "place_id": "ChIJRbTRSBD83Q8RHdplTnJVSHk",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "5P3C+QRF, Cape Coast",
+        "location": {
+            "lat": 5.154440999999998,
+            "lng": -1.2779393
+        }
+    },
+    "2": {
+        "name": "CCTU library",
+        "place_id": "ChIJf5hRoAT93Q8RlEHlg0VdxUg",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "technical university inside, Cape Coast",
+        "location": {
+            "lat": 5.1544466,
+            "lng": -1.2778724
+        }
+    },
+    "3": {
+        "name": "Central Regional Library",
+        "place_id": "ChIJq6qqqrr-3Q8RxX4DaEWsVJ8",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "4PJC+J62, Ato huston park near Wesley Methodist Church, Cape Coast",
+        "location": {
+            "lat": 5.1315099,
+            "lng": -1.2794744
+        }
+    },
+    "4": {
+        "name": "Main Library",
+        "place_id": "ChIJVfr-jzT53Q8R8UfgoUT_OeA",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4,
+        "vicinity": "4P85+JJJ, Cape Coast",
+        "location": {
+            "lat": 5.116590999999999,
+            "lng": -1.2909845
+        }
+    },
+    "5": {
+        "name": "Valco hall library",
+        "place_id": "ChIJ1Ruq0wf_3Q8RJvXbJXFHvjs",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "Industrial City, Cape Coast",
+        "location": {
+            "lat": 5.1159802,
+            "lng": -1.2824171
+        }
+    },
+    "6": {
+        "name": "ToBe WorldWide Educational Resource Center",
+        "place_id": "ChIJ_7UgUgP_3Q8RjAX7S2VNYtg",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJM+96H, Cape Coast",
+        "location": {
+            "lat": 5.130943500000001,
+            "lng": -1.2669005
+        }
+    },
+    "7": {
+        "name": "Nduom Community Library",
+        "place_id": "ChIJ17C9aVL53Q8RIXICkC4e_tI",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "41 Gouda Street, Elmina",
+        "location": {
+            "lat": 5.092827300000001,
+            "lng": -1.3454081
+        }
+    },
+    "8": {
+        "name": "Old Library",
+        "place_id": "ChIJWwBWGtT-3Q8RWpHaqt6ASOQ",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 3.9,
+        "vicinity": "4P38+R3Q, Cape Coast",
+        "location": {
+            "lat": 5.1045999,
+            "lng": -1.2847777
+        }
+    },
+    "9": {
+        "name": "Adisadel College Library",
+        "place_id": "ChIJ46o8sez-3Q8R6_SSbnyGXpo",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 5,
+        "vicinity": "4PCP+787, Cape Coast",
+        "location": {
+            "lat": 5.1206734,
+            "lng": -1.2641895
+        }
+    },
+    "10": {
+        "name": "Ola Training College Main Library",
+        "place_id": "ChIJOU1ws97-3Q8RZmF9LdTWYJo",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3.5,
+        "vicinity": "4P3G+R58, Cape Coast",
+        "location": {
+            "lat": 5.104538799999999,
+            "lng": -1.2745479
+        }
+    },
+    "11": {
+        "name": "Kofi Annan Building",
+        "place_id": "ChIJzV30_-7_3Q8RdNMbtyrW4kE",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4.3,
+        "vicinity": "Prayer Chapel, Cape Coast",
+        "location": {
+            "lat": 5.1176277,
+            "lng": -1.2513077
+        }
+    },
+    "12": {
+        "name": "Central Regional Library",
+        "place_id": "ChIJ54b640n_3Q8Rr3p5vj4T24M",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "4Q44+5V8, Chapel Square, Cape Coast",
+        "location": {
+            "lat": 5.1054061,
+            "lng": -1.2428049
+        }
+    },
+    "13": {
+        "name": "Prof. John Evans Atta Mills Library",
+        "place_id": "ChIJR0o0c1L-3Q8R1kqq68LcaSs",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.9,
+        "vicinity": "Castle Beach Resturant, Cape Coast",
+        "location": {
+            "lat": 5.1044575,
+            "lng": -1.2413344
+        }
+    },
+    "14": {
+        "name": "MOREE LIBRARY",
+        "place_id": "ChIJs81DjCQB3g8RkCkqPMD_p9o",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "4QHW+978, Moree",
+        "location": {
+            "lat": 5.1280547,
+            "lng": -1.203641
+        }
+    },
+    "15": {
+        "name": "Abura Dunkwa Branch Library",
+        "place_id": "ChIJVXSFL2cL3g8RLuUXLgkzTpA",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "8R8G+56W, Edumfa",
+        "location": {
+            "lat": 5.315484,
+            "lng": -1.174428
+        }
+    },
+    "16": {
+        "name": "Ghana Library Authority Abura Dunkwa",
+        "place_id": "ChIJHXuPDcYL3g8R-Zr72LHchF0",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "8RQH+HPC, Abura Dunkwa",
+        "location": {
+            "lat": 5.338925199999998,
+            "lng": -1.17075
+        }
+    },
+    "17": {
+        "name": "Shama Community Library",
+        "place_id": "ChIJsbLTRwJj5w8RH4nwvQR8N4U",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 1,
+        "vicinity": "2974+PJH, Shama",
+        "location": {
+            "lat": 5.0143083,
+            "lng": -1.6434035
+        }
+    },
+    "18": {
+        "name": "Abuesi Community library",
+        "place_id": "ChIJC-M-1oNj5w8Rwo6CneO5yks",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 1,
+        "vicinity": "X9P6+GJV, Abuesi",
+        "location": {
+            "lat": 4.9863559,
+            "lng": -1.6384673
+        }
+    }
+}

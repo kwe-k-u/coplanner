@@ -1,0 +1,36 @@
+{
+    "0": {
+        "name": "Brenu Beach Grasslands",
+        "place_id": "ChIJn4r6jxf_3Q8RIX8bh3z3jLI",
+        "types": [
+            "zoo",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJC+J62, Cocoa Street, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "1": {
+        "name": "Brenu Beach Grasslands",
+        "place_id": "ChIJ7U-k4XH23Q8R2jIwfLu6gRg",
+        "types": [
+            "zoo",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4,
+        "vicinity": "3HP8+5C4, Unnamed Road, Komenda",
+        "location": {
+            "lat": 5.0854,
+            "lng": -1.43393
+        }
+    }
+}

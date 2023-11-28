@@ -1,0 +1,322 @@
+{
+    "0": {
+        "name": "J. K A Enterprise",
+        "place_id": "ChIJzwlGklcQ3g8RjXDE0m47Up4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 14,
+        "rating": 3.6,
+        "vicinity": "7X5H+58C",
+        "location": {
+            "lat": 5.2579398,
+            "lng": -1.0217412
+        }
+    },
+    "1": {
+        "name": "Melcom Mankessim",
+        "place_id": "ChIJGbgxVksR3g8RoMtwrWzOnI0",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 376,
+        "rating": 4,
+        "vicinity": "Mankessim",
+        "location": {
+            "lat": 5.2643052,
+            "lng": -1.0203757
+        }
+    },
+    "2": {
+        "name": "AJV Easy Shop",
+        "place_id": "ChIJPcRlIAAR3g8RkeBnnOH3zkg",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 60,
+        "rating": 3.6,
+        "vicinity": "Round About, Mankessim",
+        "location": {
+            "lat": 5.2676728,
+            "lng": -1.0190081
+        }
+    },
+    "3": {
+        "name": "Simplex venture's",
+        "place_id": "ChIJ4V2XWgwR3g8R6fKc8IAKTvU",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7XFM+4QP, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "4": {
+        "name": "Bengiro Barbara Shop",
+        "place_id": "ChIJ65VeHhIR3g8RDspVcPbljFY",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "around about, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "5": {
+        "name": "Ama Jessica Ventures",
+        "place_id": "ChIJ-1TuHwAR3g8R7jR1S2OfIoM",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 253,
+        "rating": 3.8,
+        "vicinity": "Mankessim",
+        "location": {
+            "lat": 5.2676589,
+            "lng": -1.0191736
+        }
+    },
+    "6": {
+        "name": "Beallyanimarketing center",
+        "place_id": "ChIJGXjrYB0R3g8Rg-yKB0kg28Y",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 2.5,
+        "vicinity": "7XFM+7RG, Accra - Cape Coast Road, Mankessim",
+        "location": {
+            "lat": 5.2731922,
+            "lng": -1.0154197
+        }
+    },
+    "7": {
+        "name": "Sister Esther Business Center",
+        "place_id": "ChIJ9RgZRAAR3g8RTaJKTO0vXAc",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 29,
+        "rating": 3.5,
+        "vicinity": "7X9J+PF5, Mankessim",
+        "location": {
+            "lat": 5.269273699999999,
+            "lng": -1.0187637
+        }
+    },
+    "8": {
+        "name": "Honey Centre Saltpond",
+        "place_id": "ChIJ_dGZpKYa3g8Rrgn2vsmara0",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 16,
+        "rating": 3.6,
+        "vicinity": "Accra - Cape Coast Road",
+        "location": {
+            "lat": 5.2211431,
+            "lng": -1.0451126
+        }
+    },
+    "9": {
+        "name": "Habiba Marigah Ent.",
+        "place_id": "ChIJDVlMwaT-3Q8RfP1E7xVr6PQ",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 114,
+        "rating": 3.6,
+        "vicinity": "4PJF+XGM, Cape Coast",
+        "location": {
+            "lat": 5.132461999999999,
+            "lng": -1.2762003
+        }
+    },
+    "10": {
+        "name": "KOOLABI ENTERPRISE",
+        "place_id": "ChIJ1eexnKP-3Q8RPZ0u8vnsdpw",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "4PMG+Q9M, Abura Light-ase, Cape Coast",
+        "location": {
+            "lat": 5.1344654,
+            "lng": -1.2740814
+        }
+    },
+    "11": {
+        "name": "Payless Mall",
+        "place_id": "ChIJx1N4hI353Q8RQQQnVRc1ccQ",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P74+XRR",
+        "location": {
+            "lat": 5.1149904,
+            "lng": -1.2929719
+        }
+    },
+    "12": {
+        "name": "Slymart Shopping Centre",
+        "place_id": "ChIJM4f3mTP53Q8Ru_hcn-lm380",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 54,
+        "rating": 3.6,
+        "vicinity": "4P75+W5V, Cape Coast",
+        "location": {
+            "lat": 5.114869499999999,
+            "lng": -1.2920849
+        }
+    },
+    "13": {
+        "name": "Ashfoam Abura Depot",
+        "place_id": "ChIJg5yeCof_3Q8RFoiafiymZhg",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 3.6,
+        "vicinity": "4PHF+WXM, Cape Coast",
+        "location": {
+            "lat": 5.129837999999999,
+            "lng": -1.275064
+        }
+    },
+    "14": {
+        "name": "Africana Market",
+        "place_id": "ChIJkUAkS-_53Q8RNZow8iXnFP0",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.6,
+        "vicinity": "4P65+482, School bus Rd, Cape Coast",
+        "location": {
+            "lat": 5.1102551,
+            "lng": -1.291719
+        }
+    },
+    "15": {
+        "name": "\uc544\ubaa8\uc2dc\uc544 \ucf00\uc774\ud504\ucf54\uc2a4\ud2b8",
+        "place_id": "ChIJDyd2m-n_3Q8RadGvjpkOmxg",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PMM+299, Cape Coast",
+        "location": {
+            "lat": 5.1325417,
+            "lng": -1.2665238
+        }
+    },
+    "16": {
+        "name": "Elprime Enterprise",
+        "place_id": "ChIJL0Ei9Oj_3Q8R5bbjGWR3DHM",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P46+4V3, School bus Road, Cape Coast",
+        "location": {
+            "lat": 5.1052595,
+            "lng": -1.2878389
+        }
+    },
+    "17": {
+        "name": "Unibay",
+        "place_id": "ChIJXbBWHXT_3Q8RhpcCkwBF8D4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4,
+        "vicinity": "University of Cape Coast Cape Coast",
+        "location": {
+            "lat": 5.1052105,
+            "lng": -1.2858947
+        }
+    },
+    "18": {
+        "name": "HANFRED Enterprise",
+        "place_id": "ChIJ86Qd3YL33Q8Rn3X7-keNHSE",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 34,
+        "rating": 3.8,
+        "vicinity": "Ataabadzi",
+        "location": {
+            "lat": 5.105178499999999,
+            "lng": -1.3957421
+        }
+    },
+    "19": {
+        "name": "Trishdazzlegh",
+        "place_id": "ChIJfSQEvVf_3Q8Rj_QXaYNBbb4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "57 Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.1102019,
+            "lng": -1.256309
+        }
+    }
+}

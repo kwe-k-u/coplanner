@@ -1,0 +1,346 @@
+{
+    "0": {
+        "name": "Esbee Pub(Mama Gee Joint)",
+        "place_id": "ChIJSYnOiUDN3w8RLA9cIjhEtns",
+        "types": [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7F7C+6J6, Winneba",
+        "location": {
+            "lat": 5.2630262,
+            "lng": -0.5284906999999999
+        }
+    },
+    "1": {
+        "name": "XECUSTIVE LOUNGE",
+        "place_id": "ChIJz92bzOkX3g8RbIcCyKTU17o",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "N1",
+        "location": {
+            "lat": 5.279662099999999,
+            "lng": -0.9375888000000001
+        }
+    },
+    "2": {
+        "name": "PIZZAMAN CHICKENMAN LA",
+        "place_id": "ChIJL59GFHAR3g8RXR_QUj-Fc2s",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "62R8+X2H, Abeka",
+        "location": {
+            "lat": 5.2424262,
+            "lng": -0.9848753000000002
+        }
+    },
+    "3": {
+        "name": "Ekotsi",
+        "place_id": "ChIJpfanH24X3g8R9JyRMVaH59E",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.1,
+        "vicinity": "Nana Base road, Ekumfi",
+        "location": {
+            "lat": 5.293764299999999,
+            "lng": -0.9113644999999999
+        }
+    },
+    "4": {
+        "name": "Pebi Beach Bar and Grill",
+        "place_id": "ChIJgzl3llMb3g8RV9QFvaxNVTI",
+        "types": [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.7,
+        "vicinity": "Pebi, Ankaful",
+        "location": {
+            "lat": 5.2017643,
+            "lng": -1.0225342
+        }
+    },
+    "5": {
+        "name": "Barcelona Beach Resort",
+        "place_id": "ChIJzV0JAQQ73g8R_90WhQHxG6Q",
+        "types": [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "763J+5P, Mumford",
+        "location": {
+            "lat": 5.252908399999999,
+            "lng": -0.7681916999999999
+        }
+    },
+    "6": {
+        "name": "King Vivid Ventures",
+        "place_id": "ChIJR-uoigQ93g8Ren3Ax0e1sQg",
+        "types": [
+            "restaurant",
+            "food",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "FA/ECG-065 0558777763, Fawomanye",
+        "location": {
+            "lat": 5.3160454,
+            "lng": -0.8378044
+        }
+    },
+    "7": {
+        "name": "Eddielog Channel",
+        "place_id": "ChIJ75i0ZGAR3g8RB1V1MntO52g",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Fouth, Obaatanpa LN, Mankessim",
+        "location": {
+            "lat": 5.2718186,
+            "lng": -1.0054963
+        }
+    },
+    "8": {
+        "name": "La Femme Restaurant",
+        "place_id": "ChIJ2etd38UR3g8RaWxpoCl7Mec",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 163,
+        "rating": 4.2,
+        "vicinity": "Roman hospital street, Mankessim",
+        "location": {
+            "lat": 5.255716299999999,
+            "lng": -1.0177926
+        }
+    },
+    "9": {
+        "name": "EMBS PK restaurant",
+        "place_id": "ChIJ2_pnZrkR3g8REUomVmfcGkQ",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7X8Q+V2M, Mankessim - Accra Road, Mankessim",
+        "location": {
+            "lat": 5.2672029,
+            "lng": -1.0124515
+        }
+    },
+    "10": {
+        "name": "Joana's Special Tea Joint",
+        "place_id": "ChIJ6zUbnmgR3g8RoMA3PbjeGB0",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "7X8M+X97, Mankessim",
+        "location": {
+            "lat": 5.2674192,
+            "lng": -1.0165638
+        }
+    },
+    "11": {
+        "name": "Volta Bar",
+        "place_id": "ChIJje-99FUQ3g8RcUxWjoHDCmk",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 263,
+        "rating": 3.6,
+        "vicinity": "7X7H+CM9, Mankessim",
+        "location": {
+            "lat": 5.263537099999999,
+            "lng": -1.0207633
+        }
+    },
+    "12": {
+        "name": "BigDaddy restaurant",
+        "place_id": "ChIJT_Ckm7ER3g8RsX5TY6LT6uU",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "GCB road Opposite gcb, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "13": {
+        "name": "Mr.merlvins pub & kitchen\u2026",
+        "place_id": "ChIJp_uiz60R3g8RV7l7eK2EV4A",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "netro..top, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "14": {
+        "name": "Pizzaman Chickenman - Mankessim",
+        "place_id": "ChIJaW7LDLgR3g8RaobbiHkLivE",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3,
+        "vicinity": "7XFM+4QP, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "15": {
+        "name": "Good Shepherd",
+        "place_id": "ChIJ_____wMR3g8RVZ-p8cqIHzE",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.2,
+        "vicinity": "13 Mankessim - Ajumako Road, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "16": {
+        "name": "Shobiski Restaurant",
+        "place_id": "ChIJ4zG3g94R3g8ROHJK6Vf4AXQ",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "3 BLOCK, 6B, Mankessim",
+        "location": {
+            "lat": 5.248834200000001,
+            "lng": -1.0304281
+        }
+    },
+    "17": {
+        "name": "Baifikrom",
+        "place_id": "ChIJ-waofacR3g8Ro82gwDcyd9Y",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "7XFM+Q6V, Mankessim",
+        "location": {
+            "lat": 5.2795099,
+            "lng": -1.0118574
+        }
+    },
+    "18": {
+        "name": "saltpond pork shop",
+        "place_id": "ChIJ6czYsyQb3g8RXVe5_X2xtyw",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "6X32+P8V, Saltpond",
+        "location": {
+            "lat": 5.2043612,
+            "lng": -1.0492062
+        }
+    },
+    "19": {
+        "name": "THE POINT GUEST HOUSE, BAR AND RESTAURANT",
+        "place_id": "ChIJ__XpbxIR3g8RzLCqiJOKqAQ",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 21,
+        "rating": 3.4,
+        "vicinity": "58 Mankessim - Kumasi Road, Mankessim",
+        "location": {
+            "lat": 5.274621799999999,
+            "lng": -1.0220464
+        }
+    }
+}

@@ -28,12 +28,12 @@
     <main class="form-page-main container">
         <div class="form-container container" style="max-width: 600px;">
             <!-- register login form [start] -->
-            <form onsubmit="return login(this)">
+            <form onsubmit="return email_login(this)">
                 <div class="form-header">
 
                     <script>
                         function goHome(){
-                            window.location.href = "../views/home.php";
+                            window.location.href = "../views/coplanner_home.php";
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
@@ -79,6 +79,7 @@
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/general.js"></script>
+    <script src="../assets/js/user_auth.js"></script>
 </body>
 
 </html>

@@ -17,7 +17,6 @@ if (ob_get_length() == 0){
 }
 
 if (session_status() == PHP_SESSION_NONE){
-
 	session_start();
 }
 
@@ -31,9 +30,9 @@ if (session_status() == PHP_SESSION_NONE){
 
 
 	/**Signs in user accounts */
-	function session_log_in($user_id,$role){
+	function session_log_in($user_id){
 		$_SESSION["user_id"] = $user_id;
-		$_SESSION["user_role"] = $role; //admin or user
+		// $_SESSION["user_role"] = $role; //admin or user
 	}
 
 	function get_default_profile_img(){
@@ -52,7 +51,7 @@ if (session_status() == PHP_SESSION_NONE){
 	/**Logs out all user types */
 	function session_log_out(){
 		unset($_SESSION["user_id"]);
-		unset($_SESSION["user_role"]);
+		// unset($_SESSION["user_role"]);
 
 		// if the account is a special user (admin, curator, etc) clear those credentials
 		if(isset($_SESSION["account_id"])){

@@ -1,0 +1,18 @@
+{
+    "0": {
+        "name": "Bowling Alley",
+        "place_id": "ChIJ3whKRgdb1w8RfUkHilJWO3I",
+        "types": [
+            "bowling_alley",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "Trohwe",
+        "location": {
+            "lat": 7.9463788,
+            "lng": -1.0227937
+        }
+    }
+}

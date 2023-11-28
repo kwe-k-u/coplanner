@@ -1,0 +1,323 @@
+{
+    "0": {
+        "name": "Asaafa Methodist school park",
+        "place_id": "ChIJT3sTt98b3g8Rf-Ln_mNMiuQ",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6245+5HP, Saltpond",
+        "location": {
+            "lat": 5.2054522,
+            "lng": -0.9910511
+        }
+    },
+    "1": {
+        "name": "Ekumfi AKwakrom School park",
+        "place_id": "ChIJ94qh614R3g8RBH686koizs0",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "N1",
+        "location": {
+            "lat": 5.272058099999999,
+            "lng": -0.9899481999999998
+        }
+    },
+    "2": {
+        "name": "Lake View Point",
+        "place_id": "ChIJg-ju2-wQ3g8RZ_OMPIHq-nE",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6XXR+3Q9, Mfantsiman",
+        "location": {
+            "lat": 5.247668,
+            "lng": -1.0080157
+        }
+    },
+    "3": {
+        "name": "Ebu community park",
+        "place_id": "ChIJIYl2CVEb3g8R0n4rhDtAfPk",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "6X2F+Q94, Ebu, Near, Ankaful",
+        "location": {
+            "lat": 5.201894799999999,
+            "lng": -1.0265621
+        }
+    },
+    "4": {
+        "name": "Mankesim Kumasi station",
+        "place_id": "ChIJ83--AkQR3g8Rc_bP52ryKGM",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 112,
+        "rating": 3.8,
+        "vicinity": "Accra Station Road, Mankessim",
+        "location": {
+            "lat": 5.267811600000001,
+            "lng": -1.0162134
+        }
+    },
+    "5": {
+        "name": "Araba akwaaba",
+        "place_id": "ChIJBTDHO5ER3g8ROHp-srjpdAw",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "102 Mankessim - Ajumako Road, Mankessim",
+        "location": {
+            "lat": 5.2844701,
+            "lng": -1.0156151
+        }
+    },
+    "6": {
+        "name": "Victoria Park",
+        "place_id": "ChIJSwnSVssa3g8RTICiu-mGwSQ",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 4.1,
+        "vicinity": "6W2R+2P3, Saltpond",
+        "location": {
+            "lat": 5.2000001,
+            "lng": -1.0582009
+        }
+    },
+    "7": {
+        "name": "Abaakwaa",
+        "place_id": "ChIJt_8UbV0x3g8RoPczcVPyFwU",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.3,
+        "vicinity": "77J5+M97, Apam",
+        "location": {
+            "lat": 5.2816601,
+            "lng": -0.7415738
+        }
+    },
+    "8": {
+        "name": "Cape coast",
+        "place_id": "ChIJz49RHoQF3g8RGkkqSndIzK8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "123 Accra - Cape Coast Road",
+        "location": {
+            "lat": 5.2177282,
+            "lng": -1.0614507
+        }
+    },
+    "9": {
+        "name": "Profractor Hiking Station 2",
+        "place_id": "ChIJC-DLSOT53Q8RBC9D_VeYHdc",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4M7J+V44, Cape Coast",
+        "location": {
+            "lat": 5.1146461,
+            "lng": -1.3196686
+        }
+    },
+    "10": {
+        "name": "Brenu Beach Grasslands",
+        "place_id": "ChIJn4r6jxf_3Q8RIX8bh3z3jLI",
+        "types": [
+            "zoo",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJC+J62, Cocoa Street, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "11": {
+        "name": "Science Quadrangle",
+        "place_id": "ChIJ4RqWoDb53Q8R5nUY_UGsGlE",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 157,
+        "rating": 3.9,
+        "vicinity": "4P84+PJJ, Cape Coast",
+        "location": {
+            "lat": 5.116849199999999,
+            "lng": -1.2934935
+        }
+    },
+    "12": {
+        "name": "Kwaprow Town park",
+        "place_id": "ChIJf9ehDKz53Q8RphlY7ezK4f0",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Behind Linda Hostel UCC, Cape Coast",
+        "location": {
+            "lat": 5.113670899999999,
+            "lng": -1.2939107
+        }
+    },
+    "13": {
+        "name": "UCC Botanical Garden",
+        "place_id": "ChIJS82sPcP_3Q8R1Z1uXUUqGkI",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 43,
+        "rating": 4,
+        "vicinity": "4P78+3VW, Cape Coast",
+        "location": {
+            "lat": 5.1127356,
+            "lng": -1.2828104
+        }
+    },
+    "14": {
+        "name": "ROWAN",
+        "place_id": "ChIJvY9F2o3_3Q8R-k0VRs2f4GI",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "University of, Cape Coast",
+        "location": {
+            "lat": 5.105358,
+            "lng": -1.2859253
+        }
+    },
+    "15": {
+        "name": "Adisadel College Park",
+        "place_id": "ChIJB_qRcOv-3Q8RBr-6krCrWY8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 131,
+        "rating": 3.8,
+        "vicinity": "4P9M+HPM, Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.118958300000001,
+            "lng": -1.2656915
+        }
+    },
+    "16": {
+        "name": "Sakora Park - Adisadel College (Adisco)",
+        "place_id": "ChIJnfPBFJj_3Q8Ryn0f6HQXJoY",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4,
+        "vicinity": "Adisadel College, Cape Coast",
+        "location": {
+            "lat": 5.117560699999999,
+            "lng": -1.2637291
+        }
+    },
+    "17": {
+        "name": "Antonio Garden",
+        "place_id": "ChIJI2gF7ov-3Q8RS1iGtjIcgJ4",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 37,
+        "rating": 3.7,
+        "vicinity": "near Nkanfoa 3rd Ridge Junction, Accra - Cape Coast Road, Cape Coast",
+        "location": {
+            "lat": 5.125407300000001,
+            "lng": -1.2547749
+        }
+    },
+    "18": {
+        "name": "OLA Roman Catholic Park",
+        "place_id": "ChIJv4RPJd_-3Q8R0gINVhcEyU4",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 12,
+        "rating": 3.5,
+        "vicinity": "50 Beulah Road, Cape Coast",
+        "location": {
+            "lat": 5.1023022,
+            "lng": -1.2739838
+        }
+    },
+    "19": {
+        "name": "College Sports Field",
+        "place_id": "ChIJ1bBrIST_3Q8RcT0ExZ3Z6N8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P3Q+74M, Cape Coast",
+        "location": {
+            "lat": 5.102706299999999,
+            "lng": -1.2617677
+        }
+    }
+}

@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 
-if (!is_session_user_admin()) {
-	header("Location: ../views/home.php");
-	die();
-}
+// if (!is_session_user_admin()) {
+// 	header("Location: ../views/home.php");
+// 	die();
+// }
 
 
 
@@ -18,7 +18,7 @@ if (!is_session_user_admin()) {
 <head>
 	<meta charset="UTF-8">
 
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin || Destinations</title>
@@ -92,13 +92,15 @@ if (!is_session_user_admin()) {
 
 							$destinations = get_destinations();
 
-							foreach ($destinations as $site) {
+							foreach (array_slice($destinations,0,5) as $site) {
 								$site_id = $site["destination_id"];
 								$destination_name = $site["destination_name"];
-								$destination_location = $site["destination_location"];
-								$site_country = $site["country"];
-								$verified_text = $site["is_verified"] == "1" ? "Verified (Click to Change)" : "Unverified(Click to Change)";
-								$star = $site["is_verified"] == "1" ? "full_star" : "empty_star";
+								$destination_location = $site["location"];
+								$rating = $site["rating"];
+								$rating_count = $site["num_ratings"];
+								$site_country = "$rating from $rating_count ratings"; //$site["country"];
+								$verified_text = true ? "Verified (Click to Change)" : "Unverified(Click to Change)";
+								$star = true ? "full_star" : "empty_star";
 								echo "
 						<div class='location-card border p-4 rounded my-3'>
 							<div class='header d-flex justify-content-between'>
@@ -132,32 +134,30 @@ if (!is_session_user_admin()) {
 					<div class="col-lg-6" id="site_info_col">
 						<div>
 							<?php
-							if(count($destinations) != 0){
-							$site = $destinations[0];
-							$site_id = $site["destination_id"];
-							$site = get_destination_by_id($site_id);
-							$destination_name = $site["destination_name"];
-							$site_desc = $site["destination_description"];
-							$destination_location = $site["destination_location"];
-							$site_country = $site["country"];
-							$site_activities = $site["activities"];
-							$site_media = $site["media"];
+							if (count($destinations) != 0) {
+								$site = $destinations[0];
+								$site_id = $site["destination_id"];
+								$site = get_destination_by_id($site_id);
+								$destination_name = $site["destination_name"];
+								$site_desc = $site["destination_description"];
+								$destination_location = $site["destination_location"];
+								$site_country = $site["country"];
+								$site_activities = $site["activities"];
+								$site_media = $site["media"];
+							} else {
 
-						}else {
-
-							$site = "";
-							$site_id = "";
-							$site = "";
-							$destination_name = "";
-							$site_desc = "";
-							$destination_location = "";
-							$site_country = "";
-							$site_activities = [];
+								$site = "";
+								$site_id = "";
+								$site = "";
+								$destination_name = "";
+								$site_desc = "";
+								$destination_location = "";
+								$site_country = "";
+								$site_activities = [];
 
 
-							$site_media = [];
-
-						}
+								$site_media = [];
+							}
 
 
 							echo "<h5 class='loc-title pb-3 border-bottom' id='location-info-title'>$destination_name</h5>
@@ -208,22 +208,22 @@ if (!is_session_user_admin()) {
 
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100 active" id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-profile" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
-									Tour site Profile
+									Destination Profile
 								</button>
 							</li>
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100 " id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-media" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
-									Tour site media
+									Destination media
 								</button>
 							</li>
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100" id="add-location-activities-tab" data-bs-toggle="tab" data-bs-target="#add-location-activities" type="button" role="tab" aria-controls="add-location-activities" aria-selected="false">
-									Tour site Activities
+									Destination Activities
 								</button>
 							</li>
 							<li class="nav-item" role="presentation">
-								<button class="nav-link easygo-fs-4 h-100" id="add-location-info-tab" data-bs-toggle="tab" data-bs-target="#add-location-info" type="button" role="tab" aria-controls="add-location-info" aria-selected="false">
-									Other information
+								<button class="nav-link easygo-fs-4 h-100" id="add-location-utilities-tab" data-bs-toggle="tab" data-bs-target="#add-location-utilities" type="button" role="tab" aria-controls="add-location-utilities" aria-selected="false">
+									Destination Utilities
 								</button>
 							</li>
 						</ul>
@@ -236,7 +236,7 @@ if (!is_session_user_admin()) {
 								</div>
 								<div class="tab-content">
 
-									<!-- Tour site profile [start] -->
+									<!-- Destination profile [start] -->
 									<div class="col tab-pane fade active show" role="tabpanel" id="add-location-profile">
 										<div>
 
@@ -252,7 +252,6 @@ if (!is_session_user_admin()) {
 
 											<div class="form-input-field">
 												<label class="text-gray-1 easygo-fs-4 ">Location</label>
-												<!-- TODO::Make GPS location -->
 												<input class="px-4 py-2 flex-grow-1" type="text" id="location" name="location">
 											</div>
 
@@ -265,12 +264,17 @@ if (!is_session_user_admin()) {
 												<label class="text-gray-1 easygo-fs-4 ">GPS Cordinates</label>
 												<input class="px-4 py-2 flex-grow-1" type="text" id="cordinates" name="cordinates">
 											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">Default Rating</label>
+												<input class="px-4 py-2 flex-grow-1" type="number" id="rating" name="rating">
+											</div>
 										</div>
 
 									</div>
-									<!-- Tour site profile [end] -->
+									<!-- Destination profile [end] -->
 
-									<!-- Tour site media [start] -->
+									<!-- Destination media [start] -->
 									<div class="col tab-pane fade " role="tabpanel" id="add-location-media">
 										<div class="row border-1 border-bottom py-4 pe-lg-5">
 											<!-- <div class="col-lg-5">
@@ -290,102 +294,72 @@ if (!is_session_user_admin()) {
 
 
 										</div>
-										</div>
-										<!-- Tour site media [end] -->
-										<!-- Tour site activities [start] -->
-										<div class="col tab-pane fade" role="tabpanel" id="add-location-activities">
-											<div class="d-flex align-items-center gap-2 my-4">
-												<h6 class="easygo-fw-1 m-0">Activities</h6>
-												<small class="text-gray-1 easygo-fs-6">(Activities that the tour site provides)</small>
-												<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-											</div>
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">Activity</label>
-												<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
-												<div class="col">
-													<ul id='add_loc_activity_list'>
-														<!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
-													</ul>
-												</div>
-												<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
-											</div>
-
-										</div>
-										<!-- Tour site activities [end] -->
-										<!-- Tour site extra info [start] -->
-										<div class="col tab-pane fade" role="tabpanel" id="add-location-info">
-											<div class="d-flex align-items-center gap-2 my-4">
-												<h6 class="easygo-fw-1 m-0">Extra information</h6>
-												<small class="text-gray-1 easygo-fs-6">(More information about the tour site)</small>
-												<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-											</div>
-
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">
-													Owner Name
-													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-												</label>
-												<input class="px-4 py-2 flex-grow-1" type="text" id="owner_name" name="owner">
-											</div>
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">
-													Owner Number
-													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-												</label>
-												<input class="px-4 py-2 flex-grow-1" type="text" id="owner_number" name="number">
-											</div>
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">
-													Website
-													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-												</label>
-												<input class="px-4 py-2 flex-grow-1" id="website" type="text" name="website">
-											</div>
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">
-													Tiktok handle
-													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-												</label>
-												<input class="px-4 py-2 flex-grow-1" type="text" id="tiktok" name="tiktok">
-											</div>
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">
-													Instagram handle
-													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-												</label>
-												<input class="px-4 py-2 flex-grow-1" type="text" id="instagram" name="instagram">
-											</div>
-
-											<div class="form-input-field">
-												<label class="text-gray-1 easygo-fs-4 ">
-													Facebook handle
-													<small class="text-gray-1 easygo-fs-6">(Optional)</small>
-												</label>
-												<input class="px-4 py-2 flex-grow-1" type="text" id="facebook" name="facebook">
-											</div>
-										</div>
 									</div>
-									<!-- Tour site extra info [end] -->
-									<div>
-										<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
+									<!-- Destination media [end] -->
+									<!-- Destination activities [start] -->
+									<div class="col tab-pane fade" role="tabpanel" id="add-location-activities">
+										<div class="d-flex align-items-center gap-2 my-4">
+											<h6 class="easygo-fw-1 m-0">Activities</h6>
+											<small class="text-gray-1 easygo-fs-6">(Activities that the Destination provides)</small>
+											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+										</div>
+
+										<div class="form-input-field">
+											<label class="text-gray-1 easygo-fs-4 ">Activity</label>
+
+											<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
+											<div class="col">
+												<ul id='add_loc_activity_list'>
+													<!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
+												</ul>
+											</div>
+											<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
+										</div>
+
 									</div>
-									<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
-										<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>
+									<!-- Destination activities [end] -->
+									<!-- Destination utilities [start] -->
+									<div class="col tab-pane fade" role="tabpanel" id="add-location-utilities">
+										<div class="d-flex align-items-center gap-2 my-4">
+											<h6 class="easygo-fw-1 m-0">Utilities</h6>
+											<small class="text-gray-1 easygo-fs-6">(Utilities that are available at the destiantion)</small>
+											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+										</div>
+
+										<div class="form-input-field">
+											<label class="text-gray-1 easygo-fs-4 ">Utility Types</label>
+											<select name="utility_type" id="utility_options" onchange="select_destination_utility(this)">
+												<option value="">Please Select</option>
+												<?php
+												$utilities = get_utility_types();
+												foreach ($utilities as $_ => $utility_data) {
+													$value = $utility_data["type_id"];
+													$key = $utility_data["type_name"];
+													echo "<option value='$value'>$key</option>";
+												}
+												?>
+											</select>
+											<div class="col">
+												<ul id='utility_list'>
+												</ul>
+											</div>
+											<button class="btn btn-default border text-blue px-4 py-2" data-bs-target="#create-utility-modal" data-bs-toggle="modal">Create Utility</button>
+										</div>
+
 									</div>
+									<!-- Destination activities [end] -->
 								</div>
+								<div>
+									<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
+								</div>
+								<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+									<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
 
-				<div class="row">
-
-				</div>
 				<!-- ============================== -->
 			</div>
 		</main>
@@ -395,6 +369,49 @@ if (!is_session_user_admin()) {
 	<!-- main-wrapper [end] -->
 	<!-- ============================== -->
 
+	<!-- ============================== -->
+	<!-- Create Utility modal [start] -->
+	<div class="modal fade" id="create-utility-modal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content p-5">
+				<div class="col">
+					<div>
+						<div style='overflow-x: auto;'>
+						</div>
+						<h6 class="easygo-fw-1 m-0">Create a new destiantion utility</h6>
+						<small class="text-gray-1 easygo-fs-6">(Add a new utility option for destinations)</small>
+						<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+						<form onsubmit='create_utility(this)'>
+							<input type="hidden" name="curator_id" id="invite_modal_curator_id">
+							<div class="col-lg-7 d-flex flex-column gap-4">
+								<div class="form-input-field">
+									<div class="text-gray-1 easygo-fs-4">Name of utility</div>
+									<input type="text" name="utility_name" placeholder="Type of utility">
+								</div>
+							</div>
+
+
+							<div class="col-lg-7 d-flex flex-column gap-4">
+								<div class="form-input-field">
+									<div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
+
+								</div>
+							</div>
+							<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+								<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+								<button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Invite_collaborator_modal modal [end] -->
+		<!-- ============================== -->
+	</div>
+
+	<!-- Create Utility modal [end] -->
+	<!-- ============================== -->
 
 	<!-- ============================== -->
 	<!-- Bootstrap js -->

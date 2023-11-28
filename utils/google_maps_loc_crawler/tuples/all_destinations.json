@@ -1,0 +1,3356 @@
+{
+    "ChIJ_30ixI_o3Q8RtycmHuTXMS8": {
+        "name": "International Stingless Bee Centre",
+        "place_id": "ChIJ_30ixI_o3Q8RtycmHuTXMS8",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 75,
+        "rating": 4,
+        "vicinity": "Odumase Abrafo",
+        "location": {
+            "lat": 5.336580999999999,
+            "lng": -1.3808533
+        }
+    },
+    "ChIJqWFBXihf5w8Rq6PeeeT1DbU": {
+        "name": "Puupuu",
+        "place_id": "ChIJqWFBXihf5w8Rq6PeeeT1DbU",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "3G26+8C, Komenda",
+        "location": {
+            "lat": 5.050866699999999,
+            "lng": -1.4889233
+        }
+    },
+    "ChIJ3WtFtmITLQ4RowivoaCZodw": {
+        "name": "asradburkinafaso",
+        "place_id": "ChIJ3WtFtmITLQ4RowivoaCZodw",
+        "types": [
+            "aquarium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "110, L\u00e9o",
+        "location": {
+            "lat": 11.0978809,
+            "lng": -2.0959429
+        }
+    },
+    "ChIJF0YTxV_53Q8RpG0Fx-W4oBA": {
+        "name": "Minta Art",
+        "place_id": "ChIJF0YTxV_53Q8RpG0Fx-W4oBA",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "CC-230-9766, Kwaprow",
+        "location": {
+            "lat": 5.1234506,
+            "lng": -1.3008598
+        }
+    },
+    "ChIJxa1FKjL53Q8ROXAeLMsyJ-0": {
+        "name": "Art Shop",
+        "place_id": "ChIJxa1FKjL53Q8ROXAeLMsyJ-0",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "4P74+6F7, Cape Coast",
+        "location": {
+            "lat": 5.1130328,
+            "lng": -1.2938145
+        }
+    },
+    "ChIJCyVXGB753Q8Rjhd4FNXgB6I": {
+        "name": "Akan Collective",
+        "place_id": "ChIJCyVXGB753Q8Rjhd4FNXgB6I",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "49 Gouda Street, Elmina",
+        "location": {
+            "lat": 5.0918217,
+            "lng": -1.3455565
+        }
+    },
+    "ChIJY88ghTP53Q8RNUKEyj36vp4": {
+        "name": "BRIGHT AMANOR",
+        "place_id": "ChIJY88ghTP53Q8RNUKEyj36vp4",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "Sankofa Beach, Cape Coast",
+        "location": {
+            "lat": 5.1003788,
+            "lng": -1.2988161
+        }
+    },
+    "ChIJiREcb1L-3Q8R8ZUh49IRpXA": {
+        "name": "Brefo Fine Arts Studio",
+        "place_id": "ChIJiREcb1L-3Q8R8ZUh49IRpXA",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.103730700000001,
+            "lng": -1.2418168
+        }
+    },
+    "ChIJ3whKRgdb1w8RfUkHilJWO3I": {
+        "name": "Bowling Alley",
+        "place_id": "ChIJ3whKRgdb1w8RfUkHilJWO3I",
+        "types": [
+            "bowling_alley",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "Trohwe",
+        "location": {
+            "lat": 7.9463788,
+            "lng": -1.0227937
+        }
+    },
+    "ChIJTaV95C4R3g8R7TFCDTh5GUU": {
+        "name": "LIT'S SHARP TEST",
+        "place_id": "ChIJTaV95C4R3g8R7TFCDTh5GUU",
+        "types": [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "15 N1, Mankessim",
+        "location": {
+            "lat": 5.267620400000001,
+            "lng": -1.0157072
+        }
+    },
+    "ChIJW12ibygR3g8RJS7OnrEOr7o": {
+        "name": "Bamfo Computers",
+        "place_id": "ChIJW12ibygR3g8RJS7OnrEOr7o",
+        "types": [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "jb store no. 57 opposit opportunity bank, Mankessim",
+        "location": {
+            "lat": 5.267994400000001,
+            "lng": -1.0182671
+        }
+    },
+    "ChIJW8oH2kL_3Q8R3A92mjY8SR8": {
+        "name": "Me3 Cafe and Pastry Shop",
+        "place_id": "ChIJW8oH2kL_3Q8R3A92mjY8SR8",
+        "types": [
+            "restaurant",
+            "bakery",
+            "cafe",
+            "point_of_interest",
+            "store",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 68,
+        "rating": 4.3,
+        "vicinity": "Opposite Wesley Girls High School, Above Sonturk Supermarket, Kakumdu",
+        "location": {
+            "lat": 5.139637,
+            "lng": -1.2819185
+        }
+    },
+    "ChIJzZr9sq7_3Q8Re4Io7wUg2xU": {
+        "name": "Algorithm Coffee and Juice",
+        "place_id": "ChIJzZr9sq7_3Q8Re4Io7wUg2xU",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "4PJC+J62, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "ChIJySSv76T-3Q8RIXipmXUC94M": {
+        "name": "Queen's City Refreshment Centre Abura",
+        "place_id": "ChIJySSv76T-3Q8RIXipmXUC94M",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PMF+8FJ, R82, Cape Coast",
+        "location": {
+            "lat": 5.133345800000001,
+            "lng": -1.2763532
+        }
+    },
+    "ChIJY72NN8v-3Q8R8SpwodARhdc": {
+        "name": "Mr. M's Grilled & Fried Pork",
+        "place_id": "ChIJY72NN8v-3Q8R8SpwodARhdc",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.6,
+        "vicinity": "4P86+RHQ, Cape Coast",
+        "location": {
+            "lat": 5.1170877,
+            "lng": -1.2885079
+        }
+    },
+    "ChIJK2W4OMv-3Q8R6G3X-WSqr1g": {
+        "name": "Algorithm Coffee & Juice",
+        "place_id": "ChIJK2W4OMv-3Q8R6G3X-WSqr1g",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 218,
+        "rating": 4.1,
+        "vicinity": "Senior Clubhouse University of, Cape Coast",
+        "location": {
+            "lat": 5.1171655,
+            "lng": -1.2883156
+        }
+    },
+    "ChIJm-uTF5X_3Q8RbFoCO0qxBks": {
+        "name": "Kwame Nkrumah Hall Hybrid Library",
+        "place_id": "ChIJm-uTF5X_3Q8RbFoCO0qxBks",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Kwame Nkrumah Hall, Cape Coast",
+        "location": {
+            "lat": 5.116326299999999,
+            "lng": -1.2806202
+        }
+    },
+    "ChIJczsV0PH-3Q8RYAHV0w1UoQk": {
+        "name": "Lismic Internet Cafe",
+        "place_id": "ChIJczsV0PH-3Q8RYAHV0w1UoQk",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P7R+G4J, Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.113849999999998,
+            "lng": -1.2597274
+        }
+    },
+    "ChIJS2Cv21H-3Q8R191fLzyfd88": {
+        "name": "Cape Cafe",
+        "place_id": "ChIJS2Cv21H-3Q8R191fLzyfd88",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 3.8,
+        "vicinity": "4Q45+WC8, Cape Coast",
+        "location": {
+            "lat": 5.107289,
+            "lng": -1.2414068
+        }
+    },
+    "ChIJc-a9NLL_3Q8RuHUklK4Z3nA": {
+        "name": "Jeff Sanders. P..O. Box CC-341. Cape Coast, Ghana",
+        "place_id": "ChIJc-a9NLL_3Q8RuHUklK4Z3nA",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "store",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Frontline Victoria Street near Cpae Coast Castle, and Orange Beach Resort, Cape Coast",
+        "location": {
+            "lat": 5.1038362,
+            "lng": -1.2428288
+        }
+    },
+    "ChIJNz2jY5n_3Q8RQdNI8Ot1cZ8": {
+        "name": "Ancestral Flavours",
+        "place_id": "ChIJNz2jY5n_3Q8RQdNI8Ot1cZ8",
+        "types": [
+            "meal_takeaway",
+            "cafe",
+            "bar",
+            "restaurant",
+            "point_of_interest",
+            "liquor_store",
+            "store",
+            "food",
+            "health",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "13-11 Victoria Road, Cape Coast",
+        "location": {
+            "lat": 5.10313,
+            "lng": -1.240629
+        }
+    },
+    "ChIJuWttfOL_3Q8RBM78KDXMzIk": {
+        "name": "Erica's Mini mart",
+        "place_id": "ChIJuWttfOL_3Q8RBM78KDXMzIk",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 2,
+        "vicinity": "4QHG+WJ5, Cape Coast",
+        "location": {
+            "lat": 5.1297575,
+            "lng": -1.223384
+        }
+    },
+    "ChIJTyxvaJwH3g8RONVw_pXhlUo": {
+        "name": "Kingdan.org",
+        "place_id": "ChIJTyxvaJwH3g8RONVw_pXhlUo",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "5Q6X+6F2, Yamoransa, Cape Coast",
+        "location": {
+            "lat": 5.160500999999999,
+            "lng": -1.2013708
+        }
+    },
+    "ChIJ33OdMlFj5w8RACwqurok8Pk": {
+        "name": "Rock Moni Yrn",
+        "place_id": "ChIJ33OdMlFj5w8RACwqurok8Pk",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "289P+WJG, Shama",
+        "location": {
+            "lat": 5.019800499999999,
+            "lng": -1.6634192
+        }
+    },
+    "ChIJKfZFXuR55w8RgNZW7WZdzd4": {
+        "name": "VMinc Cafe",
+        "place_id": "ChIJKfZFXuR55w8RgNZW7WZdzd4",
+        "types": [
+            "cafe",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 36,
+        "rating": 4.6,
+        "vicinity": "25 Busumakura Boulevard, Takoradi",
+        "location": {
+            "lat": 4.8966373,
+            "lng": -1.7624463
+        }
+    },
+    "ChIJmRyaMON55w8RGbS2QugJErM": {
+        "name": "Second Cup Coffee",
+        "place_id": "ChIJmRyaMON55w8RGbS2QugJErM",
+        "types": [
+            "cafe",
+            "store",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 5,
+        "vicinity": "Axim Road, Takoradi",
+        "location": {
+            "lat": 4.8947181,
+            "lng": -1.7641913
+        }
+    },
+    "ChIJq5EL7x935w8RSgD8Hnin1sg": {
+        "name": "Hybridsat and computers",
+        "place_id": "ChIJq5EL7x935w8RSgD8Hnin1sg",
+        "types": [
+            "cafe",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 2,
+        "vicinity": "V5PM+WR2, Takoradi - Agona Road, Apowa",
+        "location": {
+            "lat": 4.887256999999999,
+            "lng": -1.815495
+        }
+    },
+    "ChIJW00oGdf53Q8R_QU8WloeVhY": {
+        "name": "Prime Centennials",
+        "place_id": "ChIJW00oGdf53Q8R_QU8WloeVhY",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.131762999999999,
+            "lng": -1.2985251
+        }
+    },
+    "ChIJvSlyf4qNwg8R7Ls8z7B0mrU": {
+        "name": "Village des ambassadeurs",
+        "place_id": "ChIJvSlyf4qNwg8R7Ls8z7B0mrU",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "83F4+PG, EHANIA",
+        "location": {
+            "lat": 5.324285999999999,
+            "lng": -2.943728
+        }
+    },
+    "ChIJPcA5-nBbwg8R0tT_K3VxgtY": {
+        "name": "Champ h\u00e9v\u00e9a",
+        "place_id": "ChIJPcA5-nBbwg8R0tT_K3VxgtY",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "00225",
+        "location": {
+            "lat": 5.474510599999999,
+            "lng": -3.2030756
+        }
+    },
+    "ChIJW8zOwUMXwg8RtxKZ--0UJ-Y": {
+        "name": "Eblikro",
+        "place_id": "ChIJW8zOwUMXwg8RtxKZ--0UJ-Y",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "9F52+2WX, Vanhamba",
+        "location": {
+            "lat": 5.357613199999999,
+            "lng": -3.5476476
+        }
+    },
+    "ChIJubx8wFZ35w8RUFjemBYavhw": {
+        "name": "Vienna Lounge & Bar",
+        "place_id": "ChIJubx8wFZ35w8RUFjemBYavhw",
+        "types": [
+            "casino",
+            "night_club",
+            "restaurant",
+            "food",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 833,
+        "rating": 3.8,
+        "vicinity": "Vienna Lounge & Bar, Axim Road, Takoradi",
+        "location": {
+            "lat": 4.8876243,
+            "lng": -1.7601824
+        }
+    },
+    "ChIJT5QfyE935w8R7YeIUgS94NM": {
+        "name": "HONG TU CASINO LTD",
+        "place_id": "ChIJT5QfyE935w8R7YeIUgS94NM",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 3.6,
+        "vicinity": "8 Services School Street, Takoradi",
+        "location": {
+            "lat": 4.878768099999999,
+            "lng": -1.762118
+        }
+    },
+    "ChIJn7r-jzT53Q8RTbvq8VsYq1U": {
+        "name": "Sam Jonah Library",
+        "place_id": "ChIJn7r-jzT53Q8RTbvq8VsYq1U",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 152,
+        "rating": 4.3,
+        "vicinity": "4P85+MJC, Cape Coast",
+        "location": {
+            "lat": 5.116697299999999,
+            "lng": -1.2909944
+        }
+    },
+    "ChIJRbTRSBD83Q8RHdplTnJVSHk": {
+        "name": "Library Complex",
+        "place_id": "ChIJRbTRSBD83Q8RHdplTnJVSHk",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "5P3C+QRF, Cape Coast",
+        "location": {
+            "lat": 5.154440999999998,
+            "lng": -1.2779393
+        }
+    },
+    "ChIJf5hRoAT93Q8RlEHlg0VdxUg": {
+        "name": "CCTU library",
+        "place_id": "ChIJf5hRoAT93Q8RlEHlg0VdxUg",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "technical university inside, Cape Coast",
+        "location": {
+            "lat": 5.1544466,
+            "lng": -1.2778724
+        }
+    },
+    "ChIJq6qqqrr-3Q8RxX4DaEWsVJ8": {
+        "name": "Central Regional Library",
+        "place_id": "ChIJq6qqqrr-3Q8RxX4DaEWsVJ8",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "4PJC+J62, Ato huston park near Wesley Methodist Church, Cape Coast",
+        "location": {
+            "lat": 5.1315099,
+            "lng": -1.2794744
+        }
+    },
+    "ChIJVfr-jzT53Q8R8UfgoUT_OeA": {
+        "name": "Main Library",
+        "place_id": "ChIJVfr-jzT53Q8R8UfgoUT_OeA",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4,
+        "vicinity": "4P85+JJJ, Cape Coast",
+        "location": {
+            "lat": 5.116590999999999,
+            "lng": -1.2909845
+        }
+    },
+    "ChIJ1Ruq0wf_3Q8RJvXbJXFHvjs": {
+        "name": "Valco hall library",
+        "place_id": "ChIJ1Ruq0wf_3Q8RJvXbJXFHvjs",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "Industrial City, Cape Coast",
+        "location": {
+            "lat": 5.1159802,
+            "lng": -1.2824171
+        }
+    },
+    "ChIJ_7UgUgP_3Q8RjAX7S2VNYtg": {
+        "name": "ToBe WorldWide Educational Resource Center",
+        "place_id": "ChIJ_7UgUgP_3Q8RjAX7S2VNYtg",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJM+96H, Cape Coast",
+        "location": {
+            "lat": 5.130943500000001,
+            "lng": -1.2669005
+        }
+    },
+    "ChIJ17C9aVL53Q8RIXICkC4e_tI": {
+        "name": "Nduom Community Library",
+        "place_id": "ChIJ17C9aVL53Q8RIXICkC4e_tI",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "41 Gouda Street, Elmina",
+        "location": {
+            "lat": 5.092827300000001,
+            "lng": -1.3454081
+        }
+    },
+    "ChIJWwBWGtT-3Q8RWpHaqt6ASOQ": {
+        "name": "Old Library",
+        "place_id": "ChIJWwBWGtT-3Q8RWpHaqt6ASOQ",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 3.9,
+        "vicinity": "4P38+R3Q, Cape Coast",
+        "location": {
+            "lat": 5.1045999,
+            "lng": -1.2847777
+        }
+    },
+    "ChIJ46o8sez-3Q8R6_SSbnyGXpo": {
+        "name": "Adisadel College Library",
+        "place_id": "ChIJ46o8sez-3Q8R6_SSbnyGXpo",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 5,
+        "vicinity": "4PCP+787, Cape Coast",
+        "location": {
+            "lat": 5.1206734,
+            "lng": -1.2641895
+        }
+    },
+    "ChIJOU1ws97-3Q8RZmF9LdTWYJo": {
+        "name": "Ola Training College Main Library",
+        "place_id": "ChIJOU1ws97-3Q8RZmF9LdTWYJo",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3.5,
+        "vicinity": "4P3G+R58, Cape Coast",
+        "location": {
+            "lat": 5.104538799999999,
+            "lng": -1.2745479
+        }
+    },
+    "ChIJzV30_-7_3Q8RdNMbtyrW4kE": {
+        "name": "Kofi Annan Building",
+        "place_id": "ChIJzV30_-7_3Q8RdNMbtyrW4kE",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4.3,
+        "vicinity": "Prayer Chapel, Cape Coast",
+        "location": {
+            "lat": 5.1176277,
+            "lng": -1.2513077
+        }
+    },
+    "ChIJ54b640n_3Q8Rr3p5vj4T24M": {
+        "name": "Central Regional Library",
+        "place_id": "ChIJ54b640n_3Q8Rr3p5vj4T24M",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "4Q44+5V8, Chapel Square, Cape Coast",
+        "location": {
+            "lat": 5.1054061,
+            "lng": -1.2428049
+        }
+    },
+    "ChIJR0o0c1L-3Q8R1kqq68LcaSs": {
+        "name": "Prof. John Evans Atta Mills Library",
+        "place_id": "ChIJR0o0c1L-3Q8R1kqq68LcaSs",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.9,
+        "vicinity": "Castle Beach Resturant, Cape Coast",
+        "location": {
+            "lat": 5.1044575,
+            "lng": -1.2413344
+        }
+    },
+    "ChIJs81DjCQB3g8RkCkqPMD_p9o": {
+        "name": "MOREE LIBRARY",
+        "place_id": "ChIJs81DjCQB3g8RkCkqPMD_p9o",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "4QHW+978, Moree",
+        "location": {
+            "lat": 5.1280547,
+            "lng": -1.203641
+        }
+    },
+    "ChIJVXSFL2cL3g8RLuUXLgkzTpA": {
+        "name": "Abura Dunkwa Branch Library",
+        "place_id": "ChIJVXSFL2cL3g8RLuUXLgkzTpA",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "8R8G+56W, Edumfa",
+        "location": {
+            "lat": 5.315484,
+            "lng": -1.174428
+        }
+    },
+    "ChIJHXuPDcYL3g8R-Zr72LHchF0": {
+        "name": "Ghana Library Authority Abura Dunkwa",
+        "place_id": "ChIJHXuPDcYL3g8R-Zr72LHchF0",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "8RQH+HPC, Abura Dunkwa",
+        "location": {
+            "lat": 5.338925199999998,
+            "lng": -1.17075
+        }
+    },
+    "ChIJsbLTRwJj5w8RH4nwvQR8N4U": {
+        "name": "Shama Community Library",
+        "place_id": "ChIJsbLTRwJj5w8RH4nwvQR8N4U",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 1,
+        "vicinity": "2974+PJH, Shama",
+        "location": {
+            "lat": 5.0143083,
+            "lng": -1.6434035
+        }
+    },
+    "ChIJC-M-1oNj5w8Rwo6CneO5yks": {
+        "name": "Abuesi Community library",
+        "place_id": "ChIJC-M-1oNj5w8Rwo6CneO5yks",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 1,
+        "vicinity": "X9P6+GJV, Abuesi",
+        "location": {
+            "lat": 4.9863559,
+            "lng": -1.6384673
+        }
+    },
+    "ChIJN9QvDlMF3g8R16veNPMhMVE": {
+        "name": "Mfantseman Beach Resort",
+        "place_id": "ChIJN9QvDlMF3g8R16veNPMhMVE",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 36,
+        "rating": 4,
+        "vicinity": "6W2X+WC6, saltpond Central region, Cape Coast",
+        "location": {
+            "lat": 5.2022899,
+            "lng": -1.051491
+        }
+    },
+    "ChIJT6QUu_Ma3g8Rm3pTzNUZ15s": {
+        "name": "Sisimbo Beach Resort",
+        "place_id": "ChIJT6QUu_Ma3g8Rm3pTzNUZ15s",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.2,
+        "vicinity": "6X2F+J9R, Ankaful",
+        "location": {
+            "lat": 5.2016073,
+            "lng": -1.0266092
+        }
+    },
+    "ChIJ34nDXKUR3g8RJtO8sDsuTtU": {
+        "name": "Dankwa Royal GuestHouse",
+        "place_id": "ChIJ34nDXKUR3g8RJtO8sDsuTtU",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 28,
+        "rating": 3.8,
+        "vicinity": "7XHC+FC5, Near Happy Spot, Off Fosu-Kumasi, Mankesim",
+        "location": {
+            "lat": 5.278638,
+            "lng": -1.028895
+        }
+    },
+    "ChIJk65FHfcQ3g8RugEEUzZa_Cg": {
+        "name": "Manna Heights Hotel and Conference Center",
+        "place_id": "ChIJk65FHfcQ3g8RugEEUzZa_Cg",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 389,
+        "rating": 4.1,
+        "vicinity": "Accra - Cape Coast Road, Mankessim",
+        "location": {
+            "lat": 5.254366300000001,
+            "lng": -1.0167268
+        }
+    },
+    "ChIJ52xXoEoF3g8RjoN3OaHKfxw": {
+        "name": "Blakee Guest House",
+        "place_id": "ChIJ52xXoEoF3g8RjoN3OaHKfxw",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 2.6,
+        "vicinity": "6W4R+247, Saltpond",
+        "location": {
+            "lat": 5.2050252,
+            "lng": -1.0597011
+        }
+    },
+    "ChIJleKZ37Uj3g8RMxPuSp_SWfo": {
+        "name": "Rama beach resort",
+        "place_id": "ChIJleKZ37Uj3g8RMxPuSp_SWfo",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 3.6,
+        "vicinity": "Etibedu",
+        "location": {
+            "lat": 5.211419999999999,
+            "lng": -0.8361417999999999
+        }
+    },
+    "ChIJM7bR8OoZ3g8R1g3SkwQE6GY": {
+        "name": "Breezes Beach Resort",
+        "place_id": "ChIJM7bR8OoZ3g8R1g3SkwQE6GY",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 41,
+        "rating": 4.6,
+        "vicinity": "Beach Road, Ekumfi Narkwa",
+        "location": {
+            "lat": 5.204409099999999,
+            "lng": -0.9438165000000001
+        }
+    },
+    "ChIJ6ZgQoRgX3g8RNsSlJyDFmaI": {
+        "name": "Bawansah Cottage Limited",
+        "place_id": "ChIJ6ZgQoRgX3g8RNsSlJyDFmaI",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 4.5,
+        "vicinity": "No. 1 Bawansah Avenue",
+        "location": {
+            "lat": 5.2446736,
+            "lng": -0.9137845000000001
+        }
+    },
+    "ChIJp8LRDpol3g8RD3il73x-tAo": {
+        "name": "Council Palm Resort",
+        "place_id": "ChIJp8LRDpol3g8RD3il73x-tAo",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.6,
+        "vicinity": "Srafa Aboano, Otuam",
+        "location": {
+            "lat": 5.222649399999999,
+            "lng": -0.8066282999999999
+        }
+    },
+    "ChIJl7qYFooX3g8RCnvdeSrNpxc": {
+        "name": "CENTRAL PARADISE REST STOP",
+        "place_id": "ChIJl7qYFooX3g8RCnvdeSrNpxc",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 106,
+        "rating": 3.9,
+        "vicinity": "",
+        "location": {
+            "lat": 5.2814198,
+            "lng": -0.9352850999999999
+        }
+    },
+    "ChIJM-3xmfYb3g8Ry83gTZ68Uag": {
+        "name": "Ocean Green Beach Saltpond",
+        "place_id": "ChIJM-3xmfYb3g8Ry83gTZ68Uag",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.7,
+        "vicinity": "6X2J+G6M, Mfantsiman",
+        "location": {
+            "lat": 5.201345299999999,
+            "lng": -1.0194641
+        }
+    },
+    "ChIJIdCezpIQ3g8RKTJn222UzkI": {
+        "name": "Masroor Hostel",
+        "place_id": "ChIJIdCezpIQ3g8RKTJn222UzkI",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 28,
+        "rating": 4.3,
+        "vicinity": "6XWR+H84",
+        "location": {
+            "lat": 5.2463979,
+            "lng": -1.0091741
+        }
+    },
+    "ChIJTXMo2VIR3g8Rexm66Z74yvs": {
+        "name": "fb. x",
+        "place_id": "ChIJTXMo2VIR3g8Rexm66Z74yvs",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "72C4+X9, Mankessim",
+        "location": {
+            "lat": 5.2724375,
+            "lng": -0.9940625
+        }
+    },
+    "ChIJnUEjXUE73g8RzlsORE8mkEg": {
+        "name": "JOTAW GUEST HOUSE",
+        "place_id": "ChIJnUEjXUE73g8RzlsORE8mkEg",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "76CJ+HMM",
+        "location": {
+            "lat": 5.271464099999999,
+            "lng": -0.7683302
+        }
+    },
+    "ChIJxVldrvs73g8RTtePoU_vgxs": {
+        "name": "Asomdwee Fie Guest House & Bar",
+        "place_id": "ChIJxVldrvs73g8RTtePoU_vgxs",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "767Q+934, Mumford",
+        "location": {
+            "lat": 5.2634105,
+            "lng": -0.7622676
+        }
+    },
+    "ChIJ8VWWBGsR3g8RLv0ZaznQ5xQ": {
+        "name": "Asomdwee Rental House",
+        "place_id": "ChIJ8VWWBGsR3g8RLv0ZaznQ5xQ",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3.5,
+        "vicinity": "7X9R+35Q",
+        "location": {
+            "lat": 5.267709900000001,
+            "lng": -1.009523
+        }
+    },
+    "ChIJkYO_K5s73g8RxNsywGidllI": {
+        "name": "Peace Guest House",
+        "place_id": "ChIJkYO_K5s73g8RxNsywGidllI",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.7,
+        "vicinity": "766R+76H, Mumford",
+        "location": {
+            "lat": 5.260699700000001,
+            "lng": -0.7593888000000001
+        }
+    },
+    "ChIJ_RYGqP0Q3g8RfkvBe5Mm0b0": {
+        "name": "Engen Hotel",
+        "place_id": "ChIJ_RYGqP0Q3g8RfkvBe5Mm0b0",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 49,
+        "rating": 3.7,
+        "vicinity": "7X8P+7P4, Off Accra - Mankessim road, Mankessim",
+        "location": {
+            "lat": 5.26565,
+            "lng": -1.0131812
+        }
+    },
+    "ChIJzxkGqP0Q3g8RyzEDWYuE7O4": {
+        "name": "Angola Hotel",
+        "place_id": "ChIJzxkGqP0Q3g8RyzEDWYuE7O4",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 3.2,
+        "vicinity": "7X8Q+W3Q, After the Round About Opposite the Obama Hostel, Mankessim",
+        "location": {
+            "lat": 5.2673288,
+            "lng": -1.0122604
+        }
+    },
+    "ChIJd0HkLB0R3g8RzvHjjafvFPU": {
+        "name": "Ernestina Guesthouse",
+        "place_id": "ChIJd0HkLB0R3g8RzvHjjafvFPU",
+        "types": [
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 65,
+        "rating": 3.4,
+        "vicinity": "Near Perez Chapel, School Kesim, Mankessim",
+        "location": {
+            "lat": 5.2697769,
+            "lng": -1.0106561
+        }
+    },
+    "ChIJQWzITnD_3Q8RJVgNWnmnebM": {
+        "name": "Netflix",
+        "place_id": "ChIJQWzITnD_3Q8RJVgNWnmnebM",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Ab172",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "ChIJ0YOee07_3Q8RtJiJM2LSV_w": {
+        "name": "Sefa codex",
+        "place_id": "ChIJ0YOee07_3Q8RtJiJM2LSV_w",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 29,
+        "rating": 3.6,
+        "vicinity": "Abura Community, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "ChIJOy2OYdX_3Q8RYQO_WndloMQ": {
+        "name": "Movie House",
+        "place_id": "ChIJOy2OYdX_3Q8RYQO_WndloMQ",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 19,
+        "rating": 4,
+        "vicinity": "4PHC+3FH, Cape Coast",
+        "location": {
+            "lat": 5.1276774,
+            "lng": -1.2787587
+        }
+    },
+    "ChIJTVMpvO3_3Q8RCOJPUQzDxxU": {
+        "name": "Tsirkormpam Dance Theatre",
+        "place_id": "ChIJTVMpvO3_3Q8RCOJPUQzDxxU",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "OLA Training College Administration Block, Cape Coast",
+        "location": {
+            "lat": 5.104296199999999,
+            "lng": -1.2737958
+        }
+    },
+    "ChIJDeXlE8YB3g8RtzPaD6vWrUA": {
+        "name": "Cinemal Hall",
+        "place_id": "ChIJDeXlE8YB3g8RtzPaD6vWrUA",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3.8,
+        "vicinity": "4QHX+84Q, Unnamed Road, Moree",
+        "location": {
+            "lat": 5.128331399999999,
+            "lng": -1.2021258
+        }
+    },
+    "ChIJ_SY3YJEF3g8RtvCgz_sazAc": {
+        "name": "Soccabet Anomabo",
+        "place_id": "ChIJ_SY3YJEF3g8RtvCgz_sazAc",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4,
+        "vicinity": "5VGH+V9C, N1, Anomabo",
+        "location": {
+            "lat": 5.177193199999999,
+            "lng": -1.1216098
+        }
+    },
+    "ChIJ9f_7UZkF3g8RkmafY17Y_aQ": {
+        "name": "Community Centre- COA",
+        "place_id": "ChIJ9f_7UZkF3g8RkmafY17Y_aQ",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 12,
+        "rating": 3.2,
+        "vicinity": "5WXC+7M5, Kormantse",
+        "location": {
+            "lat": 5.198127999999999,
+            "lng": -1.0782616
+        }
+    },
+    "ChIJT-qGzXMN3g8R1iPI4kxsnyc": {
+        "name": "Adwen Pa Yie",
+        "place_id": "ChIJT-qGzXMN3g8R1iPI4kxsnyc",
+        "types": [
+            "movie_theater",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "9WF7+39G",
+        "location": {
+            "lat": 5.37268,
+            "lng": -1.0865424
+        }
+    },
+    "ChIJT0i-HpXR3w8RBDVTzbmARlg": {
+        "name": "Second Chance Prayer Center Katapor",
+        "place_id": "ChIJT0i-HpXR3w8RBDVTzbmARlg",
+        "types": [
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Ghana",
+        "location": {
+            "lat": 5.2114082,
+            "lng": -0.5229060000000001
+        }
+    },
+    "ChIJSYnOiUDN3w8RLA9cIjhEtns": {
+        "name": "Esbee Pub(Mama Gee Joint)",
+        "place_id": "ChIJSYnOiUDN3w8RLA9cIjhEtns",
+        "types": [
+            "restaurant",
+            "food",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7F7C+6J6, Winneba",
+        "location": {
+            "lat": 5.2630262,
+            "lng": -0.5284906999999999
+        }
+    },
+    "ChIJBWLwHh7J3w8RAPv6Zi2qbG4": {
+        "name": "Vidette Collection",
+        "place_id": "ChIJBWLwHh7J3w8RAPv6Zi2qbG4",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "White cross New, Weija",
+        "location": {
+            "lat": 5.3463755,
+            "lng": -0.4778414
+        }
+    },
+    "ChIJifvKgx8R3g8ROhppPZ2NL-8": {
+        "name": "GN Bank Billboard Mankessim",
+        "place_id": "ChIJifvKgx8R3g8ROhppPZ2NL-8",
+        "types": [
+            "bank",
+            "finance",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 1.5,
+        "vicinity": "5\u00b016'12. 1\u00b000'05., 6 Street 3",
+        "location": {
+            "lat": 5.2700833,
+            "lng": -1.0015556
+        }
+    },
+    "ChIJv1inyR8R3g8RHRAp-eK3L3o": {
+        "name": "Petro Afrique",
+        "place_id": "ChIJv1inyR8R3g8RHRAp-eK3L3o",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 3.5,
+        "vicinity": "7X9W+GQ6, Mankessim",
+        "location": {
+            "lat": 5.268798599999999,
+            "lng": -1.0031023
+        }
+    },
+    "ChIJ8f51rZw63g8RRaiyQU4pbhg": {
+        "name": "Titanic Beach",
+        "place_id": "ChIJ8f51rZw63g8RRaiyQU4pbhg",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 3.6,
+        "vicinity": "764V+X22, Mumford",
+        "location": {
+            "lat": 5.2573775,
+            "lng": -0.7574964000000002
+        }
+    },
+    "ChIJP2YiNIQ63g8R-pxhUkeSStw": {
+        "name": "Spanish Villa",
+        "place_id": "ChIJP2YiNIQ63g8R-pxhUkeSStw",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 27,
+        "rating": 4,
+        "vicinity": "Mumford",
+        "location": {
+            "lat": 5.2609021,
+            "lng": -0.7588615999999999
+        }
+    },
+    "ChIJLaSN4fcQ3g8R4i2_24UIf9c": {
+        "name": "Mankessim Assembly Hall of Jehovah's Witnesses",
+        "place_id": "ChIJLaSN4fcQ3g8R4i2_24UIf9c",
+        "types": [
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 21,
+        "rating": 4.1,
+        "vicinity": "2",
+        "location": {
+            "lat": 5.256155000000001,
+            "lng": -1.020237
+        }
+    },
+    "ChIJkRmFhv0Q3g8R_WrI7o1nIJo": {
+        "name": "Central Brent Petroleum",
+        "place_id": "ChIJkRmFhv0Q3g8R_WrI7o1nIJo",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4.5,
+        "vicinity": "7X8P+WHX, Mankessim - Accra Road, Accra",
+        "location": {
+            "lat": 5.267352499999999,
+            "lng": -1.0135306
+        }
+    },
+    "ChIJjzUtgv8Q3g8RhnXenVmDut8": {
+        "name": "Sanford World Clinic Mankessim",
+        "place_id": "ChIJjzUtgv8Q3g8RhnXenVmDut8",
+        "types": [
+            "health",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4.5,
+        "vicinity": "No 1 Block 172 New Kusukum by the Accra-Cape Coast Highway, CP GH, Mankessim",
+        "location": {
+            "lat": 5.267345,
+            "lng": -1.0141661
+        }
+    },
+    "ChIJTwfXowQR3g8RfThDCC_WvEU": {
+        "name": "Dominion Cedicare Ghana",
+        "place_id": "ChIJTwfXowQR3g8RfThDCC_WvEU",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 16,
+        "rating": 4.5,
+        "vicinity": "Mankessim, Central Region, Cape Coast, Mankessim- Ajumako Rd",
+        "location": {
+            "lat": 5.2731872,
+            "lng": -1.0117722
+        }
+    },
+    "ChIJgdhYAgIR3g8RUsY32L6-iH0": {
+        "name": "Microfin Rural Bank (Mankessim Branch)",
+        "place_id": "ChIJgdhYAgIR3g8RUsY32L6-iH0",
+        "types": [
+            "bank",
+            "finance",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "7X9M+6RJ, Mankessim",
+        "location": {
+            "lat": 5.268088199999999,
+            "lng": -1.0154777
+        }
+    },
+    "ChIJvX5PVMAa3g8RbOSjQ3C0GzE": {
+        "name": "Saltpond Community Information Center Information Communication And Technology Club",
+        "place_id": "ChIJvX5PVMAa3g8RbOSjQ3C0GzE",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 3.9,
+        "vicinity": "CIC, Saltpond",
+        "location": {
+            "lat": 5.202541699999999,
+            "lng": -1.0416707
+        }
+    },
+    "ChIJi4ImAcEa3g8R8DDmn56PoGI": {
+        "name": "Vigin Trinity",
+        "place_id": "ChIJi4ImAcEa3g8R8DDmn56PoGI",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "6X25+R5H, Saltpond",
+        "location": {
+            "lat": 5.2020529,
+            "lng": -1.0420248
+        }
+    },
+    "ChIJT1VVJP4Q3g8R1FQrzuqyYks": {
+        "name": "Ayait Computer Institute",
+        "place_id": "ChIJT1VVJP4Q3g8R1FQrzuqyYks",
+        "types": [
+            "school",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3.5,
+        "vicinity": "7XCJ+XGW, Mankessim",
+        "location": {
+            "lat": 5.2724989,
+            "lng": -1.0186774
+        }
+    },
+    "ChIJ2V_L2qoR3g8RgHQpJjqh740": {
+        "name": "Mankessim Kingdom Hall - New Nkusukum",
+        "place_id": "ChIJ2V_L2qoR3g8RgHQpJjqh740",
+        "types": [
+            "church",
+            "place_of_worship",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4.8,
+        "vicinity": "7X9H+85R, Mankessim",
+        "location": {
+            "lat": 5.2683646,
+            "lng": -1.0221211
+        }
+    },
+    "ChIJK1Ho95AV3g8Rn_xads26chE": {
+        "name": "Cluster Farming Holding Ltd",
+        "place_id": "ChIJK1Ho95AV3g8Rn_xads26chE",
+        "types": [
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 4.4,
+        "vicinity": "FG18 JK Odoom Road Ghana Post GPS CJ-1688-7159, Ekrawfo",
+        "location": {
+            "lat": 5.3381078,
+            "lng": -0.9177698
+        }
+    },
+    "ChIJQ3DL_KkR3g8RjGcP0Y1ipkU": {
+        "name": "PEG Ghana, Mankessim Service Center",
+        "place_id": "ChIJQ3DL_KkR3g8RjGcP0Y1ipkU",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "7XFH+CPG, Mankessim",
+        "location": {
+            "lat": 5.273550800000001,
+            "lng": -1.020675
+        }
+    },
+    "ChIJW8kpU7ca3g8RYhCz3mkGcgM": {
+        "name": "Saltpond Geological Survey Department",
+        "place_id": "ChIJW8kpU7ca3g8RYhCz3mkGcgM",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 19,
+        "rating": 3.3,
+        "vicinity": "Saltpond",
+        "location": {
+            "lat": 5.2100539,
+            "lng": -1.049529
+        }
+    },
+    "ChIJx6_6HQcR3g8RATz3p6YcbAI": {
+        "name": "Mankessim",
+        "place_id": "ChIJx6_6HQcR3g8RATz3p6YcbAI",
+        "types": [
+            "locality",
+            "political"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJF-ScTbUa3g8RjZHk7don-tw": {
+        "name": "Davies Nite Club",
+        "place_id": "ChIJF-ScTbUa3g8RjZHk7don-tw",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6W4R+7JM, Saltpond",
+        "location": {
+            "lat": 5.205700800000001,
+            "lng": -1.0584435
+        }
+    },
+    "ChIJE2TlARm73w8RU3Ydp2uPAs0": {
+        "name": "Ocean City Sports Bar & Lounge",
+        "place_id": "ChIJE2TlARm73w8RU3Ydp2uPAs0",
+        "types": [
+            "night_club",
+            "bar",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 5,
+        "vicinity": "beach Near Victoria Park, Saltpond",
+        "location": {
+            "lat": 5.1995764,
+            "lng": -1.0595617
+        }
+    },
+    "ChIJCY4eqlD_3Q8R27NczX-Gldc": {
+        "name": "Davos Pub & Restaurant",
+        "place_id": "ChIJCY4eqlD_3Q8R27NczX-Gldc",
+        "types": [
+            "restaurant",
+            "night_club",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJC+J62, Second Atta Mills Avenue Adjacent Atta Mills library opposite Cape Coast castle, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "ChIJgxUTc4r_3Q8RSoN52LcS4Vo": {
+        "name": "Ebony Bar and Lounge",
+        "place_id": "ChIJgxUTc4r_3Q8RSoN52LcS4Vo",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cedar Street, Cape Coast",
+        "location": {
+            "lat": 5.1316869,
+            "lng": -1.2783294
+        }
+    },
+    "ChIJf8GmNCv_3Q8RIBx0rx80pcI": {
+        "name": "Fays Lounge",
+        "place_id": "ChIJf8GmNCv_3Q8RIBx0rx80pcI",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 36,
+        "rating": 4.3,
+        "vicinity": "4Q63+MQG, Kotokuraba Road, Cape Coast",
+        "location": {
+            "lat": 5.111644099999999,
+            "lng": -1.2455672
+        }
+    },
+    "ChIJWzljS7n_3Q8RCdSMHw8iy8E": {
+        "name": "The Bar",
+        "place_id": "ChIJWzljS7n_3Q8RCdSMHw8iy8E",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 4.7,
+        "vicinity": "Heritage House, Opposite, Garden Street, Cape Coast",
+        "location": {
+            "lat": 5.106273499999999,
+            "lng": -1.2427713
+        }
+    },
+    "ChIJa0MbEJz_3Q8R7upiNCuGP48": {
+        "name": "Amanful Catholic Boys School",
+        "place_id": "ChIJa0MbEJz_3Q8R7upiNCuGP48",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "35 Sam Road, Cape Coast",
+        "location": {
+            "lat": 5.1095443,
+            "lng": -1.2348988
+        }
+    },
+    "ChIJcVCIwln_3Q8RRqCVtZlKjjg": {
+        "name": "SHEBEEN-AUNT MERCY'S KITCHEN AND LOUNGE",
+        "place_id": "ChIJcVCIwln_3Q8RRqCVtZlKjjg",
+        "types": [
+            "night_club",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "CC-103-4598 OPPOSITE HILBBY'S HOTEL, F425 GREENHILL 23RD CL, Cape Coast",
+        "location": {
+            "lat": 5.1210229,
+            "lng": -1.2133308
+        }
+    },
+    "ChIJJcZ-f41j5w8RFYmStVc7gXE": {
+        "name": "Pikumsco Lounge",
+        "place_id": "ChIJJcZ-f41j5w8RFYmStVc7gXE",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "2969+CQ2, Shama",
+        "location": {
+            "lat": 5.011000699999999,
+            "lng": -1.6305993
+        }
+    },
+    "ChIJ9Ytj0YF55w8RsBM_sO_vxCM": {
+        "name": "James Cromwell",
+        "place_id": "ChIJ9Ytj0YF55w8RsBM_sO_vxCM",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "W6F8+PJG, E. Akufo-Addo Road, Takoradi",
+        "location": {
+            "lat": 4.924321199999999,
+            "lng": -1.7834073
+        }
+    },
+    "ChIJNbwcg1B55w8RONM3O-0dlsU": {
+        "name": "showers sounds",
+        "place_id": "ChIJNbwcg1B55w8RONM3O-0dlsU",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "W6FR+FGM, Joe Bouluuro Crescent, Takoradi",
+        "location": {
+            "lat": 4.9237202,
+            "lng": -1.7586904
+        }
+    },
+    "ChIJOdkVUZd75w8Rt3-1rWIX2os": {
+        "name": "Okatakyie Lounge",
+        "place_id": "ChIJOdkVUZd75w8Rt3-1rWIX2os",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Dandelion Avenue, Takoradi",
+        "location": {
+            "lat": 4.9170589,
+            "lng": -1.7532802
+        }
+    },
+    "ChIJJ7tRUY155w8Re4UJ1zbRQ0o": {
+        "name": "Game Center",
+        "place_id": "ChIJJ7tRUY155w8Re4UJ1zbRQ0o",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3.5,
+        "vicinity": "W66P+WMR, Takoradi",
+        "location": {
+            "lat": 4.9123546,
+            "lng": -1.7633691
+        }
+    },
+    "ChIJ59eVelp55w8RHG2AoIOtqtI": {
+        "name": "The Arena Lounge and Club",
+        "place_id": "ChIJ59eVelp55w8RHG2AoIOtqtI",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.1,
+        "vicinity": "27 Independence Avenue, Takoradi",
+        "location": {
+            "lat": 4.906809,
+            "lng": -1.7701874
+        }
+    },
+    "ChIJt4iV97Jw5w8RBJIVmGVZDg0": {
+        "name": "Vienna City Beach",
+        "place_id": "ChIJt4iV97Jw5w8RBJIVmGVZDg0",
+        "types": [
+            "restaurant",
+            "night_club",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1659,
+        "rating": 3.9,
+        "vicinity": "Beach Road. Harbor Area. Takoradi, Dixcove Road, Takoradi",
+        "location": {
+            "lat": 4.8789628,
+            "lng": -1.7520387
+        }
+    },
+    "ChIJ22TnDCFx5w8RKtreUKLGwJE": {
+        "name": "EL CENTRO",
+        "place_id": "ChIJ22TnDCFx5w8RKtreUKLGwJE",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "V6MX+7H5, Groyne Avenue, Takoradi",
+        "location": {
+            "lat": 4.883128999999999,
+            "lng": -1.7510019
+        }
+    },
+    "ChIJOxpW3sxx5w8RoX4afW0eZRA": {
+        "name": "Mouds Bar and Dine Bar",
+        "place_id": "ChIJOxpW3sxx5w8RoX4afW0eZRA",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7 Nana Panya Avenue, Takoradi",
+        "location": {
+            "lat": 4.881588199999999,
+            "lng": -1.7533419
+        }
+    },
+    "ChIJXcg2G2MN3Q8R3L0LLGN2A3s": {
+        "name": "EmmanuelYeboah",
+        "place_id": "ChIJXcg2G2MN3Q8R3L0LLGN2A3s",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "232/33/334, Huni Valley",
+        "location": {
+            "lat": 5.469501200000001,
+            "lng": -1.9148091
+        }
+    },
+    "ChIJT3sTt98b3g8Rf-Ln_mNMiuQ": {
+        "name": "Asaafa Methodist school park",
+        "place_id": "ChIJT3sTt98b3g8Rf-Ln_mNMiuQ",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6245+5HP, Saltpond",
+        "location": {
+            "lat": 5.2054522,
+            "lng": -0.9910511
+        }
+    },
+    "ChIJ94qh614R3g8RBH686koizs0": {
+        "name": "Ekumfi AKwakrom School park",
+        "place_id": "ChIJ94qh614R3g8RBH686koizs0",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "N1",
+        "location": {
+            "lat": 5.272058099999999,
+            "lng": -0.9899481999999998
+        }
+    },
+    "ChIJg-ju2-wQ3g8RZ_OMPIHq-nE": {
+        "name": "Lake View Point",
+        "place_id": "ChIJg-ju2-wQ3g8RZ_OMPIHq-nE",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6XXR+3Q9, Mfantsiman",
+        "location": {
+            "lat": 5.247668,
+            "lng": -1.0080157
+        }
+    },
+    "ChIJIYl2CVEb3g8R0n4rhDtAfPk": {
+        "name": "Ebu community park",
+        "place_id": "ChIJIYl2CVEb3g8R0n4rhDtAfPk",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "6X2F+Q94, Ebu, Near, Ankaful",
+        "location": {
+            "lat": 5.201894799999999,
+            "lng": -1.0265621
+        }
+    },
+    "ChIJ83--AkQR3g8Rc_bP52ryKGM": {
+        "name": "Mankesim Kumasi station",
+        "place_id": "ChIJ83--AkQR3g8Rc_bP52ryKGM",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 112,
+        "rating": 3.8,
+        "vicinity": "Accra Station Road, Mankessim",
+        "location": {
+            "lat": 5.267811600000001,
+            "lng": -1.0162134
+        }
+    },
+    "ChIJBTDHO5ER3g8ROHp-srjpdAw": {
+        "name": "Araba akwaaba",
+        "place_id": "ChIJBTDHO5ER3g8ROHp-srjpdAw",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "102 Mankessim - Ajumako Road, Mankessim",
+        "location": {
+            "lat": 5.2844701,
+            "lng": -1.0156151
+        }
+    },
+    "ChIJSwnSVssa3g8RTICiu-mGwSQ": {
+        "name": "Victoria Park",
+        "place_id": "ChIJSwnSVssa3g8RTICiu-mGwSQ",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 4.1,
+        "vicinity": "6W2R+2P3, Saltpond",
+        "location": {
+            "lat": 5.2000001,
+            "lng": -1.0582009
+        }
+    },
+    "ChIJt_8UbV0x3g8RoPczcVPyFwU": {
+        "name": "Abaakwaa",
+        "place_id": "ChIJt_8UbV0x3g8RoPczcVPyFwU",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.3,
+        "vicinity": "77J5+M97, Apam",
+        "location": {
+            "lat": 5.2816601,
+            "lng": -0.7415738
+        }
+    },
+    "ChIJz49RHoQF3g8RGkkqSndIzK8": {
+        "name": "Cape coast",
+        "place_id": "ChIJz49RHoQF3g8RGkkqSndIzK8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "123 Accra - Cape Coast Road",
+        "location": {
+            "lat": 5.2177282,
+            "lng": -1.0614507
+        }
+    },
+    "ChIJC-DLSOT53Q8RBC9D_VeYHdc": {
+        "name": "Profractor Hiking Station 2",
+        "place_id": "ChIJC-DLSOT53Q8RBC9D_VeYHdc",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4M7J+V44, Cape Coast",
+        "location": {
+            "lat": 5.1146461,
+            "lng": -1.3196686
+        }
+    },
+    "ChIJn4r6jxf_3Q8RIX8bh3z3jLI": {
+        "name": "Brenu Beach Grasslands",
+        "place_id": "ChIJn4r6jxf_3Q8RIX8bh3z3jLI",
+        "types": [
+            "zoo",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PJC+J62, Cocoa Street, Cape Coast",
+        "location": {
+            "lat": 5.13151,
+            "lng": -1.2794744
+        }
+    },
+    "ChIJ4RqWoDb53Q8R5nUY_UGsGlE": {
+        "name": "Science Quadrangle",
+        "place_id": "ChIJ4RqWoDb53Q8R5nUY_UGsGlE",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 157,
+        "rating": 3.9,
+        "vicinity": "4P84+PJJ, Cape Coast",
+        "location": {
+            "lat": 5.116849199999999,
+            "lng": -1.2934935
+        }
+    },
+    "ChIJf9ehDKz53Q8RphlY7ezK4f0": {
+        "name": "Kwaprow Town park",
+        "place_id": "ChIJf9ehDKz53Q8RphlY7ezK4f0",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Behind Linda Hostel UCC, Cape Coast",
+        "location": {
+            "lat": 5.113670899999999,
+            "lng": -1.2939107
+        }
+    },
+    "ChIJS82sPcP_3Q8R1Z1uXUUqGkI": {
+        "name": "UCC Botanical Garden",
+        "place_id": "ChIJS82sPcP_3Q8R1Z1uXUUqGkI",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 43,
+        "rating": 4,
+        "vicinity": "4P78+3VW, Cape Coast",
+        "location": {
+            "lat": 5.1127356,
+            "lng": -1.2828104
+        }
+    },
+    "ChIJvY9F2o3_3Q8R-k0VRs2f4GI": {
+        "name": "ROWAN",
+        "place_id": "ChIJvY9F2o3_3Q8R-k0VRs2f4GI",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "University of, Cape Coast",
+        "location": {
+            "lat": 5.105358,
+            "lng": -1.2859253
+        }
+    },
+    "ChIJB_qRcOv-3Q8RBr-6krCrWY8": {
+        "name": "Adisadel College Park",
+        "place_id": "ChIJB_qRcOv-3Q8RBr-6krCrWY8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 131,
+        "rating": 3.8,
+        "vicinity": "4P9M+HPM, Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.118958300000001,
+            "lng": -1.2656915
+        }
+    },
+    "ChIJnfPBFJj_3Q8Ryn0f6HQXJoY": {
+        "name": "Sakora Park - Adisadel College (Adisco)",
+        "place_id": "ChIJnfPBFJj_3Q8Ryn0f6HQXJoY",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4,
+        "vicinity": "Adisadel College, Cape Coast",
+        "location": {
+            "lat": 5.117560699999999,
+            "lng": -1.2637291
+        }
+    },
+    "ChIJI2gF7ov-3Q8RS1iGtjIcgJ4": {
+        "name": "Antonio Garden",
+        "place_id": "ChIJI2gF7ov-3Q8RS1iGtjIcgJ4",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 37,
+        "rating": 3.7,
+        "vicinity": "near Nkanfoa 3rd Ridge Junction, Accra - Cape Coast Road, Cape Coast",
+        "location": {
+            "lat": 5.125407300000001,
+            "lng": -1.2547749
+        }
+    },
+    "ChIJv4RPJd_-3Q8R0gINVhcEyU4": {
+        "name": "OLA Roman Catholic Park",
+        "place_id": "ChIJv4RPJd_-3Q8R0gINVhcEyU4",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 12,
+        "rating": 3.5,
+        "vicinity": "50 Beulah Road, Cape Coast",
+        "location": {
+            "lat": 5.1023022,
+            "lng": -1.2739838
+        }
+    },
+    "ChIJ1bBrIST_3Q8RcT0ExZ3Z6N8": {
+        "name": "College Sports Field",
+        "place_id": "ChIJ1bBrIST_3Q8RcT0ExZ3Z6N8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P3Q+74M, Cape Coast",
+        "location": {
+            "lat": 5.102706299999999,
+            "lng": -1.2617677
+        }
+    },
+    "ChIJz92bzOkX3g8RbIcCyKTU17o": {
+        "name": "XECUSTIVE LOUNGE",
+        "place_id": "ChIJz92bzOkX3g8RbIcCyKTU17o",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "N1",
+        "location": {
+            "lat": 5.279662099999999,
+            "lng": -0.9375888000000001
+        }
+    },
+    "ChIJL59GFHAR3g8RXR_QUj-Fc2s": {
+        "name": "PIZZAMAN CHICKENMAN LA",
+        "place_id": "ChIJL59GFHAR3g8RXR_QUj-Fc2s",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "62R8+X2H, Abeka",
+        "location": {
+            "lat": 5.2424262,
+            "lng": -0.9848753000000002
+        }
+    },
+    "ChIJpfanH24X3g8R9JyRMVaH59E": {
+        "name": "Ekotsi",
+        "place_id": "ChIJpfanH24X3g8R9JyRMVaH59E",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.1,
+        "vicinity": "Nana Base road, Ekumfi",
+        "location": {
+            "lat": 5.293764299999999,
+            "lng": -0.9113644999999999
+        }
+    },
+    "ChIJgzl3llMb3g8RV9QFvaxNVTI": {
+        "name": "Pebi Beach Bar and Grill",
+        "place_id": "ChIJgzl3llMb3g8RV9QFvaxNVTI",
+        "types": [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.7,
+        "vicinity": "Pebi, Ankaful",
+        "location": {
+            "lat": 5.2017643,
+            "lng": -1.0225342
+        }
+    },
+    "ChIJzV0JAQQ73g8R_90WhQHxG6Q": {
+        "name": "Barcelona Beach Resort",
+        "place_id": "ChIJzV0JAQQ73g8R_90WhQHxG6Q",
+        "types": [
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "763J+5P, Mumford",
+        "location": {
+            "lat": 5.252908399999999,
+            "lng": -0.7681916999999999
+        }
+    },
+    "ChIJR-uoigQ93g8Ren3Ax0e1sQg": {
+        "name": "King Vivid Ventures",
+        "place_id": "ChIJR-uoigQ93g8Ren3Ax0e1sQg",
+        "types": [
+            "restaurant",
+            "food",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "FA/ECG-065 0558777763, Fawomanye",
+        "location": {
+            "lat": 5.3160454,
+            "lng": -0.8378044
+        }
+    },
+    "ChIJ75i0ZGAR3g8RB1V1MntO52g": {
+        "name": "Eddielog Channel",
+        "place_id": "ChIJ75i0ZGAR3g8RB1V1MntO52g",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Fouth, Obaatanpa LN, Mankessim",
+        "location": {
+            "lat": 5.2718186,
+            "lng": -1.0054963
+        }
+    },
+    "ChIJ2etd38UR3g8RaWxpoCl7Mec": {
+        "name": "La Femme Restaurant",
+        "place_id": "ChIJ2etd38UR3g8RaWxpoCl7Mec",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 163,
+        "rating": 4.2,
+        "vicinity": "Roman hospital street, Mankessim",
+        "location": {
+            "lat": 5.255716299999999,
+            "lng": -1.0177926
+        }
+    },
+    "ChIJ2_pnZrkR3g8REUomVmfcGkQ": {
+        "name": "EMBS PK restaurant",
+        "place_id": "ChIJ2_pnZrkR3g8REUomVmfcGkQ",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7X8Q+V2M, Mankessim - Accra Road, Mankessim",
+        "location": {
+            "lat": 5.2672029,
+            "lng": -1.0124515
+        }
+    },
+    "ChIJ6zUbnmgR3g8RoMA3PbjeGB0": {
+        "name": "Joana's Special Tea Joint",
+        "place_id": "ChIJ6zUbnmgR3g8RoMA3PbjeGB0",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "7X8M+X97, Mankessim",
+        "location": {
+            "lat": 5.2674192,
+            "lng": -1.0165638
+        }
+    },
+    "ChIJje-99FUQ3g8RcUxWjoHDCmk": {
+        "name": "Volta Bar",
+        "place_id": "ChIJje-99FUQ3g8RcUxWjoHDCmk",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 263,
+        "rating": 3.6,
+        "vicinity": "7X7H+CM9, Mankessim",
+        "location": {
+            "lat": 5.263537099999999,
+            "lng": -1.0207633
+        }
+    },
+    "ChIJT_Ckm7ER3g8RsX5TY6LT6uU": {
+        "name": "BigDaddy restaurant",
+        "place_id": "ChIJT_Ckm7ER3g8RsX5TY6LT6uU",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "GCB road Opposite gcb, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJp_uiz60R3g8RV7l7eK2EV4A": {
+        "name": "Mr.merlvins pub & kitchen\u2026",
+        "place_id": "ChIJp_uiz60R3g8RV7l7eK2EV4A",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "netro..top, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJaW7LDLgR3g8RaobbiHkLivE": {
+        "name": "Pizzaman Chickenman - Mankessim",
+        "place_id": "ChIJaW7LDLgR3g8RaobbiHkLivE",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3,
+        "vicinity": "7XFM+4QP, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJ_____wMR3g8RVZ-p8cqIHzE": {
+        "name": "Good Shepherd",
+        "place_id": "ChIJ_____wMR3g8RVZ-p8cqIHzE",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.2,
+        "vicinity": "13 Mankessim - Ajumako Road, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJ4zG3g94R3g8ROHJK6Vf4AXQ": {
+        "name": "Shobiski Restaurant",
+        "place_id": "ChIJ4zG3g94R3g8ROHJK6Vf4AXQ",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "3 BLOCK, 6B, Mankessim",
+        "location": {
+            "lat": 5.248834200000001,
+            "lng": -1.0304281
+        }
+    },
+    "ChIJ-waofacR3g8Ro82gwDcyd9Y": {
+        "name": "Baifikrom",
+        "place_id": "ChIJ-waofacR3g8Ro82gwDcyd9Y",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "7XFM+Q6V, Mankessim",
+        "location": {
+            "lat": 5.2795099,
+            "lng": -1.0118574
+        }
+    },
+    "ChIJ6czYsyQb3g8RXVe5_X2xtyw": {
+        "name": "saltpond pork shop",
+        "place_id": "ChIJ6czYsyQb3g8RXVe5_X2xtyw",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "6X32+P8V, Saltpond",
+        "location": {
+            "lat": 5.2043612,
+            "lng": -1.0492062
+        }
+    },
+    "ChIJ__XpbxIR3g8RzLCqiJOKqAQ": {
+        "name": "THE POINT GUEST HOUSE, BAR AND RESTAURANT",
+        "place_id": "ChIJ__XpbxIR3g8RzLCqiJOKqAQ",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 21,
+        "rating": 3.4,
+        "vicinity": "58 Mankessim - Kumasi Road, Mankessim",
+        "location": {
+            "lat": 5.274621799999999,
+            "lng": -1.0220464
+        }
+    },
+    "ChIJzwlGklcQ3g8RjXDE0m47Up4": {
+        "name": "J. K A Enterprise",
+        "place_id": "ChIJzwlGklcQ3g8RjXDE0m47Up4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 14,
+        "rating": 3.6,
+        "vicinity": "7X5H+58C",
+        "location": {
+            "lat": 5.2579398,
+            "lng": -1.0217412
+        }
+    },
+    "ChIJGbgxVksR3g8RoMtwrWzOnI0": {
+        "name": "Melcom Mankessim",
+        "place_id": "ChIJGbgxVksR3g8RoMtwrWzOnI0",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 376,
+        "rating": 4,
+        "vicinity": "Mankessim",
+        "location": {
+            "lat": 5.2643052,
+            "lng": -1.0203757
+        }
+    },
+    "ChIJPcRlIAAR3g8RkeBnnOH3zkg": {
+        "name": "AJV Easy Shop",
+        "place_id": "ChIJPcRlIAAR3g8RkeBnnOH3zkg",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 60,
+        "rating": 3.6,
+        "vicinity": "Round About, Mankessim",
+        "location": {
+            "lat": 5.2676728,
+            "lng": -1.0190081
+        }
+    },
+    "ChIJ4V2XWgwR3g8R6fKc8IAKTvU": {
+        "name": "Simplex venture's",
+        "place_id": "ChIJ4V2XWgwR3g8R6fKc8IAKTvU",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "7XFM+4QP, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJ65VeHhIR3g8RDspVcPbljFY": {
+        "name": "Bengiro Barbara Shop",
+        "place_id": "ChIJ65VeHhIR3g8RDspVcPbljFY",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "around about, Mankessim",
+        "location": {
+            "lat": 5.2728442,
+            "lng": -1.0155385
+        }
+    },
+    "ChIJ-1TuHwAR3g8R7jR1S2OfIoM": {
+        "name": "Ama Jessica Ventures",
+        "place_id": "ChIJ-1TuHwAR3g8R7jR1S2OfIoM",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 253,
+        "rating": 3.8,
+        "vicinity": "Mankessim",
+        "location": {
+            "lat": 5.2676589,
+            "lng": -1.0191736
+        }
+    },
+    "ChIJGXjrYB0R3g8Rg-yKB0kg28Y": {
+        "name": "Beallyanimarketing center",
+        "place_id": "ChIJGXjrYB0R3g8Rg-yKB0kg28Y",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 2.5,
+        "vicinity": "7XFM+7RG, Accra - Cape Coast Road, Mankessim",
+        "location": {
+            "lat": 5.2731922,
+            "lng": -1.0154197
+        }
+    },
+    "ChIJ9RgZRAAR3g8RTaJKTO0vXAc": {
+        "name": "Sister Esther Business Center",
+        "place_id": "ChIJ9RgZRAAR3g8RTaJKTO0vXAc",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 29,
+        "rating": 3.5,
+        "vicinity": "7X9J+PF5, Mankessim",
+        "location": {
+            "lat": 5.269273699999999,
+            "lng": -1.0187637
+        }
+    },
+    "ChIJ_dGZpKYa3g8Rrgn2vsmara0": {
+        "name": "Honey Centre Saltpond",
+        "place_id": "ChIJ_dGZpKYa3g8Rrgn2vsmara0",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 16,
+        "rating": 3.6,
+        "vicinity": "Accra - Cape Coast Road",
+        "location": {
+            "lat": 5.2211431,
+            "lng": -1.0451126
+        }
+    },
+    "ChIJDVlMwaT-3Q8RfP1E7xVr6PQ": {
+        "name": "Habiba Marigah Ent.",
+        "place_id": "ChIJDVlMwaT-3Q8RfP1E7xVr6PQ",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 114,
+        "rating": 3.6,
+        "vicinity": "4PJF+XGM, Cape Coast",
+        "location": {
+            "lat": 5.132461999999999,
+            "lng": -1.2762003
+        }
+    },
+    "ChIJ1eexnKP-3Q8RPZ0u8vnsdpw": {
+        "name": "KOOLABI ENTERPRISE",
+        "place_id": "ChIJ1eexnKP-3Q8RPZ0u8vnsdpw",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "4PMG+Q9M, Abura Light-ase, Cape Coast",
+        "location": {
+            "lat": 5.1344654,
+            "lng": -1.2740814
+        }
+    },
+    "ChIJx1N4hI353Q8RQQQnVRc1ccQ": {
+        "name": "Payless Mall",
+        "place_id": "ChIJx1N4hI353Q8RQQQnVRc1ccQ",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P74+XRR",
+        "location": {
+            "lat": 5.1149904,
+            "lng": -1.2929719
+        }
+    },
+    "ChIJM4f3mTP53Q8Ru_hcn-lm380": {
+        "name": "Slymart Shopping Centre",
+        "place_id": "ChIJM4f3mTP53Q8Ru_hcn-lm380",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 54,
+        "rating": 3.6,
+        "vicinity": "4P75+W5V, Cape Coast",
+        "location": {
+            "lat": 5.114869499999999,
+            "lng": -1.2920849
+        }
+    },
+    "ChIJg5yeCof_3Q8RFoiafiymZhg": {
+        "name": "Ashfoam Abura Depot",
+        "place_id": "ChIJg5yeCof_3Q8RFoiafiymZhg",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 3.6,
+        "vicinity": "4PHF+WXM, Cape Coast",
+        "location": {
+            "lat": 5.129837999999999,
+            "lng": -1.275064
+        }
+    },
+    "ChIJkUAkS-_53Q8RNZow8iXnFP0": {
+        "name": "Africana Market",
+        "place_id": "ChIJkUAkS-_53Q8RNZow8iXnFP0",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.6,
+        "vicinity": "4P65+482, School bus Rd, Cape Coast",
+        "location": {
+            "lat": 5.1102551,
+            "lng": -1.291719
+        }
+    },
+    "ChIJDyd2m-n_3Q8RadGvjpkOmxg": {
+        "name": "\uc544\ubaa8\uc2dc\uc544 \ucf00\uc774\ud504\ucf54\uc2a4\ud2b8",
+        "place_id": "ChIJDyd2m-n_3Q8RadGvjpkOmxg",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PMM+299, Cape Coast",
+        "location": {
+            "lat": 5.1325417,
+            "lng": -1.2665238
+        }
+    },
+    "ChIJL0Ei9Oj_3Q8R5bbjGWR3DHM": {
+        "name": "Elprime Enterprise",
+        "place_id": "ChIJL0Ei9Oj_3Q8R5bbjGWR3DHM",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4P46+4V3, School bus Road, Cape Coast",
+        "location": {
+            "lat": 5.1052595,
+            "lng": -1.2878389
+        }
+    },
+    "ChIJXbBWHXT_3Q8RhpcCkwBF8D4": {
+        "name": "Unibay",
+        "place_id": "ChIJXbBWHXT_3Q8RhpcCkwBF8D4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4,
+        "vicinity": "University of Cape Coast Cape Coast",
+        "location": {
+            "lat": 5.1052105,
+            "lng": -1.2858947
+        }
+    },
+    "ChIJ86Qd3YL33Q8Rn3X7-keNHSE": {
+        "name": "HANFRED Enterprise",
+        "place_id": "ChIJ86Qd3YL33Q8Rn3X7-keNHSE",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 34,
+        "rating": 3.8,
+        "vicinity": "Ataabadzi",
+        "location": {
+            "lat": 5.105178499999999,
+            "lng": -1.3957421
+        }
+    },
+    "ChIJfSQEvVf_3Q8Rj_QXaYNBbb4": {
+        "name": "Trishdazzlegh",
+        "place_id": "ChIJfSQEvVf_3Q8Rj_QXaYNBbb4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "57 Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.1102019,
+            "lng": -1.256309
+        }
+    },
+    "ChIJU_zE6qc73g8ROg3b9hxLTSU": {
+        "name": "Osei - Betika Community Stadium",
+        "place_id": "ChIJU_zE6qc73g8ROg3b9hxLTSU",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "768P+6Q8, Mumford",
+        "location": {
+            "lat": 5.2659364,
+            "lng": -0.7624213000000001
+        }
+    },
+    "ChIJT_RWeGf_3Q8R0Ez6SJre-Xw": {
+        "name": "St. Lawrence Catholic School Park",
+        "place_id": "ChIJT_RWeGf_3Q8R0Ez6SJre-Xw",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "4PMF+JP5, Cape Coast",
+        "location": {
+            "lat": 5.134019700000001,
+            "lng": -1.2756371
+        }
+    },
+    "ChIJQc87Y_D-3Q8RhPdisMg0EKE": {
+        "name": "Robert Mensah Stadium",
+        "place_id": "ChIJQc87Y_D-3Q8RhPdisMg0EKE",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 152,
+        "rating": 3.8,
+        "vicinity": "70 Jukwa Road, Cape Coast",
+        "location": {
+            "lat": 5.110718899999999,
+            "lng": -1.2577663
+        }
+    },
+    "ChIJ987bBA4H3g8RtVZnDcRwybk": {
+        "name": "BOMAA TOWN PARK",
+        "place_id": "ChIJ987bBA4H3g8RtVZnDcRwybk",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Near Yamoransa model lab 9, Yamoransa",
+        "location": {
+            "lat": 5.165540599999999,
+            "lng": -1.200118
+        }
+    },
+    "ChIJy688_qz-3Q8R-Ucmb2G1Fug": {
+        "name": "Basketball Court",
+        "place_id": "ChIJy688_qz-3Q8R-Ucmb2G1Fug",
+        "types": [
+            "stadium",
+            "premise",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.1341817,
+            "lng": -1.2869218
+        }
+    },
+    "ChIJf6bQrcj-3Q8RrMzg6GLOTQw": {
+        "name": "New Court",
+        "place_id": "ChIJf6bQrcj-3Q8RrMzg6GLOTQw",
+        "types": [
+            "stadium",
+            "premise",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.1161653,
+            "lng": -1.2799634
+        }
+    },
+    "ChIJ4elmal_-3Q8REZ64m70NNTU": {
+        "name": "Mfantsipim Basketball Court",
+        "place_id": "ChIJ4elmal_-3Q8REZ64m70NNTU",
+        "types": [
+            "stadium",
+            "premise",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.117283,
+            "lng": -1.2495855
+        }
+    },
+    "ChIJ3wsYkXM_3g8RQMQxm7gB6C4": {
+        "name": "Okyere Nkwanta",
+        "place_id": "ChIJ3wsYkXM_3g8RQMQxm7gB6C4",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "N 1",
+        "location": {
+            "lat": 5.327362799999999,
+            "lng": -0.8362672
+        }
+    },
+    "ChIJB79_p0r43Q8RstUne4KjDjk": {
+        "name": "Elmina - Java Museum",
+        "place_id": "ChIJB79_p0r43Q8RstUne4KjDjk",
+        "types": [
+            "tourist_attraction",
+            "museum",
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 131,
+        "rating": 3.8,
+        "vicinity": "61/21 Cape Coast - Takoradi Road, Elmina",
+        "location": {
+            "lat": 5.0994989,
+            "lng": -1.3468684
+        }
+    },
+    "ChIJg-S157zd3Q8RUzFqmSmD8Zk": {
+        "name": "Kakum National Park",
+        "place_id": "ChIJg-S157zd3Q8RUzFqmSmD8Zk",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2571,
+        "rating": 4.4,
+        "vicinity": "R82",
+        "location": {
+            "lat": 5.350060399999999,
+            "lng": -1.3819499
+        }
+    },
+    "ChIJZ9haelL-3Q8RItrirlfbyKY": {
+        "name": "Cape Coast Castle",
+        "place_id": "ChIJZ9haelL-3Q8RItrirlfbyKY",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3598,
+        "rating": 4.5,
+        "vicinity": "Victoria Road, Cape Coast",
+        "location": {
+            "lat": 5.103646599999999,
+            "lng": -1.2410604
+        }
+    },
+    "ChIJA-bMLcb53Q8RHHGO-MZfsaI": {
+        "name": "K Dungeon Experience",
+        "place_id": "ChIJA-bMLcb53Q8RHHGO-MZfsaI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "10 Abena Rd, Elmina",
+        "location": {
+            "lat": 5.105337799999999,
+            "lng": -1.3421032
+        }
+    },
+    "ChIJc2a-lpT53Q8RTHWiXXifWdo": {
+        "name": "Kakum estuary",
+        "place_id": "ChIJc2a-lpT53Q8RTHWiXXifWdo",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "23 Cape Coast - Takoradi Road, Elmina",
+        "location": {
+            "lat": 5.09746,
+            "lng": -1.32208
+        }
+    },
+    "ChIJd7QrZhT_3Q8RR0zS4pH3GtI": {
+        "name": "DUAKOR",
+        "place_id": "ChIJd7QrZhT_3Q8RR0zS4pH3GtI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "4P26+3FQ, Cape Coast",
+        "location": {
+            "lat": 5.1002046,
+            "lng": -1.2887589
+        }
+    },
+    "ChIJx3vQuDv43Q8RqDQK5vdCtK8": {
+        "name": "Dutch Cemetery",
+        "place_id": "ChIJx3vQuDv43Q8RqDQK5vdCtK8",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 126,
+        "rating": 3.9,
+        "vicinity": "Elmina",
+        "location": {
+            "lat": 5.0858398,
+            "lng": -1.3530056
+        }
+    },
+    "ChIJg3rP_9D53Q8R1xm-nt1Xtp4": {
+        "name": "Gha Adventures Travel and Tours",
+        "place_id": "ChIJg3rP_9D53Q8R1xm-nt1Xtp4",
+        "types": [
+            "tourist_attraction",
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Elmina",
+        "location": {
+            "lat": 5.093618999999999,
+            "lng": -1.380105
+        }
+    },
+    "ChIJ0-NTQcH_3Q8RgHcgGknE-rg": {
+        "name": "Esther's Joint",
+        "place_id": "ChIJ0-NTQcH_3Q8RgHcgGknE-rg",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "102 Beulah Road, Cape Coast",
+        "location": {
+            "lat": 5.1003633,
+            "lng": -1.2820083
+        }
+    },
+    "ChIJw0_6j8b53Q8RxEYesKf4Uqg": {
+        "name": "Elmina Boat Cruise",
+        "place_id": "ChIJw0_6j8b53Q8RxEYesKf4Uqg",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 23,
+        "rating": 4.8,
+        "vicinity": "Castle, Elmina",
+        "location": {
+            "lat": 5.0828055,
+            "lng": -1.3481258
+        }
+    },
+    "ChIJKZG9Nsv_3Q8RGYIubGmLuDE": {
+        "name": "Fosu Lagoon",
+        "place_id": "ChIJKZG9Nsv_3Q8RGYIubGmLuDE",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "4P5R+6J, Cape Coast",
+        "location": {
+            "lat": 5.10806,
+            "lng": -1.2583983
+        }
+    },
+    "ChIJg3s7qfL_3Q8RbCP1dwvIt78": {
+        "name": "Ghana Heritage Conservation Trust (GHCT)",
+        "place_id": "ChIJg3s7qfL_3Q8RbCP1dwvIt78",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "1515-8916, GPS CH, 10 Garden Street, Cape Coast",
+        "location": {
+            "lat": 5.106391299999999,
+            "lng": -1.2430859
+        }
+    },
+    "ChIJQzRl9rAA3g8RNO9oseJRhCk": {
+        "name": "Fort Nassau",
+        "place_id": "ChIJQzRl9rAA3g8RNO9oseJRhCk",
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 30,
+        "rating": 4.3,
+        "vicinity": "Unnamed Road, Cape Coast",
+        "location": {
+            "lat": 5.130923799999999,
+            "lng": -1.198878
+        }
+    },
+    "ChIJpdoEhYro3Q8RCXffBg11ElY": {
+        "name": "Kakum National Park Entrance Gate Ghana",
+        "place_id": "ChIJpdoEhYro3Q8RCXffBg11ElY",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "store",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 714,
+        "rating": 4.4,
+        "vicinity": "11 Garden Street, Cape Coast",
+        "location": {
+            "lat": 5.3489226,
+            "lng": -1.3839134
+        }
+    },
+    "ChIJ8TIpyKtf5w8R63blUT0tEvI": {
+        "name": "Amotoe",
+        "place_id": "ChIJ8TIpyKtf5w8R63blUT0tEvI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "3G26+HM, Komenda",
+        "location": {
+            "lat": 5.0513775,
+            "lng": -1.4882525
+        }
+    },
+    "ChIJ-wZu6alf5w8RAVhxDZrJR2Y": {
+        "name": "Puupuudo",
+        "place_id": "ChIJ-wZu6alf5w8RAVhxDZrJR2Y",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "3G44+68C, Komenda",
+        "location": {
+            "lat": 5.055555699999999,
+            "lng": -1.4942426
+        }
+    },
+    "ChIJ9b9EcDcE3g8RsKdcwyhMoY4": {
+        "name": "Fort William, Ghana",
+        "place_id": "ChIJ9b9EcDcE3g8RsKdcwyhMoY4",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 141,
+        "rating": 4.2,
+        "vicinity": "Anomabo",
+        "location": {
+            "lat": 5.1743463,
+            "lng": -1.1190462
+        }
+    },
+    "ChIJ8TEjoggF3g8RC_niRYIwTeU": {
+        "name": "Fort Amsterdam",
+        "place_id": "ChIJ8TEjoggF3g8RC_niRYIwTeU",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 206,
+        "rating": 4,
+        "vicinity": "5WR4+XQF, Kormantin- in the, Abandze",
+        "location": {
+            "lat": 5.1924465,
+            "lng": -1.0930705
+        }
+    },
+    "ChIJ7U-k4XH23Q8R2jIwfLu6gRg": {
+        "name": "Brenu Beach Grasslands",
+        "place_id": "ChIJ7U-k4XH23Q8R2jIwfLu6gRg",
+        "types": [
+            "zoo",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4,
+        "vicinity": "3HP8+5C4, Unnamed Road, Komenda",
+        "location": {
+            "lat": 5.0854,
+            "lng": -1.43393
+        }
+    }
+}

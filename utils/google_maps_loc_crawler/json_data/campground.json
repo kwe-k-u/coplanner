@@ -1,0 +1,92 @@
+{
+    "0": {
+        "name": "Prime Centennials",
+        "place_id": "ChIJW00oGdf53Q8R_QU8WloeVhY",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.131762999999999,
+            "lng": -1.2985251
+        }
+    },
+    "1": {
+        "name": "Village des ambassadeurs",
+        "place_id": "ChIJvSlyf4qNwg8R7Ls8z7B0mrU",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "83F4+PG, EHANIA",
+        "location": {
+            "lat": 5.324285999999999,
+            "lng": -2.943728
+        }
+    },
+    "2": {
+        "name": "Champ h\u00e9v\u00e9a",
+        "place_id": "ChIJPcA5-nBbwg8R0tT_K3VxgtY",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "00225",
+        "location": {
+            "lat": 5.474510599999999,
+            "lng": -3.2030756
+        }
+    },
+    "3": {
+        "name": "Eblikro",
+        "place_id": "ChIJW8zOwUMXwg8RtxKZ--0UJ-Y",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "9F52+2WX, Vanhamba",
+        "location": {
+            "lat": 5.357613199999999,
+            "lng": -3.5476476
+        }
+    },
+    "4": {
+        "name": "Eblikro",
+        "place_id": "ChIJW8zOwUMXwg8RtxKZ--0UJ-Y",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "9F52+2WX, Vanhamba",
+        "location": {
+            "lat": 5.357613199999999,
+            "lng": -3.5476476
+        }
+    }
+}

@@ -1,12 +1,7 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
-if (!is_session_user_admin()) {
-    header("Location: ../views/home.php");
-    die();
-}
 
 
 
@@ -23,7 +18,7 @@ if (!is_session_user_admin()) {
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>Admi - Users</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -91,7 +86,7 @@ if (!is_session_user_admin()) {
 
                             <?php
 
-                                $accounts = get_user_accounts();
+                                $accounts = get_users();
 
                                 if (!$accounts){
                                     echo "
@@ -105,12 +100,12 @@ if (!is_session_user_admin()) {
                                     foreach ($accounts as $entry) {
 										$id = $entry["user_id"];
 										$email = $entry["email"];
-										$country = $entry["country"];
+										$country = "";//$entry["country"];
 										$username = $entry['user_name'];
-										$date_joined = format_string_as_date_fn($entry["date_created"]);
-										$phone = $entry["phone_number"];
+										$date_joined = format_string_as_date_fn($entry["date_registered"]);
+										$phone = "";//$entry["phone_number"];
 										$last_login = format_string_as_date_fn($entry["last_login"]);
-										$num_bookings = $entry["booking_count"];
+										$num_bookings = "";//$entry["booking_count"];
                                         $email_verified = $entry['email_verified'] == 1;
 
                                         echo "

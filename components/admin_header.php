@@ -1,7 +1,8 @@
 <?php
+require_once(__DIR__."/../controllers/public_controller.php");
+require_once(__DIR__."/../controllers/admin_controller.php");
 $id = get_session_user_id();
-$name = get_user_accounts($id)["user_name"];
-$role = $_SESSION["user_role"];
+$name = get_user_info($id)["user_name"];
 
 ?>
 <header class="dashboard-header d-none d-lg-flex">
@@ -26,7 +27,6 @@ $role = $_SESSION["user_role"];
 				<?php
 				echo "
                         <h5 class='easygo-fs-3'>$name</h5>
-                        <h6 class='text-orange easygo-fs-5 text-capitalize'>$role</h6>
 						";
 
 				?>

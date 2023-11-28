@@ -202,7 +202,7 @@ require_once(__DIR__ . "/../utils/core.php");
                     </div>
                     <div>
                         <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-5">How long do you want your tour?</h4>
+                            <h4 class="text-center fw-bold mb-5">How type of accomodation would you want?</h4>
                         </div>
                         <div class="row">
                             <div class="col-md-6 p-3">

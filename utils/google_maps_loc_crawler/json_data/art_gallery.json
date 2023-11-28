@@ -1,0 +1,82 @@
+{
+    "0": {
+        "name": "Minta Art",
+        "place_id": "ChIJF0YTxV_53Q8RpG0Fx-W4oBA",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 1,
+        "vicinity": "CC-230-9766, Kwaprow",
+        "location": {
+            "lat": 5.1234506,
+            "lng": -1.3008598
+        }
+    },
+    "1": {
+        "name": "Art Shop",
+        "place_id": "ChIJxa1FKjL53Q8ROXAeLMsyJ-0",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "4P74+6F7, Cape Coast",
+        "location": {
+            "lat": 5.1130328,
+            "lng": -1.2938145
+        }
+    },
+    "2": {
+        "name": "Akan Collective",
+        "place_id": "ChIJCyVXGB753Q8Rjhd4FNXgB6I",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "49 Gouda Street, Elmina",
+        "location": {
+            "lat": 5.0918217,
+            "lng": -1.3455565
+        }
+    },
+    "3": {
+        "name": "BRIGHT AMANOR",
+        "place_id": "ChIJY88ghTP53Q8RNUKEyj36vp4",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "Sankofa Beach, Cape Coast",
+        "location": {
+            "lat": 5.1003788,
+            "lng": -1.2988161
+        }
+    },
+    "4": {
+        "name": "Brefo Fine Arts Studio",
+        "place_id": "ChIJiREcb1L-3Q8R8ZUh49IRpXA",
+        "types": [
+            "art_gallery",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Cape Coast",
+        "location": {
+            "lat": 5.103730700000001,
+            "lng": -1.2418168
+        }
+    }
+}

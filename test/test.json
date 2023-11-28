@@ -1,0 +1,20 @@
+{
+	"ChIJ_30ixI_o3Q8RtycmHuTXMS8": {
+        "name": "International Stingless Bee Centre",
+        "place_id": "ChIJ_30ixI_o3Q8RtycmHuTXMS8",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 75,
+        "rating": 4,
+        "vicinity": "Odumase Abrafo",
+        "location": {
+            "lat": 5.336580999999999,
+            "lng": -1.3808533
+        }
+    }
+}
