@@ -52,22 +52,27 @@ require_once(__DIR__ . "/../utils/core.php");
                                 <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">Add New Date</a>
                                 <ul class="dropdown-menu easygo-fs-4" >
                                     <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center" href="#">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
                                             <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
                                             <span class="me-3">Day One</span>
                                         </a>
                                     </li>
                                     <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center" href="#">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
                                             <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
                                             <span class="me-3">Day Two</span>
                                             <span class="badge d-inline text-white bg-blue easygo-fs-6 text-uppercase">Selected</span>
                                         </a>
                                     </li>
                                     <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center" href="#">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
                                             <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
                                             <span class="me-3">Day Three</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 d-flex align-items-center">
+                                        <a class="dropdown-item" href="#">
+                                            <span class="text-orange">Add extra day</span>
                                         </a>
                                     </li>
                                 </ul>
