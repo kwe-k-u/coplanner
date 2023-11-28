@@ -45,7 +45,34 @@ require_once(__DIR__ . "/../utils/core.php");
                             <span class="easygo-editable-text">Untitled</span>/Day one
                         </div>
                         <div class="d-none d-lg-block">
-                            <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a>
+                            <div class="dropdown">
+                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown button
+                                </button> -->
+                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">Add New Date</a>
+                                <ul class="dropdown-menu easygo-fs-4" >
+                                    <li class="px-2 d-flex align-items-center">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center" href="#">
+                                            <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
+                                            <span class="me-3">Day One</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 d-flex align-items-center">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center" href="#">
+                                            <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
+                                            <span class="me-3">Day Two</span>
+                                            <span class="badge d-inline text-white bg-blue easygo-fs-6 text-uppercase">Selected</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 d-flex align-items-center">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center" href="#">
+                                            <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
+                                            <span class="me-3">Day Three</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a> -->
                         </div>
                     </div>
                 </div>
