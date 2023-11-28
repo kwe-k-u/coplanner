@@ -94,7 +94,7 @@ require_once(__DIR__ . "/../utils/core.php");
                     <!--- ================================ -->
                     <!--- ================================ -->
                     <!-- sidebar [start] -->
-                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar easygo-scroll-bar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
+                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
                         <div class="bg-blue position-relative" style="height: 2rem">
                             <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler" style="right: -2.8rem; top: 0" data-target="itinerary-sidebar">
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
@@ -102,7 +102,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
                             </button>
                         </div>
-                        <div class="bg-white">
+                        <div class="bg-white easygo-scroll-bar" style="height: 48rem; overflow-y: auto; overflow-x:hidden;">
                             <div class=" py-3">
                                 <h5 class="easygo-fw-1 py-2 sec-title"><span class="expand-d-none">Itinerary</span> <span>Overview</span></h5>
                                 <div class="ss-section">
@@ -230,7 +230,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             <!--- ================================ -->
                             <!-- Itinerary Exp [start] -->
                             <div class="col-lg-6 p-3">
-                                <div class="bg-white p-5 box-shadow-3">
+                                <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                     <h3 class="easygo-fw-1">
                                         Day One
                                     </h3>
@@ -340,7 +340,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="itinerary-poll-tab-pane" role="tabpanel" aria-labelledby="itinerary-poll-tab-pane">
-                                        <div class="bg-white p-5 box-shadow-3">
+                                        <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                             <h3 class="easygo-fw-1">
                                                 Itinerary Poll
                                             </h3>
@@ -396,7 +396,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="sentiment-tab-pane" role="tabpanel" aria-labelledby="sentiment-tab-pane">
-                                        <div class="bg-white p-5 box-shadow-3">
+                                        <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                             <div>
                                                 <h3 class="m-0">
                                                     Destination Suggestions
