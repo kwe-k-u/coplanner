@@ -8,6 +8,7 @@ var description_field = document.getElementById("description");
 var location_field = document.getElementById("location");
 var country_field = document.getElementById("country");
 var gps_field = document.getElementById("cordinates");
+var rating_field = document.getElementById("rating");
 // var owner_name_field = document.getElementById("owner_name");
 // var owner_number_field = document.getElementById("owner_number");
 // var website_field = document.getElementById("website");
@@ -47,6 +48,20 @@ function select_destination_utility(select){
 	console.log("added")
 }
 
+function insert_utility_element(value,id=null){
+
+	var newNode = document.createElement("li");
+
+	newNode.setAttribute("onclick", "removeExtLink(this)");
+	if(id != null){
+		newNode.setAttribute("id", id);
+	}
+	// newNode.setAttribute("onclick", "selectedActivityClick()");
+	newNode.innerText = value;
+	utility_list.appendChild(newNode);
+
+}
+
 // Switches the display of the location form. If the location edit is tapped
 // it prefills the form with the existing information
 function add_location_toggle(location_id = null){
@@ -67,6 +82,7 @@ function add_location_toggle(location_id = null){
 	country_field.value = "";
 	gps_field.value = "";
 	activity_list.innerHTML = "";
+
 	activity_field.value = "";
 	ext_img_field.value = "";
 	ext_img_list.innerHTML = "";
@@ -96,50 +112,48 @@ function add_location_toggle(location_id = null){
 		 // prefill fields with location information
 		//get location info
 		send_request("POST",
-		"processors/admin_processor.php/get_destination_info?id="+location_id,
+		"processors/processor.php/get_destination_info?id="+location_id,
 		{},
 		(response)=>{
 			// alert(response);
-			const data = response["data"];
+			const data = response["data"]["data"];
 
 			// document.getElementById("name");
 			name_field.value = data["destination_name"];
-			description_field.value = data["destination_description"];
-			location_field.value = data["destination_location"];
-			country_field.value = data["country"];
-			// owner_name.value = data[""];
-			// owner_number_field.value = data[""];
-			// website_field.value = data[""];
-			// tiktok_field.value = data[""];
-			// instagram_field.value = data[""];
-			// facebook_field.value = data[""];
-			data["socials"].forEach(element => {
-				switch(element.social_type){
-					case "instagram":
-						instagram_field.value = element.social_link;
-						break;
-					case "twitter":
-						twitter_field.value = element.social_link;
-						break;
-					case "facebook":
-						facebook_field.value = element.social_link;
-						break;
-					case "tiktok":
-						tiktok_field.value = element.social_link;
-						break;
-					case "website":
-						website_field.value = element.social_link;
-						break;
-					default:
-						console.log("unknown ");
-				}
-			});
+			description_field.value = "";//data["destination_description"];
+			location_field.value = data["location"];
+			country_field.value = "";//data["country"];
+			gps_field.value = data["longitude"].toString()+","+ data["latitude"].toString();
+			rating_field.value = data["rating"];
+			// data["socials"].forEach(element => {
+			// 	switch(element.social_type){
+			// 		case "instagram":
+			// 			instagram_field.value = element.social_link;
+			// 			break;
+			// 		case "twitter":
+			// 			twitter_field.value = element.social_link;
+			// 			break;
+			// 		case "facebook":
+			// 			facebook_field.value = element.social_link;
+			// 			break;
+			// 		case "tiktok":
+			// 			tiktok_field.value = element.social_link;
+			// 			break;
+			// 		case "website":
+			// 			website_field.value = element.social_link;
+			// 			break;
+			// 		default:
+			// 			console.log("unknown ");
+			// 	}
+			// });
 
 			for (let i = 0; i < data["activities"].length; i++) {
 				insert_location_element(data["activities"][i]["activity_name"], data["activities"][i]["activity_id"]);
 			}
-			//TODO:: Insert social credentials
 
+			for(let i=0; i < data["utilities"].length; i++){
+				insert_utility_element(data["utilities"][i]["type_name"],data["utilities"][i]["type_id"]);
+			}
 
 
 			//set submit button to insert
@@ -161,26 +175,22 @@ function expand_location_info(id) {
 	var title = document.getElementById("location-info-title");
 	var description = document.getElementById("location-info-desc");
 
-	var payload = {
-		"action": "get_site_by_id",
-		"destination_id": id
-	};
 
 
 	send_request(
 		"POST",
-		"processors/processor.php",
-		payload,
+		"processors/processor.php/get_destination_info?id="+id,
+		{},
 		(response) => {
-			var json = response["data"];
+			var json = response["data"]["data"];
 			var activity = json["activities"];
-			var image_list = json.media;
 
 			title.innerText = json["destination_name"];
-			description.innerText = json["destination_description"];
+			description.innerText = "No information available";//json["destination_description"];
 
-			reset_location_info_images(image_list);
-			//TODO:: implement activity display
+			// var image_list = json.media;
+			// reset_location_info_images(image_list);
+
 			reset_location_info_activities(activity);
 			// $(".activity-span").on("click", activity_click);
 		}
@@ -430,7 +440,6 @@ function create_result_tile(map) {
 }
 
 function get_utilities_list(){
-	utility_list;
 	var utilities = {};
 	for (var ut_index = 0; ut_index < utility_list.children.length; ut_index++){
 		var child = utility_list.children[ut_index];
@@ -469,6 +478,7 @@ function create_site(form){
 		"processors/processor.php/" +(form.loc_id.value == "" ? "create_destination" : "edit_destination"),
 		payload,
 		(response) => {
+			console.log(response);
 			alert(response['data']['msg']);
 		},
 		form.images.files

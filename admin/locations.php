@@ -92,7 +92,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
 							$destinations = get_destinations();
 
-							foreach (array_slice($destinations,0,5) as $site) {
+							foreach ($destinations as $site) {
 								$site_id = $site["destination_id"];
 								$destination_name = $site["destination_name"];
 								$destination_location = $site["location"];
@@ -139,11 +139,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 								$site_id = $site["destination_id"];
 								$site = get_destination_by_id($site_id);
 								$destination_name = $site["destination_name"];
-								$site_desc = $site["destination_description"];
-								$destination_location = $site["destination_location"];
-								$site_country = $site["country"];
-								$site_activities = $site["activities"];
-								$site_media = $site["media"];
+								$site_desc = "";//$site["destination_description"];
+								$destination_location = $site["location"];
+								$site_country = "";//$site["country"];
+								$site_activities = get_destination_activities($site_id);
+								$site_media = array();//$site["media"];
 							} else {
 
 								$site = "";
@@ -211,11 +211,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 									Destination Profile
 								</button>
 							</li>
-							<li class="nav-item" role="presentation">
+							<!-- <li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100 " id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-media" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
 									Destination media
 								</button>
-							</li>
+							</li> -->
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100" id="add-location-activities-tab" data-bs-toggle="tab" data-bs-target="#add-location-activities" type="button" role="tab" aria-controls="add-location-activities" aria-selected="false">
 									Destination Activities
