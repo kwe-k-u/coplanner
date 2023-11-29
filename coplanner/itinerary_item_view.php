@@ -574,7 +574,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                                                 </div>
                                                             </div>
                                                             <div class='py-2 bg-lblue-1 text-blue text-center'>
-                                                                <a href='#'>--- View more ---</a>
+                                                                <a href='#' data-bs-toggle='modal' data-bs-target='#dest-1-modal'>--- View more ---</a>
                                                             </div>
                                                         </div>
                                                         ";
@@ -793,6 +793,141 @@ require_once(__DIR__ . "/../utils/core.php");
         <?php require_once(__DIR__ . "/../components/footer.php") ?>
     </div>
     <!-- main content end -->
+
+    <!--- ================================ -->
+    <!-- Destination Modals [start] -->
+    <div class="modal fade" id="dest-1-modal" tabindex="-1" aria-labelledby="dest-1-modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-md-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Destination Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body easygo-scroll-bar">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="p-3">
+                                    <div class="d-flex gap-2">
+                                        <div class="flex-grow-1">
+                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%">
+                                        </div>
+                                        <div class="d-flex flex-column gap-2 flex-grow-1">
+                                            <div class="flex-grow-1">
+                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 150px;">
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 150px;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="my-3">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="m-0 easygo-fw-1">Shai Hills</h2>
+                                                    <div>Greater Accra, Ghana</div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h2 class="easygo-fw-1 text-end">4.3</h2>
+                                                </div>
+                                            </div>
+                                            <div class="text-blue easygo-fs-2 py-2">
+                                                <i class="fa-solid fa-wifi"></i> &nbsp;
+                                                <i class="fa-solid fa-bath"></i> &nbsp;
+                                                <i class="fa-solid fa-person-swimming"></i>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <p class="easygo-fs-5 mb-0">Click on activity to add to itinerary</p>
+                                            <div class="d-flex flex-wrap">
+                                                <div class="mt-2 easygo-fw-4 easygo-fs-2">
+                                                    <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-3">
+                                    <h4 class="easygo-fw-1">Customer reviews from Google</h4 class="easygo-fw-1">
+                                    <div class="my-4">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h5 class="text-start">Customer Name</h5>
+                                            </div>
+                                            <div class="col-5">
+                                                <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            Some customer reviews about how the places were and
+                                            stuff about why they want to go back
+                                        </p>
+                                    </div>
+                                    <div class="my-4">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h5 class="text-start">Customer Name</h5>
+                                            </div>
+                                            <div class="col-5">
+                                                <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            Some customer reviews about how the places were and
+                                            stuff about why they want to go back
+                                        </p>
+                                    </div>
+                                    <div class="my-4">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h5 class="text-start">Customer Name</h5>
+                                            </div>
+                                            <div class="col-5">
+                                                <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            Some customer reviews about how the places were and
+                                            stuff about why they want to go back
+                                        </p>
+                                    </div>
+                                    <div class="my-4">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                <h5 class="text-start">Customer Name</h5>
+                                            </div>
+                                            <div class="col-5">
+                                                <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            Some customer reviews about how the places were and
+                                            stuff about why they want to go back
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 mb-2 ps-3">
+                            Haven't decided on activities ? <a href="#">Click to add a destination</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- ================================ -->
+    <!-- Destination Modals [end] -->
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
