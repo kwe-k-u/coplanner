@@ -172,25 +172,32 @@ DELIMITER ;
 
 DROP FUNCTION IF EXISTS add_destination_activity;
 DELIMITER //
--- Function adds an activity to the list of available activites at a destination
+-- Function adds an activity to the list of available activities at a destination
 CREATE FUNCTION add_destination_activity (in_destination_id VARCHAR(100), in_activity_name VARCHAR(100), in_price FLOAT)
 RETURNS TINYINT(1)
 BEGIN
    DECLARE act_id INT;
-   DECLARE result TINYINT(1);
-   SET result = 0;
-   SET act_id = -1;
+   DECLARE temp INT;
 
    SELECT activity_id INTO act_id FROM activities WHERE activity_name = in_activity_name;
 
-   IF act_id = -1 THEN
+   IF act_id IS NULL THEN
       INSERT INTO activities (activity_name) VALUES (in_activity_name);
       SET act_id = LAST_INSERT_ID();
    END IF;
+
+   /*Check if the activity destination pair does not exist. Terminate if it does*/
+   select activity_id into temp FROM destination_activities as da
+    where da.destination_id = in_destination_id and da.activity_id = act_id;
+   IF temp IS NOT NULL THEN
+    return 0;
+   END IF;
+
+
    INSERT INTO destination_activities (destination_id, activity_id, price, date_updated)
    VALUES (in_destination_id, act_id, in_price, CURRENT_TIMESTAMP);
 
-   RETURN result;
+   RETURN 1;
 END //
 
 DELIMITER ;
@@ -370,11 +377,12 @@ DELIMITER ;
 DROP FUNCTION IF EXISTS add_destination_utility;
 DELIMITER //
 CREATE FUNCTION add_destination_utility(
-  destination_id VARCHAR(150),
+  in_destination_id VARCHAR(150),
   in_utility VARCHAR(60)
 ) RETURNS TINYINT
 BEGIN
   DECLARE utility_id INT;
+  DECLARE temp INT;
 
   SELECT type_id INTO utility_id FROM types_of_utility WHERE type_id = in_utility OR type_name = in_utility limit 1;
 
@@ -383,8 +391,15 @@ BEGIN
     SELECT type_id INTO utility_id FROM types_of_utility WHERE type_id = in_utility OR type_name = in_utility limit 1;
   END IF;
 
+  /*Check and terminate if the destination_utility pair already exists*/
+  SELECT type_id into temp FROM destination_utilities AS du
+  where du.destination_id = in_destination_id AND du.type_id = utility_id;
+
+  IF temp IS NOT NULL THEN
+    return 0;
+  END IF;
   INSERT INTO destination_utilities(destination_id, type_id, rating)
-  VALUES (destination_id, utility_id, 3);
+  VALUES (in_destination_id, utility_id, 3);
 
   RETURN 1;
 END //
@@ -415,8 +430,7 @@ DROP PROCEDURE IF EXISTS get_destinations;
 DELIMITER //
 CREATE PROCEDURE get_destinations()
 begin
-  SELECT * from destinations;
-
+  SELECT * from destinations ORDER BY num_ratings DESC;
 end //
 DELIMITER ;
 
@@ -424,7 +438,7 @@ DROP PROCEDURE IF EXISTS get_destination_activities;
 DELIMITER //
 CREATE PROCEDURE  get_destination_activities(in_destination_id VARCHAR(100))
 BEGIN
-SELECT * from destination_activites as da left join activities as a on a.activity_id = da.activity_id where da.destination_id = in_destination_id;
+SELECT * from destination_activities as da left join activities as a on a.activity_id = da.activity_id where da.destination_id = in_destination_id;
 END //
 DELIMITER ;
 
