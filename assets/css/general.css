@@ -315,6 +315,15 @@ svg {
   color: white !important;
 }
 
+/* colors for checkbox */
+.checkbox-checked-blue:checked{
+  background-color: var(--easygo-blue);
+}
+
+.checkbox-checked-gray:checked{
+  background-color: var(--easygo-gray-1);
+}
+
 /** scroll bar **/
 .easygo-scroll-bar::-webkit-scrollbar {
   width: 5px;

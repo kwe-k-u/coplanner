@@ -565,7 +565,6 @@ class EditableText {
     this.inputEl.value = this.currentValue;
     this.inputEl.style.display = "none";
     this.element.appendChild(this.inputEl);
-    console.log(this.element);
 
     // adding click event listener to element
     this.element.addEventListener("click", () => {
