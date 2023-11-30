@@ -76,7 +76,11 @@ require_once(__DIR__ . "/../utils/core.php");
         <!-- navbar [end] -->
         <!--- ================================ -->
         <main class="container" style="height: 100vh; padding-top: 9rem; padding-bottom: 3rem;">
+            <div class="loader"></div>
             <div id="setup-pages" class="eh-transition-box h-100">
+
+                <!--- ================================ -->
+                <!-- Curation method  [start] -->
                 <section id="tool-selection-page" class="active eh-transition-page">
                     <div class="mb-5">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tool-selection-page" data-transit-parent="tool-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
@@ -101,8 +105,8 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-md-6 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" name="tool-select" id="#scratch-select">
-                                    <label class="easygo-icon-btn" for="#scratch-select">
+                                    <input type="radio" name="tool-select" id="scratch-select">
+                                    <label class="easygo-icon-btn" for="scratch-select">
                                         <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M26.6665 142.667V17.3333C26.6665 16.2725 27.0879 15.2551 27.8381 14.5049C28.5882 13.7548 29.6056 13.3333 30.6665 13.3333H108.347C109.407 13.3343 110.424 13.7563 111.173 14.5067L132.16 35.4933C132.533 35.866 132.829 36.3088 133.03 36.7962C133.231 37.2836 133.334 37.806 133.333 38.3333V142.667C133.333 143.192 133.23 143.712 133.029 144.197C132.828 144.683 132.533 145.124 132.162 145.495C131.79 145.867 131.349 146.161 130.864 146.362C130.379 146.563 129.858 146.667 129.333 146.667H30.6665C30.1412 146.667 29.6211 146.563 29.1358 146.362C28.6505 146.161 28.2095 145.867 27.8381 145.495C27.4666 145.124 27.172 144.683 26.971 144.197C26.77 143.712 26.6665 143.192 26.6665 142.667Z" stroke="#1204B5" stroke-width="6.25" stroke-linecap="round" stroke-linejoin="round" />
                                             <path d="M106.667 13.3333V36C106.667 37.0609 107.088 38.0783 107.838 38.8284C108.588 39.5786 109.606 40 110.667 40H133.333" stroke="#1204B5" stroke-width="6.25" stroke-linecap="round" stroke-linejoin="round" />
@@ -118,6 +122,11 @@ require_once(__DIR__ . "/../utils/core.php");
                         </div>
                     </div>
                 </section>
+                <!-- Curation method [end] -->
+                <!--- ================================ -->
+
+                <!--- ================================ -->
+                <!-- Itinerary type [start] -->
                 <section id="tour-type-selection-page" class="eh-transition-page">
                     <div class="mb-4">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tool-selection-page" data-transit-parent="tour-type-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
@@ -157,6 +166,10 @@ require_once(__DIR__ . "/../utils/core.php");
                         </div>
                     </div>
                 </section>
+                <!-- Itinerary type[end] -->
+                <!--- ================================ -->
+                <!--- ================================ -->
+                <!-- Duration [start] -->
                 <section id="duration-selection-page" class="eh-transition-page">
                     <div class="mb-4">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tour-type-selection-page" data-transit-parent="duration-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
@@ -196,6 +209,11 @@ require_once(__DIR__ . "/../utils/core.php");
                         </div>
                     </div>
                 </section>
+                <!-- Duration [end] -->
+                <!--- ================================ -->
+
+                <!--- ================================ -->
+                <!-- Accommodation selection [start] -->
                 <section id="accomodation-selection-page" class="eh-transition-page">
                     <div class="mb-4">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="accomodation-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
@@ -227,6 +245,12 @@ require_once(__DIR__ . "/../utils/core.php");
                         </div>
                     </div>
                 </section>
+                <!-- Accommodation selection [end] -->
+                <!--- ================================ -->
+
+
+                <!--- ================================ -->
+                <!-- Itinerary theme [start] -->
                 <section id="activities-selection-page" class="eh-transition-page">
                     <div class="mb-4">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="accomodation-selection-page" data-transit-parent="activities-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
@@ -355,6 +379,11 @@ require_once(__DIR__ . "/../utils/core.php");
                         </div>
                     </div>
                 </section>
+                <!-- Itinerary theme [end] -->
+                <!--- ================================ -->
+
+                <!--- ================================ -->
+                <!-- Budget [start] -->
                 <section id="budget-selection-page" class="eh-transition-page">
                     <div class="mb-5">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="activities-selection-page" data-transit-parent="budget-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
@@ -362,17 +391,6 @@ require_once(__DIR__ . "/../utils/core.php");
                     <div>
                         <div class="mt-auto">
                             <h4 class="text-center fw-bold mb-3">What&apos;s your budget ?</h4>
-                            <div class="d-flex justify-content-center">
-                                <div class="dropdown d-flex align-items-center gap-2 border border-1 border-blue rounded-1 px-2">
-                                    GHS
-                                    <button class="btn btn-secondary dropdown-toggle dropdown-toggle-alt bg-transparent border-0 text-black d-flex align-items-center" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="#">3000</a></li>
-                                        <li><a class="dropdown-item" href="#">100</a></li>
-                                        <li><a class="dropdown-item" href="#">20</a></li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4 p-3">
@@ -401,10 +419,12 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page" style="max-width: 300px;"  onclick="goto_page('coplanner/itinerary_item_view.php')">Next</button>
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page" style="max-width: 300px;">Next</button>
                         </div>
                     </div>
                 </section>
+                <!-- Budget [end] -->
+                <!--- ================================ -->
             </div>
         </main>
     </div>
@@ -420,6 +440,7 @@ require_once(__DIR__ . "/../utils/core.php");
 
     <script src="../assets/js/functions.js"></script>
     <script>
+        preference_selection = {}
         class EhPageTransition {
             constructor(container_id) {
                 this.container = document.getElementById(container_id);
@@ -433,17 +454,83 @@ require_once(__DIR__ . "/../utils/core.php");
                     page.querySelectorAll(".eht-btn").forEach(btn => {
                         btn.addEventListener("click", event => {
                             let parent = event.target.getAttribute("data-transit-parent");
+                            let selected = get_section_responses(parent);
+                            if(selected == {} && !btn.innerHTML.includes("Back")){
+                                alert("Please make a selection");
+                                return null;
+                            }
+                            if(parent == "tool-selection-page"){
+                                if(selected == "scratch-select"){
+                                    goto_page("coplanner/itinerary_item_view.php");
+                                    return null;
+                                }
+                            }
+
                             parent = document.getElementById(parent);
                             parent.classList.remove("active");
                             let target = event.target.getAttribute("data-transit-target");
                             target = document.getElementById(target)
                             target.classList.add("active");
-                        })
+
+                            if(parent != "tool-selection-page"){
+                                preference_selection = Object.assign({}, preference_selection, selected);
+                            }
+
+                            // if we've reached the end of the form, send the preference_selection to the AI to generate the itinerary
+                            if(parent == target){
+                                show_loader();
+                                console.log(preference_selection);
+                            }
+
+                        });
                     })
                 })
             }
         }
 
+        function get_section_responses(data_parent){
+            var result = {};
+            switch(data_parent){
+                case "tool-selection-page":
+                    result = get_selected_radio("tool-select");
+                    break;
+                case "tour-type-selection-page":
+                    result["type"] = get_selected_radio("tour-type-selection")
+                    break;
+                case "duration-selection-page":
+                    result["duration"] = get_selected_radio("tour-duration-selection");
+                    break;
+                case "accomodation-selection-page":
+                    result["accommodation"] = get_selected_radio("tour-accomodation-selection");
+                    break;
+                case "activities-selection-page":
+                    result["acitivities"] = get_selected_checkboxes("activity-selection");
+                    break;
+                case "budget-selection-page":
+                    result["budget"] = get_selected_radio("budget-range-selection");
+                    break;
+                default:
+                    console.log("unknown case",$data_parent);
+                    result = null;
+            }
+            return result;
+        }
+
+        function get_selected_checkboxes(name) {
+            const checkboxes = document.querySelectorAll(`input[type="checkbox"][name="${name}"]:checked`);
+            const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+            return selectedValues;
+        }
+
+
+        function get_selected_radio(name){
+            const radioButtons = document.getElementsByName(name);
+                    for (let i = 0; i < radioButtons.length; i++) {
+                        if (radioButtons[i].checked) {
+                            return radioButtons[i].id;
+                        }
+                    }
+        }
         transitioner = new EhPageTransition("setup-pages")
     </script>
 </body>

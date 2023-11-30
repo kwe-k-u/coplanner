@@ -81,7 +81,7 @@ require_once(__DIR__ . "/../controllers/admin_controller.php");
                     </div> -->
                     <div class="d-flex gap-2 flex-xs-column flex-md-row">
                         <div class="">
-                            <button class="easygo-btn-5" onclick="goto_page('curator/create_a_tour.php')">Create Tour</button>
+                            <button class="easygo-btn-5" onclick="goto_page('coplanner/itinerary_item_view.php')">Create Itinerary</button>
                         </div>
                         <div class="">
                             <button class="easygo-btn-5" onclick="goto_page('admin/locations.php')">Add Location</button>
