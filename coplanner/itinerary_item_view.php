@@ -808,16 +808,16 @@ require_once(__DIR__ . "/../utils/core.php");
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="p-3">
-                                    <div class="d-flex gap-2">
-                                        <div class="flex-grow-1">
-                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%">
+                                    <div class="d-flex gap-2" style="max-height: 200px;">
+                                        <div class="" style="flex:1;">
+                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%;">
                                         </div>
-                                        <div class="d-flex flex-column gap-2 flex-grow-1">
-                                            <div class="flex-grow-1">
-                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 150px;">
+                                        <div class="d-flex flex-column justify-content-center gap-2"style="flex:1;">
+                                            <div style="max-height: 50%;">
+                                                <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
                                             </div>
-                                            <div class="flex-grow-1">
-                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 150px;">
+                                            <div style="max-height: 50%;">
+                                                <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
                                             </div>
                                         </div>
                                     </div>
