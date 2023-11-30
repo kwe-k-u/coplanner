@@ -354,7 +354,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="itinerary-poll-tab-pane" role="tabpanel" aria-labelledby="itinerary-poll-tab-pane">
+                                    <div class="tab-pane fade" id="itinerary-poll-tab-pane" role="tabpanel" aria-labelledby="itinerary-poll-tab-pane">
                                         <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                             <h3 class="easygo-fw-1">
                                                 Itinerary Poll
@@ -598,7 +598,7 @@ require_once(__DIR__ . "/../utils/core.php");
                 </div>
                 <section class="py-3">
                     <div class="d-flex justify-content-center mt-3">
-                        <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5">Finalize</button>
+                        <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5" onclick="goto_page('coplanner/coplanner_invoice.php')">Finalize</button>
                     </div>
                 </section>
             </div>
@@ -797,10 +797,10 @@ require_once(__DIR__ . "/../utils/core.php");
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <!--  -->
-    <!-- <script src="../assets/js/functions.js"></script> -->
+    <script src="../assets/js/functions.js"></script>
     <script>
         [].slice
             .call(document.querySelectorAll("button[data-proxy-target]"))

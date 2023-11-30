@@ -178,7 +178,26 @@
 				add_destination_utility($destination_id,$value);
 			}
 			send_json(array("msg"=> "Updated"));
+			die();
+		case "/new_itinerary_request":
+			// if itinerary_id is true, then admin is adding a new template
+			$directory = $_POST["itinerary_id"] == true
+			?"../uploads/template_weights/" //Admin entry
+			:"../uploads/user_itinerary_preference/"; // User creation
+			$preferences = $_POST["preference"];
+			$fileName = $_POST["itinerary_id"] ? $_POST["itinerary_id"]: generate_id();
+			$filePath = $directory . $fileName.".json";
+			// Create the directory if it doesn't exist
+			if (!file_exists($directory)) {
+				mkdir($directory, 0777, true); // Change the permission mode as needed
+			}
 
+			// Create a unique file name (you can modify this logic as needed)
+
+			// Save the JSON data to a file
+			$fileSaved = file_put_contents($filePath, json_encode($preferences));
+
+			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

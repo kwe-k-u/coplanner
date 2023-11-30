@@ -101,7 +101,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                         <h3>Build with Coplanner</h3>
                                     </label>
                                 </div>
-                                <h4 class="text-center pt-4">Build with assistance from out AI</h4>
+                                <h4 class="text-center pt-4">Build with assistance from our AI</h4>
                             </div>
                             <div class="col-md-6 p-3">
                                 <div class="easygo-radio-btn-1">
@@ -480,6 +480,15 @@ require_once(__DIR__ . "/../utils/core.php");
                             if(parent == target){
                                 show_loader();
                                 console.log(preference_selection);
+                                send_request("POST",
+                                "processors/processor.php/new_itinerary_request",
+                                {"preference":preference_selection,"itinerary_id":url_params("itinerary_id")},
+                                (response)=>{
+                                    if(!url_params("itinerary_id")){
+                                        //If action not admin, show recommendations
+                                        goto_page("coplanner/recommendations.php?id="+response.data.id);
+                                    }
+                                });
                             }
 
                         });
