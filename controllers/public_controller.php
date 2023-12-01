@@ -60,7 +60,12 @@
 
 	function get_destinations_by_name($name = null){
 		$public = new public_class();
-		return $public->get_destinations_by_name($name);
+		$destinations = $public->get_destinations_by_name($name);
+		for ($i = 0; $i < sizeof($destinations); $i++) {
+			$value = $destinations[$i];
+			$destinations[$i]["activities"] = get_destination_activities($value["destination_id"]);
+		}
+		return $destinations;
 	}
 
 	function get_user_info($user_id){
@@ -92,4 +97,14 @@
 		$public = new public_class();
 		return $public->get_itinerary_collaborators($itinerary_id);
 	}
+
+	function get_itinerary_day_info($day_id){
+		$public = new  public_class();
+		$data = $public->get_itinerary_day_info($day_id);
+		$data["activities"] = $public->get_itinerary_day_activities($day_id);
+		$data["destinations"] = $public->get_itinerary_day_destinations($day_id);
+		return $data;
+	}
+
+
 ?>

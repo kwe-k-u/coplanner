@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__."/../controllers/public_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,43 +43,47 @@ require_once(__DIR__ . "/../utils/core.php");
                 <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
-                            <span class="easygo-editable-text">Untitled</span>/Day one
+                            <span class="easygo-editable-text">Untitled</span>/ <span class = 'selected-day-display'>Day one</span>
                         </div>
+
+                        <!--- ================================ -->
+                    <!-- Day selection button[start] -->
                         <div class="d-none d-lg-block">
                             <div class="dropdown">
-                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown button
-                                </button> -->
-                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">Add New Date</a>
-                                <ul class="dropdown-menu easygo-fs-4" >
+                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">Select Day</a>
+                                <ul class="dropdown-menu easygo-fs-4" id='day-dropdown-options'>
                                     <li class="px-2 d-flex align-items-center">
                                         <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
                                             <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
-                                            <span class="me-3">Day One</span>
+                                            <span class="me-3 day-span">Day One</span>
+                                            <span id="selected-dropdown-label" class="badge d-inline text-white bg-blue easygo-fs-6 text-uppercase">Selected</span>
+                                        </a>
+                                    </li>
+                                    <li class="px-2 d-flex align-items-center">
+                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
+                                            <span class="text-blue me-1">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </span>
+                                            <span class="me-3 day-span">Day Two</span>
                                         </a>
                                     </li>
                                     <li class="px-2 d-flex align-items-center">
                                         <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
                                             <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
-                                            <span class="me-3">Day Two</span>
-                                            <span class="badge d-inline text-white bg-blue easygo-fs-6 text-uppercase">Selected</span>
+                                            <span class="me-3 day-span">Day Three</span>
                                         </a>
                                     </li>
-                                    <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
-                                            <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
-                                            <span class="me-3">Day Three</span>
-                                        </a>
-                                    </li>
-                                    <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item" href="#">
-                                            <span class="text-orange">Add extra day</span>
+                                    <li class="px-2 d-flex align-items-center add-day-option" id='add-day-option'>
+                                        <a class="dropdown-item add-day-option" href="#">
+                                            <span class="text-orange add-day-option">Add extra day</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <!-- <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1'>Add New Date</a> -->
                         </div>
+                        <!-- Day selection button[end] -->
+                        <!--- ================================ -->
                     </div>
                 </div>
                 <div class="col-4 py-2 d-flex justify-content-center">
@@ -97,33 +102,37 @@ require_once(__DIR__ . "/../utils/core.php");
                     </div>
                 </div>
             </div>
+
+            <!--- ================================ -->
+            <!-- mobile sidebar [start] -->
             <div class="d-flex justify-content-between p-3 box-shadow-3 mx-auto rounded-3 gap-5 d-lg-none w-100" style="max-width: 500px;">
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev">GHS 2500</div>
+                    <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>2500</span></div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <i class="fa-solid fa-calendar text-blue easygo-fs-1"></i>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev">2 days</div>
+                    <div class="easygo-fs-4 expand-toggle-rev"><span class='day-span'>2</span> days</div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev">2 People</div>
+                    <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>2</span> People</div>
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-center">
                     <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
                     <div class="easygo-fs-5 expand-toggle-rev">Services</div>
                 </div>
             </div>
+            <!-- mobile sidebar [end] -->
+            <!--- ================================ -->
             <div>
                 <div class="d-flex gap-2">
-                    <!--- ================================ -->
                     <!--- ================================ -->
                     <!-- sidebar [start] -->
                     <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
@@ -144,12 +153,12 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
                                             </div>
                                             <div class="easygo-fs-4 expand-toggle">Budget</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev">GHS 2500</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>2500</span></div>
                                         </div>
                                     </div>
                                     <div class="ss-right">
                                         <div class="d-flex align-items-center h-100">
-                                            <h5>GHS 2500</h5>
+                                            <h5>GHS <span class='budget-span'>2500</span></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -160,12 +169,12 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 <i class="fa-solid fa-calendar text-blue easygo-fs-1"></i>
                                             </div>
                                             <div class="easygo-fs-4 expand-toggle">Calendar</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev">2 days</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev"><span class='day-span'>2</span> days</div>
                                         </div>
                                     </div>
                                     <div class="ss-right">
                                         <div class="d-flex align-items-center h-100">
-                                            <h5>2 days</h5>
+                                            <h5><span class='day-span'>2</span> days</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -176,12 +185,12 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
                                             </div>
                                             <div class="easygo-fs-4 expand-toggle">People</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev">2 People</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>2</span> People</div>
                                         </div>
                                     </div>
                                     <div class="ss-right">
                                         <div class="d-flex align-items-center h-100">
-                                            <h5>2 people</h5>
+                                            <h5><span class='people-span'>2</span> People</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -255,6 +264,9 @@ require_once(__DIR__ . "/../utils/core.php");
                     </aside>
                     <!-- sidebar [end] -->
                     <!--- ================================ -->
+
+
+
                     <!--- ================================ -->
                     <!-- main-content [start] -->
                     <section style="flex: 1">
@@ -263,11 +275,11 @@ require_once(__DIR__ . "/../utils/core.php");
                             <!-- Itinerary Exp [start] -->
                             <div class="col-lg-6 p-3">
                                 <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
-                                    <h3 class="easygo-fw-1">
+                                    <h3 class="easygo-fw-1 selected-day-display">
                                         Day One
                                     </h3>
                                     <div>Here is the summary of the activities and destinations selected for the day </div>
-                                    <ul class="easygo-list-4">
+                                    <ul class="easygo-list-4" id='selected-day-activity-list'>
                                         <li>
                                             <div class="row">
                                                 <div class="col-4">
@@ -324,10 +336,12 @@ require_once(__DIR__ . "/../utils/core.php");
                                                     <div class="mt-3">
                                                         Here is the summary of the activities and destinations selected for the day
                                                     </div>
-                                                    <div class="mt-2">
-                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                                        <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
-                                                    </div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                    <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                    <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
+                                                    <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
                                                 </div>
                                             </div>
                                         </li>
@@ -340,7 +354,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             <!-- Itinerary Exp [end] -->
                             <!--- ================================ -->
                             <!--- ================================ -->
-                            <!-- Suggestions [start] -->
+                            <!-- Right Section card [start] -->
                             <div class="d-none d-lg-block col-lg-6 p-3">
                                 <ul class="nav nav-tabs d-none" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
@@ -354,6 +368,10 @@ require_once(__DIR__ . "/../utils/core.php");
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
+
+
+                                    <!--- ================================ -->
+                                    <!-- Itinerary poll panel  [start] -->
                                     <div class="tab-pane fade" id="itinerary-poll-tab-pane" role="tabpanel" aria-labelledby="itinerary-poll-tab-pane">
                                         <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                             <h3 class="easygo-fw-1">
@@ -410,6 +428,11 @@ require_once(__DIR__ . "/../utils/core.php");
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Itinerary poll panel  [end] -->
+                                    <!--- ================================ -->
+
+                                    <!--- ================================ -->
+                                    <!-- Coplanner AI panel  [start] -->
                                     <div class="tab-pane fade" id="sentiment-tab-pane" role="tabpanel" aria-labelledby="sentiment-tab-pane">
                                         <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                             <div>
@@ -521,23 +544,34 @@ require_once(__DIR__ . "/../utils/core.php");
 
                                     <!-- Coplanner AI panel  [end] -->
                                     <!--- ================================ -->
+
+
                                     <!--- ================================ -->
                                     <!-- Destination selection panel  [end] -->
                                     <div class="tab-pane fade show active" id="destination-tab-pane" role="tabpanel" aria-labelledby="destination-tab-pane">
                                         <div class="bg-white p-5 box-shadow-1">
                                             <div class="row">
                                                 <div class="col-12">
+                                                    <form action="." method="get" onsubmit='destination_search(this)'>
                                                     <div class="easygo-text-input-1">
-                                                        <input type="text" placeholder="Search for destination by name or activity">
-                                                        <button class="easygo-btn-1 oy-1">SEARCH</button>
-                                                    </div>
+                                                            <input type="text" name='query' placeholder="Search for destination by name">
+                                                            <button class="easygo-btn-1 oy-1" type='submit'>SEARCH</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <!--- ================================ -->
                                             <!-- cards [start] -->
-                                            <div class="my-4">
+                                            <div class="my-4" id='destination-search-results'>
                                                 <?php
+                                                $destinations = get_destinations();
                                                 for ($i = 0; $i < 2; $i++) {
+                                                    $current = $destinations[$i];
+                                                    $name = $current["destination_name"];
+                                                    $location = $current["location"];
+                                                    $rating = $current["rating"];
+                                                    $num_rating = $current["num_ratings"];
+
                                                     echo "
                                                         <div class='my-4 border border-1 border-blue rounded-1 overflow-hidden box-shadow-3'>
                                                             <div class='p-3'>
@@ -546,17 +580,15 @@ require_once(__DIR__ . "/../utils/core.php");
                                                                         <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt='' style='max-height: 150px;'>
                                                                     </div>
                                                                     <div class='col-7'>
+                                                                        <h4 class='m-0'>$name</h4>
+                                                                        <div>$location</div>
+                                                                        <div class='text-blue easygo-fs-2 py-2'>
+                                                                            <i class='fa-solid fa-wifi'></i> &nbsp;
+                                                                            <i class='fa-solid fa-bath'></i> &nbsp;
+                                                                            <i class='fa-solid fa-person-swimming'></i>
+                                                                        </div>
                                                                         <div>
-                                                                            <h4 class='m-0'>Shai Hills</h4>
-                                                                            <div>Greater Accra, Ghana</div>
-                                                                            <div class='text-blue easygo-fs-2 py-2'>
-                                                                                <i class='fa-solid fa-wifi'></i> &nbsp;
-                                                                                <i class='fa-solid fa-bath'></i> &nbsp;
-                                                                                <i class='fa-solid fa-person-swimming'></i>
-                                                                            </div>
-                                                                            <div>
-                                                                                4 stars in 1k+ reviews
-                                                                            </div>
+                                                                            $rating stars from $num_rating reviews
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -589,7 +621,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                     <!--- ================================ -->
                                 </div>
                             </div>
-                            <!-- Suggestions [end] -->
+                            <!-- Right section card [end] -->
                             <!--- ================================ -->
                         </div>
                     </section>
@@ -599,12 +631,20 @@ require_once(__DIR__ . "/../utils/core.php");
                 <section class="py-3">
                     <div class="d-flex justify-content-center mt-3">
                         <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5" onclick="goto_page('coplanner/coplanner_invoice.php')">Finalize</button>
+                        <?php
+                            if (true) { //TODO:: Add admin check
+                                $id = "";
+                                echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/coplanner_invoice.php?id='$id'\")'>Add to templates</button>";
+                            }
+                        ?>
                     </div>
                 </section>
             </div>
         </main>
         <!--- ================================ -->
-        <!-- offcanvases [start] -->
+        <!-- offcanvases for mobile [start] -->
+        <!--- ================================ -->
+        <!-- Itinerary Poll - mobile [start] -->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="itineraryPollCanvas" aria-labelledby="itineraryPollCanvasLabel">
             <div class="offcanvas-header">
                 <h3 class="easygo-fw-1" class="offcanvas-title" id="itineraryPollCanvasLabel">
@@ -670,6 +710,10 @@ require_once(__DIR__ . "/../utils/core.php");
                 </div>
             </div>
         </div>
+        <!-- Itinerary Poll - mobile [end] -->
+        <!--- ================================ -->
+        <!--- ================================ -->
+        <!-- AI suggestions - mobile [start] -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h3 class="offcanvas-title easygo-fw-1" id="offcanvasRightLabel">
@@ -745,9 +789,9 @@ require_once(__DIR__ . "/../utils/core.php");
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
+                        <!-- <div class="text-center">
                             <a href="#">Expand</a>
-                        </div>
+                        </div> -->
                     </div>
                     <hr class="border-blue border border-1 opacity-100">
                     <div>
@@ -786,7 +830,9 @@ require_once(__DIR__ . "/../utils/core.php");
                 </div>
             </div>
         </div>
-        <!-- offcanvases [end] -->
+        <!-- AI suggestions - mobile [end] -->
+        <!--- ================================ -->
+        <!-- offcanvases - mobile [end] -->
         <!--- ================================ -->
         <?php require_once(__DIR__ . "/../components/footer.php") ?>
     </div>
@@ -799,8 +845,8 @@ require_once(__DIR__ . "/../utils/core.php");
     <!-- easygo js -->
     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
-    <!--  -->
     <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/itinerary_creation.js"></script>
     <script>
         [].slice
             .call(document.querySelectorAll("button[data-proxy-target]"))

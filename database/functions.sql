@@ -487,3 +487,25 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_day_activities;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_day(
+  IN in_day_id VARCHAR(100)
+)
+BEGIN
+  SELECT * FROM vw_itinerary_activities WHERE day_id = in_day_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_day_destinations;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_day_destinations(
+IN in_day_id VARCHAR(10)
+)
+begin
+  SELECT * FROM vw_itinerary_destinations WHERE day_id = in_day_id;
+end //
+DELIMITER ;

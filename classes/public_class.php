@@ -123,6 +123,27 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_itinerary_day_info($day_id){
+			$sql = "";
+			$this->prepare($sql);
+			$this->bind($day_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_itinerary_day_activities($day_id){
+			$sql = "CALL get_itinerary_day_activities(?)";
+			$this->prepare($sql);
+			$this->bind($day_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_itinerary_day_destinations($day_id){
+			$sql = "CALL get_itinerary_day_destinations(?)";
+			$this->prepare($sql);
+			$this->bind($day_id);
+			return $this->db_fetch_all();
+		}
+
 
 	}
 ?>

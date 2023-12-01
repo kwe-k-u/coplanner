@@ -125,7 +125,7 @@
 				"zoo"=> "Zoo",
 				"tourist_attraction"=> "Tourist Attraction"
 
-		);
+			);
 			$data = json_decode(file_get_contents('php://input'),true)["data"];
 			foreach($data as $_ => $json){
 				// $json = json_decode($value,true);
@@ -199,9 +199,33 @@
 
 			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
 			die();
+		case "/get_day_info":
+			$day_id = $_GET["day_id"];
+			// get_itinerary
+			$day = get_itinerary_day_info($day_id);
+			if($day){
+				send_json(array("msg"=> "Success","day_data"=>$day));
+			}else{
+				send_json(array("msg"=> "Day not found",),201);
+			}
+			die();
+		case "/search_destination":
+			$query = $_GET["query"];
+			$destinations = get_destinations_by_name($query);
+			send_json(array("msg"=> "Success","results"=> $destinations));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;
 	}
 
 ?>
+<!-- {
+    "destination_id": "391f3b8c-8dd8-11ee-a393-0a0027000006",
+    "destination_name": "Bunso Eco Park",
+    "location": "Bunso, Eastern Region",
+    "latitude": 15.23,
+    "longitude": -5.33,
+    "rating": 1,
+    "num_ratings": 1
+} -->

@@ -87,7 +87,7 @@ async function send_request(type, endpoint, data, onload = null, files = null) {
 
   let response = await fetch(baseurl + endpoint, {
     method: type,
-    body: formdata,
+    body: type=="POST" ? formdata : null,
   });
 
   // alert(response.json());

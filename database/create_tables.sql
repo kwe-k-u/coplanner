@@ -277,6 +277,36 @@ LEFT JOIN
 
 
 
+DROP VIEW IF EXISTS vw_itinerary_activities;
+ /*View to display information about the activities included in each day of each itinerary*/
+CREATE VIEW vw_itinerary_activities AS
+SELECT
+    ia.*,
+    a.activity_name,
+    da.price,
+    da.date_updated
+
+FROM itinerary_activity as ia
+inner join activities as a on a.activity_id = ia.activity_id
+inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
+ORDER BY ia.position;
+
+
+
+
+DROP VIEW IF EXISTS vw_itinerary_destinations;
+
+CREATE VIEW vw_itinerary_destinations AS
+SELECT
+    id.*,
+    d.destination_name
+from itinerary_destination as id
+inner join destinations as d on d.destination_id = id.destination_id
+ORDER BY id.position
+
+
+
+
 
 -- Returns the wishlist information with the itinerary data
 
