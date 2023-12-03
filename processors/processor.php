@@ -158,8 +158,6 @@
 		case "/get_destination_info":
 			$id = $_GET["id"];
 			$data = get_destination_by_id($id);
-			$data["activities"] = get_destination_activities($id);
-			$data["utilities"] = get_destination_utilities($id);
 			send_json(array("msg"=> "Destination information retrieved","data"=> $data));
 			die();
 		case "/edit_destination":

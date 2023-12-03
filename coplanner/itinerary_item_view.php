@@ -1,6 +1,6 @@
 <?php
-    require_once(__DIR__ . "/../utils/core.php");
-    require_once(__DIR__."/../controllers/public_controller.php");
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +43,11 @@
                 <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
-                            <span class="easygo-editable-text">Untitled</span>/ <span class = 'selected-day-display'>Day one</span>
+                            <span class="easygo-editable-text">Untitled</span>/ <span class='selected-day-display'>Day one</span>
                         </div>
 
                         <!--- ================================ -->
-                    <!-- Day selection button[start] -->
+                        <!-- Day selection button[start] -->
                         <div class="d-none d-lg-block">
                             <div class="dropdown">
                                 <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">Select Day</a>
@@ -63,8 +63,8 @@
                                         <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
                                             <span class="text-blue me-1">
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                </span>
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </span>
                                             <span class="me-3 day-span">Day Two</span>
                                         </a>
                                     </li>
@@ -279,8 +279,14 @@
                                         Day One
                                     </h3>
                                     <div>Here is the summary of the activities and destinations selected for the day </div>
-                                    <ul class="easygo-list-4" id='selected-day-activity-list'>
-                                        <li>
+                                    <ul class="easygo-list-4" id='itinerary-card-activity-list'>
+                                        <li id='default-itinerary-list'>
+                                            <div>
+                                                <h5>Add a destination</h5>
+                                                <p class="">Add a destination or an activity from the right to populate this section</p>
+                                            </div>
+                                        </li>
+                                        <!-- <li>
                                             <div class="row">
                                                 <div class="col-4">
                                                     <h5>Shai Hills</h5>
@@ -305,7 +311,7 @@
                                             </div>
 
                                             <div class='py-2 bg-lblue-1 text-blue text-center'>
-                                                <a href='#'>--- Add activities ---</a>
+                                                <a href='#'  data-bs-toggle='modal' data-bs-target='#dest-1-modal'>--- Add activities ---</a>
                                             </div>
                                         </li>
                                         <li>
@@ -344,10 +350,10 @@
                                                     <span class="badge bg-blue easygo-fw-3 px-4 py-2">Hike</span>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                     <div class="py-2 text-end">
-                                        <a href="#"  data-proxy-target="destination-tab">Add More</a>
+                                        <a href="#" data-proxy-target="destination-tab">Add More</a>
                                     </div>
                                 </div>
                             </div>
@@ -553,7 +559,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <form action="." method="get" onsubmit='destination_search(this)'>
-                                                    <div class="easygo-text-input-1">
+                                                        <div class="easygo-text-input-1">
                                                             <input type="text" name='query' placeholder="Search for destination by name">
                                                             <button class="easygo-btn-1 oy-1" type='submit'>SEARCH</button>
                                                         </div>
@@ -565,12 +571,25 @@
                                             <div class="my-4" id='destination-search-results'>
                                                 <?php
                                                 $destinations = get_destinations();
-                                                for ($i = 0; $i < 2; $i++) {
-                                                    $current = $destinations[$i];
+                                                foreach (array_slice($destinations,0,2) as $current) {
+                                                    $destination_id = $current["destination_id"];
                                                     $name = $current["destination_name"];
                                                     $location = $current["location"];
                                                     $rating = $current["rating"];
                                                     $num_rating = $current["num_ratings"];
+                                                    //===========================================================
+                                                    //===================Destination activities text[start]============
+                                                    $activities = get_destination_activities($destination_id);
+                                                    $activities_text = "";
+                                                    foreach($activities as $entry){
+                                                        $act_id = $entry["activity_id"];
+                                                        $act_name = $entry["activity_name"];
+                                                        $activities_text .="
+                                                        <span id='activity_$act_id' onclick='add_activity_to_itineary_card(\"$destination_id\",\"$name\",\"$act_id\",\"$act_name\")' class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>$act_name</span>";
+                                                    }
+                                                    //===================Destination activities text[end]============
+                                                    //===========================================================
+
 
                                                     echo "
                                                         <div class='my-4 border border-1 border-blue rounded-1 overflow-hidden box-shadow-3'>
@@ -597,15 +616,12 @@
                                                                     for the day
                                                                 </p>
                                                                 <div class='d-flex justify-content-end'>
-                                                                    <div class='mt-2 easygo-fw-4 easygo-fs-2'>
-                                                                        <span class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>Hike</span>
-                                                                        <span class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>Hike</span>
-                                                                        <span class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>Hike</span>
+                                                                    <div class='mt-2 easygo-fw-4 easygo-fs-2'>$activities_text
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class='py-2 bg-lblue-1 text-blue text-center'>
-                                                                <a href='#'>--- View more ---</a>
+                                                                <a href='#'  data-bs-toggle='modal' data-bs-target='#dest-1-modal' onclick='update_destination_modal(\"$destination_id\")'>--- View more ---</a>
                                                             </div>
                                                         </div>
                                                         ";
@@ -632,10 +648,10 @@
                     <div class="d-flex justify-content-center mt-3">
                         <button class="easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5" onclick="goto_page('coplanner/coplanner_invoice.php')">Finalize</button>
                         <?php
-                            if (true) { //TODO:: Add admin check
-                                $id = "";
-                                echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/coplanner_invoice.php?id='$id'\")'>Add to templates</button>";
-                            }
+                        if (true) { //TODO:: Add admin check
+                            $id = "";
+                            echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/coplanner_invoice.php?id='$id'\")'>Add to templates</button>";
+                        }
                         ?>
                     </div>
                 </section>
@@ -830,6 +846,141 @@
                 </div>
             </div>
         </div>
+        <!--- ================================ -->
+        <!-- Destination Modals [start] -->
+        <div class="modal fade" id="dest-1-modal" tabindex="-1" aria-labelledby="dest-1-modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-md-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Destination Information</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body easygo-scroll-bar">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="p-3">
+                                        <div class="d-flex gap-2" style="max-height: 200px;">
+                                            <div class="" style="flex:1;">
+                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%;">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center gap-2" style="flex:1;">
+                                                <div style="max-height: 50%;">
+                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
+                                                </div>
+                                                <div style="max-height: 50%;">
+                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="my-3">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="m-0 easygo-fw-1" id='modal-destination-name'>Shai Hills</h2>
+                                                        <div id='modal-location'>Greater Accra, Ghana</div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h2 class="easygo-fw-1 text-end m-0" id='modal-rating'>4.3</h2>
+                                                        <p class="m-0 text-end"><span id='modal-rating-count'>5k</span> Reviews</p>
+                                                    </div>
+                                                </div>
+                                                <div class="text-blue easygo-fs-2 py-2">
+                                                    <i class="fa-solid fa-wifi"></i> &nbsp;
+                                                    <i class="fa-solid fa-bath"></i> &nbsp;
+                                                    <i class="fa-solid fa-person-swimming"></i>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <p class="easygo-fs-5 mb-0">Click on activity to add to itinerary</p>
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="mt-2 easygo-fw-4 easygo-fs-2" id="modal-activity-list">
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="p-3">
+                                        <h4 class="easygo-fw-1">Customer reviews from Google</h4 class="easygo-fw-1">
+                                        <div class="my-4">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h5 class="text-start">Customer Name</h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                Some customer reviews about how the places were and
+                                                stuff about why they want to go back
+                                            </p>
+                                        </div>
+                                        <div class="my-4">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h5 class="text-start">Customer Name</h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                Some customer reviews about how the places were and
+                                                stuff about why they want to go back
+                                            </p>
+                                        </div>
+                                        <div class="my-4">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h5 class="text-start">Customer Name</h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                Some customer reviews about how the places were and
+                                                stuff about why they want to go back
+                                            </p>
+                                        </div>
+                                        <div class="my-4">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h5 class="text-start">Customer Name</h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h6 class="text-end easygo-fs-5">3 months ago</h6>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                Some customer reviews about how the places were and
+                                                stuff about why they want to go back
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-2 ps-3">
+                                Haven't decided on activities ? <a href="#">Click to add a destination</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--- ================================ -->
+        <!-- Destination Modals [end] -->
         <!-- AI suggestions - mobile [end] -->
         <!--- ================================ -->
         <!-- offcanvases - mobile [end] -->

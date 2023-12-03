@@ -1,5 +1,6 @@
 const selected_dropdown_label = document.getElementById("selected-dropdown-label");
 const destination_search_results = document.getElementById("destination-search-results");
+const itinerary_card_activity_list = document.getElementById("itinerary-card-activity-list");
 
 $(document).ready(function() {
     $('#day-dropdown-options').on('click', 'li', function (){
@@ -9,6 +10,7 @@ $(document).ready(function() {
 			add_day();
 		}else{ //if a day label is selected, move the 'selected' span to that option
 			moveSpanToClickedListItem();
+			reset_itinerary_card();
 		}
 	});
 });
@@ -50,8 +52,9 @@ function create_day_dropdown_option(){
 
 
 //Creates the card to display selected itinerary destinations and activities
-function create_itinerary_day_item(activities = ["Hike","Run","Swim"], action_required = false){
+function create_itinerary_card_item(des_id,name,activities, action_required = false){
 	let card = document.createElement("li");
+	card.id = "destination_"+des_id;
 	//div at the bottom of the card to show activities
 	let activity_div = document.createElement('div');
 
@@ -63,7 +66,7 @@ function create_itinerary_day_item(activities = ["Hike","Run","Swim"], action_re
 	let destination_col = document.createElement("div");
 	destination_col.className = "col-4";
 	let name_h5 = document.createElement("h5");
-	name_h5.innerText = "Destination Name";
+	name_h5.innerText = name;
 	// Expected time
 	let time_p = document.createElement("p");
 	time_p.className = "easygo-fs-5";
@@ -116,17 +119,16 @@ function create_itinerary_day_item(activities = ["Hike","Run","Swim"], action_re
 	//Activity section of main body
 	if(activities.length > 0){
 		//Create activity cards
-		activity_div.className = "mt-2";
-		let activity_span = document.createElement('span');
-		activity_span.className = "badge bg-blue easygo-fw-3 px-4 py-2 mx-1";
-		activities.forEach(act_name => {
-			let act_node = activity_span.cloneNode();
-			act_node.innerText = act_name;
+		activity_div.className = "itinerary-activities mt-2";
+		activities.forEach(element => {
+			let act_name = element["activity_name"];
+			let act_id = element["activity_id"];
+			let act_node = create_itinerary_card_acitivity_span(act_id,act_name);
 			activity_div.appendChild(act_node);
 		});
 	}else{
 		// Show add activity button
-		activity_div.className = "py-2 bg-lblue-1 text-blue text-center";
+		activity_div.className = "add-activity-div py-2 bg-lblue-1 text-blue text-center";
 		let anchor = document.createElement("a");
 		anchor.href = "#";
 		anchor.innerText = "--- Add Activities ---";
@@ -145,7 +147,7 @@ function create_itinerary_day_item(activities = ["Hike","Run","Swim"], action_re
 
 
 // Creates the card to display destination search result entries
-function create_destination_search_result_card(name,location,rating,num_rating,activities = []){
+function create_destination_search_result_card(id,name,location,rating,num_rating,activities = []){
 	let card = document.createElement("div");
 	card.className = "my-4 border border-1 border-blue rounded-1 overflow-hidden box-shadow-3";
 
@@ -208,9 +210,12 @@ function create_destination_search_result_card(name,location,rating,num_rating,a
 	inner_section.className = "mt-2 easygo-fw-4 easygo-fs-2";
 	activities.forEach((entry)=> {
 		let act_name = entry["activity_name"];
+		let act_id = entry['activity_id'];
 		let span = document.createElement("span");
-		span.className = "activity badge bg-transparent border border-blue border-1 text-black py-2 px-3 mx-1";
+		span.className = "activityd badge bg-transparent border border-blue border-1 text-black py-2 px-3 mx-1";
 		span.innerText = act_name;
+		span.id = act_id;
+		span.onclick = () =>add_activity_to_itineary_card(id,name,act_id,act_name);
 		inner_section.appendChild(span);
 	});
 	activity_section.appendChild(inner_section);
@@ -225,6 +230,12 @@ function create_destination_search_result_card(name,location,rating,num_rating,a
 	let bottom_anchor = document.createElement("a");
 	bottom_anchor.href = "#";
 	bottom_anchor.innerText  = "--- View more ---";
+	//show destination on anchor click
+	// bottom_anchor.data-bs-target='#dest-1-modal'
+	bottom_anchor.setAttribute("data-bs-target","#dest-1-modal");
+	bottom_anchor.setAttribute("data-bs-toggle",'modal');
+	bottom_anchor.onclick = update_destination_modal(id);
+
 	bottom.appendChild(bottom_anchor);
 
 	card.appendChild(top);
@@ -252,6 +263,9 @@ function get_day_info(day_id){
 
 
 }
+
+
+
 function add_day(){
     let duplicate = null;
     let ul = document.getElementById("day-dropdown-options");
@@ -316,16 +330,19 @@ function update_quick_stats(budget,days,people){
 	update_people_display(people);
 }
 
+
+/**Updates the estimated budget displayed for the itinerary across all relevant elements */
 function update_budget_display(amount){
 	document.querySelectorAll('.budget-span').forEach((span)=>span.textContent = amount.toString());
 }
 
 
+/**Updates the number of days displayed for the itinerary across all relevant elements */
 function update_day_display(days){
 	document.querySelectorAll('.day-span').forEach((span)=>span.textContent = days.toString());
 }
 
-
+/**Updates the number of participants displayed across all relevant elements */
 function update_people_display(people){
 	document.querySelectorAll('.people-span').forEach((span)=>span.textContent = people.toString());
 }
@@ -346,10 +363,128 @@ function destination_search(form){
 			let rating = element["rating"];
 			let num_rating = element["num_ratings"];
 			let activities = element["activities"];
-			let card = create_destination_search_result_card(name,location,rating,num_rating,activities);
+			let id = element["destination_id"];
+			let card = create_destination_search_result_card(id,name,location,rating,num_rating,activities);
 			destination_search_results.appendChild(card);
 
 		});
 	});
 	return false;
+}
+
+
+/**Updates the information in the destination modal with the destination matching the passed id */
+function update_destination_modal(destination_id){
+	send_request(
+		"GET",
+		"processors/processor.php/get_destination_info?id="+destination_id,
+		{},
+		(response)=> {
+			let json = response.data.data;
+			let name = json["destination_name"];
+			let id = json["destination_id"];
+			let activities = json["activities"];
+			console.log(json["activities"]);
+			let utilities = json["utilities"];
+			let rating = json["rating"];
+			let location = json["location"];
+			let rating_count = json["num_ratings"];
+			document.getElementById("modal-destination-name").innerText = name;
+			document.getElementById("modal-location").innerText = location;
+			document.getElementById("modal-rating").innerText = rating;
+			document.getElementById("modal-rating-count").innerText = rating_count;
+
+			let modal_activity_list = document.getElementById("modal-activity-list");
+			modal_activity_list.innerHTML = "";
+
+			activities.forEach((entry)=> {
+				let act_name = entry["activity_name"];
+				let span = create_modal_activity_span(act_name);
+				modal_activity_list.appendChild(span);
+			});
+
+		}
+	);
+}
+
+// Creates a span to hold activity information in the destination modal
+function create_modal_activity_span(activity_name){
+	let span = document.createElement("span");
+	span.className = "activity badge bg-transparent border border-blue border-1 text-black py-2 px-3";
+	span.innerText = activity_name;
+	return span;
+}
+
+
+//Creates the information that is displayed in the itinerary card when no destinations or activities exist for the selected date
+function create_default_itinerary_list(){
+	let li = document.createElement("li");
+	li.id = "default-itinerary-list";
+	let div = document.createElement("div");
+	let h = document.createElement("h5");
+	h.innerText = "Add a destination";
+	let p = document.createElement("p");
+	p.innerText= "Add a destination or an activity from the right to populate this section";
+	div.appendChild(h);
+	div.appendChild(p);
+	li.appendChild(div);
+
+	return li;
+}
+
+
+/** Clears the destination information in the itinerary card
+ * and displays the default 'add destination' text if the text is the detected */
+function reset_itinerary_card(){
+	if(itinerary_card_activity_list.querySelector("#default-itinerary-list") == null){
+		itinerary_card_activity_list.replaceChildren([]);
+		itinerary_card_activity_list.appendChild(create_default_itinerary_list());
+	}
+}
+
+
+
+
+/**Adds an activity to the current day that has been selected. Creates the destination card in the itinerary list
+ *  if the destination isn't in the card */
+function add_activity_to_itineary_card(destination_id, destination_name, activity_id,activity_name){
+	let destination_card = itinerary_card_activity_list.querySelector("#destination_"+destination_id);
+	// Create itinerary activity card if it doesn't exist in the itinerary list
+	if (!destination_card){
+		destination_card = create_itinerary_card_item(destination_id,destination_name,[{activity_id,activity_name}]);
+		if(itinerary_card_activity_list.querySelector("#default-itinerary-list") != null){
+			itinerary_card_activity_list.replaceChildren([]);
+		}
+		itinerary_card_activity_list.appendChild(destination_card);
+	}else{
+		// if destination exists in the current day list, add the activity to it
+		let activity_section = destination_card.querySelector(".itinerary-activities");
+		let activity_span = create_itinerary_card_acitivity_span(activity_id,activity_name);
+		// If there are no added activities for the destination_card, structure section to receive activities
+		if (!activity_section){
+			activity_section = destination_card.querySelector(".add-activity-div");
+			activity_section.className = "itinerary-activities mt-2";
+			activity_section.replaceChildren([]);
+		}
+		if(activity_section.querySelector("#activity_"+activity_id)){
+			alert("You've already added this activity for this destination on this day");
+		}else{
+			activity_section.appendChild(activity_span);
+		}
+
+
+	}
+
+
+}
+
+/**Creates the activity labels that shows the selected activities for a destination
+ * in the itinerary card
+ */
+function create_itinerary_card_acitivity_span(id,name){
+	let span = document.createElement("span");
+	span.className = "badge bg-blue easygo-fw-3 px-4 py-2 mx-1";
+	span.innerText = name;
+	span.id = "activity_"+id;
+	return span;
 }

@@ -50,7 +50,10 @@
 
 	function get_destination_by_id($id){
 		$public = new public_class();
-		return $public->get_destination_by_id($id);
+		$data = $public->get_destination_by_id($id);
+		$data["activities"] = $public->get_destination_activities($id);
+		// $data["utilities"] = $public->get_destination_utilities($id);
+		return $data;
 	}
 
 	function get_user_itineraries($user_id){
