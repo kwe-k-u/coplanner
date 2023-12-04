@@ -6,7 +6,6 @@ $(document).ready(function () {
   // utility listeners
 
   $(".slide-down-btn").click(toggleSlideMenu);
-  $(".dashlogo").click(open_curator_dashboard);
   $(".toggle-password-show").click(togglePasswordShow); // password toggle
   $(".file-input").click(triggerFileUpload); // file upload
   $(".file-input input[type=file]").click(function (event) {
@@ -488,9 +487,6 @@ function show_loader(hide_element = null, time = 5000) {
   return load_var;
 }
 
-function open_curator_dashboard() {
-  window.location.href = "./dashboard.php";
-}
 
 /**
  * Function to open dialog box to display error message
@@ -680,3 +676,7 @@ function testInput(type, value) {
       return false;
   }
 }
+
+
+
+

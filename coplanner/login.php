@@ -1,7 +1,7 @@
 <?php
     require_once(__DIR__."/../utils/core.php");
     if(is_session_logged_in()){
-        header("Location: home.php");
+        header("Location: ../index.php");
     }
 ?>
 

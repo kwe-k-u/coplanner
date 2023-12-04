@@ -34,7 +34,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
         <main class="container-fluid" style="margin-top: 7rem;">
             <div class="row my-4">
                 <div class="col-4 py-2 d-flex justify-content-center">
-                    <button class="d-flex flex-column justify-content-center align-items-center gap-1 border-0 rounded-circle box-shadow-3 d-lg-none" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas" data-bs-target="#itineraryPollCanvas" aria-controls="itineraryPollCanvas">
+                    <button class="d-flex flex-column justify-content-center align-items-center gap-1 border-0 rounded-circle box-shadow-3 d-lg-none" style="width: 40px; height: 40px;" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuCanvas" aria-controls="mobileMenuCanvas">
                         <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
                         <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
                         <div class="bg-blue" style="padding: 0.06rem 0.8rem"></div>
@@ -59,21 +59,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                             <span id="selected-dropdown-label" class="badge d-inline text-white bg-blue easygo-fs-6 text-uppercase">Selected</span>
                                         </a>
                                     </li>
-                                    <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
-                                            <span class="text-blue me-1">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </span>
-                                            <span class="me-3 day-span">Day Two</span>
-                                        </a>
-                                    </li>
-                                    <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
-                                            <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
-                                            <span class="me-3 day-span">Day Three</span>
-                                        </a>
-                                    </li>
                                     <li class="px-2 d-flex align-items-center add-day-option" id='add-day-option'>
                                         <a class="dropdown-item add-day-option" href="#">
                                             <span class="text-orange add-day-option">Add extra day</span>
@@ -88,12 +73,14 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 </div>
                 <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex align-items-center gap-2">
+                        <!-- Button for desktop display of ai suggestion  -->
                         <button class="box-shadow-3 d-none d-lg-flex justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab">
                             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.74967 4.33325L12.458 10.2916L18.4163 12.9999L12.458 15.7083L9.74967 21.6666L7.04134 15.7083L1.08301 12.9999L7.04134 10.2916L9.74967 4.33325ZM9.74967 9.56575L8.66634 11.9166L6.31551 12.9999L8.66634 14.0833L9.74967 16.4341L10.833 14.0833L13.1838 12.9999L10.833 11.9166L9.74967 9.56575ZM20.583 9.74992L19.218 6.78159L16.2497 5.41658L19.218 4.06242L20.583 1.08325L21.9372 4.06242L24.9163 5.41658L21.9372 6.78159L20.583 9.74992ZM20.583 24.9166L19.218 21.9482L16.2497 20.5833L19.218 19.2291L20.583 16.2499L21.9372 19.2291L24.9163 20.5833L21.9372 21.9482L20.583 24.9166Z" fill="#1204B5" />
                             </svg>
                         </button>
-                        <button class="box-shadow-3 d-flex d-lg-none justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <!-- Button for mobile display of ai suggestion section  -->
+                        <button class="box-shadow-3 d-flex d-lg-none justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuCanvas" aria-controls="mobileMenuCanvas">
                             <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.74967 4.33325L12.458 10.2916L18.4163 12.9999L12.458 15.7083L9.74967 21.6666L7.04134 15.7083L1.08301 12.9999L7.04134 10.2916L9.74967 4.33325ZM9.74967 9.56575L8.66634 11.9166L6.31551 12.9999L8.66634 14.0833L9.74967 16.4341L10.833 14.0833L13.1838 12.9999L10.833 11.9166L9.74967 9.56575ZM20.583 9.74992L19.218 6.78159L16.2497 5.41658L19.218 4.06242L20.583 1.08325L21.9372 4.06242L24.9163 5.41658L21.9372 6.78159L20.583 9.74992ZM20.583 24.9166L19.218 21.9482L16.2497 20.5833L19.218 19.2291L20.583 16.2499L21.9372 19.2291L24.9163 20.5833L21.9372 21.9482L20.583 24.9166Z" fill="#1204B5" />
                             </svg>
@@ -110,7 +97,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     <div>
                         <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>2500</span></div>
+                    <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>0</span></div>
                 </div>
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
@@ -122,11 +109,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     <div>
                         <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>2</span> People</div>
-                </div>
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
-                    <div class="easygo-fs-5 expand-toggle-rev">Services</div>
+                    <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>1</span> Person</div>
                 </div>
             </div>
             <!-- mobile sidebar [end] -->
@@ -153,12 +136,12 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                 <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
                                             </div>
                                             <div class="easygo-fs-4 expand-toggle">Budget</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>2500</span></div>
+                                            <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>0</span></div>
                                         </div>
                                     </div>
                                     <div class="ss-right">
                                         <div class="d-flex align-items-center h-100">
-                                            <h5>GHS <span class='budget-span'>2500</span></h5>
+                                            <h5>GHS <span class='budget-span'>0</span></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -185,12 +168,12 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                 <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
                                             </div>
                                             <div class="easygo-fs-4 expand-toggle">People</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>2</span> People</div>
+                                            <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>1</span> Person</div>
                                         </div>
                                     </div>
                                     <div class="ss-right">
                                         <div class="d-flex align-items-center h-100">
-                                            <h5><span class='people-span'>2</span> People</h5>
+                                            <h5><span class='people-span'>1</span> Person</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -275,9 +258,24 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                             <!-- Itinerary Exp [start] -->
                             <div class="col-lg-6 p-3">
                                 <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
-                                    <h3 class="easygo-fw-1 selected-day-display">
-                                        Day One
-                                    </h3>
+                                    <div class="row align-items-center justify-content-between">
+                                        <div class="col-auto">
+                                            <h3 class="easygo-fw-1 d-inline selected-day-display">
+                                                Day One
+                                            </h3>
+                                        </div>
+                                        <div class="col-auto py-2 text-end">
+                                            <!-- desktop add activity button  -->
+                                            <button class="border-0 bg-transparent  d-none d-lg-flex" data-proxy-target="destination-tab">
+                                                <a href="#" data-proxy-target="destination-tab">Add Activities</a>
+                                            </button>
+                                            <!-- mobile add activity button  -->
+                                            <button class="border-0 bg-transparent  d-flex d-lg-none" data-proxy-target="destination-tab" data-bs-toggle="offcanvas" data-bs-target="#destinationSearchCanvas" aria-controls="destinationSearchCanvas">
+                                                <a href="#" data-proxy-target="destination-tab">Add Activities</a>
+                                            </button>
+                                        </div>
+                                    </div>
+
                                     <div>Here is the summary of the activities and destinations selected for the day </div>
                                     <ul class="easygo-list-4" id='itinerary-card-activity-list'>
                                         <li id='default-itinerary-list'>
@@ -352,9 +350,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                             </div>
                                         </li> -->
                                     </ul>
-                                    <div class="py-2 text-end">
-                                        <a href="#" data-proxy-target="destination-tab">Add More</a>
-                                    </div>
+
                                 </div>
                             </div>
                             <!-- Itinerary Exp [end] -->
@@ -438,7 +434,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                     <!--- ================================ -->
 
                                     <!--- ================================ -->
-                                    <!-- Coplanner AI panel  [start] -->
+                                    <!-- AI Suggestions  [start] -->
                                     <div class="tab-pane fade" id="sentiment-tab-pane" role="tabpanel" aria-labelledby="sentiment-tab-pane">
                                         <div class="bg-white p-5 box-shadow-3 easygo-scroll-bar" style="height: 50rem; overflow-y: auto;">
                                             <div>
@@ -548,7 +544,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                         </div>
                                     </div>
 
-                                    <!-- Coplanner AI panel  [end] -->
+                                    <!-- AI Suggestions  [end] -->
                                     <!--- ================================ -->
 
 
@@ -571,7 +567,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                             <div class="my-4" id='destination-search-results'>
                                                 <?php
                                                 $destinations = get_destinations();
-                                                foreach (array_slice($destinations,0,2) as $current) {
+                                                foreach (array_slice($destinations, 0, 2) as $current) {
                                                     $destination_id = $current["destination_id"];
                                                     $name = $current["destination_name"];
                                                     $location = $current["location"];
@@ -581,10 +577,10 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                     //===================Destination activities text[start]============
                                                     $activities = get_destination_activities($destination_id);
                                                     $activities_text = "";
-                                                    foreach($activities as $entry){
+                                                    foreach ($activities as $entry) {
                                                         $act_id = $entry["activity_id"];
                                                         $act_name = $entry["activity_name"];
-                                                        $activities_text .="
+                                                        $activities_text .= "
                                                         <span id='activity_$act_id' onclick='add_activity_to_itineary_card(\"$destination_id\",\"$name\",\"$act_id\",\"$act_name\")' class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>$act_name</span>";
                                                     }
                                                     //===================Destination activities text[end]============
@@ -730,6 +726,147 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
         <!--- ================================ -->
         <!--- ================================ -->
         <!-- AI suggestions - mobile [start] -->
+        <!--- ================================ -->
+        <!-- Menu actions  - mobile [start] -->
+        <div class="offcanvas offcanvas-start" id='mobileMenuCanvas'>
+            <div class="offcanvas-header">
+                <a class='navbar-brand' href='../index.php'>
+                    <img class='logo-medium' src='../assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
+                </a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <h5>Menu Actions</h5>
+                <ul class="list-group">
+                    <li class="list-group-item" onclick="switch_mobile_canvas()" data-bs-dismiss="offcanvas" data-proxy-target="destination-tab">
+                        <a href="#">Add New Activities</a>
+                    </li>
+                </ul>
+                <br>
+                <h5 class='mt-1'>Select Itinerary Day</h5>
+                <ul class="list-group">
+                    <li class="list-group-item"> <a href="#">Day One</a> </li>
+                    <li class="list-group-item"> <a href="#">Day Two</a> </li>
+                    <li class="list-group-item"> <a href="#" class='text-orange'>Add New Day</a> </li>
+                </ul>
+                <br>
+                <h5 class='mt-1'>Additional Service</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="d-flex flex-row align-items-center justify-center">
+                            <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
+                            <div class="p-1 expand-toggle-rev">Curator</div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex flex-row align-items-center justify-center">
+                            <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
+                            <div class="p-1 expand-toggle-rev">Accommodation</div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex flex-row align-items-center justify-center">
+                            <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
+                            <div class="p-1 expand-toggle-rev">Transportation</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Menu actions  - mobile [end] -->
+        <!--- ================================ -->
+        <!--- ================================ -->
+        <!-- Destination selection  - mobile [end] -->
+        <div class="offcanvas offcanvas-start" id="destinationSearchCanvas" aria-labelledby="">
+            <div class="offcanvas-header">
+                <a class='navbar-brand' href='../index.php'>
+                    <img class='logo-medium' src='../assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
+                </a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="bg-white p-2">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="." method="get" onsubmit='destination_search(this)'>
+                                <div class="easygo-text-input-1">
+                                    <input type="text" name='query' placeholder="Search for destination by name">
+                                    <button class="easygo-btn-1 oy-1" type='submit'>SEARCH</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--- ================================ -->
+                    <!-- cards [start] -->
+                    <div class="my-4" id='destination-search-results'>
+                        <?php
+                        $destinations = get_destinations();
+                        foreach (array_slice($destinations, 0, 2) as $current) {
+                            $destination_id = $current["destination_id"];
+                            $name = $current["destination_name"];
+                            $location = $current["location"];
+                            $rating = $current["rating"];
+                            $num_rating = $current["num_ratings"];
+                            //===========================================================
+                            //===================Destination activities text[start]============
+                            $activities = get_destination_activities($destination_id);
+                            $activities_text = "";
+                            foreach ($activities as $entry) {
+                                $act_id = $entry["activity_id"];
+                                $act_name = $entry["activity_name"];
+                                $activities_text .= "
+                                                        <span id='activity_$act_id' onclick='add_activity_to_itineary_card(\"$destination_id\",\"$name\",\"$act_id\",\"$act_name\")' class='activity badge bg-transparent border border-blue border-1 text-black py-2 px-3'>$act_name</span>";
+                            }
+                            //===================Destination activities text[end]============
+                            //===========================================================
+
+
+                            echo "
+                                <div class='my-4 border border-1 border-blue rounded-1 overflow-hidden box-shadow-3'>
+                                    <div class='p-3'>
+                                        <div class='row'>
+                                            <div class='col-5'>
+                                                <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt='' style='max-height: 150px;'>
+                                            </div>
+                                            <div class='col-7'>
+                                                <h4 class='m-0'>$name</h4>
+                                                <div>$location</div>
+                                                <div class='text-blue easygo-fs-2 py-2'>
+                                                    <i class='fa-solid fa-wifi'></i> &nbsp;
+                                                    <i class='fa-solid fa-bath'></i> &nbsp;
+                                                    <i class='fa-solid fa-person-swimming'></i>
+                                                </div>
+                                                <div>
+                                                    $rating stars from $num_rating reviews
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class='my-3'>
+                                            Here is the summary of the activities and destinations selected
+                                            for the day
+                                        </p>
+                                        <div class='d-flex justify-content-end'>
+                                            <div class='mt-2 easygo-fw-4 easygo-fs-2'>$activities_text
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='py-2 bg-lblue-1 text-blue text-center'>
+                                        <a href='#'  data-bs-toggle='modal' data-bs-target='#dest-1-modal' onclick='update_destination_modal(\"$destination_id\")'>--- View more ---</a>
+                                    </div>
+                                </div>
+                                ";
+                        }
+                        ?>
+
+                    </div>
+                    <!-- cards [end] -->
+                    <!--- ================================ -->
+                </div>
+            </div>
+
+        </div>
+        <!-- Destination selection  - mobile [end] -->
+        <!--- ================================ -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h3 class="offcanvas-title easygo-fw-1" id="offcanvasRightLabel">
@@ -1007,6 +1144,14 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     target.click()
                 })
             });
+
+        function switch_mobile_canvas() {
+            event.preventDefault();
+            const currentCanvas = new bootstrap.Offcanvas(document.getElementById('mobileMenuCanvas'));
+            const newCanvas = new bootstrap.Offcanvas(document.getElementById('destinationSearchCanvas'));
+            currentCanvas.toggle();
+            newCanvas.toggle();
+        }
     </script>
 </body>
 

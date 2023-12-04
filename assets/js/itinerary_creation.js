@@ -2,6 +2,7 @@ const selected_dropdown_label = document.getElementById("selected-dropdown-label
 const destination_search_results = document.getElementById("destination-search-results");
 const itinerary_card_activity_list = document.getElementById("itinerary-card-activity-list");
 
+
 $(document).ready(function() {
     $('#day-dropdown-options').on('click', 'li', function (){
 
