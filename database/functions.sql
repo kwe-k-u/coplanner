@@ -179,6 +179,7 @@ BEGIN
    DECLARE act_id INT;
    DECLARE temp INT;
 
+
    SELECT activity_id INTO act_id FROM activities WHERE activity_name = in_activity_name;
 
    IF act_id IS NULL THEN
@@ -292,6 +293,15 @@ CREATE FUNCTION add_itinerary_activity(in_day_id VARCHAR(100), in_activity_id IN
 BEGIN
     DECLARE pos INT;
 
+    DECLARE temp VARCHAR(100);
+
+    -- Check if the destination has been added to the day
+    SELECT destination_id INTO temp FROM itinerary_destination WHERE day_id = in_day_id AND destination_id = in_destination_id;
+
+    IF temp IS NULL THEN
+        CALL add_itinerary_destination(in_day_id, in_destination_id);
+    END IF;
+
     -- Check if the activity already exists for that day
     SELECT position INTO pos FROM itinerary_activity WHERE activity_id = in_activity_id AND day_id = in_day_id AND destination_id = in_destination_id;
 
@@ -300,7 +310,7 @@ BEGIN
     END IF;
 
     -- Fetch the maximum position for the given day and activity
-    SELECT COALESCE(MAX(position), -1) INTO pos FROM itinerary_activity WHERE day_id = in_day_id AND activity_id = in_activity_id;
+    SELECT COALESCE(MAX(position), -1) INTO pos FROM itinerary_activity WHERE day_id = in_day_id AND destination_id = in_destination_id;
 
     SET pos = pos + 1; -- Increment the position
 
@@ -406,6 +416,17 @@ END //
 DELIMITER ;
 
 
+DELIMITER //
+CREATE FUNCTION update_itinerary_name(
+    in_itinerary_id VARCHAR(100),
+    in_name VARCHAR(60)
+ ) RETURNS TINYINT(1)
+ begin
+ UPDATE itinerary set itinerary_name = in_name where itinerary_id = in_itinerary_id ;
+ return 1;
+ end//
+DELIMITER ;
+
 
 DROP PROCEDURE IF EXISTS get_stats_summary;
 DELIMITER //
@@ -467,12 +488,21 @@ DELIMITER //
 CREATE PROCEDURE get_itineraries(IN in_user_id VARCHAR(100) )
 BEGIN
     IF in_user_id IS NULL THEN
-        SELECT * FROM itinerary;
+        SELECT * FROM vw_itinerary;
     ELSE
-        SELECT * FROM itinerary WHERE owner_id = in_user_id;
+        SELECT * FROM vw_itinerary WHERE owner_id = in_user_id;
     END IF;
 END //
 
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_itinerary_by_id;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_by_id(
+  IN in_itinerary_id VACHAR(100)
+) BEGIN
+SELECT * FROM vw_itinerary WHERE itinerary_id = in_itinerary_id;
+END //
 DELIMITER ;
 
 
@@ -491,7 +521,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS get_itinerary_day_activities;
 DELIMITER //
-CREATE PROCEDURE get_itinerary_day(
+CREATE PROCEDURE get_itinerary_day_activities(
   IN in_day_id VARCHAR(100)
 )
 BEGIN
@@ -503,9 +533,19 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_itinerary_day_destinations;
 DELIMITER //
 CREATE PROCEDURE get_itinerary_day_destinations(
-IN in_day_id VARCHAR(10)
+IN in_day_id VARCHAR(100)
 )
 begin
   SELECT * FROM vw_itinerary_destinations WHERE day_id = in_day_id;
 end //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_day_info;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_day_info(IN in_day_id varchar(100))
+BEGIN
+SELECT * FROM itinerary_destination as id where id.day_id = in_day_id;
+select * from itinerary_activity as ia where ia.day_id = in_day_id;
+END //
 DELIMITER ;

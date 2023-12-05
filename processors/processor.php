@@ -212,18 +212,27 @@
 			$destinations = get_destinations_by_name($query);
 			send_json(array("msg"=> "Success","results"=> $destinations));
 			die();
+		case "/create_itinerary":
+			$user_id = get_session_user_id();
+			$id = create_itinerary($user_id,1);
+			send_json(array("msg"=> "Success","itinerary_id" => $id["itinerary_id"]));
+			die();
+		case "/update_itinerary_name":
+			$itinerary_id = $_POST["itinerary_id"];
+			$name = $_POST["new_name"];
+			update_itinerary_name($itinerary_id,$name);
+			send_json(array("msg"=> "Success"));
+			die();
+		case "/add_itinerary_activity":
+			$day_id = $_POST["day_id"];
+			$destination_id = $_POST["destination_id"];
+			$activity_id = $_POST["activity_id"];
+			add_itinerary_activity($day_id,$activity_id,$destination_id);
+			send_json(array("msg"=>"Success","destination_id" => $destination_id));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;
 	}
 
 ?>
-<!-- {
-    "destination_id": "391f3b8c-8dd8-11ee-a393-0a0027000006",
-    "destination_name": "Bunso Eco Park",
-    "location": "Bunso, Eastern Region",
-    "latitude": 15.23,
-    "longitude": -5.33,
-    "rating": 1,
-    "num_ratings": 1
-} -->

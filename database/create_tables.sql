@@ -157,7 +157,7 @@ CREATE TABLE itinerary(
 	start_date DATETIME,
 	end_date DATETIME CHECK (end_date >= start_date),
 	num_of_participants INT DEFAULT 1 CHECK(num_of_participants >0),
-    visibilty ENUM("private","public") DEFAULT "public"
+    visibility ENUM("private","public") DEFAULT "public"
 );
 
 
@@ -302,8 +302,22 @@ SELECT
     d.destination_name
 from itinerary_destination as id
 inner join destinations as d on d.destination_id = id.destination_id
-ORDER BY id.position
+ORDER BY id.position;
 
+
+
+DROP VIEW IF EXISTS vw_itinerary;
+
+CREATE VIEW vw_itinerary AS
+SELECT
+	i.*,
+    ic.user_id as owner_id,
+    (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
+    (select count(*) from itinerary_destination inner join itinerary_day on itinerary_day.itinerary_id = i.itinerary_id) as num_destinations,
+    (select COALESCE(sum(price),0) from destination_activities as ida inner join itinerary_activity as iia on iia.destination_id = ida.destination_id where iia.activity_id = ida.activity_id and iia.destination_id = i.itinerary_id) as budget,
+    (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position) as first_day
+from itinerary as i
+inner join itinerary_collaborators as ic on ic.itinerary_id = i.itinerary_id;
 
 
 

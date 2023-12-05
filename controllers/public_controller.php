@@ -32,10 +32,11 @@
 	}
 
 
-	function create_itinerary($user_id,$num_people,$status){
+	function create_itinerary($user_id,$num_people,$status = 'public'){
 		$public = new public_class();
 		$ids = $public->create_itinerary($user_id,$num_people,$status);
-		return $public->add_itinerary_day(array_values($ids)[0]);
+		$public->add_itinerary_day(array_values($ids)[0]);
+		return $ids;
 	}
 
 	function add_itinerary_day($itinerary_id){
@@ -47,6 +48,7 @@
 		$public = new public_class();
 		return $public-> add_itinerary_destination($day_id,$destination_id);
 	}
+
 
 	function get_destination_by_id($id){
 		$public = new public_class();
@@ -104,9 +106,27 @@
 	function get_itinerary_day_info($day_id){
 		$public = new  public_class();
 		$data = $public->get_itinerary_day_info($day_id);
+		$public = new  public_class();
 		$data["activities"] = $public->get_itinerary_day_activities($day_id);
+		$public = new  public_class();
 		$data["destinations"] = $public->get_itinerary_day_destinations($day_id);
 		return $data;
+	}
+
+	function update_itinerary_name($id,$name){
+		$public = new public_class();
+		return $public->update_itinerary_name($id,$name);
+	}
+
+	function get_itinerary_by_id($id){
+		$public = new public_class();
+		return $public->get_itinerary_by_id($id);
+	}
+
+
+	function add_itinerary_activity($day_id,$activity_id,$destination_id){
+		$public = new public_class();
+		return $public->add_itinerary_activity($day_id,$activity_id,$destination_id);
 	}
 
 

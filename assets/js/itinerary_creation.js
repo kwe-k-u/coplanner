@@ -457,6 +457,8 @@ function add_activity_to_itineary_card(destination_id, destination_name, activit
 			itinerary_card_activity_list.replaceChildren([]);
 		}
 		itinerary_card_activity_list.appendChild(destination_card);
+
+		add_itineary_activity("12a10892-9282-11ee-a393-0a0027000006",activity_id,destination_id)
 	}else{
 		// if destination exists in the current day list, add the activity to it
 		let activity_section = destination_card.querySelector(".itinerary-activities");
@@ -471,6 +473,8 @@ function add_activity_to_itineary_card(destination_id, destination_name, activit
 			alert("You've already added this activity for this destination on this day");
 		}else{
 			activity_section.appendChild(activity_span);
+			//come back
+			add_itineary_activity("12a10892-9282-11ee-a393-0a0027000006",activity_id,destination_id)
 		}
 
 
@@ -488,4 +492,36 @@ function create_itinerary_card_acitivity_span(id,name){
 	span.innerText = name;
 	span.id = "activity_"+id;
 	return span;
+}
+
+
+function update_itinerary_name(text){
+	const itinerary_id = url_params("id");
+	send_request("POST",
+	"processors/processor.php/update_itinerary_name",
+	{
+		"itinerary_id" : itinerary_id,
+		"new_name" : text
+	},
+	(response)=> {
+
+	}
+	);
+}
+
+
+function add_itineary_activity(day_id,activity_id,destination_id){
+
+	send_request("POST",
+	"processors/processor.php/add_itinerary_activity",
+	{
+		"destination_id" : destination_id,
+		"activity_id" : activity_id,
+		"day_id" : day_id
+	},
+	(response)=>{
+		console.log("server add activity");
+		console.log(response);
+	}
+	);
 }

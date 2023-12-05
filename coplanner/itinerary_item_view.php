@@ -1,6 +1,16 @@
 <?php
-require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/public_controller.php");
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/public_controller.php");
+
+
+
+    $itinerary_id = $_GET["id"];
+    $itinerary = get_itinerary_by_id($itinerary_id);
+    $name = $itinerary["itinerary_name"] ?? "Untitled";
+    $participants = $itinerary["num_of_participants"];
+    $days = $itinerary["num_days"];
+    $cost = format_string_as_currency_fn($itinerary["budget"]);
+    $first_day = $itinerary["first_day"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +53,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
-                            <span class="easygo-editable-text">Untitled</span>/ <span class='selected-day-display'>Day one</span>
+                            <?php  echo "<span class='easygo-editable-text' onchange='update_itinerary_name(this.innerText)'>$name</span>/ <span class='selected-day-display'>Day one</span>";?>
                         </div>
 
                         <!--- ================================ -->
@@ -92,35 +102,39 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
             <!--- ================================ -->
             <!-- mobile sidebar [start] -->
-            <div class="d-flex justify-content-between p-3 box-shadow-3 mx-auto rounded-3 gap-5 d-lg-none w-100" style="max-width: 500px;">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div>
-                        <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
+            <?php
+                echo "
+                <div class='d-flex justify-content-between p-3 box-shadow-3 mx-auto rounded-3 gap-5 d-lg-none w-100' style='max-width: 500px;'>
+                    <div class='d-flex flex-column justify-content-center align-items-center'>
+                        <div>
+                            <i class='fa-solid fa-wallet text-blue easygo-fs-1'></i>
+                        </div>
+                        <div class='easygo-fs-4 expand-toggle-rev'>GHS <span class='budget-span'>$cost</span></div>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>0</span></div>
-                </div>
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div>
-                        <i class="fa-solid fa-calendar text-blue easygo-fs-1"></i>
+                    <div class='d-flex flex-column justify-content-center align-items-center'>
+                        <div>
+                            <i class='fa-solid fa-calendar text-blue easygo-fs-1'></i>
+                        </div>
+                        <div class='easygo-fs-4 expand-toggle-rev'><span class='day-span'>$days</span> days</div>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev"><span class='day-span'>2</span> days</div>
-                </div>
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div>
-                        <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
+                    <div class='d-flex flex-column justify-content-center align-items-center'>
+                        <div>
+                            <i class='fa-solid fa-users text-blue easygo-fs-1'></i>
+                        </div>
+                        <div class='easygo-fs-4 expand-toggle-rev'><span class='people-span'>$participants</span> Person</div>
                     </div>
-                    <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>1</span> Person</div>
                 </div>
-            </div>
+                ";
+            ?>
             <!-- mobile sidebar [end] -->
             <!--- ================================ -->
             <div>
                 <div class="d-flex gap-2">
                     <!--- ================================ -->
                     <!-- sidebar [start] -->
-                    <aside id="itinerary-sidebar" class="shrinkable-sidebar-280 shrinkable-sidebar h-100 mt-3 d-none d-lg-block box-shadow-3" style="max-height: 100%">
-                        <div class="bg-blue position-relative" style="height: 2rem">
-                            <button class="d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler" style="right: -2.8rem; top: 0" data-target="itinerary-sidebar">
+                    <aside id='itinerary-sidebar' class='shrinkable-sidebar-280 shrinkable-sidebar h-100 mt-3 d-none d-lg-block box-shadow-3' style='max-height: 100%'>
+                        <div class='bg-blue position-relative' style='height: 2rem'>
+                            <button class='d-flex flex-column justify-content-center bg-blue align-items-start gap-1 h-100 border-0 shrinkable-sidebar-toggler' style='right: -2.8rem; top: 0' data-target="itinerary-sidebar">
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
                                 <div class="bg-white" style="padding: 0.06rem 1rem"></div>
@@ -129,56 +143,60 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         <div class="bg-white easygo-scroll-bar" style="height: 48rem; overflow-y: auto; overflow-x:hidden;">
                             <div class=" py-3">
                                 <h5 class="easygo-fw-1 py-2 sec-title"><span class="expand-d-none">Itinerary</span> <span>Overview</span></h5>
-                                <div class="ss-section">
-                                    <div class="ss-left">
-                                        <div class="d-flex flex-column justify-content-center align-items-center">
-                                            <div>
-                                                <i class="fa-solid fa-wallet text-blue easygo-fs-1"></i>
-                                            </div>
-                                            <div class="easygo-fs-4 expand-toggle">Budget</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev">GHS <span class='budget-span'>0</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="ss-right">
-                                        <div class="d-flex align-items-center h-100">
-                                            <h5>GHS <span class='budget-span'>0</span></h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ss-section">
-                                    <div class="ss-left">
-                                        <div class="d-flex flex-column justify-content-center align-items-center">
-                                            <div>
-                                                <i class="fa-solid fa-calendar text-blue easygo-fs-1"></i>
-                                            </div>
-                                            <div class="easygo-fs-4 expand-toggle">Calendar</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev"><span class='day-span'>2</span> days</div>
-                                        </div>
-                                    </div>
-                                    <div class="ss-right">
-                                        <div class="d-flex align-items-center h-100">
-                                            <h5><span class='day-span'>2</span> days</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ss-section">
-                                    <div class="ss-left">
-                                        <div class="d-flex flex-column justify-content-center align-items-center">
-                                            <div>
-                                                <i class="fa-solid fa-users text-blue easygo-fs-1"></i>
-                                            </div>
-                                            <div class="easygo-fs-4 expand-toggle">People</div>
-                                            <div class="easygo-fs-4 expand-toggle-rev"><span class='people-span'>1</span> Person</div>
-                                        </div>
-                                    </div>
-                                    <div class="ss-right">
-                                        <div class="d-flex align-items-center h-100">
-                                            <h5><span class='people-span'>1</span> Person</h5>
-                                        </div>
-                                    </div>
-                                </div>
                                 <hr class="border-3 border-blue opacity-100 mx-2">
-                                <h5 class="py-2 sec-title"><span class="expand-d-none">Additional</span> <span>Services</span></h5>
+                                <?php
+                                    echo "
+                                    <div class='ss-section'>
+                                        <div class='ss-left'>
+                                            <div class='d-flex flex-column justify-content-center align-items-center'>
+                                                <div>
+                                                    <i class='fa-solid fa-wallet text-blue easygo-fs-1'></i>
+                                                </div>
+                                                <div class='easygo-fs-4 expand-toggle'>Budget</div>
+                                                <div class='easygo-fs-4 expand-toggle-rev'>GHS <span class='budget-span'>$cost</span></div>
+                                            </div>
+                                        </div>
+                                        <div class='ss-right'>
+                                            <div class='d-flex align-items-center h-100'>
+                                                <h5>GHS <span class='budget-span'>$cost</span></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='ss-section'>
+                                        <div class='ss-left'>
+                                            <div class='d-flex flex-column justify-content-center align-items-center'>
+                                                <div>
+                                                    <i class='fa-solid fa-calendar text-blue easygo-fs-1'></i>
+                                                </div>
+                                                <div class='easygo-fs-4 expand-toggle'>Duration</div>
+                                                <div class='easygo-fs-4 expand-toggle-rev'><span class='day-span'>$days</span> days</div>
+                                            </div>
+                                        </div>
+                                        <div class='ss-right'>
+                                            <div class='d-flex align-items-center h-100'>
+                                                <h5><span class='day-span'>$days</span> days</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='ss-section'>
+                                        <div class='ss-left'>
+                                            <div class='d-flex flex-column justify-content-center align-items-center'>
+                                                <div>
+                                                    <i class='fa-solid fa-users text-blue easygo-fs-1'></i>
+                                                </div>
+                                                <div class='easygo-fs-4 expand-toggle'>People</div>
+                                                <div class='easygo-fs-4 expand-toggle-rev'><span class='people-span'>$participants</span> Person</div>
+                                            </div>
+                                        </div>
+                                        <div class='ss-right'>
+                                            <div class='d-flex align-items-center h-100'>
+                                                <h5><span class='people-span'>$participants</span> Person</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ";
+                                ?>
+                                <h5 class='py-2 sec-title'><span class="expand-d-none">Additional</span> <span>Services</span></h5>
                                 <div class="ss-section">
                                     <div class="ss-left">
                                         <div class="d-flex flex-column align-items-center justify-content-center">
@@ -278,12 +296,69 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
                                     <div>Here is the summary of the activities and destinations selected for the day </div>
                                     <ul class="easygo-list-4" id='itinerary-card-activity-list'>
-                                        <li id='default-itinerary-list'>
-                                            <div>
-                                                <h5>Add a destination</h5>
-                                                <p class="">Add a destination or an activity from the right to populate this section</p>
-                                            </div>
-                                        </li>
+                                        <?php
+                                            $day_info = get_itinerary_day_info($first_day);
+                                            foreach ($day_info["destinations"] as $destination) {
+                                                $des_id = "destination_" .$destination["destination_id"];
+                                                $des_name = $destination["destination_name"];
+                                                $activity_text = "";
+
+                                                foreach ($day_info["activities"] as $activity) {
+                                                    $act_name = $activity["activity_name"];
+                                                    $act_id = "activity_".$activity["activity_id"];
+                                                    $activity_text .= "
+                                                    <span id='$act_id' class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>
+                                                    ";
+                                                }
+
+                                                echo "
+                                                    <li id='$des_id'>
+                                                        <div class='row'>
+                                                            <div class='col-4'>
+                                                                <h5>$des_name</h5>
+                                                                <div class='easygo-fs-5 d-flex justify-content-between align-items-center'>
+                                                                    <div class='col'>
+                                                                        <div>8:00 AM</div>
+                                                                        <div>GHS 500</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class='col-8'>
+                                                                <div class='row'>
+                                                                    <div class='col-4'>
+                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt=''>
+                                                                    </div>
+                                                                    <div class='col-4'>
+                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt=''>
+                                                                    </div>
+                                                                    <div class='col-4'>
+                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt=''>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='mt-3'>
+                                                                    Here is the summary of the activities and destinations selected for the day
+                                                                </div>
+                                                            </div>
+                                                            <div class='mt-2'>
+                                                                $activity_text
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                ";
+                                            }
+
+                                            // if no destinations or activities have been added to this day, display default prompt
+                                            if($day_info["activities"] == array()){
+                                                echo "
+                                                <li id='default-itinerary-list'>
+                                                    <div>
+                                                        <h5>Add a destination</h5>
+                                                        <p class=>Add a destination or an activity from the right to populate this section</p>
+                                                    </div>
+                                                </li>
+                                                ";
+                                            }
+                                        ?>
                                         <!-- <li>
                                             <div class="row">
                                                 <div class="col-4">

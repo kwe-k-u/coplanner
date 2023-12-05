@@ -34,7 +34,7 @@
 		}
 
 		function create_itinerary($user_id,$num_people,$status){
-			$sql = "SELECT create_itinerary(?,?,?)";;
+			$sql = "SELECT create_itinerary(?,?,?) AS itinerary_id";;
 			$this->prepare($sql);
 			$this->bind($user_id,$num_people,$status);
 			return $this->db_fetch_one();
@@ -53,6 +53,13 @@
 			$this->prepare($sql);
 			$this->bind($day_id,$destination_id);
 			return $this->db_fetch_one();
+		}
+
+		function add_itinerary_activity($day_id,$activity_id,$destination_id){
+			$sql = "SELECT add_itinerary_activity(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($day_id,$activity_id,$destination_id);
+			return $this->db_query();
 		}
 
 		function get_destinations_by_name($name){
@@ -124,10 +131,10 @@
 		}
 
 		function get_itinerary_day_info($day_id){
-			$sql = "";
+			$sql = "CALL get_itinerary_day_info(?);";
 			$this->prepare($sql);
 			$this->bind($day_id);
-			return $this->db_fetch_one();
+			return $this->db_fetch_all();
 		}
 
 		function get_itinerary_day_activities($day_id){
@@ -142,6 +149,19 @@
 			$this->prepare($sql);
 			$this->bind($day_id);
 			return $this->db_fetch_all();
+		}
+		FUNCTION get_itinerary_by_id($id){
+			$sql = "CALL get_itinerary_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($id);
+			return $this->db_fetch_one();
+		}
+
+		function update_itinerary_name($id,$name){
+			$sql = "SELECT update_itinerary_name(?,?)";
+			$this->prepare($sql);
+			$this->bind($id,$name);
+			return $this->db_query();
 		}
 
 

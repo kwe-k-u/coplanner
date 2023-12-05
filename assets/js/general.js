@@ -575,6 +575,9 @@ class EditableText {
     // adding event listener when focus out
     this.inputEl.addEventListener("focusout", () => {
       this.#updateValue();
+      if(this.onchange != null){
+        this.onchange();
+      }
     });
   }
 
@@ -676,7 +679,6 @@ function testInput(type, value) {
       return false;
   }
 }
-
 
 
 
