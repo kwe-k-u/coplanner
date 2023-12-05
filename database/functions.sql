@@ -242,13 +242,18 @@ DELIMITER //
 CREATE FUNCTION create_itinerary(in_user_id VARCHAR(100), num_people INT, in_visibility VARCHAR(20)) RETURNS VARCHAR(100)
 BEGIN
   DECLARE id VARCHAR(100);
+  DECLARE in_day_id VARCHAR(1000);
   SET id = UUID();
+  SET in_day_id = UUID();
 
   INSERT INTO `itinerary`(`itinerary_id`, `date_created`, `num_of_participants`, `visibility`)
   VALUES (id, CURRENT_TIMESTAMP, num_people, in_visibility);
 
   INSERT INTO `itinerary_collaborators`(`itinerary_id`, `user_id`, `role`, `date_added`)
   VALUES (id, in_user_id, 'owner', CURRENT_TIMESTAMP);
+
+  INSERT INTO `itinerary_day`(`day_id`, `itinerary_id`, `position`)
+  VALUES (in_day_id,id,'0');
 
 
   RETURN id;
@@ -299,7 +304,7 @@ BEGIN
     SELECT destination_id INTO temp FROM itinerary_destination WHERE day_id = in_day_id AND destination_id = in_destination_id;
 
     IF temp IS NULL THEN
-        CALL add_itinerary_destination(in_day_id, in_destination_id);
+        SELECT add_itinerary_destination(in_day_id, in_destination_id) INTO  temp;
     END IF;
 
     -- Check if the activity already exists for that day
@@ -547,5 +552,15 @@ CREATE PROCEDURE get_itinerary_day_info(IN in_day_id varchar(100))
 BEGIN
 SELECT * FROM itinerary_destination as id where id.day_id = in_day_id;
 select * from itinerary_activity as ia where ia.day_id = in_day_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_days;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_days(IN in_itinerary_id VARCHAR(100))
+BEGIN
+SELECT * FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
 END //
 DELIMITER ;

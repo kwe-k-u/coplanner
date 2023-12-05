@@ -227,8 +227,8 @@
 			$day_id = $_POST["day_id"];
 			$destination_id = $_POST["destination_id"];
 			$activity_id = $_POST["activity_id"];
-			add_itinerary_activity($day_id,$activity_id,$destination_id);
-			send_json(array("msg"=>"Success","destination_id" => $destination_id));
+			$success = add_itinerary_activity($day_id,$activity_id,$destination_id);
+			send_json(array("msg"=>"Success","destination_id" => $success));
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

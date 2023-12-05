@@ -150,11 +150,19 @@
 			$this->bind($day_id);
 			return $this->db_fetch_all();
 		}
-		FUNCTION get_itinerary_by_id($id){
+
+		function get_itinerary_by_id($id){
 			$sql = "CALL get_itinerary_by_id(?)";
 			$this->prepare($sql);
 			$this->bind($id);
 			return $this->db_fetch_one();
+		}
+
+		function get_itinerary_days($itinerary_id){
+			$sql = "CALL get_itinerary_days(?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id);
+			return $this->db_fetch_all();
 		}
 
 		function update_itinerary_name($id,$name){

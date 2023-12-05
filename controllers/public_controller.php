@@ -35,7 +35,6 @@
 	function create_itinerary($user_id,$num_people,$status = 'public'){
 		$public = new public_class();
 		$ids = $public->create_itinerary($user_id,$num_people,$status);
-		$public->add_itinerary_day(array_values($ids)[0]);
 		return $ids;
 	}
 
@@ -111,6 +110,11 @@
 		$public = new  public_class();
 		$data["destinations"] = $public->get_itinerary_day_destinations($day_id);
 		return $data;
+	}
+
+	function get_itinerary_days($itinerary_id){
+		$public = new public_class();
+		return $public->get_itinerary_days($itinerary_id);
 	}
 
 	function update_itinerary_name($id,$name){

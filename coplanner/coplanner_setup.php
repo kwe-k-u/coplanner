@@ -461,7 +461,14 @@ require_once(__DIR__ . "/../utils/core.php");
                             }
                             if(parent == "tool-selection-page"){
                                 if(selected == "scratch-select"){
-                                    goto_page("coplanner/itinerary_item_view.php");
+                                    send_request("POST",
+                                    "processors/processor.php/create_itinerary",
+                                    {},
+                                    (response)=> {
+                                        goto_page("coplanner/itinerary_item_view.php?id="+response.data.itinerary_id);
+                                    }
+                                    );
+
                                     return null;
                                 }
                             }

@@ -8,7 +8,7 @@
     $itinerary = get_itinerary_by_id($itinerary_id);
     $name = $itinerary["itinerary_name"] ?? "Untitled";
     $participants = $itinerary["num_of_participants"];
-    $days = $itinerary["num_days"];
+    $day_count = $itinerary["num_days"];
     $cost = format_string_as_currency_fn($itinerary["budget"]);
     $first_day = $itinerary["first_day"];
 ?>
@@ -62,13 +62,20 @@
                             <div class="dropdown">
                                 <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 py-1 dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">Select Day</a>
                                 <ul class="dropdown-menu easygo-fs-4" id='day-dropdown-options'>
-                                    <li class="px-2 d-flex align-items-center">
-                                        <a class="dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue" href="#">
-                                            <span class="text-blue me-1"><i class="fa-solid fa-ellipsis-vertical"></i> <i class="fa-solid fa-ellipsis-vertical"></i></span>
-                                            <span class="me-3 day-span">Day One</span>
-                                            <span id="selected-dropdown-label" class="badge d-inline text-white bg-blue easygo-fs-6 text-uppercase">Selected</span>
+                                    <?php
+                                    $day_list = get_itinerary_days($itinerary_id);
+                                        echo "
+                                        <li class='px-2 d-flex align-items-center' id='day_label_$first_day'>
+                                        <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
+                                            <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
+                                            <span class='me-3 day-span'>Day One</span>
+                                            <span id='selected-dropdown-label' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span>
                                         </a>
                                     </li>
+                                        ";
+
+                                        
+                                    ?>
                                     <li class="px-2 d-flex align-items-center add-day-option" id='add-day-option'>
                                         <a class="dropdown-item add-day-option" href="#">
                                             <span class="text-orange add-day-option">Add extra day</span>
@@ -115,7 +122,7 @@
                         <div>
                             <i class='fa-solid fa-calendar text-blue easygo-fs-1'></i>
                         </div>
-                        <div class='easygo-fs-4 expand-toggle-rev'><span class='day-span'>$days</span> days</div>
+                        <div class='easygo-fs-4 expand-toggle-rev'><span class='day-span'>$day_count</span> days</div>
                     </div>
                     <div class='d-flex flex-column justify-content-center align-items-center'>
                         <div>
@@ -169,12 +176,12 @@
                                                     <i class='fa-solid fa-calendar text-blue easygo-fs-1'></i>
                                                 </div>
                                                 <div class='easygo-fs-4 expand-toggle'>Duration</div>
-                                                <div class='easygo-fs-4 expand-toggle-rev'><span class='day-span'>$days</span> days</div>
+                                                <div class='easygo-fs-4 expand-toggle-rev'><span class='day-span'>$day_count</span> days</div>
                                             </div>
                                         </div>
                                         <div class='ss-right'>
                                             <div class='d-flex align-items-center h-100'>
-                                                <h5><span class='day-span'>$days</span> days</h5>
+                                                <h5><span class='day-span'>$day_count</span> days</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -822,7 +829,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"> <a href="#">Day One</a> </li>
                     <li class="list-group-item"> <a href="#">Day Two</a> </li>
-                    <li class="list-group-item"> <a href="#" class='text-orange'>Add New Day</a> </li>
+                    <li class="list-group-item"> <a href="#" class='text-orange'>Add Extra Day</a> </li>
                 </ul>
                 <br>
                 <h5 class='mt-1'>Additional Service</h5>
@@ -1227,6 +1234,9 @@
             currentCanvas.toggle();
             newCanvas.toggle();
         }
+        <?php
+            echo "let selected_day_id='$first_day'";
+        ?>
     </script>
 </body>
 
