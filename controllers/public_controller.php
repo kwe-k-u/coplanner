@@ -106,9 +106,16 @@
 		$public = new  public_class();
 		$data = $public->get_itinerary_day_info($day_id);
 		$public = new  public_class();
-		$data["activities"] = $public->get_itinerary_day_activities($day_id);
-		$public = new  public_class();
 		$data["destinations"] = $public->get_itinerary_day_destinations($day_id);
+		// foreach ($data["destinations"] as $destination) {
+		for( $i = 0 ; $i < sizeof($data["destinations"]); $i++){
+			$destination = $data[$i];
+			// var_dump($data[$i]);
+			$des_id = $destination["destination_id"];
+			$public = new  public_class();
+			$data["destinations"][$i]["activities"]=$public->get_day_destination_activities($des_id,$day_id);
+		}
+		// $data["activities"] = $public->get_itinerary_day_activities($day_id);
 		return $data;
 	}
 
@@ -132,6 +139,7 @@
 		$public = new public_class();
 		return $public->add_itinerary_activity($day_id,$activity_id,$destination_id);
 	}
+
 
 
 ?>

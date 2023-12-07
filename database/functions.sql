@@ -564,3 +564,13 @@ BEGIN
 SELECT * FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
 END //
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_day_destination_activities;
+DELIMITER //
+CREATE PROCEDURE get_day_destination_activities(IN in_destination_id VARCHAR(100), IN in_day_id VARCHAR(100))
+BEGIN
+  SELECT * FROM vw_itinerary_activities where destination_id = in_destination_id and day_id = in_day_id;
+END //
+DELIMITER ;

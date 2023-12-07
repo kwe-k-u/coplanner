@@ -66,15 +66,29 @@
                                     $day_list = get_itinerary_days($itinerary_id);
                                         echo "
                                         <li class='px-2 d-flex align-items-center' id='day_label_$first_day'>
-                                        <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
-                                            <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
-                                            <span class='me-3 day-span'>Day One</span>
-                                            <span id='selected-dropdown-label' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span>
-                                        </a>
-                                    </li>
+                                            <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
+                                                <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
+                                                <span class='me-3 day-span'>Day One</span>
+                                                <span id='selected-dropdown-label' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span>
+                                            </a>
+                                        </li>
                                         ";
 
-                                        
+
+                                        foreach(array_slice($day_list,1) as $d){
+                                            $day_id = $d["day_id"];
+                                            echo "
+                                            <li class='px-2 d-flex align-items-center' id='day_label_$day_id'>
+                                                <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
+                                                    <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
+                                                    <span class='me-3 day-span'>Day Two</span>
+                                                </a>
+                                            </li>
+                                            ";
+                                        }
+
+
+
                                     ?>
                                     <li class="px-2 d-flex align-items-center add-day-option" id='add-day-option'>
                                         <a class="dropdown-item add-day-option" href="#">
@@ -305,12 +319,13 @@
                                     <ul class="easygo-list-4" id='itinerary-card-activity-list'>
                                         <?php
                                             $day_info = get_itinerary_day_info($first_day);
+
                                             foreach ($day_info["destinations"] as $destination) {
                                                 $des_id = "destination_" .$destination["destination_id"];
                                                 $des_name = $destination["destination_name"];
                                                 $activity_text = "";
 
-                                                foreach ($day_info["activities"] as $activity) {
+                                                foreach ($destination["activities"] as $activity) {
                                                     $act_name = $activity["activity_name"];
                                                     $act_id = "activity_".$activity["activity_id"];
                                                     $activity_text .= "
@@ -355,7 +370,7 @@
                                             }
 
                                             // if no destinations or activities have been added to this day, display default prompt
-                                            if($day_info["activities"] == array()){
+                                            if($day_info["destinations"] == array()){
                                                 echo "
                                                 <li id='default-itinerary-list'>
                                                     <div>

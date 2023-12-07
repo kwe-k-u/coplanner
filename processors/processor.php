@@ -202,7 +202,7 @@
 			// get_itinerary
 			$day = get_itinerary_day_info($day_id);
 			if($day){
-				send_json(array("msg"=> "Success","day_data"=>$day));
+				send_json(array("msg"=> "Success","result"=>$day));
 			}else{
 				send_json(array("msg"=> "Day not found",),201);
 			}
@@ -229,6 +229,11 @@
 			$activity_id = $_POST["activity_id"];
 			$success = add_itinerary_activity($day_id,$activity_id,$destination_id);
 			send_json(array("msg"=>"Success","destination_id" => $success));
+			die();
+		case "/add_itinerary_day":
+			$itinerary_id = $_POST["itinerary_id"];
+			$day = add_itinerary_day($itinerary_id);
+			send_json(array("msg"=> "Day created for itinerary","day_id"=> $day["day_id"]));
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

@@ -41,7 +41,7 @@
 		}
 
 		function add_itinerary_day($itinerary_id){
-			$sql = "SELECT add_itinerary_day(?)";
+			$sql = "SELECT add_itinerary_day(?) as day_id";
 			$this->prepare($sql);
 			$this->bind($itinerary_id);
 			return $this->db_fetch_one($sql);
@@ -162,6 +162,13 @@
 			$sql = "CALL get_itinerary_days(?)";
 			$this->prepare($sql);
 			$this->bind($itinerary_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_day_destination_activities($destination_id,$day_id){
+			$sql = "CALL get_day_destination_activities(?,?)";
+			$this->prepare($sql);
+			$this->bind($destination_id,$day_id);
 			return $this->db_fetch_all();
 		}
 

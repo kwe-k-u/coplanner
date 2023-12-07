@@ -73,9 +73,9 @@ require_once(__DIR__ . "/utils/env_manager.php");
                         </div>
                         <div class="col-lg-4 p-2 text-center">
                             <div>
-                                <h3 class="text-blue">Speed</h3>
+                                <h3 class="text-blue">Time Savings</h3>
                                 <div class="py-2">
-                                    Quickly make changes and create a full proof itinerary in minutes </div>
+                                    Quickly create a full-proof itinerary complete with destination activities, transportation and lodging in minutes </div>
                             </div>
                         </div>
                         <div class="col-lg-4 p-2 text-center">

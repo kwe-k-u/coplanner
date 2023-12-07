@@ -10,8 +10,9 @@ $(document).ready(function() {
 		if(event.target.classList.contains("add-day-option")){
 			add_day();
 		}else{ //if a day label is selected, move the 'selected' span to that option
-			moveSpanToClickedListItem();
-			reset_itinerary_card();
+			//TODO
+			moveSpanToClickedListItem(); // make return the day id of the selected li
+			switch_current_day() // insert into a function that gets the day info and populates the itinerary_card
 		}
 	});
 });
@@ -19,9 +20,12 @@ $(document).ready(function() {
 
 
 // Creates an option element to be placed in the add day drop down
-function create_day_dropdown_option(){
+function create_day_dropdown_option(day_id = null){
 	// Create outer list item
 	let option = document.createElement("li");
+	if(day_id != null){
+		option.id = "day_label_"+day_id
+	}
 	option.className = "px-2 d-flex align-items-center";
 
 	// Create anchor element to hold spans
@@ -272,7 +276,13 @@ function add_day(){
     let ul = document.getElementById("day-dropdown-options");
     let options = ul.children;
 
-	ul.appendChild(create_day_dropdown_option());
+	send_request("POST",
+	"processors/processor.php/add_itinerary_day",
+	{"itinerary_id" : url_params("id")},
+	(response)=> {
+		ul.appendChild(create_day_dropdown_option(response.data.day_id));
+	});
+
 	return null;
     for (let i = 0; i < options.length; i++){
         let item_li = options[i];
@@ -520,6 +530,25 @@ function add_itinerary_activity(day_id,activity_id,destination_id){
 	},
 	(response)=>{
 		console.log(response);
+	}
+	);
+}
+
+function switch_current_day(){
+	reset_itinerary_card();
+	send_request("GET",
+	"processors/processor.php/get_day_info?day_id="+selected_day_id,
+	{},
+	(response)=> {
+		// console.log(response.data.result["destinations"]);
+		let destinations = response.data.result.destinations;
+		if(destinations.length != 0){
+			itinerary_card_activity_list.replaceChildren([]);
+		}
+		destinations.forEach((e)=> {
+			let card = create_itinerary_card_item(e.destination_id,e.destination_name,e.activities);
+			itinerary_card_activity_list.appendChild(card);
+		});
 	}
 	);
 }
