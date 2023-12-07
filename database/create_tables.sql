@@ -299,7 +299,8 @@ DROP VIEW IF EXISTS vw_itinerary_destinations;
 CREATE VIEW vw_itinerary_destinations AS
 SELECT
     id.*,
-    d.destination_name
+    d.destination_name,
+    d.location
 from itinerary_destination as id
 inner join destinations as d on d.destination_id = id.destination_id
 ORDER BY id.position;
