@@ -235,6 +235,11 @@
 			$day = add_itinerary_day($itinerary_id);
 			send_json(array("msg"=> "Day created for itinerary","day_id"=> $day["day_id"]));
 			die();
+		case "/get_itinerary":
+			$itinerary_id = $_GET["itinerary_id"];
+			$data = get_itinerary_by_id($itinerary_id);
+			send_json(array("msg"=> "Success","data"=> $data));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

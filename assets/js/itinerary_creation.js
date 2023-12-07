@@ -14,6 +14,7 @@ $(document).ready(function() {
 			moveSpanToClickedListItem(); // make return the day id of the selected li
 			switch_current_day() // insert into a function that gets the day info and populates the itinerary_card
 		}
+		update_quick_stats();
 	});
 });
 
@@ -336,10 +337,19 @@ function moveSpanToClickedListItem() {
 
 
 // Update the information displayed about budgets and number of participants
-function update_quick_stats(budget,days,people){
-	update_budget_display(budget);
-	update_day_display(days);
-	update_people_display(people);
+function update_quick_stats(){
+	send_request(
+		"GET",
+		"processors/processor.php/get_itinerary?itinerary_id="+url_params("id"),
+		{},
+		(response)=> {
+			let data = response.data.data;
+
+			update_budget_display(data["budget"]);
+			update_day_display(data["num_days"]);
+			update_people_display(data["num_participants"]);
+		}
+	)
 }
 
 
@@ -486,9 +496,9 @@ function add_activity_to_itineary_card(destination_id, destination_name, activit
 			add_itinerary_activity(selected_day_id,activity_id,destination_id)
 		}
 
-
 	}
 
+	update_quick_stats();
 
 }
 
@@ -552,3 +562,5 @@ function switch_current_day(){
 	}
 	);
 }
+
+
