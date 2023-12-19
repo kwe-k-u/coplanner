@@ -1,0 +1,162 @@
+{
+    "0": {
+        "name": "Aliu Mahama Sports Stadium, Tamale",
+        "place_id": "ChIJ6e_ZmPg81A8RHUM-usGonxA",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1752,
+        "rating": 4.1,
+        "vicinity": "C46Q+49G, Tamale",
+        "location": {
+            "lat": 9.4103113,
+            "lng": -0.861541
+        }
+    },
+    "1": {
+        "name": "Abokobi Stadium Site",
+        "place_id": "ChIJ687Xd2R33w8Rn_P-BUbCZSY",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 47,
+        "rating": 4.4,
+        "vicinity": "PQQP+5WM, Unnamed Road, Berekuso",
+        "location": {
+            "lat": 5.7379579,
+            "lng": -0.2126927
+        }
+    },
+    "2": {
+        "name": "SWESBUS Park",
+        "place_id": "ChIJAdM9t2VO3g8RYdJ8gVRPzao",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 46,
+        "rating": 4,
+        "vicinity": "G8G6+R56, Agona Swedru",
+        "location": {
+            "lat": 5.5270481,
+            "lng": -0.6896114
+        }
+    },
+    "3": {
+        "name": "Elwak Sports Stadium",
+        "place_id": "ChIJU1VVVSWF3w8RXwxwfjjMhPQ",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1065,
+        "rating": 3.9,
+        "vicinity": "Giffard Rd, Accra",
+        "location": {
+            "lat": 5.586536,
+            "lng": -0.1723822
+        }
+    },
+    "4": {
+        "name": "University Of Ghana Sports Stadium",
+        "place_id": "ChIJC6qkCnub3w8RTEaFwfwcR2I",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 162,
+        "rating": 4,
+        "vicinity": "University of Ghana Stadium, Accra",
+        "location": {
+            "lat": 5.6391338,
+            "lng": -0.1799011
+        }
+    },
+    "5": {
+        "name": "Accra sport stadium",
+        "place_id": "ChIJgTsi6Oib3w8RzRRROwO591I",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "JR37+F6V, Accra",
+        "location": {
+            "lat": 5.6037379,
+            "lng": -0.1869579
+        }
+    },
+    "6": {
+        "name": "Tema stadium",
+        "place_id": "ChIJRYrpsVaH3w8R63kXgP_FF2w",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 467,
+        "rating": 3.7,
+        "vicinity": "Tema",
+        "location": {
+            "lat": 5.639819000000001,
+            "lng": -0.004304
+        }
+    },
+    "7": {
+        "name": "Koforidua Sport Stadium",
+        "place_id": "ChIJ5cLiwtlB3w8RXXxxT2_NGpM",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 539,
+        "rating": 3.4,
+        "vicinity": "Koforidua",
+        "location": {
+            "lat": 6.0716744,
+            "lng": -0.2519238
+        }
+    },
+    "8": {
+        "name": "Eric Odai Memorial Park",
+        "place_id": "ChIJ61F_YkWF3w8RTyQ0TdlV2LY",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.7,
+        "vicinity": "JVHJ+FH2, Accra",
+        "location": {
+            "lat": 5.628686999999999,
+            "lng": -0.1186825
+        }
+    },
+    "9": {
+        "name": "Accra Sports Stadium",
+        "place_id": "ChIJOTw494WQ3w8RGSE3Oe_Ncnw",
+        "types": [
+            "stadium",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2788,
+        "rating": 4.1,
+        "vicinity": "1272 Starlets 91 Rd, Accra",
+        "location": {
+            "lat": 5.5514701,
+            "lng": -0.1919171
+        }
+    }
+}

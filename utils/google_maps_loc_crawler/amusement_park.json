@@ -1,1 +1,291 @@
-{}
+{
+    "0": {
+        "name": "Kasuliyili dam",
+        "place_id": "ChIJf1MjIM1z1A8Rrn7GsFKmRHQ",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "HV5V+8F, Kasuliyili",
+        "location": {
+            "lat": 9.558251499999999,
+            "lng": -1.1063187
+        }
+    },
+    "1": {
+        "name": "Dimala Mo\u0263ali",
+        "place_id": "ChIJz43Gjug91A8RPdS9k3Xh03U",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "F432+C6, Tamale",
+        "location": {
+            "lat": 9.4535653,
+            "lng": -0.8993826
+        }
+    },
+    "2": {
+        "name": "Chaanzheni Dam",
+        "place_id": "ChIJh5jk7Mwx1A8RArrWI5pKcKQ",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "97F2+2J, Zibogo",
+        "location": {
+            "lat": 9.3725578,
+            "lng": -0.748398
+        }
+    },
+    "3": {
+        "name": "Kasuliyili dam",
+        "place_id": "ChIJf1MjIM1z1A8Rrn7GsFKmRHQ",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "HV5V+8F, Kasuliyili",
+        "location": {
+            "lat": 9.558251499999999,
+            "lng": -1.1063187
+        }
+    },
+    "4": {
+        "name": "Dimala Mo\u0263ali",
+        "place_id": "ChIJz43Gjug91A8RPdS9k3Xh03U",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "F432+C6, Tamale",
+        "location": {
+            "lat": 9.4535653,
+            "lng": -0.8993826
+        }
+    },
+    "5": {
+        "name": "Dulcedo enterprise",
+        "place_id": "ChIJDRkjAs6j3w8RsltmWUCGijA",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "10 jasmine ST GS-0025-3099 ACCRA, Gbawe",
+        "location": {
+            "lat": 5.5726795,
+            "lng": -0.3134938
+        }
+    },
+    "6": {
+        "name": "Dansoman Cluster of Schools Playground",
+        "place_id": "ChIJC1IY-5qX3w8R3_uJ-wSy3_c",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 3.7,
+        "vicinity": "GPXJ+J6V, Accra",
+        "location": {
+            "lat": 5.5491072,
+            "lng": -0.2694571
+        }
+    },
+    "7": {
+        "name": "Lumina Enterprise",
+        "place_id": "ChIJuavmRQuZ3w8R0akHF6gJSvc",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Manye Adorkor St, Accra",
+        "location": {
+            "lat": 5.623562799999999,
+            "lng": -0.2354483
+        }
+    },
+    "8": {
+        "name": "Kwame Nkrumah Water Park Fountain",
+        "place_id": "ChIJr-bVeA-a3w8Rj-Lj8xOANmA",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 4.1,
+        "vicinity": "HQ9P+Q39, Accra",
+        "location": {
+            "lat": 5.5694051,
+            "lng": -0.2147772
+        }
+    },
+    "9": {
+        "name": "Renaissance Park",
+        "place_id": "ChIJfyk--c-53w8Rw1FZVAVKjKs",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "CHW5+9RG, Gomoa Fetteh",
+        "location": {
+            "lat": 5.4459382,
+            "lng": -0.4404359
+        }
+    },
+    "10": {
+        "name": "Broadway47",
+        "place_id": "ChIJZ9zjM4R33w8R9HFSq7oTyRI",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Salem junction, Accra",
+        "location": {
+            "lat": 5.7556353,
+            "lng": -0.1738945
+        }
+    },
+    "11": {
+        "name": "GRANITE NATURAL MINERAL WATER",
+        "place_id": "ChIJ8yR03LC93w8RLL1bsp2gTS0",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "ADANSIMAN STREET, New, Bortianor",
+        "location": {
+            "lat": 5.5289155,
+            "lng": -0.3665211
+        }
+    },
+    "12": {
+        "name": "Splash & Play Tema",
+        "place_id": "ChIJc2K8hlmB3w8Rnq6jK57pEHE",
+        "types": [
+            "tourist_attraction",
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Armattoe St, Tema",
+        "location": {
+            "lat": 5.647855700000001,
+            "lng": -0.0192293
+        }
+    },
+    "13": {
+        "name": "Oti Falls Mineral Water",
+        "place_id": "ChIJLYP6pIMP3w8RXErflcv_O50",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Box 14 Otoease",
+        "location": {
+            "lat": 5.857158099999999,
+            "lng": -0.4200768
+        }
+    },
+    "14": {
+        "name": "Elinesis WaterPark and Leisure Center",
+        "place_id": "ChIJkaNSdjx33w8RNn-nNu3Uqy0",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 138,
+        "rating": 4.5,
+        "vicinity": "Ghana flag, Accra",
+        "location": {
+            "lat": 5.7680747,
+            "lng": -0.1806349
+        }
+    },
+    "15": {
+        "name": "Dulcedo enterprise",
+        "place_id": "ChIJDRkjAs6j3w8RsltmWUCGijA",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "10 jasmine ST GS-0025-3099 ACCRA, Gbawe",
+        "location": {
+            "lat": 5.5726795,
+            "lng": -0.3134938
+        }
+    },
+    "16": {
+        "name": "Xtra Ice",
+        "place_id": "ChIJIe3hytGB3w8RnCrfRK_5yYk",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 4.8,
+        "vicinity": "L916 Nene Kabu Abebreh St",
+        "location": {
+            "lat": 5.6939766,
+            "lng": -0.0234786
+        }
+    },
+    "17": {
+        "name": "Dansoman Cluster of Schools Playground",
+        "place_id": "ChIJC1IY-5qX3w8R3_uJ-wSy3_c",
+        "types": [
+            "amusement_park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 3.7,
+        "vicinity": "GPXJ+J6V, Accra",
+        "location": {
+            "lat": 5.5491072,
+            "lng": -0.2694571
+        }
+    }
+}

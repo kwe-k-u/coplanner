@@ -1,1 +1,322 @@
-{}
+{
+    "0": {
+        "name": "Eugene Arhin Foundation Library & ICT Centre",
+        "place_id": "ChIJncK9Fqax3w8RyY3vR39tnZ0",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4,
+        "vicinity": "GF8M+55F, Awutu Breku",
+        "location": {
+            "lat": 5.515740099999999,
+            "lng": -0.5178288999999999
+        }
+    },
+    "1": {
+        "name": "George Padmore Research Library on African Affairs",
+        "place_id": "ChIJWYwhvZyQ3w8RuL1oqhqgrFg",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 32,
+        "rating": 4.2,
+        "vicinity": "Gamel Abdul Nasser Ave, Accra",
+        "location": {
+            "lat": 5.5571832,
+            "lng": -0.1974349
+        }
+    },
+    "2": {
+        "name": "New Library Complex",
+        "place_id": "ChIJ9UkchqGQ3w8RyYOZkmFMmDs",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 13,
+        "rating": 4.2,
+        "vicinity": "HQ4V+M2J, Accra",
+        "location": {
+            "lat": 5.556782,
+            "lng": -0.2074773
+        }
+    },
+    "3": {
+        "name": "Ghana Library Authority(Headoffice)",
+        "place_id": "ChIJ_4SkH76Q3w8RP3lBGo3uaCQ",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 68,
+        "rating": 4.5,
+        "vicinity": "Thorpe Rd, Accra",
+        "location": {
+            "lat": 5.545017199999999,
+            "lng": -0.2060624
+        }
+    },
+    "4": {
+        "name": "Children's Library, Teshie-Nungua",
+        "place_id": "ChIJw9cQt7mF3w8RR_rotYr97IY",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 1,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.591695199999999,
+            "lng": -0.0961856
+        }
+    },
+    "5": {
+        "name": "Cheers Children\u2019s Library",
+        "place_id": "ChIJrcUnhKuX3w8RV7xqONbWVi0",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "GQV8+932, Reindorf Avenue, Accra",
+        "location": {
+            "lat": 5.5433998,
+            "lng": -0.2349006
+        }
+    },
+    "6": {
+        "name": "library KAIPTC",
+        "place_id": "ChIJA46cyxSb3w8R5XFWDD5RWIk",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "JR37+F6V, Accra",
+        "location": {
+            "lat": 5.6037379,
+            "lng": -0.1869579
+        }
+    },
+    "7": {
+        "name": "Upper West Regional Library",
+        "place_id": "ChIJgeXOmbeR3w8Rg-BnB9ybBdQ",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Dagbandao Street Children's Park Road Wa",
+        "location": {
+            "lat": 5.5444,
+            "lng": -0.1958
+        }
+    },
+    "8": {
+        "name": "Accra Central Library",
+        "place_id": "ChIJz4eQ9JWQ3w8Ry6cMdZNcBu8",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 20,
+        "rating": 4.5,
+        "vicinity": "GQVV+VRV, Accra",
+        "location": {
+            "lat": 5.544743299999999,
+            "lng": -0.2054565
+        }
+    },
+    "9": {
+        "name": "ACT Community Library",
+        "place_id": "ChIJI7a1RaOX3w8RCwH7fVC8OMk",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "GPXR+M2H, 2nd Fonpon Link, Accra",
+        "location": {
+            "lat": 5.5490917,
+            "lng": -0.259914
+        }
+    },
+    "10": {
+        "name": "Public Library",
+        "place_id": "ChIJ4UI4ipWQ3w8RgCS4txrAiyg",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 2.7,
+        "vicinity": "GQVV+PQ6, Thorpe Link, Accra",
+        "location": {
+            "lat": 5.5442963,
+            "lng": -0.2056075
+        }
+    },
+    "11": {
+        "name": "The Ghana Free Community Library",
+        "place_id": "ChIJZUxKLQma3w8RHLgozBnFhLw",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 3.6,
+        "vicinity": "C 91/3, Faanofa Road, C91/3 Kojo Thompson Rd, Accra",
+        "location": {
+            "lat": 5.566949399999999,
+            "lng": -0.2121479
+        }
+    },
+    "12": {
+        "name": "Teshie Library",
+        "place_id": "ChIJPYNHUPSF3w8R80fNc_a_vls",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 3,
+        "vicinity": "HVGQ+2X3, Martin Sowah's Rd, Accra",
+        "location": {
+            "lat": 5.5750742,
+            "lng": -0.1101098
+        }
+    },
+    "13": {
+        "name": "GHANA LIBRARY AUTHORITY",
+        "place_id": "ChIJnbJeL8413g8RCjb_L6zJQdo",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 3,
+        "vicinity": "Windy-Bay Ave, Winneba",
+        "location": {
+            "lat": 5.3437607,
+            "lng": -0.6271901999999999
+        }
+    },
+    "14": {
+        "name": "Justice Yacuub Ammah Memorial Community Library",
+        "place_id": "ChIJFYq6TS6X3w8RkTqAMMXhS5U",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "GQH9+9C6, Accra",
+        "location": {
+            "lat": 5.528419,
+            "lng": -0.2314822
+        }
+    },
+    "15": {
+        "name": "Lartebiokorshie Grace Library",
+        "place_id": "ChIJ9_cMQEKX3w8RFW-t4_yHi4I",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4.2,
+        "vicinity": "GQW5+W62, Accra",
+        "location": {
+            "lat": 5.5472988,
+            "lng": -0.241994
+        }
+    },
+    "16": {
+        "name": "Osu Library",
+        "place_id": "ChIJGWFJygeR3w8RAB52-Vd3pcE",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 8,
+        "rating": 4.1,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.5536786,
+            "lng": -0.1769083
+        }
+    },
+    "17": {
+        "name": "College Library",
+        "place_id": "ChIJDZethDaX3w8R6RfVBUI9pSE",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.3,
+        "vicinity": "GQPC+X66, Guggisberg Ave, Accra",
+        "location": {
+            "lat": 5.537420399999999,
+            "lng": -0.2294174
+        }
+    },
+    "18": {
+        "name": "Children's Library",
+        "place_id": "ChIJgY9W9pWQ3w8R73cZjlx5Jeo",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3.3,
+        "vicinity": "GQVV+PVJ, Kojo Thompson Rd, Accra",
+        "location": {
+            "lat": 5.5442909,
+            "lng": -0.2053549
+        }
+    },
+    "19": {
+        "name": "Kathy Knowles Community Library, Osu",
+        "place_id": "ChIJDbydz4OQ3w8RsG1UcBsBzX4",
+        "types": [
+            "library",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.4,
+        "vicinity": "Haile Selassie St, Accra",
+        "location": {
+            "lat": 5.558397,
+            "lng": -0.1923708
+        }
+    }
+}

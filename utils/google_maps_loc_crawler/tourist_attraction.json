@@ -1,1 +1,325 @@
-{}{}{}
+{
+    "0": {
+        "name": "Adanwomase Tourism Centre",
+        "place_id": "ChIJDYAtfknB2w8Rbj4qniZo3hs",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 1,
+        "vicinity": "Adanwomase",
+        "location": {
+            "lat": 6.812697,
+            "lng": -1.4756031
+        }
+    },
+    "1": {
+        "name": "Kumasi",
+        "place_id": "ChIJyyjmQPuX2w8Rs853GAhrJcw",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 14,
+        "rating": 3.9,
+        "vicinity": "M9RM+C39, Kumasi",
+        "location": {
+            "lat": 6.6914699,
+            "lng": -1.6174189
+        }
+    },
+    "2": {
+        "name": "Amomorso water Falls",
+        "place_id": "ChIJm0TV0y352w8ReFSepB9HSdY",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4,
+        "vicinity": "CMF7+G85, Bosome Freho District Bomfa Junction Amomorso, Asiwa",
+        "location": {
+            "lat": 6.423772899999999,
+            "lng": -1.3366336
+        }
+    },
+    "3": {
+        "name": "Eddyblay Ventures",
+        "place_id": "ChIJJfbdvL-Z2w8ReuWLEX2FZ4k",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Owabi hardworks, Kumasi",
+        "location": {
+            "lat": 6.7442328,
+            "lng": -1.7128813
+        }
+    },
+    "4": {
+        "name": "Polaris Excape",
+        "place_id": "ChIJATLJ-uW33g8RxSaqMRQSvJQ",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Juaso- Nsawam Rd, Accra",
+        "location": {
+            "lat": 6.237099199999999,
+            "lng": -0.9244169
+        }
+    },
+    "5": {
+        "name": "Lake bosumtwi",
+        "place_id": "ChIJFZt3QxTx2w8RV8M24djjWks",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Lake Bosumtwi",
+        "location": {
+            "lat": 6.5071175,
+            "lng": -1.4105603
+        }
+    },
+    "6": {
+        "name": "Sofoline Interchange",
+        "place_id": "ChIJkbc6tZyX2w8RZdRqxkYeVoQ",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Kwadaso Nsuom, Sofoline Interchange, Kumasi",
+        "location": {
+            "lat": 6.699932,
+            "lng": -1.645287
+        }
+    },
+    "7": {
+        "name": "Administration Block",
+        "place_id": "ChIJS0ATRLxz3A8RaixTPgX9WvA",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "6FR4+2V, Nyankumasu",
+        "location": {
+            "lat": 6.240011200000001,
+            "lng": -1.5427969
+        }
+    },
+    "8": {
+        "name": "george abakomah house",
+        "place_id": "ChIJMws9hlvr2w8RrbRA5aVXY0M",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "PG29+MGP, Ejisu",
+        "location": {
+            "lat": 6.701708099999999,
+            "lng": -1.4811137
+        }
+    },
+    "9": {
+        "name": "Onyem Abena Waterfall",
+        "place_id": "ChIJAVG0701r2Q8RpiKOz7anuns",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Q38H+78, Pataban",
+        "location": {
+            "lat": 6.7656405,
+            "lng": -0.9217464999999999
+        }
+    },
+    "10": {
+        "name": "Owabi Wildlife Sanctuary",
+        "place_id": "ChIJt9szWxKZ2w8REQVex69Rsk8",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 4.5,
+        "vicinity": "AA-T1134-8125 OWABI HEADWORKS",
+        "location": {
+            "lat": 6.743737299999999,
+            "lng": -1.7125264
+        }
+    },
+    "11": {
+        "name": "Yaa Asantewaa Museum",
+        "place_id": "ChIJecoqHSDr2w8RWzMqYZx2jwI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4.2,
+        "vicinity": "Ejisu - Bekwai Rd, Ejisu",
+        "location": {
+            "lat": 6.7136551,
+            "lng": -1.4670471
+        }
+    },
+    "12": {
+        "name": "Barekese dam",
+        "place_id": "ChIJRxzhoTml2w8R-sYTPBw-zLI",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 2.6,
+        "vicinity": "R7XJ+63V, Barekese",
+        "location": {
+            "lat": 6.8481245,
+            "lng": -1.7198215
+        }
+    },
+    "13": {
+        "name": "Nyankomasu Waterfalls",
+        "place_id": "ChIJl6frzjxz3A8RrLuDrHpdcCU",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 4.6,
+        "vicinity": "6FV4+92, Nyankumasu",
+        "location": {
+            "lat": 6.24339,
+            "lng": -1.544991
+        }
+    },
+    "14": {
+        "name": "ROKABO CLUB GUEST HOUSE RECREATIONAL CENTRE",
+        "place_id": "ChIJyYdbCrXr2w8Rvo9bOKTGBqM",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "AE-0088-5540 Asotwe, Ejisu",
+        "location": {
+            "lat": 6.745337,
+            "lng": -1.4531241
+        }
+    },
+    "15": {
+        "name": "Bomfobir Wildlife Sanctuary HQ WD of Forestry Commission",
+        "place_id": "ChIJmwE6lQ_Z2w8RrfrPZc6RRVA",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.2,
+        "vicinity": "WP56+WFH Effiduase Road, Kumawu",
+        "location": {
+            "lat": 6.9098051,
+            "lng": -1.2887535
+        }
+    },
+    "16": {
+        "name": "VISUAL ARTS GALLERY, T.I.AMSS",
+        "place_id": "ChIJNYlUMKOX2w8RR3tJ2YQpg_E",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "M9JR+4VG, Kumasi",
+        "location": {
+            "lat": 6.6803194,
+            "lng": -1.6077986
+        }
+    },
+    "17": {
+        "name": "Adanwomase Kente Cloth and Tourism",
+        "place_id": "ChIJs4SFlk7B2w8Roi5Ovshwma8",
+        "types": [
+            "tourist_attraction",
+            "clothing_store",
+            "point_of_interest",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 29,
+        "rating": 4.5,
+        "vicinity": "Kumasi",
+        "location": {
+            "lat": 6.8180286,
+            "lng": -1.4743724
+        }
+    },
+    "18": {
+        "name": "Bomfobiri Wildlife sanctuary-HQ",
+        "place_id": "ChIJVblwhsfZ2w8RWwSN61LUJL0",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 11,
+        "rating": 4.5,
+        "vicinity": "Near New Education Office, Kumawu",
+        "location": {
+            "lat": 6.9111632,
+            "lng": -1.2770675
+        }
+    },
+    "19": {
+        "name": "Prempeh II Jubilee Museum",
+        "place_id": "ChIJDZV1__iW2w8RFLo-sHf25Vk",
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 75,
+        "rating": 4.2,
+        "vicinity": "P929+HXX, Kumasi",
+        "location": {
+            "lat": 6.7014786,
+            "lng": -1.6300097
+        }
+    }
+}

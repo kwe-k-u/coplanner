@@ -3,7 +3,10 @@
     require_once(__DIR__ . "/../controllers/public_controller.php");
 
 
-
+    if(!isset($_GET["id"])){
+        header("Location: ../index.php");
+        die();
+    }
     $itinerary_id = $_GET["id"];
     $itinerary = get_itinerary_by_id($itinerary_id);
     $name = $itinerary["itinerary_name"] ?? "Untitled";
@@ -653,7 +656,7 @@
                                                 <div class="col-12">
                                                     <form action="." method="get" onsubmit='destination_search(this)'>
                                                         <div class="easygo-text-input-1">
-                                                            <input type="text" name='query' placeholder="Search for destination by name">
+                                                            <input type="text" name='query'  placeholder="Search for destination by name">
                                                             <button class="easygo-btn-1 oy-1" type='submit'>SEARCH</button>
                                                         </div>
                                                     </form>

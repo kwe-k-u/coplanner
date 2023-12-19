@@ -179,11 +179,11 @@
 			die();
 		case "/new_itinerary_request":
 			// if itinerary_id is true, then admin is adding a new template
-			$directory = $_POST["itinerary_id"] == true
+			$directory = $_POST["itinerary_id"] != "false"
 			?"../uploads/template_weights/" //Admin entry
 			:"../uploads/user_itinerary_preference/"; // User creation
 			$preferences = $_POST["preference"];
-			$fileName = $_POST["itinerary_id"] ? $_POST["itinerary_id"]: generate_id();
+			$fileName = $_POST["itinerary_id"] != "false" ? $_POST["itinerary_id"]: generate_id();
 			$filePath = $directory . $fileName.".json";
 			// Create the directory if it doesn't exist
 			if (!file_exists($directory)) {

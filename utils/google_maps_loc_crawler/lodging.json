@@ -1,0 +1,20 @@
+{
+    "0": {
+        "name": "Gomoa Wonderland",
+        "place_id": "ChIJPTu1CWmz3w8R4gWhifJNDn8",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 76,
+        "rating": 4.4,
+        "vicinity": "Gomoa Eduafokwaa, on the Akotsi-Kwanyako Road",
+        "location": {
+            "lat": 5.5608517,
+            "lng": -0.5751993
+        }
+    }
+}

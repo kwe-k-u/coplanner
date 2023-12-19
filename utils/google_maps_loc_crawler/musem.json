@@ -1,0 +1,324 @@
+{
+    "0": {
+        "name": "Bui National Park",
+        "place_id": "ChIJbYYuIXks0A8RzPeJD8w50CE",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 376,
+        "rating": 3.9,
+        "vicinity": "Bui",
+        "location": {
+            "lat": 8.3939428,
+            "lng": -2.3818133
+        }
+    },
+    "1": {
+        "name": "One Family Travel &Tour",
+        "place_id": "ChIJSV5fOhub3w8RjMVyqpsW70k",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 4,
+        "rating": 5,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.569762,
+            "lng": -0.1706875
+        }
+    },
+    "2": {
+        "name": "Tourist Sites Gh",
+        "place_id": "ChIJEdkB19ib3w8RxclcQfV8yA8",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.3,
+        "vicinity": "Ring Road West, 0248953074",
+        "location": {
+            "lat": 5.5635328,
+            "lng": -0.2229041
+        }
+    },
+    "3": {
+        "name": "Blissful World Tourism",
+        "place_id": "ChIJIerDJtKZ3w8RhB5nm3M91QQ",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 24,
+        "rating": 4.1,
+        "vicinity": "P. O Box NB 850, Nii Boi, Accra",
+        "location": {
+            "lat": 5.5703913,
+            "lng": -0.2575344
+        }
+    },
+    "4": {
+        "name": "Independence Arch",
+        "place_id": "ChIJI1d4Io-Q3w8RgRX5fuKbs9E",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 136,
+        "rating": 4.5,
+        "vicinity": "GRX4+JV7, Accra",
+        "location": {
+            "lat": 5.5490324,
+            "lng": -0.1928143
+        }
+    },
+    "5": {
+        "name": "Kwame Nkrumah Memorial Park & Mausoleum",
+        "place_id": "ChIJ-2XVMpSQ3w8R7gL9-Ap6S8U",
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2550,
+        "rating": 4.4,
+        "vicinity": "GQVV+9M8, Accra",
+        "location": {
+            "lat": 5.5448327,
+            "lng": -0.2030479
+        }
+    },
+    "6": {
+        "name": "The Visitors Tour",
+        "place_id": "ChIJwXCaWWGb3w8RtXscq43tgFA",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 5,
+        "vicinity": "Opintinse Cl, Accra",
+        "location": {
+            "lat": 5.599836100000001,
+            "lng": -0.2067943
+        }
+    },
+    "7": {
+        "name": "Ghana City Tours",
+        "place_id": "ChIJz9wgTh-b3w8RhXjvPbpmVaY",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 21,
+        "rating": 5,
+        "vicinity": "5th Circular Rd, Accra",
+        "location": {
+            "lat": 5.5771571,
+            "lng": -0.16538
+        }
+    },
+    "8": {
+        "name": "Can Do Land Tours- Cultural, Adventure, Weekend, Full Day & Tailor Made Tours Package Ghana",
+        "place_id": "ChIJv-agJ7Gb3w8RYS8YE1HpyDE",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Nyaniba Estates Park, 20B Gbatsuna St, Accra",
+        "location": {
+            "lat": 5.5608936,
+            "lng": -0.1743933
+        }
+    },
+    "9": {
+        "name": "Fort James",
+        "place_id": "ChIJL3aBiMOQ3w8RLltVmP2DtUs",
+        "types": [
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 607,
+        "rating": 4,
+        "vicinity": "4131 Tetteh Kpeshie Rd, Accra",
+        "location": {
+            "lat": 5.5335817,
+            "lng": -0.2114255
+        }
+    },
+    "10": {
+        "name": "Ussher Fort",
+        "place_id": "ChIJ3aIa-MCQ3w8ROH5mWlb8C-I",
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 508,
+        "rating": 4,
+        "vicinity": "33 Prof.Atta Mills High St, Accra",
+        "location": {
+            "lat": 5.5384878,
+            "lng": -0.2083565
+        }
+    },
+    "11": {
+        "name": "Ghana Tours",
+        "place_id": "ChIJP1-MR8Ob3w8Rqn_yBPfeIWU",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 4.7,
+        "vicinity": "Guided Tour Inc, Accra",
+        "location": {
+            "lat": 5.602306599999999,
+            "lng": -0.18829
+        }
+    },
+    "12": {
+        "name": "Nyonkopa Eco Tours",
+        "place_id": "ChIJHU8C42l93w8RsOzpcXTsX-E",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 24,
+        "rating": 5,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.5998889,
+            "lng": -0.1778466
+        }
+    },
+    "13": {
+        "name": "National Museum of Ghana",
+        "place_id": "ChIJf57ag6GQ3w8Rg6fuDEiaSvo",
+        "types": [
+            "museum",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 952,
+        "rating": 4,
+        "vicinity": "HQ5V+MC5, Accra",
+        "location": {
+            "lat": 5.560408499999999,
+            "lng": -0.2061187
+        }
+    },
+    "14": {
+        "name": "Osu Castle",
+        "place_id": "ChIJvaVkXeib3w8RSW3d79Yroz4",
+        "types": [
+            "museum",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 352,
+        "rating": 4.3,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.546715300000001,
+            "lng": -0.1827215
+        }
+    },
+    "15": {
+        "name": "Grassroot Tours Ghana",
+        "place_id": "ChIJ0QE9lRaX3w8RIgp0XDxRDck",
+        "types": [
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Kokrobite St, Accra",
+        "location": {
+            "lat": 5.536592799999999,
+            "lng": -0.2466394
+        }
+    },
+    "16": {
+        "name": "W.E.B. DuBois Centre in Accra",
+        "place_id": "ChIJYdun85Sa3w8RdyM8883nyGM",
+        "types": [
+            "museum",
+            "tourist_attraction",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 947,
+        "rating": 4.4,
+        "vicinity": "1 Second Circular Rd, Accra",
+        "location": {
+            "lat": 5.5819962,
+            "lng": -0.1709516
+        }
+    },
+    "17": {
+        "name": "Touring Places",
+        "place_id": "ChIJTyuWbVKF3w8ROg9AJ_TBtwQ",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Accra, Ghana, Accra",
+        "location": {
+            "lat": 5.5939047,
+            "lng": -0.1836079
+        }
+    },
+    "18": {
+        "name": "Ghana Must Go Tours",
+        "place_id": "ChIJx4yeXEGR3w8RFjfHevNdhPM",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 18,
+        "rating": 4.9,
+        "vicinity": "Wentum St, Accra",
+        "location": {
+            "lat": 5.552073099999999,
+            "lng": -0.1821772
+        }
+    },
+    "19": {
+        "name": "Landtours Ghana",
+        "place_id": "ChIJFxD-Hf6b3w8R1pUWL3RmUF8",
+        "types": [
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 15,
+        "rating": 4.1,
+        "vicinity": "199 Soula Loop, Peter Ala Adjetey Ave, Accra",
+        "location": {
+            "lat": 5.5707162,
+            "lng": -0.1776022
+        }
+    }
+}

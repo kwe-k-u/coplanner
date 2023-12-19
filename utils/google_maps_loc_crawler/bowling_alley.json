@@ -1,0 +1,18 @@
+{
+    "0": {
+        "name": "Bliss Family Entertainment",
+        "place_id": "ChIJZRZOZv2b3w8RmdCRpXWq7gQ",
+        "types": [
+            "bowling_alley",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 524,
+        "rating": 4.4,
+        "vicinity": "Aviation Social Centre, Airport Bypass Rd, Accra",
+        "location": {
+            "lat": 5.5921808,
+            "lng": -0.1762651
+        }
+    }
+}

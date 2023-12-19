@@ -1,0 +1,324 @@
+{
+    "0": {
+        "name": "7th Twilight Night Club",
+        "place_id": "ChIJw5ApeGSb3w8R2MLuLzySWFc",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 4.7,
+        "vicinity": "Boundary Rd, Accra",
+        "location": {
+            "lat": 5.629260599999999,
+            "lng": -0.1645332
+        }
+    },
+    "1": {
+        "name": "Numbers Night Club",
+        "place_id": "ChIJXxZup7h53w8Rz-I5ZUQMpX8",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 19,
+        "rating": 3.7,
+        "vicinity": "R40, Madina",
+        "location": {
+            "lat": 5.7870919,
+            "lng": -0.1308263
+        }
+    },
+    "2": {
+        "name": "Berth Weekend Pub",
+        "place_id": "ChIJ30bsM0973w8RLHvsZ6tEMfo",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 51,
+        "rating": 3.7,
+        "vicinity": "VWQ6+WJC, Dodowa",
+        "location": {
+            "lat": 5.889798499999999,
+            "lng": -0.0884879
+        }
+    },
+    "3": {
+        "name": "EMINEM'S LOUNGE & NIGHTCLUB",
+        "place_id": "ChIJP4_J3YSF3w8R8qTlan_GjCo",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 13,
+        "rating": 4.5,
+        "vicinity": "Besides DSTV on the Comm. 18 Road Opp. VeroStana Spintex, Accra",
+        "location": {
+            "lat": 5.6371191,
+            "lng": -0.07603019999999999
+        }
+    },
+    "4": {
+        "name": "Nhyiraba Kojo City Night Club",
+        "place_id": "ChIJ1VWbJLGE3w8R05UGmLk-xi8",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 24,
+        "rating": 4.3,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.6309704,
+            "lng": -0.1429545
+        }
+    },
+    "5": {
+        "name": "Hollywood Club",
+        "place_id": "ChIJZ6T4EvWb3w8Rg7DnJVRYvJY",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "JQVV+P37, Legon Ave, Accra",
+        "location": {
+            "lat": 5.644281400000001,
+            "lng": -0.2073437
+        }
+    },
+    "6": {
+        "name": "TRUTH ALL BLACK PARTY",
+        "place_id": "ChIJBw-cAFWb3w8RR6KELKkXkio",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "2-16 Cotton St, Accra",
+        "location": {
+            "lat": 5.6432921,
+            "lng": -0.1518099
+        }
+    },
+    "7": {
+        "name": "Portion's Night Club",
+        "place_id": "ChIJAQAQHbGb3w8RW6s0g7zAlQI",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "39 Tetteh Kwei St, Accra",
+        "location": {
+            "lat": 5.612259600000001,
+            "lng": -0.1990407
+        }
+    },
+    "8": {
+        "name": "The Cube Night Club",
+        "place_id": "ChIJm455dZyd3w8R5s5ffzVFf7s",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Unnamed Road, Accra",
+        "location": {
+            "lat": 5.6037379,
+            "lng": -0.1869579
+        }
+    },
+    "9": {
+        "name": "Cedi Lounge & Night Club",
+        "place_id": "ChIJL57YWneQ3w8RNz1Bb1XmtU0",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 6,
+        "rating": 4,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.557327,
+            "lng": -0.1771841
+        }
+    },
+    "10": {
+        "name": "EMINEM'S LOUNGE & NIGHTCLUB",
+        "place_id": "ChIJP4_J3YSF3w8R8qTlan_GjCo",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 13,
+        "rating": 4.5,
+        "vicinity": "Besides DSTV on the Comm. 18 Road Opp. VeroStana Spintex, Accra",
+        "location": {
+            "lat": 5.6371191,
+            "lng": -0.07603019999999999
+        }
+    },
+    "11": {
+        "name": "Citizen Kofi",
+        "place_id": "ChIJceC_0YOa3w8RBaqmin7O93A",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 26,
+        "rating": 4.3,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.5647294,
+            "lng": -0.1819047
+        }
+    },
+    "12": {
+        "name": "OBJ Pub & Lounge",
+        "place_id": "ChIJi2URXdaF3w8Rkn4pcOvAYiA",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 3,
+        "vicinity": "White House, Spintex Rd, Accra",
+        "location": {
+            "lat": 5.626804,
+            "lng": -0.08462499999999999
+        }
+    },
+    "13": {
+        "name": "Boomerang Nite Club",
+        "place_id": "ChIJo7f16yKa3w8Rlb6znq2x96k",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 24,
+        "rating": 3.6,
+        "vicinity": "HQMM+PC2, Accra",
+        "location": {
+            "lat": 5.5842531,
+            "lng": -0.2164794
+        }
+    },
+    "14": {
+        "name": "Twist Night Club",
+        "place_id": "ChIJ-Sl2lpqa3w8R4LLVCBd4Dgw",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 701,
+        "rating": 4.1,
+        "vicinity": "Ndabaningi Sithole Rd, Accra",
+        "location": {
+            "lat": 5.571065099999999,
+            "lng": -0.1764051
+        }
+    },
+    "15": {
+        "name": "Nhyiraba Kojo City Night Club",
+        "place_id": "ChIJ1VWbJLGE3w8R05UGmLk-xi8",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 24,
+        "rating": 4.3,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.6309704,
+            "lng": -0.1429545
+        }
+    },
+    "16": {
+        "name": "O2 Night Club",
+        "place_id": "ChIJnav1g3iQ3w8Rsr1E3dtVYC4",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 5,
+        "vicinity": "18th Ln, Accra",
+        "location": {
+            "lat": 5.5612318,
+            "lng": -0.1800818
+        }
+    },
+    "17": {
+        "name": "Hotgossip Night Club",
+        "place_id": "ChIJdXLyC3iQ3w8RI7PBlNmf79A",
+        "types": [
+            "night_club",
+            "bar",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 115,
+        "rating": 4.1,
+        "vicinity": "Adzoatse St, Accra",
+        "location": {
+            "lat": 5.561522999999999,
+            "lng": -0.178397
+        }
+    },
+    "18": {
+        "name": "Hollywood Club",
+        "place_id": "ChIJZ6T4EvWb3w8Rg7DnJVRYvJY",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "JQVV+P37, Legon Ave, Accra",
+        "location": {
+            "lat": 5.644281400000001,
+            "lng": -0.2073437
+        }
+    },
+    "19": {
+        "name": "TRUTH ALL BLACK PARTY",
+        "place_id": "ChIJBw-cAFWb3w8RR6KELKkXkio",
+        "types": [
+            "night_club",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "2-16 Cotton St, Accra",
+        "location": {
+            "lat": 5.6432921,
+            "lng": -0.1518099
+        }
+    }
+}

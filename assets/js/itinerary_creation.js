@@ -563,4 +563,10 @@ function switch_current_day(){
 	);
 }
 
+function search_on_type(){
+	if(event.key == "Enter"){
+		destination_search(event.target.form);
+	}
+}
+
 

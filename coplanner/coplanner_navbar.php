@@ -23,7 +23,7 @@
                             <button class='btn btn-secondary dropdown-toggle dropdown-toggle-alt bg-transparent border-0' type='button'></button>
                             <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownMenuButton1'>
                                 <li><a class='dropdown-item' href='#'>Profile</a></li>
-                                <li><a class='dropdown-item' href='#' onclick='logout()'>Sign out</a></li>
+                                <li><a class='dropdown-item' href='".server_base_url()."index.php' onclick='logout()'>Sign out</a></li>
                             </ul>
                         </div>
                     </div>

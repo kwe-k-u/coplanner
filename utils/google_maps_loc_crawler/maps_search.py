@@ -11,7 +11,10 @@ from random import randint
 from time import sleep, time
 
 # destination_types = ["shopping_mall","restaurant","zoo","tourist_attraction"]
-destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
+# destination_types = ["art_gallery"]
+destination_types = ["zoo"]
+# destination_types = [,"","","","","","","","","","","",""]
+# destination_types = ["amusement_park","aquarium","art_gallery","bowling_alley","cafe","campground","library","lodging","movie_theater","musem","night_club","park","casino","stadium","shopping_mall","restaurant","zoo","tourist_attraction"]
 search_queries = ["things to do","places to visit","tour sites"]
 max_km = 50
 ghana_tl = (11.02603066883424, -3.1447569426908735)
@@ -44,7 +47,7 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 def get_destinations(query,center, category):
 	save_data = {}
-	maps_api_key = ""
+	maps_api_key = "AIzaSyBlXcTrs1t64PJw4hse8BI_Dz9FZ3UGIIo"
 	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+maps_api_key+"&keyword="+query+"&location="+str(center[0])+", "+str(center[1])+"&type="+category+"&radius=50000"
 
 	payload = {}
@@ -53,8 +56,8 @@ def get_destinations(query,center, category):
 
 		response = requests.request("GET", url, headers=headers, data=payload)
 		data = response.json()["results"]
-		print("Checking for ",center)
-		print("Size", len(data))
+		# print("Checking for ",center)
+		# print("Size", len(data))
 		for index in range(len(data)):
 			loc_info = data[index]
 			try:
@@ -73,7 +76,8 @@ def get_destinations(query,center, category):
 			save_data[index] = relevant
 			print("Added", relevant["name"])
 	except:
-		save_file("url_fails",url)
+		print("url failed: ",url)
+		save_file("url_fails","\n"+url)
 	return save_data
 
 
@@ -131,7 +135,7 @@ def run_destination_search(vert_steps,hor_steps,position,typ):
 
 	for _ in threads:
 		_.join()
-	print("Threads finished",thread_result)
+	# print("Threads finished",thread_result)
 	save_file("tuples/destination_tuples",thread_result)
 	for _ in thread_result:
 		des.update(_[1])
@@ -159,63 +163,83 @@ def save_file(filename,data):
 
 
 if  __name__ == "__main__":
-	start_time = time()
+	try:
+		start_time = time()
 
 
-	current_position = ghana_tl
+		current_position = ghana_tl
 
-	width = calculate_distance(ghana_tl[0],ghana_tl[1],ghana_tr[0],ghana_tr[1])
-	height = calculate_distance(ghana_tl[0],ghana_tl[1],ghana_bl[0],ghana_bl[1])
+		width = calculate_distance(ghana_tl[0],ghana_tl[1],ghana_tr[0],ghana_tr[1])
+		height = calculate_distance(ghana_tl[0],ghana_tl[1],ghana_bl[0],ghana_bl[1])
 
-	v_steps = int(height / max_km) # vertical steps
-	h_steps = int(width / max_km) # horizontal steps
+		v_steps = int(height / max_km) # vertical steps
+		h_steps = int(width / max_km) # horizontal steps
 
-	process_list = {}
-	process_results = []
-	# process_results = {}
-	process_queue = multiprocessing.Queue()
+		# v_steps = 5
+		# h_steps = 5
 
-	print("Spinning up",len(destination_types), "pocesses")
+		process_list = {}
+		process_results = []
+		# process_results = {}
+		process_queue = multiprocessing.Queue()
 
-	for type_check in destination_types:
-		# process_results[type_check] = []
-		process_results = [{type_check : {}}]
+		print("Spinning up",len(destination_types), "pocesses")
+
+		for type_check in destination_types:
+			# process_results[type_check] = []
+			process_results = [{type_check : {}}]
 
 
-		# all_location_data = {}
-		# res = run_destination_search(v_steps,h_steps,current_position,type_check)
-		process = multiprocessing.Process(target=spin_thread,args = (run_destination_search,[v_steps,h_steps,current_position,type_check],process_queue))
-		process_list[type_check] = process
-		process.start()
+			# all_location_data = {}
+			# res = run_destination_search(v_steps,h_steps,current_position,type_check)
+			process = multiprocessing.Process(target=spin_thread,args = (run_destination_search,[v_steps,h_steps,current_position,type_check],process_queue))
+			process_list[type_check] = process
+			process.start()
 
-	while len(process_results) != len(process_list.keys()):
-	# while not all(process_results.values()):
-		a,b = process_queue.get()
+		while True:
+			fail_safe = False
 
-		# process_results[a] = b
-		for _ in range(len(process_results)):
-			c = process_results[_]
-			print("c result", c)
-			if (list(c.keys())[0] == a):
-				process_results[_][a] = b
+			# Fetch process information from the queue
+			a, b = process_queue.get()
 
-	for p in process_list.values():
-		p.join()
+			# Update process results
+			for idx, c in enumerate(process_results):
+				if list(c.keys())[0] == a:
+					process_results[idx][a] = b
 
-	for _ in process_results:
-		key = list(_.keys())[0]
-		res = _[key]
-		save_file(key,res)
+			# Check if all processes are complete
+			all_processes_complete = all(not process.is_alive() for process in process_list.values())
+			if all_processes_complete:
+				break
 
-	end_time = time()
-	seconds = end_time - start_time
-	minutes = int(seconds / 60)
-	min_seconds = seconds %60
-	hours = int(minutes / 60)
-	hours_minutes = minutes % 60
+			# If any process is still alive, continue the loop
+			fail_safe = True
 
-	print("Time stats")
-	print("seconds", seconds)
-	print("minutes",minutes,min_seconds)
-	print("hours",hours, hours_minutes)
-	print("total time", hours, hours_minutes, min_seconds)
+			if fail_safe:
+				break
+
+
+		for p in process_list.values():
+			p.join()
+			print("joining")
+
+		for _ in process_results:
+			key = list(_.keys())[0]
+			res = _[key]
+			save_file(key,res)
+
+		end_time = time()
+		seconds = end_time - start_time
+		minutes = int(seconds / 60)
+		min_seconds = seconds %60
+		hours = int(minutes / 60)
+		hours_minutes = minutes % 60
+
+		print("Time stats")
+		print("seconds", seconds)
+		print("minutes",minutes,min_seconds)
+		print("hours",hours, hours_minutes)
+		print("total time", hours, hours_minutes, min_seconds)
+	except Exception as e:
+
+		save_file("over_allerror",f"An error occurred: {str(e)}\n")

@@ -1,0 +1,360 @@
+{
+    "0": {
+        "name": "Ike\u2019s Cafe and Grill",
+        "place_id": "ChIJFYMQJfiW2w8RAYlGFHiZAJU",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3468,
+        "rating": 4.3,
+        "vicinity": "Ghana National Cultural Centre, Kumasi",
+        "location": {
+            "lat": 6.7016782,
+            "lng": -1.6281328
+        }
+    },
+    "1": {
+        "name": "Cofkans Hotel",
+        "place_id": "ChIJ81sGPHVl3A8RsUEQnJ97VB0",
+        "types": [
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 758,
+        "rating": 4.1,
+        "vicinity": "Obuasi - Dunkwa-On-Ofin Rd, Obuasi",
+        "location": {
+            "lat": 6.1945475,
+            "lng": -1.6945355
+        }
+    },
+    "2": {
+        "name": "Wildwin Resort",
+        "place_id": "ChIJ2fBX66jx2w8RQzJ_b8XbLHg",
+        "types": [
+            "lodging",
+            "park",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 177,
+        "rating": 4.3,
+        "vicinity": "Lake Bosomtwe, Wildwin Resort 2.6 km Left of Abono, town of Obo",
+        "location": {
+            "lat": 6.539934000000001,
+            "lng": -1.4097342
+        }
+    },
+    "3": {
+        "name": "Manhattan hotel Kumawu",
+        "place_id": "ChIJFVflDlPZ2w8R-w7z16QVGMI",
+        "types": [
+            "travel_agency",
+            "lodging",
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 18,
+        "rating": 3.5,
+        "vicinity": "Bodomase road, Before the Bodomase-Besoro junction and few minutes to the Bomfobiri waterfalls, Kumawu",
+        "location": {
+            "lat": 6.9040272,
+            "lng": -1.2653144
+        }
+    },
+    "4": {
+        "name": "TUMI Hostel - Asokwa",
+        "place_id": "ChIJpySbo6CW2w8RbDcEyT-_Foo",
+        "types": [
+            "cafe",
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 264,
+        "rating": 4.4,
+        "vicinity": "Four junction, Kumasi",
+        "location": {
+            "lat": 6.6779096,
+            "lng": -1.5984965
+        }
+    },
+    "5": {
+        "name": "The Green Ranch at Lake Bosomtwe",
+        "place_id": "ChIJcap6yGPx2w8ReGsVwYitrnE",
+        "types": [
+            "travel_agency",
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 208,
+        "rating": 4.5,
+        "vicinity": "Abrodwum new site between Abrodwum and Abaase Lake Bosomtwe",
+        "location": {
+            "lat": 6.5178576,
+            "lng": -1.4410299
+        }
+    },
+    "6": {
+        "name": "Asantewaa Premier Hotel",
+        "place_id": "ChIJUctVY92U2w8RZeX0KitRblg",
+        "types": [
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 496,
+        "rating": 4.3,
+        "vicinity": "AK-819-6370, 3B Club St, Kumasi",
+        "location": {
+            "lat": 6.7061144,
+            "lng": -1.5285723
+        }
+    },
+    "7": {
+        "name": "SIKA NTOA HOTEL",
+        "place_id": "ChIJa6RngxPz2w8Rs9OslJik9U8",
+        "types": [
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 11,
+        "rating": 3.9,
+        "vicinity": "lake Bosomtwe road, Lake Bosomtwe Road, Kuntanse",
+        "location": {
+            "lat": 6.540949299999999,
+            "lng": -1.4676613
+        }
+    },
+    "8": {
+        "name": "Zilex Pub & Restaurant",
+        "place_id": "ChIJ93eKW7mY3w8RWkxDfzq-oMc",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 478,
+        "rating": 3.9,
+        "vicinity": "JPJ7+9WH, Sowutoum",
+        "location": {
+            "lat": 5.6309364,
+            "lng": -0.2850771
+        }
+    },
+    "9": {
+        "name": "Chris Cafe",
+        "place_id": "ChIJU2m0_7RB3w8R-T7ucMoI__s",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 235,
+        "rating": 3.6,
+        "vicinity": "Ssnit Office Complex Building, Koforidua",
+        "location": {
+            "lat": 6.0917719,
+            "lng": -0.2598937
+        }
+    },
+    "10": {
+        "name": "Linda Dor Main Restaurant, Koforidua",
+        "place_id": "ChIJUdWayLRB3w8RmS95gr2DBd0",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1705,
+        "rating": 4,
+        "vicinity": "N. O hwedie street, Koforidua",
+        "location": {
+            "lat": 6.0927887,
+            "lng": -0.2614579
+        }
+    },
+    "11": {
+        "name": "Arirang Restaurant and Guest House",
+        "place_id": "ChIJ259pd-iA3w8RBc508ynCsSI",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 157,
+        "rating": 4.2,
+        "vicinity": "PO Box CO1966, Community 12, Tema",
+        "location": {
+            "lat": 5.668674999999999,
+            "lng": -0.0277732
+        }
+    },
+    "12": {
+        "name": "Papa's Pizza Ghana",
+        "place_id": "ChIJ403pcxSE3w8RkmcJkBSj89o",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2091,
+        "rating": 4.2,
+        "vicinity": "Otu Adzin Rd, Accra",
+        "location": {
+            "lat": 5.6305543,
+            "lng": -0.09021900000000001
+        }
+    },
+    "13": {
+        "name": "Maria's Restaurant",
+        "place_id": "ChIJjydz2pWA3w8RGcPykJ1WcKs",
+        "types": [
+            "restaurant",
+            "bar",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 476,
+        "rating": 4.1,
+        "vicinity": "Mitchel St, community 8, Tema",
+        "location": {
+            "lat": 5.6686859,
+            "lng": -0.014415
+        }
+    },
+    "14": {
+        "name": "AKWIDAA INN",
+        "place_id": "ChIJoy3H4qyX5w8R7usFlq_cSvM",
+        "types": [
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 71,
+        "rating": 4.2,
+        "vicinity": "Dixcove-Akwidaa Old Town Rd, Akwidaa",
+        "location": {
+            "lat": 4.758764,
+            "lng": -2.025621
+        }
+    },
+    "15": {
+        "name": "Golden Hill Parker Hotel",
+        "place_id": "ChIJ94cOF8z53Q8RyYLwSpawLvo",
+        "types": [
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 240,
+        "rating": 4.3,
+        "vicinity": "Mbofra Akyinim, Elmina",
+        "location": {
+            "lat": 5.0846906,
+            "lng": -1.3620322
+        }
+    },
+    "16": {
+        "name": "Park View Cafe",
+        "place_id": "ChIJyXfbspuQ3w8R7CM4N3qIu-w",
+        "types": [
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 80,
+        "rating": 3.7,
+        "vicinity": "Opposite National theatre, Children's Park, Ministries, Liberia Road, Accra",
+        "location": {
+            "lat": 5.5541354,
+            "lng": -0.1996535
+        }
+    },
+    "17": {
+        "name": "Stack\u2019em Pancakes",
+        "place_id": "ChIJhzUzsXiX3w8Rp4VJ3-MTMpI",
+        "types": [
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 54,
+        "rating": 4.8,
+        "vicinity": "Asafoanye Adokailey St, Accra",
+        "location": {
+            "lat": 5.5575011,
+            "lng": -0.2642908
+        }
+    },
+    "18": {
+        "name": "Dizzy Lizzie's Beach House (Hotel & Restaurant)",
+        "place_id": "ChIJD1TFlw283w8R5ap6RHK22yU",
+        "types": [
+            "lodging",
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 109,
+        "rating": 4.1,
+        "vicinity": "Kokrobite Beach Accra-Ghana",
+        "location": {
+            "lat": 5.4951343,
+            "lng": -0.3664239
+        }
+    },
+    "19": {
+        "name": "Sankofa Restaurant",
+        "place_id": "ChIJI0q0D5mQ3w8RHOTCmuTYJUg",
+        "types": [
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 363,
+        "rating": 4.4,
+        "vicinity": "Ridge, Independence Ave, Accra",
+        "location": {
+            "lat": 5.5544542,
+            "lng": -0.2026381
+        }
+    }
+}

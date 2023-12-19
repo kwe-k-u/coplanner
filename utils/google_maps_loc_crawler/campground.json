@@ -1,0 +1,218 @@
+{
+    "0": {
+        "name": "Mole Public Campsite",
+        "place_id": "ChIJb3ByFyUr0g8RcCwX93mWTks",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "Larabanga",
+        "location": {
+            "lat": 9.258707399999999,
+            "lng": -1.8539926
+        }
+    },
+    "1": {
+        "name": "Safari Valley Resort, Dawu State",
+        "place_id": "ChIJ2b7uYLhn3w8RYUm-nbH3Lw0",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 391,
+        "rating": 4.5,
+        "vicinity": "Unnamed Road, Adukrom",
+        "location": {
+            "lat": 6.0123415,
+            "lng": -0.0770127
+        }
+    },
+    "2": {
+        "name": "BrEssler Ark Campsite",
+        "place_id": "ChIJpRZlL60x3g8R_qU9ACe34WI",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "77V6+M95, Abrekum Apam beach, Apam",
+        "location": {
+            "lat": 5.2941315,
+            "lng": -0.7390245
+        }
+    },
+    "3": {
+        "name": "Accra City Conference Camp Site",
+        "place_id": "ChIJMX1qeEG13w8RC-3wT6zC0_8",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 16,
+        "rating": 4.6,
+        "vicinity": "CCFW+JW, Gyangyanadzie",
+        "location": {
+            "lat": 5.4240651,
+            "lng": -0.5526708
+        }
+    },
+    "4": {
+        "name": "BRESSLER - ARK CAMPSITE",
+        "place_id": "ChIJH0pVPbwx3g8RX-2nvEkv6I0",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Apam",
+        "location": {
+            "lat": 5.3045268,
+            "lng": -0.7193054999999999
+        }
+    },
+    "5": {
+        "name": "Accra City Conference Camp Site",
+        "place_id": "ChIJMX1qeEG13w8RC-3wT6zC0_8",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 16,
+        "rating": 4.6,
+        "vicinity": "CCFW+JW, Gyangyanadzie",
+        "location": {
+            "lat": 5.4240651,
+            "lng": -0.5526708
+        }
+    },
+    "6": {
+        "name": "Meridian Ghana Conference Of Seventh-day Adventist Camp Grounds",
+        "place_id": "ChIJGS4PdW2DIBARhuyUGcCRRew",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 34,
+        "rating": 4.2,
+        "vicinity": "V2W5+CWH, West",
+        "location": {
+            "lat": 5.896071699999999,
+            "lng": 0.009853800000000001
+        }
+    },
+    "7": {
+        "name": "BRESSLER - ARK CAMPSITE",
+        "place_id": "ChIJH0pVPbwx3g8RX-2nvEkv6I0",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Apam",
+        "location": {
+            "lat": 5.3045268,
+            "lng": -0.7193054999999999
+        }
+    },
+    "8": {
+        "name": "Good shepherd event center",
+        "place_id": "ChIJ_1gFbmyX3w8R5Ry-SOSYOd8",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "3rd Banana Lane, Accra",
+        "location": {
+            "lat": 5.5614,
+            "lng": -0.262363
+        }
+    },
+    "9": {
+        "name": "Zee\u2019s Villa",
+        "place_id": "ChIJJ6-WNXmX3w8RFiCU5ENEUZQ",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "3 Brigade Rd, Accra",
+        "location": {
+            "lat": 5.5561814,
+            "lng": -0.2414619
+        }
+    },
+    "10": {
+        "name": "De MJs",
+        "place_id": "ChIJcVgG9Cuf3w8RdpPRriSPa78",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "3 Parakuo Boundary Rd, Taifa",
+        "location": {
+            "lat": 5.6477682,
+            "lng": -0.2381952
+        }
+    },
+    "11": {
+        "name": "Safari Valley Resort, Dawu State",
+        "place_id": "ChIJ2b7uYLhn3w8RYUm-nbH3Lw0",
+        "types": [
+            "campground",
+            "lodging",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 391,
+        "rating": 4.5,
+        "vicinity": "Unnamed Road, Adukrom",
+        "location": {
+            "lat": 6.0123415,
+            "lng": -0.0770127
+        }
+    }
+}

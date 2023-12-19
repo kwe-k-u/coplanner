@@ -1,0 +1,66 @@
+{
+    "0": {
+        "name": "Murphyardfarms",
+        "place_id": "ChIJs9a4bzvV3Q8Rz67M7xwzy3g",
+        "types": [
+            "zoo",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 2,
+        "rating": 5,
+        "vicinity": "Jomsco street, Foso",
+        "location": {
+            "lat": 5.697206899999999,
+            "lng": -1.2738
+        }
+    },
+    "1": {
+        "name": "Adrobeem",
+        "place_id": "ChIJIUDYNo712w8RDVunCxsgCO0",
+        "types": [
+            "zoo",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "FGQW+233, Near, Kuntanse",
+        "location": {
+            "lat": 6.4875072,
+            "lng": -1.4548248
+        }
+    },
+    "2": {
+        "name": "Wisebrains Internet Cafe zoological garden",
+        "place_id": "ChIJ75fG78KY3w8RtrUmyJyK5Cg",
+        "types": [
+            "zoo",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "JPGG+892, Pentecost University Street, Sowutoum",
+        "location": {
+            "lat": 5.6257606,
+            "lng": -0.2741162
+        }
+    },
+    "3": {
+        "name": "Garden Of Eden Zoo",
+        "place_id": "ChIJpaK578KY3w8R8sx3mIsNxco",
+        "types": [
+            "zoo",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 18,
+        "rating": 3.8,
+        "vicinity": "Sowutoum",
+        "location": {
+            "lat": 5.626559299999999,
+            "lng": -0.2730683
+        }
+    }
+}

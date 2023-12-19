@@ -1,0 +1,330 @@
+{
+    "0": {
+        "name": "Africa Unity Park",
+        "place_id": "ChIJLSkOImqU2w8RZrnS64AMSgQ",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 113,
+        "rating": 4,
+        "vicinity": "MCJG+G5H, Kumasi",
+        "location": {
+            "lat": 6.6813201,
+            "lng": -1.5745036
+        }
+    },
+    "1": {
+        "name": "Rattray Park",
+        "place_id": "ChIJc0vLW8KW2w8RnI9I8uC2naI",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 940,
+        "rating": 4.1,
+        "vicinity": "Victoria Opoku Ware street, Kumasi",
+        "location": {
+            "lat": 6.6816051,
+            "lng": -1.6260954
+        }
+    },
+    "2": {
+        "name": "Royal Parade Grounds",
+        "place_id": "ChIJqYiLsG6U2w8RADXYqPSmL1s",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1341,
+        "rating": 4.3,
+        "vicinity": "MCGG+PJ5, Kumasi",
+        "location": {
+            "lat": 6.6767576,
+            "lng": -1.5733764
+        }
+    },
+    "3": {
+        "name": "Bobiri Forest Reserve and Butterfly Sanctuary",
+        "place_id": "ChIJ1wtMaOjp2w8R0KsPLoRlls8",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 109,
+        "rating": 4.1,
+        "vicinity": "Kubease Town off the Accra-Kumasi highway. 10 minutes drive from Kubease (N 06.68704, W 001, 34407",
+        "location": {
+            "lat": 6.6755302,
+            "lng": -1.3790739
+        }
+    },
+    "4": {
+        "name": "Kogyae Strict National Reserve",
+        "place_id": "ChIJQ8RG5WM62g8RsGzkfGh4N5M",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 90,
+        "rating": 4,
+        "vicinity": "Adidwan",
+        "location": {
+            "lat": 7.3070381,
+            "lng": -1.1768431
+        }
+    },
+    "5": {
+        "name": "Bobiri Butterfly Entrance Gate",
+        "place_id": "ChIJAS5q16zB2w8RxKTohnRaEek",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 21,
+        "rating": 4.1,
+        "vicinity": "MJMP+68M, Kubease",
+        "location": {
+            "lat": 6.6830963,
+            "lng": -1.364207
+        }
+    },
+    "6": {
+        "name": "Goldstar Premier Tour Company",
+        "place_id": "ChIJtxlGzEvr2w8RkGren2mdeDY",
+        "types": [
+            "park",
+            "museum",
+            "travel_agency",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 19,
+        "rating": 4.8,
+        "vicinity": "3b club street, Kumasi",
+        "location": {
+            "lat": 6.713296,
+            "lng": -1.5168788
+        }
+    },
+    "7": {
+        "name": "Owabi Wildlife Sanctuary",
+        "place_id": "ChIJb_xtxneY2w8RNCXpWzDvGLg",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 110,
+        "rating": 3.9,
+        "vicinity": "BOX 3148, Kumasi",
+        "location": {
+            "lat": 6.752613299999999,
+            "lng": -1.7113518
+        }
+    },
+    "8": {
+        "name": "Bomfobiri Wildlife Sanctuary",
+        "place_id": "ChIJo_e-0fp82Q8RpeyICfR6BY4",
+        "types": [
+            "tourist_attraction",
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 61,
+        "rating": 4.3,
+        "vicinity": "Enikawso",
+        "location": {
+            "lat": 6.9521273,
+            "lng": -1.1659842
+        }
+    },
+    "9": {
+        "name": "Bomfobiri Wildlife Sanctuary",
+        "place_id": "ChIJQw97_w_X2w8R95e-eq2ofBU",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 69,
+        "rating": 4,
+        "vicinity": "Kwaman",
+        "location": {
+            "lat": 6.951429,
+            "lng": -1.2600428
+        }
+    },
+    "10": {
+        "name": "Ampoma Birago Supermarket",
+        "place_id": "ChIJRS46MOXt2w8RCIOuz_F6Dbg",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 61,
+        "rating": 3.9,
+        "vicinity": "Piase Ejisu - Bekwai Rd, Piase",
+        "location": {
+            "lat": 6.587472099999999,
+            "lng": -1.4513776
+        }
+    },
+    "11": {
+        "name": "Wildwin Resort",
+        "place_id": "ChIJ2fBX66jx2w8RQzJ_b8XbLHg",
+        "types": [
+            "park",
+            "lodging",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 177,
+        "rating": 4.3,
+        "vicinity": "Lake Bosomtwe, Wildwin Resort 2.6 km Left of Abono, town of Obo",
+        "location": {
+            "lat": 6.539934000000001,
+            "lng": -1.4097342
+        }
+    },
+    "12": {
+        "name": "Kpeshie Lagoon",
+        "place_id": "ChIJfev0FleF3w8R0-X4vX0aHAo",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 4,
+        "vicinity": "Lagoon, Labadi Road, Accra",
+        "location": {
+            "lat": 5.565469999999999,
+            "lng": -0.1416794
+        }
+    },
+    "13": {
+        "name": "Memory Lane Art Park",
+        "place_id": "ChIJvfMl8Pya3w8R6Foova3C0Os",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 357,
+        "rating": 4.2,
+        "vicinity": "Liberation Road, Accra",
+        "location": {
+            "lat": 5.6003139,
+            "lng": -0.1793734
+        }
+    },
+    "14": {
+        "name": "Akweley Last Stop(Virginia Academy, Akweley)",
+        "place_id": "ChIJYyZGPKu63w8R7iL-o00Tt6g",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 178,
+        "rating": 3.7,
+        "vicinity": "HH63+55M, Unnamed Rd, Kasoa",
+        "location": {
+            "lat": 5.5604533,
+            "lng": -0.4470797
+        }
+    },
+    "15": {
+        "name": "Gomoa Wonderland",
+        "place_id": "ChIJPTu1CWmz3w8R4gWhifJNDn8",
+        "types": [
+            "campground",
+            "park",
+            "lodging",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 76,
+        "rating": 4.4,
+        "vicinity": "Gomoa Eduafokwaa, on the Akotsi-Kwanyako Road",
+        "location": {
+            "lat": 5.5608517,
+            "lng": -0.5751993
+        }
+    },
+    "16": {
+        "name": "New tower 2",
+        "place_id": "ChIJdVA4fv-73w8Rr_TLIgk3Kvs",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Junction Opeikuma Road, Kasoa",
+        "location": {
+            "lat": 5.5329493,
+            "lng": -0.4394816
+        }
+    },
+    "17": {
+        "name": "Sealady football park",
+        "place_id": "ChIJ00950nyF3w8RSEg_1EH6HhM",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Sealady park, Accra",
+        "location": {
+            "lat": 5.5981637,
+            "lng": -0.1059294
+        }
+    },
+    "18": {
+        "name": "Akrabong Town Park",
+        "place_id": "ChIJCdBx8D6t3w8RDts7aBLzspU",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 4,
+        "vicinity": "JC8J+H6, Obrayeko",
+        "location": {
+            "lat": 5.616382,
+            "lng": -0.569404
+        }
+    },
+    "19": {
+        "name": "Azumah Park",
+        "place_id": "ChIJrXaVwK6Z3w8RrcLAsISNwtg",
+        "types": [
+            "park",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 4.1,
+        "vicinity": "JQ78+476, Achimota",
+        "location": {
+            "lat": 5.612781,
+            "lng": -0.234345
+        }
+    }
+}

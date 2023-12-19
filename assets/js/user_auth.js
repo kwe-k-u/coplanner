@@ -34,6 +34,8 @@ function email_signup(form){
 			"password" : password,
 			"name" : name,
 			"method" : "email"
+		}, (response)=> {
+			window.location.href = "login.php"
 		}
 	)
 }

@@ -1,0 +1,364 @@
+{
+    "0": {
+        "name": "Cruise Caf\u00e9",
+        "place_id": "ChIJCYQ8eFmc3w8RxRrO1o4IHTI",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 9,
+        "rating": 3.8,
+        "vicinity": "Agbogba - Ashongman Rd",
+        "location": {
+            "lat": 5.674612499999999,
+            "lng": -0.1910231
+        }
+    },
+    "1": {
+        "name": "Theia Coffee House",
+        "place_id": "ChIJX9V5IUCb3w8R_TULDtB_UFg",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 363,
+        "rating": 4.5,
+        "vicinity": "John Churcher Loop, 2nd Patrice Lumumba Ln, Accra",
+        "location": {
+            "lat": 5.6101264,
+            "lng": -0.1812341
+        }
+    },
+    "2": {
+        "name": "vida e caff\u00e8 - East Legon",
+        "place_id": "ChIJyTwWj7KE3w8RYNWT_6sWwdY",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 1499,
+        "rating": 4.3,
+        "vicinity": "Boundary Rd, Accra",
+        "location": {
+            "lat": 5.634332800000001,
+            "lng": -0.147408
+        }
+    },
+    "3": {
+        "name": "vida e caffe - Accra Financial Centre",
+        "place_id": "ChIJTVYI2ZuQ3w8RT2t37nyisc8",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 861,
+        "rating": 4.2,
+        "vicinity": "Independence Ave, Accra",
+        "location": {
+            "lat": 5.554923,
+            "lng": -0.2010346
+        }
+    },
+    "4": {
+        "name": "d Caf\u00e9",
+        "place_id": "ChIJcULwmAab3w8RPfrNbomb8r4",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 597,
+        "rating": 4.3,
+        "vicinity": "Volta St, Accra",
+        "location": {
+            "lat": 5.6103852,
+            "lng": -0.1827457
+        }
+    },
+    "5": {
+        "name": "Labone Coffee Shop",
+        "place_id": "ChIJf_1DDaKa3w8RPLepBIR1w_I",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 919,
+        "rating": 4.2,
+        "vicinity": "Olooti St, Accra",
+        "location": {
+            "lat": 5.568711299999999,
+            "lng": -0.1685011
+        }
+    },
+    "6": {
+        "name": "Cafe Accra",
+        "place_id": "ChIJkw28NiqF3w8RuVZbASpGiRY",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 145,
+        "rating": 4.4,
+        "vicinity": "Adomah heights, Boundary Rd, Accra",
+        "location": {
+            "lat": 5.6446078,
+            "lng": -0.1478357
+        }
+    },
+    "7": {
+        "name": "vida e caff\u00e8 - Accra Mall",
+        "place_id": "ChIJQ7k5cz-b3w8RubFZc4NLOpM",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 345,
+        "rating": 4.2,
+        "vicinity": "JRCG+RPJ, Accra",
+        "location": {
+            "lat": 5.6220872,
+            "lng": -0.1732328
+        }
+    },
+    "8": {
+        "name": "Second Cup Dzorwulu",
+        "place_id": "ChIJzac8HEib3w8RlCgxxMvdV78",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 419,
+        "rating": 4.3,
+        "vicinity": "10 Osu Badu St, Accra",
+        "location": {
+            "lat": 5.6127617,
+            "lng": -0.1975376
+        }
+    },
+    "9": {
+        "name": "Moka's Resto Cafe",
+        "place_id": "ChIJHzbdx5ia3w8RFZ1REA2OQno",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 2546,
+        "rating": 4.3,
+        "vicinity": "21 Ndabaningi Sithole Rd, Accra",
+        "location": {
+            "lat": 5.567660399999999,
+            "lng": -0.1695226
+        }
+    },
+    "10": {
+        "name": "Caf\u00e9 Kwae",
+        "place_id": "ChIJqf0WESKb3w8RRUJSSNAB3ow",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 866,
+        "rating": 4.5,
+        "vicinity": "One Airport Square, Ground Floor, Airport City, Accra",
+        "location": {
+            "lat": 5.6008685,
+            "lng": -0.1772099
+        }
+    },
+    "11": {
+        "name": "Jamestown Coffee Company",
+        "place_id": "ChIJ19pSwJSR3w8RBhon24CAAVM",
+        "types": [
+            "cafe",
+            "storage",
+            "bar",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 559,
+        "rating": 4.5,
+        "vicinity": "Plot 7B West Light, Accra",
+        "location": {
+            "lat": 5.5607462,
+            "lng": -0.1716811
+        }
+    },
+    "12": {
+        "name": "UberDrivers Rest Place (north Legon)",
+        "place_id": "ChIJS3JIJ0md3w8Rz6hnX3hyU_M",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 17,
+        "rating": 4.4,
+        "vicinity": "Avenue C",
+        "location": {
+            "lat": 5.6691479,
+            "lng": -0.185525
+        }
+    },
+    "13": {
+        "name": "The Good Baker",
+        "place_id": "ChIJs0x9rXOb3w8RrYtestfZUzY",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 291,
+        "rating": 4.3,
+        "vicinity": "Amal Suites, Garden Street, Accra",
+        "location": {
+            "lat": 5.6427688,
+            "lng": -0.1520609
+        }
+    },
+    "14": {
+        "name": "eCaf\u00e9",
+        "place_id": "ChIJ1yG8NNab3w8R8qYOcxKdFAE",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 18,
+        "rating": 4.9,
+        "vicinity": "19Abotsi St, Accra",
+        "location": {
+            "lat": 5.6371647,
+            "lng": -0.1682813
+        }
+    },
+    "15": {
+        "name": "Sip Cafe",
+        "place_id": "ChIJ5dH9DQqF3w8R0C0Si_Ydwvo",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 10,
+        "rating": 4.8,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.6349028,
+            "lng": -0.1349966
+        }
+    },
+    "16": {
+        "name": "AUGUST TOWN Cafe",
+        "place_id": "ChIJBwob0KOF3w8RCTJa-bNfIY8",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 1,
+        "rating": 5,
+        "vicinity": "HVJR+6V5, Accra",
+        "location": {
+            "lat": 5.5805222,
+            "lng": -0.1077683
+        }
+    },
+    "17": {
+        "name": "vida e caff\u00e8 - Haatso",
+        "place_id": "ChIJETgxQtKd3w8R62TVLnkytY8",
+        "types": [
+            "cafe",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 5,
+        "rating": 4.4,
+        "vicinity": "MR8C+R6X, Accra",
+        "location": {
+            "lat": 5.6670169,
+            "lng": -0.1800171
+        }
+    },
+    "18": {
+        "name": "J's Coffee & Creamery Cafe",
+        "place_id": "ChIJw6dChreA3w8RiKwyCYW-SHI",
+        "types": [
+            "cafe",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 286,
+        "rating": 4.4,
+        "vicinity": "MX4M+C79 Opp. ECG School, Hermann Gmeiner Rd, Tema",
+        "location": {
+            "lat": 5.6560258,
+            "lng": -0.016778
+        }
+    },
+    "19": {
+        "name": "MilkBox Caf\u00e9",
+        "place_id": "ChIJC6nxwqWb3w8RHbIuYDPmr8A",
+        "types": [
+            "cafe",
+            "bakery",
+            "point_of_interest",
+            "food",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 289,
+        "rating": 4.4,
+        "vicinity": "874 NDABININGI, Ndabaningi Sithole Rd, Accra",
+        "location": {
+            "lat": 5.565982,
+            "lng": -0.1703647
+        }
+    }
+}

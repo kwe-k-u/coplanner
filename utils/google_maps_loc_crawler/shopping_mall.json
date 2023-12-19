@@ -1,0 +1,328 @@
+{
+    "0": {
+        "name": "Marina mall",
+        "place_id": "ChIJ_ej8meKa3w8RqMd-X1x-IFM",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9551,
+        "rating": 4.3,
+        "vicinity": "JR3F+4H6, Airport Bypass Rd, Accra",
+        "location": {
+            "lat": 5.602791499999999,
+            "lng": -0.1761071
+        }
+    },
+    "1": {
+        "name": "Roman Ridge Shopping Arcade",
+        "place_id": "ChIJ33WBjaqb3w8RnCCb5mgGHx8",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 572,
+        "rating": 4,
+        "vicinity": "Nortei Ababio St, Accra",
+        "location": {
+            "lat": 5.6057051,
+            "lng": -0.1880799
+        }
+    },
+    "2": {
+        "name": "The Palms Square",
+        "place_id": "ChIJKUtzd5ab3w8RDxV3YE9995g",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 255,
+        "rating": 4.5,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.625753899999999,
+            "lng": -0.1534848
+        }
+    },
+    "3": {
+        "name": "Accra Mall",
+        "place_id": "ChIJrSoGsBOb3w8RQiQb4xeX3nU",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 31004,
+        "rating": 4.4,
+        "vicinity": "Plot C11 Tetteh Quarshie Interchange, Spintex Rd, Accra",
+        "location": {
+            "lat": 5.6221003,
+            "lng": -0.1733501
+        }
+    },
+    "4": {
+        "name": "Oxford Street Mall Osu",
+        "place_id": "ChIJjYVCtXiQ3w8RlJ5QNGVX3JA",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 742,
+        "rating": 4.3,
+        "vicinity": "21 Ndabaningi Sithole Rd, Oxford St, Accra",
+        "location": {
+            "lat": 5.5604805,
+            "lng": -0.1821855
+        }
+    },
+    "5": {
+        "name": "Junction mall",
+        "place_id": "ChIJsw0w_tyH3w8R5_4Ali_LTrA",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1559,
+        "rating": 4.4,
+        "vicinity": "Nungua Main Rd, Accra",
+        "location": {
+            "lat": 5.6135117,
+            "lng": -0.0720948
+        }
+    },
+    "6": {
+        "name": "City Galleria, Accra",
+        "place_id": "ChIJGUaJCWmb3w8RHMfbBxUxZrw",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 112,
+        "rating": 4.4,
+        "vicinity": "GL-152, 5922 Spintex Rd, Accra",
+        "location": {
+            "lat": 5.6212921,
+            "lng": -0.1724782
+        }
+    },
+    "7": {
+        "name": "Palace Mall",
+        "place_id": "ChIJ1V4lrGqF3w8RuRsp6YcyIe4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3837,
+        "rating": 4.5,
+        "vicinity": "JRGW+CJM, Accra",
+        "location": {
+            "lat": 5.6254382,
+            "lng": -0.1538166
+        }
+    },
+    "8": {
+        "name": "West Hills Mall",
+        "place_id": "ChIJGaO7rVa93w8R3--r7r9Fw4U",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 12425,
+        "rating": 4.4,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.544829,
+            "lng": -0.34469
+        }
+    },
+    "9": {
+        "name": "Accra shopping",
+        "place_id": "ChIJzeRgg3GR3w8R7DW6tgOG5IU",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 7,
+        "rating": 4.7,
+        "vicinity": "117 Kinbu Street, Accra",
+        "location": {
+            "lat": 5.5500417,
+            "lng": -0.2083035
+        }
+    },
+    "10": {
+        "name": "Walking Mall Gh",
+        "place_id": "ChIJffm-ExKX3w8Rw2BG1h1xJbs",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 47,
+        "rating": 4.3,
+        "vicinity": "Guggisberg Ave, Accra",
+        "location": {
+            "lat": 5.5356842,
+            "lng": -0.2456458
+        }
+    },
+    "11": {
+        "name": "Palace mall Labone",
+        "place_id": "ChIJqeYzLW6b3w8RDykm0sThQrc",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 547,
+        "rating": 4.5,
+        "vicinity": "97 Abafun Cres, Accra",
+        "location": {
+            "lat": 5.5716404,
+            "lng": -0.1670776
+        }
+    },
+    "12": {
+        "name": "Blue Mall",
+        "place_id": "ChIJVVVVVVWa3w8RrLwgTbFI_Ak",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 3,
+        "rating": 3,
+        "vicinity": "JR37+F6V, Accra",
+        "location": {
+            "lat": 5.6037379,
+            "lng": -0.1869579
+        }
+    },
+    "13": {
+        "name": "Lava Mall Shopping Center",
+        "place_id": "ChIJS9s1ZnGR3w8RI0Y_rDkYYVo",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 108,
+        "rating": 4,
+        "vicinity": "GQWR+G3, Kwame Nkrumah Avenue, Opposite UTC Bank, Accra",
+        "location": {
+            "lat": 5.5463125,
+            "lng": -0.2098125
+        }
+    },
+    "14": {
+        "name": "DT Plaza by Rob Definitions",
+        "place_id": "ChIJ2_nzhXKb3w8RFr08vE8AIb4",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 11,
+        "rating": 4.5,
+        "vicinity": "10 Boundary Rd, Accra",
+        "location": {
+            "lat": 5.6283962,
+            "lng": -0.1725397
+        }
+    },
+    "15": {
+        "name": "Palace Hypermarket",
+        "place_id": "ChIJ9wEmsbSE3w8RCtp-fMaJxb0",
+        "types": [
+            "shopping_mall",
+            "supermarket",
+            "grocery_or_supermarket",
+            "food",
+            "point_of_interest",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 8426,
+        "rating": 4.4,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.6255533,
+            "lng": -0.1536698
+        }
+    },
+    "16": {
+        "name": "Made in Ghana Mall",
+        "place_id": "ChIJG3Vghzeb3w8RR9B-Rc90U1c",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 0,
+        "rating": 0,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.6104123,
+            "lng": -0.2190112
+        }
+    },
+    "17": {
+        "name": "Swanzy Shopping Arcade",
+        "place_id": "ChIJE_2N7KSQ3w8R9N-_5l7XJ1E",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 1222,
+        "rating": 3.9,
+        "vicinity": "HQ3Q+6GF, Accra",
+        "location": {
+            "lat": 5.5530713,
+            "lng": -0.211199
+        }
+    },
+    "18": {
+        "name": "Friendly Ghana - Accra General Post Office",
+        "place_id": "ChIJ6co0JqaR3w8R3WzSbPznSMI",
+        "types": [
+            "shopping_mall",
+            "department_store",
+            "point_of_interest",
+            "store",
+            "establishment"
+        ],
+        "user_ratings_total": 138,
+        "rating": 4.2,
+        "vicinity": "De Catherine Shopping Centre Accra General Post Office",
+        "location": {
+            "lat": 5.5421703,
+            "lng": -0.2094079
+        }
+    },
+    "19": {
+        "name": "Makola Shopping Mall",
+        "place_id": "ChIJG1D47b2Q3w8RWANn0msOR1I",
+        "types": [
+            "shopping_mall",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 9021,
+        "rating": 4.1,
+        "vicinity": "Independence Ave, Accra",
+        "location": {
+            "lat": 5.5482903,
+            "lng": -0.2070795
+        }
+    }
+}

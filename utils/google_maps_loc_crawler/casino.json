@@ -1,0 +1,222 @@
+{
+    "0": {
+        "name": "Millionaires Casino Accra",
+        "place_id": "ChIJJ6WvD6ab3w8RrAUcDdc046Q",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 82,
+        "rating": 4.5,
+        "vicinity": "Liberation Road, Accra",
+        "location": {
+            "lat": 5.593472900000001,
+            "lng": -0.1807669
+        }
+    },
+    "1": {
+        "name": "Piccadilly Casino",
+        "place_id": "ChIJpUvKAYKa3w8RzrwD_U7CrNg",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 313,
+        "rating": 3.9,
+        "vicinity": "Dr Esther Ocloo St, Accra",
+        "location": {
+            "lat": 5.561827,
+            "lng": -0.1821977
+        }
+    },
+    "2": {
+        "name": "Golden Dragon Casino Tema",
+        "place_id": "ChIJkyqYDeqA3w8RPB2BJjnrnRo",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 233,
+        "rating": 4.2,
+        "vicinity": "Tema",
+        "location": {
+            "lat": 5.675771,
+            "lng": -0.0178196
+        }
+    },
+    "3": {
+        "name": "Hemingway Bar",
+        "place_id": "ChIJGxi-lYOa3w8R6JnXAGNOlWs",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 30,
+        "rating": 3.8,
+        "vicinity": "Oxford St, Accra",
+        "location": {
+            "lat": 5.5652791,
+            "lng": -0.1810566
+        }
+    },
+    "4": {
+        "name": "Vienna City Hotel",
+        "place_id": "ChIJd723L5SA3w8RRLc-0FeCfJY",
+        "types": [
+            "lodging",
+            "casino",
+            "night_club",
+            "restaurant",
+            "point_of_interest",
+            "food",
+            "establishment"
+        ],
+        "user_ratings_total": 812,
+        "rating": 3.9,
+        "vicinity": "Emmanuel Quist Rd, Tema",
+        "location": {
+            "lat": 5.669377000000001,
+            "lng": -0.0142553
+        }
+    },
+    "5": {
+        "name": "Golden Dragon Casino Tema",
+        "place_id": "ChIJkyqYDeqA3w8RPB2BJjnrnRo",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 233,
+        "rating": 4.2,
+        "vicinity": "Tema",
+        "location": {
+            "lat": 5.675771,
+            "lng": -0.0178196
+        }
+    },
+    "6": {
+        "name": "86 CASINO",
+        "place_id": "ChIJaY7R4JqF3w8RXS2Ii2F8z1Y",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 63,
+        "rating": 4.6,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.6311427,
+            "lng": -0.1433539
+        }
+    },
+    "7": {
+        "name": "Banco Casino",
+        "place_id": "ChIJcVdXNXmQ3w8R9tE6YSlnhYQ",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 24,
+        "rating": 4.1,
+        "vicinity": "Accra",
+        "location": {
+            "lat": 5.560747999999999,
+            "lng": -0.1821622
+        }
+    },
+    "8": {
+        "name": "Hotel Koreana",
+        "place_id": "ChIJa0u7AOmA3w8Ra5Ibl0VhFrM",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 112,
+        "rating": 4.1,
+        "vicinity": "MX9F+VXC, Tema",
+        "location": {
+            "lat": 5.6696969,
+            "lng": -0.0250915
+        }
+    },
+    "9": {
+        "name": "Jokercard International",
+        "place_id": "ChIJnRN7-7uF3w8R7jsmRS5JDr8",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 42,
+        "rating": 4.1,
+        "vicinity": "HWQ2+CMF, Accra",
+        "location": {
+            "lat": 5.5885606,
+            "lng": -0.0983373
+        }
+    },
+    "10": {
+        "name": "Hemingway Bar",
+        "place_id": "ChIJGxi-lYOa3w8R6JnXAGNOlWs",
+        "types": [
+            "casino",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 30,
+        "rating": 3.8,
+        "vicinity": "Oxford St, Accra",
+        "location": {
+            "lat": 5.5652791,
+            "lng": -0.1810566
+        }
+    },
+    "11": {
+        "name": "Vienna City Accra",
+        "place_id": "ChIJ9x2MXg-a3w8Ruo-zYgoNspo",
+        "types": [
+            "casino",
+            "bar",
+            "night_club",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 844,
+        "rating": 3.9,
+        "vicinity": "Kwame Nkrumah Ave, Accra",
+        "location": {
+            "lat": 5.5680507,
+            "lng": -0.2149001
+        }
+    },
+    "12": {
+        "name": "Vienna City Hotel",
+        "place_id": "ChIJd723L5SA3w8RRLc-0FeCfJY",
+        "types": [
+            "casino",
+            "lodging",
+            "night_club",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+        ],
+        "user_ratings_total": 812,
+        "rating": 3.9,
+        "vicinity": "Emmanuel Quist Rd, Tema",
+        "location": {
+            "lat": 5.669377000000001,
+            "lng": -0.0142553
+        }
+    }
+}
