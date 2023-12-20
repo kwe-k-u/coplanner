@@ -47,7 +47,7 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 def get_destinations(query,center, category):
 	save_data = {}
-	maps_api_key = "AIzaSyBlXcTrs1t64PJw4hse8BI_Dz9FZ3UGIIo"
+	maps_api_key = ""
 	url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key="+maps_api_key+"&keyword="+query+"&location="+str(center[0])+", "+str(center[1])+"&type="+category+"&radius=50000"
 
 	payload = {}

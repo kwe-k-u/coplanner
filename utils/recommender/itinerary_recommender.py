@@ -76,4 +76,4 @@ for file_name in file_content_pair:
 	score = calculate_similarity(user_selection,template_value,system_values)
 	recommendations[file_name] = score
 
-print(sort_files_by_score(recommendations))
+print( sort_files_by_score(recommendations))
