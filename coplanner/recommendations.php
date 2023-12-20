@@ -35,20 +35,22 @@
 
 
 	// $recommendations = shell_exec("python3 ../utils/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path));
-	exec("python ../utils/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path),$recommendations,$return_val);
+	$r = exec("python ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path),$recommendations,$return_val);
 	//pass the file path to the python script, and the path to the template jsons
 	//let the python script return a list of file paths for the recommended itineraries
 	//get the itineraries from the path and return those as the recommendations
-	$recommendations = json_decode($recommendations[0],true);
+	// $recommendations = json_decode($recommendations,true);
+	var_dump($recommendations);
+	var_dump($return_val);
+	die();
 	$itineraries = array();
 	foreach ($recommendations as $filename) {
 		$r_id = explode(".",$filename)[0];
 		$template = get_itinerary_by_id($r_id);
-		array_push($itineraries,$template);
+		if($template){
+			array_push($itineraries,$template);
+		}
 	}
-
-	print($itineraries);
-	die();
 ?>
 
 <!DOCTYPE html>
@@ -88,13 +90,17 @@
 					<div class="grid-container gap-1" style="gap:50px">
 
 						<?php
-						for ($i = 0; $i < 2; $i++) {
-						?>
-
-							<div class="itinerary-card grid-item m-3" style="display:inline-table" onclick="goto_page('coplanner/edit_itinerary.php')">
-								<p class="itinerary-card-top-note">Click to view</p>
-								<div class="itinerary-card-body">
-									<div class="price-and-people">
+						foreach($itineraries as $entry) {
+							$itinerary_id = $entry["itinerary_id"];
+							$owner_name = $entry["owner_name"];
+							$num_people = $entry["num_of_participants"];
+							$num_days = $entry["num_days"];
+							$budget=  $entry["budget"];
+							echo "
+							<div class='itinerary-card grid-item m-3' style='display:inline-table' onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
+								<p class='itinerary-card-top-note'>Click to view</p>
+								<div class='itinerary-card-body'>
+									<div class='price-and-people'>
 										<div>
 											GHC 500 <br>
 											Single day
@@ -105,19 +111,18 @@
 										</div>
 									</div>
 									<div>
-										<h6 class="easygo-fw-1">Shared Itineries</h6>
-										<p class="itinerary-desc">
+										<h6 class='easygo-fw-1'>Shared Itineries</h6>
+										<p class='itinerary-desc'>
 											An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
 										</p>
 									</div>
-									<div class="itinerary-activities">
-										<div class="activity">Hike</div>
-										<div class="activity">Hike</div>
-										<div class="text-gray-1 d-flex align-items-center">+3 more</div>
+									<div class='itinerary-activities'>
+										<div class='activity'>Hike</div>
+										<div class='activity'>Hike</div>
+										<div class='text-gray-1 d-flex align-items-center'>+3 more</div>
 									</div>
 								</div>
-							</div>
-						<?php
+							</div>";
 						}
 						?>
 					</div>

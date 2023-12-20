@@ -149,7 +149,7 @@ function get_section_responses(data_parent) {
 			result["accommodation"] = get_selected_radio("tour-accomodation-selection");
 			break;
 		case "activities-selection-page":
-			result["acitivities"] = get_selected_checkboxes("activity-selection");
+			result["activities"] = get_selected_checkboxes("activity-selection");
 			break;
 		case "budget-selection-page":
 			result["budget"] = get_selected_radio("budget-range-selection");

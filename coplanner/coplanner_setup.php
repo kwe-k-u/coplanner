@@ -98,10 +98,9 @@ require_once(__DIR__ . "/../utils/core.php");
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M136 9.91666C126.092 9.90347 116.513 13.4715 109.028 19.9632C101.543 26.455 96.6557 35.4332 95.2674 45.2436C93.8791 55.054 96.0831 65.0356 101.473 73.3493C106.863 81.6631 115.076 87.7488 124.599 90.4853C111.067 92.1287 99.4615 96.9113 90.7122 105.536C79.5829 116.495 73.9502 132.827 73.9502 154.133C73.9502 155.561 74.5174 156.93 75.5269 157.94C76.5365 158.949 77.9058 159.517 79.3335 159.517C80.7613 159.517 82.1305 158.949 83.1401 157.94C84.1497 156.93 84.7169 155.561 84.7169 154.133C84.7169 134.64 89.8509 121.493 98.2715 113.197C106.704 104.89 119.306 100.583 136 100.583C152.694 100.583 165.297 104.89 173.74 113.197C182.15 121.505 187.284 134.64 187.284 154.133C187.284 155.561 187.851 156.93 188.86 157.94C189.87 158.949 191.239 159.517 192.667 159.517C194.095 159.517 195.464 158.949 196.473 157.94C197.483 156.93 198.05 155.561 198.05 154.133C198.05 132.827 192.418 116.507 181.277 105.536C172.55 96.9227 160.934 92.1287 147.402 90.4853C156.892 87.7181 165.068 81.623 170.43 73.3173C175.792 65.0115 177.981 55.0516 176.596 45.263C175.211 35.4744 170.344 26.5128 162.888 20.021C155.432 13.5291 145.886 9.94186 136 9.91666ZM105.684 51C105.684 42.9595 108.878 35.2484 114.563 29.5629C120.249 23.8774 127.96 20.6833 136 20.6833C144.041 20.6833 151.752 23.8774 157.437 29.5629C163.123 35.2484 166.317 42.9595 166.317 51C166.317 59.0405 163.123 66.7516 157.437 72.4371C151.752 78.1226 144.041 81.3167 136 81.3167C127.96 81.3167 120.249 78.1226 114.563 72.4371C108.878 66.7516 105.684 59.0405 105.684 51Z" fill="#1204B5" />
                                             <path d="M33.5526 19.386L42.8728 39.8903L63.3771 49.2105L42.8728 58.5307L33.5526 79.0351L24.2324 58.5307L3.72803 49.2105L24.2324 39.8903L33.5526 19.386ZM33.5526 37.3925L29.8245 45.4825L21.7346 49.2105L29.8245 52.9386L33.5526 61.0285L37.2807 52.9386L45.3706 49.2105L37.2807 45.4825L33.5526 37.3925ZM70.8333 38.0263L66.1359 27.8114L55.921 23.114L66.1359 18.4539L70.8333 8.20175L75.4934 18.4539L85.7456 23.114L75.4934 27.8114L70.8333 38.0263ZM70.8333 90.2193L66.1359 80.0044L55.921 75.307L66.1359 70.6469L70.8333 60.3947L75.4934 70.6469L85.7456 75.307L75.4934 80.0044L70.8333 90.2193Z" fill="black" />
                                         </svg>
-                                        <h3>Build with Coplanner</h3>
+                                        <h3>Plan with AI</h3>
                                     </label>
                                 </div>
-                                <h4 class="text-center pt-4">Build with assistance from our AI</h4>
                             </div>
                             <div class="col-md-6 p-3">
                                 <div class="easygo-radio-btn-1">
@@ -111,10 +110,9 @@ require_once(__DIR__ . "/../utils/core.php");
                                             <path d="M26.6665 142.667V17.3333C26.6665 16.2725 27.0879 15.2551 27.8381 14.5049C28.5882 13.7548 29.6056 13.3333 30.6665 13.3333H108.347C109.407 13.3343 110.424 13.7563 111.173 14.5067L132.16 35.4933C132.533 35.866 132.829 36.3088 133.03 36.7962C133.231 37.2836 133.334 37.806 133.333 38.3333V142.667C133.333 143.192 133.23 143.712 133.029 144.197C132.828 144.683 132.533 145.124 132.162 145.495C131.79 145.867 131.349 146.161 130.864 146.362C130.379 146.563 129.858 146.667 129.333 146.667H30.6665C30.1412 146.667 29.6211 146.563 29.1358 146.362C28.6505 146.161 28.2095 145.867 27.8381 145.495C27.4666 145.124 27.172 144.683 26.971 144.197C26.77 143.712 26.6665 143.192 26.6665 142.667Z" stroke="#1204B5" stroke-width="6.25" stroke-linecap="round" stroke-linejoin="round" />
                                             <path d="M106.667 13.3333V36C106.667 37.0609 107.088 38.0783 107.838 38.8284C108.588 39.5786 109.606 40 110.667 40H133.333" stroke="#1204B5" stroke-width="6.25" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
-                                        <h3>Design from scratch</h3>
+                                        <h3>Plan from Scratch</h3>
                                     </label>
                                 </div>
-                                <h4 class="text-center pt-4">Use only our destination tools</h4>
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
@@ -156,7 +154,7 @@ require_once(__DIR__ . "/../utils/core.php");
                                 <div class="easygo-radio-btn-1">
                                     <input type="radio" class="radio_choice"  name="tour-type-selection" id="group-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="group-select">
-                                        <h3>Group</h3>
+                                        <h3>Family & Friends</h3>
                                     </label>
                                 </div>
                             </div>
@@ -262,7 +260,7 @@ require_once(__DIR__ . "/../utils/core.php");
                         <div class="row">
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="beaches-select" value="beaches">
+                                    <input type="checkbox" name="activity-selection" id="beaches-select" value="family friendly">
                                     <label class="easygo-icon-btn" for="beaches-select">
                                         <svg width="126" height="101" viewBox="0 0 126 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
@@ -274,7 +272,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="relaxation-select" value="relaxation">
+                                    <input type="checkbox" name="activity-selection" id="relaxation-select" value="soft life">
                                     <label class="easygo-icon-btn" for="relaxation-select">
                                         <svg width="134" height="100" viewBox="0 0 134 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 12.3541L25.2251 23.9918L36.8627 29.2816L25.2251 34.5714L19.9353 46.209L14.6454 34.5714L3.00781 29.2816L14.6454 23.9918L19.9353 12.3541ZM19.9353 22.5741L17.8193 27.1657L13.2278 29.2816L17.8193 31.3975L19.9353 35.9891L22.0512 31.3975L26.6428 29.2816L22.0512 27.1657L19.9353 22.5741ZM41.0946 22.9338L38.4285 17.1361L32.6309 14.4701L38.4285 11.8252L41.0946 6.00635L43.7395 11.8252L49.5583 14.4701L43.7395 17.1361L41.0946 22.9338ZM41.0946 52.5568L38.4285 46.7592L32.6309 44.0931L38.4285 41.4482L41.0946 35.6294L43.7395 41.4482L49.5583 44.0931L43.7395 46.7592L41.0946 52.5568Z" fill="black" />
@@ -287,7 +285,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="outdoor-select" value="outdoor">
+                                    <input type="checkbox" name="activity-selection" id="outdoor-select" value="aesthetics">
                                     <label class="easygo-icon-btn" for="outdoor-select">
                                         <svg width="141" height="100" viewBox="0 0 141 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 14.3541L25.2251 25.9918L36.8627 31.2816L25.2251 36.5714L19.9353 48.209L14.6454 36.5714L3.00781 31.2816L14.6454 25.9918L19.9353 14.3541ZM19.9353 24.5741L17.8193 29.1657L13.2278 31.2816L17.8193 33.3975L19.9353 37.9891L22.0512 33.3975L26.6428 31.2816L22.0512 29.1657L19.9353 24.5741ZM41.0946 24.9338L38.4285 19.1361L32.6309 16.4701L38.4285 13.8252L41.0946 8.00635L43.7395 13.8252L49.5583 16.4701L43.7395 19.1361L41.0946 24.9338ZM41.0946 54.5568L38.4285 48.7592L32.6309 46.0931L38.4285 43.4482L41.0946 37.6294L43.7395 43.4482L49.5583 46.0931L43.7395 48.7592L41.0946 54.5568Z" fill="black" />
@@ -299,19 +297,19 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="nightlife-select" value="nightlife">
+                                    <input type="checkbox" name="activity-selection" id="nightlife-select" value="outdoors">
                                     <label class="easygo-icon-btn" for="nightlife-select">
                                         <svg width="136" height="81" viewBox="0 0 136 81" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
                                             <path d="M135 19H105C105 19 103 35 107 51C108.608 53.68 112.58 55.124 117 55.49V75H116.334L109 81H131L123.832 75H123V55.344C127.24 54.794 131.126 53.316 133 51C137 37 135 19 135 19ZM133 31H107V21H133V31ZM84 75H73V58L95 25H43L65 58V75H54C53.2044 75 52.4413 75.3161 51.8787 75.8787C51.3161 76.4413 51 77.2043 51 78C51 78.7957 51.3161 79.5587 51.8787 80.1213C52.4413 80.6839 53.2044 81 54 81H84C84.7957 81 85.5587 80.6839 86.1213 80.1213C86.6839 79.5587 87 78.7957 87 78C87 77.2043 86.6839 76.4413 86.1213 75.8787C85.5587 75.3161 84.7957 75 84 75Z" fill="#1204B5" />
                                         </svg>
-                                        <h3>Wild & Free</h3>
+                                        <h3>Outdoors</h3>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="shopping-select" value="shopping">
+                                    <input type="checkbox" name="activity-selection" id="shopping-select" value="nightlife">
                                     <label class="easygo-icon-btn" for="shopping-select">
                                         <svg width="130" height="100" viewBox="0 0 130 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 22.3541L25.2251 33.9918L36.8627 39.2816L25.2251 44.5714L19.9353 56.209L14.6454 44.5714L3.00781 39.2816L14.6454 33.9918L19.9353 22.3541ZM19.9353 32.5741L17.8193 37.1657L13.2278 39.2816L17.8193 41.3975L19.9353 45.9891L22.0512 41.3975L26.6428 39.2816L22.0512 37.1657L19.9353 32.5741ZM41.0946 32.9338L38.4285 27.1361L32.6309 24.4701L38.4285 21.8252L41.0946 16.0063L43.7395 21.8252L49.5583 24.4701L43.7395 27.1361L41.0946 32.9338ZM41.0946 62.5568L38.4285 56.7592L32.6309 54.0931L38.4285 51.4482L41.0946 45.6294L43.7395 51.4482L49.5583 54.0931L43.7395 56.7592L41.0946 62.5568Z" fill="black" />
@@ -332,7 +330,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="festivals-select" value="festivals">
+                                    <input type="checkbox" name="activity-selection" id="festivals-select" value="adventure">
                                     <label class="easygo-icon-btn" for="festivals-select">
                                         <svg width="147" height="100" viewBox="0 0 147 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 13.3541L25.2251 24.9918L36.8627 30.2816L25.2251 35.5714L19.9353 47.209L14.6454 35.5714L3.00781 30.2816L14.6454 24.9918L19.9353 13.3541ZM19.9353 23.5741L17.8193 28.1657L13.2278 30.2816L17.8193 32.3975L19.9353 36.9891L22.0512 32.3975L26.6428 30.2816L22.0512 28.1657L19.9353 23.5741ZM41.0946 23.9338L38.4285 18.1361L32.6309 15.4701L38.4285 12.8252L41.0946 7.00635L43.7395 12.8252L49.5583 15.4701L43.7395 18.1361L41.0946 23.9338ZM41.0946 53.5568L38.4285 47.7592L32.6309 45.0931L38.4285 42.4482L41.0946 36.6294L43.7395 42.4482L49.5583 45.0931L43.7395 47.7592L41.0946 53.5568Z" fill="black" />
@@ -351,7 +349,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="swimming-select" value="swimming">
+                                    <input type="checkbox" name="activity-selection" id="swimming-select" value="bucket list">
                                     <label class="easygo-icon-btn" for="swimming-select">
                                         <svg width="150" height="100" viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 22.3541L25.2251 33.9918L36.8627 39.2816L25.2251 44.5714L19.9353 56.209L14.6454 44.5714L3.00781 39.2816L14.6454 33.9918L19.9353 22.3541ZM19.9353 32.5741L17.8193 37.1657L13.2278 39.2816L17.8193 41.3975L19.9353 45.9891L22.0512 41.3975L26.6428 39.2816L22.0512 37.1657L19.9353 32.5741ZM41.0946 32.9338L38.4285 27.1361L32.6309 24.4701L38.4285 21.8252L41.0946 16.0063L43.7395 21.8252L49.5583 24.4701L43.7395 27.1361L41.0946 32.9338ZM41.0946 62.5568L38.4285 56.7592L32.6309 54.0931L38.4285 51.4482L41.0946 45.6294L43.7395 51.4482L49.5583 54.0931L43.7395 56.7592L41.0946 62.5568Z" fill="black" />
@@ -363,13 +361,13 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-lg-3 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="hiking-select" value="hiking">
+                                    <input type="checkbox" name="activity-selection" id="hiking-select" value="alternative experiences">
                                     <label class="easygo-icon-btn" for="hiking-select">
                                         <svg width="136" height="100" viewBox="0 0 136 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 12.3541L25.2251 23.9918L36.8627 29.2816L25.2251 34.5714L19.9353 46.209L14.6454 34.5714L3.00781 29.2816L14.6454 23.9918L19.9353 12.3541ZM19.9353 22.5741L17.8193 27.1657L13.2278 29.2816L17.8193 31.3975L19.9353 35.9891L22.0512 31.3975L26.6428 29.2816L22.0512 27.1657L19.9353 22.5741ZM41.0946 22.9338L38.4285 17.1361L32.6309 14.4701L38.4285 11.8252L41.0946 6.00635L43.7395 11.8252L49.5583 14.4701L43.7395 17.1361L41.0946 22.9338ZM41.0946 52.5568L38.4285 46.7592L32.6309 44.0931L38.4285 41.4482L41.0946 35.6294L43.7395 41.4482L49.5583 44.0931L43.7395 46.7592L41.0946 52.5568Z" fill="black" />
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M82.4302 7.5C86.4852 7.5 89.7672 10.879 89.7672 14.934C89.7672 18.988 86.4852 22.367 82.4302 22.367C78.3752 22.367 74.9962 18.988 74.9962 14.934C74.9962 10.879 78.3762 7.5 82.4302 7.5ZM82.9132 23.043C85.7032 22.956 87.8602 24.692 88.9952 26.519L96.7182 39.359L110.234 45.055C114.095 46.695 112.261 51.812 107.917 50.654C107.762 50.5484 107.6 50.4515 107.434 50.364L98.3592 70.444C98.3592 70.444 101.255 77.106 104.924 84.637C108.496 92.263 99.8072 95.546 96.6212 88.498L93.4362 81.354L88.8022 91.491L86.8712 90.622L92.2772 78.844L83.2022 59.054C82.8162 59.15 82.4302 59.054 81.9472 59.054C81.9472 59.054 71.4242 82.995 68.5272 89.271C65.7282 95.546 57.4262 91.781 60.2252 85.601C63.0252 79.423 76.3482 49.399 76.3482 49.399L66.4452 49.561C64.9452 49.574 64.5862 49.335 64.4912 48.211C64.3382 45.241 64.0762 38.253 64.7632 35.014C65.6492 30.839 66.1782 26.244 69.1072 24.877C72.0372 23.51 77.1202 27.291 77.1202 27.291C77.8922 24.781 80.3062 23.043 82.9132 23.043ZM88.8982 38.103V49.69L97.2012 67.84L105.503 49.593L93.4362 44.573C92.8562 44.283 92.3742 43.897 91.9872 43.318L88.8982 38.103Z" fill="#1204B5" />
                                         </svg>
-                                        <h3>Wildlife & Safari</h3>
+                                        <h3>Alternative Experiences</h3>
                                     </label>
                                 </div>
                             </div>
@@ -395,8 +393,8 @@ require_once(__DIR__ . "/../utils/core.php");
                         <div class="row">
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="budget-range-selection" id="under-500-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" style="flex-direction:row" for="under-500-select">
+                                    <input type="radio" class="radio_choice"  name="budget-range-selection" id="low-budget">
+                                    <label class="easygo-icon-btn py-5 text-blue" style="flex-direction:row" for="low-budget">
                                         <!-- <h3>Under GHS 1,000</h3> -->
                                         <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
                                     </label>
@@ -404,8 +402,8 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="budget-range-selection" id="500-to-2000-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="500-to-2000-select" style="flex-direction:row">
+                                    <input type="radio" class="radio_choice"  name="budget-range-selection" id="medium-budget">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="medium-budget" style="flex-direction:row">
                                         <!-- <h3>GHS 1000 - GHS 3,500</h3> -->
                                         <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
                                         <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
@@ -414,8 +412,8 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="budget-range-selection" id="over-2000-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="over-2000-select" style="flex-direction:row">
+                                    <input type="radio" class="radio_choice"  name="budget-range-selection" id="high-budget">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="high-budget" style="flex-direction:row">
                                         <!-- <h3>Over GHS 5000</h3> -->
                                         <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
                                         <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>

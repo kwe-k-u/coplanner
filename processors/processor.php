@@ -190,7 +190,7 @@
 			// Create a unique file name (you can modify this logic as needed)
 
 			// Save the JSON data to a file
-			$fileSaved = file_put_contents($filePath, json_encode($preferences));
+			$fileSaved = file_put_contents($filePath, $preferences);
 
 			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
 			die();
@@ -207,8 +207,6 @@
 			if (!file_exists($directory)) {
 				mkdir($directory, 0777, true); // Change the permission mode as needed
 			}
-
-			// Create a unique file name (you can modify this logic as needed)
 
 			// Save the JSON data to a file
 			$fileSaved = file_put_contents($filePath, json_encode($preferences));
