@@ -172,6 +172,12 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_itinerary_templates(){
+			$sql = "";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
 		function update_itinerary_name($id,$name){
 			$sql = "SELECT update_itinerary_name(?,?)";
 			$this->prepare($sql);

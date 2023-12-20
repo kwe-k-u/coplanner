@@ -313,12 +313,14 @@ CREATE VIEW vw_itinerary AS
 SELECT
 	i.*,
     ic.user_id as owner_id,
+    u.user_name as owner_name,
     (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
     (select count(*) from itinerary_destination inner join itinerary_day on itinerary_day.itinerary_id = i.itinerary_id) as num_destinations,
     (select COALESCE(sum(price),0) from destination_activities as ida inner join itinerary_activity as iia on iia.destination_id = ida.destination_id inner join itinerary_day as id on iia.day_id = id.day_id where id.itinerary_id = i.itinerary_id) as budget,
     (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day
 from itinerary as i
-inner join itinerary_collaborators as ic on ic.itinerary_id = i.itinerary_id;
+inner join itinerary_collaborators as ic on ic.itinerary_id = i.itinerary_id
+inner join users as u on u.user_id = ic.user_id;
 
 
 

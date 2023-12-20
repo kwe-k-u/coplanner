@@ -120,7 +120,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-popular-selections" role="tabpanel" aria-labelledby="popular-selections-tab">
-                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/coplanner_home_2.php')">
+                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/itinerary_view.php')">
                             <div class="itinerary-card">
                                 <p class="itinerary-card-top-note">Pay to view</p>
                                 <div class="itinerary-card-body">
@@ -202,7 +202,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-editors-pick" role="tabpanel" aria-labelledby="editors-pick-tab">
-                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/coplanner_home_2.php')">
+                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/itinerary_view.php')">
                             <div class="itinerary-card">
                                 <p class="itinerary-card-top-note">Pay to view</p>
                                 <div class="itinerary-card-body">
@@ -258,7 +258,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-solo-travels" role="tabpanel" aria-labelledby="solo-travels-tab">
-                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/coplanner_home_2.php')">
+                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/itinerary_view.php')">
                             <div class="itinerary-card">
                                 <p class="itinerary-card-top-note">Pay to view</p>
                                 <div class="itinerary-card-body">
@@ -318,7 +318,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-family-friendly" role="tabpanel" aria-labelledby="family-friendly-tab">
-                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/coplanner_home_2.php')">
+                        <div class="itinerary-cards-container" onclick="goto_page('coplanner/itinerary_view.php')">
                             <div class="itinerary-card">
                                 <p class="itinerary-card-top-note">Pay to view</p>
                                 <div class="itinerary-card-body">

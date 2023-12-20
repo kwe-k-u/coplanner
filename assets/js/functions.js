@@ -312,7 +312,7 @@ function create_itinerary(){
   null,
   (response)=>{
     let id = response.data.itinerary_id;
-    goto_page(baseurl+"coplanner/itinerary_item_view.php?id="+id,false);
+    goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
   });
 }
 // async function getFile() {

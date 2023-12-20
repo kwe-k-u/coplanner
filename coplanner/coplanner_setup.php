@@ -396,24 +396,30 @@ require_once(__DIR__ . "/../utils/core.php");
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
                                     <input type="radio" class="radio_choice"  name="budget-range-selection" id="under-500-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="under-500-select">
-                                        <h3>Under GHS 1,000</h3>
+                                    <label class="easygo-icon-btn py-5 text-blue" style="flex-direction:row" for="under-500-select">
+                                        <!-- <h3>Under GHS 1,000</h3> -->
+                                        <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
                                     <input type="radio" class="radio_choice"  name="budget-range-selection" id="500-to-2000-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="500-to-2000-select">
-                                        <h3>GHS 1000 - GHS 3,500</h3>
+                                    <label class="easygo-icon-btn py-5 text-blue" for="500-to-2000-select" style="flex-direction:row">
+                                        <!-- <h3>GHS 1000 - GHS 3,500</h3> -->
+                                        <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
+                                        <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
                                     <input type="radio" class="radio_choice"  name="budget-range-selection" id="over-2000-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="over-2000-select">
-                                        <h3>Over GHS 5000</h3>
+                                    <label class="easygo-icon-btn py-5 text-blue" for="over-2000-select" style="flex-direction:row">
+                                        <!-- <h3>Over GHS 5000</h3> -->
+                                        <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
+                                        <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
+                                        <iconify-icon icon="healthicons:money-bag-outline" style="color: #1204b5;" width="100"></iconify-icon><br>
                                     </label>
                                 </div>
                             </div>
@@ -434,6 +440,9 @@ require_once(__DIR__ . "/../utils/core.php");
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
+    <!-- Iconify js -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
     <!-- easygo js -->
      <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>

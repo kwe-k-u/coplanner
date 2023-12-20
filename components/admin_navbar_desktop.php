@@ -10,7 +10,7 @@
 					Itineraries <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
 				</a>
 				<ul id="trips-submenu-sb" class="sub-menu slide-down-sub-menu">
-					<li><a href="group_tours.php" id="nav_sub_groups">Group Tours</a></li>
+					<li><a href="group_tours.php" id="nav_sub_groups">Templates</a></li>
 				</ul>
 			</div>
 		</li>

@@ -178,12 +178,9 @@
 			send_json(array("msg"=> "Updated"));
 			die();
 		case "/new_itinerary_request":
-			// if itinerary_id is true, then admin is adding a new template
-			$directory = $_POST["itinerary_id"] != "false"
-			?"../uploads/template_weights/" //Admin entry
-			:"../uploads/user_itinerary_preference/"; // User creation
+			$directory = "../uploads/user_itinerary_preference/"; // User creation
 			$preferences = $_POST["preference"];
-			$fileName = $_POST["itinerary_id"] != "false" ? $_POST["itinerary_id"]: generate_id();
+			$fileName = generate_id();
 			$filePath = $directory . $fileName.".json";
 			// Create the directory if it doesn't exist
 			if (!file_exists($directory)) {
@@ -196,6 +193,27 @@
 			$fileSaved = file_put_contents($filePath, json_encode($preferences));
 
 			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
+			die();
+		case "/create_template":
+			// TODO:: Add admin check
+			$itinerary_id = $_POST["itinerary_id"];
+			$preferences = json_decode($_POST["preferences"],true);
+			// create_itinerary_template();
+
+			$directory = "../uploads/template_weights/"; // User creation
+			$fileName = generate_id();
+			$filePath = $directory . $fileName.".json";
+			// Create the directory if it doesn't exist
+			if (!file_exists($directory)) {
+				mkdir($directory, 0777, true); // Change the permission mode as needed
+			}
+
+			// Create a unique file name (you can modify this logic as needed)
+
+			// Save the JSON data to a file
+			$fileSaved = file_put_contents($filePath, json_encode($preferences));
+			send_json(array("msg"=> "Success","bytes"=> $fileSaved));
+
 			die();
 		case "/get_day_info":
 			$day_id = $_GET["day_id"];

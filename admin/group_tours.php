@@ -49,7 +49,7 @@
 								<option value="template"> Templates </option>
 							</select>
 						</div>
-						<a href="../coplanner/itinerary_item_view.php" class="easygo-btn-1">Create Itinerary</a>
+						<a href="../coplanner/edit_itinerary.php" class="easygo-btn-1">Create Itinerary</a>
 
 					</div>
 					<!-- ============================== -->
@@ -67,10 +67,12 @@
 								echo "<h4>There aren't any itineraries on the platform</h4>";
 							} else {
 								foreach ($itineraries as $entry) {
-									$c_id = $entry["campaign_id"];
-									$c_name = $entry["title"];
-									$c_media = $entry["media_location"];
-									$type = $entry["tour_id"] ? "Group" : "Private";
+									$c_id = $entry["itinerary_id"];
+									$c_name = $entry["itinerary_name"];
+									$c_media = "";//$entry["media_location"];
+									$owner_name = $entry["owner_name"];
+									$type =  "Group" ;
+									$created_date = format_string_as_date_fn($entry["date_created"]);
 									echo "
                                         <div class='col-lg-4 col-md-6 pb-4'>
                                 <div class='trip-card-2'>
@@ -80,17 +82,15 @@
                                     <div class='trip-card-content'>
                                         <h5 class='header'>$c_name</h5>
                                         <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
-                                            <div><i class='fa-regular fa-calendar-days'></i> Sea</div>
-                                            <div><i class='fa-solid fa-pen-to-square'></i> t_booking Booked Seats</div>
+                                            <div><i class='fa-regular fa-calendar-days'></i> $created_date</div>
+                                            <div><i class='fa-solid fa-pen-to-square'></i> Created by <span class='text-blue'>$owner_name</span></div>
                                         </div>
                                         <div class='easygo-fs-5'>
                                         </div>
                                         <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
-                                            <span><i class='fa-solid fa-tag'></i> $type</span>
                                             <div>
-                                                <a class='btn px-3 py-1 border easygo-fs-5' href='../views/tour_description.php?campaign_id=$c_id'>Details</a>
-                                                <a class='btn px-3 py-1 border easygo-fs-5' href='bookings.php?campaign_id=$c_id'>Bookings</a>
-                                                <a class='btn px-3 py-1 border easygo-fs-5' href='create_a_tour.php?id=$c_id'>Edit</a>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='../coplanner/itinerary_view.php?id=$c_id'>Details</a>
+                                                <a class='btn px-3 py-1 border easygo-fs-5' href='../coplanner/coplanner_setup.php?itinerary_id=$c_id'>Make Template</a>
                                             </div>
                                         </div>
                                     </div>

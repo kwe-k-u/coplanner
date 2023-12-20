@@ -18,11 +18,11 @@ class EhPageTransition {
 					let selected = get_section_responses(parent);
 					let target = event.target.getAttribute("data-transit-target");
 
-					if(selected == {} && !btn.innerHTML.includes("Back")){
+					if (selected == {} && !btn.innerHTML.includes("Back")) {
 						alert("Please make a selection");
 						return null;
 					}
-					next_choice(parent,target);
+					next_choice(parent, target);
 
 				});
 			});
@@ -33,7 +33,7 @@ class EhPageTransition {
 
 
 // Moves the choice selection page to the next
-function next_choice(parent_id,target_id){
+function next_choice(parent_id, target_id) {
 	let parent = document.getElementById(parent_id);
 	let target = document.getElementById(target_id);
 	let selected = get_section_responses(parent_id);
@@ -41,55 +41,68 @@ function next_choice(parent_id,target_id){
 	target.classList.add("active");
 	parent.classList.remove("active");
 
-	if (parent_id == "tool-selection-page"){
-		if(selected == "scratch-select"){
+	if (parent_id == "tool-selection-page") {
+		if (selected == "scratch-select") {
 			send_request("POST",
-			"processors/processor.php/create_itinerary",
-			{},
-			(response)=> {
-				goto_page("coplanner/itinerary_item_view.php?id="+response.data.itinerary_id);
-			}
+				"processors/processor.php/create_itinerary",
+				{},
+				(response) => {
+					goto_page("coplanner/edit_itinerary.php?id=" + response.data.itinerary_id);
+				}
 			);
 
 			return null;
 		}
 	}
 
-	if(parent_id != "tool-selection-page"){
-		preference_selection = Object.assign({},preference_selection,selected);
+	if (parent_id != "tool-selection-page") {
+		preference_selection = Object.assign({}, preference_selection, selected);
 	}
 
 	// if we've reached the end of the form, send the preference_selection to the AI to generate the itinerary
-	if (parent == target){
+	if (parent == target) {
 		event.preventDefault();
 		show_loader();
 
-	send_request(
-		"POST",
-		"processors/processor.php/new_itinerary_request",
-		{
-			"preference": preference_selection,
-			"itinerary_id" : url_params("itinerary_id")
-		},
-		(response)=> {
-			if(!url_params("itinerary_id")){
-				console.log(response);
-				//If action not admin, show recommendations
-				goto_page("coplanner/recommendations.php?id="+response.data.id);
-			}
+		//if the url doesn't include an itinerary id, then a user is requesting a recommendation
+		if (!url_params("itinerary_id")) {
+			send_request(
+				"POST",
+				"processors/processor.php/new_itinerary_request",
+				{
+					"preference": preference_selection,
+				},
+				(response) => {
+					console.log(response);
+					goto_page("coplanner/recommendations.php?id=" + response.data.id);
 
+
+				}
+			);
+			//if url contains itinerary id, admin is creating a template
+		} else {
+			// create itinerary template
+			send_request("POST",
+				"processors/processor.php/create_template",
+				{
+					"itinerary_id" : url_params("itinerary_id"),
+					"preferences" : preference_selection
+				},
+				(response)=>{
+					console.log(response);
+				}
+			);
 		}
-	);
 	}
 
 }
 
 
-function get_page(element){
+function get_page(element) {
 	let current = element;
-	while(current != null){
+	while (current != null) {
 
-		if (current.parentElement.classList.contains("eh-transition-page")){
+		if (current.parentElement.classList.contains("eh-transition-page")) {
 			return current.parentElement;
 		}
 		current = current.parentElement;
@@ -99,30 +112,30 @@ function get_page(element){
 
 $(document).ready(function () {
 	// Get all elements with class 'radio_choice'
-var radioChoices = document.querySelectorAll('.radio_choice');
+	var radioChoices = document.querySelectorAll('.radio_choice');
 
-// Iterate through each element
-radioChoices.forEach(function(radioChoice) {
-  // Add change event listener to each element
-  radioChoice.addEventListener('change', function() {
-    // Find the closest ancestor element with class 'eh-transition-page'
-    var selectionPage = get_page(radioChoice);
+	// Iterate through each element
+	radioChoices.forEach(function (radioChoice) {
+		// Add change event listener to each element
+		radioChoice.addEventListener('change', function () {
+			// Find the closest ancestor element with class 'eh-transition-page'
+			var selectionPage = get_page(radioChoice);
 
-    // Find the button element within the 'toolSelectionPage'
-    var button = selectionPage.querySelectorAll('.eht-btn')[1];
-	button.click();
-  });
+			// Find the button element within the 'toolSelectionPage'
+			var button = selectionPage.querySelectorAll('.eht-btn')[1];
+			button.click();
+		});
+	});
+
 });
 
-});
 
 
 
 
-
-function get_section_responses(data_parent){
+function get_section_responses(data_parent) {
 	var result = {};
-	switch(data_parent){
+	switch (data_parent) {
 		case "tool-selection-page":
 			result = get_selected_radio("tool-select");
 			break;
@@ -142,7 +155,7 @@ function get_section_responses(data_parent){
 			result["budget"] = get_selected_radio("budget-range-selection");
 			break;
 		default:
-			console.log("unknown case",data_parent);
+			console.log("unknown case", data_parent);
 			result = null;
 	}
 	return result;
@@ -155,13 +168,13 @@ function get_selected_checkboxes(name) {
 }
 
 
-function get_selected_radio(name){
+function get_selected_radio(name) {
 	const radioButtons = document.getElementsByName(name);
-			for (let i = 0; i < radioButtons.length; i++) {
-				if (radioButtons[i].checked) {
-					return radioButtons[i].id;
-				}
-			}
+	for (let i = 0; i < radioButtons.length; i++) {
+		if (radioButtons[i].checked) {
+			return radioButtons[i].id;
+		}
+	}
 }
 
 

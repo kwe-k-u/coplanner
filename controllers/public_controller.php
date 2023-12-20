@@ -53,7 +53,9 @@
 		$public = new public_class();
 		$data = $public->get_destination_by_id($id);
 		$data["activities"] = $public->get_destination_activities($id);
-		// $data["utilities"] = $public->get_destination_utilities($id);
+
+		$public = new public_class();
+		$data["utilities"] = $public->get_destination_utilities($id);
 		return $data;
 	}
 
@@ -140,6 +142,11 @@
 	function add_itinerary_activity($day_id,$activity_id,$destination_id){
 		$public = new public_class();
 		return $public->add_itinerary_activity($day_id,$activity_id,$destination_id);
+	}
+
+	function get_itinerary_templates(){
+		$public = new public_class();
+		return $public->get_itinerary_templates();
 	}
 
 

@@ -1,19 +1,22 @@
 <?php
 	require_once(__DIR__ . "/../utils/core.php");
+	require_once(__DIR__ . "/../controllers/public_controller.php");
 
 
 
-	$filePath = "../uploads/user_itinerary_preference/".$_GET["id"].".json";
+	$user_preference_file = "../uploads/user_itinerary_preference/".$_GET["id"].".json";
+	$template_weight_path = "../uploads/template_weights/";
+
 
 	// Check if the file exists
-	if (file_exists($filePath)) {
+	if (file_exists($user_preference_file)) {
 		// Read the JSON data from the file
-		$json = file_get_contents($filePath);
+		$json = file_get_contents($user_preference_file);
 		if ($json !== false) {
 			$preferences = json_decode($json, true);
 
 			if ($preferences !== null) {
-				print_r($preferences);
+				// print_r($preferences);
 				//TODO:: get admin itinerary list
 				// filename is the itinerary id
 				// run comparisons on the itineraries and return the top 2
@@ -29,6 +32,22 @@
 	} else {
 		echo "Your Url is broken! Kindly start the itinerary process again";
 	}
+
+
+	// $recommendations = shell_exec("python3 ../utils/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path));
+	exec("python ../utils/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path),$recommendations,$return_val);
+	//pass the file path to the python script, and the path to the template jsons
+	//let the python script return a list of file paths for the recommended itineraries
+	//get the itineraries from the path and return those as the recommendations
+	$recommendations = json_decode($recommendations[0],true);
+	$itineraries = array();
+	foreach ($recommendations as $filename) {
+		$r_id = explode(".",$filename)[0];
+		$template = get_itinerary_by_id($r_id);
+		array_push($itineraries,$template);
+	}
+
+	print($itineraries);
 	die();
 ?>
 
@@ -72,8 +91,8 @@
 						for ($i = 0; $i < 2; $i++) {
 						?>
 
-							<div class="itinerary-card grid-item m-3" style="display:inline-table" onclick="goto_page('coplanner/itinerary_item_view.php')">
-								<p class="itinerary-card-top-note">Pay to view</p>
+							<div class="itinerary-card grid-item m-3" style="display:inline-table" onclick="goto_page('coplanner/edit_itinerary.php')">
+								<p class="itinerary-card-top-note">Click to view</p>
 								<div class="itinerary-card-body">
 									<div class="price-and-people">
 										<div>
