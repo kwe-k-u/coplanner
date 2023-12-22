@@ -56,6 +56,8 @@
 
 		$public = new public_class();
 		$data["utilities"] = $public->get_destination_utilities($id);
+		$public = new public_class();
+		$data["destination_type"] = $public->get_destination_type($id);
 		return $data;
 	}
 

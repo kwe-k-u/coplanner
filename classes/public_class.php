@@ -116,6 +116,13 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_destination_type($destination_id){
+			$sql = "CALL get_destination_type(?)";
+			$this->prepare($sql);
+			$this->bind($destination_id);
+			return $this->db_fetch_all();
+		}
+
 		function get_itineraries($user_id){
 			$sql = "CALL get_itineraries(?)";
 			$this->prepare($sql);

@@ -421,6 +421,58 @@ END //
 DELIMITER ;
 
 
+DROP FUNCTION IF EXISTS add_type_of_destination;
+DELIMITER //
+CREATE FUNCTION  add_type_of_destination(
+  des_type_name VARCHAR(100)
+)RETURNS INT
+ begin
+
+  DECLARE new_id INT;
+  SELECT type_id INTO new_id FROM types_of_destination WHERE type_name = des_type_name;
+  IF new_id IS NULL THEN
+    INSERT INTO types_of_destination(type_name) VALUES (des_type_name);
+    SET new_id = LAST_INSERT_ID();
+  END IF;
+  RETURN new_id;
+
+end //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS add_destination_type;
+DELIMITER //
+CREATE FUNCTION add_destination_type(
+  in_destination_id VARCHAR(150),
+  in_utility VARCHAR(60)
+) RETURNS TINYINT
+BEGIN
+  DECLARE utility_id INT;
+  DECLARE temp INT;
+
+  SELECT type_id INTO utility_id FROM types_of_destination WHERE type_id = in_utility OR type_name = in_utility limit 1;
+
+  IF utility_id IS NULL OR NOT in_utility REGEXP '^[0-9]+$' THEN
+    SELECT add_type_of_destination(in_utility) INTO utility_id;
+    SELECT type_id INTO utility_id FROM types_of_destination WHERE type_id = in_utility OR type_name = in_utility limit 1;
+  END IF;
+
+  /*Check and terminate if the destination_utility pair already exists*/
+  SELECT type_id into temp FROM destination_type AS du
+  where du.destination_id = in_destination_id AND du.type_id = utility_id;
+
+  IF temp IS NOT NULL THEN
+    return 0;
+  END IF;
+  INSERT INTO destination_type(destination_id, type_id)
+  VALUES (in_destination_id, utility_id);
+
+  RETURN utility_id;
+END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS update_itinerary_name;
 DELIMITER //
 CREATE FUNCTION update_itinerary_name(
     in_itinerary_id VARCHAR(100),
@@ -474,6 +526,15 @@ DELIMITER //
 CREATE PROCEDURE get_destination_utilities( in_destination_id VARCHAR(100))
 BEGIN
 SELECT * FROM destination_utilities as du inner join types_of_utility as tu on tu.type_id = du.type_id where du.destination_id = in_destination_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_destination_type;
+DELIMITER //
+CREATE PROCEDURE get_destination_type(in_destination_id VARCHAR(100))
+BEGIN
+SELECT * from destination_type as dt inner join types_of_destination as td on td.type_id = dt.type_id where dt.destination_id = in_destination_id;
 END //
 DELIMITER ;
 

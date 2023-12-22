@@ -22,6 +22,7 @@ var ext_img_list = document.getElementById("external-images");
 var ext_img_field = document.getElementById("external-image-field");
 var activity_list = document.getElementById("add_loc_activity_list");
 var activity_field = document.getElementById("add_loc_activity_input");
+var activity_price_field = document.getElementById("add_loc_activity_price_input");
 
 
 var info_image_section = document.getElementById("location-info-images");
@@ -48,7 +49,27 @@ function select_destination_utility(select){
 	console.log("added")
 }
 
-function insert_utility_element(value,id=null){
+
+function select_destination_type(select){
+	var key = select.value;
+	var value = select.options[select.selectedIndex].text;
+
+	if(key == ""){ // If default is selected
+		return null;
+	}
+
+	var option = document.createElement("li")
+	option.onclick = function (){
+		option.remove();
+	}
+	option.id = key;
+	option.innerText = value;
+
+	destination_type_list.appendChild(option);
+}
+
+
+function insert_list_element(group_list,value,id=null){
 
 	var newNode = document.createElement("li");
 
@@ -58,7 +79,7 @@ function insert_utility_element(value,id=null){
 	}
 	// newNode.setAttribute("onclick", "selectedActivityClick()");
 	newNode.innerText = value;
-	utility_list.appendChild(newNode);
+	group_list.appendChild(newNode);
 
 }
 
@@ -82,8 +103,10 @@ function add_location_toggle(location_id = null){
 	country_field.value = "";
 	gps_field.value = "";
 	activity_list.innerHTML = "";
+	utility_list.innerText = "";
 
 	activity_field.value = "";
+	activity_price_field.value = "";
 	ext_img_field.value = "";
 	ext_img_list.innerHTML = "";
 
@@ -148,11 +171,18 @@ function add_location_toggle(location_id = null){
 			// });
 
 			for (let i = 0; i < data["activities"].length; i++) {
-				insert_location_element(data["activities"][i]["activity_name"], data["activities"][i]["activity_id"]);
+				let activity = data["activities"][i];
+				insert_location_element(activity["activity_name"], activity["price"],activity["activity_id"]);
 			}
 
 			for(let i=0; i < data["utilities"].length; i++){
-				insert_utility_element(data["utilities"][i]["type_name"],data["utilities"][i]["type_id"]);
+				let utility = data["utilities"][i];
+				insert_list_element(utility_list,utility["type_name"],utility["type_id"]);
+			}
+
+			for(let i = 0; i < data["destination_type"].length; i++){
+				let types = data["destination_type"][i];
+				insert_list_element(destination_type_list,types["type_name"],types["type_id"]);
 			}
 
 
@@ -252,38 +282,6 @@ function on_location_search(form) {
 }
 
 
-function verification_toggle(site_id){
-	var text = document.getElementById("verified_text_"+site_id);
-	var icon = document.getElementById("verified_image_"+site_id);
-	const verified = text.value == "Verified (Click to Change)";
-	const confirm_text = verified ? "Remove verification for location?" : "Verify the destination?"
-
-	if(confirm(confirm_text)){
-
-		send_request("POST",
-		"processors/admin_processor.php/toggle_location_verification",
-		{
-			"destination_id" : site_id
-		},
-		(response)=> {
-			//location is now unverified
-			if(response["data"]["new_verification"] == "0"){
-				text.innerText  = "Unverified(Click to Change)";
-				icon.src = baseurl+"assets/images/svgs/empty_star.svg";
-
-			}else{ // location is now verified
-				text.innerTExt = "Verified (Click to Change)";
-				icon.src = baseurl+"assets/images/svgs/full_star.svg";
-
-			}
-
-		}
-		);
-
-	}
-
-}
-
 
 
 // Adds an activity to the list for activities for a location
@@ -297,21 +295,22 @@ function add_loc_activity(){
 
 	for (var act_index = 0; act_index < activity_list.children.length; act_index++){
 		var child = activity_list.children[act_index];
-		if(child.innerText == activity_field.value){
+		if(child.innerText.includes(activity_field.value)){
 			console.log("Already included");
 			return false;
 		}
 	}
 
-	insert_location_element(activity_field.value);
+	insert_location_element(activity_field.value.trim(),activity_price_field.value.trim());
 
 	activity_field.value = '';
+	activity_price_field.value = "";
 	return true;
 }
 
 
 // creates a list element and inserts location information on the edit/insert form
-function insert_location_element(value,id=null){
+function insert_location_element(value,price,id=null){
 
 	var newNode = document.createElement("li");
 
@@ -320,7 +319,11 @@ function insert_location_element(value,id=null){
 		newNode.setAttribute("id", id);
 	}
 	// newNode.setAttribute("onclick", "selectedActivityClick()");
-	newNode.innerText = value;
+	newNode.innerText = value ;
+	var priceNode = document.createElement("span");
+	priceNode.className = "easygo-fs-5";
+	priceNode.innerText = " GHS "+price.toString();
+	newNode.appendChild(priceNode);
 	activity_list.appendChild(newNode);
 
 }
@@ -390,12 +393,6 @@ function create_result_tile(map) {
 	ver_div.appendChild(ver_img_span);
 
 	//creating span text for verification
-	ver_span.setAttribute("onclick",'verification_toggle("'+id+'")');
-	ver_span.setAttribute("id","verified_text_"+id);
-	ver_span.innerText = is_verified ? "Verified (Click to Change)" : "Unverified(Click to Change)";
-
-
-	ver_div.appendChild(ver_span);
 	textGray1.appendChild(ver_div);
 
 
@@ -439,10 +436,10 @@ function create_result_tile(map) {
 
 }
 
-function get_utilities_list(){
+function get_div_list(div_name){
 	var utilities = {};
-	for (var ut_index = 0; ut_index < utility_list.children.length; ut_index++){
-		var child = utility_list.children[ut_index];
+	for (var ut_index = 0; ut_index < div_name.children.length; ut_index++){
+		var child = div_name.children[ut_index];
 		utilities[child.id] = child.innerText;
 	}
 	return utilities;
@@ -469,7 +466,8 @@ function create_site(form){
 			"site_id" : form.loc_id.value,
 			"country" : form.country.value,
 			"activities" : activities,
-			"utilities" : get_utilities_list(),
+			"utilities" : get_div_list(utility_list),
+			"destintion_type" : get_div_list(destination_type_list),
 			"rating" : form.rating.value,
 			"cordinates" : form.cordinates.value
 		};

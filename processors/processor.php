@@ -86,6 +86,7 @@
 			$country = $_POST["country"]; //TODO:: add to sql
 			$activities = $_POST["activities"];
 			$utilities = json_decode($_POST["utilities"],true);
+			$destination_type = json_decode($_POST["destintion_type"],true);
 			$latitude = explode(",",$_POST["cordinates"])[0];
 			$longitude = explode(",",$_POST["cordinates"])[1];
 			$rating = $_POST["rating"];
@@ -95,13 +96,23 @@
 				send_json(array("msg"=> "Destination with same name exists! Creation failed"),201);
 				die();
 			}
-			foreach ($activities as $value){
-				add_destination_activity($destination_id,$value);
+			foreach ($activities as $key => $value) {
+				$activity_name = explode(" GHS ",$value)[0];
+				$activity_price = explode(" GHS ",$value)[1];
+				try {
+					add_destination_activity($destination_id,$activity_name,$activity_price);
+				} catch (\Throwable $th) {
+				}
 			}
 
 			foreach ($utilities as $id => $utility_name){
 				add_destination_utility($destination_id,$id);
 			}
+
+			foreach ($destination_type as $id=>$type_name){
+				add_destination_type($destination_id,$id);
+			}
+
 			send_json(array("msg"=> "Added destination"));
 			die();
 		case "/google_maps_upload":
@@ -166,14 +177,23 @@
 			//TODO:: Add method to remove activities that have been removed
 			//Add destination activities
 			foreach ($activities as $key => $value) {
-				add_destination_activity($destination_id,$value);
+				$activity_name = explode(" GHS ",$value)[0];
+				$activity_price = explode(" GHS ",$value)[1];
+				try {
+					add_destination_activity($destination_id,$activity_name,$activity_price);
+				} catch (\Throwable $th) {
+				}
 			}
+
 
 			//TODO:: Add method to remove unavailable utilities
 			//Add destination utilities
 			$utilities = json_decode($_POST["utilities"],true);
 			foreach ($utilities  as $key => $value) {
-				add_destination_utility($destination_id,$value);
+				try {
+					add_destination_utility($destination_id,$value);
+				} catch (\Throwable $th) {
+				}
 			}
 			send_json(array("msg"=> "Updated"));
 			die();

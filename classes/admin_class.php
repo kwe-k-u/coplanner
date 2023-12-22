@@ -51,8 +51,21 @@
 			return $this->db_fetch_all();
 		}
 
+		function get_destination_types(){
+			$sql = "SELECT * FROM types_of_destination";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
 		function add_type_of_utility($name){
 			$sql = "SELECT add_type_of_utility(?) as utility_id";
+			$this->prepare($sql);
+			$this->bind($name);
+			return $this->db_fetch_one();
+		}
+
+		function add_type_of_destination($name){
+			$sql = "SELECT add_type_of_destination(?) as type_id";
 			$this->prepare($sql);
 			$this->bind($name);
 			return $this->db_fetch_one();
@@ -62,6 +75,13 @@
 			$sql = "SELECT add_destination_utility(?,?) AS result LIMIT 1";
 			$this->prepare($sql);
 			$this->bind($destination_id,$utility_id);
+			return $this->db_fetch_one();
+		}
+
+		function add_destination_type($destination_id,$type_id){
+			$sql = "SELECT add_destination_type(?,?) as result LIMIT 1";
+			$this->prepare($sql);
+			$this->bind($destination_id,$type_id);
 			return $this->db_fetch_one();
 		}
 

@@ -37,9 +37,24 @@
 		return $admin->get_utility_types();
 	}
 
+	function get_destination_types(){
+		$admin = new admin_class();
+		return $admin->get_destination_types();
+	}
+
 	function add_type_of_utility($name){
 		$admin = new admin_class();
 		return $admin->add_type_of_utility($name);
+	}
+
+	function add_type_of_destination($name){
+		$admin = new admin_class();
+		return $admin->add_type_of_destination($name);
+	}
+
+	function add_destination_type($destination_id,$type_id){
+		$admin = new admin_class();
+		return $admin->add_destination_type($destination_id,$type_id);
 	}
 
 	function add_destination_utility($destination_id, $utility_id){

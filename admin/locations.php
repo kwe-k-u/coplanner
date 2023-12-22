@@ -99,8 +99,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 								$rating = $site["rating"];
 								$rating_count = $site["num_ratings"];
 								$site_country = "$rating from $rating_count ratings"; //$site["country"];
-								$verified_text = true ? "Verified (Click to Change)" : "Unverified(Click to Change)";
-								$star = true ? "full_star" : "empty_star";
 								echo "
 						<div class='location-card border p-4 rounded my-3'>
 							<div class='header d-flex justify-content-between'>
@@ -108,12 +106,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 								<h5 class='easygo-fs-4 text-orange'>$site_country</h5>
 							</div>
 							<div class='text-gray-1 easygo-fs-6'>
-								 <div class='rating-and-info d-flex align-items-center gap-1'>
-									<span>
-										<img src='../assets/images/svgs/$star.svg' alt='star' id='verified_image_$site_id'>
-									</span>
-									<span onclick='return verification_toggle(\"$site_id\")' id='verified_text_$site_id'>$verified_text</span>
-								</div>
 								<div class='time'>
 									<span></span>
 									&nbsp;
@@ -226,6 +218,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 									Destination Utilities
 								</button>
 							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link easygo-fs-4 h-100" id="add-location-type-tab" data-bs-toggle="tab" data-bs-target="#add-location-type" type="button" role="tab" aria-controls="add-location-type" aria-selected="false">
+									Destination Type
+								</button>
+							</li>
 						</ul>
 						<form onsubmit="return create_site(this)">
 							<div>
@@ -304,17 +301,26 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
 										</div>
 
-										<div class="form-input-field">
-											<label class="text-gray-1 easygo-fs-4 ">Activity</label>
-
-											<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
-											<div class="col">
-												<ul id='add_loc_activity_list'>
-													<!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
-												</ul>
+										<div class="row">
+											<div class="col-9">
+												<div class="form-input-field">
+													<label class="text-gray-1 easygo-fs-4 ">Activity</label>
+													<input class="px-4 py-2 flex-grow-1" type="text" id="add_loc_activity_input">
+												</div>
 											</div>
-											<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
+											<div class="col-3">
+												<div class="form-input-field">
+													<label class="text-gray-1 easygo-fs-4 ">Price (GHS)</label>
+													<input class="px-4 py-2 flex-grow-1" type="number" id="add_loc_activity_price_input">
+												</div>
+											</div>
 										</div>
+										<div class="col">
+											<ul id='add_loc_activity_list'>
+												<!-- TODO:: Change how the activities are displayed. We should select the active location and show the activities for that location. The list of activities changes when another location is selected -->
+											</ul>
+										</div>
+										<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_activity()">Add Activity</button>
 
 									</div>
 									<!-- Destination activities [end] -->
@@ -347,7 +353,37 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 										</div>
 
 									</div>
-									<!-- Destination activities [end] -->
+									<!-- Destination utilities [end] -->
+									<!-- Destination types [start] -->
+									<div class="col tab-pane fade" role="tabpanel" id="add-location-type">
+										<div class="d-flex align-items-center gap-2 my-4">
+											<h6 class="easygo-fw-1 m-0">Destination type</h6>
+											<small class="text-gray-1 easygo-fs-6">(Classification applicable to the destination)</small>
+											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+										</div>
+
+										<div class="form-input-field">
+											<label class="text-gray-1 easygo-fs-4 ">Destination Types</label>
+											<select name="destination_type" id="destination_type_options" onchange="select_destination_type(this)">
+												<option value="">Please Select</option>
+												<?php
+												$types = get_destination_types();
+												foreach ($types as $_ => $type_data) {
+													$value = $type_data["type_id"];
+													$key = $type_data["type_name"];
+													echo "<option value='$value'>$key</option>";
+												}
+												?>
+											</select>
+											<div class="col">
+												<ul id='destination_type_list'>
+												</ul>
+											</div>
+											<button class="btn btn-default border text-blue px-4 py-2" data-bs-target="#create-destination-type-modal" data-bs-toggle="modal">Create Destination Type</button>
+										</div>
+
+									</div>
+									<!-- Destination types [end] -->
 								</div>
 								<div>
 									<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
