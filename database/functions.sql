@@ -1,5 +1,13 @@
 
 
+drop function if exists generate_id;
+DELIMITER //
+CREATE FUNCTION generate_id()returns varchar(100)
+begin
+return CONCAT("a",LOWER(REPLACE(UUID(),'-','')));
+end //
+DELIMITER ;
+
 
 DROP FUNCTION IF EXISTS attempt_user_login;
  /* Function to log users in using each authentication provider*/
@@ -12,6 +20,8 @@ CREATE FUNCTION attempt_user_login(
 ) RETURNS VARCHAR(100)
 BEGIN
   DECLARE login_result VARCHAR(100);
+  DECLARE random_id VARCHAR(100);
+  SELECT generate_id() into random_id;
 
   /* Attempt login based on the authentication type */
   CASE in_auth_type
@@ -36,7 +46,7 @@ BEGIN
 
   IF login_result IS NOT NULL THEN
   	INSERT INTO login_history (attempt_id, user_id, login_timestamp, login_method)
-    VALUES (UUID(), login_result, CURRENT_TIMESTAMP, in_auth_type);
+    VALUES (random_id, login_result, CURRENT_TIMESTAMP, in_auth_type);
   end if;
 
   RETURN login_result;
@@ -79,8 +89,8 @@ CREATE FUNCTION create_user(
     DECLARE exist VARCHAR(100);
     DECLARE results TINYINT(1);
     DECLARE new_id VARCHAR(100);
+    SELECT generate_id() into new_id;
     SET exist = NULL;
-    SET new_id = UUID();
 
     CASE auth_type
       WHEN "email" THEN
@@ -158,7 +168,8 @@ BEGIN
   if new_id is not null then
     RETURN NULL;
   end if;
-  SET new_id = UUID();
+  SELECT generate_id() into new_id;
+
   INSERT INTO `destinations`(`destination_id`, `destination_name`, `location`, `latitude`, `longitude`, `rating`, `num_ratings`)
   VALUES (new_id, in_name,in_location,lat,lon,in_rating,in_num_ratings);
   RETURN new_id;
@@ -216,8 +227,8 @@ CREATE FUNCTION add_itinerary_day(in_itinerary_id VARCHAR(100)) RETURNS VARCHAR(
 BEGIN
   DECLARE pos INT;
   DECLARE day_id VARCHAR(100);
+  select generate_id() into day_id;
 
-  SET day_id = UUID();
 
   -- Fetch the maximum position for the given itinerary_id
   SELECT COALESCE(MAX(position), -1) INTO pos
@@ -243,8 +254,8 @@ CREATE FUNCTION create_itinerary(in_user_id VARCHAR(100), num_people INT, in_vis
 BEGIN
   DECLARE id VARCHAR(100);
   DECLARE in_day_id VARCHAR(1000);
-  SET id = UUID();
-  SET in_day_id = UUID();
+  select generate_id() into id;
+  select generate_id() into in_day_id;
 
   INSERT INTO `itinerary`(`itinerary_id`, `date_created`, `num_of_participants`, `visibility`)
   VALUES (id, CURRENT_TIMESTAMP, num_people, in_visibility);
@@ -267,23 +278,24 @@ DELIMITER //
 CREATE FUNCTION add_itinerary_destination(in_day_id VARCHAR(100), in_destination_id VARCHAR(100)) RETURNS TINYINT(1)
 BEGIN
   DECLARE pos INT;
+  DECLARE temp VARCHAR(100);
 
   -- Check if the destination already exists for that day
-  SELECT position INTO pos FROM itinerary_destination WHERE destination_id = in_destination_id AND day_id = in_day_id;
+  SELECT destination_id INTO temp FROM itinerary_destination WHERE destination_id = in_destination_id AND day_id = in_day_id;
 
-  IF pos IS NOT NULL THEN
-    RETURN 0; -- Destination already exists, return 0
+  IF temp IS NOT NULL THEN
+    RETURN pos; -- Destination already exists, return 0
   END IF;
 
   -- Fetch the maximum position for the given day and destination
-  SELECT COALESCE(MAX(position), -1) INTO pos FROM itinerary_destination WHERE day_id = in_day_id AND destination_id = in_destination_id;
+  SELECT COALESCE(MAX(position), -1) INTO pos FROM itinerary_destination WHERE day_id = in_day_id;
 
   SET pos = pos + 1; -- Increment the position
 
   INSERT INTO itinerary_destination(day_id, destination_id, position)
   VALUES (in_day_id, in_destination_id, pos);
 
-  RETURN 1; -- Successful insertion, return 1
+  RETURN pos; -- Successful insertion, return 1
 END //
 
 DELIMITER ;
@@ -297,25 +309,28 @@ DELIMITER //
 CREATE FUNCTION add_itinerary_activity(in_day_id VARCHAR(100), in_activity_id INT, in_destination_id VARCHAR(100)) RETURNS TINYINT(1)
 BEGIN
     DECLARE pos INT;
-
     DECLARE temp VARCHAR(100);
 
     -- Check if the destination has been added to the day
-    SELECT destination_id INTO temp FROM itinerary_destination WHERE day_id = in_day_id AND destination_id = in_destination_id;
+    SELECT destination_id INTO temp FROM itinerary_destination
+    WHERE day_id = in_day_id AND destination_id = in_destination_id;
 
     IF temp IS NULL THEN
         SELECT add_itinerary_destination(in_day_id, in_destination_id) INTO  temp;
     END IF;
+    SET temp = NULL;
 
     -- Check if the activity already exists for that day
-    SELECT position INTO pos FROM itinerary_activity WHERE activity_id = in_activity_id AND day_id = in_day_id AND destination_id = in_destination_id;
+    SELECT destination_id INTO temp FROM itinerary_activity
+    WHERE activity_id = in_activity_id AND day_id = in_day_id AND destination_id = in_destination_id;
 
-    IF pos IS NOT NULL THEN
+    IF temp IS NOT NULL THEN
         RETURN 0; -- Activity already exists, return 0
     END IF;
 
     -- Fetch the maximum position for the given day and activity
-    SELECT COALESCE(MAX(position), -1) INTO pos FROM itinerary_activity WHERE day_id = in_day_id AND destination_id = in_destination_id;
+    SELECT COALESCE(MAX(position), -1) INTO pos FROM itinerary_activity
+    WHERE day_id = in_day_id AND destination_id = in_destination_id;
 
     SET pos = pos + 1; -- Increment the position
 
@@ -349,7 +364,7 @@ BEGIN
 
     IF m_id IS NULL THEN
         /* Media doesn't exist, insert into the media table */
-        SET m_id = UUID();
+        select generate_id() into m_id;
         INSERT INTO media(media_id, media_location, media_type, is_foreign)
         VALUES (m_id, in_media_location, in_media_type, in_is_foreign);
 
@@ -554,9 +569,9 @@ DELIMITER //
 CREATE PROCEDURE get_itineraries(IN in_user_id VARCHAR(100) )
 BEGIN
     IF in_user_id IS NULL THEN
-        SELECT * FROM vw_itinerary;
+        SELECT * FROM vw_itinerary order by date_created desc;
     ELSE
-        SELECT * FROM vw_itinerary WHERE owner_id = in_user_id;
+        SELECT * FROM vw_itinerary WHERE owner_id = in_user_id order by date_created desc;
     END IF;
 END //
 
@@ -565,7 +580,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_itinerary_by_id;
 DELIMITER //
 CREATE PROCEDURE get_itinerary_by_id(
-  IN in_itinerary_id VACHAR(100)
+  IN in_itinerary_id VARCHAR(100)
 ) BEGIN
 SELECT * FROM vw_itinerary WHERE itinerary_id = in_itinerary_id;
 END //
@@ -622,7 +637,7 @@ DROP PROCEDURE IF EXISTS get_itinerary_days;
 DELIMITER //
 CREATE PROCEDURE get_itinerary_days(IN in_itinerary_id VARCHAR(100))
 BEGIN
-SELECT * FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
+SELECT * FROM itinerary_day WHERE itinerary_id = in_itinerary_id order by position;
 END //
 DELIMITER ;
 
@@ -632,6 +647,16 @@ DROP PROCEDURE IF EXISTS get_day_destination_activities;
 DELIMITER //
 CREATE PROCEDURE get_day_destination_activities(IN in_destination_id VARCHAR(100), IN in_day_id VARCHAR(100))
 BEGIN
-  SELECT * FROM vw_itinerary_activities where destination_id = in_destination_id and day_id = in_day_id;
+  SELECT * FROM vw_itinerary_activities where destination_id = in_destination_id and day_id = in_day_id order by position;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_activities;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_activities(IN in_itinerary_id VARCHAR(100))
+BEGIN
+  SELECT * FROM vw_itinerary_activities where itinerary_id = in_itinerary_id;
 END //
 DELIMITER ;

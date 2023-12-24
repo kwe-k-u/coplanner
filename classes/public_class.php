@@ -59,7 +59,7 @@
 			$sql = "SELECT add_itinerary_activity(?,?,?)";
 			$this->prepare($sql);
 			$this->bind($day_id,$activity_id,$destination_id);
-			return $this->db_query();
+			return $this->db_fetch_one();
 		}
 
 		function get_destinations_by_name($name){
@@ -179,17 +179,19 @@
 			return $this->db_fetch_all();
 		}
 
-		function get_itinerary_templates(){
-			$sql = "";
-			$this->prepare($sql);
-			return $this->db_fetch_all();
-		}
 
 		function update_itinerary_name($id,$name){
 			$sql = "SELECT update_itinerary_name(?,?)";
 			$this->prepare($sql);
 			$this->bind($id,$name);
 			return $this->db_query();
+		}
+
+		function get_itinerary_activities($itinerary_id){
+			$sql = "CALL get_itinerary_activities(?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id);
+			return $this->db_fetch_all();
 		}
 
 

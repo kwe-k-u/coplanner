@@ -146,9 +146,21 @@
 		return $public->add_itinerary_activity($day_id,$activity_id,$destination_id);
 	}
 
-	function get_itinerary_templates(){
+	function get_featured_itineraries($category = ""){
+		switch ($category) {
+			case "budget":
+			case "popular":
+			case "family friendly":
+
+			default:
+				return get_itineraries();
+				break;
+		}
+	}
+
+	function get_itinerary_activities($itinerary_id){
 		$public = new public_class();
-		return $public->get_itinerary_templates();
+		return $public->get_itinerary_activities($itinerary_id);
 	}
 
 

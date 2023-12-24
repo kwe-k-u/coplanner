@@ -96,11 +96,11 @@ require_once(__DIR__ . "/utils/env_manager.php");
             <!--- Section 3 [start] -->
             <section class="my-5 py-5">
                 <h2 class="text-center">
-                    Access the information of
+                    Chose from over
                     <br>
                     <span class="text-blue easygo-h2 easygo-fw-1">3000</span>
                     <br>
-                    locations with coplanner
+                    destinations for your travel plans
                 </h2>
             </section>
             <!--- Section 3 [end] -->

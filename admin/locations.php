@@ -98,7 +98,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 								$destination_location = $site["location"];
 								$rating = $site["rating"];
 								$rating_count = $site["num_ratings"];
-								$site_country = "$rating from $rating_count ratings"; //$site["country"];
+								$site_country = "$rating stars from $rating_count ratings"; //$site["country"];
 								echo "
 						<div class='location-card border p-4 rounded my-3'>
 							<div class='header d-flex justify-content-between'>
@@ -266,6 +266,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 												<label class="text-gray-1 easygo-fs-4 ">Default Rating</label>
 												<input class="px-4 py-2 flex-grow-1" type="number" id="rating" name="rating">
 											</div>
+
+											<div class="form-input-field">
+												<label class="text-gray-1 easygo-fs-4 ">Number of reviews</label>
+												<input class="px-4 py-2 flex-grow-1" type="number" id="num_reviews" name="num_reviews">
+											</div>
 										</div>
 
 									</div>
@@ -349,8 +354,8 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 												<ul id='utility_list'>
 												</ul>
 											</div>
-											<button class="btn btn-default border text-blue px-4 py-2" data-bs-target="#create-utility-modal" data-bs-toggle="modal">Create Utility</button>
 										</div>
+										<button type="button" class="btn btn-default border text-blue px-4 py-2" data-bs-target="#create-utility-modal" data-bs-toggle="modal">Create Utility</button>
 
 									</div>
 									<!-- Destination utilities [end] -->
@@ -379,14 +384,14 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 												<ul id='destination_type_list'>
 												</ul>
 											</div>
-											<button class="btn btn-default border text-blue px-4 py-2" data-bs-target="#create-destination-type-modal" data-bs-toggle="modal">Create Destination Type</button>
 										</div>
+										<button type="button" class="btn btn-default border text-blue px-4 py-2" data-bs-target="#create-destination-type-modal" data-bs-toggle="modal">Create Destination Type</button>
 
 									</div>
 									<!-- Destination types [end] -->
 								</div>
 								<div>
-									<button class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
+									<button type="submit" class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
 								</div>
 								<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
 									<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>
@@ -414,11 +419,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 					<div>
 						<div style='overflow-x: auto;'>
 						</div>
-						<h6 class="easygo-fw-1 m-0">Create a new destiantion utility</h6>
+						<h6 class="easygo-fw-1 m-0">Create a new destination utility</h6>
 						<small class="text-gray-1 easygo-fs-6">(Add a new utility option for destinations)</small>
 						<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
 						<form onsubmit='create_utility(this)'>
-							<input type="hidden" name="curator_id" id="invite_modal_curator_id">
+							<input type="hidden" name="curator_id">
 							<div class="col-lg-7 d-flex flex-column gap-4">
 								<div class="form-input-field">
 									<div class="text-gray-1 easygo-fs-4">Name of utility</div>
@@ -427,12 +432,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 							</div>
 
 
-							<div class="col-lg-7 d-flex flex-column gap-4">
-								<div class="form-input-field">
-									<div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
-
-								</div>
-							</div>
 							<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
 								<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
 								<button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
@@ -442,11 +441,43 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 				</div>
 			</div>
 		</div>
-		<!-- Invite_collaborator_modal modal [end] -->
-		<!-- ============================== -->
 	</div>
-
 	<!-- Create Utility modal [end] -->
+	<!-- ============================== -->
+
+	<!-- ============================== -->
+	<!-- Create Destinaton type modal [start] -->
+	<div class="modal fade" id="create-destination-type-modal">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content p-5">
+				<div class="col">
+					<div>
+						<div style='overflow-x: auto;'>
+						</div>
+						<h6 class="easygo-fw-1 m-0">Create a new destination type</h6>
+						<small class="text-gray-1 easygo-fs-6">(Add a new type option for destinations)</small>
+						<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+						<form onsubmit='create_type_of_destination(this)'>
+							<input type="hidden" name="curator_id">
+							<div class="col-lg-7 d-flex flex-column gap-4">
+								<div class="form-input-field">
+									<div class="text-gray-1 easygo-fs-4">Name for destination type</div>
+									<input type="text" name="destination_type_name" placeholder="Type of destination">
+								</div>
+							</div>
+
+
+							<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+								<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+								<button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Create type</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Create Destinaton type modal [end] -->
 	<!-- ============================== -->
 
 	<!-- ============================== -->

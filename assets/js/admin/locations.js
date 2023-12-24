@@ -9,6 +9,7 @@ var location_field = document.getElementById("location");
 var country_field = document.getElementById("country");
 var gps_field = document.getElementById("cordinates");
 var rating_field = document.getElementById("rating");
+var review_count_field = document.getElementById("num_reviews");
 // var owner_name_field = document.getElementById("owner_name");
 // var owner_number_field = document.getElementById("owner_number");
 // var website_field = document.getElementById("website");
@@ -148,6 +149,7 @@ function add_location_toggle(location_id = null){
 			country_field.value = "";//data["country"];
 			gps_field.value = data["longitude"].toString()+","+ data["latitude"].toString();
 			rating_field.value = data["rating"];
+			review_count_field.value = data["num_rating"];
 			// data["socials"].forEach(element => {
 			// 	switch(element.social_type){
 			// 		case "instagram":
@@ -381,7 +383,6 @@ function create_result_tile(map) {
 
 	//create section with verification toggle
 	const ver_div = document.createElement("div");
-	const ver_span = document.createElement("span");
 	const ver_img_span = document.createElement("span");
 	const ver_img = document.createElement("img");
 
@@ -469,6 +470,7 @@ function create_site(form){
 			"utilities" : get_div_list(utility_list),
 			"destintion_type" : get_div_list(destination_type_list),
 			"rating" : form.rating.value,
+			"num_ratings" : form.num_reviews.value,
 			"cordinates" : form.cordinates.value
 		};
 	send_request(
@@ -540,3 +542,33 @@ function create_utility(form){
 	}
 	)
 }
+
+
+
+
+function create_type_of_destination(form){
+	event.preventDefault();
+	let name = form.destination_type_name.value;
+	send_request("POST","processors/processor.php/create_type_of_destination",
+	{
+		"destination_type_name" : name
+	},
+	(response)=>{
+		if(response.status == 200){
+
+			// Add an option to the utility dropdown
+			var selectElement = document.getElementById("destination_type_options");
+			// Create a new option element
+			var newOption = document.createElement('option');
+			newOption.value = response.data.type_id;
+			newOption.text = response.data.type_name;
+
+			// Add the new option to the select element
+			selectElement.appendChild(newOption);
+		}else{
+			alert(response.data.msg);
+		}
+	}
+	)
+}
+

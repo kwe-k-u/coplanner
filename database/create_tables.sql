@@ -177,7 +177,7 @@ CREATE TABLE itinerary_activity(
 	activity_id INT,
 	destination_id VARCHAR(100),
 	position INT CHECK (position >=0),
-	PRIMARY KEY (day_id,activity_id),
+	PRIMARY KEY (day_id,activity_id,destination_id),
 	FOREIGN KEY (day_id) REFERENCES itinerary_day(day_id),
 	FOREIGN KEY (activity_id) REFERENCES activities(activity_id),
 	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
@@ -281,6 +281,7 @@ DROP VIEW IF EXISTS vw_itinerary_activities;
  /*View to display information about the activities included in each day of each itinerary*/
 CREATE VIEW vw_itinerary_activities AS
 SELECT
+    day.itinerary_id,
     ia.*,
     a.activity_name,
     da.price,
@@ -289,6 +290,7 @@ SELECT
 FROM itinerary_activity as ia
 inner join activities as a on a.activity_id = ia.activity_id
 inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
+INNER JOIN itinerary_day as day on day.day_id = ia.day_id
 ORDER BY ia.position;
 
 
@@ -296,13 +298,16 @@ ORDER BY ia.position;
 
 DROP VIEW IF EXISTS vw_itinerary_destinations;
 
+
 CREATE VIEW vw_itinerary_destinations AS
 SELECT
+    day.itinerary_id,
     id.*,
     d.destination_name,
     d.location
 from itinerary_destination as id
 inner join destinations as d on d.destination_id = id.destination_id
+INNER JOIN itinerary_day as day on day.day_id = id.day_id
 ORDER BY id.position;
 
 
@@ -316,8 +321,8 @@ SELECT
     u.user_name as owner_name,
     (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
     (select count(*) from itinerary_destination inner join itinerary_day on itinerary_day.itinerary_id = i.itinerary_id) as num_destinations,
-    (select COALESCE(sum(price),0) from destination_activities as ida inner join itinerary_activity as iia on iia.destination_id = ida.destination_id inner join itinerary_day as id on iia.day_id = id.day_id where id.itinerary_id = i.itinerary_id) as budget,
-    (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day,
+    (select COALESCE(sum(price),0) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as budget,
+    (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day
 from itinerary as i
 inner join itinerary_collaborators as ic on ic.itinerary_id = i.itinerary_id
 inner join users as u on u.user_id = ic.user_id;
@@ -336,8 +341,7 @@ INSERT INTO types_of_utility(type_name) VALUES
 ("wifi");
 
 INSERT INTO types_of_destination(type_name) VALUES
-("amusement_park"),
-("aquarium"),
+("amusement park"),
 ("art gallery"),
 ("bowling alley"),
 ("beach"),
@@ -350,7 +354,7 @@ INSERT INTO types_of_destination(type_name) VALUES
 ('hotel'),
 ("movie theater"),
 ("musem"),
-("night_club"),
+("night club"),
 ("park"),
 ("stadium"),
 ("shopping mall"),

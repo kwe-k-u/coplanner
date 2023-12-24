@@ -79,6 +79,16 @@
 				send_json(array("msg"=> "Something went wrong"),201);
 			}
 			break;
+			die();
+		case "/create_type_of_destination":
+			$name = $_POST["destination_type_name"];
+			$type_id = add_type_of_destination($name);
+			if($type_id){
+				send_json(array("msg"=> "Type of destination created", "type_id"=> $type_id,"type_name"=>$name));
+			}else{
+				send_json(array('msg'=> "Something went wrong"),201);
+			}
+			die();
 		case "/create_destination":
 			$name = $_POST["destination_name"];
 			$location = $_POST["destination_location"];
@@ -90,8 +100,9 @@
 			$latitude = explode(",",$_POST["cordinates"])[0];
 			$longitude = explode(",",$_POST["cordinates"])[1];
 			$rating = $_POST["rating"];
+			$review_count = $_POST["num_ratings"];
 
-			$destination_id = create_destination($name,$location,$latitude,$longitude,$rating)["destination_id"];
+			$destination_id = create_destination($name,$location,$latitude,$longitude,$rating,$review_count)["destination_id"];
 			if(!$destination_id){
 				send_json(array("msg"=> "Destination with same name exists! Creation failed"),201);
 				die();

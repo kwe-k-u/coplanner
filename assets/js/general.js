@@ -55,6 +55,7 @@ $(document).ready(function () {
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
   $(".profile_img-file").change(updateProfileImgDisp);
 
+/* Highlights the navbar link for the currently displayed page*/
   function nav_check() {
     var nav = document.getElementById("mynavbar");
     if (nav != undefined) {
@@ -76,7 +77,7 @@ $(document).ready(function () {
       }
     }
   }
-
+/* Highlights the sidebar link for the currently displayed page*/
   function sidebar_check() {
     const select_style = "border-right: solid 2px var(--easygo-blue);";
     var side = document.getElementById("curator_side_bar");

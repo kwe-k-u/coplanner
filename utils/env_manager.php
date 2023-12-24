@@ -2,8 +2,10 @@
 
 require_once (__DIR__."/../vendor/autoload.php");
 
+// use Dotenv\Dotenv;
 
-$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+// $dotenv = (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 
@@ -18,40 +20,48 @@ function is_env_remote(){
 
 /**Returns the databse name for the current environment */
 function db_name(){
+	return $_ENV["DB_NAME"];
 	return getenv("DB_NAME");
 }
 
 /**Returns the databse username for the current environment */
 function db_username(){
+	return $_ENV["DB_USERNAME"];
 	return getenv("DB_USERNAME");
 }
 
 /**Returns the databse password for the current environment */
 function db_pass(){
+	return $_ENV["DB_PASSWORD"];
 	return getenv("DB_PASSWORD");
 }
 
 /**Returns the baseurl for the server */
 function server_base_url(){
+	return $_ENV["SERVER_BASE_URL"];
 	return getenv("SERVER_BASE_URL");
 }
 
 /**Returns the databse server for the current environment */
 function db_server(){
+	return $_ENV["DB_SERVER"];
 	return getenv("DB_SERVER");
 }
 
 /**Returns the app username for triggered mails */
 function email_username(){
+	return $_ENV["EMAIL_USERNAME"];
 	return getenv("EMAIL_USERNAME");
 }
 
 /**Returns the app password for triggered mails */
 function email_password(){
+	return $_ENV["EMAIL_PASSWORD"];
 	return getenv("EMAIL_PASSWORD");
 }
 
 function slack_webhook_support(){
+	return $_ENV["SLACK_WEBSITE_SUPPORT_URL"];
 	return getenv("SLACK_WEBSITE_SUPPORT_URL");
 }
 

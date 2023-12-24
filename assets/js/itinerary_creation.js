@@ -25,7 +25,7 @@ function create_day_dropdown_option(day_id = null){
 	// Create outer list item
 	let option = document.createElement("li");
 	if(day_id != null){
-		option.id = "day_label_"+day_id
+		option.id = ""+day_id
 	}
 	option.className = "px-2 d-flex align-items-center";
 
@@ -41,7 +41,7 @@ function create_day_dropdown_option(day_id = null){
 	dragIcon.className = "fa-solid fa-ellipsis-vertical";
 	//Second Span for Day Text
 	let secondSpan = document.createElement("span");
-	secondSpan.className = "me-3 day-span";
+	secondSpan.className = "me-3 anchor-day-span";
 	//Add day text to second span
 	secondSpan.innerText = "Day New";
 
@@ -60,7 +60,7 @@ function create_day_dropdown_option(day_id = null){
 //Creates the card to display selected itinerary destinations and activities
 function create_itinerary_card_item(des_id,name,activities, action_required = false){
 	let card = document.createElement("li");
-	card.id = "destination_"+des_id;
+	card.id = des_id;
 	//div at the bottom of the card to show activities
 	let activity_div = document.createElement('div');
 
@@ -218,7 +218,7 @@ function create_destination_search_result_card(id,name,location,rating,num_ratin
 		let act_name = entry["activity_name"];
 		let act_id = entry['activity_id'];
 		let span = document.createElement("span");
-		span.className = "activityd badge bg-transparent border border-blue border-1 text-black py-2 px-3 mx-1";
+		span.className = "activity badge bg-transparent border border-blue border-1 text-black py-2 px-3 mx-1";
 		span.innerText = act_name;
 		span.id = act_id;
 		span.onclick = () =>add_activity_to_itineary_card(id,name,act_id,act_name);
@@ -253,22 +253,6 @@ function create_destination_search_result_card(id,name,location,rating,num_ratin
 
 
 
-
-
-
-
-
-
-function get_day_info(day_id){
-	send_request("GET",
-	"processors/processor.php/get_day?day_id=" +day_id,
-	{},
-	(response)=>{
-		console.log(response);
-	});
-
-
-}
 
 
 
@@ -314,7 +298,7 @@ function moveSpanToClickedListItem() {
     if (selectedSpan) {
         // Find the <a> element within the <li> that was clicked
         let clickedListItem = event.target.closest('li');
-		selected_day_id = clickedListItem.id.replace("mobile_day_label_","").replace("day_label_","");
+		selected_day_id = clickedListItem.id;
         if (clickedListItem) {
             let anchorElement = clickedListItem.querySelector('a');
 
@@ -325,7 +309,7 @@ function moveSpanToClickedListItem() {
             anchorElement.appendChild(selectedSpan);
 
 			//Change day displayed in main section of page
-			let text = anchorElement.querySelector(".day-span").innerText;
+			let text = anchorElement.querySelector(".anchor-day-span").innerText;
 			document.querySelectorAll(".selected-day-display").forEach((element)=>{
 				element.innerText =  text;
 
@@ -341,13 +325,13 @@ function update_quick_stats(){
 	send_request(
 		"GET",
 		"processors/processor.php/get_itinerary?itinerary_id="+url_params("id"),
-		{},
+		null,
 		(response)=> {
 			let data = response.data.data;
 
 			update_budget_display(data["budget"]);
 			update_day_display(data["num_days"]);
-			update_people_display(data["num_participants"]);
+			update_people_display(data["num_of_participants"]);
 		}
 	)
 }
@@ -468,7 +452,7 @@ function reset_itinerary_card(){
 /**Adds an activity to the current day that has been selected. Creates the destination card in the itinerary list
  *  if the destination isn't in the card */
 function add_activity_to_itineary_card(destination_id, destination_name, activity_id,activity_name){
-	let destination_card = itinerary_card_activity_list.querySelector("#destination_"+destination_id);
+	let destination_card = itinerary_card_activity_list.querySelector("#"+destination_id);
 	// Create itinerary activity card if it doesn't exist in the itinerary list
 	if (!destination_card){
 		destination_card = create_itinerary_card_item(destination_id,destination_name,[{activity_id,activity_name}]);
@@ -530,7 +514,6 @@ function update_itinerary_name(text){
 
 
 function add_itinerary_activity(day_id,activity_id,destination_id){
-	console.log('adding activity');
 	send_request("POST",
 	"processors/processor.php/add_itinerary_activity",
 	{
@@ -539,7 +522,6 @@ function add_itinerary_activity(day_id,activity_id,destination_id){
 		"day_id" : day_id
 	},
 	(response)=>{
-		console.log(response);
 	}
 	);
 }

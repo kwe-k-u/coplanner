@@ -240,4 +240,6 @@ if (session_status() == PHP_SESSION_NONE){
 			"status"=> $response)
 		);
 	}
+
+	
 ?>

@@ -13,7 +13,6 @@
 			$data = date("Y-m-d H:i:s")."\n============<START>================\n".$entry;
 			$data .= "\n================<END>=========================\n";
 
-			// echo $data;
 			// $fp = fopen($path, 'a');
 			// fwrite($fp, "\n".$data);
 			// fclose($fp);

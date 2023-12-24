@@ -1,6 +1,7 @@
 <?php
-    require_once(__DIR__ . "/../utils/core.php");
-    require_once(__DIR__ . "/../controllers/public_controller.php");
+
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 
 
     if(!isset($_GET["id"])){
@@ -68,10 +69,10 @@
                                     <?php
                                     $day_list = get_itinerary_days($itinerary_id);
                                         echo "
-                                        <li class='px-2 d-flex align-items-center' id='day_label_$first_day'>
+                                        <li class='px-2 d-flex align-items-center' id='$first_day'>
                                             <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
                                                 <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
-                                                <span class='me-3 day-span'>Day One</span>
+                                                <span class='me-3 anchor-day-span'>Day One</span>
                                                 <span id='selected-dropdown-label' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span>
                                             </a>
                                         </li>
@@ -81,10 +82,10 @@
                                         foreach(array_slice($day_list,1) as $d){
                                             $day_id = $d["day_id"];
                                             echo "
-                                            <li class='px-2 d-flex align-items-center' id='day_label_$day_id'>
+                                            <li class='px-2 d-flex align-items-center' id='$day_id'>
                                                 <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
                                                     <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
-                                                    <span class='me-3 day-span'>Day Two</span>
+                                                    <span class='me-3 anchor-day-span'>Day Two</span>
                                                 </a>
                                             </li>
                                             ";
@@ -344,7 +345,7 @@
                                                                 <div class='easygo-fs-5 d-flex justify-content-between align-items-center'>
                                                                     <div class='col'>
                                                                         <div>8:00 AM</div>
-                                                                        <div>GHS 500</div>
+                                                                        <!-- <div>GHS 500</div> -->
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -746,7 +747,7 @@
                         echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/coplanner_invoice.php?id=$itinerary_id\")'>Finalize</button>";
                         if (true) { //TODO:: Add admin check
                             $id = "";
-                            echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/coplanner_invoice.php?id='$id'\")'>Add to templates</button>";
+                            echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/coplanner_invoice.php?id=$id\")'>Add to templates</button>";
                         }
                         ?>
                     </div>
