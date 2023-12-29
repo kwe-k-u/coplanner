@@ -30,6 +30,9 @@ def calculate_similarity(user,template,system):
 		if key == "activities":
 			user_activities = user[key]
 			template_activities = template[key]
+			# add weight salt to increase score value when the activities are an exact match
+			if user_activities == template_activities:
+				score_val = 80
 			for user_choice in user_activities:
 				for template_choice in template_activities:
 					template_index = choice_index[key].index(template_choice)
@@ -47,15 +50,14 @@ def calculate_similarity(user,template,system):
 
 
 def sort_files_by_score(data):
-	# Convert JSON string to Python dictionary
-
+	result = []
 	# Sort the dictionary items based on the scores
-	sorted_files = sorted(data.items(), key=lambda x: x[1])
+	sorted_files = sorted(data.items(), key=lambda x: x[1],reverse=True)
+	for names in sorted_files:
+		result.append(names[0])
 
-	# Extract filenames from the sorted list
-	sorted_filenames = [file[0] for file in sorted_files]
-
-	return sorted_files
+	return result
+	# return sorted_filenames
 
 #retrieve user selection and template paths from args
 user_selection = sys.argv[1]
@@ -76,4 +78,7 @@ for file_name in file_content_pair:
 	score = calculate_similarity(user_selection,template_value,system_values)
 	recommendations[file_name] = score
 
-print( sort_files_by_score(recommendations))
+# print( sort_files_by_score(recommendations))
+for i in sort_files_by_score(recommendations):
+# 	# print(i,  recommendations[i])
+	print(i,  end=" ")

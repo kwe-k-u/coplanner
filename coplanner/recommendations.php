@@ -15,13 +15,7 @@
 		if ($json !== false) {
 			$preferences = json_decode($json, true);
 
-			if ($preferences !== null) {
-				// print_r($preferences);
-				//TODO:: get admin itinerary list
-				// filename is the itinerary id
-				// run comparisons on the itineraries and return the top 2
-
-			} else {
+			if ($preferences ==null) {
 				// Handle JSON decoding errors if any
 				echo "Error decoding JSON data.";
 			}
@@ -34,19 +28,15 @@
 	}
 
 
-	// $recommendations = shell_exec("python3 ../utils/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path));
-	$r = exec("python ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path),$recommendations,$return_val);
+	$results = exec("python ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path),$recommendations,$return_val);
 	//pass the file path to the python script, and the path to the template jsons
 	//let the python script return a list of file paths for the recommended itineraries
 	//get the itineraries from the path and return those as the recommendations
-	// $recommendations = json_decode($recommendations,true);
-	var_dump($recommendations);
-	var_dump($return_val);
-	die();
+	$recommendations = explode(" ",str_replace(".json","",$results));
+	$recommendations = array_slice($recommendations,0,4);
 	$itineraries = array();
-	foreach ($recommendations as $filename) {
-		$r_id = explode(".",$filename)[0];
-		$template = get_itinerary_by_id($r_id);
+	foreach ($recommendations as $itinerary_id) {
+		$template = get_itinerary_by_id($itinerary_id);
 		if($template){
 			array_push($itineraries,$template);
 		}
@@ -87,43 +77,65 @@
 			<div class="col">
 				<h3>Here are some recommendations to choose from</h3>
 				<div class="row">
-					<div class="grid-container gap-1" style="gap:50px">
+					<div class="itinerary-cards-container easygo-scroll-bar scroll-h" style="gap:50px">
 
 						<?php
-						foreach($itineraries as $entry) {
+
+						foreach ($itineraries as $entry) {
+							$itinerary_name = $entry["itinerary_name"];
+							$budget = $entry["budget"];
 							$itinerary_id = $entry["itinerary_id"];
 							$owner_name = $entry["owner_name"];
-							$num_people = $entry["num_of_participants"];
 							$num_days = $entry["num_days"];
-							$budget=  $entry["budget"];
+							$num_participants = $entry["num_of_participants"];
+							$num_destinations = $entry["num_destinations"];
+							$day = $entry["first_day"];
+							$activity_text = "";
+							$activities = get_itinerary_activities($itinerary_id);
+							$added = array();
+							for($i = 0; $i <sizeof($activities); $i++){
+								$act_name = trim($activities[$i]["activity_name"]);
+								if(sizeof($added)==3){
+									$remaining = sizeof($activities) - $i;
+									if($remaining > 0){
+										$activity_text .= "<div class='text-gray-1 d-flex align-items-center'>+$remaining more</div>
+										";
+									}
+									break;
+								}
+								if(!array_search($act_name,$added)){
+									array_push($added,$act_name);
+									$activity_text .= "
+									<div class='activity'>$act_name</div>";
+								}
+							}
+
 							echo "
-							<div class='itinerary-card grid-item m-3' style='display:inline-table' onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
-								<p class='itinerary-card-top-note'>Click to view</p>
-								<div class='itinerary-card-body'>
-									<div class='price-and-people'>
-										<div>
-											GHC 500 <br>
-											Single day
+									<div class='itinerary-card grid-item m-2'  onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
+										<p class='itinerary-card-top-note'>New</p>
+										<div class='itinerary-card-body'>
+											<div class='price-and-people'>
+												<div>
+													Creator: $owner_name <br>
+												</div>
+												<div>
+													GHS $budget <br>
+												</div>
+											</div>
+											<div>
+												<h6 class='easygo-fw-1'>$itinerary_name</h6>
+												<p class='itinerary-desc'>
+													An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
+												</p>
+											</div>
+											<div class='itinerary-activities'>
+												$activity_text
+
+											</div>
 										</div>
-										<div>
-											3-5 People <br>
-											Single day
-										</div>
 									</div>
-									<div>
-										<h6 class='easygo-fw-1'>Shared Itineries</h6>
-										<p class='itinerary-desc'>
-											An AI generated description of the itinerary that someone has created talking about the type of itinerary and the activities
-										</p>
-									</div>
-									<div class='itinerary-activities'>
-										<div class='activity'>Hike</div>
-										<div class='activity'>Hike</div>
-										<div class='text-gray-1 d-flex align-items-center'>+3 more</div>
-									</div>
-								</div>
-							</div>";
-						}
+									";
+								}
 						?>
 					</div>
 				</div>

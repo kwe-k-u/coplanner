@@ -151,7 +151,7 @@ CREATE TABLE destination_rating(
 
 -- Tracks the different itineraries that are created by users
 CREATE TABLE itinerary(
-	itinerary_id VARCHAR(100) PRIMARY KEY,
+	itinerary_id VARCHAR(100) PRIMARY KEY ON DELETE CASCADE,
     itinerary_name VARCHAR(60),
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
@@ -164,7 +164,7 @@ CREATE TABLE itinerary(
 
 -- Helps track the destination additions for each itinerary date
 CREATE TABLE itinerary_day(
-	day_id VARCHAR(100) PRIMARY KEY,
+	day_id VARCHAR(100) PRIMARY KEY ON DELETE CASCADE,
 	itinerary_id VARCHAR(100),
 	position INT CHECK (position >=0),
 	FOREIGN KEY (itinerary_id) REFERENCES itinerary(itinerary_id)
@@ -320,7 +320,7 @@ SELECT
     ic.user_id as owner_id,
     u.user_name as owner_name,
     (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
-    (select count(*) from itinerary_destination inner join itinerary_day on itinerary_day.itinerary_id = i.itinerary_id) as num_destinations,
+    (select count(*) from vw_itinerary_destinations as vid where vid.itinerary_id = i.itinerary_id) as num_destinations,
     (select COALESCE(sum(price),0) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as budget,
     (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day
 from itinerary as i

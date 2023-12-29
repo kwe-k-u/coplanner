@@ -127,7 +127,7 @@
                         }
 
                         echo "
-                                <div class='itinerary-card'>
+                                <div class='itinerary-card'  onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
                                     <p class='itinerary-card-top-note'>New</p>
                                     <div class='itinerary-card-body'>
                                         <div class='price-and-people'>

@@ -164,5 +164,11 @@
 	}
 
 
+	function duplicate_itinerary($itinerary_id,$user_id){
+		$public = new public_class();
+		return $public->duplicate_itinerary($itinerary_id,$user_id);
+	}
+
+
 
 ?>

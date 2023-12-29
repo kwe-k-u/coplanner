@@ -232,7 +232,7 @@
 			// create_itinerary_template();
 
 			$directory = "../uploads/template_weights/"; // User creation
-			$fileName = generate_id();
+			$fileName = $itinerary_id;
 			$filePath = $directory . $fileName.".json";
 			// Create the directory if it doesn't exist
 			if (!file_exists($directory)) {
@@ -286,6 +286,25 @@
 			$itinerary_id = $_GET["itinerary_id"];
 			$data = get_itinerary_by_id($itinerary_id);
 			send_json(array("msg"=> "Success","data"=> $data));
+			die();
+		case "/toggle_wishlist":
+			$itinerary_id = $_POST["itinerary_id"];
+			$user_id = get_session_user_id();
+			if($user_id){
+				//TODO:: add to wishlist
+			}else{
+				send_json(array("msg"=> "You need to be signed in to save an itinerary for later"),201);
+			}
+			die();
+		case "/duplicate_itinerary":
+			$itinerary_id = $_POST["itinerary_id"];
+			$user_id = get_session_user_id();
+			if($user_id){
+				$data = duplicate_itinerary($itinerary_id,$user_id);
+				send_json($data);
+			}else{
+				send_json(array("msg"=> "You need to sign in to create an itinerary"),201);
+			}
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

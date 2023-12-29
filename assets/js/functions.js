@@ -135,3 +135,16 @@ function create_itinerary(){
   });
 }
 
+
+function duplicate_itinerary(itinerary_id){
+  send_request("POST",
+  "processors/processor.php/duplicate_itinerary",
+  {
+    "itinerary_id" : itinerary_id
+  },
+  (response)=>{
+    let id = response.data.itinerary_id;
+    goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
+  }
+  );
+}

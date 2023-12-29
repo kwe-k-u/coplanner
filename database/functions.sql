@@ -500,6 +500,105 @@ CREATE FUNCTION update_itinerary_name(
 DELIMITER ;
 
 
+
+DROP FUNCTION  IF EXISTS duplicate_itinerary;
+DELIMITER //
+CREATE FUNCTION duplicate_itinerary(
+  in_itinerary_id VARCHAR(100),
+  in_user_id VARCHAR(100)
+) RETURNS VARCHAR(100)
+BEGIN
+  DECLARE new_itinerary_id VARCHAR(100);
+  DECLARE temp_id VARCHAR(100);
+  DECLARE old_id VARCHAR(100);
+  DECLARE temp_int INT;
+  DECLARE temp VARCHAR(50);
+
+  -- Create a duplicate of the parent itinerary
+  SELECT num_of_participants, visibility into temp_int, temp  from vw_itinerary
+  where itinerary_id = in_itinerary_id;
+  SELECT create_itinerary(in_user_id,temp_int,temp_id) INTO new_itinerary_id;
+
+  SELECT COUNT(*) INTO temp_int FROM itinerary_day where itinerary_id = in_itinerary_id;
+
+
+  -- duplicate the days
+  WHILE 0 < temp_int DO
+    SET temp_int = temp_int - 1;
+    -- Create a duplicate day
+    SELECT day_id into temp_id from itinerary_day where itinerary_id = new_itinerary_id and position = temp_int;
+
+    if temp_id = NULL then-- Allows us to skip the first day which has already been duplicated
+      SELECT add_itinerary_day(new_itinerary_id) INTO temp_id;
+    end if;
+
+    SELECT day_id INTO old_id from itinerary_day
+    where itinerary_id = in_itinerary_id and position =temp_int;
+
+    CALL duplicate_day_activities(old_id,temp_id);
+  END WHILE;
+
+  RETURN new_itinerary_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS duplicate_day_activities;
+DELIMITER //
+CREATE PROCEDURE duplicate_day_activities(
+  IN in_old_day_id VARCHAR(100),
+   IN in_new_day_id VARCHAR(100)
+  )
+  begin
+    DECLARE activity_counter INT;
+    DECLARE destination_counter INT;
+    DECLARE temp_destination_id VARCHAR(100);
+    DECLARE temp_activity_id VARCHAR(100);
+    DECLARE temp VARCHAR(100);
+
+    -- Count the destinations for the day
+    SELECT count(*) INTO destination_counter FROM vw_itinerary_destinations
+    WHERE day_id = in_old_day_id;
+
+    -- For every destination index, get the activities and duplicate them
+    WHILE 0 < destination_counter DO
+      SET destination_counter = destination_counter -1;
+    -- get the destination id for the day and position
+      SELECT destination_id into temp_destination_id FROM vw_itinerary_destinations
+       WHERE day_id = in_old_day_ID AND position = destination_counter;
+
+      --  duplicate the destination
+      SELECT add_itinerary_destination(in_new_day_id,temp_destination_id)  INTO temp;
+
+      -- count activities for the destination
+      SELECT count(*) INTO activity_counter FROM vw_itinerary_activities
+       WHERE day_id = in_old_day_id and destination_id = temp_destination_id;
+       WHILE 0 < activity_counter DO
+        SET activity_counter = activity_counter -1;
+        -- get the activity id
+        SELECT activity_id INTO temp_activity_id FROM vw_itinerary_activities WHERE
+        day_id = in_old_day_id
+        AND destination_id = temp_destination_id
+         AND position = activity_counter;
+
+
+        SELECT add_itinerary_activity(in_new_day_id,temp_activity_id, temp_destination_id) INTO temp;
+
+       END WHILE;
+
+       -- increase destination count
+    END WHILE;
+
+
+  end //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS duplicate_day_destinations;
+
+
 DROP PROCEDURE IF EXISTS get_stats_summary;
 DELIMITER //
 CREATE PROCEDURE get_stats_summary()

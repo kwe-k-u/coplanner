@@ -10,6 +10,7 @@ $itinerary_id = $_GET["id"];
 $itinerary = get_itinerary_by_id($itinerary_id);
 $date_created = format_string_as_date_fn($itinerary["date_created"]);
 $owner_name = $itinerary["owner_name"];
+$owner_id = $itinerary["owner_id"];
 $budget = $itinerary["budget"];
 $num_people = $itinerary["num_of_participants"];
 $days = get_itinerary_days($itinerary_id);
@@ -54,6 +55,14 @@ $days = get_itinerary_days($itinerary_id);
                 <section>
                     <div class="row">
                         <?php
+                        if ($owner_id == get_session_user_id()){
+                            //Let user edit the original itinerary
+                            $edit_btn = "<a href='edit_itinerary.php?id=$itinerary_id' class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50'>Edit Itinerary</a>";
+                        }else{
+                            // Let user create a duplicate on their account
+                            $edit_btn = "<a href='#' class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50' onclick=\"duplicate_itinerary('$itinerary_id')\">Use Itinerary</a>";
+
+                        }
                         echo "
                         <div class='col-lg-6 p-3 border-lg-end border-blue'>
                             <div style='height: 300px; background-color: var(--easygo-gray-2);'>
@@ -83,8 +92,8 @@ $days = get_itinerary_days($itinerary_id);
                                 <p class='easygo-fs-4'>Estimated cost</p>
                             </div>
                             <div class='d-flex justify-content-between gap-4'>
-                                <a href='#' class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50'>Use Itinerary</a>
-                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Add to Wishlist</a>
+                                $edit_btn
+                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white' onclick=\"duplicate_itinerary('$itinerary_id')\">Add to Wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -167,10 +176,9 @@ $days = get_itinerary_days($itinerary_id);
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-    <!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
-
-    <script src="../assets/js/functions.js"></script> -->
+    <script src="../assets/js/functions.js"></script>
 </body>
 
 </html>

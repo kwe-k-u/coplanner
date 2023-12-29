@@ -195,5 +195,15 @@
 		}
 
 
+		function duplicate_itinerary($itinerary_id,$user_id){
+			$sql = "SELECT duplicate_itinerary(?,?) as itinerary_id;";
+			$this->prepare($sql);
+			$this->bind($itinerary_id,$user_id);
+			// echo $itinerary_id ." ". $user_id;
+
+			return $this->db_fetch_one();
+		}
+
+
 	}
 ?>
