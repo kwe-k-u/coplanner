@@ -20,6 +20,8 @@
 	require_once(__DIR__."/../utils/core.php");
 	require_once(__DIR__."/../controllers/public_controller.php");
 	require_once(__DIR__."/../controllers/admin_controller.php");
+	require_once(__DIR__."/../controllers/slack_controller.php");
+
 
 	switch ($_SERVER["PATH_INFO"]) {
 		case '/register':
@@ -31,9 +33,13 @@
 					$password = encrypt($_POST["password"]);
 					$result = signup_controller($method,$name,$email,$password);
 					if($result){
+						$mailer = new mailer();
+						$mailer->signup_email($email);
+						notify_slack_signup($name,$email);
+
 						send_json(array("msg"=> "Signup successful"));
 					}else{
-						send_json(array("msg"=> "Signup Failed"),201);
+						send_json(array("msg"=> "Signup Failed! An account with that email may already exist"),201);
 					}
 					break;
 				case "google":
@@ -43,7 +49,7 @@
 				default:
 					send_json(array("msg"=> "Unknown authentication method"),401);
 			}
-			break;
+			die();
 		case "/login":
 			$method = $_POST["method"];
 			switch($method){
@@ -127,55 +133,56 @@
 			send_json(array("msg"=> "Added destination"));
 			die();
 		case "/google_maps_upload":
-			$type_association = array(
-				"amusement_park"=> "Amusement Park",
-				"aquarium"=> "Aquarium",
-				"art_gallery"=> "Art Gallery",
-				"bowling_alley"=> "Bowling Alley",
-				"cafe"=> "Cafe",
-				"campground"=> "Campground",
-				"library"=> "Library",
-				"lodging"=> "Accommodation",
-				"movie_theater"=> "Movie Theater",
-				"musem"=> "Museum",
-				"night_club"=> "Night Club",
-				"park"=> "Park",
-				"casino"=> "Casino",
-				"stadium"=> "Stadium",
-				"shopping_mall"=> "Shopping Mall",
-				"restaurant"=> "Restaurant",
-				"zoo"=> "Zoo",
-				"tourist_attraction"=> "Tourist Attraction"
+			// $type_association = array(
+			// 	"amusement_park"=> "Amusement Park",
+			// 	"aquarium"=> "Aquarium",
+			// 	"art_gallery"=> "Art Gallery",
+			// 	"bowling_alley"=> "Bowling Alley",
+			// 	"cafe"=> "Cafe",
+			// 	"campground"=> "Campground",
+			// 	"library"=> "Library",
+			// 	"lodging"=> "Accommodation",
+			// 	"movie_theater"=> "Movie Theater",
+			// 	"musem"=> "Museum",
+			// 	"night_club"=> "Night Club",
+			// 	"park"=> "Park",
+			// 	"casino"=> "Casino",
+			// 	"stadium"=> "Stadium",
+			// 	"shopping_mall"=> "Shopping Mall",
+			// 	"restaurant"=> "Restaurant",
+			// 	"zoo"=> "Zoo",
+			// 	"tourist_attraction"=> "Tourist Attraction"
 
-			);
-			$data = json_decode(file_get_contents('php://input'),true)["data"];
-			foreach($data as $_ => $json){
-				// $json = json_decode($value,true);
-				$name = ucfirst(strtolower($json["name"]));
-				$rating = $json["rating"];
-				$num_rating = $json["user_ratings_total"];
-				$location = $json["vicinity"];
-				$latitude = $json["location"]["lat"];
-				$longitude = $json["location"]["lng"];
-				$types = $json["types"];
+			// );
+			// $data = json_decode(file_get_contents('php://input'),true)["data"];
+			// foreach($data as $_ => $json){
+			// 	// $json = json_decode($value,true);
+			// 	$name = ucfirst(strtolower($json["name"]));
+			// 	$rating = $json["rating"];
+			// 	$num_rating = $json["user_ratings_total"];
+			// 	$location = $json["vicinity"];
+			// 	$latitude = $json["location"]["lat"];
+			// 	$longitude = $json["location"]["lng"];
+			// 	$types = $json["types"];
 
-				if($num_rating > 100){
-					$destination_id = create_destination($name,$location,$latitude,$longitude,$rating,$num_rating)["destination_id"];
-					if(!$destination_id){
-						// echo("Destination with same name<$name> exists! Additions skipped");
-						continue;
-					}
+			// 	if($num_rating > 100){
+			// 		$destination_id = create_destination($name,$location,$latitude,$longitude,$rating,$num_rating)["destination_id"];
+			// 		if(!$destination_id){
+			// 			// echo("Destination with same name<$name> exists! Additions skipped");
+			// 			continue;
+			// 		}
 
-					foreach ($types as $key){
-						if(key_exists($key,$type_association)){
-							add_destination_utility($destination_id,$type_association[$key]);
-						}
-					}
-					// echo"$name added\n";
-				}
+			// 		foreach ($types as $key){
+			// 			if(key_exists($key,$type_association)){
+			// 				add_destination_utility($destination_id,$type_association[$key]);
+			// 			}
+			// 		}
+			// 		// echo"$name added\n";
+			// 	}
 
-			}
-			send_json(array("msg"=> "Received"));
+			// }
+			// send_json(array("msg"=> "Received"));
+			send_json(array("msg"=> "Endpoint closed"),201);
 			die();
 		case "/get_destination_info":
 			$id = $_GET["id"];
@@ -222,7 +229,7 @@
 
 			// Save the JSON data to a file
 			$fileSaved = file_put_contents($filePath, $preferences);
-
+			notify_slack_ai_itinerary();
 			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
 			die();
 		case "/create_template":
@@ -239,6 +246,8 @@
 				mkdir($directory, 0777, true); // Change the permission mode as needed
 			}
 
+
+			notify_slack_template_creation();
 			// Save the JSON data to a file
 			$fileSaved = file_put_contents($filePath, json_encode($preferences));
 			send_json(array("msg"=> "Success","bytes"=> $fileSaved));
@@ -257,6 +266,11 @@
 		case "/search_destination":
 			$query = $_GET["query"];
 			$destinations = get_destinations_by_name($query);
+			if(sizeof($destinations)== 0){
+				$user_id = get_session_user_id();
+				//TODO:: Add user to a notification list for when the destination is added
+				notify_slack_zero_search_results($query);
+			}
 			send_json(array("msg"=> "Success","results"=> $destinations));
 			die();
 		case "/create_itinerary":
@@ -301,6 +315,7 @@
 			$user_id = get_session_user_id();
 			if($user_id){
 				$data = duplicate_itinerary($itinerary_id,$user_id);
+				notify_slack_itinerary_duplicate($itinerary_id);
 				send_json($data);
 			}else{
 				send_json(array("msg"=> "You need to sign in to create an itinerary"),201);
@@ -310,5 +325,5 @@
 			send_json(array("msg"=> "Method not implemented"));
 			break;
 	}
-
+	die();
 ?>

@@ -621,7 +621,7 @@ function validateFormInputs(...inputData) {
     if (!msgContainer) {
       msgContainer = createErrorMessageContainer(inputItem.message_target);
     }
-    if (!testInput(inputItem.type, inputItem.value)) {
+    if (!testInput(inputItem.type, inputItem.value, inputItem.compare_val)) {
       // display error message
       if (msgContainer) {
         msgContainer.textContent = inputItem.message;
@@ -661,7 +661,7 @@ function createErrorMessageContainer(dataTarget) {
  */
 const FORM_INPUT_REGEX = {
   EMAIL: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/,
-  PASSWORD: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*#?&]).{8,}/,
+  PASSWORD: /^(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*#?&]).{8,}/,
 };
 
 /**
@@ -670,12 +670,15 @@ const FORM_INPUT_REGEX = {
  * @param {string} value the value of the given input
  * @returns {boolean} true if test passed else false
  */
-function testInput(type, value) {
+function testInput(type, value,compare_val = null) {
   switch (type) {
     case "email":
       return FORM_INPUT_REGEX["EMAIL"].test(value);
     case "password":
       return FORM_INPUT_REGEX["PASSWORD"].test(value);
+    case "confirm_password":
+    case "confirm password":
+      return value == compare_val;
     default:
       return false;
   }

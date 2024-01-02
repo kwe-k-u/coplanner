@@ -151,9 +151,8 @@
 			case "budget":
 			case "popular":
 			case "family friendly":
-
 			default:
-				return get_itineraries();
+				return get_itineraries("ae1ad9f93a0f611ee9d950a0027000006");
 				break;
 		}
 	}
@@ -168,6 +167,7 @@
 		$public = new public_class();
 		return $public->duplicate_itinerary($itinerary_id,$user_id);
 	}
+
 
 
 

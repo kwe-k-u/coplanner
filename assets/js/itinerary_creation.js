@@ -362,6 +362,9 @@ function destination_search(form){
 	(response)=>{
 		let destinations = response.data.results;
 		destination_search_results.replaceChildren();
+		if (destinations.length){
+			// TODO:: Show no results on the interface
+		}
 		destinations.forEach(element => {
 			let name = element["destination_name"];
 			let location = element["location"];

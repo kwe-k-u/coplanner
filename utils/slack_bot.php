@@ -50,17 +50,7 @@ require_once(__DIR__."/logger.php");
 			return $this->send_update_cls($message,slack_webhook_error_logs());
 		}
 
-		function notify_curator_log($message){
-			return $this->send_update_cls($message,slack_webhook_curator_logs());
-
-		}
-
-		function notify_private_tour_log($message){
-			return $this->send_update_cls($message,slack_webhook_private_tour_logs());
-
-		}
-
-		function notify_tourist_log($message){
+		function notify_user_log($message){
 			return $this->send_update_cls($message,slack_webhook_tourist_logs());
 		}
 
@@ -70,6 +60,10 @@ require_once(__DIR__."/logger.php");
 
 		function notify_support_log($message){
 			return $this->send_update_cls($message,slack_webhook_support());
+		}
+
+		function notify_info_log($mssage){
+			return $this->send_update_cls($mssage,"");
 		}
 	}
 ?>

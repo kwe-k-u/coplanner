@@ -5,19 +5,40 @@ function email_login(form){
 	let email = form.email.value;
 	let password = form.password.value;
 
-	send_request("POST","processors/processor.php/login",
-	{
-		"email" : email,
-		"password" : password,
-		"method" : "email"
-	},
-	(response) =>{
-		console.log(response);
-		if(response.status == 200){
-			goto_page("./index.php")
+	// [start] input validation
+	let isEmailValid = validateFormInputs(
+		{
+			type: "email",
+			value: email,
+			message_target: form.email.getAttribute("data-eg-target"),
+			message: "Enter a valid Email Address"
 		}
+	);
+	// [end] Input validaton
+
+	if (isEmailValid){
+
+		send_request("POST","processors/processor.php/login",
+		{
+			"email" : email,
+			"password" : password,
+			"method" : "email"
+		},
+		(response) =>{
+			if(response.status == 200){
+				if(url_params("redirect_url")){
+					//go to the redirect url if one exists
+		  //TODO:: redirect doesn't include the value of its GET parameters
+					window.location.href = url_params("redirect_url");
+				}else{
+					goto_page("./index.php")
+				}
+			}else{
+				openDialog(response.data.msg);
+			}
+		}
+		);
 	}
-	)
 }
 
 function email_signup(form){
@@ -26,78 +47,48 @@ function email_signup(form){
 	let password = form.password.value;
 	let confirm_password = form.confirm_password.value;
 	let name = form.username.value;
-	send_request(
-		"POST",
-		"processors/processor.php/register",
-		{
-			"email" : email,
-			"password" : password,
-			"name" : name,
-			"method" : "email"
-		}, (response)=> {
-			window.location.href = "login.php"
-		}
-	)
+
+	let isCredentialValid = validateFormInputs({
+		type: "email",
+		value : email,
+		message_target: form.email.getAttribute("data-eg-target"),
+		message: "Enter a valid email"
+	},{
+		type : "confirm password",
+		value : password,
+		confirm_val : confirm_password,
+		message_target : form.confirm_password.getAttribute("data-eg-target"),
+		message: "The passwords don't match"
+	},{
+		type : "password",
+		value : password,
+		message : "Password must be at least 8 characters long, contain a special character (EG: @,$,!,%,*,#,?,&)",
+		message_target : form.password.getAttribute("data-eg-target")
+	}
+	);
+	if(isCredentialValid){
+		send_request(
+			"POST",
+			"processors/processor.php/register",
+			{
+				"email" : email,
+				"password" : password,
+				"name" : name,
+				"method" : "email"
+			}, (response)=> {
+				if(response.status != 200){
+					openDialog(response.data.msg);
+				}else{
+					window.location.href = "login.php"
+				}
+			}
+		)
+	}
 }
 
 
 
 
-// function login(form) {
-// 	event.preventDefault();
-
-// 	var email = form.email.value;
-// 	var password = form.password.value;
-
-// 	// ** input validation code [start] **//
-// 	let didPassValidation = validateFormInputs(
-// 	  {
-// 		type: "email",
-// 		value: form.email.value,
-// 		message_target: form.email.getAttribute("data-eg-target"),
-// 		message: "Invalid Email Address",
-// 	  },
-// 	  // {
-// 	  //   type: "password",
-// 	  //   value: form.password.value,
-// 	  //   message_target: form.password.getAttribute("data-eg-target"),
-// 	  //   message:
-// 	  //     "Password must contain at least one of an uppercase letter, a lowercase letter, a special character and a digit and must be at least 8 characters long",
-// 	  // }
-// 	);
-
-// 	if (!didPassValidation) return false;
-// 	// ** input validation code [end] **//
-
-// 	let payload = {
-// 	  action: "login",
-// 	  email: email,
-// 	  password: password,
-// 	};
-
-// 	send_request("POST", "processors/processor.php", payload, (response) => {
-// 	  var json = response;
-// 	  var status = json["status"];
-// 	  var url = "";
-// 	  json = json["data"];
-// 	  if (status == 200) {
-// 		url = json["url"];
-// 		//check redirect
-// 		if (url_params("redirect")) {
-// 		  // url = url_params("redirect");
-// 		  //substring url for all text after redirect
-// 		  url = window.location.href.substring(window.location.href.indexOf("redirect=")+9);
-// 		  // url = window.location.
-// 		  // url =
-// 		  //TODO:: redirect doesn't include the value of its GET parameters
-// 		}
-
-// 		window.location.href = url;
-// 	  } else {
-// 		openDialog(json["msg"]);
-// 	  }
-// 	});
-//   }
 
 //   function request_password_reset(form) {
 // 	event.preventDefault();

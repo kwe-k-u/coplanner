@@ -44,24 +44,28 @@
                     <div class="easygo-fs-5 mt-3">Add a profile picture</div>
                 </div> -->
                 <div class="input-field">
-                    <input class="border-blue" name="username" type="text" placeholder="Your Name">
+                    <input class="border-blue" name="username" type="text" placeholder="Your Name" data-eg-target="name-err">
+                    <p id="name-err" class="form-err-msg"></p>
                 </div>
                 <div class="input-field">
-                    <input type="text" class="border-blue" name="email" placeholder="Email">
+                    <input type="text" class="border-blue" name="email" placeholder="youremail@example.com" data-eg-target="email-err">
+                    <p id="email-err" class="form-err-msg"></p>
                 </div>
                 <!-- <div class="input-field">
                     <input type="text" class="border-blue" name="phone" placeholder="Phone number">
                 </div> -->
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="password" type="password" placeholder="Password" class="border-blue">
+                        <input name="password" type="password" placeholder="Password" class="border-blue" data-eg-target="pass-err">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
+                        <p id="pass-err" class="form-err-msg"></p>
                     </div>
                 </div>
                 <div class="input-field">
                     <div class="password-input-container">
-                        <input name="confirm_password" type="password" placeholder="Confirm Password" class="border-blue">
+                        <input name="confirm_password" type="password" placeholder="Confirm Password" class="border-blue" data-eg-target="confirm-pass-err">
                         <button type="button" class="toggle-password-show"><i class="fa-sharp fa-solid fa-eye-slash"></i></button>
+                        <p id="confirm-pass-err" class="form-err-msg"></p>
                     </div>
                 </div>
                 <!-- <div class="row">
