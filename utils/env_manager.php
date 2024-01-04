@@ -65,64 +65,21 @@ function slack_webhook_support(){
 	return getenv("SLACK_WEBSITE_SUPPORT_URL");
 }
 
-// /** [::Deprecated::]Returns the url for webhook of slack channel - Platform-monitoring */
-// function slack_webhook_monitoring(){
-// 	return getenv("SLACK_PLATFORM_MONITORING_URL");
-// }
-
-// /** [::Deprecated::]Returns the url for webhook of slack channel - Platform-monitoring-claims */
-// function slack_webhook_claims(){
-// 	return getenv("SLACK_PLATFORM_MONITORING_CLAIMS_URL");
-// }
-
-// /**
-//  * [::Deprecated::]Returns the url for webhook of slack channel - platform-monitoring-logs
-//  */
-// function slack_webhook_logs(){
-// 	return getenv("SLACK_PLATFORM_MONITORING_LOGS_URL");
-// }
-
-// /** [::Deprecated::] Returns the url for webhook of slack channel - Platform-monitoring-withdrawals */
-// function slack_webhook_withdrawals(){
-// 	return getenv("SLACK_PLATFORM_MONITORING_WITHDRAWALS_URL");
-// }
-
-function slack_webhook_cron_logs(){
-	return getenv("SLACK_WEBSITE_CRON_TASKS_URL");
-}
-
-function slack_webhook_curator_logs(){
-	return getenv("SLACK_WEBSITE_CURATORS_LOG_URL");
-}
 
 function slack_webhook_error_logs(){
 	return getenv("SLACK_WEBSITE_ERRORS_URL");
 }
 
-function slack_webhook_private_tour_logs(){
-	return getenv("SLACK_WEBSITE_PRIVATE_TOUR_LOGS_URL");
-}
-
-function slack_webhook_tourist_logs(){
-	return getenv("SLACK_WEBSITE_TOURIST_LOGS_URL");
+function slack_webhook_user_logs(){
+	return getenv("SLACK_WEBSITE_USER_LOGS_URL");
 }
 
 function slack_webhook_transactions(){
 	return getenv("SLACK_WEBSITE_TRANSACTIONS_URL");
 }
 
-/**Returns the paybox token */
-function paybox_token(){
-	return getenv("PAYBOX_BEARER_TOKEN");
+function slack_webhook_info_log(){
+	return getenv("SLACK_WEBHOOK_INFO_LOG_URL");
 }
 
-/**Returns the paystack public key */
-function paystack_public_key(){
-	return getenv("PAYSTACK_PUBLIC_KEY");
-}
-
-/** Returns the paystack private key */
-function paystack_private_key(){
-	return getenv("PAYSTACK_SECRET_KEY");
-}
 ?>

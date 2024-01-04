@@ -173,3 +173,34 @@ function toggle_wishlist(itinerary_id){
     }
   }) //TODO:: IMplement wishlist remove by default on interface
 }
+
+function showToast(msg = "Test toast",timeout = 3000){
+  let toast = document.createElement("div");
+  toast.className = "notification";
+  toast.role = "alert";
+  toast.onclick = function (){toast.remove();};
+
+  let header = document.createElement("div");
+  header.className = "notification-header";
+  let title = document.createElement("strong");
+  title.className = "mr-auto";
+  title.innerText = "Notification";
+  header.appendChild(title);
+  let time_text = document.createElement("small");
+  time_text.innerText = "Just Now";
+  header.appendChild(time_text);
+
+  let toast_body = document.createElement("div");
+  toast_body.className = "notification-body";
+  toast_body.innerText = msg;
+
+  toast.appendChild(header);
+  toast.appendChild(toast_body);
+  document.body.appendChild(toast);
+
+
+
+  setTimeout(function () {
+    toast.remove();
+  }, timeout);
+}

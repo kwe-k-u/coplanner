@@ -11,6 +11,8 @@ require_once(__DIR__ . "/utils/env_manager.php");
     <link rel="icon" href="assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Coplanner - Home</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -44,7 +46,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                             </div>
                             <div class='d-flex justify-content-between gap-4'>
                                 <!-- <a href='#' onclick="create_itinerary()" class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50'>Become an easyGo Partner</a> -->
-                                 <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50'>Become an easyGo Partner</a>
+                                <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' onclick='showToast()'>Become an easyGo Partner</a>
                                 <a href='coplanner/coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>
                             </div>
                         </div>
@@ -108,12 +110,12 @@ require_once(__DIR__ . "/utils/env_manager.php");
             <!--- ================================ -->
             <!--- Section 4 [start] -->
             <?php
-                include_once(__DIR__."/components/itinerary_suggestions.php");
+            include_once(__DIR__ . "/components/itinerary_suggestions.php");
             ?>
             <!--- Section 4 [end] -->
             <!--- ================================ -->
         </main>
-        <?php require_once(__DIR__."/components/footer.php") ?>
+        <?php require_once(__DIR__ . "/components/footer.php") ?>
     </div>
     <!-- main content end -->
 
@@ -122,9 +124,10 @@ require_once(__DIR__ . "/utils/env_manager.php");
     <!-- JQuery js -->
     <script src="assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->
-     <?php require_once(__DIR__ . "/utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/utils/js_env_variables.php"); ?>
     <script src="assets/js/general.js"></script>
     <script src="assets/js/functions.js"></script>
+
 </body>
 
 </html>

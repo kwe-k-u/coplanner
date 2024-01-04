@@ -51,7 +51,7 @@ require_once(__DIR__."/logger.php");
 		}
 
 		function notify_user_log($message){
-			return $this->send_update_cls($message,slack_webhook_tourist_logs());
+			return $this->send_update_cls($message,slack_webhook_user_logs());
 		}
 
 		function notify_transaction_log($message){
@@ -63,7 +63,7 @@ require_once(__DIR__."/logger.php");
 		}
 
 		function notify_info_log($mssage){
-			return $this->send_update_cls($mssage,"");
+			return $this->send_update_cls($mssage,slack_webhook_info_log());
 		}
 	}
 ?>

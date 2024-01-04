@@ -2047,9 +2047,56 @@ input:disabled {
 }
 
 /******************** MEDIA QUERY STYLING ********************/
+/* Desktop */
 @media only screen and (min-width: 992px) {
   .border-lg-end {
     border-right: var(--bs-border-width) var(--bs-border-style)
       var(--bs-border-color);
   }
+
+  .notification{
+    top: 25px;
+    right: 10px;
+  }
 }
+
+
+/* Mobile */
+@media only screen and (max-width: 992px) {
+
+  .notification{
+    bottom: 15px;
+    right:10px;
+  }
+}
+/* Styling for the Bootstrap toast notification component */
+.notification {
+  display: block;
+  position: fixed;
+  background-color: var(--easygo-lblue-1);
+  width: 300px;
+  max-width: calc(100% - 20px); /* Responsive maximum width */
+  z-index: 1050;
+}
+
+.notification small{
+  right: 10px;
+  position:absolute;
+}
+
+/* Header styles */
+.notification-header {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0;
+  background-color: var(--easygo-blue);
+  color: #fff;
+  /* border-bottom: 1px solid rgba(0, 123, 255, 0.5); */
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+/* Body styles */
+.notification-body {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid grey;
+}
+

@@ -130,9 +130,9 @@ CREATE TABLE destination_utilities(
 -- Table to keep track of opening and ending periods
 CREATE TABLE destination_operating_hours(
     destination_id VARCHAR(100),
-    day_of_week ENUM ("monday","tuesday","wednesday","thursday","friday","saturday","sunday"),
+    day_of_week ENUM ('monday','tuesday','wednesday','thursday','friday','saturday','sunday'),
     start_time TIME,
-    end_time TIME check (end_time > start_time),
+    end_time TIME,
     PRIMARY KEY (destination_id,day_of_week),
     FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
 );
@@ -151,11 +151,11 @@ CREATE TABLE destination_rating(
 
 -- Tracks the different itineraries that are created by users
 CREATE TABLE itinerary(
-	itinerary_id VARCHAR(100) PRIMARY KEY ON DELETE CASCADE,
+	itinerary_id VARCHAR(100) PRIMARY KEY,
     itinerary_name VARCHAR(60),
     date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
-	end_date DATETIME CHECK (end_date >= start_date),
+	end_date DATETIME ,
 	num_of_participants INT DEFAULT 1 CHECK(num_of_participants >0),
     visibility ENUM("private","public") DEFAULT "public"
 );
@@ -164,7 +164,7 @@ CREATE TABLE itinerary(
 
 -- Helps track the destination additions for each itinerary date
 CREATE TABLE itinerary_day(
-	day_id VARCHAR(100) PRIMARY KEY ON DELETE CASCADE,
+	day_id VARCHAR(100) PRIMARY KEY,
 	itinerary_id VARCHAR(100),
 	position INT CHECK (position >=0),
 	FOREIGN KEY (itinerary_id) REFERENCES itinerary(itinerary_id)

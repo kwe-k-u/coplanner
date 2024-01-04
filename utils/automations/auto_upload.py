@@ -3,7 +3,7 @@
 import os
 import shutil
 
-local_path = "C:/xampp/htdocs/easygo_v2"
+local_path = "C:/xampp/htdocs/coplanner"
 dest_path = "C:/Users/KWAKU/Desktop/upload"
 ignore_dir_list, ignore_file_list = [], []
 move_list = []

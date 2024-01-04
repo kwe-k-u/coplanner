@@ -286,6 +286,7 @@ function add_day(){
 	(response)=> {
 		ul_desktop.appendChild(create_day_dropdown_option(response.data.day_id));
 		ul_mobile.appendChild(create_mobile_day_dropdown_option(response.data.day_id));
+		showToast("Added An extra Day to the itinerary")
 	});
 
 	return null;
@@ -380,8 +381,9 @@ function destination_search(form){
 	(response)=>{
 		let destinations = response.data.results;
 		destination_search_results.replaceChildren();
-		if (destinations.length){
+		if (destinations.length == 0){
 			// TODO:: Show no results on the interface
+			showToast("We don't have the destination yet but we will add it and send you an email when we do",6000);
 		}
 		destinations.forEach(element => {
 			let name = element["destination_name"];
@@ -528,7 +530,9 @@ function update_itinerary_name(text){
 		"new_name" : text
 	},
 	(response)=> {
-
+		if(response.status == 200){
+			showToast("Updated itinerary Name");
+		}
 	}
 	);
 }
@@ -543,6 +547,9 @@ function add_itinerary_activity(day_id,activity_id,destination_id){
 		"day_id" : day_id
 	},
 	(response)=>{
+		if(response.status == 200){
+			showToast("Activity Added");
+		}
 	}
 	);
 }
