@@ -1,11 +1,13 @@
-const selected_dropdown_label = document.getElementById("selected-dropdown-label");
 const destination_search_results = document.getElementById("destination-search-results");
 const itinerary_card_activity_list = document.getElementById("itinerary-card-activity-list");
 
 
 $(document).ready(function() {
-    $('#day-dropdown-options').on('click', 'li', function (){
+    $('#day-dropdown-options').on('click', 'li', on_day_dropdown_click);
+    $('#day-dropdown-options-mobile').on('click', 'li', on_day_dropdown_click);
+});
 
+function on_day_dropdown_click(){
 		// If the day option is selected add a new day label
 		if(event.target.classList.contains("add-day-option")){
 			add_day();
@@ -15,9 +17,27 @@ $(document).ready(function() {
 			switch_current_day() // insert into a function that gets the day info and populates the itinerary_card
 		}
 		update_quick_stats();
-	});
-});
+}
 
+
+
+
+function create_mobile_day_dropdown_option(day_id = null){
+	let option = document.createElement("li");
+
+	if(day_id !=null){
+		option.id = ""+day_id;
+	}
+	option.className = "list-group-item";
+
+	//anchor in the list element
+	let anchor = document.createElement("a");
+	anchor.href = "#";
+	anchor.innerText = "Day Two";
+
+	option.appendChild(anchor);
+	return option;
+}
 
 
 // Creates an option element to be placed in the add day drop down
@@ -257,31 +277,18 @@ function create_destination_search_result_card(id,name,location,rating,num_ratin
 
 
 function add_day(){
-    let duplicate = null;
-    let ul = document.getElementById("day-dropdown-options");
-    let options = ul.children;
+    let ul_desktop = document.getElementById("day-dropdown-options");
+	let ul_mobile = document.getElementById("day-dropdown-options-mobile");
 
 	send_request("POST",
 	"processors/processor.php/add_itinerary_day",
 	{"itinerary_id" : url_params("id")},
 	(response)=> {
-		ul.appendChild(create_day_dropdown_option(response.data.day_id));
+		ul_desktop.appendChild(create_day_dropdown_option(response.data.day_id));
+		ul_mobile.appendChild(create_mobile_day_dropdown_option(response.data.day_id));
 	});
 
 	return null;
-    for (let i = 0; i < options.length; i++){
-        let item_li = options[i];
-        if (item_li.querySelector("#selected-dropdown-label") == null){
-            duplicate = item_li.cloneNode(true);
-            break;
-        }
-    }
-
-    if (duplicate) {
-		// change the day label
-		// duplicate.querySelector(".day-span").text = "Day "+ul.children.length.toString();
-		ul.insertBefore(duplicate,ul.childNodes[ul.childNodes.length-2])
-    }
 }
 
 
@@ -292,21 +299,26 @@ function add_day(){
 
 /**Moves the selected label in the day dropdown to the new day that was clicked */
 function moveSpanToClickedListItem() {
-    let selectedSpan = document.getElementById('selected-dropdown-label');
+    let selectedSpan_desktop = document.getElementById('day-dropdown-options').querySelector("#selected-dropdown-label-desktop");
+    let selectedSpan_mobile = document.getElementById('day-dropdown-options-mobile').querySelector("#selected-dropdown-label-mobile");
 
     // Check if the span exists
-    if (selectedSpan) {
+    if (selectedSpan_desktop) {
         // Find the <a> element within the <li> that was clicked
-        let clickedListItem = event.target.closest('li');
-		selected_day_id = clickedListItem.id;
-        if (clickedListItem) {
-            let anchorElement = clickedListItem.querySelector('a');
+		selected_day_id = event.target.closest("li").getAttribute("data-day-id");
+
+		let desktopListItem = document.getElementById("day-dropdown-options").querySelector("[data-day-id="+selected_day_id+"]");
+		let mobileListItem = document.getElementById("day-dropdown-options-mobile").querySelector("[data-day-id="+selected_day_id+"]");
+
+		// move the span for desktop
+        if (desktopListItem) {
+            let anchorElement = desktopListItem.querySelector('a');
 
             // Remove the selected-span from its current position
-            selectedSpan.parentNode.removeChild(selectedSpan);
+            selectedSpan_desktop.parentNode.removeChild(selectedSpan_desktop);
 
             // Append the selected-span as a child of the <a> element within the clicked <li>
-            anchorElement.appendChild(selectedSpan);
+            anchorElement.appendChild(selectedSpan_desktop);
 
 			//Change day displayed in main section of page
 			let text = anchorElement.querySelector(".anchor-day-span").innerText;
@@ -315,6 +327,12 @@ function moveSpanToClickedListItem() {
 
 			});
         }
+
+		// move the span for mobile
+		if (mobileListItem){
+			selectedSpan_mobile.parentNode.removeChild(selectedSpan_mobile);
+			mobileListItem.appendChild(selectedSpan_mobile);
+		}
     }
 }
 

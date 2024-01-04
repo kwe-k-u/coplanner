@@ -148,3 +148,28 @@ function duplicate_itinerary(itinerary_id){
   }
   );
 }
+
+function toggle_wishlist(itinerary_id){
+  let target = event.target;
+  send_request("POST",
+  "processors/processor.php/toggle_wishlist",
+  {
+    "itinerary_id" : itinerary_id
+  },
+  (response)=> {
+    console.log(response.data);
+    if (response.status == 200){
+      if(response.data.added == 1){
+        //The itinerary has been added to wishlist
+        target.innerText = "Remove from Wishlist";
+        target.classList= "easygo-btn-4 border-orange text-orange easygo-fs-5 w-50 bg-orange";
+      }else{
+        //The itinerary was been removed from wishlist
+        target.innerText = "Add to Wishlist";
+        target.classList= "easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white";
+      }
+    }else{
+      openDialog(response.data.msg);
+    }
+  }) //TODO:: IMplement wishlist remove by default on interface
+}

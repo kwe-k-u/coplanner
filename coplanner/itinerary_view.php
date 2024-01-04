@@ -48,7 +48,7 @@ $days = get_itinerary_days($itinerary_id);
         <main class="container" style="margin-top: 7rem;">
             <div class="container bg-white px-4">
                 <div class="pt-5">
-                    <a class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                    <a onclick='window.history.back();' class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 </div>
                 <!--- ================================ -->
                 <!--- Section 1 [start] -->
@@ -93,7 +93,7 @@ $days = get_itinerary_days($itinerary_id);
                             </div>
                             <div class='d-flex justify-content-between gap-4'>
                                 $edit_btn
-                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white' onclick=\"duplicate_itinerary('$itinerary_id')\">Add to Wishlist</a>
+                                <a href='#' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white' onclick=\"toggle_wishlist('$itinerary_id')\">Add to Wishlist</a>
                             </div>
                         </div>
                     </div>

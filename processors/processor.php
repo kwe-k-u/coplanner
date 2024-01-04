@@ -305,9 +305,18 @@
 			$itinerary_id = $_POST["itinerary_id"];
 			$user_id = get_session_user_id();
 			if($user_id){
-				//TODO:: add to wishlist
+				$result = toggle_wishlist($user_id,$itinerary_id);
+				if($result == 0 || $result == 1){
+					send_json(array("added"=>$result));
+					die();
+				}else{
+					//If no response, then something went wrong
+					send_json(array("msg"=> "Something went wrong. Try again later"),201);
+					die();
+				}
 			}else{
 				send_json(array("msg"=> "You need to be signed in to save an itinerary for later"),201);
+				die();
 			}
 			die();
 		case "/duplicate_itinerary":

@@ -204,6 +204,13 @@
 			return $this->db_fetch_one();
 		}
 
+		function toggle_wishlist($user_id,$itinerary_id){
+			$sql = "SELECT toggle_itinerary_wishlist(?,?) AS added";
+			$this->prepare($sql);
+			$this->bind($user_id,$itinerary_id);
+			return $this->db_fetch_one();
+		}
+
 
 	}
 ?>

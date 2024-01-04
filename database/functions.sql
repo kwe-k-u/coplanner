@@ -528,7 +528,7 @@ BEGIN
     -- Create a duplicate day
     SELECT day_id into temp_id from itinerary_day where itinerary_id = new_itinerary_id and position = temp_int;
 
-    if temp_id = NULL then-- Allows us to skip the first day which has already been duplicated
+    if temp_id is NULL then-- Allows us to skip the first day which has already been duplicated
       SELECT add_itinerary_day(new_itinerary_id) INTO temp_id;
     end if;
 
@@ -539,6 +539,30 @@ BEGIN
   END WHILE;
 
   RETURN new_itinerary_id;
+END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS toggle_itinerary_wishlist;
+DELIMITER //
+CREATE FUNCTION toggle_itinerary_wishlist(
+  in_user_id VARCHAR(100),
+  in_itinerary_id VARCHAR(100)
+  )
+RETURNS TINYINT
+BEGIN
+  DECLARE temp_id VARCHAR(100);
+
+  SELECT user_id INTO  temp_id FROM wishlist WHERE user_id = in_user_id AND itinerary_id = in_itinerary_id;
+  if temp_id is null then
+    INSERT INTO wishlist(user_id,itinerary_id) VALUES (in_user_id,in_itinerary_id);
+    return 1;
+  end if;
+
+  DELETE FROM wishlist where user_id = in_user_id and itinerary_id = in_itinerary_id;
+  return 0;
+
+
 END //
 DELIMITER ;
 

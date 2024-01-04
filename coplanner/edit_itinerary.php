@@ -25,7 +25,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Itinerary Item View</title>
+    <title>Itinerary Creation</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -69,11 +69,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                     <?php
                                     $day_list = get_itinerary_days($itinerary_id);
                                         echo "
-                                        <li class='px-2 d-flex align-items-center' id='$first_day'>
+                                        <li class='px-2 d-flex align-items-center' data-day-id='$first_day'>
                                             <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
                                                 <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
                                                 <span class='me-3 anchor-day-span'>Day One</span>
-                                                <span id='selected-dropdown-label' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span>
+                                                <span id='selected-dropdown-label-desktop' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span>
                                             </a>
                                         </li>
                                         ";
@@ -82,7 +82,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                         foreach(array_slice($day_list,1) as $d){
                                             $day_id = $d["day_id"];
                                             echo "
-                                            <li class='px-2 d-flex align-items-center' id='$day_id'>
+                                            <li class='px-2 d-flex align-items-center' data-day-id='$day_id'>
                                                 <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
                                                     <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
                                                     <span class='me-3 anchor-day-span'>Day Two</span>
@@ -839,16 +839,23 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <div class="offcanvas-body">
                 <h5>Menu Actions</h5>
                 <ul class="list-group">
-                    <li class="list-group-item" onclick="switch_mobile_canvas()" data-bs-dismiss="offcanvas" data-proxy-target="destination-tab">
+                    <li class="list-group-item" onclick="switch_mobile_canvas()" data-proxy-target="destination-tab"  data-bs-dismiss="offcanvas">
                         <a href="#">Add New Activities</a>
                     </li>
                 </ul>
                 <br>
                 <h5 class='mt-1'>Select Itinerary Day</h5>
-                <ul class="list-group">
-                    <li class="list-group-item"> <a href="#">Day One</a> </li>
-                    <li class="list-group-item"> <a href="#">Day Two</a> </li>
-                    <li class="list-group-item"> <a href="#" class='text-orange'>Add Extra Day</a> </li>
+                <ul class="list-group" id='day-dropdown-options-mobile'>
+                    <?php
+                        echo "<li class='list-group-item' data-day-id='$first_day'> <a href='#'>Day One</a> <span id='selected-dropdown-label-mobile' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span> </li>";
+                        foreach(array_slice($day_list,1) as $d){
+                            $day_id = $d["day_id"];
+                            echo "<li class='list-group-item' data-day-id='$day_id' data-bs-dismiss='offcanvas' >
+                                <a href='#'>Day Two</a>
+                            </li>";
+                        }
+                    ?>
+                    <li class="list-group-item add-day-option"> <a href="#" class='text-orange  add-day-option'  data-bs-dismiss='offcanvas' >Add Extra Day</a> </li>
                 </ul>
                 <br>
                 <h5 class='mt-1'>Additional Service</h5>
@@ -856,19 +863,19 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     <li class="list-group-item">
                         <div class="d-flex flex-row align-items-center justify-center">
                             <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
-                            <div class="p-1 expand-toggle-rev">Curator</div>
+                            <div class="p-1 expand-toggle-rev">Curator <span class='easygo-fs-5'>(Coming Soon)</span></div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="d-flex flex-row align-items-center justify-center">
                             <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
-                            <div class="p-1 expand-toggle-rev">Accommodation</div>
+                            <div class="p-1 expand-toggle-rev">Accommodation <span class='easygo-fs-5'>(Coming Soon)</span></div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="d-flex flex-row align-items-center justify-center">
                             <div class="user-icon bg-orange" style="width: 2rem; height: 2rem;"></div>
-                            <div class="p-1 expand-toggle-rev">Transportation</div>
+                            <div class="p-1 expand-toggle-rev">Transportation <span class='easygo-fs-5'>(Coming Soon)</span></div>
                         </div>
                     </li>
                 </ul>
@@ -1247,10 +1254,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             });
 
         function switch_mobile_canvas() {
-            event.preventDefault();
-            const currentCanvas = new bootstrap.Offcanvas(document.getElementById('mobileMenuCanvas'));
             const newCanvas = new bootstrap.Offcanvas(document.getElementById('destinationSearchCanvas'));
-            currentCanvas.toggle();
             newCanvas.toggle();
         }
         <?php

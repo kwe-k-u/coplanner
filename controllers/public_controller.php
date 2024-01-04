@@ -168,6 +168,11 @@
 		return $public->duplicate_itinerary($itinerary_id,$user_id);
 	}
 
+	function toggle_wishlist($user_id,$itinerary_id){
+		$public = new public_class();
+		return $public->toggle_wishlist($user_id,$itinerary_id)["added"];
+	}
+
 
 
 
