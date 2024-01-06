@@ -1,12 +1,7 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
-if (!is_session_user_admin()) {
-    header("Location: ../views/home.php");
-    die();
-}
 
 // $info = get_user_by_id(get_session_user_id());
 $curator_id = get_session_account_id();
@@ -27,7 +22,7 @@ $logo = "";//$info["curator_logo"];
 
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>Admin | Transactions</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -47,24 +42,23 @@ $logo = "";//$info["curator_logo"];
         <!-- ============================== -->
         <!-- dashboard content [start] -->
         <main class="dashboard-content">
-			<?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
+        <?php require_once(__DIR__. "/../components/admin_navbar_desktop.php"); ?>
 
 
             <div class="main-content px-3">
                 <section class="trip-booking">
                     <div class="border-1 border-bottom py-3">
                         <div>
-                            <h5 class="title">Users</h5>
-                            <small class="easygo-fs-5 text-gray-1"><a href="all_tours.php">Users</a> > All Users</small>
+                            <h5 class="title">Destination Requests</h5>
+                            <small class="easygo-fs-5 text-gray-1"><a href="dashboard.php">Admin</a> > Transactions</small>
                         </div>
-                        <p class="mt-4 mb-0">This table shows all user info.</p>
+                        <p class="mt-4 mb-0">These are destinations that were requested or not found in search</p>
                     </div>
                     <div class="controls d-flex justify-content-between align-items-between py-3">
-                        <div class="left-controls row">
+                        <div class="left-controls">
                             <form id="dashboard-search">
                                 <div class="form-input-field">
                                     <input class="p-2" type="text" placeholder="search">
-
                                 </div>
                             </form>
                         </div>
@@ -75,56 +69,49 @@ $logo = "";//$info["curator_logo"];
                                 <div class="item-bullet-container">
                                     <div class="item-bullet"></div>
                                 </div>
-                                <div class="inner-item">Curator name</div>
-                                <div class="inner-item">Incorporation document</div>
-                                <div class="inner-item">Country</div>
+                                <div class="inner-item">Request ID</div>
+                                <div class="inner-item">Number of users</div>
+                                <div class="inner-item">Date Requested</div>
+                                <div class="inner-item">Status</div>
                                 <div class="inner-item">Actions</div>
                                 <div class="inner-item">Actions</div>
                             </div>
 
                             <?php
 
-                                $accounts = get_unverified_curators();
+                                $requests = get_destination_requests();
 
-                                if (!$accounts){
+                                if (!$requests){
                                     echo "<div class='list-item'>
                                         <div class='item-bullet-container'>
                                             <div class='item-bullet'></div>
                                         </div>
-                                        <div class='inner-item'>There are no user Accounts. </div>
+                                        <div class='inner-item'>There are no unresolved requests. </div>
                                     </div>";
                                 }else {
-                                    foreach ($accounts as $entry) {
-										$id = $entry["curator_id"];
-										$curator = $entry['curator_name'];
-										$logo = isset($entry["logo"]) ? $entry["logo"] : "";
-										$doc = isset($entry["inc_doc"]) ? $entry["inc_doc"] : "";
-										$country = $entry["country"];
+                                    foreach ($requests as $entry) {
+										$id = $entry["request_id"];
+										$destination_name = $entry["destination_name"];
+										$user_count = $entry["num_users"];
+										$status = $entry["status"];
+										$date_added = format_string_as_date_fn($entry["date_added"]);
 
                                         echo "
                                 <div class='list-item'>
-                                    <div class='item-bullet-container col'>
-                                         <div class='item-bullet'></div>
-										<div><img class='icon' src='$logo'></div>
+                                    <div class='item-bullet-container'>
+                                        <div class='item-bullet'></div>
                                     </div>
                                     <div class='inner-item'>
 										<div class='col'>
-											<div>
-												$id
-											</div>
-											<div>
-												$curator
-											</div>
+												<div>$id</div>
+												<div>$destination_name</div>
 										</div>
 									</div>
-                                    <div class='inner-item'> <a href='$doc'>Document url</a></div>
-                                    <div class='inner-item'>$country</div>
-                                    <div class='inner-item'>
-										<a href='#' onclick='toggle_curator_verification(\"$id\")'>Verify</a>
-									</div>
-                                    <div class='inner-item'>
-										<a href='#'>Block Logins</a>
-									</div>
+                                    <div class='inner-item'>$user_count</div>
+                                    <div class='inner-item'>$date_added</div>
+                                    <div class='inner-item'>$status</div>
+                                    <div class='inner-item'><a href='#' onclick='toggle_destination_request_status(\"$id\",\"accepted\")'>Mark Done</a></div>
+                                    <div class='inner-item'><a href='#' onclick='toggle_destination_request_status(\"$id\",\"rejected\")'>Reject</a></div>
                                 </div>
                                     ";
                                     }
@@ -173,7 +160,7 @@ $logo = "";//$info["curator_logo"];
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/admin/verification.js"></script>
+    <script src="../assets/js/admin/destination_requests.js"></script>
 </body>
 
 </html>

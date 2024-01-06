@@ -268,7 +268,7 @@
 			$destinations = get_destinations_by_name($query);
 			if(sizeof($destinations)== 0){
 				$user_id = get_session_user_id();
-				//TODO:: Add user to a notification list for when the destination is added
+				add_destination_request($query,$user_id);
 				notify_slack_zero_search_results($query);
 			}
 			send_json(array("msg"=> "Success","results"=> $destinations));
@@ -328,6 +328,25 @@
 				send_json($data);
 			}else{
 				send_json(array("msg"=> "You need to sign in to create an itinerary"),201);
+			}
+			die();
+		case "/toggle_destination_request_status":
+			//TODO:: Add admin check
+			$request_id = $_POST["request_id"];
+			$status = $_POST["status"];
+			toggle_destination_request_status($request_id,$status);
+			if($status == "accepted"){
+				$users = get_destination_request_subscribers($request_id);
+				foreach ($users as $entry) {
+					$mailer = new mailer();
+					$user_email = $entry["email"];
+					$destination_name = $entry["destination_name"];
+					$mailer->destination_added_email($user_email,$destination_name);
+				}
+				$count = sizeof($users);
+				send_json(array("msg"=> "Request Approved. Notifying $count users"));
+			}else{
+				send_json(array("msg"=>"request rejected"));
 			}
 			die();
 		default:

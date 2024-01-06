@@ -249,6 +249,24 @@ CREATE TABLE destination_media(
 );
 
 
+-- Destinations that have been requested, or can't be found through search
+CREATE TABLE destination_requests(
+    request_id VARCHAR(100) PRIMARY KEY,
+    destination_name VARCHAR(100),
+    date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status ENUM ('pending', 'rejected','added') default 'pending'
+);
+
+-- Users who are subscribed to notifications when a destination is added
+CREATE TABLE user_destination_request(
+    request_id VARCHAR(100),
+    user_id VARCHAR(100),
+    PRIMARY KEY (request_id,user_id),
+    FOREIGN KEY (request_id) REFERENCES destination_requests(request_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
 
 /*--------------------------------------------------------------------------------------------------
 -------------------------- VIEWS -----------------------------------------------------------------
@@ -328,9 +346,23 @@ inner join itinerary_collaborators as ic on ic.itinerary_id = i.itinerary_id
 inner join users as u on u.user_id = ic.user_id;
 
 
+DROP VIEW IF EXISTS vw_destination_request;
+CREATE VIEW vw_destination_request AS
+SELECT
+    dr.*,
+    (SELECT count(*) FROM user_destination_request where request_id = dr.request_id) AS num_users
+FROM destination_requests as dr
+where dr.status = 'pending';
 
-
--- Returns the wishlist information with the itinerary data
+DROP VIEW IF EXISTS vw_destination_request_subscribers;
+CREATE VIEW vw_destination_request_subscribers AS
+SELECT
+    udr.*,
+    u.email,
+    dr.destination_name
+FROM user_destination_request as udr
+inner join vw_users as u on u.user_id = udr.user_id
+inner join destination_requests as dr on dr.request_id = udr.request_id;
 
 
 

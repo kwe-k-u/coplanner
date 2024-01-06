@@ -173,6 +173,11 @@
 		return $public->toggle_wishlist($user_id,$itinerary_id)["added"];
 	}
 
+	function add_destination_request($query,$user_id){
+		$public = new public_class();
+		return $public->add_destination_request($query,$user_id);
+	}
+
 
 
 

@@ -10,7 +10,7 @@
 					Itineraries <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
 				</a>
 				<ul id="trips-submenu-sb" class="sub-menu slide-down-sub-menu">
-					<li><a href="group_tours.php" id="nav_sub_groups">Templates</a></li>
+					<li><a href="template_itineraries.php" id="nav_sub_groups">Templates</a></li>
 				</ul>
 			</div>
 		</li>
@@ -21,7 +21,6 @@
 					<img src="../assets/images//svgs/trips.svg" alt="dashboard image"> Users <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
 				</a>
 				<ul id="users-submenu-sb" class="sub-menu slide-down-sub-menu">
-					<li><a href="curators.php" id="nav_sub_groups">Curators</a></li>
 					<li><a href="users.php" id="nav_sub_private">Tourists</a></li>
 				</ul>
 			</div>
@@ -52,16 +51,7 @@
 				<a data-target="settings-submenu-sb" class="slide-down-btn" id="nav_account" href="#"><i class="fa-solid fa-gear"></i> Settings <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span></a>
 				<ul id="settings-submenu-sb" class="sub-menu slide-down-sub-menu">
 					<li>
-						<a href="curator_id_verification.php" id="nav_settings_curator_id">Curator ID approvals</a>
-					</li>
-					<li>
-						<a href="curator_verification.php" id="nav_settings_verification">Verification Requests</a>
-					</li>
-					<li>
-						<a href="media.php" id="nav_settings_media">Media management</a>
-					</li>
-					<li>
-						<a href="emails.php" id="nav_settings_emails">Emails</a>
+						<a href="destination_requests.php" id="nav_settings_destination_requests">Destination Requests</a>
 					</li>
 				</ul>
 			</div>

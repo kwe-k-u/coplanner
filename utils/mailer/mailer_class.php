@@ -72,4 +72,10 @@ class mailer{
 		return $this->send_email($email,$subject,$message);
 	}
 
+	/**Sends a message to notify people when a destination they couldn't find has been added */
+	function destination_added_email($email,$destination_name){
+		include_once(__DIR__."/messages/destination_added_email.php");
+		return $this->send_email($email,$subject,$message);
+	}
+
 }

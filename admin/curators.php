@@ -174,7 +174,7 @@ if (!is_session_user_admin()) {
                                                 <div>
                                                     <a href='#' class='easygo-fs-5 easygo-fw-2' data-bs-toggle='modal' data-bs-target='#invite-collaborator-modal' onclick='set_curator_invite_id(\"$c_id\")'>Invite collaborator</a>
                                                 </div>
-                                                <div><a href='group_tours.php?curator_id=$c_id' class='easygo-fs-5 easygo-fw-2'>View Listings</a></div>
+                                                <div><a href='template_itineraries.php?curator_id=$c_id' class='easygo-fs-5 easygo-fw-2'>View Listings</a></div>
                                             </div>
                                         </div>
                                         <div class='easygo-list-3 no-list-border list-striped'>

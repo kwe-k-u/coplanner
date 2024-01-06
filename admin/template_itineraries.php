@@ -132,9 +132,9 @@
 		function select_curator(){
 			let id = event.target.value;
 			if (id){
-				goto_page("admin/group_tours.php?curator_id="+id);
+				goto_page("admin/template_itineraries.php?curator_id="+id);
 			}else{
-				goto_page('admin/group_tours.php');
+				goto_page('admin/template_itineraries.php');
 			}
 		}
 	</script>

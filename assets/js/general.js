@@ -84,7 +84,7 @@ $(document).ready(function () {
     if (side != undefined) {
       const page = window.location.pathname;
       if (
-        page.includes("group_tours.php") ||
+        page.includes("template_itineraries.php") ||
         page.includes("private_tours.php")
       ) {
         document.getElementById("nav_trips").classList.toggle("text-blue");

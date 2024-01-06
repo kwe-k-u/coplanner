@@ -568,6 +568,38 @@ DELIMITER ;
 
 
 
+DROP FUNCTION IF EXISTS add_destination_request;
+DELIMITER //
+CREATE FUNCTION add_destination_request(
+  in_query VARCHAR(100),
+  in_user_id VARCHAR(100)
+) RETURNS TINYINT
+begin
+  DECLARE temp_request_id varchar(100);
+  DECLARE temp_user_id VARCHAR(100);
+  -- Check if a request with the same name exists.
+  SELECT request_id into temp_request_id FROM destination_requests WHERE destination_name = in_query;
+  if temp_request_id IS NOT NULL THEN
+    -- If a request with same name exists, add the user as a subscriber if not already subscribed
+    SELECT user_id into temp_user_id FROM user_destination_request
+    WHERE user_id = in_user_id;
+    IF temp_user_id is null then
+      INSERT INTO user_destination_request(request_id,user_id) VALUES (temp_request_id,in_user_id);
+    end if;
+  return 0;
+  END IF;
+  -- If the request hasn't been created, create it and add the user
+  SET temp_request_id = generate_id();
+    INSERT INTO destination_requests(request_id,destination_name) VALUES (temp_request_id, in_query);
+    INSERT INTO user_destination_request(request_id,user_id) VALUES (temp_request_id,in_user_id);
+  return 1;
+end //
+DELIMITER ;
+
+
+
+
+
 DROP PROCEDURE IF EXISTS duplicate_day_activities;
 DELIMITER //
 CREATE PROCEDURE duplicate_day_activities(

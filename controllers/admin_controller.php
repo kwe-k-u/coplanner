@@ -72,4 +72,19 @@
 		return $admin->get_users();
 	}
 
+	function get_destination_requests(){
+		$admin = new admin_class();
+		return $admin->get_destination_requests();
+	}
+
+	function toggle_destination_request_status($request_id,$status){
+		$admin = new admin_class();
+		return $admin->toggle_destination_request_status($request_id,$status);
+	}
+
+	function get_destination_request_subscribers($request_id){
+		$admin = new admin_class();
+		return $admin->get_destination_request_subscribers($request_id);
+	}
+
 ?>

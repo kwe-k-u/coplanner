@@ -96,5 +96,25 @@
 			$this->prepare($sql);
 			return $this->db_fetch_all();
 		}
+
+		function get_destination_requests(){
+			$sql = "SELECT * FROM vw_destination_request ;";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_destination_request_subscribers($request_id){
+			$sql = "SELECT * FROM vw_destination_request_subscribers WHERE request_id = ?";
+			$this->prepare($sql);
+			$this->bind($request_id);
+			return $this->db_fetch_all();
+		}
+
+		function toggle_destination_request_status($request_id,$status){
+			$sql = "UPDATE destination_requests SET status = ? where request_id = ?";
+			$this->prepare($sql);
+			$this->bind($status,$request_id);
+			return $this->db_query();
+		}
 	}
 ?>

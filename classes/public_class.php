@@ -211,6 +211,13 @@
 			return $this->db_fetch_one();
 		}
 
+		function add_destination_request($query,$user_id){
+			$sql = "SELECT add_destination_request(?,?);";
+			$this->prepare($sql);
+			$this->bind($query,$user_id);
+			return $this->db_fetch_one();
+		}
+
 
 	}
 ?>
