@@ -12,8 +12,12 @@ CREATE DATABASE coplanner;
 
 -- Use the database
 USE coplanner;
+-- Table to allow for multiple currencies to exist
+CREATE TABLE currency(
+	currency_id INT PRIMARY KEY AUTO_INCREMENT,
+	currency_name VARCHAR(5) UNIQUE
+);
 
--- Rest of your SQL script goes here...
 
 -- Table for the possible categories a destination may be placed in
 CREATE TABLE types_of_destination(
@@ -101,11 +105,14 @@ CREATE TABLE destinations(
 CREATE TABLE destination_activities (
     destination_id VARCHAR(100),
     activity_id INT,
+    currency_id INT,
     price DECIMAL(10, 2) CHECK (price >= 0),
     date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (destination_id, activity_id),
     FOREIGN KEY (destination_id) REFERENCES destinations(destination_id),
-    FOREIGN KEY (activity_id) REFERENCES activities(activity_id)
+    FOREIGN KEY (activity_id) REFERENCES activities(activity_id),
+    FOREIGN KEY (currency_id) REFERENCES currency(currency_id)
+
 );
 
 -- Helps to track categories for destinations
@@ -177,6 +184,8 @@ CREATE TABLE itinerary_activity(
 	activity_id INT,
 	destination_id VARCHAR(100),
 	position INT CHECK (position >=0),
+    final_currency VARCHAR(5),
+    final_price DECIMAL(10, 2),
 	PRIMARY KEY (day_id,activity_id,destination_id),
 	FOREIGN KEY (day_id) REFERENCES itinerary_day(day_id),
 	FOREIGN KEY (activity_id) REFERENCES activities(activity_id),
@@ -303,12 +312,14 @@ SELECT
     ia.*,
     a.activity_name,
     da.price,
+    c.currency_name,
     da.date_updated
 
 FROM itinerary_activity as ia
 inner join activities as a on a.activity_id = ia.activity_id
 inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
 INNER JOIN itinerary_day as day on day.day_id = ia.day_id
+INNER JOIN currency as c on c.currency_id = da.currency_id
 ORDER BY ia.position;
 
 
@@ -339,6 +350,7 @@ SELECT
     u.user_name as owner_name,
     (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
     (select count(*) from vw_itinerary_destinations as vid where vid.itinerary_id = i.itinerary_id) as num_destinations,
+    (select sum(final_price) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as final_price,
     (select COALESCE(sum(price),0) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as budget,
     (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day
 from itinerary as i
@@ -394,3 +406,8 @@ INSERT INTO types_of_destination(type_name) VALUES
 ("waterfall"),
 ("tourist attraction"),
 ("zoo");
+
+
+INSERT INTO currency(currency_id,currency_name) VALUES
+(1,"GHS"),
+(2,"USD");

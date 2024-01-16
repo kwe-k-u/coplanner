@@ -13,6 +13,7 @@ $owner_name = $itinerary["owner_name"];
 $owner_id = $itinerary["owner_id"];
 $budget = $itinerary["budget"];
 $num_people = $itinerary["num_of_participants"];
+$itinerary_name = $itinerary["itinerary_name"];
 $days = get_itinerary_days($itinerary_id);
 
 ?>
@@ -71,7 +72,7 @@ $days = get_itinerary_days($itinerary_id);
                                 <div>Created by <span class='text-blue easygo-fs-3 easygo-fw-1'>$owner_name</span></div>
                                 <div class='easygo-fs-5'>$date_created</div>
                             </div>
-                            <h5 class='easygo-fw-1'>The Name of the Itinerary</h5>
+                            <h5 class='easygo-fw-1'>$itinerary_name</h5>
                             <p>
                                 An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
                             </p>

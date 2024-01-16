@@ -1,5 +1,4 @@
 
-
 function email_login(form){
 	event.preventDefault()
 	let email = form.email.value;
@@ -26,10 +25,10 @@ function email_login(form){
 		},
 		(response) =>{
 			if(response.status == 200){
-				if(url_params("redirect_url")){
+				let redirect_url = url_params("redirect_url",true);
+				if(redirect_url){
 					//go to the redirect url if one exists
-		  //TODO:: redirect doesn't include the value of its GET parameters
-					window.location.href = url_params("redirect_url");
+					window.location.href = redirect_url;
 				}else{
 					goto_page("./index.php")
 				}
@@ -56,13 +55,13 @@ function email_signup(form){
 	},{
 		type : "confirm password",
 		value : password,
-		confirm_val : confirm_password,
+		compare_val : confirm_password,
 		message_target : form.confirm_password.getAttribute("data-eg-target"),
 		message: "The passwords don't match"
 	},{
 		type : "password",
 		value : password,
-		message : "Password must be at least 8 characters long, contain a special character (EG: @,$,!,%,*,#,?,&)",
+		message : "Password must be at least 8 characters long, contain a number OR a special character (EG: @,$,!,%,*,#,?,&)",
 		message_target : form.password.getAttribute("data-eg-target")
 	}
 	);
@@ -82,7 +81,7 @@ function email_signup(form){
 					window.location.href = "login.php"
 				}
 			}
-		)
+		);
 	}
 }
 
@@ -90,20 +89,22 @@ function email_signup(form){
 
 
 
-//   function request_password_reset(form) {
-// 	event.preventDefault();
-// 	var email = form.email.value;
-// 	// payload = "action=request_password_reset";
-// 	// payload += "&email="+email;
-// 	let payload = {
-// 	  action: "request_password_reset",
-// 	  email: email,
-// 	};
 
-// 	send_request("POST", "processors/processor.php", payload, (response) => {
-// 	  alert(response.data.msg);
-// 	});
-//   }
+  function request_password_reset(form) {
+	event.preventDefault();
+
+	send_request("POST", "processors/processor.php/request_password_reset",
+	{
+		"email" : form.email.value
+	}, (response) => {
+	  alert(response.data.msg);
+	  if(response.status = 200){
+		showToast(response.data.msg);
+	  }else{
+		openDialog(response.data.msg);
+	  }
+	});
+  }
 
 //   function reset_password(form) {
 // 	event.preventDefault();

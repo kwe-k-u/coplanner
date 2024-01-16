@@ -218,6 +218,13 @@
 			return $this->db_fetch_one();
 		}
 
+		function create_itinerary_invoice($itinerary_id){
+			$sql = "SELECT create_itinerary_invoice(?)";
+			$this->prepare($sql);
+			return $this->bind($itinerary_id);
+			return $this->db_query();
+		}
+
 
 	}
 ?>

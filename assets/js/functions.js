@@ -40,21 +40,35 @@ function logError(event) {
 // });
 
 //checks the get get parameters in the url for a matching key;
-function url_params(key) {
+//set full to through if we want to substring at the value of the key
+function url_params(key, full = false) {
   if (!window.location.search.includes(key)){
     return false;
   }
-
-  url = window.location.search.substr(1);
+  let url = window.location.search.substr(1);
   let value = false;
-  params = url.split("&");
-  params.forEach((element) => {
-    pair = element.split("=");
-    element_key = pair[0];
-    if (element_key == key) {
-      value = pair[1];
-    }
-  });
+
+
+  if(full){
+    //include other key values for the string
+    let start_index = url.indexOf(key) + key.length+1;
+    value = url.substring(start_index);
+  }else{
+    // exclude other the key value pairs
+    params = url.split("&");
+    params.forEach((element) => {
+      pair = element.split("=");
+      element_key = pair[0];
+      if (element_key == key) {
+        value = pair[1];
+      }
+    });
+  }
+
+
+
+
+
 
   return value;
 }
@@ -203,4 +217,49 @@ function showToast(msg = "Test toast",timeout = 3000){
   setTimeout(function () {
     toast.remove();
   }, timeout);
+}
+
+
+
+
+function payWithPaystack(currency, charge_amount,c_email,payload){
+	let handler = PaystackPop.setup({
+		key: paystack_public_key,
+		email: c_email,
+		amount: charge_amount,
+		currency: currency,
+		metadata : payload,
+		// ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+		// label: "Optional string that replaces customer email"
+
+		onClose: function(){
+			alert('Window closed.');
+		},
+
+		callback: function(response){
+			// Confirm payment receipt
+			// send_request(
+			// 	"POST",
+			// 	"processors/processor.php",
+			// 	{
+			// 		"action" : "book_standard_tour",
+			// 		"provider" : "paystack",
+			// 		"amount_expected" : charge_amount,
+			// 		"currency_expected" : currency,
+			// 		"payload": JSON.stringify(payload),
+			// 		"response" : JSON.stringify(response)
+			// 	},
+			// 	(res)=>{
+			// 		console.log(res);
+			// 	}
+			// )
+
+			// TODO:: check status for payment and go to redirect page
+
+			console.log("callback",response);
+			window.location.href=response.redirecturl;
+		}
+		});
+
+		handler.openIframe();
 }

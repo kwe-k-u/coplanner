@@ -45,9 +45,16 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                 Coplanner by easyGo is an itinerary creation tool for the best explorers in the world
                             </div>
                             <div class='d-flex justify-content-between gap-4'>
-                                <!-- <a href='#' onclick="create_itinerary()" class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50'>Become an easyGo Partner</a> -->
-                                <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' onclick='showToast()'>Become an easyGo Partner</a>
-                                <a href='coplanner/coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>
+                                <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' onclick='showToast("Contact our support team at main.easygo@gmail.com")'>Become an easyGo Partner</a>
+                                <?php
+                                    if(is_session_logged_in()){
+                                        echo "<a href='coplanner/coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>";
+                                    }else{
+                                        echo "<a href='coplanner/login.php?redirect_url=coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>";
+
+                                    }
+                                ?>
+
                             </div>
                         </div>
                     </div>

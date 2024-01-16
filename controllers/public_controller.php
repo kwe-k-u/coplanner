@@ -152,7 +152,7 @@
 			case "popular":
 			case "family friendly":
 			default:
-				return get_itineraries("ae1ad9f93a0f611ee9d950a0027000006");
+				return get_itineraries("af5e8e3f5acda11ee94238ed206f829ea");
 				break;
 		}
 	}
@@ -176,6 +176,11 @@
 	function add_destination_request($query,$user_id){
 		$public = new public_class();
 		return $public->add_destination_request($query,$user_id);
+	}
+
+	function create_itinerary_invoice($itinerary_id){
+		$public = new public_class();
+		return $public->create_itinerary_invoice($itinerary_id);
 	}
 
 

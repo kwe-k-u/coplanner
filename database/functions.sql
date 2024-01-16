@@ -815,3 +815,67 @@ BEGIN
   SELECT * FROM vw_itinerary_activities where itinerary_id = in_itinerary_id;
 END //
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS generate_activity_invoice;
+DELIMITER //
+CREATE PROCEDURE generate_activity_invoice(IN in_itinerary_id VARCHAR(100))
+BEGIN
+  DECLARE temp_day_id VARCHAR(100);
+  DECLARE temp_activity_id VARCHAR(100);
+  DECLARE temp_destination_id VARCHAR(100);
+  DECLARE day_counter INT;
+  DECLARE activity_counter INT;
+  DECLARE destination_counter INT;
+  DECLARE temp_price DECIMAL(10,2);
+  DECLARE temp_currency VARCHAR(5);
+
+  -- Count the number of days
+  SELECT COUNT(*) INTO day_counter FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
+
+  -- For each day, loop through the activities, getting the destination price and saving it as final
+  WHILE day_counter > 0 DO
+    SET day_counter = day_counter - 1;
+
+    -- Get the current day id
+    SELECT day_id INTO temp_day_id FROM itinerary_day WHERE itinerary_id = in_itinerary_id AND position = day_counter;
+
+    -- Get the destinations for the selected day
+    SELECT COUNT(*) INTO destination_counter FROM vw_itinerary_destinations WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id;
+
+    WHILE destination_counter > 0 DO
+      SET destination_counter = destination_counter - 1;
+      SELECT destination_id INTO temp_destination_id FROM vw_itinerary_destinations
+      WHERE itinerary_id = in_itinerary_id AND position = destination_counter AND day_id = temp_day_id;
+
+      -- Get the activities for the selected day
+      SELECT COUNT(*) INTO activity_counter FROM vw_itinerary_activities WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id AND destination_id = temp_destination_id;
+
+      WHILE activity_counter > 0 DO
+        SET activity_counter = activity_counter - 1;
+        SELECT currency_name, price INTO temp_currency, temp_price FROM vw_itinerary_activities
+        WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+
+        UPDATE itinerary_activity SET final_price = temp_price, final_currency = temp_currency WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+
+      END WHILE;
+
+    END WHILE;
+
+  END WHILE;
+
+  -- Display the value of the test variable (just for debugging purposes)
+
+END //
+DELIMITER ;
+
+
+
+DROP FUNCTION IF EXISTS create_itinerary_invoice;
+DELIMITER //
+CREATE FUNCTION create_itinerary_invoice( itinerary_id VARCHAR(100))
+BEGIN
+    CALL generate_activity_invoice(itinerary_id);
+END
+DELIMITER ;

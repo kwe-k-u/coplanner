@@ -21,21 +21,21 @@ class mailer{
 
 	function send_email($destination, $subject, $message){
 		$_name = $this->name;
-		$path = __DIR__."/../../logs/email_log.log";
-		$data = "\n\n\n";
-		// $add timestamp for entry with milliseconds
-		$data = date("Y-m-d H:i:s")."\n============<START>================";
-		$data .="\nFrom: $_name";
-		$data .="\nTo: $destination";
-		$data .="\nSubject: $subject";
-		$data .="\nMessage: $message";
-		$data .= "\n================<END>=========================\n";
+		// $path = __DIR__."/../../logs/email_log.log";
+		// $data = "\n\n\n";
+		// // $add timestamp for entry with milliseconds
+		// $data = date("Y-m-d H:i:s")."\n============<START>================";
+		// $data .="\nFrom: $_name";
+		// $data .="\nTo: $destination";
+		// $data .="\nSubject: $subject";
+		// $data .="\nMessage: $message";
+		// $data .= "\n================<END>=========================\n";
 
 
 
-		$fp = fopen($path, 'a');
-		fwrite($fp, "\n".$data);
-		fclose($fp);
+		// $fp = fopen($path, 'a');
+		// fwrite($fp, "\n".$data);
+		// fclose($fp);
 
 		$logger = new Logger();
 		$logger->email_log($_name,$destination,$subject,$message);

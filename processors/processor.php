@@ -4,16 +4,24 @@
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
-	// $http_origin = $_SERVER['HTTP_ORIGIN'];
-// if ($http_origin == "http://easygo.com.gh" ||
-// 	 $http_origin == "http://www.easygo.com.gh" ||
-// 	 $http_origin == "https://easygo.com.gh" ||
-// 	 $http_origin == "https://www.easygo.com.gh")
-// {
-//     header("Access-Control-Allow-Origin: $http_origin");
-// 	header('Access-Control-Allow-Methods: GET, POST');
-// 	header("Access-Control-Allow-Headers: X-Requested-With");
-// }
+$allowedDomains = array(
+    'https://www.prototype.easygo.com.gh',
+    'https://prototype.easygo.com.gh',
+    'https://easygo.com.gh',
+    'https://www.easygo.com.gh'
+);
+
+if(isset($_SERVER['HTTP_ORIGIN'])){
+	$requestOrigin = $_SERVER['HTTP_ORIGIN'];
+}else{
+	$requestOrigin = "";
+}
+
+if (in_array($requestOrigin, $allowedDomains)) {
+    header("Access-Control-Allow-Origin: $requestOrigin");
+    header("Access-Control-Allow-Methods: GET, POST");
+    header("Access-Control-Allow-Headers: Content-Type");
+}
 
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
@@ -348,6 +356,19 @@
 			}else{
 				send_json(array("msg"=>"request rejected"));
 			}
+			die();
+		case "/finalise_itinerary":
+			$itinerary_id = $_POST["itinerary_id"];
+			// fail if payment for the itinerary has been made
+
+			create_itinerary_invoice($itinerary_id);
+			send_json(array("msg"=> "Itinerary invoice generated"));
+			die();
+		case "/paystack_callback":
+			$_POST = json_decode(file_get_contents("php://input"),true);
+			die();
+		case "/request_password_reset":
+			send_json(array("msg"=> "Kindly send an email to main.easygo@gmail.com for help regaining your account!"),201);
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

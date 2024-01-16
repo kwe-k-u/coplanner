@@ -52,6 +52,7 @@
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
+    <script src="../assets/js/user_auth.js"></script>
 </body>
 
 </html>

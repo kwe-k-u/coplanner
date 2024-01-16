@@ -15,7 +15,7 @@ $dotenv->load();
  * false => localhost
  */
 function is_env_remote(){
-	return getenv("SERVER") == "REMOTE";
+	return $_ENV["SERVER"] == "REMOTE";
 }
 
 /**Returns the databse name for the current environment */
@@ -67,18 +67,22 @@ function slack_webhook_support(){
 
 
 function slack_webhook_error_logs(){
+	return $_ENV["SLACK_WEBSITE_ERRORS_URL"];
 	return getenv("SLACK_WEBSITE_ERRORS_URL");
 }
 
 function slack_webhook_user_logs(){
+	return $_ENV["SLACK_WEBSITE_USER_LOGS_URL"];
 	return getenv("SLACK_WEBSITE_USER_LOGS_URL");
 }
 
 function slack_webhook_transactions(){
+	return $_ENV["SLACK_WEBSITE_TRANSACTIONS_URL"];
 	return getenv("SLACK_WEBSITE_TRANSACTIONS_URL");
 }
 
 function slack_webhook_info_log(){
+	return $_ENV["SLACK_WEBHOOK_INFO_LOG_URL"];
 	return getenv("SLACK_WEBHOOK_INFO_LOG_URL");
 }
 

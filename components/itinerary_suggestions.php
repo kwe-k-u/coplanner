@@ -96,7 +96,8 @@
                     <div class='tab-pane fade show active' id='nav-editors-pick' role='tabpanel' aria-labelledby='editors-pick-tab'>
                         <div class='itinerary-cards-container easygo-scroll-bar scroll-h'>
                     <?php
-                    $itineraries = array_slice(get_featured_itineraries(),0,3);
+                    $itineraries = get_featured_itineraries();
+                    // $itineraries = array_slice(get_featured_itineraries(),0,3);
                     foreach ($itineraries as $entry) {
                         $itinerary_name = $entry["itinerary_name"];
                         $budget = $entry["budget"];
@@ -132,7 +133,7 @@
                                     <div class='itinerary-card-body'>
                                         <div class='price-and-people'>
                                             <div>
-                                                Creator: $owner_name <br>
+                                                Creator: <strong style='color: black;'>$owner_name</strong> <br>
                                             </div>
                                             <div>
                                                 GHS $budget <br>

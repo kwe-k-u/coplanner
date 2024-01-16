@@ -661,7 +661,7 @@ function createErrorMessageContainer(dataTarget) {
  */
 const FORM_INPUT_REGEX = {
   EMAIL: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/,
-  PASSWORD: /^(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*#?&]).{8,}/,
+  PASSWORD: /^(?=.*[a-z])(?=.*[@$!%*#?&0-9]|.*[a-z].*[0-9]).{8,}$/,
 };
 
 /**
@@ -678,7 +678,7 @@ function testInput(type, value,compare_val = null) {
       return FORM_INPUT_REGEX["PASSWORD"].test(value);
     case "confirm_password":
     case "confirm password":
-      return value == compare_val;
+      return value.localeCompare(compare_val) == 0;
     default:
       return false;
   }
