@@ -116,5 +116,18 @@
 			$this->bind($status,$request_id);
 			return $this->db_query();
 		}
+
+		function get_bed_types(){
+			$sql = "SELECT * FROM types_of_bed";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price){
+			$sql = "SELECT add_accommodation(?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($destination_id,$room_occupancy,$room_price,$room_bed_type);
+			return $this->db_fetch_one();
+		}
 	}
 ?>

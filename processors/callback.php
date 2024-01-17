@@ -77,15 +77,15 @@
 
 		die();
 
-		// case "/verify_payment":
-		// 	$reference = $_GET["reference"];
-		// 	$response = $paystack->verify_transaction($reference);
-		// 	if($response["status"]){
-		// 		echo "We have received payment. You should get an email from us confirming your seat! Contact support at main.easygo@gmail.com if you don't recieve a reciept";
-		// 	}else{
-		// 		echo "Hmm.. We haven't received payment! If you are still completing payment, refresh the page when you're done or contact support at main.easygo@gmail.com if you believe this is a mistake";
-		// 	}
-		// 	die();
+		case "/verify_payment":
+			$reference = $_GET["reference"];
+			$response = $paystack->verify_transaction($reference);
+			if($response["status"]){
+				send_json(array("msg"=> "We have received payment. You should get an email from us confirming your seat! Contact support at main.easygo@gmail.com if you don't recieve a reciept"));
+			}else{
+				send_json(array("msg"=> "Hmm.. We haven't received payment! If you are still completing payment, refresh the page when you're done or contact support at main.easygo@gmail.com if you believe this is a mistake"),201);
+			}
+			die();
 		// case "/verify_email":
 		// 	$token = $_GET["token"];
 		// 	$exists = check_email_verification_token($token);
@@ -153,56 +153,56 @@
 
 		// 	die();
 		case "/paystack_callback_first":
-			$_POST = json_decode(file_get_contents("php://input"),true);
+			// $_POST = json_decode(file_get_contents("php://input"),true);
 
-			$meta = $_POST["data"]["metadata"];
-			$data = $_POST["data"];
+			// $meta = $_POST["data"]["metadata"];
+			// $data = $_POST["data"];
 
-			$reference = $data["reference"];
+			// $reference = $data["reference"];
 
-			// check the transaction status
-			$res = $paystack->verify_transaction($reference);
-			$status = $res["status"];
+			// // check the transaction status
+			// $res = $paystack->verify_transaction($reference);
+			// $status = $res["status"];
 
-			//If payment was successful record data and send invoice
-			if($status){
-				// Check what the payment is for
-				$action = $meta["action"];
-				switch($action){
-					case "book_standard_tour":
-						$contact_name = $meta["contact_name"];
-						$contact_number = $meta["contact_number"];
-						$transaction_id = $data["id"];
-						$kids = $meta["num_kids"];
-						$adults = $meta["num_adults"];
-						$trans_amount = $data["amount"]/100;
-						$easygo_amount = $trans_amount/ (1+VAT_RATE + TOURISM_LEVY);
-						$tax = $trans_amount - $easygo_amount;
-						$currency = $data["currency"];
-						$booking_id = generate_id();
-						$user_id = $meta["user_id"];
-						$tour_id = $meta["tour_id"];
-						$trans_fee = $data["fees"] / 100;
-						$trans_date = $data["paid_at"];
+			// //If payment was successful record data and send invoice
+			// if($status){
+			// 	// Check what the payment is for
+			// 	$action = $meta["action"];
+			// 	switch($action){
+			// 		case "book_standard_tour":
+			// 			$contact_name = $meta["contact_name"];
+			// 			$contact_number = $meta["contact_number"];
+			// 			$transaction_id = $data["id"];
+			// 			$kids = $meta["num_kids"];
+			// 			$adults = $meta["num_adults"];
+			// 			$trans_amount = $data["amount"]/100;
+			// 			$easygo_amount = $trans_amount/ (1+VAT_RATE + TOURISM_LEVY);
+			// 			$tax = $trans_amount - $easygo_amount;
+			// 			$currency = $data["currency"];
+			// 			$booking_id = generate_id();
+			// 			$user_id = $meta["user_id"];
+			// 			$tour_id = $meta["tour_id"];
+			// 			$trans_fee = $data["fees"] / 100;
+			// 			$trans_date = $data["paid_at"];
 
-						// record transaction
-							record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$easygo_amount,$trans_fee,$tax);
-							book_standard_trip($booking_id,$user_id,$tour_id,$adults,$kids,$transaction_id,$contact_name,$contact_number);
+			// 			// record transaction
+			// 				record_transaction($transaction_id,$trans_date,$currency,$trans_amount,$easygo_amount,$trans_fee,$tax);
+			// 				book_standard_trip($booking_id,$user_id,$tour_id,$adults,$kids,$transaction_id,$contact_name,$contact_number);
 
-							$user = get_user_by_id($user_id);
-							$email = $user["email"];
-							$tour_name =get_campaign_by_tour_id($tour_id)["title"];
-							$mailer->booking_confirmation($email);
-							notify_booking($user["user_name"],$email,$tour_name,$booking_id,$adults + $kids);
+			// 				$user = get_user_by_id($user_id);
+			// 				$email = $user["email"];
+			// 				$tour_name =get_campaign_by_tour_id($tour_id)["title"];
+			// 				$mailer->booking_confirmation($email);
+			// 				notify_booking($user["user_name"],$email,$tour_name,$booking_id,$adults + $kids);
 
-						send_json(array("response"=> "received"));
-						die();
-					default:
-					//TODO:: record data and log error
-					die();
-				}
+			// 			send_json(array("response"=> "received"));
+			// 			die();
+			// 		default:
+			// 		//TODO:: record data and log error
+			// 		die();
+			// 	}
 
-			}
+			// }
 
 			die();
 		default:

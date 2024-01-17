@@ -304,23 +304,6 @@ LEFT JOIN
 
 
 
-DROP VIEW IF EXISTS vw_itinerary_activities;
- /*View to display information about the activities included in each day of each itinerary*/
-CREATE VIEW vw_itinerary_activities AS
-SELECT
-    day.itinerary_id,
-    ia.*,
-    a.activity_name,
-    da.price,
-    c.currency_name,
-    da.date_updated
-
-FROM itinerary_activity as ia
-inner join activities as a on a.activity_id = ia.activity_id
-inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
-INNER JOIN itinerary_day as day on day.day_id = ia.day_id
-INNER JOIN currency as c on c.currency_id = da.currency_id
-ORDER BY ia.position;
 
 
 -- Tracks all financial transactions on the platform
@@ -413,6 +396,44 @@ SELECT
 FROM user_destination_request as udr
 inner join vw_users as u on u.user_id = udr.user_id
 inner join destination_requests as dr on dr.request_id = udr.request_id;
+
+
+
+DROP VIEW IF EXISTS vw_itinerary_activities;
+ /*View to display information about the activities included in each day of each itinerary*/
+CREATE VIEW vw_itinerary_activities AS
+SELECT
+    day.itinerary_id,
+    ia.*,
+    a.activity_name,
+    da.price,
+    c.currency_name,
+    da.date_updated
+
+FROM itinerary_activity as ia
+inner join activities as a on a.activity_id = ia.activity_id
+inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
+INNER JOIN itinerary_day as day on day.day_id = ia.day_id
+INNER JOIN currency as c on c.currency_id = da.currency_id
+ORDER BY ia.position;
+
+
+
+DROP VIEW IF EIXSTS vw_itinerary_invoice;
+
+CREATE VIEW vw_itinerary_invoice as
+	SELECT
+		u.user_id,
+		u.email,
+		i.itinerary_id,
+		i.final_price AS itinerary_bill,
+		COALESCE(SUM(t.amount), 0) AS total_paid,
+		COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0) AS total_refund,
+		(COALESCE(i.final_price, 0) - COALESCE(SUM(t.amount), 0) - COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0))
+	AS amount_left FROM vw_users AS u
+	INNER JOIN vw_itinerary AS i ON i.owner_id = u.user_id
+	LEFT JOIN itinerary_payments AS ip ON ip.itinerary_id = i.itinerary_id LEFT JOIN transactions AS t ON ip.transaction_id = t.transaction_id
+	LEFT JOIN refunds AS r ON r.refunded_transaction_id = t.transaction_id GROUP BY u.user_id, u.email, i.itinerary_id, i.final_price ORDER BY `i`.`itinerary_id` ASC;
 
 
 

@@ -471,7 +471,8 @@ function create_site(form){
 			"destintion_type" : get_div_list(destination_type_list),
 			"rating" : form.rating.value,
 			"num_ratings" : form.num_reviews.value,
-			"cordinates" : form.cordinates.value
+			"cordinates" : form.cordinates.value,
+			"accommodation": get_loc_room_entries()
 		};
 	send_request(
 		"POST",
@@ -572,3 +573,39 @@ function create_type_of_destination(form){
 	)
 }
 
+function add_loc_room(){
+	let price = document.getElementById("room_price_field").value;
+	let bed_type = document.getElementById("bed_type_field").value;
+	let occupancy = document.getElementById("room_occupancy_field").value;
+	let table_body = document.getElementById("rooms_table_body");
+
+	let row = document.createElement("tr");
+	let price_cell = document.createElement("td");
+	let occupancy_cell = document.createElement("td");
+	let type_cell = document.createElement("td");
+	type_cell.scope = "row";
+	type_cell.innerText = bed_type;
+	price_cell.innerText = price;
+	occupancy_cell.innerText = occupancy;
+
+	row.append(type_cell,occupancy_cell,price_cell);
+
+	table_body.appendChild(row);
+
+}
+
+function get_loc_room_entries(){
+	let result = {};
+	let rows = document.getElementById("rooms_table_body").children;
+	for(let i=0; i < rows.length; i++){
+		// console.log(rows[i].children[i].innerText);
+		let row = rows[i];
+		let cells = row.children;
+		result[i] = {
+			"bed_type" : cells[0].innerText,
+			"occupancy" : cells[1].innerText,
+			"price" : cells[2].innerText
+		};
+	}
+	return result;
+}

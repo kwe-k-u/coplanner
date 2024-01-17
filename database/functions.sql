@@ -874,10 +874,11 @@ DELIMITER ;
 
 DROP FUNCTION IF EXISTS create_itinerary_invoice;
 DELIMITER //
-CREATE FUNCTION create_itinerary_invoice( itinerary_id VARCHAR(100))
+CREATE FUNCTION create_itinerary_invoice( itinerary_id VARCHAR(100)) returns int
 BEGIN
     CALL generate_activity_invoice(itinerary_id);
-END
+	return null;
+END //
 DELIMITER ;
 
 
@@ -929,4 +930,14 @@ begin
 	RETURN in_transaction_id;
 end //
 
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_itinerary_invoice;
+DELIMITER //
+CREATE PROCEDURE get_itinerary_invoice(
+	in in_itinerary_id VARCHAR(100)
+)begin
+	SELECT * from vw_itinerary_invoice where itinerary_id = in_itinerary_id;
+end //
 DELIMITER ;

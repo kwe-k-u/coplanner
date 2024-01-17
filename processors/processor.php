@@ -104,6 +104,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			}
 			die();
 		case "/create_destination":
+			$accomodation = json_decode($_POST["accommodation"],true);
 			$name = $_POST["destination_name"];
 			$location = $_POST["destination_location"];
 			$description = $_POST["site_description"]; //TODO:: add to sql
@@ -136,6 +137,14 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			foreach ($destination_type as $id=>$type_name){
 				add_destination_type($destination_id,$id);
+			}
+
+			foreach ($accomodation as $index=> $value) {
+				$room_bed_type=$value["bed_type"];
+				$room_occupancy=$value["occupancy"];
+				$room_price=$value["price"];
+
+				add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price);
 			}
 
 			send_json(array("msg"=> "Added destination"));

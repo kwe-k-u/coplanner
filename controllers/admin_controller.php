@@ -87,4 +87,14 @@
 		return $admin->get_destination_request_subscribers($request_id);
 	}
 
+	function get_bed_types(){
+		$admin = new admin_class();
+		return $admin->get_bed_types();
+	}
+
+	function add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price){
+		$admin = new admin_class();
+		return $admin->add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price);
+	}
+
 ?>

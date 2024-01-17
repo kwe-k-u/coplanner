@@ -131,11 +131,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 								$site_id = $site["destination_id"];
 								$site = get_destination_by_id($site_id);
 								$destination_name = $site["destination_name"];
-								$site_desc = "";//$site["destination_description"];
+								$site_desc = ""; //$site["destination_description"];
 								$destination_location = $site["location"];
-								$site_country = "";//$site["country"];
+								$site_country = ""; //$site["country"];
 								$site_activities = get_destination_activities($site_id);
-								$site_media = array();//$site["media"];
+								$site_media = array(); //$site["media"];
 							} else {
 
 								$site = "";
@@ -200,7 +200,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100 active" id="add-location-profile-tab" data-bs-toggle="tab" data-bs-target="#add-location-profile" type="button" role="tab" aria-controls="add-location-profile" aria-selected="false">
-									Destination Profile
+									Profile
 								</button>
 							</li>
 							<!-- <li class="nav-item" role="presentation">
@@ -210,12 +210,17 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 							</li> -->
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100" id="add-location-activities-tab" data-bs-toggle="tab" data-bs-target="#add-location-activities" type="button" role="tab" aria-controls="add-location-activities" aria-selected="false">
-									Destination Activities
+									Activities
+								</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link easygo-fs-4 h-100" id="add-location-accommodation-tab" data-bs-toggle="tab" data-bs-target="#add-location-accomodation" type="button" role="tab" aria-controls="add-location-accomodation" aria-selected="false">
+									Accommodation
 								</button>
 							</li>
 							<li class="nav-item" role="presentation">
 								<button class="nav-link easygo-fs-4 h-100" id="add-location-utilities-tab" data-bs-toggle="tab" data-bs-target="#add-location-utilities" type="button" role="tab" aria-controls="add-location-utilities" aria-selected="false">
-									Destination Utilities
+									Utilities
 								</button>
 							</li>
 							<li class="nav-item" role="presentation">
@@ -329,6 +334,59 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
 									</div>
 									<!-- Destination activities [end] -->
+									<!-- Destination accomodation [start] -->
+									<div class="col tab-pane fade" role="tabpanel" id="add-location-accomodation">
+										<div class="d-flex align-items-center gap-2 my-4">
+											<h6 class="easygo-fw-1 m-0">Accomodation</h6>
+											<small class="text-gray-1 easygo-fs-6">(Rooms available at the destination)</small>
+											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+										</div>
+
+										<div class="row">
+											<div class="col-3">
+												<div class="form-input-field">
+													<label class="text-gray-1 easygo-fs-4 ">Max Occupancy</label>
+													<input class="px-4 py-2 flex-grow-1" type="number" id="room_occupancy_field">
+												</div>
+											</div>
+											<div class="col-3">
+												<div class="form-input-field">
+													<label class="text-gray-1 easygo-fs-4 ">Price (GHS)</label>
+													<input class="px-4 py-2 flex-grow-1" type="number" id="room_price_field">
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-input-field">
+													<label for="" class="text-gray-1 easygo-fs-4">Type of bed</label>
+													<select name="room_type" id="bed_type_field">
+														<?php
+															$types = get_bed_types();
+															foreach ($types as $entry) {
+																$type_name = $entry["type_name"];
+																echo "<option value='$type_name'>$type_name</option>";
+															}
+														?>
+													</select>
+												</div>
+											</div>
+										</div>
+										<button class="btn btn-default border text-blue px-4 py-2" onclick="add_loc_room()">Add Room</button>
+										<div class="col">
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">Bed Type</th>
+														<th scope="col">Occupancy</th>
+														<th scope="col">Price(GHS)</th>
+													</tr>
+												</thead>
+												<tbody id="rooms_table_body">
+												</tbody>
+											</table>
+										</div>
+
+									</div>
+									<!-- Destination accomodation [end] -->
 									<!-- Destination utilities [start] -->
 									<div class="col tab-pane fade" role="tabpanel" id="add-location-utilities">
 										<div class="d-flex align-items-center gap-2 my-4">
