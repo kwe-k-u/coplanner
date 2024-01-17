@@ -183,6 +183,16 @@
 		return $public->create_itinerary_invoice($itinerary_id);
 	}
 
+	function get_itinerary_invoice($itinerary_id){
+		$public = new public_class();
+		return $public->get_itinerary_invoice($itinerary_id);
+	}
+
+
+	function make_itinerary_payment($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider = 'paystack'){
+		$public = new public_class();
+		return $public->make_itinerary_payment($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider);
+	}
 
 
 

@@ -879,3 +879,54 @@ BEGIN
     CALL generate_activity_invoice(itinerary_id);
 END
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS make_itinerary_payment;
+DELIMITER //
+CREATE PROCEDURE make_itinerary_payment(
+	IN in_itinerary_id VARCHAR(100),
+    IN in_provider_id VARCHAR(100),
+    IN in_sending_user VARCHAR(100),
+    IN in_purpose VARCHAR(200),
+    IN in_transaction_amount DOUBLE,
+    IN in_amount DOUBLE,
+    IN in_tax DOUBLE,
+    IN in_charges DOUBLE,
+	IN in_provider VARCHAR(10)
+)
+begin
+	DECLARE in_transaction_id VARCHAR(100);
+	-- Record the transaction
+	SELECT record_transaction(in_sending_user,in_provider_id ,in_purpose ,in_transaction_amount ,in_amount ,in_tax ,in_charges ,in_provider) INTO in_transaction_id;
+	-- Create the itinerary payment connection
+	INSERT INTO itinerary_payments(transaction_id,itinerary_id)
+	VALUES(in_transaction_id,in_itinerary_id);
+	-- Make the transaction id accessible to the calling function
+	SELECT in_transaction_id;
+end //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS record_transaction;
+DELIMITER //
+CREATE FUNCTION record_transaction(
+	in_user_id VARCHAR(100),
+	in_provider_id VARCHAR(100),
+	in_purpose VARCHAR(200),
+	in_transaction_amount DOUBLE,
+	in_amount DOUBLE,
+	in_tax DOUBLE,
+	in_charges DOUBLE,
+	in_provider VARCHAR(50)
+) RETURNS VARCHAR(100)
+begin
+	DECLARE in_transaction_id VARCHAR(100);
+	SELECT  generate_id() INTO in_transaction_id;
+	INSERT INTO `transactions`(`transaction_id`, `provider_transaction_id` , `sending_user`, `purpose`, `total_transaction_amount`, `amount`, `tax`, `charges`, `provider`)
+	VALUES (in_transaction_id,in_provider_id,in_user_id,in_purpose,in_transaction_amount,in_amount,in_tax,in_charges,in_provider);
+
+	RETURN in_transaction_id;
+end //
+
+DELIMITER ;

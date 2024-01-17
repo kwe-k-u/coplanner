@@ -205,6 +205,8 @@
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- paystack js -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- easygo js -->

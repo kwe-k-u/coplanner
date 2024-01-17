@@ -78,4 +78,8 @@ class mailer{
 		return $this->send_email($email,$subject,$message);
 	}
 
+	// function user_itinerary_payment_email($email,$itinerary_id,$amount_paid){
+
+	// }
+
 }

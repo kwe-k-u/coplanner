@@ -86,4 +86,13 @@ function slack_webhook_info_log(){
 	return getenv("SLACK_WEBHOOK_INFO_LOG_URL");
 }
 
+function paystack_public_key(){
+	return $_ENV["PAYSTACK_PUBLIC_KEY"];
+}
+
+function paystack_private_key(){
+	return $_ENV["PAYSTACK_PRIVATE_KEY"];
+}
+
+
 ?>

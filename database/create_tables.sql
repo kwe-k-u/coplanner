@@ -323,6 +323,44 @@ INNER JOIN currency as c on c.currency_id = da.currency_id
 ORDER BY ia.position;
 
 
+-- Tracks all financial transactions on the platform
+CREATE TABLE transactions (
+    transaction_id VARCHAR(100),
+	provider_transaction_id VARCHAR(150) UNIQUE,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    sending_user VARCHAR(100),
+    purpose VARCHAR(200),
+    total_transaction_amount DOUBLE,
+    amount DOUBLE,
+    tax DOUBLE,
+    charges DOUBLE,
+    provider ENUM("paystack") DEFAULT "paystack",
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (sending_user) REFERENCES users(user_id)
+);
+
+CREATE TABLE itinerary_payments(
+    transaction_id VARCHAR(100) UNIQUE,
+    itinerary_id VARCHAR(100),
+    PRIMARY KEY (itinerary_id,transaction_id),
+    FOREIGN KEY (itinerary_id) REFERENCES itinerary(itinerary_id),
+    FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id)
+);
+CREATE TABLE refunds(
+    refund_id VARCHAR(100) PRIMARY KEY, -- Transaction that made the refund
+    refunded_transaction_id VARCHAR(100) UNIQUE,
+    FOREIGN KEY (refund_id) REFERENCES transactions(transaction_id),
+    FOREIGN KEY (refunded_transaction_id) REFERENCES transactions(transaction_id)
+);
+
+
+
+-- CREATE TABLE destination_payment(
+--     transaction_id VARCHAR(100) UNIQUE,
+--     destination_account_id VARCHAR(100)
+-- );
+
+
 
 
 DROP VIEW IF EXISTS vw_itinerary_destinations;

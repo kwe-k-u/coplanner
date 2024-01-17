@@ -43,5 +43,19 @@
 		return $slack->notify_info_log($message);
 	}
 
+	/**Notifies slack about a user making payment for an itinerary */
+	function notify_slack_itinerary_payment($itinerary_id,$transaction_id){
+		$slack = new slack_bot_class();
+		$message = "A user has made payment for itinerary $itinerary_id. Transaction ID is $transaction_id";
+		return $slack->notify_transaction_log($message);
+	}
+
+	function notify_slack_itinerary_invoice_generation($itinerary_id){
+		$slack = new slack_bot_class();
+		$message = "A user has generated an invoice for the itinerary with id $itinerary_id";
+		return $slack->notify_user_log($message);
+	}
+
+
 
 ?>

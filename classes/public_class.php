@@ -225,6 +225,20 @@
 			return $this->db_query();
 		}
 
+		function make_itinerary_payment($itinerary_id, $provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider){
+			$sql = "CALL make_itinerary_payment(?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider);
+			return $this->db_fetch_one();
+		}
+
+		function get_itinerary_invoice($itinerary_id){
+			$sql = "call  get_itinerary_invoice(?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id);
+			return $this->db_fetch_one();
+		}
+
 
 	}
 ?>

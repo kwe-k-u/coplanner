@@ -359,10 +359,17 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			die();
 		case "/finalise_itinerary":
 			$itinerary_id = $_POST["itinerary_id"];
+			// TODO:: notify destinations associated with the booking
 			// fail if payment for the itinerary has been made
-
+			notify_slack_itinerary_invoice_generation($itinerary_id);
 			create_itinerary_invoice($itinerary_id);
 			send_json(array("msg"=> "Itinerary invoice generated"));
+			die();
+		case "/get_itinerary_invoice":
+			$itinerary_id = $_POST["itinerary_id"];
+			create_itinerary_invoice($itinerary_id);
+			$data = get_itinerary_invoice($itinerary_id);
+			send_json(array("invoice"=>$data));
 			die();
 		case "/paystack_callback":
 			$_POST = json_decode(file_get_contents("php://input"),true);

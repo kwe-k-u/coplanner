@@ -14,6 +14,14 @@
 			$this->private_key = paystack_private_key();
 		}
 
+		function log_json($id,$json){
+			$path = __DIR__."/../logs/paystack-".$id.".json";
+
+			$fp = fopen($path, 'a');
+			fwrite($fp, $json);
+			fclose($fp);
+		}
+
 
 		function verify_transaction($reference){
 			$response = $this->get($this->baseurl."transaction/verify/$reference",
