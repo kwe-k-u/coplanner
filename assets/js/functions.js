@@ -144,8 +144,16 @@ function create_itinerary(){
   "processors/processor.php/create_itinerary",
   null,
   (response)=>{
-    let id = response.data.itinerary_id;
-    goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
+    if(response.status == 200){
+      let id = response.data.itinerary_id;
+      goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
+    }else{
+      if(response.data.reason == "unauthenticated"){
+        goto_page("coplanner/login.php?redirect_url="+window.location);
+      }else{
+        openDialog(response.data.msg);
+      }
+    }
   });
 }
 
@@ -157,8 +165,17 @@ function duplicate_itinerary(itinerary_id){
     "itinerary_id" : itinerary_id
   },
   (response)=>{
-    let id = response.data.itinerary_id;
-    goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
+    if(response.status ==200){
+      let id = response.data.itinerary_id;
+      goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
+    }else{
+      if(response.data.reason == "unauthenticated"){
+
+        goto_page("coplanner/login.php?redirect_url="+window.location);
+      }else{
+        openDialog(response.data.msg);
+      }
+    }
   }
   );
 }
@@ -183,7 +200,11 @@ function toggle_wishlist(itinerary_id){
         target.classList= "easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white";
       }
     }else{
-      openDialog(response.data.msg);
+      if(response.data.reason=="unauthenticated"){
+        goto_page("coplanner/login.php?redirect_url="+window.location);
+      }else{
+        openDialog(response.data.msg);
+      }
     }
   }) //TODO:: IMplement wishlist remove by default on interface
 }

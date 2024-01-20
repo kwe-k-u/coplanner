@@ -4,6 +4,7 @@
 
 <head>
   <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
+  <?php include_once(__DIR__."/../utils/analytics/google_head_tag.php") ?>
     <meta charset="UTF-8">
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
 </head>
 
 <body>
+<?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
 
     <!-- main content start -->
     <main class="form-page-main container">
@@ -86,7 +88,15 @@
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-1 easygo-rounded-2" type="submit">Register</button>
-                    <p class="easygo-fs-5 text-center mt-4">Already have an account ? <a href="./login.php" class="easygo-fs-5 easygo-fw-3">Login now</a></p>
+                    <?php
+                        if(isset($_GET["redirect_url"])){
+                            $url = $_GET["redirect_url"];
+                            echo "<p class='easygo-fs-5 text-center mt-4'>Don't have an account ? <a href='./login.php?redirect_url=$url' class='easygo-fs-5 easygo-fw-3'>Sign Up now</a></p>";
+                            echo "";
+                        }else{
+                            echo "<p class='easygo-fs-5 text-center mt-4'>Don't have an account ? <a href='./login.php' class='easygo-fs-5 easygo-fw-3'>Sign Up now</a></p>";
+                        }
+                    ?>
                 </div>
             </form>
             <!-- register form 1 [end] -->

@@ -47,7 +47,15 @@ function next_choice(parent_id, target_id) {
 				"processors/processor.php/create_itinerary",
 				{},
 				(response) => {
-					goto_page("coplanner/edit_itinerary.php?id=" + response.data.itinerary_id);
+					if(response.status==200){
+						goto_page("coplanner/edit_itinerary.php?id=" + response.data.itinerary_id);
+					}else{
+						if(response.data.reason=="unauthenticated"){
+							goto_page("coplanner/login.php?redirect_url="+window.location);
+						}else{
+							openDialog(response.data.msg);
+						}
+					}
 				}
 			);
 

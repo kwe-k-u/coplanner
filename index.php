@@ -8,12 +8,13 @@ require_once(__DIR__ . "/utils/env_manager.php");
 <head>
     <meta charset="UTF-8">
     <?php include_once(__DIR__ . "/utils/analytics/google_tag.php") ?>
+    <?php include_once(__DIR__ . "/utils/analytics/google_head_tag.php") ?>
     <link rel="icon" href="assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Coplanner - Home</title>
+    <title>EasyGo - Home</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -21,6 +22,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
     <!-- easygo css -->
     <link rel="stylesheet" href="assets/css/general.css">
 </head>
+<?php include_once(__DIR__ . "/utils/analytics/google_body_tag.php") ?>
 
 <body class="bg-gray-3">
 
@@ -47,12 +49,12 @@ require_once(__DIR__ . "/utils/env_manager.php");
                             <div class='d-flex justify-content-between gap-4'>
                                 <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' onclick='showToast("Contact our support team at main.easygo@gmail.com")'>Become an easyGo Partner</a>
                                 <?php
-                                    if(is_session_logged_in()){
+                                    // if(is_session_logged_in()){
                                         echo "<a href='coplanner/coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>";
-                                    }else{
-                                        echo "<a href='coplanner/login.php?redirect_url=coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>";
+                                    // }else{
+                                    //     echo "<a href='coplanner/login.php?redirect_url=coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>";
 
-                                    }
+                                    // }
                                 ?>
 
                             </div>

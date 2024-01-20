@@ -292,8 +292,15 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			die();
 		case "/create_itinerary":
 			$user_id = get_session_user_id();
-			$id = create_itinerary($user_id,1);
-			send_json(array("msg"=> "Success","itinerary_id" => $id["itinerary_id"]));
+			if($user_id){
+				$id = create_itinerary($user_id,1);
+				send_json(array("msg"=> "Success","itinerary_id" => $id["itinerary_id"]));
+			}else{
+				send_json(array(
+					"msg"=> "You must be signed in to continue",
+					"reason" => "unauthenticated"
+				),201);
+			}
 			die();
 		case "/update_itinerary_name":
 			$itinerary_id = $_POST["itinerary_id"];
@@ -332,7 +339,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 					die();
 				}
 			}else{
-				send_json(array("msg"=> "You need to be signed in to save an itinerary for later"),201);
+				send_json(array(
+					"msg"=> "You need to be signed in to save an itinerary for later",
+					"reason"=> "unauthenticated"
+			),201);
 				die();
 			}
 			die();
@@ -344,7 +354,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				notify_slack_itinerary_duplicate($itinerary_id);
 				send_json($data);
 			}else{
-				send_json(array("msg"=> "You need to sign in to create an itinerary"),201);
+				send_json(array(
+					"msg"=> "You need to sign in to create an itinerary",
+					"reason"=> "unauthenticated"
+				),201);
 			}
 			die();
 		case "/toggle_destination_request_status":
