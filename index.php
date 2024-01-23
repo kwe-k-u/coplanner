@@ -44,7 +44,8 @@ require_once(__DIR__ . "/utils/env_manager.php");
                         <div class="d-flex flex-column gap-5">
                             <h2 class="text-blue easygo-fw-1">Create tour itineries yourself</h2>
                             <div class="easygo-fs-2">
-                                Coplanner by easyGo is an itinerary creation tool for the best explorers in the world
+                            We let adventure seekers to quickly craft travel plans that capture
+                            unique thrilling experiences and book the destinations included in those plans
                             </div>
                             <div class='d-flex justify-content-between gap-4'>
                                 <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' onclick='showToast("Contact our support team at main.easygo@gmail.com")'>Become an easyGo Partner</a>
@@ -62,7 +63,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                     </div>
                     <div class="col-lg-6 p-3">
                         <div class="w-100 h-100 d-flex justify-content-center">
-                            <img class="img-fluid" src="assets/images/site_images/coplanner.png" alt="coplanner image">
+                            <img class="img-fluid" src="assets/images/others/long_11.jpeg" alt="coplanner image">
                         </div>
                     </div>
                 </div>
@@ -105,15 +106,41 @@ require_once(__DIR__ . "/utils/env_manager.php");
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- Section 3 [start] -->
-            <section class="my-5 py-5">
-                <h2 class="text-center">
-                    Chose from over
-                    <br>
-                    <span class="text-blue easygo-h2 easygo-fw-1">3000</span>
-                    <br>
-                    destinations for your travel plans
-                </h2>
-            </section>
+
+            <div class="about-intro-third pt-3 my-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+
+                                <div>
+                                    <h2 class="text-blue easygo-fw-1 text-capitalize">You know yourself best</h2>
+                                    We know working with tour companies to plan your perfect vacation doesn't always
+                                    end up with the best results. That's why we give the power to you! Create the
+                                    itinerary you want in minutes. Don't like something? Just change it. The
+                                    only limitations are your imagination. <br> Not sure what to add to your itinerary?
+                                    Use of itinerary generation service to get recommendations on itineraries based on your
+                                    theme. Then, make any changes you want. The itineraries are truely yours!
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                                <div class="grid-3" style="max-height: 500px">
+                                    <div class="grid-item">
+                                        <img src="assets/images/others/tall_10.jpeg" alt="scenery" class="w-100 h-100">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="assets/images/others/long_1.jpeg" alt="scenery" class="w-100 h-100">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="assets/images/others/tall_3.jpeg" alt="scenery" class="w-100 h-100">
+                                    </div>
+                                    <div class="grid-item">
+                                        <img src="assets/images/others/tall_7.jpeg" alt="scenery" class="w-100 h-100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <!--- Section 3 [end] -->
             <!--- ================================ -->
             <!--- ================================ -->

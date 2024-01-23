@@ -67,7 +67,7 @@ if (session_status() == PHP_SESSION_NONE){
 		? "https://" : "http://";
 		$redirect = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		if (!is_session_logged_in()){
-			header("Location: ../login.php?redirect=$redirect");
+			header("Location: ../login.php?redirect_url=$redirect");
 			die();
 		}
 	}
@@ -241,5 +241,10 @@ if (session_status() == PHP_SESSION_NONE){
 		);
 	}
 
-	
+	function suggest_image(){
+		$num = random_int(0,12);
+		return "$num.jpg";
+	}
+
+
 ?>

@@ -127,9 +127,13 @@
                             }
                         }
 
+							$suggested_image = suggest_image();
+							$suggested_image = server_base_url()."assets/images/suggestions/$suggested_image";
+
                         echo "
                                 <div class='itinerary-card'  onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
-                                    <p class='itinerary-card-top-note'>New</p>
+
+										<img src='$suggested_image' class='w-100 h-100 about-image '>
                                     <div class='itinerary-card-body'>
                                         <div class='price-and-people'>
                                             <div>

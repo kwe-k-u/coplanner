@@ -1859,7 +1859,7 @@ input:disabled {
 .itinerary-card {
   background-color: white;
   width: 400px;
-  height: 300px;
+  height: 500px;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
@@ -1920,6 +1920,22 @@ input:disabled {
   border-radius: 5px;
   font-size: var(--font-size-5);
 }
+
+/* [start] Iitnerary card with small image card  */
+
+.activity-span{
+  background-color: var(--easygo-blue);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-size: var(--font-size-5);
+}
+/* [end] Iitnerary card with small image card  */
+
+
+
+
+
 
 .suggestion-card {
   border: solid 1px var(--easygo-blue);

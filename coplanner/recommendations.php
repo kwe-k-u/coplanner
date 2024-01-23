@@ -74,7 +74,7 @@
 		?>
 		<!-- navbar [end] -->
 		<!--- ================================ -->
-		<main class="container" style="height: 100vh; padding-top: 9rem; padding-bottom: 3rem;">
+		<main class="container" style="height: 200vh; padding-top: 9rem; padding-bottom: 3rem;">
 			<div class="loader"></div>
 			<div class="col">
 				<h3>Here are some recommendations to choose from</h3>
@@ -111,10 +111,12 @@
 									<div class='activity'>$act_name</div>";
 								}
 							}
+							$suggested_image = suggest_image();
+							$suggested_image = server_base_url()."assets/images/suggestions/$suggested_image";
 
 							echo "
 									<div class='itinerary-card grid-item m-2'  onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
-										<p class='itinerary-card-top-note'>New</p>
+										<img src='$suggested_image' class='about-image w-100 h-100'>
 										<div class='itinerary-card-body'>
 											<div class='price-and-people'>
 												<div>
