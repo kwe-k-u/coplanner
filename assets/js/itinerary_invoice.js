@@ -1,20 +1,20 @@
 
 
 function pay_invoice(){
-	let itinerary_id = url_params("id");
+	let invoice_id = url_params("id");
 	send_request("POST",
-	"processors/processor.php/get_itinerary_invoice",
+	"processors/processor.php/get_invoice",
 	{
-		"itinerary_id" : itinerary_id
+		"invoice_id" : invoice_id
 	},(response)=>{
 		let invoice = response.data.invoice;
 		let amount_left = Math.round(invoice.amount_left*100);
 		let user_email =invoice.email;
-		invoice["purpose"] = "Payment for itinerary "+itinerary_id;
+		invoice["purpose"] = "Payment for invoice "+ invoice_id;
 		invoice["payment_purpose"] = "itinerary_payment";
 
 
-		if(amount_left > 0){
+		if(amount_left >= 0){
 			payWithPaystack("GHS",amount_left,user_email,invoice);
 		}else{
 			showToast("The cost of the itinerary has been covered by a previous transaction");

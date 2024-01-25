@@ -379,18 +379,19 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				send_json(array("msg"=>"request rejected"));
 			}
 			die();
-		case "/finalise_itinerary":
+		case "/create_itinerary_invoice":
 			$itinerary_id = $_POST["itinerary_id"];
 			// TODO:: notify destinations associated with the booking
 			// fail if payment for the itinerary has been made
 			notify_slack_itinerary_invoice_generation($itinerary_id);
-			create_itinerary_invoice($itinerary_id);
-			send_json(array("msg"=> "Itinerary invoice generated"));
+			//TODO:: work on number of people count
+			$invoice_id = array_values(create_itinerary_invoice($itinerary_id,1))[0];
+			send_json(array("msg"=> "Itinerary invoice generated","invoice_id"=> $invoice_id));
 			die();
-		case "/get_itinerary_invoice":
-			$itinerary_id = $_POST["itinerary_id"];
-			create_itinerary_invoice($itinerary_id);
-			$data = get_itinerary_invoice($itinerary_id);
+		case "/get_invoice":
+			$invoice_id = $_POST["invoice_id"];
+			// create_itinerary_invoice($itinerary_id);
+			$data = get_invoice_by_id($invoice_id);
 			send_json(array("invoice"=>$data));
 			die();
 		case "/paystack_callback":
@@ -398,6 +399,11 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			die();
 		case "/request_password_reset":
 			send_json(array("msg"=> "Kindly send an email to main.easygo@gmail.com for help regaining your account!"),201);
+			die();
+		case "/get_itinerary_invoices":
+			$itinerary_id = $_POST["itinerary_id"];
+			$data = get_itinerary_invoices($itinerary_id);
+			send_json(array("invoices"=>$data));
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

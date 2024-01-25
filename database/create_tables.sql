@@ -276,6 +276,26 @@ CREATE TABLE user_destination_request(
 );
 
 
+DROP TABLE IF EXISTS accommodation;
+DROP TABLE IF EXISTS types_of_bed;
+
+-- The bed option
+CREATE TABLE types_of_bed(
+	type_id INT PRIMARY KEY AUTO_INCREMENT,
+	type_name VARCHAR(100) UNIQUE
+);
+
+-- Room information for destinations with accommodation options
+CREATE TABLE accommodation(
+	accommodation_id VARCHAR(100) PRIMARY KEY,
+	destination_id VARCHAR(100),
+	occupancy INT,
+	price DECIMAL(10,2),
+	bed_type INT,
+	date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+	date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (bed_type) REFERENCES types_of_bed(type_id)
+);
 
 /*--------------------------------------------------------------------------------------------------
 -------------------------- VIEWS -----------------------------------------------------------------
@@ -338,10 +358,6 @@ CREATE TABLE refunds(
 
 
 
--- CREATE TABLE destination_payment(
---     transaction_id VARCHAR(100) UNIQUE,
---     destination_account_id VARCHAR(100)
--- );
 
 
 
@@ -371,7 +387,7 @@ SELECT
     u.user_name as owner_name,
     (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
     (select count(*) from vw_itinerary_destinations as vid where vid.itinerary_id = i.itinerary_id) as num_destinations,
-    (select sum(final_price) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as final_price,
+    (select sum(price) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as final_price,
     (select COALESCE(sum(price),0) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as budget,
     (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day
 from itinerary as i
@@ -470,3 +486,10 @@ INSERT INTO types_of_destination(type_name) VALUES
 INSERT INTO currency(currency_id,currency_name) VALUES
 (1,"GHS"),
 (2,"USD");
+
+
+INSERT INTO types_of_bed (type_name) VALUES
+('Single Bed (Twin Bed)'),
+('Double Bed'),
+('Queen Bed'),
+('King Bed');

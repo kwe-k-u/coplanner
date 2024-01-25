@@ -133,7 +133,7 @@
                         echo "
                                 <div class='itinerary-card'  onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
 
-										<img src='$suggested_image' class='w-100 h-100 about-image '>
+										<img src='$suggested_image' class='itinerary-img '>
                                     <div class='itinerary-card-body'>
                                         <div class='price-and-people'>
                                             <div>

@@ -933,11 +933,50 @@ end //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS get_itinerary_invoice;
+DROP PROCEDURE IF EXISTS get_invoice;
 DELIMITER //
-CREATE PROCEDURE get_itinerary_invoice(
-	in in_itinerary_id VARCHAR(100)
+CREATE PROCEDURE get_invoice(
+	in in_invoice_id VARCHAR(100)
 )begin
-	SELECT * from vw_itinerary_invoice where itinerary_id = in_itinerary_id;
+	SELECT * from vw_itinerary_invoice where invoice_id = in_invoice_id;
 end //
 DELIMITER ;
+
+
+
+DROP FUNCTION IF EXISTS add_bed_type;
+delimiter //
+CREATE FUNCTION add_bed_type(in_name VARCHAR(50))returns INT
+begin
+	DECLARE bed_id INT;
+	SELECT type_id INTO bed_id from types_of_bed where type_name = in_bed_type;
+
+	IF bed_id is null then
+		INSERT INTO types_of_bed(type_name) VALUES (in_bed_type);
+	end if;
+	return bed_id;
+end//
+delimiter ;
+
+
+DROP FUNCTION IF EXISTS add_accommodation;
+delimiter //
+CREATE FUNCTION add_accommodation(
+	in_destination_id VARCHAR(100),
+	in_occupancy INT,
+	in_price DECIMAL(10,2),
+	in_bed_type VARCHAR(50)
+)RETURNS VARCHAR(100)
+begin
+	DECLARE in_bed_id INT;
+	DECLARE in_accommodation_id VARCHAR(100);
+
+	SELECT generate_id() INTO in_accommodation_id;
+	SELECT type_id INTO in_bed_id from types_of_bed where type_name = in_bed_type;
+
+	INSERT INTO `accommodation`(`accommodation_id`, `destination_id`, `occupancy`, `price`, `bed_type`)
+	VALUES (in_accommodation_id,in_destination_id,in_occupancy,in_price,in_bed_id);
+
+	RETURN in_accommodation_id;
+end//
+delimiter ;

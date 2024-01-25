@@ -39,7 +39,7 @@
 				 switch ($payment_purpose){
 					case "itinerary_payment":
 						// retrieve relevant information
-						$itinerary_id = $meta["itinerary_id"];
+						$invoice_id = $meta["invoice_id"];
 						$provider_transaction_id = $data["id"];
 						$user_id = $meta["user_id"];
 						$purpose = $meta["purpose"];
@@ -50,7 +50,7 @@
 						$amount = $transaction_amount - $charges - $tax;
 
 						//perform transaction
-						$transaction_id =  make_itinerary_payment($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges);
+						$transaction_id =  make_invoice_payment($invoice_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges);
 						$trasaction_id = array_values($transaction_id)[0];
 
 						//Send a status update
@@ -58,7 +58,7 @@
 							//TODO:: send email to user to confirm payment
 							// $mailer->user_itinerary_payment_email();
 							//notify admin of payment
-							notify_slack_itinerary_payment($itinerary_id,$transaction_id);
+							notify_slack_itinerary_payment($invoice_id,$transaction_id);
 							send_json(array("msg"=> "Ok"));
 						}else{
 							send_json(array("msg"=> "Something went wrong "));

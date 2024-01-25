@@ -178,22 +178,36 @@
 		return $public->add_destination_request($query,$user_id);
 	}
 
-	function create_itinerary_invoice($itinerary_id){
+	function create_itinerary_invoice($itinerary_id,$people_count=1){
 		$public = new public_class();
-		return $public->create_itinerary_invoice($itinerary_id);
+		return $public->create_itinerary_invoice($itinerary_id,$people_count);
 	}
 
-	function get_itinerary_invoice($itinerary_id){
+	function get_invoice($invoice_id){
 		$public = new public_class();
-		return $public->get_itinerary_invoice($itinerary_id);
+		return $public->get_invoice($invoice_id);
 	}
 
 
-	function make_itinerary_payment($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider = 'paystack'){
+	function make_invoice_payment($invoice_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider = 'paystack'){
 		$public = new public_class();
-		return $public->make_itinerary_payment($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider);
+		return $public->make_invoice_payment($invoice_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider);
 	}
 
+	function get_itinerary_invoices($itinerary_id){
+		$public = new public_class();
+		return $public->get_itinerary_invoices($itinerary_id);
+	}
+
+	function get_invoice_by_id($invoice_id){
+		$public = new public_class();
+		return $public->get_invoice_by_id($invoice_id);
+	}
+
+	function get_invoice_activities($invoice_id){
+		$public = new public_class();
+		return $public->get_invoice_activities($invoice_id);
+	}
 
 
 ?>

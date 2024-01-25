@@ -218,25 +218,46 @@
 			return $this->db_fetch_one();
 		}
 
-		function create_itinerary_invoice($itinerary_id){
-			$sql = "SELECT create_itinerary_invoice(?)";
+		function create_itinerary_invoice($itinerary_id,$people_count){
+			$sql = "SELECT create_itinerary_invoice(?,?)";
 			$this->prepare($sql);
-			return $this->bind($itinerary_id);
-			return $this->db_query();
-		}
-
-		function make_itinerary_payment($itinerary_id, $provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider){
-			$sql = "CALL make_itinerary_payment(?,?,?,?,?,?,?,?,?)";
-			$this->prepare($sql);
-			$this->bind($itinerary_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider);
+			 $this->bind($itinerary_id, $people_count);
 			return $this->db_fetch_one();
 		}
 
-		function get_itinerary_invoice($itinerary_id){
-			$sql = "call  get_itinerary_invoice(?)";
+		function make_invoice_payment($invoice_id, $provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider){
+			$sql = "CALL make_invoice_payment(?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($invoice_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges,$provider);
+			return $this->db_fetch_one();
+		}
+
+		function get_invoice($invoice_id){
+			$sql = "CALL  get_invoice(?)";
+			$this->prepare($sql);
+			$this->bind($invoice_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_itinerary_invoices($itinerary_id){
+			$sql = "CALL get_itinerary_invoices(?)";
 			$this->prepare($sql);
 			$this->bind($itinerary_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_invoice_by_id($invoice_id){
+			$sql = "CALL get_invoice_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($invoice_id);
 			return $this->db_fetch_one();
+		}
+
+		function get_invoice_activities($invoice_id){
+			$sql = "CALL get_invoice_activities(?)";
+			$this->prepare($sql);
+			$this->bind($invoice_id);
+			return $this->db_fetch_all();
 		}
 
 

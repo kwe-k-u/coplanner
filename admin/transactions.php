@@ -1,6 +1,5 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
 

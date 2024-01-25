@@ -116,7 +116,7 @@
 
 							echo "
 									<div class='itinerary-card grid-item m-2'  onclick='goto_page(\"coplanner/itinerary_view.php?id=$itinerary_id\")'>
-										<img src='$suggested_image' class='about-image w-100 h-100'>
+										<img src='$suggested_image' class='itinerary-img'>
 										<div class='itinerary-card-body'>
 											<div class='price-and-people'>
 												<div>
@@ -128,9 +128,6 @@
 											</div>
 											<div>
 												<h6 class='easygo-fw-1'>$itinerary_name</h6>
-												<p class='itinerary-desc'>
-													An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
-												</p>
 											</div>
 											<div class='itinerary-activities'>
 												$activity_text

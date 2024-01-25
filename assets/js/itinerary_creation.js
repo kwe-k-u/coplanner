@@ -580,3 +580,40 @@ function search_on_type(){
 }
 
 
+function finalise_itinerary(itinerary_id){
+	send_request("POST",
+	"processors/processor.php/get_itinerary_invoices",
+	{
+		"itinerary_id" : itinerary_id
+	},
+	(response)=>{
+		if(response.status == 200){
+			//If the itinerary has pre-existing invoices, let the user choose to edit one
+			if(response.data.invoices.length >=1){
+				if(confirm("You have existing invoices for this itinerary. Select Yes to edit an existing invoice or No to create a new invoice")){
+					//TODO:: let user select an invoice to edit
+					return null;
+				}
+			}
+
+			send_request("POST",
+			"processors/processor.php/create_itinerary_invoice",
+			{
+				"itinerary_id" : itinerary_id
+			},
+			(response)=> {
+				if(response.status == 200){
+					goto_page("coplanner/itinerary_invoice.php?id="+response.data.invoice_id);
+				}else{
+					openDialog(response.data.msg);
+					return null;
+				}
+			}
+			);
+		}else{
+			openDialog(response.data.msg);
+		}
+	})
+}
+
+

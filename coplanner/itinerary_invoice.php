@@ -2,15 +2,17 @@
     require_once(__DIR__ . "/../utils/core.php");
     require_once(__DIR__."/../controllers/public_controller.php");
 
+    $invoice_id = $_GET["id"];
+    $invoice = get_invoice_by_id($invoice_id);
     $itinerary_id = $_GET["id"];
     $itinerary = get_itinerary_by_id($itinerary_id);
     $user_id = get_session_user_id();
     $username = get_user_info($user_id)["user_name"];
 
-    $activity_budget = $itinerary["budget"];
-    $transportation_budget = 0;
-    $lodging_budget = 0;
-    $total_budget = $lodging_budget + $transportation_budget + $activity_budget;
+    $activity_budget = $invoice["activity_bill"];
+    $transportation_budget = $invoice["transportation_bill"];
+    $lodging_budget = $invoice["accommodation_bill"];
+    $total_budget = $invoice["total_bill"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +24,7 @@
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coplanner -Invoice</title>
+    <title>easyGo - Itinerary Invoice</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -150,44 +152,103 @@
                                         <!--- ================================ -->
                                         <!--- Destination Card [start] -->
                                         <?php
-                                            $days = get_itinerary_days($itinerary_id);
-                                            foreach ($days as $d) {
-                                                $day_id = $d["day_id"];
-                                                echo "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
-                                                $destinations = get_itinerary_day_info($day_id)["destinations"];
-                                                foreach ($destinations as $destination) {
-                                                    $activities  = $destination["activities"];
-                                                    $destination_name = $destination["destination_name"];
-                                                    $location = $destination["location"];
-                                                    $activity_text = "";
-                                                    foreach ($activities as $activity) {
-                                                        $act_name = $activity["activity_name"];
-                                                        $activity_text .="
-                                                        <span class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>
-                                                        ";
-                                                    }
-                                                    echo "
-                                                    <div class='col-md-6 col-12 py-3 d-flex justify-content-center'>
-                                                        <div>
-                                                            <h4 class='m-0'>$destination_name</h4>
-                                                            <div>$location</div>
-                                                            <div class='text-blue easygo-fs-2 py-2'>
-                                                                <i class='fa-solid fa-wifi'></i> &nbsp;
-                                                                <i class='fa-solid fa-bath'></i> &nbsp;
-                                                                <i class='fa-solid fa-person-swimming'></i>
-                                                            </div>
-                                                            <div class='itinerary-activities'>
-                                                                $activity_text
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    ";
+                                        $div_text = "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
+                                        $activities = get_invoice_activities($invoice_id);
+                                        $current_day = null;
+                                        $current_destination = null;
+                                        $activity_text = "";
 
-                                                }
-                                                if(sizeof($destinations) == 0){
-                                                    echo "<h5>No destinations were added for this day</h5>";
-                                                }
+                                        foreach ($activities as $activity) {
+
+                                            if($current_day != $activity["visit_date"]){
+                                                $div_text .= "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
+                                                $current_day = format_string_as_date_fn($activity["visit_date"]);
                                             }
+
+                                            if($current_destination != $activity["destination_name"] or !$current_destination){
+                                                if($current_destination){
+                                                $div_text .= "
+                                                <div class='col-md-6 col-12 py-3 d-flex justify-content-center'>
+                                                    <div>
+                                                        <h4 class='m-0'>$current_destination</h4>
+                                                        <div>$current_day</div>
+                                                        <div class='text-blue easygo-fs-2 py-2'>
+                                                            <i class='fa-solid fa-wifi'></i> &nbsp;
+                                                            <i class='fa-solid fa-bath'></i> &nbsp;
+                                                            <i class='fa-solid fa-person-swimming'></i>
+                                                        </div>
+                                                        <div class='itinerary-activities'>
+                                                        $activity_text
+                                                    </div>
+                                                </div>
+                                            </div>";
+                                                }
+                                                $current_destination = $activity["destination_name"];
+                                                $activity_text = "";
+                                            }
+                                                $act_name = $activity["activity_name"];
+                                                $activity_text .="<span class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>";
+
+
+
+                                        }
+                                        $div_text .= "
+                                                <div class='col-md-6 col-12 py-3 d-flex justify-content-center'>
+                                                    <div>
+                                                        <h4 class='m-0'>$current_destination</h4>
+                                                        <div>$current_day</div>
+                                                        <div class='text-blue easygo-fs-2 py-2'>
+                                                            <i class='fa-solid fa-wifi'></i> &nbsp;
+                                                            <i class='fa-solid fa-bath'></i> &nbsp;
+                                                            <i class='fa-solid fa-person-swimming'></i>
+                                                        </div>
+                                                        <div class='itinerary-activities'>
+                                                        $activity_text
+                                                    </div>
+                                                </div>
+                                            </div>";
+                                        echo $div_text;
+                                        // var_dump($destinations);
+                                        // die();
+                                            // $days = get_itinerary_days($itinerary_id);
+                                            // // $days = array();
+                                            // foreach ($days as $d) {
+                                            //     $day_id = $d["day_id"];
+                                            //     echo "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
+                                            //     $destinations = get_itinerary_day_info($day_id)["destinations"];
+                                            //     foreach ($destinations as $destination) {
+                                            //         $activities  = $destination["activities"];
+                                            //         $destination_name = $destination["destination_name"];
+                                            //         $location = $destination["location"];
+                                            //         $activity_text = "";
+                                            //         foreach ($activities as $activity) {
+                                            //             $act_name = $activity["activity_name"];
+                                            //             $activity_text .="
+                                            //             <span class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>
+                                            //             ";
+                                            //         }
+                                            //         echo "
+                                            //         <div class='col-md-6 col-12 py-3 d-flex justify-content-center'>
+                                            //             <div>
+                                            //                 <h4 class='m-0'>$destination_name</h4>
+                                            //                 <div>$location</div>
+                                            //                 <div class='text-blue easygo-fs-2 py-2'>
+                                            //                     <i class='fa-solid fa-wifi'></i> &nbsp;
+                                            //                     <i class='fa-solid fa-bath'></i> &nbsp;
+                                            //                     <i class='fa-solid fa-person-swimming'></i>
+                                            //                 </div>
+                                            //                 <div class='itinerary-activities'>
+                                            //                     $activity_text
+                                            //                 </div>
+                                            //             </div>
+                                            //         </div>
+                                            //         ";
+
+                                            //     }
+                                            //     if(sizeof($destinations) == 0){
+                                            //         echo "<h5>No destinations were added for this day</h5>";
+                                            //     }
+                                            // }
                                         ?>
 
                                         <!--- Destination Card [end] -->
@@ -215,7 +276,7 @@
     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/coplanner_invoice.js"></script>
+    <script src="../assets/js/itinerary_invoice.js"></script>
 </body>
 
 </html>

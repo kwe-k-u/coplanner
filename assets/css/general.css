@@ -79,7 +79,11 @@ img {
   margin-top: auto;
   margin-bottom: auto;
 }
-
+.itinerary-img{
+  max-width: 400px!important;
+  max-height: 250px!important;
+  object-fit: cover;
+}
 /** other styles **/
 i,
 svg {
