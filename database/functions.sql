@@ -820,7 +820,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS generate_activity_invoice;
 DELIMITER //
-CREATE PROCEDURE generate_activity_invoice(IN in_itinerary_id VARCHAR(100))
+CREATE PROCEDURE generate_activity_invoice(IN in_itinerary_id VARCHAR(100), IN in_invoice_id VARCHAR(100))
 BEGIN
   DECLARE temp_day_id VARCHAR(100);
   DECLARE temp_activity_id VARCHAR(100);
@@ -830,6 +830,7 @@ BEGIN
   DECLARE destination_counter INT;
   DECLARE temp_price DECIMAL(10,2);
   DECLARE temp_currency VARCHAR(5);
+  DECLARE temp_day_date DATETIME;
 
   -- Count the number of days
   SELECT COUNT(*) INTO day_counter FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
@@ -839,16 +840,21 @@ BEGIN
     SET day_counter = day_counter - 1;
 
     -- Get the current day id
-    SELECT day_id INTO temp_day_id FROM itinerary_day WHERE itinerary_id = in_itinerary_id AND position = day_counter;
+    SELECT day_id,visit_date INTO temp_day_id,temp_day_date FROM itinerary_day WHERE itinerary_id = in_itinerary_id AND position = day_counter;
+    SELECT visit_date INTO temp_day_date FROM itinerary_day WHERE itinerary_id = in_itinerary_id AND position = day_counter;
 
     -- Get the destinations for the selected day
     SELECT COUNT(*) INTO destination_counter FROM vw_itinerary_destinations WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id;
 
     WHILE destination_counter > 0 DO
       SET destination_counter = destination_counter - 1;
+
+	--   Create destination entry into the invoice
       SELECT destination_id INTO temp_destination_id FROM vw_itinerary_destinations
       WHERE itinerary_id = in_itinerary_id AND position = destination_counter AND day_id = temp_day_id;
 
+	  INSERT INTO `itinerary_invoice_destinations`(`invoice_id`, `destination_id`)
+	  VALUES (in_invoice_id,temp_destination_id);
       -- Get the activities for the selected day
       SELECT COUNT(*) INTO activity_counter FROM vw_itinerary_activities WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id AND destination_id = temp_destination_id;
 
@@ -857,7 +863,10 @@ BEGIN
         SELECT currency_name, price INTO temp_currency, temp_price FROM vw_itinerary_activities
         WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
 
-        UPDATE itinerary_activity SET final_price = temp_price, final_currency = temp_currency WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+        SELECT activity_id into temp_activity_id FROM itinerary_activity WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+        -- UPDATE itinerary_activity SET final_price = temp_price, final_currency = temp_currency WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+		INSERT INTO `itinerary_invoice_activities`(`invoice_id`, `activity_id`, `destination_id`, `currency`,`price`, `visit_date`)
+		VALUES (in_invoice_id,temp_activity_id,temp_destination_id,temp_currency,temp_price,temp_day_date);
 
       END WHILE;
 
@@ -871,7 +880,6 @@ END //
 DELIMITER ;
 
 
-
 DROP FUNCTION IF EXISTS create_itinerary_invoice;
 DELIMITER //
 CREATE FUNCTION create_itinerary_invoice( itinerary_id VARCHAR(100)) returns int
@@ -883,10 +891,12 @@ DELIMITER ;
 
 
 
+
 DROP PROCEDURE IF EXISTS make_itinerary_payment;
+DROP PROCEDURE IF EXISTS make_invoice_payment;
 DELIMITER //
-CREATE PROCEDURE make_itinerary_payment(
-	IN in_itinerary_id VARCHAR(100),
+CREATE PROCEDURE make_invoice_payment(
+	IN in_invoice_id VARCHAR(100),
     IN in_provider_id VARCHAR(100),
     IN in_sending_user VARCHAR(100),
     IN in_purpose VARCHAR(200),
@@ -900,9 +910,9 @@ begin
 	DECLARE in_transaction_id VARCHAR(100);
 	-- Record the transaction
 	SELECT record_transaction(in_sending_user,in_provider_id ,in_purpose ,in_transaction_amount ,in_amount ,in_tax ,in_charges ,in_provider) INTO in_transaction_id;
-	-- Create the itinerary payment connection
-	INSERT INTO itinerary_payments(transaction_id,itinerary_id)
-	VALUES(in_transaction_id,in_itinerary_id);
+	-- Create the invoice payment connection
+	INSERT INTO invoice_payments(transaction_id,invoice_id)
+	VALUES(in_transaction_id,in_invoice_id);
 	-- Make the transaction id accessible to the calling function
 	SELECT in_transaction_id;
 end //
@@ -933,6 +943,7 @@ end //
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS get_itinerary_invoice;
 DROP PROCEDURE IF EXISTS get_invoice;
 DELIMITER //
 CREATE PROCEDURE get_invoice(
@@ -980,3 +991,46 @@ begin
 	RETURN in_accommodation_id;
 end//
 delimiter ;
+
+DROP PROCEDURE IF EXISTS get_itinerary_invoices;
+DELIMITER //
+CREATE PROCEDURE  get_itinerary_invoices(IN in_itinerary_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_itinerary_invoice where itinerary_id = in_itinerary_id;
+END//
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS create_itinerary_invoice;
+DELIMITER //
+CREATE FUNCTION create_itinerary_invoice( in_itinerary_id VARCHAR(100), in_num_people INT) returns varchar(100)
+BEGIN
+	DECLARE in_invoice_id VARCHAR(100);
+	SELECT generate_id() into in_invoice_id;
+	INSERT INTO `itinerary_invoice`(`invoice_id`, `itinerary_id`,`num_people`) VALUES (in_invoice_id,in_itinerary_id,in_num_people);
+	-- Create entries for activities
+    CALL generate_activity_invoice(in_itinerary_id, in_invoice_id);
+
+	return in_invoice_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_invoice_by_id;
+DELIMITER //
+CREATE PROCEDURE get_invoice_by_id(IN in_invoice_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_itinerary_invoice where invoice_id = in_invoice_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_invoice_destinations;
+DROP PROCEDURE IF EXISTS get_invoice_activities;
+DELIMITER //
+CREATE PROCEDURE get_invoice_activities(IN in_invoice_id VARCHAR(100))
+BEGIN
+	SELECT * from vw_invoice_activities WHERE invoice_id = in_invoice_id;
+END //
+DELIMITER ;

@@ -174,6 +174,7 @@ CREATE TABLE itinerary_day(
 	day_id VARCHAR(100) PRIMARY KEY,
 	itinerary_id VARCHAR(100),
 	position INT CHECK (position >=0),
+    visit_date DATETIME,
 	FOREIGN KEY (itinerary_id) REFERENCES itinerary(itinerary_id)
 );
 
@@ -184,8 +185,6 @@ CREATE TABLE itinerary_activity(
 	activity_id INT,
 	destination_id VARCHAR(100),
 	position INT CHECK (position >=0),
-    final_currency VARCHAR(5),
-    final_price DECIMAL(10, 2),
 	PRIMARY KEY (day_id,activity_id,destination_id),
 	FOREIGN KEY (day_id) REFERENCES itinerary_day(day_id),
 	FOREIGN KEY (activity_id) REFERENCES activities(activity_id),
@@ -357,6 +356,50 @@ CREATE TABLE refunds(
 );
 
 
+DROP TABLE IF EXISTS invoice_payments;
+DROP TABLE IF EXISTS itinerary_invoice_activities;
+DROP TABLE IF EXISTS itinerary_invoice_destinations;
+DROP TABLE IF EXISTS itinerary_invoice;
+
+
+CREATE TABLE itinerary_invoice(
+	invoice_id VARCHAR(100) PRIMARY KEY,
+	itinerary_id VARCHAR(100),
+	date_created DATETIME DEFAULT CURRENT_TIMESTAMP(),
+	num_people INT,
+	status ENUM ('cancelled',"active","closed") DEFAULT "active"
+);
+
+CREATE TABLE itinerary_invoice_destinations(
+	invoice_id VARCHAR(100),
+	destination_id VARCHAR(100),
+	date_updated DATETIME,
+	booking_acceptance ENUM("accepted","pending","rejected") DEFAULT "pending",
+	primary key (invoice_id,destination_id),
+	FOREIGN KEY (invoice_id) REFERENCES itinerary_invoice(invoice_id),
+	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
+);
+
+CREATE TABLE itinerary_invoice_activities(
+	invoice_id VARCHAR(100),
+	activity_id VARCHAR(100),
+	destination_id VARCHAR(100),
+	currency VARCHAR(15),
+	price DOUBLE,
+	visit_date DATETIME, --  The date that the person will be visiting
+	primary key (invoice_id,activity_id,destination_id),
+	FOREIGN KEY (invoice_id,destination_id) REFERENCES itinerary_invoice_destinations(invoice_id,destination_id)
+);
+
+CREATE TABLE invoice_payments(
+	transaction_id VARCHAR(100) UNIQUE,
+	invoice_id VARCHAR(100),
+	PRIMARY KEY(transaction_id, invoice_id),
+	FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id)
+);
+
+
+
 
 
 
@@ -378,8 +421,8 @@ ORDER BY id.position;
 
 
 
-DROP VIEW IF EXISTS vw_itinerary;
 
+DROP VIEW IF EXISTS vw_itinerary;
 CREATE VIEW vw_itinerary AS
 SELECT
 	i.*,
@@ -387,13 +430,12 @@ SELECT
     u.user_name as owner_name,
     (select count(*) from itinerary_day where itinerary_day.itinerary_id = i.itinerary_id) as num_days,
     (select count(*) from vw_itinerary_destinations as vid where vid.itinerary_id = i.itinerary_id) as num_destinations,
-    (select sum(price) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as final_price,
+    -- (select sum(final_price) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as final_price,
     (select COALESCE(sum(price),0) from vw_itinerary_activities as via inner join itinerary_day as iid on iid.day_id = via.day_id where iid.itinerary_id = i.itinerary_id) as budget,
     (select iid.day_id from itinerary_day as iid where iid.itinerary_id = i.itinerary_id order by position limit 1) as first_day
 from itinerary as i
 inner join itinerary_collaborators as ic on ic.itinerary_id = i.itinerary_id
 inner join users as u on u.user_id = ic.user_id;
-
 
 DROP VIEW IF EXISTS vw_destination_request;
 CREATE VIEW vw_destination_request AS
@@ -435,21 +477,48 @@ ORDER BY ia.position;
 
 
 
-DROP VIEW IF EIXSTS vw_itinerary_invoice;
+
+DROP VIEW IF EXISTS vw_itinerary_invoice;
 
 CREATE VIEW vw_itinerary_invoice as
 	SELECT
+		iv.invoice_id,
 		u.user_id,
+		u.user_name,
 		u.email,
 		i.itinerary_id,
-		i.final_price AS itinerary_bill,
-		COALESCE(SUM(t.amount), 0) AS total_paid,
+		-- TODO add currency
+		sum(iia.price) as total_bill,
+		sum(iia.price) as activity_bill,
+		0 as accommodation_bill,
+		0 as transportation_bill,
+		COALESCE(SUM(t.amount),0) AS total_paid,
 		COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0) AS total_refund,
-		(COALESCE(i.final_price, 0) - COALESCE(SUM(t.amount), 0) - COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0))
-	AS amount_left FROM vw_users AS u
-	INNER JOIN vw_itinerary AS i ON i.owner_id = u.user_id
-	LEFT JOIN itinerary_payments AS ip ON ip.itinerary_id = i.itinerary_id LEFT JOIN transactions AS t ON ip.transaction_id = t.transaction_id
-	LEFT JOIN refunds AS r ON r.refunded_transaction_id = t.transaction_id GROUP BY u.user_id, u.email, i.itinerary_id, i.final_price ORDER BY `i`.`itinerary_id` ASC;
+		(
+			sum(iia.price)
+			- COALESCE(SUM(t.amount), 0)
+			- COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0)
+		)as amount_left
+		FROM vw_users AS u
+		INNER JOIN vw_itinerary AS i on i.owner_id = u.user_id
+		INNER JOIN itinerary_invoice as iv on iv.itinerary_id = i.itinerary_id
+		LEFT JOIN itinerary_invoice_activities as iia on iia.invoice_id = iv.invoice_id
+		-- Get all transactions associated with the invoice
+		LEFT JOIN invoice_payments as ip on ip.invoice_id = iv.invoice_id
+		LEFT JOIN transactions as t on t.transaction_id = ip.transaction_id
+		LEFT JOIN refunds AS r ON r.refunded_transaction_id = t.transaction_id
+		GROUP BY u.user_id, u.email, iv.invoice_id
+		ORDER BY iv.invoice_id;
+
+
+DROP VIEW IF EXISTS vw_invoice_activities;
+CREATE VIEW vw_invoice_activities AS
+ SELECT iia.*, a.activity_name,
+ d.destination_name
+ from itinerary_invoice_activities as iia
+ inner join activities as a on a.activity_id = iia.activity_id
+ inner join destinations as d on d.destination_id = iia.destination_id
+  ORDER BY iia.visit_date, iia.destination_id;
 
 
 
