@@ -746,7 +746,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 <section class="py-3">
                     <div class="d-flex justify-content-center mt-3">
                         <?php
-                        echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='finalise_itinerary(\"$itinerary_id\")'>Finalize</button>";
+                        echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_settings.php?id=$itinerary_id\")'>Finalize</button>";
                         if (true) { //TODO:: Add admin check
                             $id = "";
                             echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_invoice.php?id=$id\")'>Add to templates</button>";

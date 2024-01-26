@@ -405,6 +405,19 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$data = get_itinerary_invoices($itinerary_id);
 			send_json(array("invoices"=>$data));
 			die();
+		case "/set_itinerary_visibility":
+			$itinerary_id = $_POST["itinerary_id"];
+			$status = $_POST["status"];
+			set_itinerary_visibility($itinerary_id,$status);
+			send_json(array("msg"=> "Changed Itinerary visibility to $status"));
+
+			die();
+		case "/set_itinerary_day_date":
+			$day_id = $_POST["day_id"];
+			$date = $_POST["date"];
+			set_itinerary_day_date($day_id, $date);
+			send_json(array("msg"=> "Updated visit date"));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

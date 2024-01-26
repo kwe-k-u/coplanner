@@ -209,5 +209,15 @@
 		return $public->get_invoice_activities($invoice_id);
 	}
 
+	function set_itinerary_visibility($itinerary_id,$visibility){
+		$public = new public_class();
+		return $public->set_itinerary_visibility($itinerary_id,$visibility);
+	}
+
+	function set_itinerary_day_date($day_id, $date){
+		$public = new public_class();
+		return $public->set_itinerary_day_date($day_id, $date);
+	}
+
 
 ?>

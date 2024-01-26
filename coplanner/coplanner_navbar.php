@@ -1,10 +1,10 @@
-<!-- <?php
+<?php
     $user_id = get_session_user_id();
     if($user_id){
         require_once(__DIR__."/../controllers/public_controller.php");
         $username = get_user_info($user_id)["user_name"];
     }
-?> -->
+?>
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
         <?php
@@ -41,6 +41,11 @@
                 </div>";
             }
         ?>
+        </div>
+    </nav>
 
-
+<nav class="navbar navbar-expand-md fixed-top easygo-nav-white" style="background: var(--easygo-orange); z-index: 1029; margin-top:80px;">
+    <div class="container-fluid justify-content-center">
+        <a target="_blank" style="text-decoration:underline!important; color:white;" href="https://us21.list-manage.com/survey?u=2bd1d8f7814d0d70eb78d4383&id=89f89dd0d7&attribution=false">Click here to tell us if something breaks</a>
+    </div>
 </nav>

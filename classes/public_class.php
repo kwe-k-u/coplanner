@@ -260,6 +260,19 @@
 			return $this->db_fetch_all();
 		}
 
+		function set_itinerary_visibility($itinerary_id,$visibility){
+			$sql = "CALL set_itinerary_visibility(?,?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id,$visibility);
+			return $this->db_query();
+		}
+
+		function set_itinerary_day_date($day_id, $date){
+			$sql = "CALL set_itinerary_day_date(?,?)";
+			$this->prepare($sql);
+			$this->bind($day_id,$date);
+			return $this->db_query();
+		}
 
 	}
 ?>

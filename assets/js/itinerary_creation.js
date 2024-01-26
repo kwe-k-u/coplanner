@@ -592,6 +592,7 @@ function finalise_itinerary(itinerary_id){
 			if(response.data.invoices.length >=1){
 				if(confirm("You have existing invoices for this itinerary. Select Yes to edit an existing invoice or No to create a new invoice")){
 					//TODO:: let user select an invoice to edit
+					openDialog("Access your previous invoices through your dashboard!")
 					return null;
 				}
 			}
@@ -617,3 +618,34 @@ function finalise_itinerary(itinerary_id){
 }
 
 
+function set_itinerary_visibility(itinerary_id, form){
+	send_request(
+		"POST",
+		"processors/processor.php/set_itinerary_visibility",
+		{
+			"itinerary_id" : itinerary_id,
+			"status" : form.value
+		},
+		(response)=> {
+			if(response.status != 200){
+			// 	showToast(response.data.msg);
+			// }else{
+				openDialog(response.data.msg);
+			}
+		}
+	);
+}
+
+ function set_itinerary_day_date(day_id, field){
+	send_request("POST",
+	"processors/processor.php/set_itinerary_day_date",
+	{
+		"day_id" : day_id,
+		"date" : field.value
+	},
+	(response)=> {
+		if(response.status != 200){
+			openDialog(response.data.msg);
+		}
+	});
+ }
