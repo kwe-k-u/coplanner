@@ -99,11 +99,9 @@ if (session_status() == PHP_SESSION_NONE){
 
 	/**Checks if the current user is an admin */
 	function is_session_user_admin(){
-		if (isset($_SESSION["user_role"])){
-
-			return $_SESSION["user_role"] == "admin";
-		}
-		return false;
+		require_once(__DIR__."/../controllers/admin_controller.php");
+		$user_id = get_session_user_id();
+		return get_admin_privilege($user_id) != false;
 	}
 
 	/**Checks if there is a logged in session user */
@@ -241,10 +239,12 @@ if (session_status() == PHP_SESSION_NONE){
 		);
 	}
 
+	// an image randomizer for itineraries
 	function suggest_image(){
 		$num = random_int(0,12);
 		return "$num.jpg";
 	}
+
 
 
 ?>

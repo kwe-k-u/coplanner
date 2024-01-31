@@ -1,11 +1,11 @@
 <?php
-	$preview_text = "Create the perfect itinerary today";
-	$subject = "It's great to have you on board!";
+	$preview_text = "Your easyGo account now has admin privileges";
+	$subject = "easyGo: Admin privileges for itinerary builder";
 	$image_url = "https://mcusercontent.com/2bd1d8f7814d0d70eb78d4383/images/2a8f6dee-55b4-5807-9f97-95f9d0620374.png";
-	$heading_text = "You're ready to Go!";
-	$message = "With easyGo, you can add destinations to your travel plan and make your bookings in minutes! Don't wait weeks for a tour company to give you the wrong itinerary when you can create the perfect one in minutes. ";
-	$button_text = "Let's Do This!";
-	$button_url = "https://www.prototype.easygo.com.gh";
+	$heading_text = "Super powers, yay!";
+	$message = "Just a heads up. Your account has been granted admin privileges for the easyGo itinerary builder platform";
+	$button_text = "View Admin Dashboard";
+	$button_url = "https://www.prototype.easygo.com.gh/admin/dashboard.php";
 
 
 ?>

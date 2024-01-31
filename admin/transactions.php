@@ -1,13 +1,18 @@
 <?php
-require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/admin_controller.php");
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/admin_controller.php");
 
 
-// $info = get_user_by_id(get_session_user_id());
-$curator_id = get_session_account_id();
-$user_name ="" ;//$info["user_name"];
-$curator_name = "admin";//$info["curator_name"];
-$logo = "";//$info["curator_logo"];
+    if(!is_session_user_admin()){
+        header("Location: ../index.php");
+        die();
+    }
+
+    // $info = get_user_by_id(get_session_user_id());
+    $curator_id = get_session_account_id();
+    $user_name ="" ;//$info["user_name"];
+    $curator_name = "admin";//$info["curator_name"];
+    $logo = "";//$info["curator_logo"];
 
 
 

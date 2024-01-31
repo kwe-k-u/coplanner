@@ -104,14 +104,30 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			}
 			die();
 		case "/create_destination":
-			$accomodation = json_decode($_POST["accommodation"],true);
+			if(isset($_POST["accommodation"])){
+				$accomodation = json_decode($_POST["accommodation"],true);
+			}else{
+				$accomodation = array();
+			}
 			$name = $_POST["destination_name"];
 			$location = $_POST["destination_location"];
 			$description = $_POST["site_description"]; //TODO:: add to sql
 			$country = $_POST["country"]; //TODO:: add to sql
-			$activities = $_POST["activities"];
-			$utilities = json_decode($_POST["utilities"],true);
-			$destination_type = json_decode($_POST["destintion_type"],true);
+			if(isset($_POST["activities"])){
+				$activities = $_POST["activities"];
+			}else{
+				$activities = array();
+			}
+			if(isset($_POST["utilities"])){
+				$utilities = json_decode($_POST["utilities"],true);
+			}else{
+				$utilities = array();
+			}
+			if(isset($_POST["destination_type"])){
+				$destination_type = json_decode($_POST["destintion_type"],true);
+			}else{
+				$destination_type = array();
+			}
 			$latitude = explode(",",$_POST["cordinates"])[0];
 			$longitude = explode(",",$_POST["cordinates"])[1];
 			$rating = $_POST["rating"];
@@ -142,9 +158,11 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			foreach ($accomodation as $index=> $value) {
 				$room_bed_type=$value["bed_type"];
 				$room_occupancy=$value["occupancy"];
-				$room_price=$value["price"];
+				$price_currency=explode(" ",$value["price"])[0];
+				$room_price=explode(" ",$value["price"])[1];
+				$room_name = $value["nickname"];
 
-				add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price);
+				add_accommodation($destination_id,$room_name,$room_bed_type,$room_occupancy,$price_currency,$room_price);
 			}
 
 			send_json(array("msg"=> "Added destination"));
@@ -250,7 +268,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
 			die();
 		case "/create_template":
-			// TODO:: Add admin check
+			if(!is_session_user_admin()){
+				send_json(array("msg"=> "You need an admin account to perform this action"),201);
+				die();
+			}
 			$itinerary_id = $_POST["itinerary_id"];
 			$preferences = json_decode($_POST["preferences"],true);
 			// create_itinerary_template();
@@ -361,7 +382,11 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			}
 			die();
 		case "/toggle_destination_request_status":
-			//TODO:: Add admin check
+
+			if(!is_session_user_admin()){
+				send_json(array("msg"=> "You need an admin account to perform this action"),201);
+				die();
+			}
 			$request_id = $_POST["request_id"];
 			$status = $_POST["status"];
 			toggle_destination_request_status($request_id,$status);
@@ -417,6 +442,22 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$date = $_POST["date"];
 			set_itinerary_day_date($day_id, $date);
 			send_json(array("msg"=> "Updated visit date"));
+			die();
+		case "/make_user_admin":
+			if(!is_session_user_admin()){
+				send_json(array("msg"=> "You need an admin account to perform this action"),201);
+				die();
+			}
+			$user_id = $_POST["user_id"];
+			$result = make_user_admin($user_id);
+			if($result){
+				$email = get_user_info($user_id)["email"];
+				$mailer = new mailer();
+				$mailer->admin_invite_email($email);
+				send_json(array("msg"=> "$email is now an admin "));
+			}else{
+				send_json(array("msg"=> "Something went wrong"),201);
+			}
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

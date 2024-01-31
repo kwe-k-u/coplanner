@@ -4,17 +4,17 @@ require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
 
 
-    if(!isset($_GET["id"])){
-        header("Location: ../index.php");
-        die();
-    }
-    $itinerary_id = $_GET["id"];
-    $itinerary = get_itinerary_by_id($itinerary_id);
-    $name = $itinerary["itinerary_name"] ?? "Untitled";
-    $participants = $itinerary["num_of_participants"];
-    $day_count = $itinerary["num_days"];
-    $cost = format_string_as_currency_fn($itinerary["budget"]);
-    $first_day = $itinerary["first_day"];
+if (!isset($_GET["id"])) {
+    header("Location: ../index.php");
+    die();
+}
+$itinerary_id = $_GET["id"];
+$itinerary = get_itinerary_by_id($itinerary_id);
+$name = $itinerary["itinerary_name"] ?? "Untitled";
+$participants = $itinerary["num_of_participants"];
+$day_count = $itinerary["num_days"];
+$cost = format_string_as_currency_fn($itinerary["budget"]);
+$first_day = $itinerary["first_day"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 </head>
 
 <body class="bg-gray-3">
-<?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
+    <?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
 
     <!-- main content start -->
     <div class="main-wrapper">
@@ -59,7 +59,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 <div class="col-4 py-2 d-flex justify-content-center">
                     <div class="d-flex gap-2 align-items-center">
                         <div class="easygo-fs-4">
-                            <?php  echo "<span class='easygo-editable-text' onchange='update_itinerary_name(this.innerText)'>$name</span>/ <span class='selected-day-display'>Day one</span>";?>
+                            <?php echo "<span class='easygo-editable-text' onchange='update_itinerary_name(this.innerText)'>$name</span>/ <span class='selected-day-display'>Day one</span>"; ?>
                         </div>
 
                         <!--- ================================ -->
@@ -70,7 +70,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 <ul class="dropdown-menu easygo-fs-4" id='day-dropdown-options'>
                                     <?php
                                     $day_list = get_itinerary_days($itinerary_id);
-                                        echo "
+                                    echo "
                                         <li class='px-2 d-flex align-items-center' data-day-id='$first_day'>
                                             <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
                                                 <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
@@ -81,9 +81,9 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                         ";
 
 
-                                        foreach(array_slice($day_list,1) as $d){
-                                            $day_id = $d["day_id"];
-                                            echo "
+                                    foreach (array_slice($day_list, 1) as $d) {
+                                        $day_id = $d["day_id"];
+                                        echo "
                                             <li class='px-2 d-flex align-items-center' data-day-id='$day_id'>
                                                 <a class='dropdown-item d-flex gap-1 align-items-center border-bottom  border-blue' href='#'>
                                                     <span class='text-blue me-1'><i class='fa-solid fa-ellipsis-vertical'></i> <i class='fa-solid fa-ellipsis-vertical'></i></span>
@@ -91,7 +91,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                 </a>
                                             </li>
                                             ";
-                                        }
+                                    }
 
 
 
@@ -130,7 +130,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <!--- ================================ -->
             <!-- mobile sidebar [start] -->
             <?php
-                echo "
+            echo "
                 <div class='d-flex justify-content-between p-3 box-shadow-3 mx-auto rounded-3 gap-5 d-lg-none w-100' style='max-width: 500px;'>
                     <div class='d-flex flex-column justify-content-center align-items-center'>
                         <div>
@@ -172,7 +172,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 <h5 class="easygo-fw-1 py-2 sec-title"><span class="expand-d-none">Itinerary</span> <span>Overview</span></h5>
                                 <hr class="border-3 border-blue opacity-100 mx-2">
                                 <?php
-                                    echo "
+                                echo "
                                     <div class='ss-section'>
                                         <div class='ss-left'>
                                             <div class='d-flex flex-column justify-content-center align-items-center'>
@@ -324,22 +324,22 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                     <div>Here is the summary of the activities and destinations selected for the day </div>
                                     <ul class="easygo-list-4" id='itinerary-card-activity-list'>
                                         <?php
-                                            $day_info = get_itinerary_day_info($first_day);
+                                        $day_info = get_itinerary_day_info($first_day);
 
-                                            foreach ($day_info["destinations"] as $destination) {
-                                                $des_id = "destination_" .$destination["destination_id"];
-                                                $des_name = $destination["destination_name"];
-                                                $activity_text = "";
+                                        foreach ($day_info["destinations"] as $destination) {
+                                            $des_id = "destination_" . $destination["destination_id"];
+                                            $des_name = $destination["destination_name"];
+                                            $activity_text = "";
 
-                                                foreach ($destination["activities"] as $activity) {
-                                                    $act_name = $activity["activity_name"];
-                                                    $act_id = "activity_".$activity["activity_id"];
-                                                    $activity_text .= "
+                                            foreach ($destination["activities"] as $activity) {
+                                                $act_name = $activity["activity_name"];
+                                                $act_id = "activity_" . $activity["activity_id"];
+                                                $activity_text .= "
                                                     <span id='$act_id' class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>
                                                     ";
-                                                }
+                                            }
 
-                                                echo "
+                                            echo "
                                                     <li id='$des_id'>
                                                         <div class='row'>
                                                             <div class='col-4'>
@@ -373,11 +373,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                         </div>
                                                     </li>
                                                 ";
-                                            }
+                                        }
 
-                                            // if no destinations or activities have been added to this day, display default prompt
-                                            if($day_info["destinations"] == array()){
-                                                echo "
+                                        // if no destinations or activities have been added to this day, display default prompt
+                                        if ($day_info["destinations"] == array()) {
+                                            echo "
                                                 <li id='default-itinerary-list'>
                                                     <div>
                                                         <h5>Add a destination</h5>
@@ -385,7 +385,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                     </div>
                                                 </li>
                                                 ";
-                                            }
+                                        }
                                         ?>
                                         <!-- <li>
                                             <div class="row">
@@ -659,7 +659,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                                 <div class="col-12">
                                                     <form action="." method="get" onsubmit='destination_search(this)'>
                                                         <div class="easygo-text-input-1">
-                                                            <input type="text" name='query'  placeholder="Search for destination by name">
+                                                            <input type="text" name='query' placeholder="Search for destination by name">
                                                             <button class="easygo-btn-1 oy-1" type='submit'>SEARCH</button>
                                                         </div>
                                                     </form>
@@ -746,8 +746,9 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 <section class="py-3">
                     <div class="d-flex justify-content-center mt-3">
                         <?php
-                        echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_settings.php?id=$itinerary_id\")'>Finalize</button>";
-                        if (true) { //TODO:: Add admin check
+                        echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_invoice.php?id=$itinerary_id\")'>Finalize</button>";
+
+                        if (!is_session_user_admin()) {
                             $id = "";
                             echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_invoice.php?id=$id\")'>Add to templates</button>";
                         }
@@ -841,7 +842,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <div class="offcanvas-body">
                 <h5>Menu Actions</h5>
                 <ul class="list-group">
-                    <li class="list-group-item" onclick="switch_mobile_canvas()" data-proxy-target="destination-tab"  data-bs-dismiss="offcanvas">
+                    <li class="list-group-item" onclick="switch_mobile_canvas()" data-proxy-target="destination-tab" data-bs-dismiss="offcanvas">
                         <a href="#">Add New Activities</a>
                     </li>
                 </ul>
@@ -849,15 +850,15 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 <h5 class='mt-1'>Select Itinerary Day</h5>
                 <ul class="list-group" id='day-dropdown-options-mobile'>
                     <?php
-                        echo "<li class='list-group-item' data-day-id='$first_day'> <a href='#'>Day One</a> <span id='selected-dropdown-label-mobile' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span> </li>";
-                        foreach(array_slice($day_list,1) as $d){
-                            $day_id = $d["day_id"];
-                            echo "<li class='list-group-item' data-day-id='$day_id' data-bs-dismiss='offcanvas' >
+                    echo "<li class='list-group-item' data-day-id='$first_day'> <a href='#'>Day One</a> <span id='selected-dropdown-label-mobile' class='badge d-inline text-white bg-blue easygo-fs-6 text-uppercase'>Selected</span> </li>";
+                    foreach (array_slice($day_list, 1) as $d) {
+                        $day_id = $d["day_id"];
+                        echo "<li class='list-group-item' data-day-id='$day_id' data-bs-dismiss='offcanvas' >
                                 <a href='#'>Day Two</a>
                             </li>";
-                        }
+                    }
                     ?>
-                    <li class="list-group-item add-day-option"> <a href="#" class='text-orange  add-day-option'  data-bs-dismiss='offcanvas' >Add Extra Day</a> </li>
+                    <li class="list-group-item add-day-option"> <a href="#" class='text-orange  add-day-option' data-bs-dismiss='offcanvas'>Add Extra Day</a> </li>
                 </ul>
                 <br>
                 <h5 class='mt-1'>Additional Service</h5>
@@ -1260,7 +1261,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             newCanvas.toggle();
         }
         <?php
-            echo "let selected_day_id='$first_day'";
+        echo "let selected_day_id='$first_day'";
         ?>
     </script>
 </body>

@@ -4,6 +4,7 @@ include_once (__DIR__. "/PHPMailer/SMTP.php");
 include_once (__DIR__. "/PHPMailer/POP3.php");
 include_once (__DIR__. "/PHPMailer/OAuth.php");
 include_once(__DIR__."/../env_manager.php");
+include_once(__DIR__."/../logger.php");
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -68,14 +69,25 @@ class mailer{
 
 	/**Sends a welcome message to new users on sign up */
 	function signup_email($email){
+		ob_clean();
+		ob_start();
 		include_once(__DIR__."/messages/signup_email.php");
-		return $this->send_email($email,$subject,$message);
+		$content = ob_get_clean();
+		return $this->send_email($email,$subject,$content);
 	}
 
 	/**Sends a message to notify people when a destination they couldn't find has been added */
 	function destination_added_email($email,$destination_name){
 		include_once(__DIR__."/messages/destination_added_email.php");
 		return $this->send_email($email,$subject,$message);
+	}
+
+	function admin_invite_email($email){
+		ob_clean();
+		ob_start();
+		include_once(__DIR__."/messages/admin_invite_email.php");
+		$content = ob_get_clean();
+		return $this->send_email($email,$subject,$content);
 	}
 
 	// function user_itinerary_payment_email($email,$itinerary_id,$amount_paid){

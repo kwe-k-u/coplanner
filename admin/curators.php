@@ -3,11 +3,10 @@ require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
-if (!is_session_user_admin()) {
-    header("Location: ../views/home.php");
+if(!is_session_user_admin()){
+    header("Location: ../index.php");
     die();
 }
-
 
 
 

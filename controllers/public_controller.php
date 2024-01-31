@@ -147,14 +147,52 @@
 	}
 
 	function get_featured_itineraries($category = ""){
+		$result = array();
 		switch ($category) {
 			case "budget":
 			case "popular":
 			case "family friendly":
 			default:
-				return get_itineraries("af5e8e3f5acda11ee94238ed206f829ea");
+				// return get_itineraries("af5e8e3f5acda11ee94238ed206f829ea");
+				$weights = get_itinerary_templates();
+				foreach ($weights as $filename) {
+					$itinerary = get_itinerary_by_id($filename);
+					if($itinerary){
+						$result[] = $itinerary;
+					}
+				}
+
 				break;
 		}
+		return $result;
+	}
+
+	function get_itinerary_templates(){
+
+		$result = array();
+		$directory = __DIR__."/../uploads/template_weights";
+		// Check if the directory exists and is a directory
+		if (is_dir($directory)) {
+
+			$dirHandle = opendir($directory);
+			if ($dirHandle) { // if the path exists, read its files and parse only jsons
+				while (($file = readdir($dirHandle)) ) {
+
+					if (pathinfo($file, PATHINFO_EXTENSION) === 'json') {
+						// Get the file name without the extension
+						$fileNameWithoutExt = pathinfo($file, PATHINFO_FILENAME);
+						$result[] = $fileNameWithoutExt;
+					}
+				}
+				closedir($dirHandle);
+			}else{
+				//return false if something wrong
+				return false;
+			}
+		}else{
+		}
+
+		return $result;
 	}
 
 	function get_itinerary_activities($itinerary_id){

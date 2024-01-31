@@ -123,10 +123,24 @@
 			return $this->db_fetch_all();
 		}
 
-		function add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price){
-			$sql = "SELECT add_accommodation(?,?,?,?)";
+		function add_accommodation($destination_id,$room_name,$room_bed_type,$room_occupancy,$price_currency,$room_price){
+			$sql = "SELECT add_accommodation(?,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($destination_id,$room_occupancy,$room_price,$room_bed_type);
+			$this->bind($destination_id,$room_name,$room_bed_type,$room_occupancy,$price_currency,$room_price);
+			return $this->db_fetch_one();
+		}
+
+		function make_user_admin($user_id,$privilege){
+			$sql = "CALL make_user_admin(?,?)";
+			$this->prepare($sql);
+			$this->bind($user_id,$privilege);
+			return $this->db_query();
+		}
+
+		function get_admin_privilege($user_id){
+			$sql = "SELECT get_admin_privilege(?) as privilege";
+			$this->prepare($sql);
+			$this->bind($user_id);
 			return $this->db_fetch_one();
 		}
 	}

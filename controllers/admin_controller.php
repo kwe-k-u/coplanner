@@ -92,9 +92,19 @@
 		return $admin->get_bed_types();
 	}
 
-	function add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price){
+	function add_accommodation($destination_id,$room_name,$room_bed_type,$room_occupancy,$price_currency,$room_price){
 		$admin = new admin_class();
-		return $admin->add_accommodation($destination_id,$room_bed_type,$room_occupancy,$room_price);
+		return $admin->add_accommodation($destination_id,$room_name,$room_bed_type,$room_occupancy,$price_currency,$room_price);
 	}
 
+	function make_user_admin($user_id,$privilege = "super"){
+		$admin = new admin_class();
+		return $admin->make_user_admin($user_id,$privilege);
+	}
+
+
+	function get_admin_privilege($user_id){
+		$admin = new admin_class();
+		return $admin->get_admin_privilege($user_id)["privilege"];
+	}
 ?>

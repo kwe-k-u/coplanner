@@ -48,7 +48,7 @@ require_once(__DIR__ . "/utils/env_manager.php");
                             unique thrilling experiences and book the destinations included in those plans
                             </div>
                             <div class='d-flex justify-content-between gap-4'>
-                                <a href='#' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' onclick='showToast("Contact our support team at main.easygo@gmail.com")'>Become an easyGo Partner</a>
+                                <a href='./coplanner/hotels.php' class='easygo-btn-5 bg-orange text-white easygo-fs-5 w-50' >Become an easyGo Partner</a>
                                 <?php
                                     // if(is_session_logged_in()){
                                         echo "<a href='coplanner/coplanner_setup.php' class='easygo-btn-4 border-blue text-blue easygo-fs-5 w-50 bg-white'>Try for individuals</a>";

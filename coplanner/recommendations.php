@@ -18,13 +18,16 @@
 			if ($preferences ==null) {
 				// Handle JSON decoding errors if any
 				echo "Error decoding JSON data.";
+				die();
 			}
 		} else {
 			// Handle file read errors if any
 			echo "Error reading file.";
+			die();
 		}
 	} else {
 		echo "Your Url is broken! Kindly start the itinerary process again";
+		die();
 	}
 
 

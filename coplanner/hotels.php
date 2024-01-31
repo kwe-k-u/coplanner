@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-  <?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
-    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php include_once(__DIR__ . "/../utils/analytics/google_tag.php") ?>
+    <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyGo - About</title>
     <!-- Bootstrap css -->
@@ -14,6 +15,67 @@
     <!-- easygo css -->
     <link rel="stylesheet" href="../assets/css/general.css">
     <link rel="stylesheet" href="../assets/css/home.css">
+    <style>
+        /* Mobile */
+        @media only screen and (max-width: 992px) {
+
+            #mc_embed_signup {
+                margin: 1rem !important;
+            }
+        }
+
+        /* form body  */
+        #mc_embed_signup {
+            display: flex;
+            text-align: center;
+            gap: 1rem;
+            flex-direction: column;
+            padding: 2rem;
+            background-color: var(--easygo-blue);
+            border-radius: var(--easygo-br-3);
+            margin: 2.5rem;
+            text-transform: capitalize;
+        }
+
+        /* subscribe button  */
+        #mc-embedded-subscribe {
+            flex: 1;
+            display: inline;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            padding: 1rem 0.5rem;
+            background-color: var(--easygo-orange);
+            --bs-text-opacity: 1;
+            color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+        }
+
+        .mc-field-group {
+            display: inline;
+        }
+
+        .clear {
+            display: inline;
+        }
+
+        .optionalParent {
+            display: inline;
+        }
+
+        /* input field email  */
+        #mce-EMAIL {
+            width: 80%;
+            flex: 2;
+            border: none;
+            outline: none;
+            padding: 1rem 0.5rem;
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            border-radius: 12px;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,7 +89,7 @@
         <main>
             <!--- ================================ -->
             <!--- about intro [start] -->
-            <section class="about-intro" >
+            <section class="about-intro">
                 <div class="justify-content-center">
                     <img src="../assets/images/site_images/logo.png" alt="">
                 </div>
@@ -40,9 +102,9 @@
                                     Tour Planning Like Never Seen Before.
                                 </h1>
                                 <p>
-                                    At easyGo allow adventure seekers to quickly craft travel
+                                    easyGo allows adventure seekers to quickly craft travel
                                     plans that capture unique thrilling experiences and book the destinations included in those plans.
-                                    Our platform places hotels and tour destinations to right in front of tourists as they make their plans.
+                                    Our platform places hotels and tour destinations right in front of tourists as they make their plans.
                                     Join our destination partnership program to receive bookings directly from tourists
                                 </p>
                             </div>
@@ -55,31 +117,31 @@
                     </div>
                 </div>
 
-            <section class="p-5 my-5">
-                <div>
-                    <h2 class="easygo-fw-1 mb-4 text-center">What this means for you</h2>
-                    <div class="row">
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-4 p-2 text-center justify-content-center">
-                            <div>
-                                <h3 class="text-blue">Wider Market</h3>
-                                <div class="py-2">
-                                    Reach the larger tourism market in Ghana by listing your services on our platform
+                <section class="p-5 my-5">
+                    <div>
+                        <h2 class="easygo-fw-1 mb-4 text-center">What this means for you</h2>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-4 p-2 text-center justify-content-center">
+                                <div>
+                                    <h3 class="text-blue">Wider Market</h3>
+                                    <div class="py-2">
+                                        Reach the larger tourism market in Ghana by listing your services on our platform
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 p-2 text-center">
-                            <div>
-                                <h3 class="text-blue">Convenience</h3>
-                                <div class="py-2">
-                                    An easy to use system that works with your system to manage booking requests and payments!
+                            <div class="col-lg-4 p-2 text-center">
+                                <div>
+                                    <h3 class="text-blue">Convenience</h3>
+                                    <div class="py-2">
+                                        An easy to use system that works with your system to manage booking requests and payments!
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-lg-2"></div>
                         </div>
-                        <div class="col-lg-2"></div>
                     </div>
-                </div>
-            </section>
+                </section>
                 <div class="about-intro-second my-5">
                     <div class="container">
                         <div class="row">
@@ -106,8 +168,8 @@
                                         we want to see your business grow
                                     </h1>
                                     <p>
-                                        Running a business in today's economy is difficult. Why spend thousands on advertisement when easyGo
-                                        easyGo can recommend your services to tourists and vacationists. Our platform will recommend your
+                                        Running a business in today's economy is difficult. Why spend thousands on advertisement when
+                                        easyGo can recommend your services to tourists and vacationists? Our platform will recommend your
                                         services to tourists as they plan their trips and secure their bookings with you; payment included.
                                     </p>
                                 </div>
@@ -138,7 +200,10 @@
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Ashesi Venture Incubator
                                     </h5>
-                                    <p>We are honoured to announce that we have been accepted into Cohort 5 of the Ashesi Venture Incubator Program</p>
+                                    <p>We have been accepted into the Ashesi Venture Incubator, a 12- month business
+                                        development program that provides funding and industry mentorship to improve our business
+
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +218,9 @@
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Most Entreprising Business Award
                                     </h5>
-                                    <p>We received recognition during Ashesi University's 2023 career fair as second runner-up for the Most Enterprising Business Pitch competition</p>
+                                    <p> We were recognised during the 2023 Ashesi University Career Fair as the
+                                        second runner-up in the Most Enterprising Business Pitch competition
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +234,7 @@
                                     <h5 class="text-capitalize easygo-fw-1">
                                         Ashesi Design Lab: Expo
                                     </h5>
-                                    <p>We partook in the Ashesi D:Lab Expo on 7th September 2022 are were awarded a category award in Health and Lifestyle</p>
+                                    <p> We were awarded category leader in Health and Lifestyle during the 2022 Ashesi Design Lab Exposition</p>
                                 </div>
                             </div>
                         </div>
@@ -176,63 +243,47 @@
             </section>
             <!--- milestones [end] -->
             <!--- ================================ -->
-            <!--- ================================ -->
-            <?php
-                if (false){
-            ?>
-            <!--- our team [start] -->
-            <section class="mb-5 out-team" id="team" style="margin-top: 7rem;">
-                <div class="container">
-                    <h1 class="easgyo-h3 text-capitalize text-blue text-center">our team</h1>
-                    <p class="text-center mb-5">
-                        To be the company our customers want us to be, it takes a group of passionate people.
-                        Get to know the people leading the way at easyGo. Meet our directors and problem sovlers.
-                    </p>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="easygo-card-1 mx-auto">
-                                <div class="img-holder"></div>
-                                <div class="card-content">
-                                    <h5 class="text-capitalize easygo-fw-1">
-                                        Kweku Acquaye
-                                    </h5>
-                                    <p class="text-capitalize">Co-founder, Product development lead</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="easygo-card-1 mx-auto">
-                                <div class="img-holder"></div>
-                                <div class="card-content">
-                                    <h5 class="text-capitalize easygo-fw-1">
-                                        Edna Naa Tetteh
-                                    </h5>
-                                    <p class="text-capitalize">
-                                        Co-founder, Marketing & Public relations
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--- our team [end] -->
-            <!--- ================================ -->
-            <!--- News letter section [start] -->
-            <?php
-                }
-            ?>
-            <section class="nl-subscribe my-5">
+                <!--- ================================ -->
+                <!--- News letter section [start] -->
+            <!-- <section class="nl-subscribe my-5">
                 <div class="container">
                     <form class="nl-subscription-form py-5">
                         <h4 class="title text-white">subscribe to our newsletter to get the latest information about trips directly from email</h4>
                         <div class="input-field">
                             <input id="newsletter_email_field" type="text" placeholder="Your email address">
-                            <button class="bg-orange text-white" type="submit">Subscribe</button>
+                            <button class=" bg-orange text-white" type="submit" name="submit" id="mc-embedded-subscribe">Subscribe</button>
                         </div>
                     </form>
                 </div>
-            </section>
+            </section> -->
+
+            <div id="mc_embed_shell">
+                <div id="mc_embed_signup">
+                    <form action="https://easygo.us21.list-manage.com/subscribe/post?u=2bd1d8f7814d0d70eb78d4383&amp;id=12c7d925fc&amp;f_id=001af5e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <div id="mc_embed_signup_scroll">
+
+                            <h4 class="title text-white">subscribe to our newsletter to get the latest information about trips directly from email</h4>
+                            <div class="mc-field-group">
+                                <input type="email" name="EMAIL" placeholder="Your Email Address" class="required email" id="mce-EMAIL" required="" value="">
+                            </div>
+                            <div id="mce-responses" class="clear foot">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                                <input type="text" name="b_2bd1d8f7814d0d70eb78d4383_12c7d925fc" tabindex="-1" value="">
+                            </div>
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <!--- News Letter section [end] -->
             <!--- ================================ -->
         </main>
@@ -253,6 +304,31 @@
     <!-- easygo js -->
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
+
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                <script type="text/javascript">
+                    (function($) {
+                        window.fnames = new Array();
+                        window.ftypes = new Array();
+                        fnames[0] = 'EMAIL';
+                        ftypes[0] = 'email';
+                        fnames[1] = 'FNAME';
+                        ftypes[1] = 'text';
+                        fnames[2] = 'LNAME';
+                        ftypes[2] = 'text';
+                        fnames[3] = 'ADDRESS';
+                        ftypes[3] = 'address';
+                        fnames[4] = 'PHONE';
+                        ftypes[4] = 'phone';
+                        fnames[5] = 'BIRTHDAY';
+                        ftypes[5] = 'birthday';
+                        fnames[6] = 'AGE';
+                        ftypes[6] = 'radio';
+                        fnames[7] = 'GENDER';
+                        ftypes[7] = 'radio';
+                    }(jQuery));
+                    var $mcj = jQuery.noConflict(true);
+                </script>
 </body>
 
 </html>

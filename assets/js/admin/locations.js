@@ -450,6 +450,10 @@ function get_div_list(div_name){
 
 //submits the location info
 function create_site(form){
+	if(!confirm("Create destination?")){
+		showToast("Cancelled");
+		return false;
+	}
 	event.preventDefault();
 	var activities = [];
 
@@ -574,21 +578,26 @@ function create_type_of_destination(form){
 }
 
 function add_loc_room(){
-	let price = document.getElementById("room_price_field").value;
+	event.preventDefault();
+	let price = document.getElementById("price_currency_field").value+" "+document.getElementById("room_price_field").value;
 	let bed_type = document.getElementById("bed_type_field").value;
 	let occupancy = document.getElementById("room_occupancy_field").value;
+	let nickname = document.getElementById("room_name_field").value;
+
 	let table_body = document.getElementById("rooms_table_body");
 
 	let row = document.createElement("tr");
+	let name_cell = document.createElement("td");
 	let price_cell = document.createElement("td");
 	let occupancy_cell = document.createElement("td");
 	let type_cell = document.createElement("td");
 	type_cell.scope = "row";
+	name_cell.innerText = nickname
 	type_cell.innerText = bed_type;
 	price_cell.innerText = price;
 	occupancy_cell.innerText = occupancy;
 
-	row.append(type_cell,occupancy_cell,price_cell);
+	row.append(name_cell,type_cell,occupancy_cell,price_cell);
 
 	table_body.appendChild(row);
 
@@ -602,9 +611,10 @@ function get_loc_room_entries(){
 		let row = rows[i];
 		let cells = row.children;
 		result[i] = {
-			"bed_type" : cells[0].innerText,
-			"occupancy" : cells[1].innerText,
-			"price" : cells[2].innerText
+			"nickname" : cells[0].innerText,
+			"bed_type" : cells[1].innerText,
+			"occupancy" : cells[2].innerText,
+			"price" : cells[3].innerText
 		};
 	}
 	return result;

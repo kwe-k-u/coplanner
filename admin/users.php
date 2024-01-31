@@ -1,7 +1,12 @@
 <?php
-require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/admin_controller.php");
+    require_once(__DIR__ . "/../utils/core.php");
+    require_once(__DIR__ . "/../controllers/admin_controller.php");
 
+
+    if(!is_session_user_admin()){
+        header("Location: ../index.php");
+        die();
+    }
 
 
 ?>
@@ -153,6 +158,9 @@ require_once(__DIR__ . "/../controllers/admin_controller.php");
                                             <div class='col-3'>
                                                 <div>
                                                     <a href='#' onclick='log_in_as_user(\"$id\")' > Log in as user</a>
+                                                </div>
+                                                <div>
+                                                    <a href='#' onclick='make_user_admin(\"$id\")' > Make user admin </a>
                                                 </div>
                                             </div>
                                         </div>

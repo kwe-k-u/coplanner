@@ -1,12 +1,13 @@
 <?php
-require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/admin_controller.php");
-require_once(__DIR__ . "/../controllers/public_controller.php");
+	require_once(__DIR__ . "/../utils/core.php");
+	require_once(__DIR__ . "/../controllers/admin_controller.php");
+	require_once(__DIR__ . "/../controllers/public_controller.php");
 
-// if (!is_session_user_admin()) {
-// 	header("Location: ../views/home.php");
-// 	die();
-// }
+
+	if(!is_session_user_admin()){
+		header("Location: ../index.php");
+		die();
+	}
 
 
 
@@ -236,7 +237,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
 									</div>
 								</div>
-								<div class="tab-content">
+								<div class="tab-content mb-5">
 
 									<!-- Destination profile [start] -->
 									<div class="col tab-pane fade active show" role="tabpanel" id="add-location-profile">
@@ -341,12 +342,30 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 											<small class="text-gray-1 easygo-fs-6">(Rooms available at the destination)</small>
 											<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
 										</div>
+										<div class="row">
+
+											<div class="col-6">
+												<div class="form-input-field">
+													<label class="text-gray-1 easygo-fs-4 ">Room nickname</label>
+													<input class="px-4 py-2 flex-grow-1" type="text" id="room_name_field">
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-input-field">
+													<label class="text-gray-1 easygo-fs-4 ">Max Occupancy</label>
+													<input class="px-4 py-2 flex-grow-1" type="number" id="room_occupancy_field">
+												</div>
+											</div>
+										</div>
 
 										<div class="row">
 											<div class="col-3">
 												<div class="form-input-field">
-													<label class="text-gray-1 easygo-fs-4 ">Max Occupancy</label>
-													<input class="px-4 py-2 flex-grow-1" type="number" id="room_occupancy_field">
+													<label class="text-gray-1 easygo-fs-4 ">Currency</label>
+													<select name="currency" id="price_currency_field">
+														<option value='GHS'>GHS</option>
+														<option value='USD'>USD</option>
+													</select>
 												</div>
 											</div>
 											<div class="col-3">
@@ -375,9 +394,10 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 											<table class="table">
 												<thead>
 													<tr>
-														<th scope="col">Bed Type</th>
-														<th scope="col">Occupancy</th>
-														<th scope="col">Price(GHS)</th>
+														<th scope="col-5">Nickname</th>
+														<th scope="col-4">Bed Type</th>
+														<th scope="col-1">Occupancy</th>
+														<th scope="col-2">Price(GHS)</th>
 													</tr>
 												</thead>
 												<tbody id="rooms_table_body">
@@ -448,10 +468,10 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 									</div>
 									<!-- Destination types [end] -->
 								</div>
-								<div>
+								<div style="display: inline-block;">
 									<button type="submit" class="easygo-btn-1 mt-4 ms-auto easygo-fs-5" id="submit_loc_btn" name="loc_id" value="">Add Destination</button>
 								</div>
-								<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+								<div class="justify-content-end gap-2 align-items-center mt-4" style="display: inline-block;">
 									<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" onclick="return add_location_toggle()">Close</button>
 								</div>
 							</div>

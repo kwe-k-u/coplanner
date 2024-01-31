@@ -1034,3 +1034,47 @@ BEGIN
 	SELECT * from vw_invoice_activities WHERE invoice_id = in_invoice_id;
 END //
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS  set_itinerary_visibility;
+DELIMITER //
+CREATE PROCEDURE set_itinerary_visibility(IN in_itinerary_id VARCHAR(100), IN in_visibility VARCHAR(100))
+BEGIN
+	UPDATE itinerary SET visibility = in_visibility where itinerary_id = in_itinerary_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS set_itinerary_day_date;
+DELIMITER //
+CREATE PROCEDURE set_itinerary_day_date(IN in_day_id VARCHAR(100), IN in_date DATETIME)
+BEGIN
+	UPDATE itinerary_day SET visit_date = in_date where day_id = in_day_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS make_user_admin;
+DELIMITER //
+CREATE PROCEDURE make_user_admin(IN in_user_id VARCHAR(100), IN in_privilege VARCHAR(20))
+BEGIN
+	-- Check if the user is already an admin
+	DECLARE temp_id  VARCHAR(100);
+	SELECT user_id into temp_id from admin_users where user_id = in_user_id;
+	if temp_id is null  then
+		INSERT INTO `admin_users`(`user_id`, `privilege`) VALUES (in_user_id,in_privilege);
+	end if;
+END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS get_admin_privilege;
+DELIMITER //
+CREATE FUNCTION get_admin_privilege(in_user_id VARCHAR(100)) RETURNS VARCHAR(30)
+READS SQL DATA
+BEGIN
+    DECLARE result VARCHAR(30);
+    SELECT privilege INTO result FROM admin_users WHERE user_id = in_user_id;
+    RETURN result;
+END //
+DELIMITER ;
