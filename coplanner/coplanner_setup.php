@@ -118,201 +118,66 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="tour-type-selection-page" data-transit-parent="tool-selection-page" style="max-width: 300px;">Next</button>
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="location-selection-page" data-transit-parent="tool-selection-page" style="max-width: 300px;">Next</button>
                         </div>
                     </div>
                 </section>
                 <!-- Curation method [end] -->
                 <!--- ================================ -->
 
-                <!--- ================================ -->
-                <!-- Itinerary type [start] -->
-                <section id="tour-type-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tool-selection-page" data-transit-parent="tour-type-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                    </div>
-                    <div>
-                        <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-5">What type of tour do you want</h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-type-selection" id="solo-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="solo-select">
-                                        <h3>Solo</h3>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-type-selection" id="couple-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="couple-select">
-                                        <h3>Couple</h3>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-type-selection" id="group-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="group-select">
-                                        <h3>Family & Friends</h3>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="duration-selection-page" data-transit-parent="tour-type-selection-page" style="max-width: 300px;">Next</button>
-                        </div>
-                    </div>
-                </section>
-                <!-- Itinerary type[end] -->
-                <!--- ================================ -->
-                <!--- ================================ -->
-                <!-- Duration [start] -->
-                <section id="duration-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tour-type-selection-page" data-transit-parent="duration-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                    </div>
-                    <div>
-                        <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-5">How long do you want your tour?</h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-duration-selection" id="single-day-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="single-day-select">
-                                        <h3>Single Day</h3>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-duration-selection" id="2-to-3-days-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="2-to-3-days-select">
-                                        <h3>2-3 Days</h3>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-duration-selection" id="week-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="week-select">
-                                        <h3>About a week</h3>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="accomodation-selection-page" data-transit-parent="duration-selection-page" style="max-width: 300px;">Next</button>
-                        </div>
-                    </div>
-                </section>
-                <!-- Duration [end] -->
-                <!--- ================================ -->
-
-                <!--- ================================ -->
-                <!-- Accommodation selection [start] -->
-                <section id="accomodation-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="accomodation-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                    </div>
-                    <div>
-                        <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-5">How type of accomodation would you want?</h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-accomodation-selection" id="individual-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="individual-select">
-                                        <h3>Individual</h3>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 p-3">
-                                <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-accomodation-selection" id="shared-select">
-                                    <label class="easygo-icon-btn py-5 text-blue" for="shared-select">
-                                        <h3>Shared</h3>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="activities-selection-page" data-transit-parent="accomodation-selection-page" style="max-width: 300px;">Next</button>
-                        </div>
-                    </div>
-                </section>
-                <!-- Accommodation selection [end] -->
-                <!--- ================================ -->
 
 
                 <!--- ================================ -->
-                <!-- Itinerary theme [start] -->
-                <section id="activities-selection-page" class="eh-transition-page">
+                <!-- Itinerary destinations [start] -->
+                <section id="location-selection-page" class="eh-transition-page">
                     <div class="mb-4">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="accomodation-selection-page" data-transit-parent="activities-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tool-selection-page" data-transit-parent="location-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
                     </div>
                     <div>
                         <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-5">What vibe should we make your itinerary?</h4>
+                            <h4 class="text-center fw-bold mb-5">Where in Ghana do you want to go?</h4>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 p-3">
+                            <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="beaches-select" value="family friendly">
-                                    <label class="easygo-icon-btn" for="beaches-select">
+                                    <input type="checkbox" name="location-selection" id="accra-select" value="Greater Accra">
+                                    <label class="easygo-icon-btn" for="accra-select">
                                         <svg width="126" height="101" viewBox="0 0 126 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
                                             <path d="M99.7333 17.1084C88.9083 10.8584 73.9167 11.8251 67.6667 22.6501L82.1 30.9834M99.7333 17.1084C110.558 23.3584 117.217 36.8251 110.967 47.6501L89.3167 35.1501M99.7333 17.1084L101.817 13.5001M99.7333 17.1084C92.1458 19.1417 87.3083 21.9626 82.1 30.9834M99.7333 17.1084C101.767 24.6959 101.742 30.2959 96.5333 39.3167M82.1 30.9834L89.3167 35.1501M89.3167 35.1501L76.8167 56.8001M38.5 88.5001L42.1667 84.1001C42.972 83.1326 43.986 82.36 45.1326 81.8403C46.2792 81.3206 47.5285 81.0673 48.787 81.0994C50.0454 81.1315 51.2802 81.4481 52.3988 82.0255C53.5175 82.6029 54.4908 83.4261 55.2458 84.4334C55.9903 85.4269 56.9473 86.2417 58.0469 86.8181C59.1465 87.3945 60.3609 87.7181 61.6015 87.7652C62.8422 87.8124 64.0777 87.5818 65.2178 87.0904C66.3579 86.5991 67.374 85.8593 68.1917 84.9251L68.9833 84.0167C69.8578 83.0163 70.9361 82.2145 72.146 81.6652C73.3558 81.1158 74.6692 80.8316 75.9979 80.8316C77.3266 80.8316 78.64 81.1158 79.8498 81.6652C81.0597 82.2145 82.138 83.0163 83.0125 84.0167L83.8083 84.9251C87.3 88.9126 93.575 88.6751 96.7542 84.4376C97.5092 83.4296 98.4827 82.6057 99.6017 82.0278C100.721 81.4499 101.956 81.133 103.215 81.1009C104.474 81.0689 105.724 81.3224 106.871 81.8426C108.018 82.3627 109.032 83.136 109.837 84.1042L113.5 88.5001M53.95 67.6667C60.0337 62.286 67.8783 59.3213 76 59.3334C84.1217 59.3213 91.9663 62.286 98.05 67.6667" stroke="#1204B5" stroke-width="8.33333" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
-                                        <h3>Family Friendly</h3>
+                                        <h3>Greater Accra</h3>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 p-3">
+                            <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="relaxation-select" value="soft life">
-                                    <label class="easygo-icon-btn" for="relaxation-select">
-                                        <svg width="134" height="100" viewBox="0 0 134 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.9353 12.3541L25.2251 23.9918L36.8627 29.2816L25.2251 34.5714L19.9353 46.209L14.6454 34.5714L3.00781 29.2816L14.6454 23.9918L19.9353 12.3541ZM19.9353 22.5741L17.8193 27.1657L13.2278 29.2816L17.8193 31.3975L19.9353 35.9891L22.0512 31.3975L26.6428 29.2816L22.0512 27.1657L19.9353 22.5741ZM41.0946 22.9338L38.4285 17.1361L32.6309 14.4701L38.4285 11.8252L41.0946 6.00635L43.7395 11.8252L49.5583 14.4701L43.7395 17.1361L41.0946 22.9338ZM41.0946 52.5568L38.4285 46.7592L32.6309 44.0931L38.4285 41.4482L41.0946 35.6294L43.7395 41.4482L49.5583 44.0931L43.7395 46.7592L41.0946 52.5568Z" fill="black" />
-                                            <path d="M50.6667 91.6665L67.3333 83.3332V70.8332H117.333M79.8333 83.3332H117.333M67.3333 58.3332L79.8333 49.9998L84 33.3332C96.5 37.4998 96.5 49.9998 96.5 58.3332M46.5 70.8332C46.5 71.9382 46.939 72.998 47.7204 73.7794C48.5018 74.5609 49.5616 74.9998 50.6667 74.9998C51.7717 74.9998 52.8315 74.5609 53.6129 73.7794C54.3943 72.998 54.8333 71.9382 54.8333 70.8332C54.8333 69.7281 54.3943 68.6683 53.6129 67.8869C52.8315 67.1055 51.7717 66.6665 50.6667 66.6665C49.5616 66.6665 48.5018 67.1055 47.7204 67.8869C46.939 68.6683 46.5 69.7281 46.5 70.8332ZM67.3333 20.8332C67.3333 21.9382 67.7723 22.998 68.5537 23.7794C69.3351 24.5608 70.3949 24.9998 71.5 24.9998C72.6051 24.9998 73.6649 24.5608 74.4463 23.7794C75.2277 22.998 75.6667 21.9382 75.6667 20.8332C75.6667 19.7281 75.2277 18.6683 74.4463 17.8869C73.6649 17.1055 72.6051 16.6665 71.5 16.6665C70.3949 16.6665 69.3351 17.1055 68.5537 17.8869C67.7723 18.6683 67.3333 19.7281 67.3333 20.8332Z" stroke="#1204B5" stroke-width="8.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-
-                                        <h3>Soft Life</h3>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 p-3">
-                                <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="outdoor-select" value="aesthetics">
-                                    <label class="easygo-icon-btn" for="outdoor-select">
+                                    <input type="checkbox" name="location-selection" id="western-select" value="Greater Accra">
+                                    <label class="easygo-icon-btn" for="western-select">
                                         <svg width="141" height="100" viewBox="0 0 141 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 14.3541L25.2251 25.9918L36.8627 31.2816L25.2251 36.5714L19.9353 48.209L14.6454 36.5714L3.00781 31.2816L14.6454 25.9918L19.9353 14.3541ZM19.9353 24.5741L17.8193 29.1657L13.2278 31.2816L17.8193 33.3975L19.9353 37.9891L22.0512 33.3975L26.6428 31.2816L22.0512 29.1657L19.9353 24.5741ZM41.0946 24.9338L38.4285 19.1361L32.6309 16.4701L38.4285 13.8252L41.0946 8.00635L43.7395 13.8252L49.5583 16.4701L43.7395 19.1361L41.0946 24.9338ZM41.0946 54.5568L38.4285 48.7592L32.6309 46.0931L38.4285 43.4482L41.0946 37.6294L43.7395 43.4482L49.5583 46.0931L43.7395 48.7592L41.0946 54.5568Z" fill="black" />
                                             <path d="M59.7502 45.8333C57.9446 45.8333 56.4516 45.2431 55.271 44.0625C54.0904 42.8819 53.5002 41.3889 53.5002 39.5833C53.5002 37.7778 54.0904 36.2847 55.271 35.1042C56.4516 33.9236 57.9446 33.3333 59.7502 33.3333C61.5557 33.3333 63.0488 33.9236 64.2293 35.1042C65.4099 36.2847 66.0002 37.7778 66.0002 39.5833C66.0002 41.3889 65.4099 42.8819 64.2293 44.0625C63.0488 45.2431 61.5557 45.8333 59.7502 45.8333ZM53.5002 91.6667V70.8333H49.3335V54.1667C49.3335 52.9861 49.7335 51.9958 50.5335 51.1958C51.3335 50.3958 52.3224 49.9972 53.5002 50H66.0002C67.1807 50 68.171 50.4 68.971 51.2C69.771 52 70.1696 52.9889 70.1668 54.1667V70.8333H66.0002V83.3333H99.3335V62.5H92.0418C87.1113 62.5 82.9266 60.7806 79.4877 57.3417C76.0488 53.9028 74.3307 49.7194 74.3335 44.7917C74.3335 41.1111 75.3238 37.8292 77.3043 34.9458C79.2849 32.0625 81.8363 29.9278 84.9585 28.5417C85.7224 24.0278 87.8238 20.2264 91.2627 17.1375C94.7015 14.0486 98.7807 12.5028 103.5 12.5C108.222 12.5 112.303 14.0458 115.742 17.1375C119.181 20.2292 121.281 24.0306 122.042 28.5417C125.167 29.9306 127.72 32.0667 129.7 34.95C131.681 37.8333 132.67 41.1139 132.667 44.7917C132.667 49.7222 130.947 53.9069 127.508 57.3458C124.07 60.7847 119.886 62.5028 114.958 62.5H107.667V83.3333H128.5V91.6667H53.5002Z" fill="#1204B5" />
                                         </svg>
-                                        <h3>Aesthetics</h3>
+                                        <h3>Western Region</h3>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 p-3">
+                            <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="nightlife-select" value="outdoors">
-                                    <label class="easygo-icon-btn" for="nightlife-select">
+                                    <input type="checkbox" name="location-selection" id="eastern-select" value="Eastern Region">
+                                    <label class="easygo-icon-btn" for="eastern-select">
                                         <svg width="136" height="81" viewBox="0 0 136 81" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
                                             <path d="M135 19H105C105 19 103 35 107 51C108.608 53.68 112.58 55.124 117 55.49V75H116.334L109 81H131L123.832 75H123V55.344C127.24 54.794 131.126 53.316 133 51C137 37 135 19 135 19ZM133 31H107V21H133V31ZM84 75H73V58L95 25H43L65 58V75H54C53.2044 75 52.4413 75.3161 51.8787 75.8787C51.3161 76.4413 51 77.2043 51 78C51 78.7957 51.3161 79.5587 51.8787 80.1213C52.4413 80.6839 53.2044 81 54 81H84C84.7957 81 85.5587 80.6839 86.1213 80.1213C86.6839 79.5587 87 78.7957 87 78C87 77.2043 86.6839 76.4413 86.1213 75.8787C85.5587 75.3161 84.7957 75 84 75Z" fill="#1204B5" />
                                         </svg>
-                                        <h3>Outdoors</h3>
+                                        <h3>Eastern Region</h3>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 p-3">
+                            <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="shopping-select" value="nightlife">
-                                    <label class="easygo-icon-btn" for="shopping-select">
+                                    <input type="checkbox" name="location-selection" id="volta-select" value="Volta Region">
+                                    <label class="easygo-icon-btn" for="volta-select">
                                         <svg width="130" height="100" viewBox="0 0 130 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 22.3541L25.2251 33.9918L36.8627 39.2816L25.2251 44.5714L19.9353 56.209L14.6454 44.5714L3.00781 39.2816L14.6454 33.9918L19.9353 22.3541ZM19.9353 32.5741L17.8193 37.1657L13.2278 39.2816L17.8193 41.3975L19.9353 45.9891L22.0512 41.3975L26.6428 39.2816L22.0512 37.1657L19.9353 32.5741ZM41.0946 32.9338L38.4285 27.1361L32.6309 24.4701L38.4285 21.8252L41.0946 16.0063L43.7395 21.8252L49.5583 24.4701L43.7395 27.1361L41.0946 32.9338ZM41.0946 62.5568L38.4285 56.7592L32.6309 54.0931L38.4285 51.4482L41.0946 45.6294L43.7395 51.4482L49.5583 54.0931L43.7395 56.7592L41.0946 62.5568Z" fill="black" />
                                             <g clip-path="url(#clip0_1401_6519)">
@@ -326,14 +191,171 @@ require_once(__DIR__ . "/../utils/core.php");
                                             </defs>
                                         </svg>
 
-                                        <h3>Nightlife</h3>
+                                        <h3>Volta Region</h3>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 p-3">
+                        </div>
+                        <div class="mt-4 d-flex justify-content-center">
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="duration-selection-page" data-transit-parent="location-selection-page" style="max-width: 300px;">Next</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Itinerary destinations [end] -->
+                <!--- ================================ -->
+
+
+                <!--- ================================ -->
+                <!-- Duration [start] -->
+                <section id="duration-selection-page" class="eh-transition-page">
+                    <div class="mb-4">
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="location-selection-page" data-transit-parent="duration-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    </div>
+                    <div>
+                        <div class="mt-auto">
+                            <h4 class="text-center fw-bold mb-5">How long do you want to spend on the trip?</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="duration-selection" id="single-day-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="single-day-select">
+                                        <h3>Just A day</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="duration-selection" id="2-to-3-days-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="2-to-3-days-select">
+                                        <h3>Two or Three Days</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="duration-selection" id="week-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="week-select">
+                                        <h3>About A Week</h3>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 d-flex justify-content-center">
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="type-selection-page" data-transit-parent="duration-selection-page" style="max-width: 300px;">Next</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Duration [end] -->
+                <!--- ================================ -->
+
+
+                <!--- ================================ -->
+                <!-- Itinerary type [start] -->
+                <section id="type-selection-page" class="eh-transition-page">
+                    <div class="mb-4">
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="type-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    </div>
+                    <div>
+                        <div class="mt-auto">
+                            <h4 class="text-center fw-bold mb-5">Who's travelling with you?</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="type-selection" id="solo-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="solo-select">
+                                        <h3>Going Solo</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="type-selection" id="couple-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="couple-select">
+                                        <h3>Partner</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="type-selection" id="family-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="family-select">
+                                        <h3>Family</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3 p-3">
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="tour-type-selection" id="friends-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="friends-select">
+                                        <h3>Friends</h3>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 d-flex justify-content-center">
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="vibe-selection-page" data-transit-parent="type-selection-page" style="max-width: 300px;">Next</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Itinerary type[end] -->
+                <!--- ================================ -->
+
+
+
+                <!--- ================================ -->
+                <!-- Itinerary theme [start] -->
+                <section id="vibe-selection-page" class="eh-transition-page">
+                    <div class="mb-4">
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="type-selection-page" data-transit-parent="vibe-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    </div>
+                    <div>
+                        <div class="mt-auto">
+                            <h4 class="text-center fw-bold mb-5">Select the vibe for the trip?</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="festivals-select" value="adventure">
-                                    <label class="easygo-icon-btn" for="festivals-select">
+                                    <input type="checkbox" name="vibe-selection" id="relaxation-select" value="Spa & Wellness">
+                                    <label class="easygo-icon-btn" for="relaxation-select">
+                                        <svg width="134" height="100" viewBox="0 0 134 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.9353 12.3541L25.2251 23.9918L36.8627 29.2816L25.2251 34.5714L19.9353 46.209L14.6454 34.5714L3.00781 29.2816L14.6454 23.9918L19.9353 12.3541ZM19.9353 22.5741L17.8193 27.1657L13.2278 29.2816L17.8193 31.3975L19.9353 35.9891L22.0512 31.3975L26.6428 29.2816L22.0512 27.1657L19.9353 22.5741ZM41.0946 22.9338L38.4285 17.1361L32.6309 14.4701L38.4285 11.8252L41.0946 6.00635L43.7395 11.8252L49.5583 14.4701L43.7395 17.1361L41.0946 22.9338ZM41.0946 52.5568L38.4285 46.7592L32.6309 44.0931L38.4285 41.4482L41.0946 35.6294L43.7395 41.4482L49.5583 44.0931L43.7395 46.7592L41.0946 52.5568Z" fill="black" />
+                                            <path d="M50.6667 91.6665L67.3333 83.3332V70.8332H117.333M79.8333 83.3332H117.333M67.3333 58.3332L79.8333 49.9998L84 33.3332C96.5 37.4998 96.5 49.9998 96.5 58.3332M46.5 70.8332C46.5 71.9382 46.939 72.998 47.7204 73.7794C48.5018 74.5609 49.5616 74.9998 50.6667 74.9998C51.7717 74.9998 52.8315 74.5609 53.6129 73.7794C54.3943 72.998 54.8333 71.9382 54.8333 70.8332C54.8333 69.7281 54.3943 68.6683 53.6129 67.8869C52.8315 67.1055 51.7717 66.6665 50.6667 66.6665C49.5616 66.6665 48.5018 67.1055 47.7204 67.8869C46.939 68.6683 46.5 69.7281 46.5 70.8332ZM67.3333 20.8332C67.3333 21.9382 67.7723 22.998 68.5537 23.7794C69.3351 24.5608 70.3949 24.9998 71.5 24.9998C72.6051 24.9998 73.6649 24.5608 74.4463 23.7794C75.2277 22.998 75.6667 21.9382 75.6667 20.8332C75.6667 19.7281 75.2277 18.6683 74.4463 17.8869C73.6649 17.1055 72.6051 16.6665 71.5 16.6665C70.3949 16.6665 69.3351 17.1055 68.5537 17.8869C67.7723 18.6683 67.3333 19.7281 67.3333 20.8332Z" stroke="#1204B5" stroke-width="8.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                        <h3>Spa & Wellness</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 p-3">
+                                <div class="easygo-checkbox-btn-1">
+                                    <input type="checkbox" name="vibe-selection" id="adventure-select" value="adventure">
+                                    <label class="easygo-icon-btn" for="adventure-select">
+                                        <svg width="141" height="100" viewBox="0 0 141 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.9353 14.3541L25.2251 25.9918L36.8627 31.2816L25.2251 36.5714L19.9353 48.209L14.6454 36.5714L3.00781 31.2816L14.6454 25.9918L19.9353 14.3541ZM19.9353 24.5741L17.8193 29.1657L13.2278 31.2816L17.8193 33.3975L19.9353 37.9891L22.0512 33.3975L26.6428 31.2816L22.0512 29.1657L19.9353 24.5741ZM41.0946 24.9338L38.4285 19.1361L32.6309 16.4701L38.4285 13.8252L41.0946 8.00635L43.7395 13.8252L49.5583 16.4701L43.7395 19.1361L41.0946 24.9338ZM41.0946 54.5568L38.4285 48.7592L32.6309 46.0931L38.4285 43.4482L41.0946 37.6294L43.7395 43.4482L49.5583 46.0931L43.7395 48.7592L41.0946 54.5568Z" fill="black" />
+                                            <path d="M59.7502 45.8333C57.9446 45.8333 56.4516 45.2431 55.271 44.0625C54.0904 42.8819 53.5002 41.3889 53.5002 39.5833C53.5002 37.7778 54.0904 36.2847 55.271 35.1042C56.4516 33.9236 57.9446 33.3333 59.7502 33.3333C61.5557 33.3333 63.0488 33.9236 64.2293 35.1042C65.4099 36.2847 66.0002 37.7778 66.0002 39.5833C66.0002 41.3889 65.4099 42.8819 64.2293 44.0625C63.0488 45.2431 61.5557 45.8333 59.7502 45.8333ZM53.5002 91.6667V70.8333H49.3335V54.1667C49.3335 52.9861 49.7335 51.9958 50.5335 51.1958C51.3335 50.3958 52.3224 49.9972 53.5002 50H66.0002C67.1807 50 68.171 50.4 68.971 51.2C69.771 52 70.1696 52.9889 70.1668 54.1667V70.8333H66.0002V83.3333H99.3335V62.5H92.0418C87.1113 62.5 82.9266 60.7806 79.4877 57.3417C76.0488 53.9028 74.3307 49.7194 74.3335 44.7917C74.3335 41.1111 75.3238 37.8292 77.3043 34.9458C79.2849 32.0625 81.8363 29.9278 84.9585 28.5417C85.7224 24.0278 87.8238 20.2264 91.2627 17.1375C94.7015 14.0486 98.7807 12.5028 103.5 12.5C108.222 12.5 112.303 14.0458 115.742 17.1375C119.181 20.2292 121.281 24.0306 122.042 28.5417C125.167 29.9306 127.72 32.0667 129.7 34.95C131.681 37.8333 132.67 41.1139 132.667 44.7917C132.667 49.7222 130.947 53.9069 127.508 57.3458C124.07 60.7847 119.886 62.5028 114.958 62.5H107.667V83.3333H128.5V91.6667H53.5002Z" fill="#1204B5" />
+                                        </svg>
+                                        <h3>Adventure & Sports</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 p-3">
+                                <div class="easygo-checkbox-btn-1">
+                                    <input type="checkbox" name="vibe-selection" id="landmarks-select" value="Landmarks">
+                                    <label class="easygo-icon-btn" for="landmarks-select">
+                                        <svg width="136" height="81" viewBox="0 0 136 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
+                                            <path d="M135 19H105C105 19 103 35 107 51C108.608 53.68 112.58 55.124 117 55.49V75H116.334L109 81H131L123.832 75H123V55.344C127.24 54.794 131.126 53.316 133 51C137 37 135 19 135 19ZM133 31H107V21H133V31ZM84 75H73V58L95 25H43L65 58V75H54C53.2044 75 52.4413 75.3161 51.8787 75.8787C51.3161 76.4413 51 77.2043 51 78C51 78.7957 51.3161 79.5587 51.8787 80.1213C52.4413 80.6839 53.2044 81 54 81H84C84.7957 81 85.5587 80.6839 86.1213 80.1213C86.6839 79.5587 87 78.7957 87 78C87 77.2043 86.6839 76.4413 86.1213 75.8787C85.5587 75.3161 84.7957 75 84 75Z" fill="#1204B5" />
+                                        </svg>
+                                        <h3>Landmarks & Siteseeing</h3>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 p-3">
+                                <div class="easygo-checkbox-btn-1">
+                                    <input type="checkbox" name="vibe-selection" id="culture-select" value="Culture & History">
+                                    <label class="easygo-icon-btn" for="culture-select">
                                         <svg width="147" height="100" viewBox="0 0 147 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 13.3541L25.2251 24.9918L36.8627 30.2816L25.2251 35.5714L19.9353 47.209L14.6454 35.5714L3.00781 30.2816L14.6454 24.9918L19.9353 13.3541ZM19.9353 23.5741L17.8193 28.1657L13.2278 30.2816L17.8193 32.3975L19.9353 36.9891L22.0512 32.3975L26.6428 30.2816L22.0512 28.1657L19.9353 23.5741ZM41.0946 23.9338L38.4285 18.1361L32.6309 15.4701L38.4285 12.8252L41.0946 7.00635L43.7395 12.8252L49.5583 15.4701L43.7395 18.1361L41.0946 23.9338ZM41.0946 53.5568L38.4285 47.7592L32.6309 45.0931L38.4285 42.4482L41.0946 36.6294L43.7395 42.4482L49.5583 45.0931L43.7395 47.7592L41.0946 53.5568Z" fill="black" />
                                             <g clip-path="url(#clip0_1401_6519)">
@@ -345,26 +367,26 @@ require_once(__DIR__ . "/../utils/core.php");
                                                 </clipPath>
                                             </defs>
                                         </svg>
-                                        <h3>Adventure</h3>
+                                        <h3>Culture & History</h3>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 p-3">
+                            <div class="col-lg-4 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="swimming-select" value="bucket list">
-                                    <label class="easygo-icon-btn" for="swimming-select">
-                                        <svg width="150" height="100" viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.9353 22.3541L25.2251 33.9918L36.8627 39.2816L25.2251 44.5714L19.9353 56.209L14.6454 44.5714L3.00781 39.2816L14.6454 33.9918L19.9353 22.3541ZM19.9353 32.5741L17.8193 37.1657L13.2278 39.2816L17.8193 41.3975L19.9353 45.9891L22.0512 41.3975L26.6428 39.2816L22.0512 37.1657L19.9353 32.5741ZM41.0946 32.9338L38.4285 27.1361L32.6309 24.4701L38.4285 21.8252L41.0946 16.0063L43.7395 21.8252L49.5583 24.4701L43.7395 27.1361L41.0946 32.9338ZM41.0946 62.5568L38.4285 56.7592L32.6309 54.0931L38.4285 51.4482L41.0946 45.6294L43.7395 51.4482L49.5583 54.0931L43.7395 56.7592L41.0946 62.5568Z" fill="black" />
-                                            <path d="M75 45.8335L91.6667 37.5002L106.25 50.0002L100 58.3335M62.5 69.7918C63.7971 70.4367 65.2187 70.7921 66.6667 70.8335C68.2896 70.8675 69.8963 70.5059 71.3482 69.78C72.8001 69.054 74.0535 67.9855 75 66.6668C75.9465 65.3481 77.1999 64.2796 78.6518 63.5537C80.1037 62.8278 81.7104 62.4662 83.3333 62.5002C84.9562 62.4662 86.563 62.8278 88.0149 63.5537C89.4668 64.2796 90.7201 65.3481 91.6667 66.6668C92.6132 67.9855 93.8665 69.054 95.3184 69.78C96.7703 70.5059 98.3771 70.8675 100 70.8335C101.623 70.8675 103.23 70.5059 104.682 69.78C106.133 69.054 107.387 67.9855 108.333 66.6668C109.28 65.3481 110.533 64.2796 111.985 63.5537C113.437 62.8278 115.044 62.4662 116.667 62.5002C118.29 62.4662 119.896 62.8278 121.348 63.5537C122.8 64.2796 124.053 65.3481 125 66.6668C125.947 67.9855 127.2 69.054 128.652 69.78C130.104 70.5059 131.71 70.8675 133.333 70.8335C134.781 70.7921 136.203 70.4367 137.5 69.7918M112.5 37.5002C112.5 38.6052 112.939 39.665 113.72 40.4464C114.502 41.2278 115.562 41.6668 116.667 41.6668C117.772 41.6668 118.832 41.2278 119.613 40.4464C120.394 39.665 120.833 38.6052 120.833 37.5002C120.833 36.3951 120.394 35.3353 119.613 34.5539C118.832 33.7725 117.772 33.3335 116.667 33.3335C115.562 33.3335 114.502 33.7725 113.72 34.5539C112.939 35.3353 112.5 36.3951 112.5 37.5002Z" stroke="#1204B5" stroke-width="8.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    <input type="checkbox" name="vibe-selection" id="waterfalls-select" value="Waterfalls">
+                                    <label class="easygo-icon-btn" for="waterfalls-select">
+                                        <svg width="136" height="100" viewBox="0 0 136 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.9353 12.3541L25.2251 23.9918L36.8627 29.2816L25.2251 34.5714L19.9353 46.209L14.6454 34.5714L3.00781 29.2816L14.6454 23.9918L19.9353 12.3541ZM19.9353 22.5741L17.8193 27.1657L13.2278 29.2816L17.8193 31.3975L19.9353 35.9891L22.0512 31.3975L26.6428 29.2816L22.0512 27.1657L19.9353 22.5741ZM41.0946 22.9338L38.4285 17.1361L32.6309 14.4701L38.4285 11.8252L41.0946 6.00635L43.7395 11.8252L49.5583 14.4701L43.7395 17.1361L41.0946 22.9338ZM41.0946 52.5568L38.4285 46.7592L32.6309 44.0931L38.4285 41.4482L41.0946 35.6294L43.7395 41.4482L49.5583 44.0931L43.7395 46.7592L41.0946 52.5568Z" fill="black" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M82.4302 7.5C86.4852 7.5 89.7672 10.879 89.7672 14.934C89.7672 18.988 86.4852 22.367 82.4302 22.367C78.3752 22.367 74.9962 18.988 74.9962 14.934C74.9962 10.879 78.3762 7.5 82.4302 7.5ZM82.9132 23.043C85.7032 22.956 87.8602 24.692 88.9952 26.519L96.7182 39.359L110.234 45.055C114.095 46.695 112.261 51.812 107.917 50.654C107.762 50.5484 107.6 50.4515 107.434 50.364L98.3592 70.444C98.3592 70.444 101.255 77.106 104.924 84.637C108.496 92.263 99.8072 95.546 96.6212 88.498L93.4362 81.354L88.8022 91.491L86.8712 90.622L92.2772 78.844L83.2022 59.054C82.8162 59.15 82.4302 59.054 81.9472 59.054C81.9472 59.054 71.4242 82.995 68.5272 89.271C65.7282 95.546 57.4262 91.781 60.2252 85.601C63.0252 79.423 76.3482 49.399 76.3482 49.399L66.4452 49.561C64.9452 49.574 64.5862 49.335 64.4912 48.211C64.3382 45.241 64.0762 38.253 64.7632 35.014C65.6492 30.839 66.1782 26.244 69.1072 24.877C72.0372 23.51 77.1202 27.291 77.1202 27.291C77.8922 24.781 80.3062 23.043 82.9132 23.043ZM88.8982 38.103V49.69L97.2012 67.84L105.503 49.593L93.4362 44.573C92.8562 44.283 92.3742 43.897 91.9872 43.318L88.8982 38.103Z" fill="#1204B5" />
                                         </svg>
-                                        <h3>Bucket List</h3>
+                                        <h3>Waterfalls</h3>
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 p-3">
+                            <div class="col-lg-4 col-md-6 p-3">
                                 <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="activity-selection" id="hiking-select" value="alternative experiences">
-                                    <label class="easygo-icon-btn" for="hiking-select">
+                                    <input type="checkbox" name="vibe-selection" id="alternative-select" value="alternative experiences">
+                                    <label class="easygo-icon-btn" for="alternative-select">
                                         <svg width="136" height="100" viewBox="0 0 136 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.9353 12.3541L25.2251 23.9918L36.8627 29.2816L25.2251 34.5714L19.9353 46.209L14.6454 34.5714L3.00781 29.2816L14.6454 23.9918L19.9353 12.3541ZM19.9353 22.5741L17.8193 27.1657L13.2278 29.2816L17.8193 31.3975L19.9353 35.9891L22.0512 31.3975L26.6428 29.2816L22.0512 27.1657L19.9353 22.5741ZM41.0946 22.9338L38.4285 17.1361L32.6309 14.4701L38.4285 11.8252L41.0946 6.00635L43.7395 11.8252L49.5583 14.4701L43.7395 17.1361L41.0946 22.9338ZM41.0946 52.5568L38.4285 46.7592L32.6309 44.0931L38.4285 41.4482L41.0946 35.6294L43.7395 41.4482L49.5583 44.0931L43.7395 46.7592L41.0946 52.5568Z" fill="black" />
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M82.4302 7.5C86.4852 7.5 89.7672 10.879 89.7672 14.934C89.7672 18.988 86.4852 22.367 82.4302 22.367C78.3752 22.367 74.9962 18.988 74.9962 14.934C74.9962 10.879 78.3762 7.5 82.4302 7.5ZM82.9132 23.043C85.7032 22.956 87.8602 24.692 88.9952 26.519L96.7182 39.359L110.234 45.055C114.095 46.695 112.261 51.812 107.917 50.654C107.762 50.5484 107.6 50.4515 107.434 50.364L98.3592 70.444C98.3592 70.444 101.255 77.106 104.924 84.637C108.496 92.263 99.8072 95.546 96.6212 88.498L93.4362 81.354L88.8022 91.491L86.8712 90.622L92.2772 78.844L83.2022 59.054C82.8162 59.15 82.4302 59.054 81.9472 59.054C81.9472 59.054 71.4242 82.995 68.5272 89.271C65.7282 95.546 57.4262 91.781 60.2252 85.601C63.0252 79.423 76.3482 49.399 76.3482 49.399L66.4452 49.561C64.9452 49.574 64.5862 49.335 64.4912 48.211C64.3382 45.241 64.0762 38.253 64.7632 35.014C65.6492 30.839 66.1782 26.244 69.1072 24.877C72.0372 23.51 77.1202 27.291 77.1202 27.291C77.8922 24.781 80.3062 23.043 82.9132 23.043ZM88.8982 38.103V49.69L97.2012 67.84L105.503 49.593L93.4362 44.573C92.8562 44.283 92.3742 43.897 91.9872 43.318L88.8982 38.103Z" fill="#1204B5" />
@@ -375,7 +397,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="activities-selection-page" style="max-width: 300px;">Next</button>
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="vibe-selection-page" style="max-width: 300px;">Next</button>
                         </div>
                     </div>
                 </section>
@@ -386,7 +408,7 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!-- Budget [start] -->
                 <section id="budget-selection-page" class="eh-transition-page">
                     <div class="mb-5">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="activities-selection-page" data-transit-parent="budget-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="vibe-selection-page" data-transit-parent="budget-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
                     </div>
                     <div>
                         <div class="mt-auto">

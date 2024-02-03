@@ -173,7 +173,7 @@ if (session_status() == PHP_SESSION_NONE){
 	}
 
 	function format_string_as_date_fn($date_str){
-		return (new DateTime($date_str))->format('d M Y');
+		return (new DateTime($date_str))->format('d D M Y');
 	}
 
 	function format_string_as_time_fn($string){

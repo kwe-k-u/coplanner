@@ -117,12 +117,16 @@ $first_day = $itinerary["first_day"];
                             </svg>
                         </button>
                         <!-- Button for mobile display of ai suggestion section  -->
-                        <button class="box-shadow-3 d-flex d-lg-none justify-content-center align-items-center border-0 " style="width: 40px; height: 40px; border-radius: 50%;" data-proxy-target="sentiment-tab" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuCanvas" aria-controls="mobileMenuCanvas">
-                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9.74967 4.33325L12.458 10.2916L18.4163 12.9999L12.458 15.7083L9.74967 21.6666L7.04134 15.7083L1.08301 12.9999L7.04134 10.2916L9.74967 4.33325ZM9.74967 9.56575L8.66634 11.9166L6.31551 12.9999L8.66634 14.0833L9.74967 16.4341L10.833 14.0833L13.1838 12.9999L10.833 11.9166L9.74967 9.56575ZM20.583 9.74992L19.218 6.78159L16.2497 5.41658L19.218 4.06242L20.583 1.08325L21.9372 4.06242L24.9163 5.41658L21.9372 6.78159L20.583 9.74992ZM20.583 24.9166L19.218 21.9482L16.2497 20.5833L19.218 19.2291L20.583 16.2499L21.9372 19.2291L24.9163 20.5833L21.9372 21.9482L20.583 24.9166Z" fill="#1204B5" />
-                            </svg>
-                        </button>
-                        <span class="d-none d-lg-inline">Work with Coplanner</span>
+                        <?php
+                        echo "
+                        <div class='col justify-content-center align-items-center' onclick='goto_page(\"coplanner/itinerary_settings.php?id=$itinerary_id\")'>
+                            <button class='box-shadow-3 d-flex d-lg-none justify-content-center align-items-center border-0 ' style='width: 40px; height: 40px; border-radius: 50%;'>
+                                    <i class='fa fa-check color-red'></i>
+                            </button>
+                            <span class=' d-flex d-lg-none'>Finalise Trip </span>
+                        </div>
+                        <button class='d-none d-lg-inline easygo-btn-3 text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_settings.php?id=$itinerary_id\")'>Finalise Trip</button>
+                        "; ?>
                     </div>
                 </div>
             </div>
@@ -746,7 +750,7 @@ $first_day = $itinerary["first_day"];
                 <section class="py-3">
                     <div class="d-flex justify-content-center mt-3">
                         <?php
-                        echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_invoice.php?id=$itinerary_id\")'>Finalize</button>";
+                        echo "<button class='easygo-btn-3 text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_settings.php?id=$itinerary_id\")'>Finalize Trip</button>";
 
                         if (!is_session_user_admin()) {
                             $id = "";

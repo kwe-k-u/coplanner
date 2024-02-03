@@ -974,19 +974,23 @@ DROP FUNCTION IF EXISTS add_accommodation;
 delimiter //
 CREATE FUNCTION add_accommodation(
 	in_destination_id VARCHAR(100),
+	in_nickname VARCHAR(100),
+	in_bed_type VARCHAR(50),
 	in_occupancy INT,
-	in_price DECIMAL(10,2),
-	in_bed_type VARCHAR(50)
-)RETURNS VARCHAR(100)
+	in_currency VARCHAR(100),
+	in_price DECIMAL(10,2)
+)RETURNS VARCHAR(100) MODIFIES SQL DATA
 begin
 	DECLARE in_bed_id INT;
 	DECLARE in_accommodation_id VARCHAR(100);
+	DECLARE in_currency_id INT;
 
 	SELECT generate_id() INTO in_accommodation_id;
 	SELECT type_id INTO in_bed_id from types_of_bed where type_name = in_bed_type;
+	SELECT currency_id INTO in_currency_id from currency where currency_name = in_currency;
 
-	INSERT INTO `accommodation`(`accommodation_id`, `destination_id`, `occupancy`, `price`, `bed_type`)
-	VALUES (in_accommodation_id,in_destination_id,in_occupancy,in_price,in_bed_id);
+	INSERT INTO `accommodation`(`accommodation_id`, `destination_id`, `occupancy`, `price`, `bed_type`, `nickname`, `currency_id`)
+	VALUES (in_accommodation_id,in_destination_id,in_occupancy,in_price,in_bed_id, in_nickname,in_currency_id);
 
 	RETURN in_accommodation_id;
 end//

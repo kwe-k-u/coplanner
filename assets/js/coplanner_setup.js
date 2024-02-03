@@ -19,7 +19,7 @@ class EhPageTransition {
 					let target = event.target.getAttribute("data-transit-target");
 
 					if (selected == {} && !btn.innerHTML.includes("Back")) {
-						alert("Please make a selection");
+						openDialog("Please make a selection");
 						return null;
 					}
 					next_choice(parent, target);
@@ -84,7 +84,6 @@ function next_choice(parent_id, target_id) {
 					console.log(response);
 					goto_page("coplanner/recommendations.php?id=" + response.data.id);
 
-
 				}
 			);
 			//if url contains itinerary id, admin is creating a template
@@ -97,7 +96,11 @@ function next_choice(parent_id, target_id) {
 					"preferences" : preference_selection
 				},
 				(response)=>{
-					console.log(response);
+					if(response.status == 200){
+						showToast(response.data.msg);
+					}else{
+						openDialog(response.data.msg);
+					}
 				}
 			);
 		}
@@ -147,24 +150,42 @@ function get_section_responses(data_parent) {
 		case "tool-selection-page":
 			result = get_selected_radio("tool-select");
 			break;
-		case "tour-type-selection-page":
-			result["type"] = get_selected_radio("tour-type-selection")
+		case "location-selection-page":
+			result["location"] = get_selected_checkboxes("location-selection");
 			break;
 		case "duration-selection-page":
-			result["duration"] = get_selected_radio("tour-duration-selection");
+			result["duration"] = get_selected_radio("duration-selection");
 			break;
-		case "accomodation-selection-page":
-			result["accommodation"] = get_selected_radio("tour-accomodation-selection");
+		case "type-selection-page":
+			result["type"] = get_selected_radio("type-selection");
 			break;
-		case "activities-selection-page":
-			result["activities"] = get_selected_checkboxes("activity-selection");
+		case "vibe-selection-page":
+			result["vibe"] = get_selected_checkboxes("vibe-selection");
 			break;
 		case "budget-selection-page":
 			result["budget"] = get_selected_radio("budget-range-selection");
 			break;
+
+
+
+		// case "tour-type-selection-page":
+		// 	result["type"] = get_selected_radio("tour-type-selection")
+		// 	break;
+		// case "duration-selection-page":
+		// 	result["duration"] = get_selected_radio("tour-duration-selection");
+		// 	break;
+		// case "accomodation-selection-page":
+		// 	result["accommodation"] = get_selected_radio("tour-accomodation-selection");
+		// 	break;
+		// case "activities-selection-page":
+		// 	result["activities"] = get_selected_checkboxes("activity-selection");
+		// 	break;
+		// case "budget-selection-page":
+		// 	result["budget"] = get_selected_radio("budget-range-selection");
+		// 	break;
 		default:
 			console.log("unknown case", data_parent);
-			result = null;
+			// result = null;
 	}
 	return result;
 }

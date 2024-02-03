@@ -288,12 +288,15 @@ CREATE TABLE types_of_bed(
 CREATE TABLE accommodation(
 	accommodation_id VARCHAR(100) PRIMARY KEY,
 	destination_id VARCHAR(100),
+    nickname VARCHAR(100),
 	occupancy INT,
+    currency_id INT,
 	price DECIMAL(10,2),
 	bed_type INT,
 	date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
 	date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (bed_type) REFERENCES types_of_bed(type_id)
+	FOREIGN KEY (bed_type) REFERENCES types_of_bed(type_id),
+    FOREIGN KEY (currency_id) REFERENCES currency(currency_id)
 );
 
 /*--------------------------------------------------------------------------------------------------

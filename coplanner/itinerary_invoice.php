@@ -153,13 +153,13 @@
                                         <?php
                                         $div_text = "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
                                         $activities = get_invoice_activities($invoice_id);
-                                        $current_day = null;
+                                        $current_day = format_string_as_date_fn($activities[0]["visit_date"]);
                                         $current_destination = null;
                                         $activity_text = "";
 
                                         foreach ($activities as $activity) {
 
-                                            if($current_day != $activity["visit_date"]){
+                                            if($current_day != format_string_as_date_fn($activity["visit_date"])){
                                                 $div_text .= "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
                                                 $current_day = format_string_as_date_fn($activity["visit_date"]);
                                             }

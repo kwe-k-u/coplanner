@@ -57,6 +57,8 @@ $days = get_itinerary_days($itinerary_id);
                 <!--- Section 1 [start] -->
                 <section>
                     <div class="row">
+                        <div class='col-lg-6 p-3 border-lg-end border-blue'>
+                            <img style='height: 300px; background-color: var(--easygo-gray-2);' src="../assets/images/others/long_1.jpeg" alt="" srcset="">
                         <?php
                         if ($owner_id == get_session_user_id()){
                             //Let user edit the original itinerary
@@ -67,29 +69,13 @@ $days = get_itinerary_days($itinerary_id);
 
                         }
                         echo "
-                        <div class='col-lg-6 p-3 border-lg-end border-blue'>
-                            <div style='height: 300px; background-color: var(--easygo-gray-2);'>
-                            </div>
                             <div class='my-3 d-flex justify-content-between'>
                                 <div>Created by <span class='text-blue easygo-fs-3 easygo-fw-1'>$owner_name</span></div>
                                 <div class='easygo-fs-5'>$date_created</div>
                             </div>
-                            <h5 class='easygo-fw-1'>$itinerary_name</h5>
-                            <p>
-                                An AI generated description of the itinerary that someone has created talking about the type of itinerary and teh activities
-                            </p>
+                            <h2 class='easygo-fw-1'>$itinerary_name</h2>
                         </div>
                         <div class='col-lg-6 p-3'>
-                            <div class='d-flex justify-content-between'>
-                                <div>
-                                    G <br>
-                                    Single day
-                                </div>
-                                <div>
-                                    $num_people People <br>
-                                    Single day
-                                </div>
-                            </div>
                             <div class='my-5'>
                                 <h1 class='easygo-fw-1'>GHC $budget</h1>
                                 <p class='easygo-fs-4'>Estimated cost</p>
