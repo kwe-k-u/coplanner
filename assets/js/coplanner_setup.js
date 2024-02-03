@@ -17,12 +17,22 @@ class EhPageTransition {
 					let parent = event.target.getAttribute("data-transit-parent");
 					let selected = get_section_responses(parent);
 					let target = event.target.getAttribute("data-transit-target");
+					console.log(selected)
 
-					if (selected == {} && !btn.innerHTML.includes("Back")) {
-						openDialog("Please make a selection");
-						return null;
+					if(!btn.innerHTML.includes("Back")){
+
+						if (typeof selected !== "string" ) {
+
+							if (selected === null ||
+								(typeof selected === "object" && selected !== null &&
+								 (selected[Object.keys(selected)[0]] === null || selected[Object.keys(selected)[0]].length === 0))) {
+								openDialog("Please make a selection");
+								return null;
+							}
+						}
 					}
-					next_choice(parent, target);
+
+					change_question(parent, target);
 
 				});
 			});
@@ -33,7 +43,7 @@ class EhPageTransition {
 
 
 // Moves the choice selection page to the next
-function next_choice(parent_id, target_id) {
+function change_question(parent_id, target_id) {
 	let parent = document.getElementById(parent_id);
 	let target = document.getElementById(target_id);
 	let selected = get_section_responses(parent_id);
@@ -151,7 +161,7 @@ function get_section_responses(data_parent) {
 			result = get_selected_radio("tool-select");
 			break;
 		case "location-selection-page":
-			result["location"] = get_selected_checkboxes("location-selection");
+			result["location"] = get_selected_radio("location-selection");
 			break;
 		case "duration-selection-page":
 			result["duration"] = get_selected_radio("duration-selection");
@@ -166,23 +176,6 @@ function get_section_responses(data_parent) {
 			result["budget"] = get_selected_radio("budget-range-selection");
 			break;
 
-
-
-		// case "tour-type-selection-page":
-		// 	result["type"] = get_selected_radio("tour-type-selection")
-		// 	break;
-		// case "duration-selection-page":
-		// 	result["duration"] = get_selected_radio("tour-duration-selection");
-		// 	break;
-		// case "accomodation-selection-page":
-		// 	result["accommodation"] = get_selected_radio("tour-accomodation-selection");
-		// 	break;
-		// case "activities-selection-page":
-		// 	result["activities"] = get_selected_checkboxes("activity-selection");
-		// 	break;
-		// case "budget-selection-page":
-		// 	result["budget"] = get_selected_radio("budget-range-selection");
-		// 	break;
 		default:
 			console.log("unknown case", data_parent);
 			// result = null;
@@ -193,6 +186,9 @@ function get_section_responses(data_parent) {
 function get_selected_checkboxes(name) {
 	const checkboxes = document.querySelectorAll(`input[type="checkbox"][name="${name}"]:checked`);
 	const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+	if(selectedValues == []){
+		return null;
+	}
 	return selectedValues;
 }
 
@@ -204,6 +200,7 @@ function get_selected_radio(name) {
 			return radioButtons[i].id;
 		}
 	}
+	return null;
 }
 
 

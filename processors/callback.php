@@ -5,6 +5,7 @@
 	require_once(__DIR__."/../utils/paystack.php");
 	require_once(__DIR__."/../controllers/public_controller.php");
 	require_once(__DIR__."/../controllers/slack_controller.php");
+	require_once(__DIR__."/../utils/logger.php");
 
 	// $paybox = new paybox_custom();
 	if(!isset($_SERVER["PATH_INFO"])){
@@ -16,73 +17,99 @@
 	$paystack = new paystack_custom();
 	$mailer = new mailer();
 
+	$itinerary_gen_url = "prototype.easygo.com.gh";
+
 	switch($_SERVER["PATH_INFO"]){
 		case "/paystack_callback":
+			$logger = new Logger();
+
 			$_POST = json_decode(file_get_contents("php://input"),true);
+			$logger->paystack_log($_POST);
+
+
 			$meta = $_POST["data"]["metadata"];
 			$data = $_POST["data"];
+			$referrer = $meta["referrer"];
+			//if the paystack request did not come from coplanner, redirect to the old booking webiste
+			if (strpos($referrer,$itinerary_gen_url) == false){
+				$ch = curl_init("https://www.easygo.com.gh/processors/callback.php/paystack_callback");
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'Content-Type: application/json',
+					'Content-Length: ' . strlen(json_encode($_POST))
+				]);
+
+				// Execute the request
+				$result = curl_exec($ch);
+				curl_close($ch);
+				die();
+			}
 			// $paystack->log_json($data["id"],json_encode($_POST));
 
-		$reference = $data["reference"];
+			$reference = $data["reference"];
 
-		// check the transaction status
-		$res = $paystack->verify_transaction($reference);
-		$status = $res["status"];
+			// check the transaction status
+			$res = $paystack->verify_transaction($reference);
+			$status = $res["status"];
 
-		// TODO:: Update to check what action is needed to be taken
-		if ($status){ // If a user paid for an itinerary
-			$verification_response = $paystack->verify_transaction($reference);
-			$payment_status = $verification_response["status"];
-			if ($status){ // payment was successful
-				//  Act based on the purpose of the payments
-				 $payment_purpose = $meta["payment_purpose"];
-				 switch ($payment_purpose){
-					case "itinerary_payment":
-						// retrieve relevant information
-						$invoice_id = $meta["invoice_id"];
-						$provider_transaction_id = $data["id"];
-						$user_id = $meta["user_id"];
-						$purpose = $meta["purpose"];
-						$transaction_amount = $data["amount"]/100; // Amount that the user send
-						$charges = $data["fees"] / 100; // Amount that paystack charges for the transaction
-						$tax = 0;
-						$transaction_date = $data["paid_at"];//TODO:: record
-						$amount = $transaction_amount - $charges - $tax;
+			// TODO:: Update to check what action is needed to be taken
+			if ($status){ // If a user paid for an itinerary
+				$verification_response = $paystack->verify_transaction($reference);
+				$payment_status = $verification_response["status"];
+				if ($status){ // payment was successful
+					//  Act based on the purpose of the payments
+						$payment_purpose = $meta["payment_purpose"];
+						switch ($payment_purpose){
+						case "itinerary_payment":
+							// retrieve relevant information
+							$invoice_id = $meta["invoice_id"];
+							$provider_transaction_id = $data["id"];
+							$user_id = $meta["user_id"];
+							$purpose = $meta["purpose"];
+							$transaction_amount = $data["amount"]/100; // Amount that the user send
+							$charges = $data["fees"] / 100; // Amount that paystack charges for the transaction
+							$tax = 0;
+							$transaction_date = $data["paid_at"];//TODO:: record
+							$amount = $transaction_amount - $charges - $tax;
 
-						//perform transaction
-						$transaction_id =  make_invoice_payment($invoice_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges);
-						$trasaction_id = array_values($transaction_id)[0];
+							//perform transaction
+							$transaction_id =  make_invoice_payment($invoice_id,$provider_transaction_id,$user_id,$purpose,$transaction_amount,$amount,$tax,$charges);
+							$trasaction_id = array_values($transaction_id)[0];
 
-						//Send a status update
-						if($transaction_id){
-							//TODO:: send email to user to confirm payment
-							// $mailer->user_itinerary_payment_email();
-							//notify admin of payment
-							notify_slack_itinerary_payment($invoice_id,$transaction_id);
-							send_json(array("msg"=> "Ok"));
-						}else{
-							send_json(array("msg"=> "Something went wrong "));
+							//Send a status update
+							if($transaction_id){
+								//TODO:: send email to user to confirm payment
+								// $mailer->user_itinerary_payment_email();
+								//notify admin of payment
+								notify_slack_itinerary_payment($invoice_id,$transaction_id);
+								send_json(array("msg"=> "Ok"));
+							}else{
+								send_json(array("msg"=> "Something went wrong "));
+							}
+							die();
+						default:
+							die();
 						}
-						die();
-					default:
-						die();
-				 }
+
+				}
+
 
 			}
 
 
-		}
 
-
-
-		die();
+			die();
 
 		case "/verify_payment":
 			$reference = $_GET["reference"];
 			$response = $paystack->verify_transaction($reference);
 			if($response["status"]){
+				// echo "We have received payment. You should get an email from us confirming your seat! Contact support at main.easygo@gmail.com if you don't recieve a reciept";
 				send_json(array("msg"=> "We have received payment. You should get an email from us confirming your seat! Contact support at main.easygo@gmail.com if you don't recieve a reciept"));
 			}else{
+				// echo "Hmm.. We haven't received payment! If you are still completing payment, refresh the page when you're done or contact support at main.easygo@gmail.com if you believe this is a mistake";
 				send_json(array("msg"=> "Hmm.. We haven't received payment! If you are still completing payment, refresh the page when you're done or contact support at main.easygo@gmail.com if you believe this is a mistake"),201);
 			}
 			die();

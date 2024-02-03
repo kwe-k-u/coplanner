@@ -285,10 +285,14 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			}
 
 
-			notify_slack_template_creation();
 			// Save the JSON data to a file
 			$fileSaved = file_put_contents($filePath, json_encode($preferences));
-			send_json(array("msg"=> "Success","bytes"=> $fileSaved));
+			if($fileSaved){
+				notify_slack_template_creation();
+				send_json(array("msg"=> "Success","bytes"=> $fileSaved));
+			}else{
+				send_json(array("msg"=> "Something went wrong"),201);
+			}
 
 			die();
 		case "/get_day_info":

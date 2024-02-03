@@ -68,5 +68,10 @@
 			";
 			return $this->write_log("slack_logs-".date("Ymd").".log",$string);
 		}
+
+		function paystack_log($data){
+			$dataToLog = json_encode($data, JSON_PRETTY_PRINT);
+			return $this->write_log("paystack/paystack_".date("ymdHis").".json",$dataToLog);
+		}
 	}
 ?>

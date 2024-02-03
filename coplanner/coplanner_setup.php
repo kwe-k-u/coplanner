@@ -84,8 +84,8 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!--- ================================ -->
                 <!-- Curation method  [start] -->
                 <section id="tool-selection-page" class="active eh-transition-page">
-                    <div class="mb-5">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tool-selection-page" data-transit-parent="tool-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    <div class="mb-5 d-flex justify-content-end">
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent"  data-transit-target="loction-selection-page" data-transit-parent="tool-selection-page" > Next <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div>
                         <div class="mt-auto">
@@ -130,67 +130,43 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!--- ================================ -->
                 <!-- Itinerary destinations [start] -->
                 <section id="location-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
+                    <div class="mb-4 d-flex justify-content-between">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="tool-selection-page" data-transit-parent="location-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="location-selection-page" > Next <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div>
                         <div class="mt-auto">
-                            <h4 class="text-center fw-bold mb-5">Where in Ghana do you want to go?</h4>
+                            <h4 class="text-center fw-bold mb-5">Where will you like to go?</h4>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-4 p-3">
-                                <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="location-selection" id="accra-select" value="Greater Accra">
-                                    <label class="easygo-icon-btn" for="accra-select">
-                                        <svg width="126" height="101" viewBox="0 0 126 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
-                                            <path d="M99.7333 17.1084C88.9083 10.8584 73.9167 11.8251 67.6667 22.6501L82.1 30.9834M99.7333 17.1084C110.558 23.3584 117.217 36.8251 110.967 47.6501L89.3167 35.1501M99.7333 17.1084L101.817 13.5001M99.7333 17.1084C92.1458 19.1417 87.3083 21.9626 82.1 30.9834M99.7333 17.1084C101.767 24.6959 101.742 30.2959 96.5333 39.3167M82.1 30.9834L89.3167 35.1501M89.3167 35.1501L76.8167 56.8001M38.5 88.5001L42.1667 84.1001C42.972 83.1326 43.986 82.36 45.1326 81.8403C46.2792 81.3206 47.5285 81.0673 48.787 81.0994C50.0454 81.1315 51.2802 81.4481 52.3988 82.0255C53.5175 82.6029 54.4908 83.4261 55.2458 84.4334C55.9903 85.4269 56.9473 86.2417 58.0469 86.8181C59.1465 87.3945 60.3609 87.7181 61.6015 87.7652C62.8422 87.8124 64.0777 87.5818 65.2178 87.0904C66.3579 86.5991 67.374 85.8593 68.1917 84.9251L68.9833 84.0167C69.8578 83.0163 70.9361 82.2145 72.146 81.6652C73.3558 81.1158 74.6692 80.8316 75.9979 80.8316C77.3266 80.8316 78.64 81.1158 79.8498 81.6652C81.0597 82.2145 82.138 83.0163 83.0125 84.0167L83.8083 84.9251C87.3 88.9126 93.575 88.6751 96.7542 84.4376C97.5092 83.4296 98.4827 82.6057 99.6017 82.0278C100.721 81.4499 101.956 81.133 103.215 81.1009C104.474 81.0689 105.724 81.3224 106.871 81.8426C108.018 82.3627 109.032 83.136 109.837 84.1042L113.5 88.5001M53.95 67.6667C60.0337 62.286 67.8783 59.3213 76 59.3334C84.1217 59.3213 91.9663 62.286 98.05 67.6667" stroke="#1204B5" stroke-width="8.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="location-selection" id="accra-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="accra-select">
                                         <h3>Greater Accra</h3>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-4 p-3">
-                                <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="location-selection" id="western-select" value="Greater Accra">
-                                    <label class="easygo-icon-btn" for="western-select">
-                                        <svg width="141" height="100" viewBox="0 0 141 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.9353 14.3541L25.2251 25.9918L36.8627 31.2816L25.2251 36.5714L19.9353 48.209L14.6454 36.5714L3.00781 31.2816L14.6454 25.9918L19.9353 14.3541ZM19.9353 24.5741L17.8193 29.1657L13.2278 31.2816L17.8193 33.3975L19.9353 37.9891L22.0512 33.3975L26.6428 31.2816L22.0512 29.1657L19.9353 24.5741ZM41.0946 24.9338L38.4285 19.1361L32.6309 16.4701L38.4285 13.8252L41.0946 8.00635L43.7395 13.8252L49.5583 16.4701L43.7395 19.1361L41.0946 24.9338ZM41.0946 54.5568L38.4285 48.7592L32.6309 46.0931L38.4285 43.4482L41.0946 37.6294L43.7395 43.4482L49.5583 46.0931L43.7395 48.7592L41.0946 54.5568Z" fill="black" />
-                                            <path d="M59.7502 45.8333C57.9446 45.8333 56.4516 45.2431 55.271 44.0625C54.0904 42.8819 53.5002 41.3889 53.5002 39.5833C53.5002 37.7778 54.0904 36.2847 55.271 35.1042C56.4516 33.9236 57.9446 33.3333 59.7502 33.3333C61.5557 33.3333 63.0488 33.9236 64.2293 35.1042C65.4099 36.2847 66.0002 37.7778 66.0002 39.5833C66.0002 41.3889 65.4099 42.8819 64.2293 44.0625C63.0488 45.2431 61.5557 45.8333 59.7502 45.8333ZM53.5002 91.6667V70.8333H49.3335V54.1667C49.3335 52.9861 49.7335 51.9958 50.5335 51.1958C51.3335 50.3958 52.3224 49.9972 53.5002 50H66.0002C67.1807 50 68.171 50.4 68.971 51.2C69.771 52 70.1696 52.9889 70.1668 54.1667V70.8333H66.0002V83.3333H99.3335V62.5H92.0418C87.1113 62.5 82.9266 60.7806 79.4877 57.3417C76.0488 53.9028 74.3307 49.7194 74.3335 44.7917C74.3335 41.1111 75.3238 37.8292 77.3043 34.9458C79.2849 32.0625 81.8363 29.9278 84.9585 28.5417C85.7224 24.0278 87.8238 20.2264 91.2627 17.1375C94.7015 14.0486 98.7807 12.5028 103.5 12.5C108.222 12.5 112.303 14.0458 115.742 17.1375C119.181 20.2292 121.281 24.0306 122.042 28.5417C125.167 29.9306 127.72 32.0667 129.7 34.95C131.681 37.8333 132.67 41.1139 132.667 44.7917C132.667 49.7222 130.947 53.9069 127.508 57.3458C124.07 60.7847 119.886 62.5028 114.958 62.5H107.667V83.3333H128.5V91.6667H53.5002Z" fill="#1204B5" />
-                                        </svg>
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="location-selection" id="western-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="western-select">
                                         <h3>Western Region</h3>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-4 p-3">
-                                <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="location-selection" id="eastern-select" value="Eastern Region">
-                                    <label class="easygo-icon-btn" for="eastern-select">
-                                        <svg width="136" height="81" viewBox="0 0 136 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.9353 9.35414L25.2251 20.9918L36.8627 26.2816L25.2251 31.5714L19.9353 43.209L14.6454 31.5714L3.00781 26.2816L14.6454 20.9918L19.9353 9.35414ZM19.9353 19.5741L17.8193 24.1657L13.2278 26.2816L17.8193 28.3975L19.9353 32.9891L22.0512 28.3975L26.6428 26.2816L22.0512 24.1657L19.9353 19.5741ZM41.0946 19.9338L38.4285 14.1361L32.6309 11.4701L38.4285 8.82516L41.0946 3.00635L43.7395 8.82516L49.5583 11.4701L43.7395 14.1361L41.0946 19.9338ZM41.0946 49.5568L38.4285 43.7592L32.6309 41.0931L38.4285 38.4482L41.0946 32.6294L43.7395 38.4482L49.5583 41.0931L43.7395 43.7592L41.0946 49.5568Z" fill="black" />
-                                            <path d="M135 19H105C105 19 103 35 107 51C108.608 53.68 112.58 55.124 117 55.49V75H116.334L109 81H131L123.832 75H123V55.344C127.24 54.794 131.126 53.316 133 51C137 37 135 19 135 19ZM133 31H107V21H133V31ZM84 75H73V58L95 25H43L65 58V75H54C53.2044 75 52.4413 75.3161 51.8787 75.8787C51.3161 76.4413 51 77.2043 51 78C51 78.7957 51.3161 79.5587 51.8787 80.1213C52.4413 80.6839 53.2044 81 54 81H84C84.7957 81 85.5587 80.6839 86.1213 80.1213C86.6839 79.5587 87 78.7957 87 78C87 77.2043 86.6839 76.4413 86.1213 75.8787C85.5587 75.3161 84.7957 75 84 75Z" fill="#1204B5" />
-                                        </svg>
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="location-selection" id="eastern-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="eastern-select">
                                         <h3>Eastern Region</h3>
                                     </label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-4 p-3">
-                                <div class="easygo-checkbox-btn-1">
-                                    <input type="checkbox" name="location-selection" id="volta-select" value="Volta Region">
-                                    <label class="easygo-icon-btn" for="volta-select">
-                                        <svg width="130" height="100" viewBox="0 0 130 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.9353 22.3541L25.2251 33.9918L36.8627 39.2816L25.2251 44.5714L19.9353 56.209L14.6454 44.5714L3.00781 39.2816L14.6454 33.9918L19.9353 22.3541ZM19.9353 32.5741L17.8193 37.1657L13.2278 39.2816L17.8193 41.3975L19.9353 45.9891L22.0512 41.3975L26.6428 39.2816L22.0512 37.1657L19.9353 32.5741ZM41.0946 32.9338L38.4285 27.1361L32.6309 24.4701L38.4285 21.8252L41.0946 16.0063L43.7395 21.8252L49.5583 24.4701L43.7395 27.1361L41.0946 32.9338ZM41.0946 62.5568L38.4285 56.7592L32.6309 54.0931L38.4285 51.4482L41.0946 45.6294L43.7395 51.4482L49.5583 54.0931L43.7395 56.7592L41.0946 62.5568Z" fill="black" />
-                                            <g clip-path="url(#clip0_1401_6519)">
-                                                <path d="M63 37.8335H129.667L126.188 76.0877C125.999 78.1581 125.044 80.0835 123.509 81.4858C121.974 82.8881 119.971 83.666 117.892 83.6668H74.775C72.696 83.666 70.6924 82.8881 69.1575 81.4858C67.6226 80.0835 66.6673 78.1581 66.4792 76.0877L63 37.8335Z" stroke="#1204B5" stroke-width="10.4167" stroke-linejoin="round" />
-                                                <path d="M79.6665 46.1667V33.6667C79.6665 29.2464 81.4225 25.0072 84.5481 21.8816C87.6737 18.7559 91.9129 17 96.3332 17C100.753 17 104.993 18.7559 108.118 21.8816C111.244 25.0072 113 29.2464 113 33.6667V46.1667" stroke="#1204B5" stroke-width="10.4167" stroke-linecap="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_1401_6519">
-                                                    <rect width="100" height="100" fill="white" transform="translate(30)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-
+                                <div class="easygo-radio-btn-1">
+                                    <input type="radio" class="radio_choice"  name="location-selection" id="volta-select">
+                                    <label class="easygo-icon-btn py-5 text-blue" for="volta-select">
                                         <h3>Volta Region</h3>
                                     </label>
                                 </div>
@@ -208,8 +184,9 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!--- ================================ -->
                 <!-- Duration [start] -->
                 <section id="duration-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
+                    <div class="mb-4 d-flex justify-content-between">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="location-selection-page" data-transit-parent="duration-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="type-selection-page" data-transit-parent="duration-selection-page">Next <i class="fa-solid fa-arrow-right"></i> </button>
                     </div>
                     <div>
                         <div class="mt-auto">
@@ -253,8 +230,9 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!--- ================================ -->
                 <!-- Itinerary type [start] -->
                 <section id="type-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
+                    <div class="mb-4 d-flex justify-content-between">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="type-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="vibe-selection-page" data-transit-parent="type-selection-page">Next <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div>
                         <div class="mt-auto">
@@ -287,7 +265,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                             <div class="col-md-3 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="tour-type-selection" id="friends-select">
+                                    <input type="radio" class="radio_choice"  name="type-selection" id="friends-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="friends-select">
                                         <h3>Friends</h3>
                                     </label>
@@ -307,8 +285,9 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!--- ================================ -->
                 <!-- Itinerary theme [start] -->
                 <section id="vibe-selection-page" class="eh-transition-page">
-                    <div class="mb-4">
+                    <div class="mb-4 d-flex justify-content-between">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="type-selection-page" data-transit-parent="vibe-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="budget-selection-page" data-transit-parent="vibe-selection-page">Next <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div>
                         <div class="mt-auto">
@@ -407,8 +386,9 @@ require_once(__DIR__ . "/../utils/core.php");
                 <!--- ================================ -->
                 <!-- Budget [start] -->
                 <section id="budget-selection-page" class="eh-transition-page">
-                    <div class="mb-5">
+                    <div class="mb-5 d-flex justify-content-between">
                         <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="vibe-selection-page" data-transit-parent="budget-selection-page"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page"> Complete <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div>
                         <div class="mt-auto">
@@ -447,7 +427,7 @@ require_once(__DIR__ . "/../utils/core.php");
                             </div>
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
-                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page" style="max-width: 300px;">Next</button>
+                            <button class="eht-btn easygo-btn-4 border-blue text-blue w-100" data-transit-target="budget-selection-page" data-transit-parent="budget-selection-page" style="max-width: 300px;">Generate</button>
                         </div>
                     </div>
                 </section>

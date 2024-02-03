@@ -1,24 +1,27 @@
 {
 	"similarity_matrix": {
-		"type" : [[5,3,1],[3,5,1],[1,3,5]],
-		"activities" : [[5,3,3,3,1,3,2,2],[3,5,3,1,2,1,2,2],[3,3,5,1,2,1,1,2],[3,1,5,3,4,3,3],
-		[1,2,2,3,5,2,3,2],[3,1,2,4,2,5,3,2],[2,3,3,4,3,3,5,2],[2,2,2,2,2,2,2,5]],
-		"budget" : [[5,3,1],[3,5,3],[1,3,5]],
+
+		"location" : [[5,1,1],[1,5,1],[1,1,5]],
 		"duration" : [[5,4,1],[4,5,2],[1,3,5]],
-		"accommodation" : [[1,1],[1,1]]
+		"type" : [[5,3,1,1],[3,5,3,1],[1,3,5,4],[1,3,4,5]],
+		"budget" : [[5,3,1],[3,5,3],[1,3,5]],
+		"vibe" : [[5,1,3,3,2,4],[1,5,4,3,4,3],[1,4,5,3,4,2],[1,2,3,5,3,2],[1,3,3,1,5,1],[3,2,3,2,3,5]]
+
 	},
 	"category_weights" : {
-		"type" : 5,
-		"activities" : 3,
-		"budget" : 4,
+		"type" : 4,
+		"budget" : 2,
+		"vibe" : 3,
 		"duration" : 5,
-		"accommodation" : 1
+		"location" : 5
 	},
+
+
 	"choice_indexes" : {
-		"type" : ["solo-select","couple-select","group-select"],
-		"budget" : ["low-budget","medium-budget","high-budget"],
-		"activities" : ["family friendly","soft life","aesthetics","outdoors","nightlife","adventure","bucket list","alternative experiences"],
+		"location" : ["accra-select","western-select","eastern-select","volta-select"],
 		"duration" : ["single-day-select","2-to-3-days-select","week-select"],
-		"accommodation" : ["individual-select","shared-select"]
+		"type" : ["solo-select","couple-select","family-select","friends-select"],
+		"vibe" : ["Spa & Wellness","adventure","Landmarks","Culture & History","Waterfalls","alternative experiences"],
+		"budget" : ["low-budget","medium-budget","high-budget"]
 	}
 }
