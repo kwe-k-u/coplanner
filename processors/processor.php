@@ -463,6 +463,35 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				send_json(array("msg"=> "Something went wrong"),201);
 			}
 			die();
+		case "/personality_test":
+			$preferences = json_decode($_POST["preference"],true);
+			$personality_points = array("adventure" => 0, "party"=> 0,"softlife"=>0,"culture"=>0);
+
+			$pairs = array(
+				"adventure" => ["skydiving","camp","challenge","action","experience","yes","adventure"],
+				"softlife" => ["pool","airbnb","leisure","slow","comfort","no","wellness"],
+				"party" => ["bars","party","social","trendy","yes","entertainment"],
+				"culture" =>["musuem","culture","history","yes","historical"]
+			);
+
+			foreach ($preferences as $question => $answer){
+				foreach (array("adventure","softlife","party","culture") as $value) {
+					if (array_search($answer,$pairs[$value])){
+						$personality_points[$value] += 1;
+					}
+				}
+			}
+
+			$result = array("adventure" => 0);
+			foreach ($personality_points as $key => $value) {
+				if($value > array_values($result)[0]){
+					$result = array($key=>$value);
+				}
+			}
+
+
+			send_json(array("personality_type"=> array_key_first($result)));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

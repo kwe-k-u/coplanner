@@ -27,7 +27,7 @@ def calculate_similarity(user,template,system):
 	score_val = 0
 	# for every category of user answers, take its simialrity score and check with the template answers
 	for key in user:
-		if key == "activities":
+		if key == "vibe":
 			user_activities = user[key]
 			template_activities = template[key]
 			# add weight salt to increase score value when the activities are an exact match
