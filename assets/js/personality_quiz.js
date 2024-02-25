@@ -15,11 +15,9 @@ class EhPageTransition {
 			page.querySelectorAll(".eht-btn").forEach(btn => {
 				btn.addEventListener("click", event => {
 					let parent = event.target.getAttribute("data-transit-parent");
-					// let selected = get_section_responses(parent);
 					let target = event.target.getAttribute("data-transit-target");
 
 					change_question(parent, target);
-
 				});
 			});
 
@@ -52,7 +50,6 @@ function change_question(parent_id, target_id) {
 				goto_page("coplanner/quiz_result.php?type="+response.data.personality_type)
 			}
 		);
-		// send_request TODO:: get results
 	}
 
 }

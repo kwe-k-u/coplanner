@@ -104,8 +104,9 @@
                         $signup_count = $stats["signup_count"];
                         $destination_count = $stats["destination_count"];
                         $total_itinerary_value = $stats["total_itinerary_value"];
-                        $average_itinerary_value = $stats["average_itinerary_value"];
+                        $average_booking_value = $stats["average_booking_value"];
                         $average_itinerary_participants = $stats["average_itinerary_participants"];
+                        $total_booking_value = $stats["total_booking_value"];
 
 
                         echo "
@@ -170,8 +171,19 @@
                                     <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Average itinerary Value</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $average_itinerary_value</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Booking Value</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $total_booking_value</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-lg-3 col-sm-6 py-3'>
+                            <div class='info-card m-auto bg-white'>
+                                <div class='info-img'>
+                                    <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
+                                </div>
+                                <div class='info-content'>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Average Booking Value</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $average_booking_value</div>
                                 </div>
                             </div>
                         </div>

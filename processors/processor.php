@@ -491,6 +491,19 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 
 			send_json(array("personality_type"=> array_key_first($result)));
+
+			$directory = "../uploads/personality_quiz/"; // User creation
+			$fileName = generate_id();
+			$filePath = $directory . $fileName.".json";
+			// Create the directory if it doesn't exist
+			if (!file_exists($directory)) {
+				mkdir($directory, 0777, true);
+			}
+
+
+			// Save the JSON data to a file
+			$fileSaved = file_put_contents($filePath, json_encode($preferences));
+			notify_slack_personality_quiz(array_key_first($result));
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

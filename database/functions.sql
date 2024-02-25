@@ -659,19 +659,21 @@ DROP PROCEDURE IF EXISTS get_stats_summary;
 DELIMITER //
 CREATE PROCEDURE get_stats_summary()
 begin
-    SELECT
-        (SELECT COUNT(*) FROM users) AS user_count,
-        (SELECT COUNT(*) FROM itinerary) AS itinerary_count,
-        (SELECT COUNT(*) FROM users WHERE date_registered >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)) AS signup_count,
-        (SELECT COUNT(*) FROM destinations) AS destination_count,
-        (SELECT 0) AS total_itinerary_value,
-        (SELECT 0) AS average_itinerary_value,
-        (SELECT 0) AS average_itinerary_participants
+     SELECT
+        (SELECT COUNT(u.user_id) FROM users AS u LEFT JOIN admin_users AS au ON u.user_id = au.user_id WHERE au.user_id IS NULL) AS user_count,
+        (SELECT COUNT(DISTINCT i.itinerary_id) FROM itinerary AS i INNER JOIN itinerary_collaborators AS ic ON ic.itinerary_id = i.itinerary_id LEFT JOIN admin_users AS au ON ic.user_id = au.user_id WHERE au.user_id IS NULL) AS itinerary_count,
+        (SELECT COUNT( u.user_id) FROM users as u left join admin_users as au on u.user_id = au.user_id WHERE au.user_id is null and u.date_registered >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)) AS signup_count,
+        (SELECT COUNT(*) FROM destinations AS d LEFT JOIN accommodation AS a ON d.destination_id = a.destination_id WHERE a.destination_id IS NULL) AS destination_count,
+        (SELECT sum(da.price) from itinerary_activity as ia inner join destination_activities as da on da.activity_id = ia.activity_id and da.destination_id = ia.destination_id) AS total_itinerary_value,
+        (SELECT SUM(price) from itinerary_invoice_activities) AS total_booking_value,
+        (SELECT total_booking_value/count(distinct invoice_id) from itinerary_invoice_activities ) AS average_booking_value,
+        (SELECT count(user_id)/count(distinct itinerary_id) from itinerary_collaborators ) AS average_itinerary_participants
 ;
 end
 //
 
 DELIMITER ;
+
 
 
 DROP PROCEDURE IF EXISTS get_destinations;

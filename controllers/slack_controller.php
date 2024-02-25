@@ -56,6 +56,12 @@
 		return $slack->notify_user_log($message);
 	}
 
+	function notify_slack_personality_quiz($category){
+		$slack = new slack_bot_class();
+		$message = "A user completed the personality quiz and was assigned $category";
+		return $slack->notify_info_log($message);
+	}
+
 
 
 ?>

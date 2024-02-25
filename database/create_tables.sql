@@ -402,6 +402,25 @@ CREATE TABLE invoice_payments(
 );
 
 
+DROP TABLE IF EXISTS curators;
+CREATE TABLE curators(
+	curator_id VARCHAR(100) PRIMARY KEY,
+	curator_name VARCHAR(100)
+);
+
+
+DROP TABLE IF EXISTS curator_manager;
+CREATE TABLE curator_manager(
+	curator_id VARCHAR(100),
+	user_id VARCHAR(100),
+	role ENUM ("admin","viewer") DEFAULT "admin",
+	PRIMARY KEY (curator_id,user_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id),
+	FOREIGN KEY (curator_id) REFERENCES curators(curator_id)
+);
+
+
+
 
 
 
@@ -491,14 +510,15 @@ CREATE VIEW vw_itinerary_invoice as
 		u.email,
 		i.itinerary_id,
 		-- TODO add currency
-		sum(iia.price) as total_bill,
+		sum(iia.price)*1.071 as total_bill,
+		sum(iia.price)*0.071 as platform_bill,
 		sum(iia.price) as activity_bill,
 		0 as accommodation_bill,
 		0 as transportation_bill,
 		COALESCE(SUM(t.amount),0) AS total_paid,
 		COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0) AS total_refund,
 		(
-			sum(iia.price)
+			sum(iia.price) * 1.071
 			- COALESCE(SUM(t.amount), 0)
 			- COALESCE(SUM(CASE WHEN r.refunded_transaction_id = t.transaction_id THEN t.amount ELSE 0 END), 0)
 		)as amount_left
@@ -512,7 +532,6 @@ CREATE VIEW vw_itinerary_invoice as
 		LEFT JOIN refunds AS r ON r.refunded_transaction_id = t.transaction_id
 		GROUP BY u.user_id, u.email, iv.invoice_id
 		ORDER BY iv.invoice_id;
-
 
 DROP VIEW IF EXISTS vw_invoice_activities;
 CREATE VIEW vw_invoice_activities AS
