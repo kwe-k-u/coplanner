@@ -11,10 +11,10 @@
     // $info = get_user_by_id(get_session_user_id());
 
 
-	if(!is_session_user_admin()){
-		header("Location: ../index.php");
-		die();
-	}
+	// if(!is_session_user_admin()){
+	// 	header("Location: ../index.php");
+	// 	die();
+	// }
 
 
 ?>

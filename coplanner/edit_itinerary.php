@@ -752,7 +752,7 @@ $first_day = $itinerary["first_day"];
                         <?php
                         echo "<button class='easygo-btn-3 text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_settings.php?id=$itinerary_id\")'>Finalize Trip</button>";
 
-                        if (!is_session_user_admin()) {
+                        if (is_session_user_admin()) {
                             $id = "";
                             echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' onclick='goto_page(\"coplanner/itinerary_invoice.php?id=$id\")'>Add to templates</button>";
                         }
@@ -1231,8 +1231,8 @@ $first_day = $itinerary["first_day"];
                 </div>
             </div>
         </div>
-        <!--- ================================ -->
         <!-- Destination Modals [end] -->
+        <!--- ================================ -->
         <!-- AI suggestions - mobile [end] -->
         <!--- ================================ -->
         <!-- offcanvases - mobile [end] -->

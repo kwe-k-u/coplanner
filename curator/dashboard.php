@@ -1,15 +1,15 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-// require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
-// if (!is_session_user_curator()) {
-//     header("Location: ../views/home.php");
-//     die();
-// }
+require_once(__DIR__ . "/../controllers/public_controller.php");
+if (!is_session_user_curator()) {
+    header("Location: ../views/home.php");
+    die();
+}
 
-$info ="";//get_collaborator_info(get_session_user_id());
-$curator_id = get_session_account_id();
+$info =get_curator_account_by_user_id(get_session_user_id());//get_collaborator_info(get_session_user_id());
+$curator_id = $info["curator_id"];
 $user_name = "";//$info["user_name"];
-$curator_name = "";//$info["curator_name"];
+$curator_name = $info["curator_name"];
 $logo = "";//$info["curator_logo"];
 
 
@@ -83,56 +83,41 @@ $logo = "";//$info["curator_logo"];
                 <section class="stat-cards pt-5">
                     <div class="row">
                         <?php
-                        $stats = get_curator_statistics(get_session_account_id());
-                        // var_dump($stats);
-                        // die();
-                        $upcoming = format_string_as_currency_fn($stats["upcoming_trip_count"]);
-                        $total_revenue = format_string_as_currency_fn($stats["total_revenue"]);
-                        $balance = format_string_as_currency_fn($stats["withdrawable_balance"]);
-                        $private_tour = 0; //$stats["private_trips"];
+                        $upcoming = $info["active_listings"];
+                        $booking_count = $info["booking_count"];
+                        $revenue = format_string_as_currency_fn($info["revenue"]);
 
                         echo "
-                        <div class='col-lg-3 col-sm-6 py-3'>
+                        <div class='col-lg-4 col-sm-6 py-3'>
                             <div class='info-card m-auto bg-white'>
                                 <div class='info-img'>
                                     <img src='../assets/images/svgs/bus_red_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Upcoming Tours</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Active Listings</div>
                                     <div class='info-num easygo-fs-2 easygo-fw-1'>$upcoming</div>
                                 </div>
                             </div>
                         </div>
-                        <div class='col-lg-3 col-sm-6 py-3'>
+                        <div class='col-lg-4 col-sm-6 py-3'>
                             <div class='info-card m-auto bg-white'>
                                 <div class='info-img'>
                                     <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Private Tours</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$private_tour</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Number of Bookings</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>$booking_count</div>
                                 </div>
                             </div>
                         </div>
-                        <div class='col-lg-3 col-sm-6 py-3'>
+                        <div class='col-lg-4 col-sm-6 py-3'>
                             <div class='info-card m-auto bg-white'>
                                 <div class='info-img'>
-                                    <img src='../assets/images/svgs/barchart_blue_bg.svg' alt='bus image'>
+                                    <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                 </div>
                                 <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Total Revenue</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $total_revenue</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-lg-3 col-sm-6 py-3'>
-                            <div class='info-card m-auto bg-white'>
-                                <div class='info-img'>
-                                    <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
-                                </div>
-                                <div class='info-content'>
-                                    <div class='text-gray-1 info-title easygo-fs-4'>Withdrawable Balance</div>
-                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
+                                    <div class='text-gray-1 info-title easygo-fs-4'>Revenue</div>
+                                    <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $revenue</div>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +131,7 @@ $logo = "";//$info["curator_logo"];
                 <!-- ============================== -->
                 <!-- upcoming trips [start] -->
                 <?php
-                    $upcoming_trips = get_curator_upcoming_trips($curator_id);
+                    $upcoming_trips = get_curator_listings($curator_id);
                     if($upcoming_trips){
                         $trip_list_display = "";
 
@@ -210,7 +195,7 @@ $logo = "";//$info["curator_logo"];
                         <div class="p-3" style="overflow-x: auto;">
                             <div class="easygo-list-3" style="min-width: 992px;">
                                 <?php
-                                $bookings = get_recent_bookings(get_session_account_id());
+                                $bookings = get_curator_bookings($curator_id);
 
                                 if ($bookings) {
                                     echo "

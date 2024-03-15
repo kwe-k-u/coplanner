@@ -47,6 +47,10 @@
 		function post($url, $body, $header = null){
 			return $this->http_request($url,"POST", body: $body, header: $header);
 		}
+
+		function put($url,$body,$header = null){
+			return $this->http_request($url,"PUT",body: $body,header: $header);
+		}
 	}
 
 

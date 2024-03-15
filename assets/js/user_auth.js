@@ -92,6 +92,7 @@ function email_signup(form){
 
   function request_password_reset(form) {
 	event.preventDefault();
+	console.log()
 
 	send_request("POST", "processors/processor.php/request_password_reset",
 	{

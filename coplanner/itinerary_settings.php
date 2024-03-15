@@ -1,12 +1,12 @@
 <?php
-    require_once(__DIR__ . "/../utils/core.php");
-    require_once(__DIR__."/../controllers/public_controller.php");
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 
-    $itinerary_id = $_GET["id"];
-    $itinerary = get_itinerary_by_id($itinerary_id);
-    $days = get_itinerary_days($itinerary_id);
-    $user_id = get_session_user_id();
-    $username = get_user_info($user_id)["user_name"];
+$itinerary_id = $_GET["id"];
+$itinerary = get_itinerary_by_id($itinerary_id);
+$days = get_itinerary_days($itinerary_id);
+$user_id = get_session_user_id();
+$username = get_user_info($user_id)["user_name"];
 
 
 ?>
@@ -30,7 +30,7 @@
 </head>
 
 <body class="bg-gray-3">
-<?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
+    <?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
 
     <!-- main content start -->
     <div class="main-wrapper">
@@ -47,7 +47,7 @@
                 <!--- Section 1 [start] -->
                 <section>
                     <div class="row">
-                        <div >
+                        <div>
                         </div>
 
                         <div class='col-lg-6 p-3 border-lg-end border-blue'>
@@ -56,17 +56,17 @@
                                 <div class="form-input-field">
                                     <label for="">Share your itinerary with the community?</label>
                                     <?php
-                                        echo "<select name='' id='' onchange='return set_itinerary_visibility(\"$itinerary_id\",this)'>";
+                                    echo "<select name='' id='' onchange='return set_itinerary_visibility(\"$itinerary_id\",this)'>";
                                     ?>
-                                        <option value="public">Yes - Share with the community</option>
-                                        <option value="private">No - Keep it hidden</option>
+                                    <option value="public">Yes - Share with the community</option>
+                                    <option value="private">No - Keep it hidden</option>
                                     </select>
                                 </div>
                                 <h3>Select Dates for itinerary</h3>
                                 <?php
-                                    foreach ($days as $current) {
-                                        $day_id = $current["day_id"];
-                                        echo "
+                                foreach ($days as $current) {
+                                    $day_id = $current["day_id"];
+                                    echo "
                                         <div class='col'>
                                         <h4 >Day </h4>
                                         <div class='col-lg-6 form-input-field'>
@@ -74,11 +74,11 @@
                                             </div>
                                         </div>
                                         ";
-                                    }
+                                }
                                 ?>
                             </div>
-                    <?php
-                         "
+                            <?php
+                            "
 
                             <div class='mt-3 mb-1 d-flex justify-content-between'>
                                 <div>Created by <span class='text-blue easygo-fs-3 easygo-fw-1'>$username</span></div>
@@ -162,12 +162,18 @@
                                         </div>
                                     </div>
                                     ";
+                            ?>
+                            <div class="pt-2">
+                                <div class="d-flex justify-content-between mt-3">
+                                    <?php
+                                    echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='finalise_itinerary(\"$itinerary_id\")'>Proceed to checkout</button>";
+
+                                    if (is_session_user_curator()) {
+                                        echo "<button class='easygo-btn-5 bg-orange text-white easygo-fs-4 py-2 px-5' data-bs-toggle='modal' data-bs-target='#dest-1-modal' >Create a shared Experience</button>";
+                                    }
                                     ?>
-                                    <div class="pt-2">
-                                        <?php
-                                            echo "<button class='easygo-btn-5 bg-blue text-white easygo-fs-4 py-2 px-5' onclick='finalise_itinerary(\"$itinerary_id\")'>Proceed to checkout</button>";
-                                        ?>
-                                    </div>
+                                </div>
+                            </div>
                             <!-- Itinerary Cost breakdown [end] -->
                             <!--- ================================ -->
                         </div>
@@ -179,24 +185,24 @@
                                         <!--- ================================ -->
                                         <!--- Destination Card [start] -->
                                         <?php
-                                            $days = get_itinerary_days($itinerary_id);
-                                            // $days = array();
-                                            foreach ($days as $d) {
-                                                $day_id = $d["day_id"];
-                                                echo "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
-                                                $destinations = get_itinerary_day_info($day_id)["destinations"];
-                                                foreach ($destinations as $destination) {
-                                                    $activities  = $destination["activities"];
-                                                    $destination_name = $destination["destination_name"];
-                                                    $location = $destination["location"];
-                                                    $activity_text = "";
-                                                    foreach ($activities as $activity) {
-                                                        $act_name = $activity["activity_name"];
-                                                        $activity_text .="
+                                        $days = get_itinerary_days($itinerary_id);
+                                        // $days = array();
+                                        foreach ($days as $d) {
+                                            $day_id = $d["day_id"];
+                                            echo "<h3 class='easygo-fw-1 m-0'>Day one</h3>";
+                                            $destinations = get_itinerary_day_info($day_id)["destinations"];
+                                            foreach ($destinations as $destination) {
+                                                $activities  = $destination["activities"];
+                                                $destination_name = $destination["destination_name"];
+                                                $location = $destination["location"];
+                                                $activity_text = "";
+                                                foreach ($activities as $activity) {
+                                                    $act_name = $activity["activity_name"];
+                                                    $activity_text .= "
                                                         <span class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>
                                                         ";
-                                                    }
-                                                    echo "
+                                                }
+                                                echo "
                                                     <div class='col-md-6 col-12 py-3 d-flex justify-content-center'>
                                                         <div>
                                                             <h4 class='m-0'>$destination_name</h4>
@@ -212,12 +218,11 @@
                                                         </div>
                                                     </div>
                                                     ";
-
-                                                }
-                                                if(sizeof($destinations) == 0){
-                                                    echo "<h5>No destinations were added for this day</h5>";
-                                                }
                                             }
+                                            if (sizeof($destinations) == 0) {
+                                                echo "<h5>No destinations were added for this day</h5>";
+                                            }
+                                        }
                                         ?>
 
                                         <!--- Destination Card [end] -->
@@ -232,6 +237,124 @@
                 <!--- ================================ -->
             </div>
         </main>
+
+        <!--- ================================ -->
+        <!-- Destination Modals [start] -->
+        <div class="modal fade " id="dest-1-modal" tabindex="-1" aria-labelledby="dest-1-modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-md-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Destination Information</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body easygo-scroll-bar">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="p-3">
+                                        <div class="d-flex gap-2" style="max-height: 200px;">
+                                            <div class="" style="flex:1;">
+                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%;">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center gap-2" style="flex:1;">
+                                                <div style="max-height: 50%;">
+                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
+                                                </div>
+                                                <div style="max-height: 50%;">
+                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="my-3">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="m-0 easygo-fw-1" id='modal-destination-name'>Shai Hills</h2>
+                                                        <div id='modal-location'>Greater Accra, Ghana</div>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <h2 class="easygo-fw-1 text-end m-0" id='modal-rating'>GHS 500</h2>
+                                                        <p class="m-0 text-end">Estimated cost</p>
+                                                    </div>
+                                                </div>
+                                                <div class="text-blue easygo-fs-2 py-2">
+                                                    <i class="fa-solid fa-wifi"></i> &nbsp;
+                                                    <i class="fa-solid fa-bath"></i> &nbsp;
+                                                    <i class="fa-solid fa-person-swimming"></i>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <p class="easygo-fs-5 mb-0">Click on activity to add to itinerary</p>
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="mt-2 easygo-fw-4 easygo-fs-2" id="modal-activity-list">
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="p-3">
+                                        <h4 class="easygo-fw-1">Shared Experience Settings</h4 class="easygo-fw-1">
+                                        <form action="" method="post" onsubmit="create_shared_experience(this)">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-input-field">
+                                                    <small>Date of trip</small>
+                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6">
+
+                                                <div class="form-input-field">
+                                                    <small>Start time of trip</small>
+                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-input-field">
+                                                    <small>Booking Price</small>
+                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6">
+
+                                                <div class="form-input-field">
+                                                    <small>Number of seats</small>
+                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="justify-content-end p-2">
+                                        <button class="easygo-btn-1 next-btn" type="button" id="form-1-confirm-btn">Create Shared Experience</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-2 ps-3">
+                                Haven't decided on activities ? <a href="#">Click to add a destination</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Destination Modals [end] -->
+        <!--- ================================ -->
     </div>
     <!-- main content end -->
 

@@ -15,7 +15,7 @@ function pay_invoice(){
 
 
 		if(amount_left >= 0){
-			payWithPaystack("GHS",amount_left,user_email,invoice);
+			payWithPaystack("GHS",amount_left,user_email,invoice,);
 		}else{
 			showToast("The cost of the itinerary has been covered by a previous transaction");
 		}

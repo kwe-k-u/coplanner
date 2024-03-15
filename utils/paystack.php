@@ -36,116 +36,52 @@
 		}
 
 
-
-
-		// function popup(){
-		// 	return $this->post(
-		// 		$this->baseurl."",
-		// 		array(
-		// 			"email" => $email,
-		// 			"amount" => $amount,
-		// 			"ref" => $tour_id,
-		// 			"currency" => $currency,
-		// 			"metadata" => $metadata,
-		// 		)
-
-		// 	);
-		// }
-
-
-		// private function charge($email,$amount){
-		// 	$url = "https://api.paystack.co/charge";
-
-		// 	$fields = array (
-		// 		"email" => $email,
-		// 		"amount" =? $amount
-		// 	);
-
-
-		// 	$fields = [
-		// 		'email' => "customer@email.com",
-
-		// 		'amount' => "10000",
-
-		// 		"metadata" => {
-
-		// 		"custom_fields" => [
-
-		// 			{
-
-		// 			"value" => "makurdi",
-
-		// 			"display_name" => "Donation for",
-
-		// 			"variable_name" => "donation_for"
-
-		// 			}
-
-		// 		]
-
-		// 		},
-
-		// 		"bank" => {
-
-		// 			"code" => "057",
-
-		// 			"account_number" => "0000000000"
-
-		// 		},
-
-		// 		"birthday" => "1995-12-23"
-
-		// 	];
-
-
-		// 	$fields_string = http_build_query($fields);
-		// 	//open connection
-		// 	$ch = curl_init();
-
-
-
-		// 	//set the url, number of POST vars, POST data
-
-		// 	curl_setopt($ch,CURLOPT_URL, $url);
-
-		// 	curl_setopt($ch,CURLOPT_POST, true);
-
-		// 	curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
-		// 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-
-		// 		"Authorization: Bearer SECRET_KEY",
-
-		// 		"Cache-Control: no-cache",
-
-		// 	));
-
-
-
-		// 	//So that curl_exec returns the contents of the cURL; rather than echoing it
-
-		// 	curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-
-
-
-		// 	//execute post
-
-		// 	$result = curl_exec($ch);
-
-		// 	echo $result;
-		// }
-
-
-
-		//send mobile money
-		function paystack_momo($email){
-
+		function add_sub_account($business_name,$bank,$account_number,$percentage_charge,$description,$email,$contact_name,$contact_number,$meta = null){
+			$response = $this->post($this->baseurl."subaccount",
+			array(
+				"account_number" => $account_number,
+				"business_name" => $business_name,
+				"settlement_bank" => $bank,
+				"percentage_charge" => $percentage_charge,
+				"description" => $description,
+				"metadata" => $meta,
+				"primary_contact_email" => $email,
+				"primary_contact_phone" => $contact_number,
+				"primary_contact_name" => $contact_name
+			),
+			array(
+				"Authorization: Bearer ".$this->private_key,
+				"Cache-Control: no-cache",
+			  )
+			);
+			$response = json_decode($response,true);
+			return $response;
 		}
 
-		//send bank
+		function get_payout_account($id){
+			$response = $this->get($this->baseurl."subaccount/$id",
+			null,
+			array(
+				"Authorization: Bearer ".$this->private_key,
+				"Cache-Control: no-cache",
+			  )
+			);
+			$response = json_decode($response,true);
 
-		// check payment status
+			return $response["data"];
+		}
 
-	//payment callback
+		/**
+		 * Returns a list of banks supported by paystack
+		 */
+		function get_banks(){
+			$response = $this->get($this->baseurl."bank?country=ghana");
+			$response = json_decode($response,true);
+			return $response["data"];
+		}
+
+
+
+
 	}
 ?>

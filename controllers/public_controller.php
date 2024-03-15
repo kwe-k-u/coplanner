@@ -257,5 +257,30 @@
 		return $public->set_itinerary_day_date($day_id, $date);
 	}
 
+	function create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id){
+		$public = new public_class();
+		return $public->create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id);
+	}
+
+	function get_curator_account_by_user_id($user_id){
+		$public = new public_class();
+		return $public->get_curator_account_by_user_id($user_id);
+	}
+
+	function get_curator_listings($curator_id){
+		$public = new public_class();
+		return $public->get_curator_listings($curator_id);
+	}
+
+	function get_curator_bookings($curator_id){
+		$public = new public_class();
+		return $public->get_curator_bookings($curator_id);
+	}
+
+	function get_curator_collaborators($curator_id){
+		$public = new public_class();
+		return $public->get_curator_collaborators($curator_id);
+	}
+
 
 ?>

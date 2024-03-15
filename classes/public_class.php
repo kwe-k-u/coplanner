@@ -274,5 +274,40 @@
 			return $this->db_query();
 		}
 
+		function create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id){
+			$sql = "SELECT create_curator(?,?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($name,$email,$password,$number,$curator_name,$bank_number,$bank_name,$account_number,$account_name,$subaccount_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_curator_account_by_user_id($user_id){
+			$sql = "CALL get_curator_account_by_user_id(?)";
+			$this->prepare($sql);
+			$this->bind($user_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_curator_listings($curator_id){
+			$sql = 'CALL get_curator_listings(?)';
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_curator_bookings($curator_id){
+			$sql = "CALL get_curator_bookings(?)";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_curator_collaborators($curator_id){
+			$sql = "CALL get_curator_collaborators(?)";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
 	}
 ?>

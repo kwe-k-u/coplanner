@@ -30,11 +30,11 @@ if(is_session_user_curator()){
             <img src="../assets/images/svgs/login.svg" alt="register image">
         </div>
         <div class="form-container container">
-            <form onsubmit="return login(this)">
+            <form onsubmit="return email_login(this)">
                 <div class="form-header">
                     <script>
                         function goHome(){
-                            window.location.href = "../views/home.php";
+                            window.location.href = "../index.php";
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
@@ -71,7 +71,7 @@ if(is_session_user_curator()){
     <?php require_once(__DIR__."/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/curator_auth.js"></script>
+    <script src="../assets/js/user_auth.js"></script>
 </body>
 
 </html>

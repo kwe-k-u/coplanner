@@ -1,27 +1,25 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
-require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 
 if (!is_session_user_curator()) {
     header("Location: ../views/home.php");
     die();
 }
 
-$info = get_collaborator_info(get_session_user_id());
-$curator_id = get_session_account_id();
-$user_name = $info["user_name"];
-$curator_name = $info["curator_name"];
-$logo = $info["curator_logo"];
-$email = $info["email"];
-$number = $info["phone_number"];
+$info = get_curator_account_by_user_id(get_session_user_id());
+$curator_id = $info["curator_id"];
+$user_name = 0;//$info["user_name"];
+$curator_name = $info["curator_name"];//$info["curator_name"];
+$logo = 0;//$info["curator_logo"];
+$email = 0;//$info["email"];
+$number = 0;//$info["phone_number"];
 
-$stats = get_curator_statistics($curator_id, true);
-$group_count = $stats["tour_count"];
-$revenue = format_string_as_currency_fn($stats["total_revenue"]);
-$balance = format_string_as_currency_fn($stats["withdrawable_balance"]);
-$private_count = 0;//$stats["withdrawable_balance"];
-$rating = $stats["average_rating"];
-$rating_count = $stats["review_count"];
+$group_count = $info["active_listings"];
+$revenue = $info["revenue"];
+$booking_count = $info["booking_count"];
+$rating = 0;//$stats["average_rating"];
+$rating_count = 0;//$stats["review_count"];
 
 ?>
 <!DOCTYPE html>
@@ -79,8 +77,7 @@ $rating_count = $stats["review_count"];
                                         <div>
                                             <?php
                                             echo "
-                                            <h3 class='easygo-fs-1 easygo-fw-1'>$user_name</h3>
-                                            <h5 class='easygo-fs-4 text-orange'> Curator @$curator_name</h5>
+                                            <h3 class='easygo-fs-1 easygo-fw-1'>$curator_name</h3>
                                             ";
                                             ?>
                                         </div>
@@ -89,7 +86,7 @@ $rating_count = $stats["review_count"];
                                         </div>
                                     </div>
                                     <div class="other-info">
-                                        <div class="contact-info">
+                                        <!-- <div class="contact-info">
                                             <div class="d-flex align-items-center gap-2 my-4">
                                                 <h6 class="text-gray-1 easygo-fs-5 m-0">Contact Information</h6>
                                                 <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
@@ -106,7 +103,7 @@ $rating_count = $stats["review_count"];
                                                 ";
                                                 ?>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="trip-rating">
                                             <div class="d-flex align-items-center gap-2 my-4">
                                                 <h6 class="text-gray-1 easygo-fs-5 m-0">Average Tour Rating</h6>
@@ -142,29 +139,29 @@ $rating_count = $stats["review_count"];
                         <div class="row">
                             <?php
                                 echo "
-                                <div class='col-lg-3 col-sm-6 py-3'>
+                                <div class='col-lg-4 col-sm-6 py-3'>
                                 <div class='info-card m-auto bg-white'>
                                     <div class='info-img'>
                                         <img src='../assets/images/svgs/bus_red_bg.svg' alt='bus image'>
                                     </div>
                                     <div class='info-content'>
-                                        <div class='text-gray-1 info-title easygo-fs-4'>Group Tours</div>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Active Tours</div>
                                         <div class='info-num easygo-fs-2 easygo-fw-1'>$group_count</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class='col-lg-3 col-sm-6 py-3'>
+                            <div class='col-lg-4 col-sm-6 py-3'>
                                 <div class='info-card m-auto bg-white'>
                                     <div class='info-img'>
                                         <img src='../assets/images/svgs/bus_black_bg.svg' alt='bus image'>
                                     </div>
                                     <div class='info-content'>
-                                        <div class='text-gray-1 info-title easygo-fs-4'>Private Tours</div>
-                                        <div class='info-num easygo-fs-2 easygo-fw-1'>$private_count</div>
+                                        <div class='text-gray-1 info-title easygo-fs-4'>Booking Count</div>
+                                        <div class='info-num easygo-fs-2 easygo-fw-1'>$booking_count</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class='col-lg-3 col-sm-6 py-3'>
+                            <div class='col-lg-4 col-sm-6 py-3'>
                                 <div class='info-card m-auto bg-white'>
                                     <div class='info-img'>
                                         <img src='../assets/images/svgs/barchart_blue_bg.svg' alt='bus image'>
@@ -172,17 +169,6 @@ $rating_count = $stats["review_count"];
                                     <div class='info-content'>
                                         <div class='text-gray-1 info-title easygo-fs-4'>Total Revenue</div>
                                         <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $revenue</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-lg-3 col-sm-6 py-3'>
-                                <div class='info-card m-auto bg-white'>
-                                    <div class='info-img'>
-                                        <img src='../assets/images/svgs/wallet_orange_bg.svg' alt='bus image'>
-                                    </div>
-                                    <div class='info-content'>
-                                        <div class='text-gray-1 info-title easygo-fs-4'>Remaining Balance</div>
-                                        <div class='info-num easygo-fs-2 easygo-fw-1'>GHS $balance</div>
                                     </div>
                                 </div>
                             </div>
@@ -201,16 +187,10 @@ $rating_count = $stats["review_count"];
                                     <button class="nav-link easygo-fs-4 h-100 active" id="all-trips-tab" data-bs-toggle="tab" data-bs-target="#all-trips" type="button" role="tab" aria-controls="all-trips" aria-selected="true">All Tours</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link easygo-fs-4 h-100" id="packages-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false" tabindex="-1">Reviews</button>
-                                </li>
-                                <!-- <li class="nav-item" role="presentation">
-                                <button class="nav-link easygo-fs-4 h-100" id="packages-tab" data-bs-toggle="tab" data-bs-target="#packages" type="button" role="tab" aria-controls="packages" aria-selected="false" tabindex="-1">Tour packages</button>
-                            </li> -->
-                                <li class="nav-item" role="presentation">
                                     <button class="nav-link easygo-fs-4 h-100" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#collaborators" type="button" role="tab" aria-controls="collaborators" aria-selected="false" tabindex="-1">Collaborators</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link easygo-fs-4 h-100" id="complaint-tab" data-bs-toggle="tab" data-bs-target="#complaint" type="button" role="tab" aria-controls="complaint" aria-selected="false" tabindex="-1">Make a complaint</button>
+                                    <button class="nav-link easygo-fs-4 h-100" id="packages-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false" tabindex="-1">Reviews</button>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
@@ -219,7 +199,10 @@ $rating_count = $stats["review_count"];
                                 <div class="tab-pane fade active show" id="all-trips" role="tabpanel" aria-labelledby="description-tab">
                                     <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
                                     <?php
-                                        $tours_stats = get_curator_campaigns($curator_id);
+                                        $tours_stats = get_curator_listings($curator_id);
+                                        if(!$tours_stats){
+                                            echo "<h3>No reviews yet</h3>";
+                                        }
                                         foreach ($tours_stats as $entry) {
                                             $title = $entry["title"];
                                             $tour_count = $entry["trip_count"];
@@ -253,7 +236,7 @@ $rating_count = $stats["review_count"];
 
                                 <div class="easygo-list-3  left-bordered-items" style="min-width: 992px;">
                                 <?php
-                                    $reviews = get_curator_reviews($curator_id);
+                                    $reviews = array();// get_curator_reviews($curator_id);
                                     if(!$reviews){
                                         echo "<h3>No reviews yet</h3>";
                                     }
@@ -290,10 +273,10 @@ $rating_count = $stats["review_count"];
                                 <!--- ================================ -->
                                 <!--- collaborators [start] -->
                                 <div class="tab-pane fade" id="collaborators" role="tabpanel" aria-labelledby="reviews-tab">
-                                    <div class="d-flex justify-content-end gap-2 align-items-center">
+                                    <!-- <div class="d-flex justify-content-end gap-2 align-items-center">
                                         <p></p>
                                         <button type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-toggle="modal" data-bs-target="#invite-collaborator-modal">Invite collaborator</button>
-                                    </div>
+                                    </div> -->
                                     <div class="easygo-list-3 list-striped" style="min-width: 992px;">
                                         <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                             <div class="item-bullet-container">
@@ -302,9 +285,7 @@ $rating_count = $stats["review_count"];
                                             <div class="inner-item">User name</div>
                                             <div class="inner-item">Phone number</div>
                                             <div class="inner-item">Email</div>
-                                            <div class="inner-item">Role</div>
                                             <div class="inner-item">Date Added</div>
-                                            <div class="inner-item">Access status</div>
                                         </div>
                                         <?php
                                         $collaborators = get_curator_collaborators($curator_id);
@@ -312,10 +293,8 @@ $rating_count = $stats["review_count"];
                                         foreach ($collaborators as $pers) {
                                             $c_name = $pers["user_name"];
                                             $c_email = $pers["email"];
-                                            $c_phone = $pers["phone_number"];
+                                            $c_phone = "n/a";// $pers["phone_number"];
                                             $c_date = format_string_as_date_fn($pers["date_added"]);
-                                            $c_privilege = $pers["privilege"];
-                                            $c_access = $pers["access_status"];
                                             echo "
                                         <div class='list-item'>
                                             <div class='item-bullet-container'>
@@ -324,15 +303,14 @@ $rating_count = $stats["review_count"];
                                             <div class='inner-item text-capitalize'>$c_name</div>
                                             <div class='inner-item'>$c_phone</div>
                                             <div class='inner-item'>$c_email</div>
-                                            <div class='inner-item'>$c_privilege</div>
                                             <div class='inner-item'>$c_date</div>
-                                            <div class='inner-item text-capitalize'>$c_access</div>
                                         </div>
                                         ";
                                         }
 
 
-                                        $invites = get_pending_invites($curator_id);
+                                        // $invites = get_pending_invites($curator_id);
+                                        $invites = array();
                                         if($invites){
                                             echo "<h5>Pending invites</h5>";
                                         }
@@ -356,93 +334,6 @@ $rating_count = $stats["review_count"];
 
                                 </div>
                                 <!--- collaborators [end] -->
-                                <!--- ================================ -->
-                                <!--- ================================ -->
-                                <!--- complaint [start] -->
-                                <div class="tab-pane fade" id="complaint" role="tabpanel" aria-labelledby="complaint-tab">
-                                    <div class="easygo-list-3 list-striped" style="min-width: 992px;">
-
-                                        <div class="list-item list-header bg-transparent" style="box-shadow: none;">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">User name</div>
-                                            <div class="inner-item">Date Added</div>
-                                            <div class="inner-item">Phone number</div>
-                                            <div class="inner-item">Email</div>
-                                            <div class="inner-item">Access status</div>
-                                            <div class="inner-item">Role</div>
-                                        </div>
-                                        <div class='list-item'>
-                                            <div class='item-bullet-container'>
-                                                <div class='item-bullet'></div>
-                                            </div>
-                                            <div class='inner-item'>NCLLWKDEI</div>
-                                            <div class='inner-item'>Collins Nudekor</div>
-                                            <div class='inner-item'>easyGo Admin</div>
-                                            <div class='inner-item'>13 Dec 2022</div>
-                                            <div class='inner-item text-success'>420</div>
-                                            <div class='inner-item'>Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Pending</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-success">420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                        <div class="list-item">
-                                            <div class="item-bullet-container">
-                                                <div class="item-bullet"></div>
-                                            </div>
-                                            <div class="inner-item">NCLLWKDEI</div>
-                                            <div class="inner-item">Collins Nudekor</div>
-                                            <div class="inner-item">easyGo Admin</div>
-                                            <div class="inner-item">13 Dec 2022</div>
-                                            <div class="inner-item text-danger">-420</div>
-                                            <div class="inner-item">Success</div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <!--- complaint [end] -->
                                 <!--- ================================ -->
                             </div>
                         </div>

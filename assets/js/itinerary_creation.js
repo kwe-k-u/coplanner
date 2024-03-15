@@ -649,3 +649,11 @@ function set_itinerary_visibility(itinerary_id, form){
 		}
 	});
  }
+
+
+
+ function create_shared_experience(form){
+	event.preventDefault();
+
+	
+ }

@@ -243,13 +243,14 @@ function showToast(msg = "Test toast",timeout = 3000){
 
 
 
-function payWithPaystack(currency, charge_amount,c_email,payload){
+function payWithPaystack(currency, charge_amount,c_email,payload, split_account = null, multiplit = null){
 	let handler = PaystackPop.setup({
 		key: paystack_public_key,
 		email: c_email,
 		amount: charge_amount,
 		currency: currency,
 		metadata : payload,
+    subaccount: "",
 		// ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
 		// label: "Optional string that replaces customer email"
 

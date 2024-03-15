@@ -26,6 +26,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
 	require_once(__DIR__."/../utils/core.php");
+	require_once(__DIR__."/../utils/paystack.php");
 	require_once(__DIR__."/../controllers/public_controller.php");
 	require_once(__DIR__."/../controllers/admin_controller.php");
 	require_once(__DIR__."/../controllers/slack_controller.php");
@@ -505,6 +506,57 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$fileSaved = file_put_contents($filePath, json_encode($preferences));
 			notify_slack_personality_quiz(array_key_first($result));
 			die();
+		case "/curator_signup":
+			$username = $_POST["user_name"];
+			$email = $_POST["email"];
+			$password = encrypt($_POST["password"]);
+			$phone_number = $_POST["phone_number"];
+			$account_number = $_POST["account_number"];
+			$curator_name = $_POST["curator_name"];
+			$bank_number = $_POST["payout_bank_number"];
+			$bank_name = $_POST["payout_bank_name"];
+			$account_name = $_POST["account_name"];
+
+			$paystack = new paystack_custom();
+			$subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,20,"Curator bank account for $curator_name",$email,$username,$phone_number);
+
+			if($subaccount_response["status"]){
+				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"]);
+				if($result){
+					send_json(array("msg"=> "Your account has been created"));
+				}else{
+					//TODO:: Slack notification to support about failure to create an account
+					send_json(array("msg"=> "We couldn't create your account. Kinldy reach out to support@easygo.com.gh"),201);
+				}
+			}else{
+				send_json(array("msg"=> "Something went wrong with your account creation. Contact support at support@easygo.com.gh"),201);
+			}
+
+
+
+
+
+
+			// if($result){
+			// 	$result = signup_controller($curator_name,$username,$email,$password);
+			// 	if($result){
+			// 		send_json(array("msg"=> "Account created"));
+			// 	}else{
+			// 		send_json(array("msg"=> "Something went wrong"),201);
+			// 	}
+			// }else{
+			// 	send_json(array("msg"=>"Sign up failed. Try again or reach out to support"),201);
+			// }
+
+			die();
+
+
+			// {
+			// 	"gov_id_front": "undefined",
+			// 	"gov_id_back": "undefined",
+			// 	"company_logo": "undefined",
+			// 	"inc_doc": "undefined"
+			// }
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

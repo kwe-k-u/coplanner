@@ -101,12 +101,14 @@ if (session_status() == PHP_SESSION_NONE){
 	function is_session_user_admin(){
 		require_once(__DIR__."/../controllers/admin_controller.php");
 		$user_id = get_session_user_id();
-		return get_admin_privilege($user_id) != false;
+		return get_admin_privilege($user_id) == true;
 	}
 
 	/**Checks if there is a logged in session user */
 	function is_session_user_curator(){
-		return isset($_SESSION["account_id"]);
+		require_once(__DIR__."/../controllers/public_controller.php");
+		$user_id = get_session_user_id();
+		return get_curator_account_by_user_id($user_id) == true;
 	}
 
 

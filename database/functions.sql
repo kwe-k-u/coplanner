@@ -84,7 +84,7 @@ CREATE FUNCTION create_user(
   in_email varchar(100),
   in_password varchar(255),
   in_provider_id varchar(100)
-  ) RETURNS TINYINT(1)
+  ) RETURNS VARCHAR(100)
   BEGIN
     DECLARE exist VARCHAR(100);
     DECLARE results TINYINT(1);
@@ -112,7 +112,7 @@ CREATE FUNCTION create_user(
           INSERT INTO google_users(user_id,google_id) VALUES (new_id, in_provider_id);
           SET results = 1;
     END CASE;
-    RETURN results;
+    RETURN new_id;
   END//
   DELIMITER ;
 
