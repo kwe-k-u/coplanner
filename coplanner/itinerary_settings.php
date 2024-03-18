@@ -304,49 +304,37 @@ $username = get_user_info($user_id)["user_name"];
                                 <div class="col-lg-6">
                                     <div class="p-3">
                                         <h4 class="easygo-fw-1">Shared Experience Settings</h4 class="easygo-fw-1">
-                                        <form action="" method="post" onsubmit="create_shared_experience(this)">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-input-field">
-                                                    <small>Date of trip</small>
-                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
+                                        <form onsubmit="return create_shared_experience(this)">
+                                            <div class="row">
+                                                <div class="col-4">
+
+                                                    <div class="form-input-field">
+                                                        <small>Start time of trip</small>
+                                                        <input class="rounded-end rounded-0" type="time" name="start_time">
+                                                    </div>
                                                 </div>
+                                                <div class="col-4">
+                                                    <div class="form-input-field">
+                                                        <small>Booking Price</small>
+                                                        <input class="rounded-end rounded-0" type="number" name="price">
+                                                    </div>
 
-                                            </div>
-                                            <div class="col-6">
-
-                                                <div class="form-input-field">
-                                                    <small>Start time of trip</small>
-                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="form-input-field">
-                                                    <small>Booking Price</small>
-                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
-                                                </div>
+                                                <div class="col-4">
 
-                                            </div>
-                                            <div class="col-6">
-
-                                                <div class="form-input-field">
-                                                    <small>Number of seats</small>
-                                                    <input class="rounded-end rounded-0" type="text" placeholder="Company Name" name="company_name">
+                                                    <div class="form-input-field">
+                                                        <small>Number of seats</small>
+                                                        <input class="rounded-end rounded-0" type="number" name="seat_count">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="justify-content-end p-2">
+                                                <button type="submit" class="easygo-btn-5 bg-blue text-white">Create Shared Experience</button>
+                                            </div>
                                         </form>
                                     </div>
 
-                                    <div class="justify-content-end p-2">
-                                        <button class="easygo-btn-1 next-btn" type="button" id="form-1-confirm-btn">Create Shared Experience</button>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="mt-4 mb-2 ps-3">
-                                Haven't decided on activities ? <a href="#">Click to add a destination</a>
                             </div>
                         </div>
                     </div>

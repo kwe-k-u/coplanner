@@ -309,5 +309,12 @@
 			return $this->db_fetch_all();
 		}
 
+		function create_shared_experience($itinerary_id,$curator_id,$currency,$fee,$seats){
+			$sql = "SELECT create_shared_experience(?,?,?,?,?) as experience_id";
+			$this->prepare($sql);
+			$this->bind($itinerary_id,$curator_id,$currency,$fee,$seats);
+			return $this->db_fetch_one();
+		}
+
 	}
 ?>

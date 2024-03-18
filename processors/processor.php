@@ -549,6 +549,20 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			// }
 
 			die();
+		case "/create_shared_experience":
+			if (!is_session_user_curator()){
+				send_json(array("msg"=> "You need to be a curator to create shared experiences. Contact support at support@easygo.com.gh"),201);
+				die();
+			}
+			$itinerary_id = $_POST["itinerary_id"];
+			$price = $_POST["price"];
+			$seats = $_POST["seat_count"];
+			$curator_id = get_curator_account_by_user_id(get_session_user_id())["curator_id"];
+
+			$experience_id = create_shared_experience($itinerary_id, $curator_id,1,$price,$seats);
+
+			send_json(array("msg"=> "Experience Created", "experience_id" => $experience_id));
+			die();
 
 
 			// {

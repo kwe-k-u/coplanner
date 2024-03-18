@@ -8,6 +8,17 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
         <?php
+        $additional_options = "";
+            if (is_session_user_curator()){
+                $additional_options .= "<li onclick='goto_page(\"".server_base_url()."curator/dashboard.php\", false)'><a class='dropdown-item'  >Curator Dashboard</a></li>";
+            }
+
+            if(is_session_user_admin()){
+                $additional_options .= "<li onclick='goto_page(\"".server_base_url()."admin/dashboard.php\", false)'><a class='dropdown-item' >Admin Dashboard</a></li>";
+                echo "";
+            }
+
+
             if ($user_id){ //show logged in user info
                 echo "
                 <a class='navbar-brand' href='../index.php'>
@@ -23,6 +34,7 @@
                             <button class='btn btn-secondary dropdown-toggle dropdown-toggle-alt bg-transparent border-0' type='button'></button>
                             <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownMenuButton1'>
                                 <!-- <li><a class='dropdown-item' href='#' onclick='goto_page(\"coplanner/dashboard/dashboard.php\")'>Profile</a></li> -->
+                                $additional_options
                                 <li><a class='dropdown-item' href='".server_base_url()."index.php' onclick='logout()'>Sign out</a></li>
                             </ul>
                         </div>

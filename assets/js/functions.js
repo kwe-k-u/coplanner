@@ -138,7 +138,6 @@ function goto_page(url, isRelative = true){
 
 
 
-
 function create_itinerary(){
   send_request("GET",
   "processors/processor.php/create_itinerary",

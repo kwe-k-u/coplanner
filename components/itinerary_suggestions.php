@@ -3,7 +3,7 @@
 
 ?>
 <section class="container px-4 my-5 py-5">
-                <h2 class="mb-4">View other itineraries created by other people</h2>
+                <h2 class="mb-4">Travel Plans from other Tourists</h2>
                 <nav>
                     <div class="nav nav-tabs easygo-nav-tabs-alt justify-content-center" id="nav-tab" role="tablist">
                         <!-- <button class="nav-link active" id="popular-selections-tab" data-bs-toggle="tab" data-bs-target="#nav-popular-selections" type="button" role="tab" aria-controls="nav-popular-selections" aria-selected="true">Popular Selections</button> -->

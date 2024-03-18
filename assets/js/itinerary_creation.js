@@ -655,5 +655,22 @@ function set_itinerary_visibility(itinerary_id, form){
  function create_shared_experience(form){
 	event.preventDefault();
 
-	
+	let start_time = form.start_time.value;
+	let price = form.price.value;
+	let seat_count = form.seat_count.value;
+	let itinerary_id = url_params("id");
+	send_request("POST",
+	"processors/processor.php/create_shared_experience",
+	{
+		"start_time" : start_time,
+		"price" : price,
+		"seat_count" : seat_count,
+		"itinerary_id" : itinerary_id,
+	},
+	(response)=>{
+		console.log(response)
+	}
+	);
+
+
  }

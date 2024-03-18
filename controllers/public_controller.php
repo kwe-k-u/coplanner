@@ -282,5 +282,10 @@
 		return $public->get_curator_collaborators($curator_id);
 	}
 
+	function create_shared_experience($itinerary_id,$curator_id,$currency,$fee,$seats){
+		$public = new public_class();
+		return $public->create_shared_experience($itinerary_id,$curator_id,$currency,$fee,$seats)["experience_id"];
+	}
+
 
 ?>
