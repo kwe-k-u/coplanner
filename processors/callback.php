@@ -13,7 +13,6 @@
 		die();
 	}
 
-
 	$paystack = new paystack_custom();
 	$mailer = new mailer();
 
@@ -23,8 +22,126 @@
 		case "/paystack_callback":
 			$logger = new Logger();
 
+			// log the contents of the request
 			$_POST = json_decode(file_get_contents("php://input"),true);
 			$logger->paystack_log($_POST);
+
+
+			// If the payment coming was a success, process it appropriately
+			if ($_POST["event"] == "charge.success"){
+
+				//TODO:: check if the request is coming from paystack servers before continuing
+
+
+				$data = $_POST["data"];
+				$amount = $data["amount"];
+				$currency = $data["currency"];
+				$metadata = $data["metadata"];
+				$reference = $data["reference"];
+
+				// check if payment was valid
+				$res = $paystack->verify_transaction($reference);
+
+				if($res["status"]){
+					//check why we are receiving the payment
+					$purpose = $metadata["payment_purpose"];
+					switch($purpose){
+						case "experience_payment":
+							$experience_id = $metadata["experience_id"];
+							$provider_transaction_id = $data["id"];
+							$transaction_amount = $data["amount"] / 100;
+							$currency = $data["currency"];
+							$user_id = $metadata["user_id"];
+							$provider_charges = $data["fees"]/100;
+							$tax = 0;
+							$transaction_date = $data["paid_at"]; //TODO:: record
+							$amount = $transaction_amount - $provider_charges - $tax;
+							$seats = 1;
+							$description = $metadata["description"];
+							$transaction_id = make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges);
+							if($transaction_id){
+								$email = $data["customer"]["email"];
+								notify_slack_experience_payment($email,$transaction_id,$experience_id);
+								send_json(array("msg"=> "success", "data"=> $transaction_id));
+							}else{
+								send_json(array("msg"=> "failed"),201);
+							}
+							die();
+						case "itineray_payment":
+							$invoice_id = $metadata["invoice_id"];
+							$provider_transaction_id = $data["id"];
+							$user_id = $meta["user_id"];
+							$description = $meta["description"];
+							$transaction_amount = $data["amount"] /100;
+							$provide_charges = $data["fees"] / 100;
+							$tax = 0;
+							$transaction_date = $data["paid_at"]; //TODO:: record
+							$amount = $transaction_amount - $charges - $tax;
+
+							$transaction_id = make_invoice_payment($invoice_id,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$charges);
+							$transaction_id = array_values($transaction_id)[0];
+
+							// if transaction worked, notify slack
+							if ($transaction_id){
+								notify_slack_itinerary_payment($invoice_id,$transaction_id);
+								send_json(array("msg"=> "Ok"));
+							}else{
+								send_json(array("msg"=> "Something went wrong"),401);
+							}
+							die();
+						default:
+						die();
+					}
+				}
+
+				//Process requests for shared experiences
+				if(true){
+
+				}
+				//Process requests for private trips
+				else if (false){
+
+				}
+				//process requests for multisplit payments
+				else if (false){
+
+				}
+
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			$meta = $_POST["data"]["metadata"];

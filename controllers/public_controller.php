@@ -206,9 +206,9 @@
 		return $public->duplicate_itinerary($itinerary_id,$user_id);
 	}
 
-	function toggle_wishlist($user_id,$itinerary_id){
+	function toggle_itinerary_wishlist($user_id,$itinerary_id){
 		$public = new public_class();
-		return $public->toggle_wishlist($user_id,$itinerary_id)["added"];
+		return $public->toggle_itinerary_wishlist($user_id,$itinerary_id)["added"];
 	}
 
 	function add_destination_request($query,$user_id){
@@ -245,6 +245,11 @@
 	function get_invoice_activities($invoice_id){
 		$public = new public_class();
 		return $public->get_invoice_activities($invoice_id);
+	}
+
+	function make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider = "paystack"){
+		$public = new public_class();
+		return $public->make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
 	}
 
 	function set_itinerary_visibility($itinerary_id,$visibility){
@@ -287,5 +292,34 @@
 		return $public->create_shared_experience($itinerary_id,$curator_id,$currency,$fee,$seats)["experience_id"];
 	}
 
+	function get_shared_experiences(){
+		$public = new public_class();
+		return $public->get_shared_experiences();
+	}
+
+	function get_shared_experience_by_id($experience_id){
+		$public = new public_class();
+		return $public->get_shared_experience_by_id($experience_id);
+	}
+
+	function get_shared_experience_activities($experience_id){
+		$public = new public_class();
+		return $public->get_shared_experience_activities($experience_id);
+	}
+
+	function get_shared_experience_destinations($experience_id){
+		$public = new public_class();
+		return $public->get_shared_experience_destinations($experience_id);
+	}
+
+	function toggle_experience_wishlist($user_id,$experience_id){
+		$public = new public_class();
+		return $public->toggle_experience_wishlist($user_id,$experience_id)["added"];
+	}
+
+	function get_curator_payout_account($curator_id){
+		$public = new public_class();
+		return $public->get_curator_payout_account($curator_id);
+	}
 
 ?>

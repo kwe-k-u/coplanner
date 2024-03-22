@@ -50,6 +50,12 @@
 		return $slack->notify_transaction_log($message);
 	}
 
+	function notify_slack_experience_payment($email,$transaction_id,$experience_id){
+		$slack = new slack_bot_class();
+		$message = "User<$email> just paid payment for shared experience<$experience_id>. TransactionID is $transaction_id";
+		return $slack->notify_transaction_log($message);
+	}
+
 	function notify_slack_itinerary_invoice_generation($itinerary_id){
 		$slack = new slack_bot_class();
 		$message = "A user has generated an invoice for the itinerary with id $itinerary_id";

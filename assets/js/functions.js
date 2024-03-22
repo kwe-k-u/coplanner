@@ -179,13 +179,23 @@ function duplicate_itinerary(itinerary_id){
   );
 }
 
-function toggle_wishlist(itinerary_id){
+function toggle_wishlist(){
   let target = event.target;
+  if(url_params("id")){
+    endpoint = "processors/processor.php/toggle_itinerary_wishlist";
+    body ={
+      "itinerary_id" : url_params("id")
+    };
+  }else if (url_params("experience_id")){
+    endpoint = "processors/processor.php/toggle_experience_wishlist";
+    body ={
+      "experience_id" : url_params("experience_id")
+    };
+
+  }
   send_request("POST",
-  "processors/processor.php/toggle_wishlist",
-  {
-    "itinerary_id" : itinerary_id
-  },
+  endpoint,
+  body,
   (response)=> {
     console.log(response.data);
     if (response.status == 200){
@@ -249,7 +259,7 @@ function payWithPaystack(currency, charge_amount,c_email,payload, split_account 
 		amount: charge_amount,
 		currency: currency,
 		metadata : payload,
-    subaccount: "",
+    subaccount: split_account,
 		// ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
 		// label: "Optional string that replaces customer email"
 

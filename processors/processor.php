@@ -351,11 +351,33 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$data = get_itinerary_by_id($itinerary_id);
 			send_json(array("msg"=> "Success","data"=> $data));
 			die();
-		case "/toggle_wishlist":
+
+		case "/toggle_itinerary_wishlist":
 			$itinerary_id = $_POST["itinerary_id"];
 			$user_id = get_session_user_id();
 			if($user_id){
-				$result = toggle_wishlist($user_id,$itinerary_id);
+				$result = toggle_itinerary_wishlist($user_id,$itinerary_id);
+				if($result == 0 || $result == 1){
+					send_json(array("added"=>$result));
+					die();
+				}else{
+					//If no response, then something went wrong
+					send_json(array("msg"=> "Something went wrong. Try again later"),201);
+					die();
+				}
+			}else{
+				send_json(array(
+					"msg"=> "You need to be signed in to save an itinerary for later",
+					"reason"=> "unauthenticated"
+			),201);
+				die();
+			}
+			die();
+		case "/toggle_experience_wishlist":
+			$experience_id = $_POST["experience_id"];
+			$user_id = get_session_user_id();
+			if($user_id){
+				$result = toggle_experience_wishlist($user_id,$experience_id);
 				if($result == 0 || $result == 1){
 					send_json(array("added"=>$result));
 					die();
@@ -418,11 +440,26 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$invoice_id = array_values(create_itinerary_invoice($itinerary_id,1))[0];
 			send_json(array("msg"=> "Itinerary invoice generated","invoice_id"=> $invoice_id));
 			die();
-		case "/get_invoice":
+		case "/get_itinerary_invoice":
 			$invoice_id = $_POST["invoice_id"];
 			// create_itinerary_invoice($itinerary_id);
 			$data = get_invoice_by_id($invoice_id);
 			send_json(array("invoice"=>$data));
+			die();
+		case "/get_experience_invoice":
+			$experience_id = $_POST["experience_id"];
+			$invoice = get_shared_experience_by_id($experience_id);
+			$curator_id = $invoice["curator_id"];
+			$payout_account = get_curator_payout_account($curator_id);
+			$user_id = get_session_user_id();
+			$email = get_user_info($user_id)["email"];
+			$invoice["user_id"] = $user_id;
+
+			if ($payout_account){
+				send_json(array("payout_account_number"=> $payout_account["account_id"], "user_email"=> $email, "invoice" => $invoice));
+			}else{
+				send_json(array("invoice"=> $invoice, "user_email"=> $email));
+			}
 			die();
 		case "/paystack_callback":
 			$_POST = json_decode(file_get_contents("php://input"),true);
@@ -518,7 +555,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$account_name = $_POST["account_name"];
 
 			$paystack = new paystack_custom();
-			$subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,20,"Curator bank account for $curator_name",$email,$username,$phone_number);
+			$subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,7,"Curator bank account for $curator_name",$email,$username,$phone_number);
 
 			if($subaccount_response["status"]){
 				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"]);

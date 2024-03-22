@@ -204,7 +204,7 @@
 			return $this->db_fetch_one();
 		}
 
-		function toggle_wishlist($user_id,$itinerary_id){
+		function toggle_itinerary_wishlist($user_id,$itinerary_id){
 			$sql = "SELECT toggle_itinerary_wishlist(?,?) AS added";
 			$this->prepare($sql);
 			$this->bind($user_id,$itinerary_id);
@@ -313,6 +313,54 @@
 			$sql = "SELECT create_shared_experience(?,?,?,?,?) as experience_id";
 			$this->prepare($sql);
 			$this->bind($itinerary_id,$curator_id,$currency,$fee,$seats);
+			return $this->db_fetch_one();
+		}
+
+		function get_shared_experiences(){
+			$sql = "CALL get_shared_experiences()";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_shared_experience_by_id($experience_id){
+			$sql = "CALL get_shared_experience_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_shared_experience_destinations($experience_id){
+			$sql = "CALL get_shared_experience_destinations(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_shared_experience_activities($experience_id){
+			$sql = "CALL get_shared_experience_activities(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_all();
+		}
+
+		function toggle_experience_wishlist($user_id,$experience_id){
+			$sql = "SELECT toggle_experience_wishlist(?,?) AS added";
+			$this->prepare($sql);
+			$this->bind($user_id,$experience_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_curator_payout_account($curator_id){
+			$sql = "CALL get_curator_payout_account(?)";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_one();
+		}
+
+		function make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider){
+			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
 			return $this->db_fetch_one();
 		}
 

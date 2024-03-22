@@ -121,79 +121,39 @@ require_once(__DIR__ . "/utils/env_manager.php");
                 <h5 class="text-orange">Tours organised by our Curators</h5>
                 <div class="row">
 
-                    <div class="col-lg-4 col-md-6 p-3">
-                        <div class="trip-card">
-                            <img src="http://localhost/easygo_v2/uploads/picture/d48c0181dcfe7ba678829d2165c092e0.jpg" alt="trip card image">
-                            <div class="trip-card-body">
-                                <div class="trip-card-header">
-                                    <div class="title">
-                                        <h5 class="easygo-fw-1">Name of tour</h5>
+                <?php
+                    $shared_experiences = get_shared_experiences();
+                    foreach ($shared_experiences as $entry) {
+                        $currency = $entry["currency_name"];
+                        $price = $entry["booking_fee"];
+                        $curator_name = $entry["curator_name"];
+                        $experience_id = $entry["experience_id"];
+                        echo "<div class='col-lg-4 col-md-6 p-3'>
+                        <div class='trip-card'>
+                            <img src='http://localhost/easygo_v2/uploads/picture/d48c0181dcfe7ba678829d2165c092e0.jpg' alt='trip card image'>
+                            <div class='trip-card-body'>
+                                <div class='trip-card-header'>
+                                    <div class='title'>
+                                        <h5 class='easygo-fw-1'>Name of tour</h5>
                                         <!-- <p class='text-gray-1 easygo-fs-5'>Accra, Ghana</p> -->
-                                        <div class="text-gray-1 location easygo-fs-4">
-                                            Curated by <a href="curator_profile.php?id=791f40acb7ce8843d0894ba2f00731e9">easyGo Tours Ltd</a>
+                                        <div class='text-gray-1 location easygo-fs-4'>
+                                            Curated by <a href='curator_profile.php?id=791f40acb7ce8843d0894ba2f00731e9'>$curator_name</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="trip-card-content">
+                                <div class='trip-card-content'>
                                     Our tour begins with a pick-up from your hotel in the city and a comfortable drive to the countryside, where you can breathe in the fresh air and take in the beauty of nature. Our first stop will be at a local farm, where you can see how the farmers cul...
                                 </div>
                             </div>
-                            <div class="trip-card-footer">
-                                <h3>GHS 450</h3>
-                                <a href="tour_description.php?tour_id=2ba0dd87824298444ec71d51ebf5b617" class="easygo-btn-1">View tour</a>
+                            <div class='trip-card-footer'>
+                                <h3>$currency $price</h3>
+                                <a href='coplanner/itinerary_view.php?experience_id=$experience_id' class='easygo-btn-1'>View tour</a>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="col-lg-4 col-md-6 p-3">
-                        <div class="trip-card">
-                            <img src="http://localhost/easygo_v2/uploads/picture/b016824bb2dd96191190314fea8e4954.jpg" alt="trip card image">
-                            <div class="trip-card-body">
-                                <div class="trip-card-header">
-                                    <div class="title">
-                                        <h5 class="easygo-fw-1">A great tour of Accra</h5>
-                                        <!-- <p class='text-gray-1 easygo-fs-5'>Accra, Ghana</p> -->
-                                        <div class="text-gray-1 location easygo-fs-4">
-                                            Curated by <a href="curator_profile.php?id=791f40acb7ce8843d0894ba2f00731e9">easyGo Tours Ltd</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="trip-card-content">
-                                    We will be passing through the streets of Accra.
-                                </div>
-                            </div>
-                            <div class="trip-card-footer">
-                                <h3>GHS 500</h3>
-                                <a href="tour_description.php?tour_id=9a3a2e3b1a86730b1247ede7012cbfe9" class="easygo-btn-1">View tour</a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-4 col-md-6 p-3">
-                        <div class="trip-card">
-                            <img src="http://localhost/easygo_v2/uploads/picture/667d054f4af11373dbbafed9dd94e518.jpg" alt="trip card image">
-                            <div class="trip-card-body">
-                                <div class="trip-card-header">
-                                    <div class="title">
-                                        <h5 class="easygo-fw-1">Accra medical tour</h5>
-                                        <!-- <p class='text-gray-1 easygo-fs-5'>Accra, Ghana</p> -->
-                                        <div class="text-gray-1 location easygo-fs-4">
-                                            Curated by <a href="curator_profile.php?id=791f40acb7ce8843d0894ba2f00731e9">easyGo Tours Ltd</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="trip-card-content">
-                                    A fund trip around tound
-                                </div>
-                            </div>
-                            <div class="trip-card-footer">
-                                <h3>GHS 500</h3>
-                                <a href="tour_description.php?tour_id=ee4cdc05779cb846e8865cfcac57889f" class="easygo-btn-1">View tour</a>
-                            </div>
-                        </div>
-                    </div>
+                        ";
+                    }
+                ?>
 
 
 
