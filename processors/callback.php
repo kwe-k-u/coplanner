@@ -1,4 +1,5 @@
 <?php
+
 	// require_once(__DIR__."/../utils/paybox.php");
 	require_once(__DIR__."/../utils/core.php");
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
@@ -93,22 +94,48 @@
 						die();
 					}
 				}
-
-				//Process requests for shared experiences
-				if(true){
-
-				}
-				//Process requests for private trips
-				else if (false){
-
-				}
-				//process requests for multisplit payments
-				else if (false){
-
-				}
-
 			}
 
+		die();
+
+		case "/google_oauth":
+			$google = new GoogleAuthHandler(google_client_id(),google_client_secret(),google_redirect_url());
+			$code = $_GET["code"];
+			$user_data = $google->get_user_data($code);
+
+			if($user_data){//If oauth works, proceed with authentication
+				//Check if the user is registered with easyGo
+				$google_id = $user_data["id"];
+				$login = google_login($google_id);
+
+				if(!$login){ // If the user isn't registered, create an account and get the login credentials
+					$email = $user_data["email"];
+					$name = $user_data["name"];
+					$signup = signup_controller("google",$name,$google_id,$email);
+					if($signup){ // If signup was successful, get login details
+						$login = google_login($id);
+					}else{//If signup failed, restart the process
+						$auth_url = $google->generate_login_url();
+						echo "Something went wrong. You need to try again. <a href='$auth_url'>Sign In With Google</a>";
+						die();
+					}
+				}
+
+				// log the user into easyGo
+				// var_dump($login);
+				// die();
+
+				session_log_in($login["user_id"]);
+				// header("Location: /../index.php");
+				header("Location: /coplanner/index.php");
+				die();
+			}else{ //if oauth fails, restart the process
+				$auth_url = $google->generate_login_url();
+				echo "something went wrong with your login. You need to try again. <a href='$auth_url'>Sign In Again</a>";
+				die();
+			}
+
+			die();
 
 
 
@@ -144,6 +171,8 @@
 
 
 
+
+			die();
 			$meta = $_POST["data"]["metadata"];
 			$data = $_POST["data"];
 			$referrer = $meta["referrer"];

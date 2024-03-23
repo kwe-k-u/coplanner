@@ -12,10 +12,10 @@
 			return $this->db_fetch_one();
 		}
 
-		function provider_signup($provider,$name,$id){
-			$sql = "SELECT provider_signup(?,?,?);";
+		function provider_signup($provider,$name,$id,$email){
+			$sql = "SELECT provider_signup(?,?,?,?);";
 			$this->prepare($sql);
-			$this->bind($provider,$name,$id);
+			$this->bind($provider,$name,$id,$email);
 			return $this->db_fetch_one();
 		}
 

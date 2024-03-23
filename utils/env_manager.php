@@ -94,5 +94,17 @@ function paystack_private_key(){
 	return $_ENV["PAYSTACK_PRIVATE_KEY"];
 }
 
+function google_client_id(){
+	return $_ENV["GOOGLE_CLIENT_ID"];
+}
+
+function google_client_secret(){
+	return $_ENV["GOOGLE_CLIENT_SECRET"];
+}
+
+function google_redirect_url(){
+	return $_ENV["GOOGLE_REDIRECT_URI"];
+}
+
 
 ?>

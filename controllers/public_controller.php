@@ -8,9 +8,9 @@
 			case "email":
 			return $public->email_signup($first,$second,$third);
 			case "google":
-				return $public->provider_signup("google",$first,$second);
+				return $public->provider_signup("google",$first,$second,$third);
 			case "apple":
-				return $public->provider_signup("apple",$first,$second);
+				return $public->provider_signup("apple",$first,$second,$third);
 			default:
 				return false;
 		}

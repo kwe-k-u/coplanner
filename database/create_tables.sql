@@ -310,7 +310,7 @@ CREATE VIEW vw_users AS
 SELECT
     u.*,
     a.apple_id,
-    e.email,
+    COALESCE(g.email, e.email),
     e.email_verified,
     e.password_hash,
     g.google_id,

@@ -109,7 +109,7 @@ CREATE FUNCTION create_user(
           SET results = 1;
       WHEN 'google' THEN
           INSERT INTO users(user_id, user_name) VALUES (new_id, in_username);
-          INSERT INTO google_users(user_id,google_id) VALUES (new_id, in_provider_id);
+          INSERT INTO google_users(user_id,google_id,email) VALUES (new_id, in_provider_id,in_email);
           SET results = 1;
     END CASE;
     RETURN new_id;
@@ -142,6 +142,7 @@ DELIMITER //
 -- Function that creates user accounts using third party authentication
 CREATE FUNCTION provider_signup(provider VARCHAR(50), in_username VARCHAR(100), provider_id VARCHAR(100)) RETURNS TINYINT(1)
 BEGIN
+
   RETURN create_user(provider,in_username,null,null,provider_id);
 END //
 DELIMITER ;
