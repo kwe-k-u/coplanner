@@ -82,7 +82,7 @@ async function send_request(type, endpoint, data, onload = null, files = null) {
       for (let i = 0; i < data[key].length; i++) {
         formdata.append(key + "[]", data[key][i]);
       }
-    } else if (typeof data[key] === 'object' && !Array.isArray(data[key])) {
+    } else if (typeof data[key] === 'object' && !Array.isArray(data[key]) && !(data[key] instanceof File)) {
       // Assuming the JSON object is nested and needs to be stringified before appending
       formdata.append(key, JSON.stringify(data[key]));
   }else {

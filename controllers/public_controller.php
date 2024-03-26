@@ -262,9 +262,9 @@
 		return $public->set_itinerary_day_date($day_id, $date);
 	}
 
-	function create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id){
+	function create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id,$logo_location,$logo_type,$reg_doc_location,$reg_doc_type){
 		$public = new public_class();
-		return $public->create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id);
+		return $public->create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id,$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 	}
 
 	function get_curator_account_by_user_id($user_id){
@@ -320,6 +320,16 @@
 	function get_curator_payout_account($curator_id){
 		$public = new public_class();
 		return $public->get_curator_payout_account($curator_id);
+	}
+
+	function curator_media_upload($curator_id,$media_location,$media_type,$is_foreign = 0){
+		$public = new public_class();
+		return $public->curator_media_upload($curator_id,$media_location,$media_type,$is_foreign);
+	}
+
+	function upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type){
+		$public = new public_class();
+		return $public-> upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type);
 	}
 
 ?>

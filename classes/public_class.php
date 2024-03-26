@@ -274,10 +274,10 @@
 			return $this->db_query();
 		}
 
-		function create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id){
-			$sql = "SELECT create_curator(?,?,?,?,?,?,?,?,?,?)";
+		function create_curator($name,$email,$password,$number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_id,$logo_location,$logo_type,$reg_doc_location,$reg_doc_type){
+			$sql = "SELECT create_curator(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($name,$email,$password,$number,$curator_name,$bank_number,$bank_name,$account_number,$account_name,$subaccount_id);
+			$this->bind($name,$email,$password,$number,$curator_name,$bank_number,$bank_name,$account_number,$account_name,$subaccount_id,$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 			return $this->db_fetch_one();
 		}
 
@@ -361,6 +361,20 @@
 			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?)";
 			$this->prepare($sql);
 			$this->bind($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
+			return $this->db_fetch_one();
+		}
+
+		function curator_media_upload($curator_id,$media_location,$media_type,$is_foreign){
+			$sql = "SELECT curator_upload(?,?,?,?) as media_id";
+			$this->prepare($sql);
+			$this->bind($curator_id,$media_location,$media_type,$is_foreign);
+			return $this->db_fetch_one();
+		}
+
+		function  upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type){
+			$sql = "CALL upload_curator_identification(?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($email,$front_location,$front_type,$back_location,$back_type);
 			return $this->db_fetch_one();
 		}
 

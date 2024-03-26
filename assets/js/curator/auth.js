@@ -44,6 +44,8 @@ function signup(form2){
 		payload["inc_doc"] = form2.inc_doc.files[0];
 	}
 
+	console.log(payload);
+
 
 	send_request(
 		"POST",

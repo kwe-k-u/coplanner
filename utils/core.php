@@ -229,7 +229,7 @@ if (session_status() == PHP_SESSION_NONE){
 				$type = "doc";
 			// Videos TODO:: add videos
 			default:
-				$type = "";
+				$type = "doc";
 		}
 		return $type;
 	}

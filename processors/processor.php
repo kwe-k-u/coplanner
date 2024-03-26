@@ -558,9 +558,50 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,7,"Curator bank account for $curator_name",$email,$username,$phone_number);
 
 			if($subaccount_response["status"]){
-				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"]);
+				//upload logo
+				$logo_image = $_FILES["company_logo"]["name"];
+				$logo_temp = $_FILES["company_logo"]["tmp_name"];
+				$logo_type = get_file_type($logo_image);
+				$logo_location = upload_file("uploads","images",$logo_temp,$logo_image);
+				//upload registration document
+				$reg_doc_image = $_FILES["inc_doc"]["name"];
+				$reg_doc_temp = $_FILES["inc_doc"]["tmp_name"];
+				$reg_doc_type = get_file_type($reg_doc_image);
+				$reg_doc_location = upload_file("uploads","confidential",$logo_temp,$logo_image);
+				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"],$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 				if($result){
+
+
+					//upload id cards
+					$front_id_image = $_FILES["gov_id_front"]["name"];
+					$back_id_image = $_FILES["gov_id_back"]["name"];
+
+					$front_id_temp = $_FILES["gov_id_front"]["tmp_name"];
+					$back_id_temp = $_FILES["gov_id_back"]["tmp_name"];
+
+					$front_location = upload_file("uploads","confidential",$front_id_temp,$front_id_image);
+					$back_location = upload_file("uploads","confidential",$back_id_temp,$back_id_image);
+
+					$front_type = get_file_type($front_id_image);
+					$back_type = get_file_type($back_id_image);
+
+					$upload_results = upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type);
+
+
+
+
+
+
+
+					//upload id back
+					//upload curator logo
+					//upload curator document
+
+					//create entry to record creation permission
+					//notify slack
+
 					send_json(array("msg"=> "Your account has been created"));
+					//Upload and save media
 				}else{
 					//TODO:: Slack notification to support about failure to create an account
 					send_json(array("msg"=> "We couldn't create your account. Kinldy reach out to support@easygo.com.gh"),201);
