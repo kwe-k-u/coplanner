@@ -140,10 +140,10 @@ DROP FUNCTION IF EXISTS email_signup;
 DROP FUNCTION IF EXISTS  provider_signup;
 DELIMITER //
 -- Function that creates user accounts using third party authentication
-CREATE FUNCTION provider_signup(provider VARCHAR(50), in_username VARCHAR(100), provider_id VARCHAR(100)) RETURNS TINYINT(1)
+CREATE FUNCTION provider_signup(provider VARCHAR(50), in_username VARCHAR(100), in_provider_id VARCHAR(100), in_email VARCHAR(100)) RETURNS VARCHAR(100)
 BEGIN
 
-  RETURN create_user(provider,in_username,null,null,provider_id);
+  RETURN create_user(provider,in_username,in_email,null,in_provider_id);
 END //
 DELIMITER ;
 
@@ -1084,4 +1084,312 @@ BEGIN
     SELECT privilege INTO result FROM admin_users WHERE user_id = in_user_id;
     RETURN result;
 END //
+DELIMITER ;
+
+
+
+
+DROP FUNCTION IF EXISTS create_curator;
+DELIMITER //
+CREATE FUNCTION create_curator(
+	in_username VARCHAR(100),
+	in_email VARCHAR(100),
+	in_password VARCHAR(100),
+	in_phone VARCHAR(100),
+	in_curator_name VARCHAR(100),
+	in_bank_id VARCHAR(100),
+	in_bank_name VARCHAR(100),
+	in_account_number VARCHAR(100),
+	in_account_name VARCHAR(100),
+	in_subaccount_id VARCHAR(100),
+	in_logo_location VARCHAR(200),
+	in_logo_type VARCHAR(40),
+	in_doc_location VARCHAR(200),
+	in_doc_type VARCHAR(40)
+) RETURNS VARCHAR(100)
+BEGIN
+	DECLARE temp_user_id VARCHAR(100);
+	DECLARE temp_curator_id VARCHAR(100);
+	DECLARE in_logo_id VARCHAR(100);
+	DECLARE in_company_doc VARCHAR(100);
+
+
+	SELECT generate_id() INTO temp_curator_id;
+
+	SELECT upload_media(in_logo_location,in_logo_type,0) INTO in_logo_id;
+	SELECT upload_media(in_doc_location,in_doc_type,0) INTO in_company_doc;
+
+	-- Create a user account
+	SELECT user_id INTO temp_user_id FROM vw_users WHERE email = in_email;
+	IF temp_user_id IS NULL THEN
+		SELECT create_user("email",in_username,in_email,in_password,NULL) INTO temp_user_id;
+	END IF;
+
+	-- Create a curator account
+	INSERT INTO curator(curator_id, curator_name, logo_id, registration_doc_id) VALUES (temp_curator_id, in_curator_name,in_logo_id,in_company_doc);
+	INSERT INTO curator_manager(curator_id, user_id) VALUES (temp_curator_id, temp_user_id);
+
+	-- Add payout account
+	INSERT INTO payout_accounts(account_id, bank_id, bank_name, account_name, account_number)
+	VALUES (in_subaccount_id, in_bank_id, in_bank_name, in_account_name, in_account_number);
+
+	INSERT INTO curator_payout_account(payout_account_id, curator_id)
+	VALUES (in_subaccount_id, temp_curator_id);
+
+
+	RETURN temp_curator_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_curator_account_by_user_id;
+DELIMITER //
+CREATE PROCEDURE get_curator_account_by_user_id(IN in_user_id varchar(100))
+begin
+	SELECT * from vw_curators as c inner join curator_manager as cm where cm.user_id = in_user_id;
+end//
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS generate_shared_experience;
+DELIMITER //
+CREATE PROCEDURE generate_shared_experience(IN in_itinerary_id VARCHAR(100), IN in_experience_id VARCHAR(100))
+BEGIN
+  DECLARE temp_day_id VARCHAR(100);
+  DECLARE temp_activity_id VARCHAR(100);
+  DECLARE temp_destination_id VARCHAR(100);
+  DECLARE day_counter INT;
+  DECLARE activity_counter INT;
+  DECLARE destination_counter INT;
+  DECLARE temp_price DECIMAL(10,2);
+  DECLARE temp_currency VARCHAR(5);
+  DECLARE temp_day_date DATETIME;
+
+  -- Count the number of days
+  SELECT COUNT(*) INTO day_counter FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
+
+  -- For each day, loop through the activities, getting the destination price and saving it as final
+  WHILE day_counter > 0 DO
+    SET day_counter = day_counter - 1;
+
+    -- Get the current day id
+    SELECT day_id,visit_date INTO temp_day_id,temp_day_date FROM itinerary_day WHERE itinerary_id = in_itinerary_id AND position = day_counter;
+    SELECT visit_date INTO temp_day_date FROM itinerary_day WHERE itinerary_id = in_itinerary_id AND position = day_counter;
+
+    -- Get the destinations for the selected day
+    SELECT COUNT(*) INTO destination_counter FROM vw_itinerary_destinations WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id;
+
+    WHILE destination_counter > 0 DO
+      SET destination_counter = destination_counter - 1;
+
+	--   Create destination entry into the invoice
+      SELECT destination_id INTO temp_destination_id FROM vw_itinerary_destinations
+      WHERE itinerary_id = in_itinerary_id AND position = destination_counter AND day_id = temp_day_id;
+
+	  INSERT INTO `shared_experience_destinations`(`experience_id`, `destination_id`)
+	  VALUES (in_experience_id,temp_destination_id);
+      -- Get the activities for the selected day
+      SELECT COUNT(*) INTO activity_counter FROM vw_itinerary_activities WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id AND destination_id = temp_destination_id;
+
+      WHILE activity_counter > 0 DO
+        SET activity_counter = activity_counter - 1;
+        SELECT currency_name, price INTO temp_currency, temp_price FROM vw_itinerary_activities
+        WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+
+        SELECT activity_id into temp_activity_id FROM itinerary_activity WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+        -- UPDATE itinerary_activity SET final_price = temp_price, final_currency = temp_currency WHERE day_id = temp_day_id AND destination_id = temp_destination_id AND position = activity_counter;
+		INSERT INTO `shared_experience_activities`(`experience_id`, `activity_id`, `destination_id`, `currency`,`price`, `visit_date`)
+		VALUES (in_experience_id,temp_activity_id,temp_destination_id,temp_currency,temp_price,temp_day_date);
+
+      END WHILE;
+
+    END WHILE;
+
+  END WHILE;
+
+  -- Display the value of the test variable (just for debugging purposes)
+
+END //
+DELIMITER ;
+
+
+
+
+DROP FUNCTION IF EXISTS create_shared_experience;
+
+DELIMITER //
+CREATE FUNCTION create_shared_experience(
+	in_itinerary_id VARCHAR(100),
+	in_curator_id VARCHAR(100),
+	in_currency INT,
+	in_fee DOUBLE,
+	in_seats INT
+) returns varchar(100)
+begin
+	DECLARE in_experience_id varchar(100);
+	DECLARE in_start_date DATETIME;
+
+	SELECT generate_id() into in_experience_id;
+	SELECT visit_date into in_start_date from itinerary_day where itinerary_id = in_itinerary_id  ORDER BY visit_date ASC LIMIT 1;
+
+	INSERT INTO shared_experiences(experience_id,curator_id,start_date,booking_fee,number_of_seats)
+	VALUES (in_experience_id, in_curator_id,in_start_date,in_fee,in_seats);
+
+	CALL generate_shared_experience(in_itinerary_id,in_experience_id);
+
+	return in_experience_id;
+
+end//
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_curator_listings;
+DELIMITER //
+CREATE PROCEDURE get_curator_listings(IN in_curator_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_shared_experiences where curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_curator_bookings;
+DELIMITER //
+CREATE PROCEDURE get_curator_bookings(IN in_curator_id VARCHAR(100))
+BEGIN
+	SELECT * FROM shared_experience_bookings as seb inner join shared_experiences as se
+	where se.curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_curator_collaborators;
+DELIMITER //
+CREATE PROCEDURE get_curator_collaborators(IN in_curator_id VARCHAR(100))
+BEGIN
+	SELECT cm.*, u.user_name, u.email, cm.date_added FROM curator_manager as cm
+	inner join vw_users as u on u.user_id = cm.user_id;
+END//
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_shared_experience_by_id;
+DELIMITER //
+CREATE PROCEDURE get_shared_experience_by_id(in in_experience_id varchar(100))
+begin
+  select * from vw_shared_experiences where experience_id = in_experience_id;
+end //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_shared_experiences;
+DELIMITER //
+CREATE PROCEDURE get_shared_experiences()
+begin
+	select * from vw_shared_experiences;
+end //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_shared_experience_destinations;
+DELIMITER //
+CREATE PROCEDURE get_shared_experience_destinations(in in_experience_id varchar(100))
+BEGIN
+	SELECT * from shared_experience_destinations where experience_id = in_experience_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_shared_experience_activities;
+DELIMITER //
+CREATE PROCEDURE get_shared_experience_activities(IN in_experience_id VARCHAR(100))
+BEGIN
+	SELECT sa.*, a.activity_name, d.destination_name, d.location,d.rating FROM shared_experience_activities as sa
+	inner join destinations as d on d.destination_id = sa.destination_id
+	inner join activities as a on a.activity_id = sa.activity_id
+	where sa.experience_id = in_experience_id order by sa.visit_date, sa.destination_id;
+END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS toggle_experience_wishlist;
+DELIMITER //
+CREATE FUNCTION toggle_experience_wishlist(
+  in_user_id VARCHAR(100),
+  in_experience_id VARCHAR(100)
+  )
+RETURNS TINYINT
+BEGIN
+  DECLARE temp_id VARCHAR(100);
+
+  SELECT user_id INTO  temp_id FROM experience_wishlist WHERE user_id = in_user_id AND experience_id = in_experience_id;
+  if temp_id is null then
+    INSERT INTO experience_wishlist(user_id,experience_id) VALUES (in_user_id,in_experience_id);
+    return 1;
+  end if;
+
+  DELETE FROM experience_wishlist where user_id = in_user_id and experience_id = in_experience_id;
+  return 0;
+
+
+END //
+DELIMITER ;
+
+
+
+
+DROP FUNCTION IF EXISTS upload_media;
+DELIMITER //
+CREATE FUNCTION upload_media(in_media_location VARCHAR(100), in_media_type VARCHAR(30),in_is_foreign TINYINT(1))
+returns varchar(100)
+begin
+	DECLARE in_media_id VARCHAR(100);
+	SELECT generate_id() into in_media_id;
+	INSERT INTO `media`(`media_id`, `media_location`, `media_type`,  `is_foreign`)
+  VALUES (in_media_id,in_media_location,in_media_type,in_is_foreign);
+  return in_media_id;
+end //
+DELIMITER ;
+
+
+
+
+
+DROP FUNCTION IF EXISTS curator_media_upload;
+DELIMITER //
+CREATE FUNCTION curator_media_upload(
+	in_curator_id VARCHAR(100), in_media_location VARCHAR(100),
+	in_media_type VARCHAR(30),in_is_foreign TINYINT(1)
+	)
+	returns varchar(100)
+begin
+	DECLARE in_media_id VARCHAR(100);
+	SELECT upload_media(in_media_location, in_media_type, in_is_foreign) into in_media_id;
+	INSERT INTO curator_media(curator_id,media_id) VALUES (in_curator_id,in_media_id);
+	RETURN in_media_id;
+end //
+delimiter ;
+
+
+DROP PROCEDURE IF EXISTS upload_curator_identification;
+DELIMITER //
+CREATE PROCEDURE upload_curator_identification(
+	in in_email VARCHAR(100),
+	IN in_front_location VARCHAR(200),
+	IN in_front_type VARCHAR(20),
+	IN in_back_location VARCHAR(200),
+	IN in_back_type VARCHAR(20)
+)
+begin
+	DECLARE in_user_id VARCHAR(100);
+	DECLARE front_media_id VARCHAR(100);
+	DECLARE back_media_id VARCHAR(100);
+	SELECT user_id into in_user_id from vw_users where email = in_email;
+
+	SELECT upload_media(in_front_location,in_front_type,0) INTO front_media_id;
+	SELECT upload_media(in_back_location,in_back_type,0) INTO back_media_id;
+
+	UPDATE curator_manager set id_card_front = front_media_id, id_card_back = back_media_id
+	where user_id = in_user_id;
+
+end //
 DELIMITER ;

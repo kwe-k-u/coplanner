@@ -127,7 +127,7 @@
 
 				session_log_in($login["user_id"]);
 				// header("Location: /../index.php");
-				header("Location: /coplanner/index.php");
+				header("Location: ".server_base_url());
 				die();
 			}else{ //if oauth fails, restart the process
 				$auth_url = $google->generate_login_url();

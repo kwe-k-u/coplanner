@@ -13,7 +13,7 @@
 		}
 
 		function provider_signup($provider,$name,$id,$email){
-			$sql = "SELECT provider_signup(?,?,?,?);";
+			$sql = "SELECT provider_signup(?,?,?,?) as user_id;";
 			$this->prepare($sql);
 			$this->bind($provider,$name,$id,$email);
 			return $this->db_fetch_one();

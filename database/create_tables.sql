@@ -70,6 +70,7 @@ CREATE TABLE email_users (
 CREATE TABLE google_users (
     user_id VARCHAR(100) PRIMARY KEY,
     google_id VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(100),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
@@ -299,34 +300,6 @@ CREATE TABLE accommodation(
     FOREIGN KEY (currency_id) REFERENCES currency(currency_id)
 );
 
-/*--------------------------------------------------------------------------------------------------
--------------------------- VIEWS -----------------------------------------------------------------
---------------------------------------------------------------------------------------------------*/
-
-
-DROP VIEW IF EXISTS vw_users;
--- Returns all relevant user information for login and such
-CREATE VIEW vw_users AS
-SELECT
-    u.*,
-    a.apple_id,
-    COALESCE(g.email, e.email),
-    e.email_verified,
-    e.password_hash,
-    g.google_id,
-    (select login_timestamp from login_history as lh where lh.user_id = u.user_id  order by login_timestamp desc limit 1) as last_login
-FROM
-    users AS u
-LEFT JOIN
-    google_users AS g ON g.user_id = u.user_id
-LEFT JOIN
-    apple_users AS a ON a.user_id = u.user_id
-LEFT JOIN
-    email_users AS e ON e.user_id = u.user_id;
-
-
-
-
 
 -- Tracks all financial transactions on the platform
 CREATE TABLE transactions (
@@ -359,10 +332,6 @@ CREATE TABLE refunds(
 );
 
 
-DROP TABLE IF EXISTS invoice_payments;
-DROP TABLE IF EXISTS itinerary_invoice_activities;
-DROP TABLE IF EXISTS itinerary_invoice_destinations;
-DROP TABLE IF EXISTS itinerary_invoice;
 
 
 CREATE TABLE itinerary_invoice(
@@ -403,21 +372,146 @@ CREATE TABLE invoice_payments(
 
 
 DROP TABLE IF EXISTS curators;
-CREATE TABLE curators(
+CREATE TABLE curator(
 	curator_id VARCHAR(100) PRIMARY KEY,
-	curator_name VARCHAR(100)
+	curator_name VARCHAR(100),
+	date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+	logo_id VARCHAR(100),
+	registration_doc_id VARCHAR(100),
+	FOREIGN KEY (logo_id) REFERENCES media(media_id),
+	FOREIGN KEY (registration_doc_id) REFERENCES media(media_id)
 );
 
+
+CREATE TABLE payout_accounts(
+	account_id VARCHAR(100) PRIMARY KEY, -- paystack payout account id
+	bank_id VARCHAR(10),
+	bank_name VARCHAR(100),
+	account_name VARCHAR(100) NOT NULL,
+	account_number VARCHAR(100)  NOT NULL,
+	date_created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	date_update DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 DROP TABLE IF EXISTS curator_manager;
 CREATE TABLE curator_manager(
 	curator_id VARCHAR(100),
 	user_id VARCHAR(100),
-	role ENUM ("admin","viewer") DEFAULT "admin",
-	PRIMARY KEY (curator_id,user_id),
-	FOREIGN KEY (user_id) REFERENCES users(user_id),
-	FOREIGN KEY (curator_id) REFERENCES curators(curator_id)
+	id_card_front VARCHAR(100),
+	id_card_back VARCHAR(100),
+	date_added DATETIME DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (curator_id, user_id),
+	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
+	FOREIGN KEY (id_card_back) REFERENCES media(media_id),
+	FOREIGN KEY (id_card_front) REFERENCES media(media_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+
+
+CREATE TABLE curator_payout_account(
+	curator_id VARCHAR(100),
+	payout_account_id VARCHAR(100),
+	PRIMARY KEY (curator_id, payout_account_id),
+	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
+	FOREIGN KEY (payout_account_id) REFERENCES payout_accounts(account_id)
+);
+
+CREATE TABLE shared_experiences(
+	experience_id VARCHAR(100) PRIMARY KEY,
+	curator_id VARCHAR(100),
+	date_uploaded DATETIME DEFAULT CURRENT_TIMESTAMP,
+	start_date DATETIME,
+	booking_fee DOUBLE,
+	currency INT DEFAULT 1,
+	number_of_seats INT,
+	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
+	FOREIGN KEY (currency) REFERENCES currency(currency_id)
+);
+
+CREATE TABLE shared_experience_destinations(
+	experience_id VARCHAR(100),
+	destination_id VARCHAR(100),
+	date_updated DATETIME,
+	booking_acceptance ENUM("accepted","pending","rejected") DEFAULT "pending",
+	primary key (experience_id,destination_id),
+	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id),
+	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
+);
+
+CREATE TABLE shared_experience_activities(
+	experience_id VARCHAR(100),
+	activity_id VARCHAR(100),
+	destination_id VARCHAR(100),
+	currency VARCHAR(15),
+	price DOUBLE,
+	visit_date DATETIME, --  The date that the person will be visiting
+	primary key (experience_id,activity_id,destination_id),
+	FOREIGN KEY (experience_id,destination_id) REFERENCES shared_experience_destinations(experience_id,destination_id)
+);
+
+  CREATE TABLE shared_experience_bookings(
+	experience_id VARCHAR(100),
+	user_id VARCHAR(100),
+	transaction_id VARCHAR(100),
+	number_of_seats INT,
+	PRIMARY KEY (experience_id, user_id),
+	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id),
+	FOREIGN KEY (transaction_id ) REFERENCES transactions(transaction_id)
+);
+
+
+DROP TABLE IF EXISTS experience_wishlist;
+CREATE TABLE experience_wishlist (
+	experience_id VARCHAR(100),
+	user_id VARCHAR(100),
+	PRIMARY KEY (experience_id,user_id),
+	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id),
+	FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE curator_media(
+	curator_id VARCHAR(100),
+	media_id VARCHAR(100),
+	PRIMARY KEY (curator_id,media_id),
+	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
+	FOREIGN KEY (media_id) REFERENcES media(media_id)
+);
+
+
+
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------
+-------------------------- VIEWS -----------------------------------------------------------------
+--------------------------------------------------------------------------------------------------*/
+
+
+DROP VIEW IF EXISTS vw_users;
+-- Returns all relevant user information for login and such
+CREATE VIEW vw_users AS
+SELECT
+    u.*,
+    a.apple_id,
+    COALESCE(g.email, e.email) as email,
+    e.email_verified,
+    e.password_hash,
+    g.google_id,
+    (select login_timestamp from login_history as lh where lh.user_id = u.user_id  order by login_timestamp desc limit 1) as last_login
+FROM
+    users AS u
+LEFT JOIN
+    google_users AS g ON g.user_id = u.user_id
+LEFT JOIN
+    apple_users AS a ON a.user_id = u.user_id
+LEFT JOIN
+    email_users AS e ON e.user_id = u.user_id;
+
 
 
 
@@ -541,6 +635,46 @@ CREATE VIEW vw_invoice_activities AS
  inner join activities as a on a.activity_id = iia.activity_id
  inner join destinations as d on d.destination_id = iia.destination_id
   ORDER BY iia.visit_date, iia.destination_id;
+
+
+DROP VIEW IF EXISTS vw_curators;
+CREATE VIEW vw_curators as
+	SELECT c.*,
+	pa.account_id as payout_account_id,
+	pa.account_number as payout_account_number,
+	pa.account_name as payout_account_name,
+	pa.bank_name as payout_bank_name,
+	pa.bank_id as payout_bank_id,
+	(SELECT 0) as revenue,
+	(SELECT 0) as active_listings,
+	(SELECT 0) as booking_count
+	 from curator as c
+	left join curator_payout_account as cpa on cpa.curator_id = c.curator_id
+	left join payout_accounts as pa on pa.account_id = cpa.payout_account_id;
+
+
+DROP VIEW IF EXISTS vw_shared_experiences;
+CREATE VIEW vw_shared_experiences AS
+	SELECT
+		se.*,
+		currency.currency_name,
+		c.curator_name,
+		(SELECT 0) as remaining_seats
+	 from
+	shared_experiences as se
+	inner join curator as c on c.curator_id = se.curator_id
+	inner join currency on currency.currency_id = se.currency;
+
+
+DROP VIEW IF EXISTS vw_payout_accounts;
+CREATE VIEW vw_payout_accounts as
+	select
+	cpa.curator_id,
+	pa.*
+	from payout_accounts as pa
+	left join curator_payout_account as cpa on cpa.payout_account_id = pa.account_id;
+
+
 
 
 
