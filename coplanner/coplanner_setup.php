@@ -353,9 +353,9 @@ require_once(__DIR__ . "/../utils/core.php");
 
                         <div class="justify-content-center">
                             <div class="col-lg-9">
-                                <input type="range" class="form-range" min="500" max="5000" step="250" id="customRange3">
+                                <input type="range" class="form-range" min="500" max="5000" value="1000" step="250" id="budget_range" onchange="on_budget_range_change(this)">
                             </div>
-                            <h4 class="my-3">GHS 500</h4>
+                            <h4 class="my-3">GHS <span id='budget_text'>1000</span></h4>
                         </div>
 
                         <div class="mt-4 d-flex justify-content-center">

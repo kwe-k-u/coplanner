@@ -151,6 +151,10 @@ $(document).ready(function () {
 });
 
 
+function on_budget_range_change(field){
+	document.getElementById("budget_text").innerText = field.value;
+}
+
 
 
 
@@ -173,7 +177,8 @@ function get_section_responses(data_parent) {
 			result["vibe"] = get_selected_checkboxes("vibe-selection");
 			break;
 		case "budget-selection-page":
-			result["budget"] = get_selected_radio("budget-range-selection");
+			// result["budget"] = get_selected_radio("budget-range-selection");
+			result["budget"] = document.getElementById("budget_range").value;
 			break;
 
 		default:

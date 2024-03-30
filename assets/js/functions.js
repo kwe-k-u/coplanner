@@ -166,7 +166,7 @@ function duplicate_itinerary(itinerary_id){
   (response)=>{
     if(response.status ==200){
       let id = response.data.itinerary_id;
-      goto_page(baseurl+"coplanner/edit_itinerary.php?id="+id,false);
+      goto_page(baseurl+"coplanner/itinerary_settings.php?id="+id,false);
     }else{
       if(response.data.reason == "unauthenticated"){
 

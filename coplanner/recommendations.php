@@ -1,6 +1,7 @@
 <?php
 	require_once(__DIR__ . "/../utils/core.php");
 	require_once(__DIR__ . "/../controllers/public_controller.php");
+	require_once(__DIR__ . "/../controllers/slack_controller.php");
 
 
 
@@ -31,7 +32,8 @@
 	}
 
 
-	$results = exec("python ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path),$recommendations,$return_val);
+	$execution_command = "python ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path);
+	$results = exec($execution_command,$recommendations,$return_val);
 	//pass the file path to the python script, and the path to the template jsons
 	//let the python script return a list of file paths for the recommended itineraries
 	//get the itineraries from the path and return those as the recommendations
@@ -43,6 +45,16 @@
 		if($template){
 			array_push($itineraries,$template);
 		}
+	}
+
+	if(sizeof($itineraries) == 0){
+		echo "Hmm!! Something must have gone wrong. We have alerted support and they will reach out to you with your itinerary";
+		$slack = new slack_bot_class();
+		$info = get_user_info(get_session_user_id());
+		$email = $info["email"];
+
+		$slack->notify_error_log("The recommendation system failed for $email. Prefernce id:".$_GET["id"]);
+		die();
 	}
 ?>
 

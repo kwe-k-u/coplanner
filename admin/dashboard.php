@@ -85,7 +85,7 @@
                     </div> -->
                     <div class="d-flex gap-2 flex-xs-column flex-md-row">
                         <div class="">
-                            <button class="easygo-btn-5" onclick="goto_page('coplanner/edit_itinerary.php')">Create Itinerary</button>
+                            <button class="easygo-btn-5" onclick="create_itinerary()">Create Itinerary</button>
                         </div>
                         <div class="">
                             <button class="easygo-btn-5" onclick="goto_page('admin/locations.php')">Add Location</button>

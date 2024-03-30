@@ -125,7 +125,7 @@ $username = get_user_info($user_id)["user_name"];
                                                         Accomodation
                                                     </label>
                                                 </div>
-                                                <p class='easygo-fs-5 ps-4'>3 rooms at <span class='text-blue easygo-fw-1'>Hotel Name</span></p>
+                                                <p class='easygo-fs-5 ps-4'>Click here to book Accommodation <a href='#' class='text-blue easygo-fw-1'>Hotel Name</a></p>
                                             </div>
                                         </div>
                                         <div class='col-5'>
@@ -138,10 +138,10 @@ $username = get_user_info($user_id)["user_name"];
                                                 <div class='form-check'>
                                                     <input class='form-check-input checkbox-checked-blue' checked type='checkbox' value='' id='transportation-check'>
                                                     <label class='form-check-label' for='transportation-check'>
-                                                        Transportation
+                                                        Vehicle Rentals
                                                     </label>
                                                 </div>
-                                                <p class='easygo-fs-5 ps-4'>1 bus from <span class='text-blue easygo-fw-1'>Bus Owner</span></p>
+                                                <p class='easygo-fs-5 ps-4'>Click to book vehicle rental <span class='text-blue easygo-fw-1'>Vehicle Rentals</span></p>
                                             </div>
                                         </div>
                                         <div class='col-5'>
@@ -157,7 +157,7 @@ $username = get_user_info($user_id)["user_name"];
                                                         Travel Insurance
                                                     </label>
                                                 </div>
-                                                <p class='easygo-fs-5 ps-4'><a class='text-black' href='#'>Click to add</a></p>
+                                                <p class='easygo-fs-5 ps-4'><a class='text-black' href='#'>Coming Soon</a></p>
                                             </div>
                                         </div>
                                     </div>
