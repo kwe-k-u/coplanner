@@ -5,8 +5,8 @@
 	error_reporting(E_ALL);
 
 $allowedDomains = array(
-    'https://www.prototype.easygo.com.gh',
-    'https://prototype.easygo.com.gh',
+    'https://www.ai.easygo.com.gh',
+    'https://ai.easygo.com.gh',
     'https://easygo.com.gh',
     'https://www.easygo.com.gh'
 );
@@ -30,6 +30,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 	require_once(__DIR__."/../controllers/public_controller.php");
 	require_once(__DIR__."/../controllers/admin_controller.php");
 	require_once(__DIR__."/../controllers/slack_controller.php");
+	$mixpanel = new mixpanel_class();
 
 
 	switch ($_SERVER["PATH_INFO"]) {
@@ -68,6 +69,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 					$success = email_login($email,$password);
 					if($success){
 						session_log_in($success["user_id"]);
+						$mixpanel->log_user_login($success["user_id"], "email");
 						send_json(array("msg"=> "Log in successful", "user_id"=> $success["user_id"]));
 					}else{
 						send_json(array("msg"=> "Log in Failed"),201);
@@ -266,6 +268,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			// Save the JSON data to a file
 			$fileSaved = file_put_contents($filePath, $preferences);
 			notify_slack_ai_itinerary();
+			$mixpanel->log_itinerary_recommendation($fileName);
 			send_json(array("msg"=> "Preference saved", "id"=> $fileName));
 			die();
 		case "/create_template":
@@ -591,15 +594,9 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 
 
-
-
-					//upload id back
-					//upload curator logo
-					//upload curator document
-
 					//create entry to record creation permission
 					//notify slack
-
+					$mixpanel->log_curator_signup();
 					send_json(array("msg"=> "Your account has been created"));
 					//Upload and save media
 				}else{
@@ -635,20 +632,17 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$itinerary_id = $_POST["itinerary_id"];
 			$price = $_POST["price"];
 			$seats = $_POST["seat_count"];
-			$curator_id = get_curator_account_by_user_id(get_session_user_id())["curator_id"];
+			$curator = get_curator_account_by_user_id(get_session_user_id());
+			$curator_id = $curator["curator_id"];
+			$curator_name = $curator["curator_name"];
 
 			$experience_id = create_shared_experience($itinerary_id, $curator_id,1,$price,$seats);
+			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);
+
+			notify_slack_shared_experience_creation($curator_name,$experience_id);
 
 			send_json(array("msg"=> "Experience Created", "experience_id" => $experience_id));
 			die();
-
-
-			// {
-			// 	"gov_id_front": "undefined",
-			// 	"gov_id_back": "undefined",
-			// 	"company_logo": "undefined",
-			// 	"inc_doc": "undefined"
-			// }
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

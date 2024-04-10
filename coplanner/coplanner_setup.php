@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view();
 ?>
 <!DOCTYPE html>
 <html lang="en">

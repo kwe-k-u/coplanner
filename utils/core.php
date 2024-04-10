@@ -2,6 +2,8 @@
 	require_once(__DIR__. "/http_handler.php");
 	require_once(__DIR__."/env_manager.php");
 	require_once(__DIR__."/google_auth.php");
+	require_once(__DIR__."/../vendor/autoload.php");
+	require_once(__DIR__."/mixpanel.php");
 
 //start session
 // if session isn't started then start session

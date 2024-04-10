@@ -57,7 +57,7 @@
                             Continue With Google
                         </span>
                     </button>
-                    <a href='".server_base_url()."coplanner/register.php' class='easygo-btn-5 bg-blue text-white easygo-fs-5'>Create An Account</a>
+                    <a href='".server_base_url()."coplanner/login.php' class='easygo-btn-5 bg-blue text-white easygo-fs-5'>Sign In</a>
                     </div>
                 </div>";
             }

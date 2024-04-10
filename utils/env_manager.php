@@ -106,5 +106,9 @@ function google_redirect_url(){
 	return $_ENV["GOOGLE_REDIRECT_URI"];
 }
 
+function mixpanel_token(){
+	return $_ENV["MIXPANEL_TOKEN"];
+}
+
 
 ?>

@@ -3,6 +3,9 @@
     if(is_session_logged_in()){
         header("Location: ../index.php");
     }
+
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view();
 ?>
 
 <!DOCTYPE html>

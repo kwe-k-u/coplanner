@@ -3,7 +3,7 @@ require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
 
 if (!is_session_user_curator()) {
-    header("Location: ../views/home.php");
+    header("Location: ../index.php");
     die();
 }
 

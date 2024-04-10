@@ -68,6 +68,12 @@
 		return $slack->notify_info_log($message);
 	}
 
+	function notify_slack_shared_experience_creation($curator_name,$experience_id){
+		$slack = new slack_bot_class();
+		$message = "Shared Experience: $curator_name just created a Shared Experience. ID: $experience_id";
+		return $slack->notify_info_log($message);
+	}
+
 
 
 ?>

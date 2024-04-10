@@ -2,6 +2,9 @@
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
 
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view();
+
 $itinerary_id = $_GET["id"];
 $itinerary = get_itinerary_by_id($itinerary_id);
 $days = get_itinerary_days($itinerary_id);

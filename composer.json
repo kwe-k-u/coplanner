@@ -2,6 +2,7 @@
     "require": {
         "vlucas/phpdotenv": "^5.5",
         "mailchimp/transactional": "^1.0",
-        "google/apiclient": "^2.0"
+        "google/apiclient": "^2.0",
+        "mixpanel/mixpanel-php" : "2.*"
     }
 }

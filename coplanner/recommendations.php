@@ -32,7 +32,8 @@
 	}
 
 
-	$execution_command = "python ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path);
+
+	$execution_command =  (is_env_remote() ? "python3":"python")." ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path);
 	$results = exec($execution_command,$recommendations,$return_val);
 	//pass the file path to the python script, and the path to the template jsons
 	//let the python script return a list of file paths for the recommended itineraries

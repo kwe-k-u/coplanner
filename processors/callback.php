@@ -16,8 +16,9 @@
 
 	$paystack = new paystack_custom();
 	$mailer = new mailer();
+	$mixpanel = new mixpanel_class();
 
-	$itinerary_gen_url = "prototype.easygo.com.gh";
+	$itinerary_gen_url = "ai.easygo.com.gh";
 
 	switch($_SERVER["PATH_INFO"]){
 		case "/paystack_callback":
@@ -64,6 +65,7 @@
 								$email = $data["customer"]["email"];
 								notify_slack_experience_payment($email,$transaction_id,$experience_id);
 								send_json(array("msg"=> "success", "data"=> $transaction_id));
+								$mixpanel->log_experience_booking($user_id,$experience_id,$transaction_amount);
 							}else{
 								send_json(array("msg"=> "failed"),201);
 							}
@@ -86,6 +88,7 @@
 							if ($transaction_id){
 								notify_slack_itinerary_payment($invoice_id,$transaction_id);
 								send_json(array("msg"=> "Ok"));
+								$mixpanel->log_itinerary_booking($user_id,$metadata["itinerary_id"],$transaction_amount);
 							}else{
 								send_json(array("msg"=> "Something went wrong"),401);
 							}
@@ -124,8 +127,11 @@
 				// log the user into easyGo
 				// var_dump($login);
 				// die();
+				$user_id= $login["user_id"];
+				session_log_in($user_id);
+				$mixpanel = new mixpanel_class();
+				$mixpanel->log_event_login($user_id,"google");
 
-				session_log_in($login["user_id"]);
 				// header("Location: /../index.php");
 				header("Location: ".server_base_url());
 				die();

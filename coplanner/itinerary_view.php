@@ -1,9 +1,12 @@
 <?php
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view();
 
 if (isset($_GET["id"])) {
     $itinerary_id = $_GET["id"];
+    $res = $mixpanel->log_itinerary_views($itinerary_id,"someuser");
     $itinerary = get_itinerary_by_id($itinerary_id);
     $date_created = format_string_as_date_fn($itinerary["date_created"]);
     $owner_name = $itinerary["owner_name"];

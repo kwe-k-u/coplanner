@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__ . "/utils/core.php");
 require_once(__DIR__ . "/utils/env_manager.php");
+
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,8 +100,9 @@ require_once(__DIR__ . "/utils/env_manager.php");
                         <div class="d-flex flex-column gap-5">
                             <h2 class=" easygo-fw-1">Travel Plans that <span class="text-blue">feel just right</span></h2>
                             <div class="easygo-fs-2">
-                                We let adventure seekers to quickly craft travel plans that capture
-                                unique thrilling experiences and book the destinations included in those plans
+                                Travel is deeply personal. That is why our website provides personalised travel plans and allows you
+                                to book tours that resonate with your individual spirint of adventure. Whether you're seeking
+                                adventure, cultural immersion, softlife or all the above, your journey begins here
                             </div>
                             <a href='./coplanner/coplanner_setup.php' class='easygo-btn-5 bg-blue  text-white easygo-fs-4 w-50'>Create Your Travel Plan</a>
 
@@ -116,13 +120,20 @@ require_once(__DIR__ . "/utils/env_manager.php");
             <!--- ================================ -->
             <!--- Shared Experience Section [start] -->
             <section class="my-5">
+                <?php
 
-                <h2 class="easygo-fw-1 mb-4">Looking for a Shared Experience?</h2>
-                <h5 class="text-orange">Tours organised by our Curators</h5>
-                <div class="row">
+                    $shared_experiences = get_shared_experiences();
+                    if(count($shared_experiences) > 0){
+                        echo "<h2 class='easygo-fw-1 mb-4'>Looking for a Shared Experience?</h2>
+                        <h5 class='text-orange'>Group Tours organised by our Curators</h5>
+                        ";
+                    }
+                ?>
+
+
+                <div class='row'>
 
                 <?php
-                    $shared_experiences = get_shared_experiences();
                     foreach ($shared_experiences as $entry) {
                         $currency = $entry["currency_name"];
                         $price = $entry["booking_fee"];
@@ -137,12 +148,12 @@ require_once(__DIR__ . "/utils/env_manager.php");
                                         <h5 class='easygo-fw-1'>Name of tour</h5>
                                         <!-- <p class='text-gray-1 easygo-fs-5'>Accra, Ghana</p> -->
                                         <div class='text-gray-1 location easygo-fs-4'>
-                                            Curated by <a href='curator_profile.php?id=791f40acb7ce8843d0894ba2f00731e9'>$curator_name</a>
+                                            Curated by <a href='#'>$curator_name</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='trip-card-content'>
-                                    Our tour begins with a pick-up from your hotel in the city and a comfortable drive to the countryside, where you can breathe in the fresh air and take in the beauty of nature. Our first stop will be at a local farm, where you can see how the farmers cul...
+
                                 </div>
                             </div>
                             <div class='trip-card-footer'>
@@ -165,13 +176,15 @@ require_once(__DIR__ . "/utils/env_manager.php");
             <!--- Section 2 [start] -->
             <section class="my-5">
                 <div>
-                    <h2 class="easygo-fw-1 mb-4">Why People use easyGo for Private Tours</h2>
+                    <h2 class="easygo-fw-1 mb-4">Save time, Savour moments with easyGo</h2>
                     <div class="row">
                         <div class="col-lg-4 p-2 text-center">
                             <div>
-                                <h3 class="text-blue">Flexibility</h3>
+                                <h3 class="text-blue">Convenience at your fingertips</h3>
                                 <div class="py-2">
-                                    We give you control over the details of your travel plan's activity list, budget and destinations.
+                                Move from WhatsApp Groups to reality and craft the perfect travel
+                                plan that includes all the desired activities and destinations, with
+                                access to vehicle rentals and accommodations.
                                 </div>
                             </div>
                         </div>
@@ -179,14 +192,20 @@ require_once(__DIR__ . "/utils/env_manager.php");
                             <div>
                                 <h3 class="text-blue">Time Savings</h3>
                                 <div class="py-2">
-                                    Create a full-proof itinerary complete with destination activities, transportation and lodging in minutes </div>
+                                    We've streamlined the tour planning process to save you precious time. Tell us what
+                                    your preferences are and we will recommend an itinerary that closely match that. You don't need
+                                    to spend days planning what should be a few minutes
+                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 p-2 text-center">
                             <div>
-                                <h3 class="text-blue">Convenience</h3>
+                                <h3 class="text-blue">Uniquely You</h3>
                                 <div class="py-2">
-                                    Plan ahead of time and book your destinations and vehicle rentals
+                                    Sometimes only you can create travel plans that speak to your unique tastes. Feel like
+                                    making spontaneous stops and detours in between destinations.  Just let us know and
+                                    we will make the arrangements. Craft your journey your way!
+
                                 </div>
                             </div>
                         </div>
@@ -205,9 +224,12 @@ require_once(__DIR__ . "/utils/env_manager.php");
 
                             <div>
                                 <h2 class="text-blue easygo-fw-1 text-capitalize">You know yourself best</h2>
-                                Planning a Vacation is hard. easyGo leverages the experiences of our Curators and insights from destinations to suggest the perfect Travel Plan for you.
-                                Our service also allows you to change the Travel Plan to suit your needs, while booking services from hotels, tour guides and vehicle rental providers
-                                to make your Vacation effort-free.
+                                Planning Vacations is hard and there is no one-size fits all. At easyGo, we celebrate this
+                                individuality. Our platform is built to adapt and response to your unique sense of adventure,
+                                ensuring that travel plans suggested are as unqiue as you. Though our plans are based on the
+                                insights of our Curatos, we give you the opportunity to tailor the plans to fit your vision.
+                                Whether you want the thrills of adventure or the chills of soft life, you can craft
+                                that dream experience with easyGo
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex justify-content-center align-items-center">
