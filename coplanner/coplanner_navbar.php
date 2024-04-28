@@ -1,10 +1,10 @@
 <?php
+    require_once(__DIR__."/../utils/core.php");
     $user_id = get_session_user_id();
     if($user_id){
         require_once(__DIR__."/../controllers/public_controller.php");
         $username = get_user_info($user_id)["user_name"];
     }
-    require_once(__DIR__."/../utils/core.php");
 ?>
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
