@@ -288,9 +288,9 @@
 		return $public->get_curator_collaborators($curator_id);
 	}
 
-	function create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats){
+	function create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats,$media_location,$media_type){
 		$public = new public_class();
-		return $public->create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats)["experience_id"];
+		return $public->create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats,$media_location,$media_type)["experience_id"];
 	}
 
 	function get_shared_experiences($show_all = false){

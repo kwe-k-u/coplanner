@@ -247,7 +247,7 @@ $username = get_user_info($user_id)["user_name"];
             <div class="modal-dialog modal-dialog-scrollable modal-xl modal-fullscreen-md-down">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Destination Information</h1>
+                        <h1 class="modal-title fs-5">Shared Experiences</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body easygo-scroll-bar">
@@ -255,54 +255,15 @@ $username = get_user_info($user_id)["user_name"];
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="p-3">
-                                        <div class="d-flex gap-2" style="max-height: 200px;">
-                                            <div class="" style="flex:1;">
-                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%;">
-                                            </div>
-                                            <div class="d-flex flex-column justify-content-center gap-2" style="flex:1;">
-                                                <div style="max-height: 50%;">
-                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
-                                                </div>
-                                                <div style="max-height: 50%;">
-                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
-                                                </div>
-                                            </div>
+                                                <div class="file-input drag-n-drop type-img" data-display-target="#flyer-img" data-input-target="#flyer_image">
+                                        <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
+                                            <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                                         </div>
-
-                                        <div>
-                                            <div class="my-3">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="m-0 easygo-fw-1" id='modal-destination-name'>Shai Hills</h2>
-                                                        <div id='modal-location'>Greater Accra, Ghana</div>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h2 class="easygo-fw-1 text-end m-0" id='modal-rating'>GHS 500</h2>
-                                                        <p class="m-0 text-end">Estimated cost</p>
-                                                    </div>
-                                                </div>
-                                                <div class="text-blue easygo-fs-2 py-2">
-                                                    <i class="fa-solid fa-wifi"></i> &nbsp;
-                                                    <i class="fa-solid fa-bath"></i> &nbsp;
-                                                    <i class="fa-solid fa-person-swimming"></i>
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <p class="easygo-fs-5 mb-0">Click on activity to add to itinerary</p>
-                                                <div class="d-flex flex-wrap">
-                                                    <div class="mt-2 easygo-fw-4 easygo-fs-2" id="modal-activity-list">
-                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
-                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
-                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
-                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
-                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
-                                                        <span class="activity badge bg-transparent border border-blue border-1 text-black py-2 px-3">Hike</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <small class="easygo-fs-4 text-gray-1">Flyer or Image for Shared Experience</small>
+                                        <input id="flyer_image" name="flyer_image" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#flyer-img" >
+                                        <div id="flyer-img" data-input-target="#flyer_image" class="img-display display-full"></div>
                                     </div>
+
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="p-3">

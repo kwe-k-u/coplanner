@@ -596,12 +596,12 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 					//create entry to record creation permission
 					//notify slack
-					$slack = new slack_bot_class();
+					notify_slack_curator_signup($curator_name,$email);
 					$mixpanel->log_curator_signup();
 					send_json(array("msg"=> "Your account has been created"));
 					//Upload and save media
 				}else{
-					//TODO:: Slack notification to support about failure to create an account
+					notify_slack_curator_signup_failure($email,$username);
 					send_json(array("msg"=> "We couldn't create your account. Kinldy reach out to support@easygo.com.gh"),201);
 				}
 			}else{
@@ -627,6 +627,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			die();
 		case "/create_shared_experience":
+
 			if (!is_session_user_curator()){
 				send_json(array("msg"=> "You need to be a curator to create shared experiences. Contact support at support@easygo.com.gh"),201);
 				die();
@@ -638,8 +639,19 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$curator = get_curator_account_by_user_id(get_session_user_id());
 			$curator_id = $curator["curator_id"];
 			$curator_name = $curator["curator_name"];
+			$media_location = null;
+			$media_type= null;
 
-			$experience_id = create_shared_experience($itinerary_id,$name, $curator_id,1,$price,$seats);
+			if ($_FILES){
+
+				$flyer_image = $_FILES["flyer"]["name"];
+				$flyer_tmp = $_FILES["flyer"]["tmp_name"];
+				$media_type = get_file_type($flyer_image);
+				$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
+			}
+
+			$experience_id = create_shared_experience($itinerary_id,$name, $curator_id,1,$price,$seats,$media_location,$media_type);
+
 			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);
 
 			notify_slack_shared_experience_creation($curator_name,$experience_id);

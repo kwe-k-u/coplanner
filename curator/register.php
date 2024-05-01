@@ -142,8 +142,8 @@ if (isset($_GET["confirm"])) {
                 if (!isset($hash)) {
                 ?>
                     <div class="input-field">
-                        <small class="text-gray-1">Upload company logo<span class="text-gray-2">(Optional)</span></small>
-                        <div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo">
+                        <small class="text-gray-1">Upload company logo<span class="text-gray-2"></span></small>
+                        <div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo"  >
                             <div class="upload-symbol">
                                 <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                             </div>
@@ -165,7 +165,7 @@ if (isset($_GET["confirm"])) {
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
                             <small class="easygo-fs-4 text-gray-1">Front</small>
-                            <input id="gov_id_front" name="gov_id_front" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-front">
+                            <input id="gov_id_front" name="gov_id_front" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-front" >
                             <div id="id-front" data-input-target="#gov_id_front" class="img-display display-full"></div>
                         </div>
                         <div class="file-input drag-n-drop type-img" data-display-target="#id-back" data-input-target="#gov_id_back">
@@ -173,7 +173,7 @@ if (isset($_GET["confirm"])) {
                                 <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
                             </div>
                             <small class="easygo-fs-4 text-gray-1">Back</small>
-                            <input id="gov_id_back" name="gov_id_back" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-back">
+                            <input id="gov_id_back" name="gov_id_back" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#id-back" >
                             <div id="id-back" data-input-target="#gov_id_back" class="img-display display-full"></div>
                         </div>
                     </div>
@@ -183,14 +183,14 @@ if (isset($_GET["confirm"])) {
                 if (!isset($hash)) {
                 ?>
                     <div class="input-field">
-                        <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2">(Optional)</span></small>
+                        <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2"></span></small>
                         <div class="file-input drag-n-drop type-doc" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" data-input-target="#inc_doc">
                             <div class="upload-symbol">
                                 <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
                             </div>
                             <a>Upload file</a>
                             <span class="text-gray-1">PDF,DOCX,JPG,PNG</span>
-                            <input id="inc_doc" name="inc_doc" class="file-upload" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" accept=".png, .jpg, .jpeg, .svg, .docx, .pdf" type="file">
+                            <input id="inc_doc" name="inc_doc" class="file-upload" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" accept=".png, .jpg, .jpeg, .svg, .docx, .pdf" type="file" >
                             <div id="gov-doc-display" class="doc-display" data-input-target="#inc_doc">
                                 <div class="doc-display-item">
                                     <i class="fa-solid fa-file easygo-h2"></i>
@@ -205,7 +205,7 @@ if (isset($_GET["confirm"])) {
                 //=====================[END] Hide if invited================================
                 ?>
                 <div class="agreement-check">
-                    <input type="checkbox"><span>By creating an account, you agree to these <a href="">terms and conditions</a></span>
+                    <input type="checkbox" required><span>By creating an account, you agree to these <a href="">terms and conditions</a></span>
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-1" type="submit">Register</button>

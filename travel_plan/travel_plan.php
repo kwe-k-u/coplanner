@@ -140,7 +140,7 @@ $mixpanel->log_page_view();
                         $curator_name = $entry["curator_name"];
                         $experience_id = $entry["experience_id"];
                         $experience_name = $entry["experience_name"];
-                        $image = $entry["media_location"];
+                        $image = $entry["media_location"] ?? (server_base_url()."uploads/images/gokart.jpg");
                         $base_url = server_base_url();
                         echo "<div class='col-lg-4 col-md-6 p-3'>
                         <div class='trip-card'>

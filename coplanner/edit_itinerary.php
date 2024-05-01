@@ -3,13 +3,19 @@
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
 
-$mixpanel = new mixpanel_class();
-$mixpanel->log_page_view();
 
 if (!isset($_GET["id"])) {
     header("Location: ../index.php");
     die();
 }
+if(!is_session_logged_in()){
+    header("Location: ".server_base_url());
+}
+
+
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view();
+
 $itinerary_id = $_GET["id"];
 $itinerary = get_itinerary_by_id($itinerary_id);
 $name = $itinerary["itinerary_name"] ?? "Untitled";
@@ -915,7 +921,7 @@ $first_day = $itinerary["first_day"];
                     </div>
                     <!--- ================================ -->
                     <!-- cards [start] -->
-                    <div class="my-4" id='destination-search-results'>
+                    <div class="my-4" id='destination-search-results-mobile'>
                         <?php
                         $destinations = get_destinations();
                         foreach (array_slice($destinations, 0, 2) as $current) {

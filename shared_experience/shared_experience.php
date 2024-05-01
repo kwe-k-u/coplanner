@@ -190,7 +190,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 // $tour_id = $next["tour_id"];
                                 // $currency = $next["currency"];
                                 // $fee = $next["fee"];
-                                $image = "http://localhost/easygo_v2/uploads/picture/d48c0181dcfe7ba678829d2165c092e0.jpg";
+                                $image = $entry["media_location"]?? (server_base_url()."uploads/images/gokart.jpg");
 
                                 echo "
 

@@ -1,4 +1,5 @@
 const destination_search_results = document.getElementById("destination-search-results");
+const mobile_destination_search_results = document.getElementById("destination-search-results-mobile");
 const itinerary_card_activity_list = document.getElementById("itinerary-card-activity-list");
 
 
@@ -381,6 +382,7 @@ function destination_search(form){
 	(response)=>{
 		let destinations = response.data.results;
 		destination_search_results.replaceChildren();
+		mobile_destination_search_results.replaceChildren();
 		if (destinations.length == 0){
 			// TODO:: Show no results on the interface
 			showToast("We don't have the destination yet but we will add it and send you an email when we do",6000);
@@ -394,6 +396,7 @@ function destination_search(form){
 			let id = element["destination_id"];
 			let card = create_destination_search_result_card(id,name,location,rating,num_rating,activities);
 			destination_search_results.appendChild(card);
+			mobile_destination_search_results.appendChild(card);
 
 		});
 	});
@@ -653,6 +656,12 @@ function set_itinerary_visibility(itinerary_id, form){
 
 
  function create_shared_experience(form){
+	let flyer = document.getElementById("flyer_image").files;
+	if(flyer.length == 0){
+		openDialog("You need to add an image for your experience");
+	}
+
+	// return false;
 	event.preventDefault();
 
 	let start_time = form.start_time.value;
@@ -667,12 +676,14 @@ function set_itinerary_visibility(itinerary_id, form){
 		"price" : price,
 		"seat_count" : seat_count,
 		"itinerary_id" : itinerary_id,
-		"experience_name" : experience_name
+		"experience_name" : experience_name,
+		"flyer" : flyer[0]
 	},
 	(response)=>{
 		console.log(response);
 		if(response.status == 200){
 			showToast(response.data.msg);
+			alert(response.data.msg);
 		}else{
 			openDialog(response.data.msg);
 		}

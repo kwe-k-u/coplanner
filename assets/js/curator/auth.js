@@ -2,6 +2,21 @@
 function signup(form2){
 
 
+		// payload["company_logo"] = form2.company_logo.files[0];
+		// payload["inc_doc"] = form2.inc_doc.files[0];
+
+	if (form2.inc_doc.files.length == 0){
+		alert("Kindly upload an incorporation document to proceed. You may contact support@easygo.com.gh if you have not registered your company");
+		return false;
+	}
+
+	if(form2.gov_id_back.files.length == 0 || form2.gov_id_front.files.length == 0){
+		alert("Kindly upload a picture of both the front and back of your Government issued ID card");
+		return false;
+	}
+
+
+
 	event.preventDefault();
 	var form1 = document.getElementById("register-form-1");
 
@@ -44,7 +59,6 @@ function signup(form2){
 		payload["inc_doc"] = form2.inc_doc.files[0];
 	}
 
-	console.log(payload);
 
 
 	send_request(

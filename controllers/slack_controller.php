@@ -74,6 +74,18 @@
 		return $slack->notify_info_log($message);
 	}
 
+	function notify_slack_curator_signup_failure($email,$user_name){
+		$slack = new slack_bot_class();
+		$message = "A curator signup failed. $user_name<$email";
+		return $slack->notify_support_log($message);
+	}
+
+	function notify_slack_curator_signup($curator,$email){
+		$slack = new slack_bot_class();
+		$message = "A curator just signed up! $curator <$email>";
+		return $slack->notify_user_log($message);
+	}
+
 
 
 ?>
