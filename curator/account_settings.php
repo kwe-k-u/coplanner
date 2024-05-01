@@ -204,17 +204,14 @@ $rating_count = 0;//$stats["review_count"];
                                             echo "<h3>No reviews yet</h3>";
                                         }
                                         foreach ($tours_stats as $entry) {
-                                            $title = $entry["title"];
-                                            $tour_count = $entry["trip_count"];
-                                            $label = $tour_count > 1 ? "Tours" : "Tour";
-                                            $desc = shorten($entry["description"]);
+                                            $title = $entry["experience_name"];
+                                            $date = format_string_as_date_fn($entry["start_date"]);
                                             echo"
                                             <div class='list-item'>
                                                 <div class='col'>
                                                     <div class='inner-item easygo-fs-3'>$title</div>
-                                                    <div class='inner-item easygo-fs-5 text-end'>$tour_count $label</div>
                                                     <div class='inner-item-easygo-fs-3'>
-                                                    $desc
+                                                    $date
                                                     </div>
                                                 </div>
                                             </div>

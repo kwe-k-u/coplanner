@@ -1,10 +1,13 @@
 <?php
 $id = get_session_user_id();
 
-$info = get_collaborator_info($id);
-$curator_id = get_session_account_id();
+// $info = get_collaborator_info($id);
+// $curator_id = get_session_account_id();
 
-$balance = format_string_as_currency_fn(get_curator_statistics($id)["withdrawable_balance"]);
+// $balance = format_string_as_currency_fn(get_curator_statistics($id)["withdrawable_balance"]);
+$info =get_curator_account_by_user_id(get_session_user_id());
+$user_info = get_user_info(get_session_user_id());
+
 $name = $info["user_name"];
 $company = $info["curator_name"];
 ?>

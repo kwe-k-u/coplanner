@@ -18,21 +18,7 @@
 					Dashboard
 				</a>
 			</li>
-			<li>
-				<div class="slide-down-menu">
-					<a data-target="dashboard-submenu" class="slide-down-btn" href="#">
-						<img src="../assets/images/svgs/trips.svg" alt="dashboard image">
-						Tours
-						<span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
-					</a>
-					<ul id="dashboard-submenu" class="sub-menu slide-down-sub-menu">
-						<li><a href="#">Group Tours</a></li>
-						<li><a href="private_tours.php">Private Tours</a></li>
-						<!-- <li><a href="#">Notifications</a></li> -->
-					</ul>
-				</div>
-			</li>
-			<li><a href="transactions.php"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Finance</a></li>
+			<li><a href="bookings.php"><img src="../assets/images/svgs/finance.svg" alt="finance icon"> Bookings</a></li>
 			<li><a href="account_settings.php"><i class="fa-solid fa-gear"></i>Account Settings</a></li>
 			<li><a href="#" onclick="return logout()"><img src="../assets/images/svgs/logout.svg" alt="notifications icon">Log out</a></li>
 		</ul>

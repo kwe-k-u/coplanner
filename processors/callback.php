@@ -63,7 +63,7 @@
 							$transaction_id = make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges);
 							if($transaction_id){
 								$email = $data["customer"]["email"];
-								notify_slack_experience_payment($email,$transaction_id,$experience_id);
+								notify_slack_experience_payment($email,$transaction_id,$experience_id["transaction_i"]);
 								send_json(array("msg"=> "success", "data"=> $transaction_id));
 								$mixpanel->log_experience_booking($user_id,$experience_id,$transaction_amount);
 							}else{

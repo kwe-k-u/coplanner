@@ -24,7 +24,6 @@ function pay_experience(){
 		invoice["payment_purpose"] = "experience_payment";
 
 		if(payout_account){
-			console.log("payout payment");
 			payWithPaystack("GHS",amount,user_email,invoice, payout_account);
 		}else{
 			payWithPaystack("GHS",amount,user_email,invoice);

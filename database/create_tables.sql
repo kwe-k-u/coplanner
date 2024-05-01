@@ -427,8 +427,10 @@ CREATE TABLE shared_experiences(
 	currency INT DEFAULT 1,
 	number_of_seats INT,
 	is_visible TINYINT (1) DEFAULT 1,
+	media_id VARCHAR(100),
 	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
-	FOREIGN KEY (currency) REFERENCES currency(currency_id)
+	FOREIGN KEY (currency) REFERENCES currency(currency_id),
+	FOREIGN KEY (media_id) REFERENCES  media(media_id)
 );
 
 CREATE TABLE shared_experience_destinations(

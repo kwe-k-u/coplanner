@@ -7,8 +7,9 @@ if (!is_session_user_curator()) {
 }
 
 $info =get_curator_account_by_user_id(get_session_user_id());//get_collaborator_info(get_session_user_id());
+$user_info = get_user_info(get_session_user_id());
 $curator_id = $info["curator_id"];
-$user_name = "";//$info["user_name"];
+$user_name = $user_info["user_name"];
 $curator_name = $info["curator_name"];
 $logo = "";//$info["curator_logo"];
 
@@ -136,13 +137,13 @@ $logo = "";//$info["curator_logo"];
                         $trip_list_display = "";
 
                         foreach ($upcoming_trips as $entry) {
-                            $title = $entry["title"];
-                            $camp_id = $entry["campaign_id"];
+
+                            $title = $entry["experience_name"];
+                            $camp_id = $entry["experience_id"];
                             $start_date = format_string_as_date_fn($entry["start_date"]);
-                            $end_date = format_string_as_date_fn($entry["end_date"]);
-                            $currency = $entry["currency"];
-                            $fee = $entry["fee"];
-                            $img = $entry["media"][0]["media_location"];
+                            $currency = $entry["currency_name"];
+                            $fee = $entry["booking_fee"];
+                            $img = $entry["media_location"];//$entry["media"][0]["media_location"];
 
                             $trip_list_display .="
 
@@ -153,7 +154,7 @@ $logo = "";//$info["curator_logo"];
                             <div class='trip-card-content'>
                                 <h5 class='header'>$title</h5>
                                 <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
-                                    <div><i class='fa-regular fa-calendar-days'></i>  $start_date - $end_date</div>
+                                    <div><i class='fa-regular fa-calendar-days'></i>  $start_date</div>
                                     <div><i class='fa-solid fa-pen-to-square'></i> 15 Booked Seats</div>
                                 </div>
                                 <div class='easygo-fs-5'>
@@ -206,27 +207,20 @@ $logo = "";//$info["curator_logo"];
                                             <div class='inner-item'>Booking Date</div>
                                             <div class='inner-item'>User</div>
                                             <div class='inner-item'>Amount</div>
-                                            <div class='inner-item'>Taxes</div>
-                                            <div class='inner-item'>Charges</div>
                                             <div class='inner-item'>Seats</div>
                                             <div class='inner-item'>Tour Name</div>
                                             <div class='inner-item'>Tour Date</div>
-                                            <div class='inner-item'>Emergency Contact</div>
                                         </div>
                                             ";
                                     foreach ($bookings as $entry) {
                                         $transaction_id = $entry["transaction_id"];
                                         $name = $entry["user_name"];
                                         $date_booked = format_string_as_date_fn($entry["date_booked"]);
-                                        $contact_name = $entry["emergency_contact_name"];
-                                        $contact_number = $entry["emergency_contact_number"];
                                         $transaction_amount = $entry["amount"];
-                                        $currency = $entry["currency"];
+                                        $currency = $entry["currency_name"];
                                         $seats = $entry["seats_booked"];
                                         $trip_date = format_string_as_date_fn($entry["start_date"]);
-                                        $trip_name = $entry["title"];
-                                        $tax = $entry["tax"];
-                                        $charge = $entry["charges"];
+                                        $trip_name = $entry["experience_name"];
                                         echo "
                                 <div class='list-item'>
                                     <div class='item-bullet-container'>
@@ -236,12 +230,9 @@ $logo = "";//$info["curator_logo"];
                                     <div class='inner-item'>$date_booked</div>
                                     <div class='inner-item'>$user_name</div>
                                     <div class='inner-item text-success'>$currency $transaction_amount</div>
-                                    <div class='inner-item text-danger'>$currency $tax</div>
-                                    <div class='inner-item text-danger'>$currency $charge</div>
                                     <div class='inner-item'>$seats seats</div>
                                     <div class='inner-item'>$trip_name</div>
                                     <div class='inner-item'>$trip_date</div>
-                                    <div class='inner-item'>$contact_name - $contact_number</div>
                                 </div>
                                     ";
                                     }

@@ -316,9 +316,10 @@
 			return $this->db_fetch_one();
 		}
 
-		function get_shared_experiences(){
-			$sql = "CALL get_shared_experiences()";
+		function get_shared_experiences($show_all){
+			$sql = "CALL get_shared_experiences(?)";
 			$this->prepare($sql);
+			$this->bind($show_all ? 1 :0);
 			return $this->db_fetch_all();
 		}
 
@@ -358,7 +359,7 @@
 		}
 
 		function make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider){
-			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?)";
+			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?) as transaction_id";
 			$this->prepare($sql);
 			$this->bind($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
 			return $this->db_fetch_one();

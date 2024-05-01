@@ -140,10 +140,11 @@ $mixpanel->log_page_view();
                         $curator_name = $entry["curator_name"];
                         $experience_id = $entry["experience_id"];
                         $experience_name = $entry["experience_name"];
+                        $image = $entry["media_location"];
                         $base_url = server_base_url();
                         echo "<div class='col-lg-4 col-md-6 p-3'>
                         <div class='trip-card'>
-                            <img src='http://localhost/easygo_v2/uploads/picture/d48c0181dcfe7ba678829d2165c092e0.jpg' alt='trip card image'>
+                            <img src='$image' alt='trip card image'>
                             <div class='trip-card-body'>
                                 <div class='trip-card-header'>
                                     <div class='title'>

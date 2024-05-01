@@ -293,9 +293,9 @@
 		return $public->create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats)["experience_id"];
 	}
 
-	function get_shared_experiences(){
+	function get_shared_experiences($show_all = false){
 		$public = new public_class();
-		return $public->get_shared_experiences();
+		return $public->get_shared_experiences($show_all);
 	}
 
 	function get_shared_experience_by_id($experience_id){

@@ -1284,9 +1284,13 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS get_shared_experiences;
 DELIMITER //
-CREATE PROCEDURE get_shared_experiences()
+CREATE PROCEDURE get_shared_experiences(IN in_show_all TINYINT)
 begin
-	select * from vw_shared_experiences;
+  IF in_show_all = 0 then
+    select * from vw_shared_experiences where in_visibility = 1;
+  else
+    select * from vw_shared_experiences;
+  end if;
 end //
 DELIMITER ;
 
@@ -1395,5 +1399,41 @@ begin
   SELECT 1;
 
 
+end //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `get_curator_payout_account`(IN in_curator_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_payout_accounts where curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+
+
+
+DELIMITER //
+CREATE  PROCEDURE `make_experience_payment`(
+	IN in_experience_id VARCHAR(100),
+	IN in_seat_count INT,
+    IN in_provider_id VARCHAR(100),
+    IN in_sending_user VARCHAR(100),
+    IN in_description VARCHAR(200),
+    IN in_transaction_amount DOUBLE,
+    IN in_amount DOUBLE,
+    IN in_tax DOUBLE,
+    IN in_charges DOUBLE,
+	IN in_provider VARCHAR(10)
+)
+begin
+	DECLARE in_transaction_id VARCHAR(100);
+
+	SELECT record_transaction(in_sending_user,in_provider_id ,in_description ,in_transaction_amount ,in_amount ,in_tax ,in_charges ,in_provider) INTO in_transaction_id;
+
+	INSERT INTO shared_experience_bookings(`experience_id`, `user_id`, `transaction_id`, `number_of_seats`)
+	VALUES (in_experience_id,in_sending_user,in_transaction_id,in_seat_count);
+
+	SELECT in_transaction_id;
 end //
 DELIMITER ;
