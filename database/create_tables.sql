@@ -419,12 +419,14 @@ CREATE TABLE curator_payout_account(
 
 CREATE TABLE shared_experiences(
 	experience_id VARCHAR(100) PRIMARY KEY,
+	experience_name VARCHAR(60),
 	curator_id VARCHAR(100),
 	date_uploaded DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
 	booking_fee DOUBLE,
 	currency INT DEFAULT 1,
 	number_of_seats INT,
+	is_visible TINYINT (1) DEFAULT 1,
 	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
 	FOREIGN KEY (currency) REFERENCES currency(currency_id)
 );
@@ -537,6 +539,26 @@ ORDER BY id.position;
 
 
 
+DROP VIEW IF EXISTS vw_itinerary_activities;
+ /*View to display information about the activities included in each day of each itinerary*/
+CREATE VIEW vw_itinerary_activities AS
+SELECT
+    day.itinerary_id,
+    ia.*,
+    a.activity_name,
+    da.price,
+    c.currency_name,
+    da.date_updated
+
+FROM itinerary_activity as ia
+inner join activities as a on a.activity_id = ia.activity_id
+inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
+INNER JOIN itinerary_day as day on day.day_id = ia.day_id
+INNER JOIN currency as c on c.currency_id = da.currency_id
+ORDER BY ia.position;
+
+
+
 
 DROP VIEW IF EXISTS vw_itinerary;
 CREATE VIEW vw_itinerary AS
@@ -570,26 +592,6 @@ SELECT
 FROM user_destination_request as udr
 inner join vw_users as u on u.user_id = udr.user_id
 inner join destination_requests as dr on dr.request_id = udr.request_id;
-
-
-
-DROP VIEW IF EXISTS vw_itinerary_activities;
- /*View to display information about the activities included in each day of each itinerary*/
-CREATE VIEW vw_itinerary_activities AS
-SELECT
-    day.itinerary_id,
-    ia.*,
-    a.activity_name,
-    da.price,
-    c.currency_name,
-    da.date_updated
-
-FROM itinerary_activity as ia
-inner join activities as a on a.activity_id = ia.activity_id
-inner join destination_activities as da on da.destination_id = ia.destination_id and da.activity_id = ia.activity_id
-INNER JOIN itinerary_day as day on day.day_id = ia.day_id
-INNER JOIN currency as c on c.currency_id = da.currency_id
-ORDER BY ia.position;
 
 
 

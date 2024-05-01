@@ -222,7 +222,7 @@ if (session_status() == PHP_SESSION_NONE){
 			case "jpg":
 			case "jpeg":
 			case "png":
-				$type = "picture";
+				$type = "image";
 				break;
 			// Documents
 			case "doc":

@@ -23,7 +23,7 @@ if (isset($_GET["id"])) {
     $owner_id = $itinerary["curator_id"];
     $budget = $itinerary["booking_fee"];
     $available_seats = $itinerary["number_of_seats"];
-    $itinerary_name = "Names are pending";
+    $itinerary_name = $itinerary["experience_name"];
 } else {
     echo "url broken";
     die();
@@ -164,7 +164,10 @@ if (isset($_GET["id"])) {
                         ";
                             //Close day section [end]
                         }
-                    } else {
+
+
+                    } else { // Shared experiences display
+                        
 
                         $activities = get_shared_experience_activities($experience_id);
                         $current_date = format_string_as_date_fn($activities[0]["visit_date"]);
@@ -217,8 +220,17 @@ if (isset($_GET["id"])) {
                                             <i class='fa-solid fa-person-swimming'></i>
                                         </div>
                                         <div class='itinerary-activities'>";
+                                // activities section [start]
+
+                                // activities section [end]
                                 //close desitnation section [end]
                             }
+                            // activities section [start]
+                            if ($current_destination == $entry["destination_id"]){
+                                $act_name = $entry["activity_name"];
+                                echo "<span class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>";
+                            }
+                            // activities section [end]
 
                         }
                         //Close day section [start]

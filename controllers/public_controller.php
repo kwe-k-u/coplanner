@@ -107,14 +107,15 @@
 	}
 
 	function get_itinerary_day_info($day_id){
-		$public = new  public_class();
-		$data = $public->get_itinerary_day_info($day_id);
-		unset($public);
+		// $public = new  public_class();
+		// $data = $public->get_itinerary_day_info($day_id);
+		// unset($public);
+		$data = array();
 		$public = new  public_class();
 		$data["destinations"] = $public->get_itinerary_day_destinations($day_id);
 		// foreach ($data["destinations"] as $destination) {
 			for( $i = 0 ; $i < sizeof($data["destinations"]); $i++){
-				$destination = $data[$i];
+				$destination = $data["destinations"][$i];
 				// var_dump($data[$i]);
 				$des_id = $destination["destination_id"];
 				unset($public);
@@ -287,9 +288,9 @@
 		return $public->get_curator_collaborators($curator_id);
 	}
 
-	function create_shared_experience($itinerary_id,$curator_id,$currency,$fee,$seats){
+	function create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats){
 		$public = new public_class();
-		return $public->create_shared_experience($itinerary_id,$curator_id,$currency,$fee,$seats)["experience_id"];
+		return $public->create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats)["experience_id"];
 	}
 
 	function get_shared_experiences(){

@@ -53,9 +53,9 @@ function signup(form2){
 		payload,
 		(response) => {
 			if (response.status ==200){
-
+				showToast(response.data.msg);
 			}else{
-				openDialog(response.msg);
+				openDialog(response.data.msg);
 			}
 			console.log(response);
 

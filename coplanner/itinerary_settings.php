@@ -308,6 +308,17 @@ $username = get_user_info($user_id)["user_name"];
                                     <div class="p-3">
                                         <h4 class="easygo-fw-1">Shared Experience Settings</h4 class="easygo-fw-1">
                                         <form onsubmit="return create_shared_experience(this)">
+
+                                            <div class="col-12">
+                                                <div class="form-input-field">
+                                                    <small>Name of Experience</small>
+                                                    <?php
+                                                        $itinerary_name = $itinerary["itinerary_name"] ?? "";
+                                                        echo "<input class='rounded-end rounded-0' type='text' name='experience_name' value='$itinerary_name'>";
+                                                    ?>
+
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-4">
 

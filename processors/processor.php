@@ -588,7 +588,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 					$front_type = get_file_type($front_id_image);
 					$back_type = get_file_type($back_id_image);
 
-					$upload_results = upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type);
+					 upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type);
 
 
 
@@ -596,6 +596,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 					//create entry to record creation permission
 					//notify slack
+					$slack = new slack_bot_class();
 					$mixpanel->log_curator_signup();
 					send_json(array("msg"=> "Your account has been created"));
 					//Upload and save media
@@ -604,7 +605,8 @@ if (in_array($requestOrigin, $allowedDomains)) {
 					send_json(array("msg"=> "We couldn't create your account. Kinldy reach out to support@easygo.com.gh"),201);
 				}
 			}else{
-				send_json(array("msg"=> "Something went wrong with your account creation. Contact support at support@easygo.com.gh"),201);
+				var_dump($subaccount_response);
+				send_json(array("msg"=> "Your payment information is linked to another account. Contact support at support@easygo.com.gh"),201);
 			}
 
 
@@ -632,16 +634,21 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$itinerary_id = $_POST["itinerary_id"];
 			$price = $_POST["price"];
 			$seats = $_POST["seat_count"];
+			$name = $_POST["experience_name"];
 			$curator = get_curator_account_by_user_id(get_session_user_id());
 			$curator_id = $curator["curator_id"];
 			$curator_name = $curator["curator_name"];
 
-			$experience_id = create_shared_experience($itinerary_id, $curator_id,1,$price,$seats);
+			$experience_id = create_shared_experience($itinerary_id,$name, $curator_id,1,$price,$seats);
 			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);
 
 			notify_slack_shared_experience_creation($curator_name,$experience_id);
 
 			send_json(array("msg"=> "Experience Created", "experience_id" => $experience_id));
+			die();
+		case "/test":
+			$result = get_itinerary_day_info($_GET["id"]);
+			send_json($result);
 			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));

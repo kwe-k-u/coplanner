@@ -10,11 +10,17 @@
 			$this->panel = Mixpanel::getInstance(
 				mixpanel_token(),
 				array(
-					"host"=> "api.mixpanel.com"
+					"host"=> "api.mixpanel.com",
+					"debug"=> true
 				)
 			);
 
-			$this->report_to_server = is_env_remote();
+			$this->report_to_server = true;
+			if(is_session_logged_in()){
+				$this->panel->identify(get_session_user_id());
+			}
+
+
 		}
 
 
@@ -22,6 +28,7 @@
 			if(!$this->report_to_server){
 				return false;
 			}
+			$this->panel->identify($user_id);
 			$this->panel->people->set($user_id,
 				array(
 					"email" => $email
@@ -148,7 +155,7 @@
 			if($pagename){
 				$data["page_name"] = $pagename;
 			}
-			
+
 			$this->panel->track("Page View", $data);
 		}
 

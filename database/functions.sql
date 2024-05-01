@@ -1222,6 +1222,7 @@ DELIMITER //
 CREATE FUNCTION create_shared_experience(
 	in_itinerary_id VARCHAR(100),
 	in_curator_id VARCHAR(100),
+  in_experience_name VARCHAR(60),
 	in_currency INT,
 	in_fee DOUBLE,
 	in_seats INT
@@ -1233,8 +1234,8 @@ begin
 	SELECT generate_id() into in_experience_id;
 	SELECT visit_date into in_start_date from itinerary_day where itinerary_id = in_itinerary_id  ORDER BY visit_date ASC LIMIT 1;
 
-	INSERT INTO shared_experiences(experience_id,curator_id,start_date,booking_fee,number_of_seats)
-	VALUES (in_experience_id, in_curator_id,in_start_date,in_fee,in_seats);
+	INSERT INTO shared_experiences(experience_id,experience_name,curator_id,start_date,booking_fee,number_of_seats)
+	VALUES (in_experience_id, in_experience_name, in_curator_id,in_start_date,in_fee,in_seats);
 
 	CALL generate_shared_experience(in_itinerary_id,in_experience_id);
 
@@ -1390,6 +1391,9 @@ begin
 
 	UPDATE curator_manager set id_card_front = front_media_id, id_card_back = back_media_id
 	where user_id = in_user_id;
+
+  SELECT 1;
+
 
 end //
 DELIMITER ;

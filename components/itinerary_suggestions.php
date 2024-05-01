@@ -112,6 +112,7 @@
                         $added = array();
                         for($i = 0; $i <sizeof($activities); $i++){
                             $act_name = trim($activities[$i]["activity_name"]);
+
                             if(sizeof($added)==3){
                                 $remaining = sizeof($activities) - $i;
                                 if($remaining > 0){
@@ -120,7 +121,7 @@
                                 }
                                 break;
                             }
-                            if(!array_search($act_name,$added)){
+                            if(!array_search($act_name,$added) and $act_name != "Entry"){
                                 array_push($added,$act_name);
                                 $activity_text .= "
                                 <div class='activity'>$act_name</div>";

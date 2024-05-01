@@ -658,6 +658,7 @@ function set_itinerary_visibility(itinerary_id, form){
 	let start_time = form.start_time.value;
 	let price = form.price.value;
 	let seat_count = form.seat_count.value;
+	let experience_name = form.experience_name.value;
 	let itinerary_id = url_params("id");
 	send_request("POST",
 	"processors/processor.php/create_shared_experience",
@@ -666,9 +667,15 @@ function set_itinerary_visibility(itinerary_id, form){
 		"price" : price,
 		"seat_count" : seat_count,
 		"itinerary_id" : itinerary_id,
+		"experience_name" : experience_name
 	},
 	(response)=>{
-		console.log(response)
+		console.log(response);
+		if(response.status == 200){
+			showToast(response.data.msg);
+		}else{
+			openDialog(response.data.msg);
+		}
 	}
 	);
 

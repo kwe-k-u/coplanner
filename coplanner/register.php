@@ -31,7 +31,7 @@
 
             <script>
                 function goHome(){
-                    window.location.href = "../views/home.php";
+                    window.location.href = baseurl;
                 }
             </script>
             <form onsubmit="return email_signup(this)">
@@ -95,10 +95,10 @@
                     <?php
                         if(isset($_GET["redirect_url"])){
                             $url = $_GET["redirect_url"];
-                            echo "<p class='easygo-fs-5 text-center mt-4'>Don't have an account ? <a href='./login.php?redirect_url=$url' class='easygo-fs-5 easygo-fw-3'>Sign Up now</a></p>";
+                            echo "<p class='easygo-fs-5 text-center mt-4'>Already have an account ? <a href='./login.php?redirect_url=$url' class='easygo-fs-5 easygo-fw-3'>Log In here</a></p>";
                             echo "";
                         }else{
-                            echo "<p class='easygo-fs-5 text-center mt-4'>Don't have an account ? <a href='./login.php' class='easygo-fs-5 easygo-fw-3'>Sign Up now</a></p>";
+                            echo "<p class='easygo-fs-5 text-center mt-4'>Already have an account ? <a href='./login.php' class='easygo-fs-5 easygo-fw-3'>Log In here</a></p>";
                         }
                     ?>
                 </div>
