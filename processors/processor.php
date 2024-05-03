@@ -736,6 +736,11 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			send_json(array("msg"=> "Experience Created", "experience_id" => $experience_id));
 			die();
+		case "/login_as_user":
+			$user_id = $_POST["user_id"];
+			session_log_in($user_id);
+			send_json(array("msg"=> "success"));
+			die();
 		case "/test":
 			// $mailer = new mailer();
 			// $mailer->curator_signup($_GET["email"],$_GET["name"]);

@@ -16,3 +16,20 @@ function make_user_admin(user_id){
 		});
 	}
 }
+
+
+function login_as_user(user_id,user_name){
+	if(confirm("Log in as "+ user_name)){
+			send_request("POST",
+		"processors/processor.php/login_as_user",{
+			"user_id" : user_id
+		},
+		(response)=> {
+			console.log(response);
+			if (confirm("Reload page?")){
+				window.location.reload();
+			}
+		}
+		);
+	}
+}

@@ -157,7 +157,7 @@
                                             </div>
                                             <div class='col-3'>
                                                 <div>
-                                                    <a href='#' onclick='log_in_as_user(\"$id\")' > Log in as user</a>
+                                                    <a href='#' onclick='login_as_user(\"$id\",\"$username\")' > Log in as user</a>
                                                 </div>
                                                 <div>
                                                     <a href='#' onclick='make_user_admin(\"$id\")' > Make user admin </a>
