@@ -99,7 +99,7 @@ function email_signup(form){
 		"email" : form.email.value
 	}, (response) => {
 	  alert(response.data.msg);
-	  if(response.status = 200){
+	  if(response.status == 200){
 		showToast(response.data.msg);
 	  }else{
 		openDialog(response.data.msg);

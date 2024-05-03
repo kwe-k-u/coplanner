@@ -4,6 +4,7 @@
 	require_once(__DIR__."/google_auth.php");
 	require_once(__DIR__."/../vendor/autoload.php");
 	require_once(__DIR__."/mixpanel.php");
+	require_once(__DIR__."/mailer/mailer_class.php");
 
 //start session
 // if session isn't started then start session

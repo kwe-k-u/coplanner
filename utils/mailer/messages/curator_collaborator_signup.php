@@ -1,11 +1,11 @@
 <?php
-	$preview_text = "Your easyGo account now has admin privileges";
-	$subject = "easyGo: Admin privileges for itinerary builder";
+	$preview_text = "Welcome to listing on easyGo";
+	$subject = "It's great to have you on board!";
 	$image_url = "https://mcusercontent.com/2bd1d8f7814d0d70eb78d4383/images/2a8f6dee-55b4-5807-9f97-95f9d0620374.png";
-	$heading_text = "Super powers, yay!";
-	$message = "Just a heads up. Your account has been granted admin privileges for the easyGo itinerary builder platform";
-	$button_text = "View Admin Dashboard";
-	$button_url = "https://www.easygo.com.gh/admin/dashboard.php";
+	$heading_text = "Hey! We're excited to work with you";
+	$message = "Welcome to the easyGo platform. We're happy to  have you on board. You can sign in to the platform and begin listing trips. But before that, we would appreciate feedback on our sign up process. Click the button below to leave a review";
+	$button_text = "Leave A Review!";
+	$button_url = "https://forms.gle/khRqj1kSqRWALtxr7";
 
 
 ?>

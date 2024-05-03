@@ -2,12 +2,9 @@
 require_once(__DIR__ . "/../utils/core.php");
 require_once(__DIR__ . "/../utils/paystack.php");
 
-if (isset($_GET["confirm"])) {
+if (isset($_GET["invite_token"])) {
 
-    $new = $_GET["confirm"] == encrypt(false . $_GET["hash"]);
-    $hash = $_GET["hash"];
-} else {
-    $new = false;
+    $hash = $_GET["invite_token"];
 }
 ?>
 
@@ -205,7 +202,7 @@ if (isset($_GET["confirm"])) {
                 //=====================[END] Hide if invited================================
                 ?>
                 <div class="agreement-check">
-                    <input type="checkbox" required><span>By creating an account, you agree to these <a href="">terms and conditions</a></span>
+                    <input type="checkbox" required><span>By creating an account, you agree to these <a target="_blank" href="https://drive.google.com/file/d/1mN0bLyGvmf2jduiWCbs_yId-FOVWGz_p/view?usp=sharing">terms and conditions</a></span>
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-1" type="submit">Register</button>
@@ -229,22 +226,6 @@ if (isset($_GET["confirm"])) {
     <script src="../assets/js/general.js"></script>
     <script src="../assets/js/functions.js"></script>
     <script src="../assets/js/curator/auth.js"></script>
-    <?php
-
-    if (isset($_GET["hash"])) {
-        // if true, the user already has an account  Skip the bio part of the form
-        // if ($new){
-        //     echo "
-        //     <script>
-        //     $(document).ready(function () {
-        //         document.getElementById('form-1-confirm-btn').click();
-        //     })
-        //     </script>
-        //     ";
-        // }
-    }
-
-    ?>
 </body>
 
 </html>

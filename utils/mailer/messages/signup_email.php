@@ -5,7 +5,7 @@
 	$heading_text = "You're ready to Go!";
 	$message = "With easyGo, you can add destinations to your travel plan and make your bookings in minutes! Don't wait weeks for a tour company to give you the wrong itinerary when you can create the perfect one in minutes. ";
 	$button_text = "Let's Do This!";
-	$button_url = "https://www.prototype.easygo.com.gh";
+	$button_url = "https://www.easygo.com.gh";
 
 
 ?>

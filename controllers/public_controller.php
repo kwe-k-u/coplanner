@@ -333,4 +333,15 @@
 		return $public-> upload_curator_identification($email,$front_location,$front_type,$back_location,$back_type);
 	}
 
+	function invite_curator_collaborator($curator_id,$email){
+		$public = new public_class();
+		return $public->invite_curator_collaborator($curator_id,$email);
+	}
+
+	function create_curator_manager($token,$user_name,$email,$password,$phone){
+		$public = new public_class();
+		return $public->create_curator_manager($token,$user_name,$email,$password,$phone);
+	}
+
+
 ?>

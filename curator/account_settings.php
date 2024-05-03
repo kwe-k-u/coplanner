@@ -270,10 +270,10 @@ $rating_count = 0;//$stats["review_count"];
                                 <!--- ================================ -->
                                 <!--- collaborators [start] -->
                                 <div class="tab-pane fade" id="collaborators" role="tabpanel" aria-labelledby="reviews-tab">
-                                    <!-- <div class="d-flex justify-content-end gap-2 align-items-center">
+                                    <div class="d-flex justify-content-end gap-2 align-items-center">
                                         <p></p>
                                         <button type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-toggle="modal" data-bs-target="#invite-collaborator-modal">Invite collaborator</button>
-                                    </div> -->
+                                    </div>
                                     <div class="easygo-list-3 list-striped" style="min-width: 992px;">
                                         <div class="list-item list-header bg-transparent" style="box-shadow: none;">
                                             <div class="item-bullet-container">
@@ -350,7 +350,7 @@ $rating_count = 0;//$stats["review_count"];
                                         <h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
                                         <small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
                                         <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-                                        <?php echo "<form onsubmit='invite_collaborator(this,\"$curator_id\")'>"; ?>
+                                        <?php echo "<form onsubmit='invite_collaborator(this)'>"; ?>
 
                                             <div class="col-lg-7 d-flex flex-column gap-4">
                                                 <div class="form-input-field">
@@ -364,11 +364,6 @@ $rating_count = 0;//$stats["review_count"];
                                                 <div class="form-input-field">
                                                     <div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
 
-                                                    <select name="collaborator_role">
-                                                        <option value="admin">Admin</option>
-                                                        <option value="edit">Edit</option>
-                                                        <option value="view">View</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
@@ -396,7 +391,7 @@ $rating_count = 0;//$stats["review_count"];
     <!-- easygo js -->
     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/curator_account_settings.js"></script>
+    <script src="../assets/js/curator/auth.js"></script>
     <script src="../assets/js/functions.js"></script>
 </body>
 

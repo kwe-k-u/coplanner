@@ -90,6 +90,30 @@ class mailer{
 		return $this->send_email($email,$subject,$content);
 	}
 
+	function curator_collaborator_invite($email,$token,$curator_name){
+		ob_clean();
+		ob_start();
+		include(__DIR__."/messages/curator_collaborator_invite.php");
+		$content = ob_get_clean();
+		return $this->send_email($email,$subject,$content);
+	}
+
+	function curator_signup($email,$curator_name){
+		ob_clean();
+		ob_start();
+		include(__DIR__."/messages/curator_signup.php");
+		$content = ob_get_clean();
+		return $this->send_email($email,$subject,$content);
+	}
+
+	function curator_collaborator_signup($email){
+		ob_clean();
+		ob_start();
+		include(__DIR__."/messages/curator_collaborator_signup.php");
+		$content = ob_get_clean();
+		return $this->send_email($email,$subject,$content);
+	}
+
 	// function user_itinerary_payment_email($email,$itinerary_id,$amount_paid){
 
 	// }

@@ -379,5 +379,20 @@
 			return $this->db_fetch_one();
 		}
 
+
+		function invite_curator_collaborator($curator_id,$email){
+			$sql = "SELECT invite_curator_collaborator(?,?) as invite_id";
+			$this->prepare($sql);
+			$this->bind($curator_id,$email);
+			return $this->db_fetch_one();
+		}
+
+		function create_curator_manager($token,$user_name,$email,$password,$phone){
+			$sql = "SELECT create_curator_manager(?,?,?,?,?) as user_id";
+			$this->prepare($sql);
+			$this->bind($token,$user_name,$email,$password,$phone);
+			return $this->db_fetch_one();
+		}
+
 	}
 ?>

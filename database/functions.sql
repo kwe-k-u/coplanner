@@ -1215,7 +1215,6 @@ DELIMITER ;
 
 
 
-
 DROP FUNCTION IF EXISTS create_shared_experience;
 
 DELIMITER //
@@ -1225,17 +1224,28 @@ CREATE FUNCTION create_shared_experience(
   in_experience_name VARCHAR(60),
 	in_currency INT,
 	in_fee DOUBLE,
-	in_seats INT
+	in_seats INT,
+	in_media_location TEXT,
+	in_media_type VARCHAR(30)
 ) returns varchar(100)
 begin
 	DECLARE in_experience_id varchar(100);
 	DECLARE in_start_date DATETIME;
+	DECLARE in_media_id VARCHAR(100);
 
 	SELECT generate_id() into in_experience_id;
 	SELECT visit_date into in_start_date from itinerary_day where itinerary_id = in_itinerary_id  ORDER BY visit_date ASC LIMIT 1;
 
 	INSERT INTO shared_experiences(experience_id,experience_name,curator_id,start_date,booking_fee,number_of_seats)
 	VALUES (in_experience_id, in_experience_name, in_curator_id,in_start_date,in_fee,in_seats);
+
+	IF in_media_location IS NOT NULL THEN
+		SELECT upload_media(in_media_location, in_media_type,0) INTO in_media_id;
+
+		UPDATE shared_experiences SET media_id = in_media_id where experience_id = in_experience_id;
+
+	END IF;
+
 
 	CALL generate_shared_experience(in_itinerary_id,in_experience_id);
 
@@ -1258,10 +1268,11 @@ DROP PROCEDURE IF EXISTS get_curator_bookings;
 DELIMITER //
 CREATE PROCEDURE get_curator_bookings(IN in_curator_id VARCHAR(100))
 BEGIN
-	SELECT * FROM shared_experience_bookings as seb inner join shared_experiences as se
-	where se.curator_id = in_curator_id;
+	SELECT * FROM vw_shared_experience_bookings where curator_id = in_curator_id;
 END //
 DELIMITER ;
+
+
 
 DROP PROCEDURE IF EXISTS get_curator_collaborators;
 DELIMITER //
@@ -1287,7 +1298,7 @@ DELIMITER //
 CREATE PROCEDURE get_shared_experiences(IN in_show_all TINYINT)
 begin
   IF in_show_all = 0 then
-    select * from vw_shared_experiences where in_visibility = 1;
+    select * from vw_shared_experiences where is_visible = 1;
   else
     select * from vw_shared_experiences;
   end if;

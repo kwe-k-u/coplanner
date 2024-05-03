@@ -371,7 +371,7 @@ CREATE TABLE invoice_payments(
 );
 
 
-DROP TABLE IF EXISTS curators;
+DROP TABLE IF EXISTS curator;
 CREATE TABLE curator(
 	curator_id VARCHAR(100) PRIMARY KEY,
 	curator_name VARCHAR(100),
@@ -663,11 +663,14 @@ CREATE VIEW vw_shared_experiences AS
 		se.*,
 		currency.currency_name,
 		c.curator_name,
-		(SELECT 0) as remaining_seats
+		(SELECT 0) as remaining_seats,
+		m.media_location
 	 from
 	shared_experiences as se
 	inner join curator as c on c.curator_id = se.curator_id
-	inner join currency on currency.currency_id = se.currency;
+	inner join currency on currency.currency_id = se.currency
+	left join media as m on m.media_id = se.media_id;
+
 
 
 DROP VIEW IF EXISTS vw_payout_accounts;
@@ -678,6 +681,25 @@ CREATE VIEW vw_payout_accounts as
 	from payout_accounts as pa
 	left join curator_payout_account as cpa on cpa.payout_account_id = pa.account_id;
 
+
+DROP VIEW IF EXISTS  vw_shared_experience_bookings;
+CREATE VIEW vw_shared_experience_bookings
+AS
+	SELECT
+		seb.*,
+		se.experience_name,
+		se.curator_id,
+		se.number_of_seats as seats_booked,
+		se.start_date,
+		u.user_name,
+		(SELECT "GHS") AS currency_name,
+		t.date_created as date_booked,
+		t.total_transaction_amount * 0.93 as amount
+	 FROM shared_experience_bookings as seb
+	inner join shared_experiences as se on se.experience_id = seb.experience_id
+	inner join vw_users as u on u.user_id = seb.user_id
+	inner join transactions as t on t.transaction_id = seb.transaction_id
+	;
 
 
 

@@ -1,7 +1,16 @@
 <?php
-	if(!isset($_SERVER["PATH_INFO"]) || $_SERVER["PATH_INFO"] == "travel_plan"){
-		header("Location: travel_plan/");
-	}else{
-		header("Location: shared_experience/");
+	// Capture any existing query string from the current URL
+	$queryString = $_SERVER['QUERY_STRING'];
+
+	// Check if there's a query string and prepare it for inclusion in the new URL
+	if (!empty($queryString)) {
+		$queryString = '?' . $queryString;
+	}
+
+	// Check the PATH_INFO or default to a specific redirection
+	if (!isset($_SERVER["PATH_INFO"]) || $_SERVER["PATH_INFO"] == "/travel_plan") {
+		header("Location: travel_plan/" . $queryString);
+	} else {
+		header("Location: shared_experience/" . $queryString);
 	}
 ?>

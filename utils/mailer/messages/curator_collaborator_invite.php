@@ -1,13 +1,11 @@
 <?php
-	$preview_text = "Your easyGo account now has admin privileges";
-	$subject = "easyGo: Admin privileges for itinerary builder";
+	$preview_text = "You've been invited to manage $curator_name";
+	$subject = "Invitation to manage $curator_name on easyGo";
 	$image_url = "https://mcusercontent.com/2bd1d8f7814d0d70eb78d4383/images/2a8f6dee-55b4-5807-9f97-95f9d0620374.png";
-	$heading_text = "Super powers, yay!";
-	$message = "Just a heads up. Your account has been granted admin privileges for the easyGo itinerary builder platform";
-	$button_text = "View Admin Dashboard";
-	$button_url = "https://www.easygo.com.gh/admin/dashboard.php";
-
-
+	$heading_text = "Invitation link to manage $curator_name on easyGo";
+	$message = "Hey! We're letting you know that you have been invited to manage the Curator account of $curator_name on easyGo. You can click on the button below to accept the invite and sign up on the platform";
+	$button_text = "Sign Up";
+	$button_url = server_base_url()."curator/register.php?invite_token=$token";
 ?>
 
 
