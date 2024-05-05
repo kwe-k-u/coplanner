@@ -1279,7 +1279,7 @@ DELIMITER //
 CREATE PROCEDURE get_curator_collaborators(IN in_curator_id VARCHAR(100))
 BEGIN
 	SELECT cm.*, u.user_name, u.email, cm.date_added FROM curator_manager as cm
-	inner join vw_users as u on u.user_id = cm.user_id;
+	inner join vw_users as u on u.user_id = cm.user_id WHERE cm.curator_i = in_curator_id;
 END//
 DELIMITER ;
 
@@ -1447,4 +1447,95 @@ begin
 
 	SELECT in_transaction_id;
 end //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS invite_curator_collaborator;
+DELIMITER //
+ CREATE FUNCTION invite_curator_collaborator(
+	in_curator_id VARCHAR(100), in_email VARCHAR(100)
+	) RETURNS VARCHAR(100)
+ BEGIN
+	DECLARE in_invite_id VARCHAR(100);
+	DECLARE checks VARCHAR(100);
+
+	-- Check if associated with a curator account
+	SELECT curator_id into checks from vw_curator_managers where email = in_email;
+	CASE
+		WHEN checks = in_curator_id then
+			return 1; -- Error if curator already invited to account
+
+		WHEN checks != in_curator_id then
+			return 2;
+		WHEN checks is null then
+			SELECT null into checks; -- Do nothing
+	END CASE;
+
+
+
+	-- check if email has invite
+	SELECT invite_id,curator_id INTO in_invite_id,checks from curator_collaborator_invite where email = in_email;
+
+	CASE
+		WHEN in_invite_id is null THEN
+			SELECT generate_id() into in_invite_id;
+			INSERT INTO curator_collaborator_invite(invite_id,curator_id,email) VALUES (in_invite_id, in_curator_id,in_email);
+			RETURN in_invite_id; -- return new id if email doesn't have association
+
+		when checks = in_curator_id THEN
+			return in_invite_id; -- Return invite id if invited to same account
+
+		WHEN in_curator_id != checks THEN
+			return 3; -- Error code if invited to different account
+	END CASE;
+
+	return 0; -- something else happened
+
+
+ END //
+ DELIMITER ;
+
+
+
+DROP FUNCTION IF EXISTS create_curator_manager;
+DELIMITER //
+CREATE FUNCTION create_curator_manager(
+	in_token VARCHAR(100),
+	in_username VARCHAR(100),
+	in_email VARCHAR(100),
+	in_password VARCHAR(100),
+	in_phone VARCHAR(100)
+) RETURNS VARCHAR(100)
+BEGIN
+	DECLARE temp_user_id VARCHAR(100);
+	DECLARE temp_curator_id VARCHAR(100);
+	DECLARE temp_email VARCHAR(100);
+
+	-- check that the invite exists
+	SELECT curator_id,email INTO temp_curator_id,temp_email FROM curator_collaborator_invite where invite_id = in_token;
+
+	CASE
+		WHEN temp_curator_id is null then
+			return 1; -- no invite was found
+		WHEN temp_email != in_email THEN
+			return 2; -- Emails don't match
+		WHEN temp_email = in_email THEN -- get user_id
+			SELECT user_id INTO temp_user_id FROM vw_users WHERE email = in_email;
+	END CASE;
+
+
+
+	-- Create a user account
+	IF temp_user_id IS NULL THEN
+		SELECT create_user("email",in_username,in_email,in_password,NULL) INTO temp_user_id;
+	END IF;
+
+	-- Create a curator account
+	INSERT INTO curator_manager(curator_id, user_id) VALUES (temp_curator_id, temp_user_id);
+
+	DELETE FROM curator_collaborator_invite where invite_id = in_token;
+
+
+	RETURN temp_user_id;
+END //
 DELIMITER ;

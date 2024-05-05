@@ -380,6 +380,7 @@ function destination_search(form){
 	send_request("GET","processors/processor.php/search_destination?query="+form.query.value,
 	null,
 	(response)=>{
+		console.log(response);
 		let destinations = response.data.results;
 		destination_search_results.replaceChildren();
 		mobile_destination_search_results.replaceChildren();

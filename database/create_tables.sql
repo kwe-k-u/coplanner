@@ -484,6 +484,15 @@ CREATE TABLE curator_media(
 );
 
 
+CREATE TABLE curator_collaborator_invite (
+	invite_id VARCHAR(100) PRIMARY KEY,
+	curator_id VARCHAR(100),
+	email VARCHAR(100) UNIQUE,
+	date_invite DATETIME DEFAULT CURRENT_TIMESTAMP(),
+	FOREIGN KEY (curator_id) REFERENCES curator(curator_id)
+ );
+
+
 
 
 
@@ -700,6 +709,19 @@ AS
 	inner join vw_users as u on u.user_id = seb.user_id
 	inner join transactions as t on t.transaction_id = seb.transaction_id
 	;
+
+
+DROP VIEW IF EXISTS vw_curator_managers;
+CREATE VIEW vw_curator_managers AS
+	SELECT
+		c.curator_name,
+		cm.*,
+		u.user_name,
+		u.email
+	 FROM curator_manager as cm
+	inner join vw_users as u on u.user_id = cm.user_id
+	inner join vw_curators as c on c.curator_id = cm.curator_id;
+
 
 
 

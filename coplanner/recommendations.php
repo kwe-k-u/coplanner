@@ -35,6 +35,8 @@
 
 	$execution_command =  (is_env_remote() ? "python3":"python")." ../utils/recommender/itinerary_recommender.py " . escapeshellarg($user_preference_file) . " " . escapeshellarg($template_weight_path);
 	$results = exec($execution_command,$recommendations,$return_val);
+	// echo $execution_command;
+	// var_dump($results,$return_val);
 	//pass the file path to the python script, and the path to the template jsons
 	//let the python script return a list of file paths for the recommended itineraries
 	//get the itineraries from the path and return those as the recommendations
@@ -52,9 +54,13 @@
 		echo "Hmm!! Something must have gone wrong. We have alerted support and they will reach out to you with your itinerary";
 		$slack = new slack_bot_class();
 		$info = get_user_info(get_session_user_id());
-		$email = $info["email"];
+		if ($info == null){
+			$email = "Not signed In";
+		}else{
+			$email = $info["email"];
+		}
 
-		$slack->notify_error_log("The recommendation system failed for $email. Prefernce id:".$_GET["id"]);
+		// $slack->notify_error_log("The recommendation system failed for $email. Prefernce id:".$_GET["id"]);
 		die();
 	}
 ?>
