@@ -27,9 +27,9 @@
 	// 	return $admin->add_itinerary_day($itinerary_id);
 	// }
 
-	function add_destination_activity($destination_id,$activity_name,$price = 0){
+	function add_destination_activity($destination_id,$activity_name,$price,$currency){
 		$admin = new admin_class();
-		return $admin->add_destination_activity($destination_id,$activity_name,$price);
+		return $admin->add_destination_activity($destination_id,$activity_name,$price,$currency);
 	}
 
 	function get_utility_types(){

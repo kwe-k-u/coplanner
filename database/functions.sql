@@ -185,11 +185,12 @@ DELIMITER ;
 DROP FUNCTION IF EXISTS add_destination_activity;
 DELIMITER //
 -- Function adds an activity to the list of available activities at a destination
-CREATE FUNCTION add_destination_activity (in_destination_id VARCHAR(100), in_activity_name VARCHAR(100), in_price FLOAT)
+CREATE FUNCTION add_destination_activity (in_destination_id VARCHAR(100), in_activity_name VARCHAR(100), in_price FLOAT, in_currency VARCHAR(10))
 RETURNS TINYINT(1)
 BEGIN
    DECLARE act_id INT;
    DECLARE temp INT;
+   DECLARE in_currency_id INT;
 
 
    SELECT activity_id INTO act_id FROM activities WHERE activity_name = in_activity_name;
@@ -206,14 +207,19 @@ BEGIN
     return 0;
    END IF;
 
+   SELECT currency_id into in_currency_id FROM currency WHERE currency_name = in_currency;
 
-   INSERT INTO destination_activities (destination_id, activity_id, price, date_updated)
-   VALUES (in_destination_id, act_id, in_price, CURRENT_TIMESTAMP);
+
+
+
+   INSERT INTO destination_activities (destination_id, activity_id, price, date_updated,currency_id)
+   VALUES (in_destination_id, act_id, in_price, CURRENT_TIMESTAMP,in_currency_id);
 
    RETURN 1;
 END //
 
 DELIMITER ;
+
 
 
 

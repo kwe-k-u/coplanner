@@ -291,14 +291,15 @@ function add_loc_activity(){
 	event.preventDefault();
 	activity_field.value = activity_field.value.trim();
 	if(activity_field.value.length < 4){
-		console.log("Too short a word for an activity");
+		// console.log("Too short a word for an activity");
+		showDialog("Too short a word for an activity");
 		return false;
 	}
 
 	for (var act_index = 0; act_index < activity_list.children.length; act_index++){
 		var child = activity_list.children[act_index];
 		if(child.innerText.includes(activity_field.value)){
-			console.log("Already included");
+			showDialog("Already included");
 			return false;
 		}
 	}

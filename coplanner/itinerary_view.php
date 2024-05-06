@@ -23,6 +23,7 @@ if (isset($_GET["id"])) {
     $owner_id = $itinerary["curator_id"];
     $budget = $itinerary["booking_fee"];
     $available_seats = $itinerary["number_of_seats"];
+    $media_location = $itinerary["media_location"];
     $itinerary_name = $itinerary["experience_name"];
 } else {
     echo "url broken";
@@ -73,9 +74,14 @@ if (isset($_GET["id"])) {
                 <section>
                     <div class="row">
                         <div class='col-lg-6 p-3 border-lg-end border-blue'>
-                            <img style='height: 300px; background-color: var(--easygo-gray-2);' src="../assets/images/others/long_1.jpeg" alt="" srcset="">
                             <?php
                             if(isset($_GET["id"])){
+                                echo "<img style='height: 300px; background-color: var(--easygo-gray-2);' src='../assets/images/others/long_1.jpeg' alt='' srcset=''>";
+                            }else{
+                                echo "<img style='height: 300px; background-color: var(--easygo-gray-2);' src='$media_location' alt='' srcset=''>";
+                            }
+                            if(isset($_GET["id"])){
+
                                 if ($owner_id == get_session_user_id()) {
                                     //Let user edit the original itinerary
                                     $edit_btn = "<a href='edit_itinerary.php?id=$itinerary_id' class='easygo-btn-5 bg-blue text-white easygo-fs-5 w-50'>Edit Itinerary</a>";
@@ -113,17 +119,21 @@ if (isset($_GET["id"])) {
                 <!--- Section 2 [start] -->
                 <section class="my-5">
                     <?php
+                        $number_array = array("One","Two","Three","Four","Five","Six","Seven");
                     if (isset($_GET["id"])) {
+                        $number = 0;
 
                         foreach ($days as $d) {
                             $day_id = $d["day_id"];
                             $day = get_itinerary_day_info($day_id);
                             $destinations = $day["destinations"];
+                            $number_text = $number_array[$number];
+                            $number = $number +1;
 
                             //open day section [start]
                             echo "
                         <div class='my-4'>
-                            <h3 class='easygo-fw-1 m-0'>Day one</h3>
+                            <h3 class='easygo-fw-1 m-0'>Day $number_text</h3>
                             <div class='row'>";
                             //open day section [end]
 
@@ -136,11 +146,6 @@ if (isset($_GET["id"])) {
                             <div>
                                 <h4 class='m-0'>$dest_name</h4>
                                 <div>$location</div>
-                                <div class='text-blue easygo-fs-2 py-2'>
-                                    <i class='fa-solid fa-wifi'></i> &nbsp;
-                                    <i class='fa-solid fa-bath'></i> &nbsp;
-                                    <i class='fa-solid fa-person-swimming'></i>
-                                </div>
                                 <div class='itinerary-activities'>";
                                 //open destiantion section [end]
 
@@ -148,6 +153,7 @@ if (isset($_GET["id"])) {
                                 $activities = $dest["activities"];
                                 foreach ($activities as $act) {
                                     $act_name = $act["activity_name"];
+
                                     echo "<span class='badge bg-blue easygo-fw-3 px-4 py-2'>$act_name</span>";
                                 }
                                 // activities section [end]
@@ -164,16 +170,14 @@ if (isset($_GET["id"])) {
                         ";
                             //Close day section [end]
                         }
-
-
-                    } else { // Shared experiences display
-                        
+                    } else {
 
                         $activities = get_shared_experience_activities($experience_id);
                         $current_date = format_string_as_date_fn($activities[0]["visit_date"]);
                         $current_destination = $activities[0]["destination_id"];
                         $dest_name = $activities[0]["destination_name"];
                         $location = $activities[0]["location"];
+                        $number = 0;
 
                         echo "
                         <div class='my-4'>
@@ -183,11 +187,6 @@ if (isset($_GET["id"])) {
                                 <div>
                                     <h4 class='m-0'>$dest_name</h4>
                                     <div>$location</div>
-                                    <div class='text-blue easygo-fs-2 py-2'>
-                                        <i class='fa-solid fa-wifi'></i> &nbsp;
-                                        <i class='fa-solid fa-bath'></i> &nbsp;
-                                        <i class='fa-solid fa-person-swimming'></i>
-                                    </div>
                                     <div class='itinerary-activities'>
                         ";
                         foreach ($activities as $entry) {
@@ -195,11 +194,15 @@ if (isset($_GET["id"])) {
                             $dest_name = $entry["destination_name"];
                             $location = $entry["location"];
                             if($visit_date != $current_date){
+                                $number = $number +1;
+                                $number_text = $number_array[$number];
                                 $current_date = $visit_date;
+                                $current_destination = null;
                                 echo  "</div>
                                 </div>
+                                </div>
                                 <div class='my-4'>
-                                    <h3 class='easygo-fw-1 m-0'>Day one</h3>
+                                    <h3 class='easygo-fw-1 m-0'>Day $number_text</h3>
                                     <div class='row'>
                                 ";
                             }
@@ -215,9 +218,6 @@ if (isset($_GET["id"])) {
                                         <h4 class='m-0'>$dest_name</h4>
                                         <div>$location</div>
                                         <div class='text-blue easygo-fs-2 py-2'>
-                                            <i class='fa-solid fa-wifi'></i> &nbsp;
-                                            <i class='fa-solid fa-bath'></i> &nbsp;
-                                            <i class='fa-solid fa-person-swimming'></i>
                                         </div>
                                         <div class='itinerary-activities'>";
                                 // activities section [start]
@@ -244,7 +244,7 @@ if (isset($_GET["id"])) {
                 <!--- Section 2 [end] -->
                 <!--- ================================ -->
             </div>
-            <!--- ================================ -->
+            <!--- ================================ --> 
             <!--- Section 4 [start] -->
             <?php
             include_once(__DIR__ . "/../components/itinerary_suggestions.php");

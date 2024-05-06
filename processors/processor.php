@@ -144,8 +144,9 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			foreach ($activities as $key => $value) {
 				$activity_name = explode(" GHS ",$value)[0];
 				$activity_price = explode(" GHS ",$value)[1];
+				$currency="GHS";
 				try {
-					add_destination_activity($destination_id,$activity_name,$activity_price);
+					add_destination_activity($destination_id,$activity_name,$activity_price,$currency);
 				} catch (\Throwable $th) {
 				}
 			}
@@ -235,8 +236,9 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			foreach ($activities as $key => $value) {
 				$activity_name = explode(" GHS ",$value)[0];
 				$activity_price = explode(" GHS ",$value)[1];
+				$currency="GHS";
 				try {
-					add_destination_activity($destination_id,$activity_name,$activity_price);
+					add_destination_activity($destination_id,$activity_name,$activity_price,$currency);
 				} catch (\Throwable $th) {
 				}
 			}

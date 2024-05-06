@@ -60,7 +60,7 @@
 			$email = $info["email"];
 		}
 
-		// $slack->notify_error_log("The recommendation system failed for $email. Prefernce id:".$_GET["id"]);
+		$slack->notify_error_log("The recommendation system failed for $email. Prefernce id:".$_GET["id"]);
 		die();
 	}
 ?>

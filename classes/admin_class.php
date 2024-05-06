@@ -38,10 +38,10 @@
 			return $this->db_fetch_one();
 		}
 
-		function add_destination_activity($destination_id,$activity_name,$price){
-			$sql = "SELECT add_destination_activity(?,?,?)";
+		function add_destination_activity($destination_id,$activity_name,$price,$currency){
+			$sql = "SELECT add_destination_activity(?,?,?,?)";
 			$this->prepare($sql);
-			$this->bind($destination_id,$activity_name,$price);
+			$this->bind($destination_id,$activity_name,$price,$currency);
 			return $this->db_fetch_one();
 		}
 

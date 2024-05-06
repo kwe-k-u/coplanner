@@ -5,6 +5,19 @@
 				<img src="../assets/images//svgs/dashboard.svg" alt="dashboard image"> Dashboard </a>
 		</li>
 		<li>
+			<a href="template_itineraries.php">
+				<img src="../assets/images//svgs/trips.svg" alt="" srcset="">
+				Itineraries
+			</a>
+		</li>
+
+		<li>
+			<a href="users.php" id="nav_users">
+				<img src="../assets/images/svgs/finance.svg" alt="finance icon">
+				 Users
+			</a>
+		</li>
+		<!-- <li>
 			<div class="slide-down-menu">
 				<a data-target="trips-submenu-sb" class="slide-down-btn" id="nav_trips" href="#"><img src="../assets/images//svgs/trips.svg" id="d" alt="dashboard image">
 					Itineraries <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
@@ -13,9 +26,9 @@
 					<li><a href="template_itineraries.php" id="nav_sub_groups">Templates</a></li>
 				</ul>
 			</div>
-		</li>
+		</li> -->
 
-		<li>
+		<!-- <li>
 			<div class="slide-down-menu">
 				<a data-target="users-submenu-sb" class="slide-down-btn" id="nav_users" href="#">
 					<img src="../assets/images//svgs/trips.svg" alt="dashboard image"> Users <span class="arrow"><img src="../assets/images/svgs/arrow-down.svg" alt="arrow down image"></span>
@@ -24,7 +37,7 @@
 					<li><a href="users.php" id="nav_sub_private">Tourists</a></li>
 				</ul>
 			</div>
-		</li>
+		</li> -->
 		<li>
 			<a href="locations.php" id="nav_finance">
 				<img src="../assets/images/svgs/finance.svg" alt="finance icon">
@@ -32,6 +45,12 @@
 			</a>
 		</li>
 		<li>
+			<a href="transactions.php" id="nav_finance">
+				<img src="../assets/images/svgs/finance.svg" alt="finance icon">
+				 Transactions
+			</a>
+		</li>
+		<!-- <li>
 			<div class="slide-down-menu">
 				<a data-target="finance-submenu-sb" class="slide-down-btn" id="nav_finance" href="#">
 					<img src="../assets/images//svgs/finance.svg" alt="dashboard image">
@@ -43,7 +62,7 @@
 					<li><a href="bookings.php" id="nav_sub_bookings">Bookings</a></li>
 				</ul>
 			</div>
-		</li>
+		</li> -->
 		<!-- <li><a href="notifications.php"><img src="../assets/images/svgs/notifications.svg" alt="notifications icon">Notifications</a></li> -->
 
 		<li>
