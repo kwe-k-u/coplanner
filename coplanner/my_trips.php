@@ -28,6 +28,7 @@ $data = array(
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<script src="../assets/js/functions.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

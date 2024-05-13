@@ -219,7 +219,7 @@ $links = array(
 </style>
 <div class="sidebar sidebar-hidden" id = "sidebar">
     <div class= "side-bar-top">
-    <div  onclick = "toggleSidebar(false)" class="close-button" >&times;</div>
+        <div  onclick = "toggleSidebar(false)" class="close-button" >&times;</div>
         <div class = "easy-logo">
             <?php
             echo "
@@ -228,7 +228,7 @@ $links = array(
             ?>   
         </div>
         
-        <div class="sidebar-button">
+        <div class="sidebar-button" onclick = "goto_page('tripform.php', false)">
             New trip +
         </div>
     </div>
@@ -252,3 +252,6 @@ $links = array(
         ?>
     </div>
 </div>
+<script>
+ 
+</script>
