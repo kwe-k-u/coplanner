@@ -2,6 +2,11 @@
 	require_once(__DIR__."/../classes/public_class.php");
 
 
+	function bypass_signup($name,$email,$phone){
+		$public = new public_class();
+		return $public->bypass_signup($name,$email,$phone);
+	}
+
 	function signup_controller($auth_type, $first,$second = null,$third = null){
 		$public = new public_class();
 		switch($auth_type){

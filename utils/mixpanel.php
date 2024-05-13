@@ -17,7 +17,14 @@
 
 			$this->report_to_server = true;
 			if(is_session_logged_in()){
-				$this->panel->identify(get_session_user_id());
+				// if(get_mixpanel_anon_id()){
+				// 	$this->panel->createAlias(get_session_user_id(),get_mixpanel_anon_id());
+				// }else{
+					$this->panel->identify(get_session_user_id());
+				// }
+			}else{
+				set_mixpanel_anon_id();
+				$this->panel->identify(get_mixpanel_anon_id());
 			}
 
 
@@ -28,8 +35,10 @@
 			if(!$this->report_to_server){
 				return false;
 			}
-			$this->panel->identify($user_id);
-			$this->panel->people->set($user_id,
+			// $this->panel->identify($user_id);
+			$this->panel->createAlias(get_mixpanel_anon_id(),$user_id);
+			remove_mixpanel_anon_id();
+			$this->panel->people->setOnce($user_id,
 				array(
 					"email" => $email
 				)
@@ -41,7 +50,8 @@
 			if(!$this->report_to_server){
 				return false;
 			}
-			$this->panel->identify($user_id);
+			$this->panel->createAlias(get_mixpanel_anon_id(),$user_id);
+			remove_mixpanel_anon_id();
 			$this->panel->track("User login", array("method"=> $method));
 		}
 
@@ -66,20 +76,23 @@
 			$this->panel->track("Itinerary Recommendation", array("preference_id" => $preference_id));
 		}
 
-		function log_shared_experience_view($experience_id,$user_id){
+		function log_shared_experience_view($experience_id,$experience_name){
 			if(!$this->report_to_server){
 				return false;
 			}
-			$this->panel->track("Shared Experience viewed", array("experience_id"=> $experience_id));
-			$this->panel->people->increment($user_id,"Shared Experience view count",1);
+			$this->panel->track("Shared Experience viewed", array("experience_id"=> $experience_id,"experience_name"=> $experience_name));
+			$this->panel->people->increment(get_session_user_id(),"Shared Experience view count",1);
 		}
 
-		function log_itinerary_views($itinerary_id,$user_id){
+		function log_itinerary_views($itinerary_id,$itinerary_name,){
 			if(!$this->report_to_server){
 				return false;
 			}
-			$this->panel->track("Itinerary Viewed", array("Itinerary ID"=> $itinerary_id,"Country"=> "Ghana"));
-			$this->panel->people->increment($user_id,"Itinerary view count",1);
+			$this->panel->track("Itinerary Viewed", array(
+				"Itinerary ID"=> $itinerary_id,
+				"Itinerary Name"=>$itinerary_name
+			));
+			$this->panel->people->increment(get_session_user_id(),"Itinerary view count",1);
 		}
 
 		function log_user_login($user_id){

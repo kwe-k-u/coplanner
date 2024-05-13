@@ -294,3 +294,55 @@ function payWithPaystack(currency, charge_amount,c_email,payload, split_account 
 
 		handler.openIframe();
 }
+
+function toggle_signup_bypass(){
+  document.getElementsByClassName("signup-bypass-window")[0].classList.toggle('hide');
+}
+
+function signup_bypass(form){
+  event.preventDefault();
+  let name = form.name.value;
+  let email = form.email.value;
+  let phone = form.phone.value;
+
+  let validationPass = validateFormInputs(
+    {
+      type: "email" ,
+      value: email,
+      message: "Please enter a valid email",
+      message_target: form.email.getAttribute("data-eg-target")
+    },
+    {
+      type: "text" ,
+      value: name,
+      message: "Please enter a valid name",
+      message_target: form.name.getAttribute("data-eg-target")
+    },
+    {
+      type: "phone" ,
+      value: phone,
+      message: "Please enter a valid phone number",
+      message_target: form.phone.getAttribute("data-eg-target")
+    },
+  );
+  if (validationPass){
+
+      send_request("POST",
+      "processors/processor.php/signup_bypass",
+      {
+        "email" : email,
+        "name" : name,
+        "phone" : phone
+      },
+      (response)=>{
+        console.log(response);
+        if (response.status == 200){
+          window.location.reload();
+        }else{
+          showToast(response.data.msg);
+        }
+      }
+    );
+  }
+
+}

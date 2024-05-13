@@ -35,6 +35,9 @@ $(document).ready(function () {
   $(".page-reloader").click(function () {
     window.location.reload();
   }); // to reload page
+  $(".signup-bypass-window").click(function () {
+    $(this).toggleClass('hide');
+  }); // to reload page
 
   // form listeners
   $(".date-input").focus(changeToDate);
@@ -679,10 +682,15 @@ function testInput(type, value,compare_val = null) {
     case "confirm_password":
     case "confirm password":
       return value.localeCompare(compare_val) == 0;
+    case "phone":
+      return value.length > 9;
+    case "text":
+      return value.length > 3;
     default:
       return false;
   }
 }
+
 
 
 

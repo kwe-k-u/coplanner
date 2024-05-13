@@ -60,6 +60,21 @@ if (in_array($requestOrigin, $allowedDomains)) {
 					send_json(array("msg"=> "Unknown authentication method"),401);
 			}
 			die();
+		case "/signup_bypass":
+			$name = $_POST["name"];
+			$email = $_POST["email"];
+			$phone = $_POST["phone"];
+			//check if email exists
+			$response = bypass_signup($name,$email,$phone)["user_id"];
+			if($response == -1){
+				send_json(array("msg"=> "You already have an account. You need to sign in using our login page"),201);
+				die();
+				// User has an account;
+			}else{
+				session_log_in($response);
+			}
+			send_json(array("msg"=> "Got you"));
+			die();
 		case "/login":
 			$method = $_POST["method"];
 			switch($method){

@@ -33,9 +33,15 @@ if (session_status() == PHP_SESSION_NONE){
 
 
 
+	function generate_id(){
+		return encrypt(get_current_date().time() . random_bytes((55)));
+	}
 	/**Signs in user accounts */
-	function session_log_in($user_id){
+	function session_log_in($user_id,$by_pass = false){
 		$_SESSION["user_id"] = $user_id;
+		if ($by_pass){
+			$_SESSION["by_pass"] = $by_pass;
+		}
 		// $_SESSION["user_role"] = $role; //admin or user
 	}
 
@@ -63,6 +69,28 @@ if (session_status() == PHP_SESSION_NONE){
 			// unset($_SESSION["account_type"]);
 		}
 
+		if(isset($_SESSION["by_pass"])){
+			unset($_SESSION["by_pass"]);
+		}
+
+	}
+
+	function set_mixpanel_anon_id(){
+		if (!isset($_SESSION["anon_id"])){
+			$_SESSION["anon_id"] = "AnonymousUser".strval(rand(1000000000,9999999999));
+		}
+	}
+
+	function get_mixpanel_anon_id(){
+		if(isset($_SESSION["anon_id"])){
+			return $_SESSION["anon_id"];
+		}
+		return null;
+	}
+	function remove_mixpanel_anon_id(){
+		if(isset($_SESSION["anon_id"])){
+			unset($_SESSION["anon_id"]);
+		}
 	}
 
 	function login_check(){
@@ -70,7 +98,7 @@ if (session_status() == PHP_SESSION_NONE){
 		|| $_SERVER['SERVER_PORT'] == 443)
 		? "https://" : "http://";
 		$redirect = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		if (!is_session_logged_in()){
+		if (!is_session_logged_in() || isset($_SESSION["by_pass"])){
 			header("Location: ../login.php?redirect_url=$redirect");
 			die();
 		}
@@ -190,9 +218,6 @@ if (session_status() == PHP_SESSION_NONE){
 		return number_format((float)$string,2,"."," ");
 	}
 
-	function generate_id(){
-		return encrypt(get_current_date().time() . random_bytes((55)));
-	}
 
 	function upload_file($directory,$subdir,$tempname,$image){
 		//check if the directory exists

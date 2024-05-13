@@ -5,6 +5,13 @@
 
 	class public_class extends db_prepared{
 
+		function bypass_signup($name,$email,$phone){
+			$sql = "SELECT  bypass_signup(?,?,?) as user_id;";
+			$this->prepare($sql);
+			$this->bind($name,$email,$phone);
+			return $this->db_fetch_one();
+		}
+
 		function email_signup($name,$email,$password){
 			$sql = "SELECT email_signup(?,?,?);";
 			$this->prepare($sql);
