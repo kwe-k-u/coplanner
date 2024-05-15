@@ -1,23 +1,29 @@
 <?php
 require_once(__DIR__."/../utils/core.php");
-
+require_once(__DIR__ . "/../controllers/public_controller.php");
+require_once(__DIR__ . "/../controllers/admin_controller.php");
 // Dummy array object
-$data = array(
-    array("id" => 1, "item" => "Item 1", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
-    array("id" => 2, "item" => "Item 2", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
-    array("id" => 3, "item" => "Item 3", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
-    array("id" => 4, "item" => "Item 4", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
-    array("id" => 5, "item" => "Item 5", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
-    array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
-    array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
-    array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
-    array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
-    array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed")
-);
+// $data = array(
+//     array("id" => 1, "item" => "Item 1", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
+//     array("id" => 2, "item" => "Item 2", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
+//     array("id" => 3, "item" => "Item 3", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
+//     array("id" => 4, "item" => "Item 4", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
+//     array("id" => 5, "item" => "Item 5", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
+//     array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
+//     array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
+//     array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
+//     array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
+//     array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed")
+// );
 
+$hm = new public_class();
+$data = $hm->get_transaction("U001");
+// echo json_encode($hi);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+<script src="../assets/js/functions.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -387,11 +393,11 @@ $data = array(
                             <?php
                             foreach ($data as $row) {
                                 echo "<div class='table-row'>";
-                                echo "<div class='table-cell'>" . $row['id'] . "</div>";
-                                echo "<div class='table-cell'>" . $row['item'] . "</div>";
-                                echo "<div class='table-cell'>" . $row['date'] . "</div>";
-                                echo "<div class='table-cell'>" . $row['amount'] . "</div>";
-                                echo "<div class='table-cell'>" . $row['status'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['provider_transaction_id'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['transaction_id'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['date_created'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['total_transaction_amount'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['purpose'] . "</div>";
                                 echo "</div>";
                             }
                             ?>
