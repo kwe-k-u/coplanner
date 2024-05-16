@@ -1339,6 +1339,82 @@ END //
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS create_travel_plan;
+
+DELIMITER //
+CREATE PROCEDURE create_travel_plan (
+	IN in_itinerary_id VARCHAR(100),
+	IN in_price DOUBLE,
+	IN in_currency_name VARCHAR(100),
+	IN in_collection VARCHAR(30),
+	IN in_media_location TEXT,
+	IN in_media_type VARCHAR(10)
+)BEGIN
+	DECLARE temp_collection_id VARCHAR(100);
+	DECLARE in_media_id VARCHAR(100);
+	DECLARE in_currency VARCHAR(100);
+
+	SELECT collection_id into temp_collection_id from travel_plan_collections
+	WHERE collection_name = in_collection;
+
+	-- Check if collection EXISTS, create if not
+	IF temp_collection_id IS NULL THEN
+		SELECT generate_id() into temp_collection_id;
+		INSERT INTO travel_plan_collections (collection_id, collection_name)
+		 VALUES (temp_collection_id ,in_collection);
+	END IF;
+
+	SELECT currency_id INTO in_currency from currency
+	WHERE currency_name = in_currency_name;
+	IF in_currency IS NULL THEN
+		INSERT INTO currency(currency_name) VALUES (in_currency_name);
+
+		SELECT currency_id INTO in_currency from currency
+		WHERE currency_name = in_currency_name;
+	END IF;
+
+	INSERT INTO travel_plan(itinerary_id,collection_id,price,currency_id)
+	VALUES (in_itinerary_id, temp_collection_id, in_price, in_currency);
+
+
+
+
+	-- create travel plan (itienrary,collection)
+	-- upload media
+	SELECT upload_media(in_media_location,in_media_type,0) INTO in_media_id;
+
+	INSERT INTO travel_plan_media(media_id,itinerary_id) VALUES (in_media_id,in_itinerary_id);
+
+
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_travel_plan_categories;
+
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_categories()
+begin
+	SELECT * FROM travel_plan_collections;
+end //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_travel_plan_collection
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_collection(IN in_collection_id VARCHAr(100))
+Begin
+	SELECT tp.*,m.media_location, m.media_type,m.is_foreign FROM travel_plan as tp
+	left join travel_plan_media as tpm on tpm.itinerary_id = tp.itinerary_id
+	left join media as m on m.media_id = tpm.media_id
+	 where tp.collection_id = in_collection_id;
+end //
+DELIMITER ;
+
+
+
+
+
+
 DROP FUNCTION IF EXISTS toggle_experience_wishlist;
 DELIMITER //
 CREATE FUNCTION toggle_experience_wishlist(
