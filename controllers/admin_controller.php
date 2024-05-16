@@ -107,4 +107,9 @@
 		$admin = new admin_class();
 		return $admin->get_admin_privilege($user_id)["privilege"];
 	}
+
+	function create_travel_plan_recommendation($itinerary_id,$collection,$price,$currency,$image_location,$image_type){
+		$admin = new admin_class();
+		return $admin->create_travel_plan_recommendation($itinerary_id,$collection,$price,$currency,$image_location,$image_type);
+	}
 ?>

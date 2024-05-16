@@ -88,7 +88,7 @@
                 </div> -->
 
                 <div class="agreement-check">
-                    <input type="checkbox"><span>By creating an account, you agree to easyGo's <a href="">terms and conditions</a></span>
+                    <input type="checkbox" required><span>By creating an account, you agree to easyGo's <a href="https://drive.google.com/file/d/1nhn8LGxFU_eWkp1FaRZafN1BfMrSWUi3/view?usp=sharing">terms and conditions</a></span>
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-1 easygo-rounded-2" type="submit">Register</button>

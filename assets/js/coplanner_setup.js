@@ -48,8 +48,8 @@ function change_question(parent_id, target_id) {
 	let target = document.getElementById(target_id);
 	let selected = get_section_responses(parent_id);
 
-	target.classList.add("active");
 	parent.classList.remove("active");
+	target.classList.add("active");
 
 	if (parent_id == "tool-selection-page") {
 		if (selected == "scratch-select") {
@@ -80,10 +80,10 @@ function change_question(parent_id, target_id) {
 	// if we've reached the end of the form, send the preference_selection to the AI to generate the itinerary
 	if (parent == target) {
 		event.preventDefault();
-		show_loader();
 
 		//if the url doesn't include an itinerary id, then a user is requesting a recommendation
 		if (!url_params("itinerary_id")) {
+			show_loader();
 			send_request(
 				"POST",
 				"processors/processor.php/new_itinerary_request",
@@ -98,12 +98,27 @@ function change_question(parent_id, target_id) {
 			);
 			//if url contains itinerary id, admin is creating a template
 		} else {
-			// create itinerary template
-			send_request("POST",
+			//show popup
+			document.getElementsByClassName("signup-bypass-window")[0].classList.toggle("hide");
+
+		}
+	}
+
+}
+
+
+//popup option is what creates the template
+function create_itinerary_template(form){
+	event.preventDefault();
+
+	send_request("POST",
 				"processors/processor.php/create_template",
 				{
 					"itinerary_id" : url_params("itinerary_id"),
-					"preferences" : preference_selection
+					"preferences" : preference_selection,
+					"image": form.flyer_img.files[0],
+					"price" : form.price.value,
+					"collection" : form.collection.value
 				},
 				(response)=>{
 					if(response.status == 200){
@@ -113,11 +128,7 @@ function change_question(parent_id, target_id) {
 					}
 				}
 			);
-		}
-	}
-
 }
-
 
 function get_page(element) {
 	let current = element;

@@ -143,5 +143,12 @@
 			$this->bind($user_id);
 			return $this->db_fetch_one();
 		}
+
+		function create_travel_plan_recommendation($itinerary_id,$collection,$price,$currency,$image_location,$image_type){
+			$sql = "CALL create_travel_plan(?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id,$price,$currency,$collection,$image_location,$image_type);
+			return $this->db_query();
+		}
 	}
 ?>

@@ -37,7 +37,10 @@ $(document).ready(function () {
   }); // to reload page
   $(".signup-bypass-window").click(function () {
     $(this).toggleClass('hide');
-  }); // to reload page
+  }); //
+  $(".signup-bypass").click(function (event) {
+    event.stopPropagation();
+});
 
   // form listeners
   $(".date-input").focus(changeToDate);

@@ -68,7 +68,7 @@ $mixpanel->log_page_view();
 </head>
 
 <body class="bg-gray-3">
-<?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
+    <?php include_once(__DIR__ . "/../utils/analytics/google_body_tag.php") ?>
 
     <!-- main content start -->
     <div class="main-wrapper">
@@ -90,7 +90,7 @@ $mixpanel->log_page_view();
                 <!-- Itinerary destinations [start] -->
                 <section id="location-selection-page" class="active eh-transition-page">
                     <div class="mb-4 d-flex justify-content-end">
-                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="location-selection-page" > Next <i class="fa-solid fa-arrow-right"></i></button>
+                        <button class="eht-btn text-blue easygo-fs-2 border-0 bg-transparent" data-transit-target="duration-selection-page" data-transit-parent="location-selection-page"> Next <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div>
                         <div class="mt-auto">
@@ -99,7 +99,7 @@ $mixpanel->log_page_view();
                         <div class="row">
                             <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="location-selection" id="accra-select">
+                                    <input type="radio" class="radio_choice" name="location-selection" id="accra-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="accra-select">
                                         <h3>Greater Accra</h3>
                                     </label>
@@ -107,7 +107,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="location-selection" id="western-select">
+                                    <input type="radio" class="radio_choice" name="location-selection" id="western-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="western-select">
                                         <h3>Western Region</h3>
                                     </label>
@@ -115,7 +115,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="location-selection" id="eastern-select">
+                                    <input type="radio" class="radio_choice" name="location-selection" id="eastern-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="eastern-select">
                                         <h3>Eastern Region</h3>
                                     </label>
@@ -123,7 +123,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-lg-6 col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="location-selection" id="volta-select">
+                                    <input type="radio" class="radio_choice" name="location-selection" id="volta-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="volta-select">
                                         <h3>Volta Region</h3>
                                     </label>
@@ -153,7 +153,7 @@ $mixpanel->log_page_view();
                         <div class="row">
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="duration-selection" id="single-day-select">
+                                    <input type="radio" class="radio_choice" name="duration-selection" id="single-day-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="single-day-select">
                                         <h3>Just A day</h3>
                                     </label>
@@ -161,7 +161,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="duration-selection" id="2-to-3-days-select">
+                                    <input type="radio" class="radio_choice" name="duration-selection" id="2-to-3-days-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="2-to-3-days-select">
                                         <h3>Two or Three Days</h3>
                                     </label>
@@ -169,7 +169,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-md-4 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="duration-selection" id="week-select">
+                                    <input type="radio" class="radio_choice" name="duration-selection" id="week-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="week-select">
                                         <h3>About A Week</h3>
                                     </label>
@@ -199,7 +199,7 @@ $mixpanel->log_page_view();
                         <div class="row">
                             <div class="col-md-3 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="type-selection" id="solo-select">
+                                    <input type="radio" class="radio_choice" name="type-selection" id="solo-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="solo-select">
                                         <h3>Going Solo</h3>
                                     </label>
@@ -207,7 +207,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-md-3 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="type-selection" id="couple-select">
+                                    <input type="radio" class="radio_choice" name="type-selection" id="couple-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="couple-select">
                                         <h3>Partner</h3>
                                     </label>
@@ -215,7 +215,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-md-3 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="type-selection" id="family-select">
+                                    <input type="radio" class="radio_choice" name="type-selection" id="family-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="family-select">
                                         <h3>Family</h3>
                                     </label>
@@ -223,7 +223,7 @@ $mixpanel->log_page_view();
                             </div>
                             <div class="col-md-3 p-3">
                                 <div class="easygo-radio-btn-1">
-                                    <input type="radio" class="radio_choice"  name="type-selection" id="friends-select">
+                                    <input type="radio" class="radio_choice" name="type-selection" id="friends-select">
                                     <label class="easygo-icon-btn py-5 text-blue" for="friends-select">
                                         <h3>Friends</h3>
                                     </label>
@@ -368,6 +368,57 @@ $mixpanel->log_page_view();
                 <!-- Budget [end] -->
                 <!--- ================================ -->
             </div>
+            <div class="signup-bypass-window hide">
+                <div class="signup-bypass ">
+                    <div class="bypass-body">
+                        <div class="bypass-title">
+                            <h2>Upload Travel Plan options</h2>
+                        </div>
+                        <form action="#" onsubmit="create_itinerary_template(this);" method="post">
+                            <div class="bypass-email">
+                                <div class="input-field">
+                                    <small >Upload an image for the travel plan</small>
+                                    <div class="file-input drag-n-drop type-doc" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" data-input-target="#flyer_img">
+                                        <div class="upload-symbol">
+                                            <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
+                                        </div>
+                                        <a>Upload image</a>
+                                        <span class="text-gray-1">JPG,PNG</span>
+                                        <input id="flyer_img" name="flyer_img" class="file-upload" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" accept=".png, .jpg, .jpeg, .svg, .docx, .pdf" type="file">
+                                        <div id="gov-doc-display" class="doc-display" data-input-target="#flyer_img">
+                                            <div class="doc-display-item">
+                                                <i class="fa-solid fa-file easygo-h2"></i>
+                                                <div id="gov-doc-name" class="doc-name"></div>
+                                                <button class="item-remove" type="button">X</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-5 form-input-field">
+                                    <small for="collection">Travel plan collection</small>
+                                    <select name="collection" id="">
+                                        <option value="Editor's Picks">Editor's Picks</option>
+                                        <option value="Family-friendly vacations">Family-friendly vacations</option>
+                                        <option value="Honeymoon">Honeymoon</option>
+                                        <option value="Alternate Experiences">Alternate Experiences</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-field">
+                                    <label for="price">Booking Price</label>
+                                    <div class="password-input-container">
+                                        <input name="price" type="number" placeholder="5" class="border-blue" data-eg-target="number-err">
+                                    </div>
+                                    <p id="number-err" class="form-err-msg">Please provide a valid phone number</p>
+                                </div>
+                                <div class="input-field button-container">
+                                    <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Create Template</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     <!-- main content end -->
@@ -380,7 +431,7 @@ $mixpanel->log_page_view();
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <!-- easygo js -->
-     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>
 
     <script src="../assets/js/functions.js"></script>

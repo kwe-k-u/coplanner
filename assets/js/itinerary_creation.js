@@ -380,7 +380,6 @@ function destination_search(form){
 	send_request("GET","processors/processor.php/search_destination?query="+form.query.value,
 	null,
 	(response)=>{
-		console.log(response);
 		let destinations = response.data.results;
 		destination_search_results.replaceChildren();
 		mobile_destination_search_results.replaceChildren();
@@ -396,8 +395,10 @@ function destination_search(form){
 			let activities = element["activities"];
 			let id = element["destination_id"];
 			let card = create_destination_search_result_card(id,name,location,rating,num_rating,activities);
+			let mobile_card = create_destination_search_result_card(id,name,location,rating,num_rating,activities);
+
 			destination_search_results.appendChild(card);
-			mobile_destination_search_results.appendChild(card);
+			mobile_destination_search_results.appendChild(mobile_card);
 
 		});
 	});

@@ -1,5 +1,5 @@
 <?php
-	// Show php errors
+// Show php errors
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
@@ -293,7 +293,19 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				send_json(array("msg"=> "You need an admin account to perform this action"),201);
 				die();
 			}
+
+			$collection = $_POST["collection"];
+			$price = $_POST["price"];
+			$currency = "GHS";
 			$itinerary_id = $_POST["itinerary_id"];
+
+			$logo_image = $_FILES["image"]["name"];
+			$logo_temp = $_FILES["image"]["tmp_name"];
+			$logo_type = get_file_type($logo_image);
+			$logo_location = upload_file("uploads","images",$logo_temp,$logo_image);
+			create_travel_plan_recommendation($itinerary_id,$collection,$price,$currency,$logo_location,$logo_type);
+
+
 			$preferences = json_decode($_POST["preferences"],true);
 			// create_itinerary_template();
 

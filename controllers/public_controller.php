@@ -152,7 +152,15 @@
 		return $public->add_itinerary_activity($day_id,$activity_id,$destination_id);
 	}
 
+	function get_travel_plan_collections(){
+		$public = new public_class();
+		return $public->get_travel_plan_collections();
+	}
+
 	function get_featured_itineraries($category = ""){
+		$public = new public_class();
+		return $public->get_travel_plan_collection($category);
+
 		$result = array();
 		switch ($category) {
 			case "budget":

@@ -11,7 +11,7 @@
 				mixpanel_token(),
 				array(
 					"host"=> "api.mixpanel.com",
-					"debug"=> true
+					"debug"=> !is_env_remote()
 				)
 			);
 

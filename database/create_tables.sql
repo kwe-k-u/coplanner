@@ -48,7 +48,8 @@ CREATE TABLE users (
     user_id VARCHAR(100) PRIMARY KEY,
     user_name VARCHAR(150) NOT NULL,
     date_registered DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    account_status ENUM ("active","suspended","deleted") DEFAULT "active"
+    account_status ENUM ("active",'by_pass',"suspended","deleted") DEFAULT "active",
+	phone varchar(15)
 );
 
 CREATE TABLE admin_users(

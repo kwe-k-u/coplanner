@@ -401,5 +401,18 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_travel_plan_collections(){
+			$sql = "CALL get_travel_plan_categories()";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_travel_plan_collection($collection_id){
+			$sql = "CALL get_travel_plan_collection(?)";
+			$this->prepare($sql);
+			$this->bind($collection_id);
+			return $this->db_fetch_all();
+		}
+
 	}
 ?>

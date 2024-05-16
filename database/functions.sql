@@ -1171,6 +1171,7 @@ BEGIN
   DECLARE temp_price DECIMAL(10,2);
   DECLARE temp_currency VARCHAR(5);
   DECLARE temp_day_date DATETIME;
+  DECLARE temp_experience VARCHAR(100) DEFAULT null;
 
   -- Count the number of days
   SELECT COUNT(*) INTO day_counter FROM itinerary_day WHERE itinerary_id = in_itinerary_id;
@@ -1193,8 +1194,14 @@ BEGIN
       SELECT destination_id INTO temp_destination_id FROM vw_itinerary_destinations
       WHERE itinerary_id = in_itinerary_id AND position = destination_counter AND day_id = temp_day_id;
 
-	  INSERT INTO `shared_experience_destinations`(`experience_id`, `destination_id`)
-	  VALUES (in_experience_id,temp_destination_id);
+	  SELECT experience_id into temp_experience FROM shared_experience_destinations
+	  where experience_id = in_experience_id and destination_id = temp_destination_id;
+
+	  IF temp_experience is null then
+		INSERT INTO `shared_experience_destinations`(`experience_id`, `destination_id`)
+		VALUES (in_experience_id,temp_destination_id);
+	  end if;
+
       -- Get the activities for the selected day
       SELECT COUNT(*) INTO activity_counter FROM vw_itinerary_activities WHERE itinerary_id = in_itinerary_id AND day_id = temp_day_id AND destination_id = temp_destination_id;
 
@@ -1259,7 +1266,6 @@ begin
 
 end//
 DELIMITER ;
-
 
 
 DROP PROCEDURE IF EXISTS get_curator_listings;
@@ -1544,4 +1550,35 @@ BEGIN
 
 	RETURN temp_user_id;
 END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS bypass_signup;
+DELIMITER //
+CREATE FUNCTION bypass_signup(
+  in_name VARCHAR(100),
+  in_email VARCHAR(100),
+ in_phone VARCHAR(15)
+ ) RETURNS VARCHAR(100)
+begin
+  DECLARE result varchar(100);
+  -- If user email exists send -1
+  SELECT user_id into result from vw_users where email = in_email and account_status != 'by_pass';
+  IF result IS NOT NULL THEN
+    return -1;
+  end if;
+
+  SELECT user_id into result from vw_users where email = in_email and account_status = 'by_pass';
+  IF result IS NOT NULL THEN
+    return result;
+  end if;
+
+  SELECT generate_id() into result;
+
+  INSERT INTO users(user_id,user_name,phone,account_status)
+  VALUES (result,in_name,in_phone, 'by_pass');
+
+  INSERT INTO email_users (user_id,email) VALUES (result,in_email);
+  RETURN result;
+end //
 DELIMITER ;
