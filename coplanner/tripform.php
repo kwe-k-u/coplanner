@@ -23,6 +23,9 @@ $data = $hm->get_transaction("U001");
 <!DOCTYPE html>
 <html lang="en">
 <script src="../assets/js/functions.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +37,7 @@ $data = $hm->get_transaction("U001");
         margin: 0;
         height: 100vh;
         background: #f5f5f6ed;
+        font-family: 'Nunito';
     }
 
     .body-container{
@@ -289,12 +293,12 @@ $data = $hm->get_transaction("U001");
     .itinerary-highlights{
         display: inline-flex;
         justify-content: space-between;
-        width: 70%;
+        width: 75%;
     }
     .itinerary-highlight-item {
         color: white;
         background: blue;
-        padding: 2px 3px;
+        padding: 2px 1px;
         border-radius: 10px;
     }
 
@@ -562,10 +566,10 @@ $data = $hm->get_transaction("U001");
                 <div class = "trip-form-main">
                     <div class = "trip-form-container">
                         <div class = "trip-form">
-                            <div class = "trip-form-1"> Greater Accra</div>
-                            <div class = "trip-form-1"> Greater Accra</div>
-                            <div class = "trip-form-1"> Greater Accra</div>
-                            <div class = "trip-form-1"> Greater Accra</div>
+                            <div class = "trip-form-1"> Just a day</div>
+                            <div class = "trip-form-1"> 2 or 3 days</div>
+                            <div class = "trip-form-1"> 4 or 5 days</div>
+                            <div class = "trip-form-1"> About a week</div>
                         </div>
                         <div style = "display: flex;">
                             <div class="form-button" onclick = "slide3(2)">previous</div>
@@ -574,8 +578,30 @@ $data = $hm->get_transaction("U001");
                     </div>
                 </div>
             </div>
-            
+
             <div class = "content-container inactive"  id = "content-container-3">
+                <!-- main content here -->
+                <div class = "welcome-section"> 
+                    <!-- TODO: Maake name dynamic -->
+                    <div class = "welcome-title"> Trip details </div>
+                </div>
+                <div class = "trip-form-main">
+                    <div class = "trip-form-container">
+                        <div class = "trip-form">
+                            <div class = "trip-form-1"> Solo</div>
+                            <div class = "trip-form-1"> Couple</div>
+                            <div class = "trip-form-1"> Family</div>
+                            <div class = "trip-form-1"> friends</div>
+                        </div>
+                        <div style = "display: flex;">
+                            <div class="form-button" onclick = "slide3(3)">previous</div>
+                            <div class="form-button" onclick = "slide(3)">Continue</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class = "content-container inactive"  id = "content-container-4">
                 <!-- main content here --> 
                 <div class = "welcome-section"> 
                     <!-- TODO: Maake name dynamic -->
@@ -584,22 +610,22 @@ $data = $hm->get_transaction("U001");
                 <div class = "trip-form-main">
                     <div class = "trip-form-container">
                         <div class = "trip-form">
-                            <div class = "trip-form-2"> Greater Accra</div>
-                            <div class = "trip-form-2"> Greater Accra</div>
-                            <div class = "trip-form-2"> Greater Accra</div>
-                            <div class = "trip-form-2"> Greater Accra</div>
-                            <div class = "trip-form-2"> Greater Accra</div>
-                            <div class = "trip-form-2"> Greater Accra</div>
+                            <div class = "trip-form-2"> Spa and Wellness</div>
+                            <div class = "trip-form-2"> Adventure and sport</div>
+                            <div class = "trip-form-2"> Landmark and sight seeing</div>
+                            <div class = "trip-form-2"> Culture and history</div>
+                            <div class = "trip-form-2"> Waterfalls</div>
+                            <div class = "trip-form-2"> Alternative experience</div>
                         </div>
                         <div style = "display: flex;">
-                            <div class="form-button" onclick = "slide3(3)">previous</div>
-                            <div class="form-button" onclick = "slide(3)">Continue</div>
+                            <div class="form-button" onclick = "slide3(4)">previous</div>
+                            <div class="form-button" onclick = "slide(4)">Continue</div>
                         </div>
                     </div>
                     
                 </div>  
             </div>
-            <div class = "content-container-2 inactive"  id = "content-container-4">
+            <div class = "content-container-2 inactive"  id = "content-container-5">
                 <!-- main content here -->
                 <div class = "welcome-section"> 
                     <!-- TODO: Maake name dynamic -->
@@ -608,20 +634,20 @@ $data = $hm->get_transaction("U001");
                 <div class = "trip-form-main">
                     <div class = "trip-form-container-2">
                         <div class = "trip-form">
-                            <div class = "trip-form-3"> Greater Accra</div>
-                            <div class = "trip-form-3"> Greater Accra</div>
-                            <div class = "trip-form-3"> Greater Accra</div>
+                            <div class = "trip-form-3"> GHS 0 - GHS 1000</div>
+                            <div class = "trip-form-3"> GHS 1000 - GHS 4999</div>
+                            <div class = "trip-form-3"> GHS 5000 and above </div>
                         </div>
                         <div style = "display: flex;">
-                            <div class="form-button" onclick = "slide3(4)">previous</div>
-                            <div class="form-button" onclick = "slide(4)">Continue</div>
+                            <div class="form-button" onclick = "slide3(5)">previous</div>
+                            <div class="form-button" onclick = "slide(5)">Continue</div>
                         </div>
                     </div>
                 </div>
                 
             </div>
             
-            <div class = "content-container inactive"  id = "content-container-5">
+            <div class = "content-container inactive"  id = "content-container-6">
                 <!-- main content here -->
                 <div class = "welcome-section"> 
                     <!-- TODO: Maake name dynamic -->
@@ -771,7 +797,7 @@ $data = $hm->get_transaction("U001");
                     
                 </div>
                 <div style = "display: flex;" class = "form-button-container">
-                          <div class="form-button" onclick = "slide3(5)">previous</div>
+                          <div class="form-button" onclick = "slide3(6)">previous</div>
                           <div class="form-button" onclick = "goto_page('trip_summary.php', false)">Continue</div>
                     </div>
             </div>
