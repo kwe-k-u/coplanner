@@ -21,10 +21,14 @@ $data = $hm->get_transaction("U001");
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <style>
@@ -32,7 +36,7 @@ $data = $hm->get_transaction("U001");
         margin: 0;
         height: 100vh;
         background: #f5f5f6ed;
-
+        font-family: 'Nunito' !important;
     }
     .body-container{
         margin: 0;

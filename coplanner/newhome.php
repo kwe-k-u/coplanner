@@ -2,19 +2,6 @@
 require_once(__DIR__."/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
-// Dummy array object
-// $data = array(
-//     array("id" => 1, "item" => "Item 1", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
-//     array("id" => 2, "item" => "Item 2", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
-//     array("id" => 3, "item" => "Item 3", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
-//     array("id" => 4, "item" => "Item 4", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
-//     array("id" => 5, "item" => "Item 5", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
-//     array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
-//     array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
-//     array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
-//     array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
-//     array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed")
-// );
 
 $hm = new public_class();
 $data = $hm->get_transaction("U001");
@@ -34,7 +21,7 @@ $data = $hm->get_transaction("U001");
         margin: 0;
         height: 100vh;
         background: #f5f5f6ed;
-
+        font-family: 'Nunito';
     }
     .body-container{
         margin: 0;
@@ -464,13 +451,6 @@ $data = $hm->get_transaction("U001");
 </body>
 
 <script>
-    function toggleSidebar(show) {
-    var sidebar = document.getElementById('sidebar');
-    if (show) {
-        sidebar.classList.remove('sidebar-hidden');
-    } else {
-        sidebar.classList.add('sidebar-hidden');
-    }
-}
+
 </script>
 </html>

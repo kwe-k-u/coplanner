@@ -2,38 +2,56 @@
 // Array of sidebar links
 $links = array(
     "Home" => array(
-        "link" => "#",
-        "icon" => "fa fa-house"
+        "link" => "newhome",
+        "icon" => "<span class=\"material-symbols-outlined\">
+        home
+        </span>"
     ),
     "My trips" => array(
-        "link" => "#",
-        "icon" => "fa-solid fa-plane"
+        "link" => "mytrips",
+        "icon" => "<span class=\"material-symbols-outlined\">
+        trip
+        </span>"
     ),
     "Explore destinations" => array(
         "link" => "#",
-        "icon" => "fa-solid fa-location-dot"
+        "icon" => "<span class=\"material-symbols-outlined\">
+        location_on
+        </span>"
     ),
     "Wishlist" => array(
         "link" => "#",
-        "icon" => "fa-regular fa-bookmark"
+        "icon" => "<span class=\"material-symbols-outlined\">
+        bookmark
+        </span>"
     ),
     "Transaction" => array(
         "link" => "#",
-        "icon" => "fa-solid fa-wallet"
+        "icon" => "    <span class=\"material-symbols-outlined\">
+        account_balance_wallet
+        </span> "
     ),
     "Help and support" => array(
-        "link" => "#",
-        "icon" => "fa-solid fa-question"
+        "link" => "helpPage",
+        "icon" => "<span class=\"material-symbols-outlined\">
+        help
+        </span>"
     ),
     "Settings" => array(
         "link" => "#",
-        "icon" => "fa-solid fa-gear"
+        "icon" => "<span class=\"material-symbols-outlined\">
+        settings
+        </span>"
     )
 );
 
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <style>
 /* Sidebar container */
     .sidebar {
@@ -44,6 +62,7 @@ $links = array(
         margin: 0; /* Remove margin */
         overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
         background: white;
+        font-family: 'Ubuntu Sans Mono';
     }
     .easy-logo {
         display: flex;
@@ -94,19 +113,28 @@ $links = array(
         cursor: pointer;
     }
 
-
+    .sidebar-item:hover{
+        background: #122276;
+        color: white;
+    }
+    .sidebar-item:hover .sidebar-item-img {
+        color: white;
+    }
     .sidebar-item-title{
         margin-left: 5%;
         /* width: 50%; */
+        
     }
 
     /* Sidebar items */
     .sidebar-line {    
         display: flex; /* Use flexbox for layout */
-        width: 75%;
+        width: 98%;
         color: inherit;
         align-items: center;
     }
+
+    
 
     /* Sidebar item image */
     .sidebar-item-img {
@@ -232,16 +260,17 @@ $links = array(
             New trip +
         </div>
     </div>
+
     <div class="link-block">
         <?php
         // Loop through the links array to generate sidebar items
         foreach ($links as $title => $details) {
             echo "
-            <div class='sidebar-item' onclick = '" . $details['link'] . "'>
+            <div class='sidebar-item' onclick = 'goto_page(\"" . $details['link'] . ".php\", false)'>
                 <div class = 'sidebar-line'>
                     <div class= 'sidebar-item-img'>
                     
-                        <i class='" . $details['icon']  ."' ></i>
+                        " . $details['icon']  ."
                     </div>
                     <div class= 'sidebar-item-title'> $title </div>
                 </div>
@@ -253,5 +282,12 @@ $links = array(
     </div>
 </div>
 <script>
- 
+     function toggleSidebar(show) {
+    var sidebar = document.getElementById('sidebar');
+    if (show) {
+        sidebar.classList.remove('sidebar-hidden');
+    } else {
+        sidebar.classList.add('sidebar-hidden');
+    }
+}
 </script>
