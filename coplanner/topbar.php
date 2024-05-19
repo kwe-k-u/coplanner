@@ -1,7 +1,7 @@
 <?php
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
     .top-bar{
         height: 10%;
@@ -79,7 +79,13 @@
 </style>
 
 <div class="top-bar">
-    <div  onclick = "toggleSidebar(true)" class="burger-button" ><i class="fa-solid fa-bars fa-lg"></i></div>
+    <?php
+        if (isset($showHome) && $showHome){
+            echo "<div   onclick = 'goto_page(\"" . 'newhome' . ".php\", false)' class='burger-button' ><span class='material-symbols-outlined'>home</span></div>";
+        } else {
+            echo "<div  onclick = 'toggleSidebar(true)' class='burger-button' ><i class='fa-solid fa-bars fa-lg'></i></div>";
+        }
+    ?>
     <div class="user-menu">
         <div class="notifs">
             <i class="fa-regular fa-bell fa-lg"></i>

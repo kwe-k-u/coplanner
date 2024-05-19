@@ -283,11 +283,11 @@ $links = array(
 </div>
 <script>
      function toggleSidebar(show) {
-    var sidebar = document.getElementById('sidebar');
-    if (show) {
-        sidebar.classList.remove('sidebar-hidden');
-    } else {
-        sidebar.classList.add('sidebar-hidden');
+        var sidebar = document.getElementById('sidebar');
+        if (show) {
+            sidebar.classList.remove('sidebar-hidden');
+        } else {
+            sidebar.classList.add('sidebar-hidden');
+        }
     }
-}
 </script>
