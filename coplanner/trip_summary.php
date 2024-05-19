@@ -364,6 +364,7 @@ $data = $hm->get_transaction("U001");
         <div class = "right-body-container">
             <!-- topbar -->
             <?php
+            $showHome = true;
             require_once(__DIR__."/topbar.php");
             ?>
             <div class = "content-container">
@@ -506,12 +507,12 @@ $data = $hm->get_transaction("U001");
 
 <script>
     function toggleSidebar(show) {
-    var sidebar = document.getElementById('sidebar');
-    if (show) {
-        sidebar.classList.remove('sidebar-hidden');
-    } else {
-        sidebar.classList.add('sidebar-hidden');
+        var sidebar = document.getElementById('sidebar');
+        if (show) {
+            sidebar.classList.remove('sidebar-hidden');
+        } else {
+            sidebar.classList.add('sidebar-hidden');
+        }
     }
-}
 </script>
 </html>
