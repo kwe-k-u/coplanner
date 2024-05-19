@@ -1,0 +1,317 @@
+
+body{
+	margin: 0;
+	height: 100vh;
+	background: #f5f5f6ed;
+	font-family: 'Nunito';
+}
+.body-container{
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+.right-body-container{
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	width: 77.5%;
+	height: 100%;
+}
+.content-container{
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: auto;
+}
+.home-destination-row{
+	height: 20%;
+}
+.content-main {
+	height: 60%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+}
+
+.transaction-table-section{
+	width:50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.transaction-table-title {
+	display: flex;
+	justify-content: space-between;
+	font-size: large;
+	font-weight: bold;
+}
+
+
+/* Your existing CSS styles */
+
+.custom-table {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+
+}
+
+.table-row {
+	display: flex;
+}
+
+.header {
+	background-color: #f0f0f0;
+	font-weight: bold;
+}
+
+.table-cell {
+	flex: 1;
+	padding: 10px;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.table-cell:last-child {
+	border-right: none;
+}
+
+.uptrip-title {
+	font-weight: bold;
+	font-size: 1.3em;
+	width: 95%;
+	margin-left: auto;
+
+}
+.upcoming-trip{
+	width: 45%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+.uptrip-card {
+	width: 90%;
+	margin: 0;
+	height: 65%;
+	place-content: center;
+	background: white;
+	border-radius: 1em;
+}
+.uptrip-card .uptrip-card-content{
+	width: 90%;
+	height: 60%;
+	/* margin-left: auto; */
+	/* margin-right: auto; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.uptrip-card .uptrip-card-details{
+	font-size: 1.2em;
+	font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	justify-content: space-between;
+}
+.uptrip-card .card-details div {
+	/* width: 40%; */
+}
+
+.uptrip-card .card-footer{
+	display: flex;
+	height: 70%;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+
+.uptrip-card .uptrip-card-title{
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-left: 0;
+	color: #1931A8;
+}
+
+.uptrip-card .uptrip-card-subtitle{
+	margin-left: 0;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.uptrip-button {
+/* display: inline-block; */
+width: 90%;
+padding: 5% 0px;
+background-color: #1931A8;
+color: white;
+text-align: center;
+font-size: 100%;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+/* Hover effect */
+.uptrip-button:hover {
+/* background-color: #45a049; */
+}
+
+
+.welcome-section{
+	margin-left: auto;
+	margin-right: auto;
+	width:95%;
+	height: 7%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+}
+.welcome-section .welcome-title{
+	width:100%;
+	font-weight: bold;
+}
+.welcome-section .welcome-subtitle{
+	width:100%;
+	color: gray;
+}
+@media screen and (min-width: 768px) {
+	.trans-cards{
+		display: none
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.body-container{
+	/* margin: 0;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%; */
+	height: unset;
+	}
+	.home-destination-row{
+	height: 10em;
+	width: 100%;
+	}
+	.welcome-title {
+		width: 100%;
+		font-weight: bold;
+		font-size: x-large;
+		margin: 1em 0.5em;
+	}
+
+	.welcome-subtitle {
+		display: none;
+		width: 100%;
+		font-weight: bold;
+		font-size: x-large;
+		margin: 1em 0.5em;
+	}
+	.right-body-container{
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+	.content-container{
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: unset;
+		overflow: auto;
+	}
+	.content-main {
+		height: 60%;
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-around;
+
+	}
+	.custom-table {
+		display: none;
+	}
+	.upcoming-trip{
+		width: 100%;
+		height: 25em;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+	}
+	.uptrip-card {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+		height: 75%;
+		place-content: center;
+		background: white;
+		border-radius: 1em;
+	}
+
+	.uptrip-card .card-container{
+		width: 80%;
+	}
+	.spacer {
+		display: none;
+	}
+	.transaction-table-section{
+		width: 100%;
+	}
+	.trans-card {
+		display: flex;
+		height: 7.0em;
+		margin-bottom: 1.5em;
+		width: 85%;
+		margin-left: auto;
+		margin-right: auto;
+		border-bottom: solid #b7b7bc;
+	}
+
+	.trans-card-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		width: 100%;
+		height: 90%;
+	}
+
+	.trans-card-detail {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		font-size: 1.2em;
+	}
+	.trans-card-id {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+
+	.trans-card-datetime {
+		color: #67686d;
+	}
+
+	.transaction-table-title {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+}

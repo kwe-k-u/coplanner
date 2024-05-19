@@ -123,18 +123,18 @@ $links = array(
     .sidebar-item-title{
         margin-left: 5%;
         /* width: 50%; */
-        
+
     }
 
     /* Sidebar items */
-    .sidebar-line {    
+    .sidebar-line {
         display: flex; /* Use flexbox for layout */
         width: 98%;
         color: inherit;
         align-items: center;
     }
 
-    
+
 
     /* Sidebar item image */
     .sidebar-item-img {
@@ -159,7 +159,7 @@ $links = array(
         /* background-color: #ccc; Change background color on hover */
         background: #F1A93B;
         color: #122276;
-        
+
     }
 
     .sidebar-button {
@@ -183,7 +183,7 @@ $links = array(
     /* Active state */
     .sidebar-button:active {
         background-color: #13257F;
-    
+
     }
     .close-button {
         display: none;
@@ -193,16 +193,16 @@ $links = array(
     /* Media query for small screens */
     @media screen and (max-width: 768px) {
         .sidebar {
-            position: fixed; 
-            width: 100%; 
-            height: 100%; 
-            top: 0; 
-            left: 0; 
-            z-index: 999; 
-            overflow-y: auto; 
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            overflow-y: auto;
             transition: transform 0.3s ease-in-out;
             /* transform: translateX(-100%); */
-            
+
         }
 
         .sidebar-hidden {
@@ -218,23 +218,23 @@ $links = array(
             height: 35%;
         }
 
-        .sidebar-button { 
+        .sidebar-button {
             font-size: x-large;
-            
+
         }
 
-        .sidebar-item-title { 
+        .sidebar-item-title {
             font-size: x-large;
             margin-left: 5%;
             width: 80%;
         }
 
-        .sidebar-line { 
+        .sidebar-line {
 
             width: 90%;
         }
-        
-    
+
+
     /* .close-button {
         display: unset;
         position: absolute; /* Make close button absolute position */
@@ -253,9 +253,9 @@ $links = array(
             echo "
             <img src='" .server_base_url()."assets/images/site_images/logo.png' alt='easy go logo'>
             "
-            ?>   
+            ?>
         </div>
-        
+
         <div class="sidebar-button" onclick = "goto_page('tripform.php', false)">
             New trip +
         </div>
@@ -269,12 +269,12 @@ $links = array(
             <div class='sidebar-item' onclick = 'goto_page(\"" . $details['link'] . ".php\", false)'>
                 <div class = 'sidebar-line'>
                     <div class= 'sidebar-item-img'>
-                    
+
                         " . $details['icon']  ."
                     </div>
                     <div class= 'sidebar-item-title'> $title </div>
                 </div>
-                
+
             </div>
             ";
         }

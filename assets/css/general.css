@@ -200,6 +200,7 @@ svg {
 .easygo-btn-2,
 .easygo-btn-3,
 .easygo-btn-4,
+.easygo-btn-6,
 .easygo-btn-5 {
   display: flex;
   justify-content: center;
@@ -247,6 +248,16 @@ svg {
   background-color: var(--easygo-white);
   color: var(--easygo-blue);
   border-radius: 50px;
+}
+
+.easygo-btn-6{
+  border: 1px solid var(--easygo-orange);
+  padding: 0.75rem 1rem;
+  margin: 4px;
+  background-color: rgba(255, 165, 0, 0.2);
+  color: white;
+  border-radius: 5px;
+  color:black;
 }
 
 .burger-btn {
@@ -1930,8 +1941,10 @@ input:disabled {
 .activity-span{
   background-color: var(--easygo-blue);
   color: white;
-  padding: 0.5rem 0.75rem;
+  padding: 0.3rem 0.25rem;
   border-radius: 5px;
+  align-self: center;
+  align-content: center;
   font-size: var(--font-size-5);
 }
 /* [end] Iitnerary card with small image card  */

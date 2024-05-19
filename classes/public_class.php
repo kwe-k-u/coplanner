@@ -5,6 +5,10 @@
 
 	class public_class extends db_prepared{
 
+		function get_transaction($d){
+			return array();
+		}
+
 		function email_signup($name,$email,$password){
 			$sql = "SELECT email_signup(?,?,?);";
 			$this->prepare($sql);
