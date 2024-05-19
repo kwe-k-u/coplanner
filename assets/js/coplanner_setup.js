@@ -18,8 +18,9 @@ class EhPageTransition {
 					let selected = get_section_responses(parent);
 					let target = event.target.getAttribute("data-transit-target");
 					console.log(selected)
+					console.log("which clicked",btn.innerHTML.includes("Previous"));
 
-					if(!btn.innerHTML.includes("Back")){
+					if(!(btn.innerHTML.includes("Back") || btn.innerHTML.includes("Previous"))){
 
 						if (typeof selected !== "string" ) {
 

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-MP8PWJLD');</script>
+	<!-- End Google Tag Manager -->
+	<link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Coplanner - Recommendations</title>
+	<!-- Bootstrap css -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<!-- Fontawesome css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- easygo css -->
+	<link rel="stylesheet" href="../assets/css/general.css">
+</head>
+
+<body class="bg-gray-3">
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP8PWJLD" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<!-- main content start -->
+	<div class="main-wrapper">
+		<!--- ================================ -->
+		<!-- navbar [start] -->
+		<nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
+			<div class="container-fluid">
+
+				<a class='navbar-brand' href='../index.php'>
+					<img class='logo-medium' src='http://localhost/coplanner/assets/images/site_images/logo.png'
+						onerror='this.onerror=null; this.remove();' alt=''>
+				</a>
+				<div class='justify-content-end'>
+					<div class='d-flex gap-4'>
+						<button class='easygo-btn-4 border-blue text-blue easygo-fs-5'
+							onclick='goto_page("https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=online&client_id=165362367823-itkfk45iedob56p8uj884jc41cmr26ep.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Fcoplanner%2Fprocessors%2Fcallback.php%2Fgoogle_oauth&state&scope=email%20profile&approval_prompt=auto",false)'>
+							<img width='25px'
+								src='https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA'
+								alt='' srcset=''>
+							<span style='margin-left: 8px;'>
+								Continue With Google
+							</span>
+						</button>
+						<a href='http://localhost/coplanner/coplanner/login.php'
+							class='easygo-btn-5 bg-blue text-white easygo-fs-5'>Sign In</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<nav class="navbar navbar-expand-md fixed-top easygo-nav-white"
+			style="background: var(--easygo-orange); z-index: 1029; margin-top:80px;">
+			<div class="container-fluid justify-content-center">
+				<a target="_blank" style="text-decoration:underline!important; color:white;"
+					href="https://us21.list-manage.com/survey?u=2bd1d8f7814d0d70eb78d4383&id=89f89dd0d7&attribution=false">Click
+					here to tell us if something breaks</a>
+			</div>
+		</nav> <!-- navbar [end] -->
+		<!--- ================================ -->
+		<main class="container" style="height: 200vh; padding-top: 9rem; padding-bottom: 3rem;">
+			<div class="loader"></div>
+			<div class="col">
+				<h3>Here are some recommendations to choose from</h3>
+				<div class="row">
+					<div class="itinerary-cards-container easygo-scroll-bar scroll-h" style="gap:50px">
+
+
+						<div class='itinerary-card grid-item m-2'
+							onclick='goto_page("coplanner/itinerary_view.php?id=aa29358a8056511efa4240a0027000006")'>
+							<div class="itinerary-card-img">
+								<img src='http://localhost/coplanner/assets/images/suggestions/9.jpg'
+									class='itinerary-img'>
+							</div>
+							<div class='itinerary-card-body'>
+								<div class='price'>
+									<p>
+										GHS 25.00
+									</p>
+								</div>
+								<div>
+									<h5 class='easygo-fw-1'>History Tour of Accra</h5>
+								</div>
+								<div class="creator-name">
+									<p>Created by <span class="text-gray-1">Kweku</span></span></p>
+								</div>
+								<div class='itinerary-activities'>
+									<div class='activity-span'>Sightseeing</div>
+									<div class='activity-span'>Sightseeing</div>
+									<div class='activity-span'>Sightseeing</div>
+									<div class='activity-span'>Sightseeing</div>
+									<div class='activity-span'>Sightseeing</div>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<!-- main content end -->
+
+	<!-- Bootstrap js -->
+	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+	<!-- JQuery js -->
+	<script src="../assets/js/jquery-3.6.1.min.js"></script>
+	<!-- easygo js -->
+
+	<script>
+		const baseurl = 'http://localhost/coplanner/';
+		const server_mode = false;
+		const paystack_public_key = 'pk_test_495b6e567602955c612db143375e11b02d8ba31d';
+	</script>
+	<script src="../assets/js/general.js"></script>
+
+	<script src="../assets/js/functions.js"></script>
+	<script>
+	</script>
+</body>
+
+</html>
