@@ -1,0 +1,372 @@
+body{
+	margin: 0;
+	height: 100vh;
+}
+.body-container{
+	margin: 0;
+	/* margin-top: 5em; */
+	/* margin-bottom: 12em; */
+	display: flex;
+	flex-direction: row;
+	width: 100vw;
+	height: 100vh;
+}
+.right-body-container{
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+.content-container{
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: auto;
+}
+.home-destination-row{
+	height: 20%;
+}
+.content-main {
+	height: 60%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+}
+
+
+
+.summary-content {
+	height: 90%;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-around;
+}
+.summary-content .left-summary{
+	height: 90%;
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+
+}
+.summary-content .right-summary{
+	height: 90%;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+}
+.right-summary-title {
+	height: 15%;
+	justify-content: space-around;
+	display: flex;
+	flex-direction: column;
+}
+.summary-title {
+	font-size: x-large;
+	margin-bottom: 0.25em;
+}
+.summary-by {
+	font-size: large;
+	color: blue;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+.right-summary-main {
+	height: 30%;
+	align-content: center;
+	text-align: justify;
+}
+
+.itinerary-image {
+	border-radius: 1em;
+	overflow:hidden;
+	width: fit-content;
+}
+.itinerary-image img {
+	max-width: 40em;
+}
+
+@media screen and (min-width: 768px) {
+	.trans-cards{
+		display: none
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.body-container{
+	/* margin: 0;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%; */
+	height: unset;
+	}
+	.home-destination-row{
+	height: 10em;
+	width: 100%;
+	}
+	.welcome-title {
+		width: 100%;
+		font-weight: bold;
+		font-size: x-large;
+		margin: 1em 0.5em;
+	}
+
+	.welcome-subtitle {
+		display: none;
+		width: 100%;
+		font-weight: bold;
+		font-size: x-large;
+		margin: 1em 0.5em;
+	}
+	.right-body-container{
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
+	.content-container{
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: unset;
+		overflow: auto;
+	}
+	.summary-itinerary-section {
+		width: 100%;
+	}
+	.summary-content {
+		flex-direction: column;
+	}
+
+	.left-summary {
+		width: 100% !important;
+	}
+	.right-summary {
+		width: 100% !important;
+		margin-top: 1.5em;
+	}
+	.itinerary-image, .itinerary-image img {
+		width: 100%;
+	}
+
+	.summary-itinerary-row{
+		flex-direction: column;
+	}
+}
+
+.summary-itinerary-day {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1em;
+	border-bottom: 1px #b8b1b1 solid;
+	padding-top: 2em;
+	padding-bottom: 1em;
+}
+.itin-summary-title {
+	font-size: x-large;
+	margin: 1em 0;
+}
+
+.summary-itinerary-title {
+	font-size: x-large;
+	color: orange;
+}
+
+.summary-itinerary-day:last-child {
+	margin-bottom: 2em;
+	border-bottom: none;
+}
+.summary-itinerary-row {
+
+	width: 100%;
+	display: flex;
+}
+
+
+ /*[start] Destination information box styling  */
+ .summary-itinerary-row .summary-itinerary-location {
+	 width: 25em;
+	 min-height: 7em;
+	 max-height: 10em;
+	 display: flex;
+	 flex-direction: column;
+	 padding: 8px 4px;
+	 /* justify-content: space-around; */
+	 /* border-right: 1px #b8b1b1 solid; */
+
+	}
+
+	.summary-itin-highlights {
+		/* display: flex;
+		justify-content: space-between; */
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		row-gap: 4px;
+		column-gap: 4px;
+		width: 85%;
+	}
+
+
+	.summary-itinerary-location .summary-itin-title{
+		font-size: var(--font-size-5);
+		margin-top: 4px;
+		margin-bottom: 0px;
+		color: grey;
+	}
+
+	.summary-itinerary-location .summary-itin-name{
+		margin-bottom: 2px;
+		margin-top: 0px;
+		font-weight: bold;
+		font-size: larger;
+	}
+
+	.summary-itin-specloc{
+		font-size: var(--font-size-5);
+		margin-bottom: 8px;
+	}
+
+	@media (max-width: 669px) {
+		.summary-itinerary-location {
+			/* border-top: 0.5px solid gray; */
+			border-bottom: 1px groove gray;
+		}
+	}
+	/*[end] Destination information box styling  */
+
+
+
+.invoice-main {
+	border: 1px solid var(--easygo-blue);
+	background-color: white;
+	border-radius: 10px;
+	padding-top: 4px;
+	padding-bottom: 12px;
+
+}
+
+@media (max-width: 668px) {
+	.invoice-main {
+		border: none;
+		background-color: white;
+		border-radius: 10px
+	}
+
+}
+.payment-btn-section{
+	margin-top: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+.payment-btn-section .btn{
+	margin: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+}
+
+.invoice-container {
+	width: 90%;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top: 2em;
+	background-color: var(--easygo-bg-3);
+}
+.invoice-container .invoice-dest,
+.invoice-container .invoice-tax,
+.invoice-container .invoice-total
+{
+	margin-top: 1em;
+	border-bottom: 1px solid var(--easygo-gray-1);
+
+}
+
+.invoice-container > div:first-child{
+	margin-top: 0;
+}
+.invoice-container > div:last-child{
+	padding-bottom: 1.5em;
+	border-bottom:  none;
+}
+
+.invoice-id {
+	font-weight: bold;
+	font-size: larger;
+	align-content: center;
+	padding-bottom: 1.5em;
+
+}
+
+.invoice-id span {
+	font-weight: lighter;
+	font-size: large;
+	color: #848484;
+}
+.invoice-date{
+	color: blue;
+	text-align-last: center;
+}
+.invoice-dets {
+	height: 6em;
+}
+.invoice-dets>div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.invoice-tax {
+	display: flex;
+	justify-content: space-between;
+	height: 4em;
+	padding-bottom: 1.5em;
+}
+
+.invoice-tax div:first-child {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.invoice-tax div:last-child {
+
+	place-content: end;
+
+}
+.invoice-total{
+	display: flex;
+	justify-content: space-around;
+	font-weight: bold;
+	font-size: larger;
+	color: blue;
+}
+
+
+.tc-text{
+	font-size: var(--font-size-5);
+	color: grey;
+	padding-left: 4px;
+}
+.bill-header {
+	font-size: x-large;
+	margin-bottom: 1em;
+	font-weight: bold;
+}
+.summary-itinerary-section{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}

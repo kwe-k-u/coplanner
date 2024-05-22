@@ -1,6 +1,6 @@
 /******************** IMPORTS ********************/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import url("../css/signup_bypass.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 /******************** GLOBAL VARIABLES ********************/
 :root {
   /** typography **/
@@ -24,6 +24,7 @@
 
   /** colors **/
   --easygo-blue: #1204b5;
+  --easygo-blue-faded: rgba(18, 4, 181,0.13);
   --easygo-lblue-1: #f1f4f8;
   --easygo-orange: #f8973a;
   --easygo-lorange-1: rgba(255, 165, 0, 0.2);
@@ -45,6 +46,7 @@
   --box-shadow-1: 0px 0px 40px rgba(0, 0, 0, 0.1);
   --box-shadow-2: 0px 4px 18px rgba(209, 209, 209, 0.25);
   --box-shadow-3: 0 4px 10px 3px rgba(0, 0, 0, 0.3);
+  --box-shadow-4: 1px 1px 4px 2px rgba(0, 0, 0, 0.3);
 
   /** logo sizes **/
   --logo-small: 4rem;
@@ -81,7 +83,7 @@ img {
 }
 .itinerary-img{
   max-width: 400px!important;
-  max-height: 250px!important;
+  max-height: 200px!important;
   object-fit: cover;
 }
 /** other styles **/
@@ -200,6 +202,7 @@ svg {
 .easygo-btn-2,
 .easygo-btn-3,
 .easygo-btn-4,
+.easygo-btn-6,
 .easygo-btn-5 {
   display: flex;
   justify-content: center;
@@ -217,7 +220,8 @@ svg {
 }
 
 .easygo-btn-1:hover {
-  color: var(--easygo-orange);
+  color: var(--easygo-blue);
+  border: 1px solid var(--easygo-blue);
 }
 
 .easygo-btn-2 {
@@ -247,6 +251,21 @@ svg {
   background-color: var(--easygo-white);
   color: var(--easygo-blue);
   border-radius: 50px;
+}
+
+.easygo-btn-6{
+  border: 1px solid var(--easygo-orange);
+  padding: 0.75rem 1rem;
+  margin: 4px;
+  background-color: rgba(255, 165, 0, 0.2);
+  color: white;
+  border-radius: 5px;
+  color:black;
+}
+
+.easygo-btn-6:hover{
+  border: 1px solid var(--easygo-orange);
+  color: var(--easygo-orange);
 }
 
 .burger-btn {
@@ -286,19 +305,23 @@ svg {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid 2px var(--easygo-blue);
+  border:  0.5px solid var(--easygo-blue);
   border-radius: 10px;
   width: 100%;
   background-color: white;
   padding: 1rem;
-  box-shadow: 0 4px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
   transition: all 0.3s;
   cursor: pointer;
 }
 
 .easygo-icon-btn:hover {
-  transform: translateY(10px);
-  box-shadow: 0 4px 3px 3px rgba(0, 0, 0, 0);
+  transform: translateY(3px);
+  box-shadow: 0 4px 3px 3px transparent;
+}
+
+.sharp-border{
+  border-radius: 8px;
 }
 
 .easygo-radio-btn-1 input[type="radio"] {
@@ -306,8 +329,9 @@ svg {
 }
 
 .easygo-radio-btn-1 input[type="radio"]:checked + label {
-  background-color: var(--easygo-orange);
-  color: white !important;
+  background-color: var(--easygo-blue-faded);
+  color: var(--easygo-blue) !important;
+  border: 2px solid var(--easygo-blue);
 }
 
 .easygo-checkbox-btn-1 input[type="checkbox"] {
@@ -1860,17 +1884,40 @@ input:disabled {
   padding: 2rem;
 }
 
+.itinerary-card-img{
+  width: 100%;
+  height: 50%;
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.itinerary-card-img img{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+
 .itinerary-card {
   background-color: white;
   width: 400px;
-  height: 500px;
+  height: 400px;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 6px 8px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: var(--box-shadow-4);
   border-radius: 20px;
+}
+
+@media screen and (min-width: 668px) {
+  .itinerary-card{
+    height: 450px;
+  }
 }
 
 .itinerary-card .itinerary-card-top-note {
@@ -1878,7 +1925,7 @@ input:disabled {
   color: white;
   font-size: var(--font-size-3);
   width: 30%;
-  height: 14%;
+  /* max-height: 7%; */
   margin-right: 10%;
   margin-left: auto;
   padding: 0rem 0.1rem;
@@ -1894,15 +1941,21 @@ input:disabled {
   flex: 0 0 75%;
   padding: 1rem 2rem;
   align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
-.itinerary-card-body .price-and-people {
+.itinerary-card-body p,
+.itinerary-card-body h6 {
+  margin: 0;
+}
+.itinerary-card-body .price {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   color: var(--easygo-gray-1);
+}
+
+.itinerary-card-body .creator-name{
+  font-size: var(--font-size-4);
+  margin-bottom: 16px;
 }
 
 .itinerary-card .itinerary-desc {
@@ -1913,8 +1966,10 @@ input:disabled {
 
 .itinerary-card .itinerary-activities {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  flex-direction: row;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  overflow-x: hidden;
 }
 
 .itinerary-card .itinerary-activities .activity {
@@ -1930,8 +1985,10 @@ input:disabled {
 .activity-span{
   background-color: var(--easygo-blue);
   color: white;
-  padding: 0.5rem 0.75rem;
+  padding: 0.3rem 0.25rem;
   border-radius: 5px;
+  align-self: center;
+  align-content: center;
   font-size: var(--font-size-5);
 }
 /* [end] Iitnerary card with small image card  */
