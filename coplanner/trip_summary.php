@@ -1,26 +1,10 @@
 <?php
 require_once(__DIR__."/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
-// Dummy array object
-// $data = array(
-//     array("id" => 1, "item" => "Item 1", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
-//     array("id" => 2, "item" => "Item 2", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
-//     array("id" => 3, "item" => "Item 3", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
-//     array("id" => 4, "item" => "Item 4", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
-//     array("id" => 5, "item" => "Item 5", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
-//     array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
-//     array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
-//     array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
-//     array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
-//     array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed")
-// );
 
-$hm = new public_class();
-$data = $hm->get_transaction("U001");
-// echo json_encode($hi);
 ?>
-
 <!DOCTYPE html>
+<script src="../assets/js/functions.js"></script>
 
 <html lang="en">
 <head>
@@ -61,9 +45,6 @@ $data = $hm->get_transaction("U001");
         justify-content: space-between;
         overflow: auto;
     }
-    .home-destination-row{
-        height: 20%;
-    }
     .content-main {
         height: 60%;
         display: flex;
@@ -98,7 +79,7 @@ $data = $hm->get_transaction("U001");
         margin-left: auto;
         margin-right: auto;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: space-around;
     }
     .summary-content .left-summary{
@@ -108,13 +89,13 @@ $data = $hm->get_transaction("U001");
         flex-direction: column;
         
     }
-    .summary-content .right-summary{
+    .summary-content .left-summary{
         height: 90%;
         width: 60%;
         display: flex;
         flex-direction: column;
     }
-    .right-summary-title {
+    .left-summary-title {
         height: 15%;
         justify-content: space-around;
         display: flex;
@@ -130,7 +111,7 @@ $data = $hm->get_transaction("U001");
         font-weight: bold;
         margin-bottom: 1em;
     }
-    .right-summary-main {
+    .left-summary-main {
         height: 30%;
         align-content: center;
         text-align: justify;
@@ -159,10 +140,7 @@ $data = $hm->get_transaction("U001");
         height: 100%; */
         height: unset;
         }
-        .home-destination-row{
-        height: 10em;
-        width: 100%;
-        }
+
         .welcome-title {
             width: 100%;
             font-weight: bold;
@@ -193,26 +171,39 @@ $data = $hm->get_transaction("U001");
             justify-content: unset;
             overflow: auto;
         }
+
         .summary-itinerary-section {
             width: 100%;
         }
+
         .summary-content {
             flex-direction: column;
         }
      
-        .left-summary {
+        .right-summary {
             width: 100% !important;
         }
-        .right-summary {
+
+        .left-summary {
             width: 100% !important;
             margin-top: 1.5em; 
         }
+
         .itinerary-image, .itinerary-image img {
             width: 100%;
         }
 
         .summary-itinerary-row{
             flex-direction: column;
+        }
+
+        .summary-itinerary-row .summary-itinerary-location {
+            width: 100% !important;
+            margin-bottom: 1em;
+        }
+
+         .summary-itin-highlights {
+            width: 95% !important;
         }
     }
 
@@ -238,12 +229,12 @@ $data = $hm->get_transaction("U001");
         margin-bottom: 2em;
     }
     .summary-itinerary-row {
-        
+        flex-wrap: wrap;
         width: 100%;
         display: flex;
     }
     .summary-itinerary-row .summary-itinerary-location {
-        width: 25em;
+        width: 33%;
         height: 10em;
         display: flex;
         flex-direction: column;
@@ -263,6 +254,7 @@ $data = $hm->get_transaction("U001");
         background: blue;
         padding: 2px 7px;
         border-radius: 10px;
+        height: fit-content;
     }
 
     .summary-itin-name {
@@ -364,8 +356,8 @@ $data = $hm->get_transaction("U001");
         <div class = "right-body-container">
             <!-- topbar -->
             <?php
-            $showHome = true;
-            require_once(__DIR__."/topbar.php");
+                $showHome = true;
+                require_once(__DIR__."/topbar.php");
             ?>
             <div class = "content-container">
                 <!-- main content here -->
@@ -375,7 +367,25 @@ $data = $hm->get_transaction("U001");
                     </div> -->
                     <div class = "summary-content">
                         <div class = "left-summary">
-                            <div class = "bill-header">Bill</div>
+                            <div class = "left-summary-title">
+                                <div class = "summary-title">
+                                    Accra Mall
+                                </div>
+                                <div class = "summary-by">
+                                    By EasyGo Tours
+                                </div>
+                            </div>
+                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
+                            <div class = "itin-summary-title">
+                                    Selected Activities
+                            </div>
+                            <div class = "left-summary-main">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </div>
+                            
+                        </div>
+                        <div class = "right-summary">
+                            <div class = "bill-header">Invoice</div>
                             <div class = "invoice-main">
                                 <div class = "invoice-container">
                                     <div class="invoice-id"> Invoice:   <span>hfsbdobspdobdsubsdbdsups </div>
@@ -401,29 +411,38 @@ $data = $hm->get_transaction("U001");
                                 </div>
                             </div>
                         </div>
-                        <div class = "right-summary">
-                            <div class = "right-summary-title">
-                                <div class = "summary-title">
-                                    Accra Mall
-                                </div>
-                                <div class = "summary-by">
-                                    By EasyGo Tours
-                                </div>
-                            </div>
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class = "itin-summary-title">
-                                    Selected Activities
-                            </div>
-                            <div class = "right-summary-main">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                            </div>
                             
+                            
+                        </div>
+
                         </div>
                     </div>
                     <div class = "summary-itinerary-section">
                                 <div class = "summary-itinerary-day">
                                 <div class = "summary-itinerary-title"> Day 1 </div>
                                     <div class = "summary-itinerary-row">
+                                        <div class = "summary-itinerary-location">
+                                            <div class = "summary-itin-title"> Destination 1 </div>
+                                            <div class ="summary-itin-name"> Accra Mall </div>
+                                            <div class ="summary-itin-specloc"> Accra </div>
+                                            <div class = "summary-itin-highlights">
+                                                <div class = "summary-itin-highlight-item"> Paintball</div> 
+                                                <div class = "summary-itin-highlight-item"> Darts</div>
+                                                <div class = "summary-itin-highlight-item"> Shopping</div>
+                                                <div class = "summary-itin-highlight-more"> +<span>4</span> more</div>
+                                            </div>
+                                        </div>
+                                        <div class = "summary-itinerary-location">
+                                            <div class = "summary-itin-title"> Destination 1 </div>
+                                            <div class ="summary-itin-name"> Accra Mall </div>
+                                            <div class ="summary-itin-specloc"> Accra </div>
+                                            <div class = "summary-itin-highlights">
+                                                <div class = "summary-itin-highlight-item"> Paintball</div> 
+                                                <div class = "summary-itin-highlight-item"> Darts</div>
+                                                <div class = "summary-itin-highlight-item"> Shopping</div>
+                                                <div class = "summary-itin-highlight-more"> +<span>4</span> more</div>
+                                            </div>
+                                        </div>
                                         <div class = "summary-itinerary-location">
                                             <div class = "summary-itin-title"> Destination 1 </div>
                                             <div class ="summary-itin-name"> Accra Mall </div>

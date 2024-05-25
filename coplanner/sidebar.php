@@ -8,23 +8,23 @@ $links = array(
         </span>"
     ),
     "My trips" => array(
-        "link" => "mytrips",
+        "link" => "my_trips",
         "icon" => "<span class=\"material-symbols-outlined\">
         trip
         </span>"
     ),
-    "Explore destinations" => array(
-        "link" => "#",
-        "icon" => "<span class=\"material-symbols-outlined\">
-        location_on
-        </span>"
-    ),
-    "Wishlist" => array(
-        "link" => "#",
-        "icon" => "<span class=\"material-symbols-outlined\">
-        bookmark
-        </span>"
-    ),
+    // "Explore destinations" => array(
+    //     "link" => "#",
+    //     "icon" => "<span class=\"material-symbols-outlined\">
+    //     location_on
+    //     </span>"
+    // ),
+    // "Wishlist" => array(
+    //     "link" => "#",
+    //     "icon" => "<span class=\"material-symbols-outlined\">
+    //     bookmark
+    //     </span>"
+    // ),
     "Transaction" => array(
         "link" => "#",
         "icon" => "    <span class=\"material-symbols-outlined\">
