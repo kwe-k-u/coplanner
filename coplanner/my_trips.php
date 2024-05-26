@@ -2,28 +2,30 @@
 require_once(__DIR__."/../utils/core.php");
 
 // Dummy array object
-$data = array(
-     array("id" => 1, "item" => "Item 1", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
-     array("id" => 2, "item" => "Item 2", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
-     array("id" => 3, "item" => "Item 3", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
-     array("id" => 4, "item" => "Item 4", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
-     array("id" => 5, "item" => "Item 5", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
-     array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
-     array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
-     array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
-     array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
-    array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed"),
-    array("id" => 11, "item" => "Item 11", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
-    array("id" => 12, "item" => "Item 12", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
-    array("id" => 13, "item" => "Item 13", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
-    array("id" => 14, "item" => "Item 14", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
-    array("id" => 15, "item" => "Item 15", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
-    // array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
-    // array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
-    // array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
-    // array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
-    // array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed")
+$fullData = array(
+     array("id" => 1, "location" => "Item 1", "date" => "2024-04-15", "NoD" => 2, "status" => "Past"),
+     array("id" => 2, "location" => "Item 2", "date" => "2024-04-16", "NoD" => 4, "status" => "Past"),
+     array("id" => 3, "location" => "Item 3", "date" => "2024-04-17", "NoD" => 1, "status" => "Past"),
+     array("id" => 4, "location" => "Item 4", "date" => "2024-04-18", "NoD" => 6, "status" => "Past"),
+     array("id" => 5, "location" => "Item 5", "date" => "2024-04-19", "NoD" => 3, "status" => "Past"),
+     array("id" => 6, "location" => "Item 6", "date" => "2024-04-20", "NoD" => 3, "status" => "Past"),
+     array("id" => 7, "location" => "Item 7", "date" => "2024-04-21", "NoD" => 3, "status" => "Past"),
+     array("id" => 8, "location" => "Item 8", "date" => "2024-04-22", "NoD" => 2, "status" => "Past"),
+     array("id" => 9, "location" => "Item 9", "date" => "2024-04-23", "NoD" => 3, "status" => "Upcoming"),
+    array("id" => 10, "location" => "Item 10", "date" => "2024-04-24", "NoD" => 5, "status" => "Upcoming"),
+    array("id" => 11, "location" => "Item 11", "date" => "2024-04-15", "NoD" => 5, "status" => "Upcoming"),
+    array("id" => 12, "location" => "Item 12", "date" => "2024-04-16", "NoD" => 6, "status" => "Upcoming"),
+    array("id" => 13, "location" => "Item 13", "date" => "2024-04-17", "NoD" => 6, "status" => "Ongoing"),
+    array("id" => 14, "location" => "Item 14", "date" => "2024-04-18", "NoD" => 7, "status" => "Upcoming"),
+    array("id" => 15, "location" => "Item 15", "date" => "2024-04-19", "NoD" => 7, "status" => "Ongoing")
 );
+
+function filterCompletedItems($status, $data) {
+    $completedItems = array_filter($data, function($item) use ($status) {
+        return $item['status'] === $status;
+    });
+    return $completedItems;
+}
 
 ?>
 <!DOCTYPE html>
@@ -129,11 +131,10 @@ $data = array(
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
     }
 
     .trip-table-tab{
-        height: 20%;
+        height: 10%;
     }
 
     .tab-container {
@@ -151,15 +152,32 @@ $data = array(
         font-weight: bold;
         border-bottom: 2px solid #7d48be;
     }
-    .upcoming-trip {
+
+    .trip-status {
         width: fit-content;
         /* padding: 2px; */
-        background: yellow;
         padding: 0px 5px;
         font-size: smaller;
         border-radius: 10px;
-        color: #878b31cc;
-        border: 1px solid #878b31cc;
+
+    }
+
+    .upcoming-trip {
+        background: #feffad;
+        color: #888105cc;
+        border: 1px solid #888105cc;
+    }
+
+    .ongoing-trip {
+        background: #cdf6c5;
+        color: #1a7d0dcc;
+        border: 1px solid #1a7d0dcc;
+    }
+
+    .past-trip {
+        background: #ebebeb;
+        color: #757575cc;
+        border: 1px solid #757575cc;
     }
 
 
@@ -205,6 +223,12 @@ $data = array(
     .table-row .table-cell:first-child{
         width: 30%;
         
+    }
+
+
+
+    .tabToHide {
+        display: none !important;
     }
 
 
@@ -410,7 +434,7 @@ $data = array(
                     </div>
                 </div>
                 <div class="content-main">
-                    <div class="trip-table-section">
+                    <div class="trip-table-section" id="trip-table-section">
                         <div class="trip-table-tab">
                             <div class="tab-container">
                                 <div class="tab active" onclick="changeTab(1)" id="tab1">All trips</div>
@@ -419,26 +443,94 @@ $data = array(
                                 <div class="tab" onclick="changeTab(4)" id="tab4">Past trips</div>
                             </div>
                         </div>
-                        <div class="custom-table">
+                        <div class="custom-table " id = "all-trips">
                             <div class="table-row header">
                                 <div class="table-cell">id</div>
-                                <div class="table-cell">item</div>
+                                <div class="table-cell">location</div>
                                 <div class="table-cell">date</div>
-                                <div class="table-cell">amount</div>
+                                <div class="table-cell">Number of days</div>
                                 <div class="table-cell">status</div>
                             </div>
                             <?php
-                            foreach ($data as $row) {
+                            $status2class = array("Past" => "past-trip", "Upcoming" => "upcoming-trip", "Ongoing" => "ongoing-trip");
+                            foreach ($fullData as $row) {
                                 echo "<div class='table-row'>";
                                 echo "<div class='table-cell'>" . $row['id'] . "</div>";
-                                echo "<div class='table-cell'>" . $row['item'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['location'] . "</div>";
                                 echo "<div class='table-cell'>" . $row['date'] . "</div>";
-                                echo "<div class='table-cell'>" . $row['amount'] . "</div>";
-                                echo "<div class='table-cell'> <div class ='upcoming-trip'> " . $row['status'] . "</div></div>";
+                                echo "<div class='table-cell'>" . $row['NoD'] . "</div>";
+                                echo "<div class='table-cell'> <div class ='trip-status ". $status2class[$row['status']]  ."'> " . $row['status'] . "</div></div>";
                                 echo "</div>";
                             }
                             ?>
                         </div>
+                        <div class="custom-table tabToHide" id = "up-trips">
+                            <div class="table-row header">
+                                <div class="table-cell">id</div>
+                                <div class="table-cell">location</div>
+                                <div class="table-cell">date</div>
+                                <div class="table-cell">Number of days</div>
+                                <div class="table-cell">status</div>
+                            </div>
+                            <?php
+                            $status = "Upcoming";
+                            $data = filterCompletedItems($status, $fullData);
+                            foreach ($data as $row) {
+                                echo "<div class='table-row'>";
+                                echo "<div class='table-cell'>" . $row['id'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['location'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['date'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['NoD'] . "</div>";
+                                echo "<div class='table-cell'> <div class ='trip-status upcoming-trip'> " . $row['status'] . "</div></div>";
+                                echo "</div>";
+                            }
+                            ?>
+                        </div>
+                        <div class="custom-table tabToHide" id = "on-trips">
+                            <div class="table-row header">
+                                <div class="table-cell">id</div>
+                                <div class="table-cell">location</div>
+                                <div class="table-cell">date</div>
+                                <div class="table-cell">Number of days</div>
+                                <div class="table-cell">status</div>
+                            </div>
+                                <?php
+                                $status = "Ongoing";
+                                $data = filterCompletedItems("Ongoing", $fullData);
+                                    foreach ($data as $row) {
+                                        echo "<div class='table-row'>";
+                                        echo "<div class='table-cell'>" . $row['id'] . "</div>";
+                                        echo "<div class='table-cell'>" . $row['location'] . "</div>";
+                                        echo "<div class='table-cell'>" . $row['date'] . "</div>";
+                                        echo "<div class='table-cell'>" . $row['NoD'] . "</div>";
+                                        echo "<div class='table-cell'> <div class ='trip-status ongoing-trip'> " . $row['status'] . "</div></div>";
+                                        echo "</div>";
+                                    }
+                                ?>
+                        </div>
+                        <div class="custom-table tabToHide" id = "past-trips">
+                            <div class="table-row header">
+                                <div class="table-cell">id</div>
+                                <div class="table-cell">location</div>
+                                <div class="table-cell">date</div>
+                                <div class="table-cell">Number of days</div>
+                                <div class="table-cell">status</div>
+                            </div>
+                            <?php
+                            $status = "Past";
+                            $data = filterCompletedItems("Past", $fullData);
+                            foreach ($data as $row) {
+                                echo "<div class='table-row'>";
+                                echo "<div class='table-cell'>" . $row['id'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['location'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['date'] . "</div>";
+                                echo "<div class='table-cell'>" . $row['NoD'] . "</div>";
+                                echo "<div class='table-cell'> <div class ='trip-status past-trip'> " . $row['status'] . "</div></div>";
+                                echo "</div>";
+                            }
+                            ?>
+                        </div>
+
                         <div class = "trans-cards">
 
                             <!-- TODO: make dynamic -->
@@ -539,6 +631,26 @@ $data = array(
 </body>
 
 <script>
+    var tabs = {
+        1: "all-trips",
+        2: "up-trips",
+        3: "on-trips",
+        4: "past-trips"
+    }
+
+    function displayTable(id) {
+        tabTodisplay = tabs[id];
+        tableDiv = document.getElementById("trip-table-section");
+        const children = tableDiv.children;
+        for (let i = 0; i < children.length; i++) {
+            if (children[i].classList.contains("custom-table")  && children[i].id === tabTodisplay){
+                children[i].classList.remove("tabToHide")
+            } else if (children[i].classList.contains("custom-table") && !(children[i].classList.contains("tabToHide"))) {
+                children[i].classList.add("tabToHide")
+            }
+        }
+    }
+
     function toggleSidebar(show) {
         var sidebar = document.getElementById('sidebar');
         if (show) {
@@ -557,6 +669,7 @@ $data = array(
         // Add 'active' class to the clicked tab
         var tab = document.getElementById('tab' + tabNumber);
         tab.classList.add('active');
+        displayTable(tabNumber);
     }
 
 </script>
