@@ -4,22 +4,19 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 $showHome = true;
 
 // Dummy array object
-// $data = array(
-//     array("id" => 1, "item" => "Item 1", "date" => "2024-04-15", "amount" => 100, "status" => "Pending"),
-//     array("id" => 2, "item" => "Item 2", "date" => "2024-04-16", "amount" => 150, "status" => "Completed"),
-//     array("id" => 3, "item" => "Item 3", "date" => "2024-04-17", "amount" => 200, "status" => "Pending"),
-//     array("id" => 4, "item" => "Item 4", "date" => "2024-04-18", "amount" => 120, "status" => "Completed"),
-//     array("id" => 5, "item" => "Item 5", "date" => "2024-04-19", "amount" => 180, "status" => "Pending"),
-//     array("id" => 6, "item" => "Item 6", "date" => "2024-04-20", "amount" => 220, "status" => "Completed"),
-//     array("id" => 7, "item" => "Item 7", "date" => "2024-04-21", "amount" => 130, "status" => "Pending"),
-//     array("id" => 8, "item" => "Item 8", "date" => "2024-04-22", "amount" => 170, "status" => "Completed"),
-//     array("id" => 9, "item" => "Item 9", "date" => "2024-04-23", "amount" => 250, "status" => "Pending"),
-//     array("id" => 10, "item" => "Item 10", "date" => "2024-04-24", "amount" => 300, "status" => "Completed")
-// );
+$data = array(
+    array("id" => 1, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 2, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 3, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 4, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 5, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 6, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 7, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 8, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 9, "name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg"),
+    array("id" => 10,"name" => "Waterfalls", "cost" => "600", "creator" => "Kwame Asante", "activities" => array("paintball", "shopping","swimming", "smilling"), "image" => "../assets/images/site_images/d-lab-expo.jpg")
+);
 
-$hm = new public_class();
-$data = $hm->get_transaction("U001");
-// echo json_encode($hi);
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +80,11 @@ $data = $hm->get_transaction("U001");
         flex-direction: row;
         justify-content: space-around;
         
+    }
+
+    .disable{
+        cursor: not-allowed !important;
+        opacity: 30%;
     }
 
     .transaction-table-section{
@@ -294,12 +296,11 @@ $data = $hm->get_transaction("U001");
     .itinerary-highlights{
         display: inline-flex;
         justify-content: space-between;
-        width: 75%;
     }
     .itinerary-highlight-item {
         color: white;
         background: blue;
-        padding: 2px 1px;
+        padding: 2px 4px;
         border-radius: 10px;
     }
     
@@ -312,7 +313,15 @@ $data = $hm->get_transaction("U001");
 
     #content-container-1 .form-button-previous {
         cursor: not-allowed;
+
     }
+
+    .form-button-previous {
+        background-color: white;
+        border: 1px solid orange;
+        color: black;
+    }
+
     .hidden {
         display: none;
     }
@@ -374,7 +383,6 @@ $data = $hm->get_transaction("U001");
         font-size: x-large;
         color: #1931A8;
         cursor: pointer;
-        margin-bottom: 1em;
     }
 
     .trip-form-3 {
@@ -398,6 +406,39 @@ $data = $hm->get_transaction("U001");
     .slide-left-and-vanish {
         animation: slideLeftAndVanish 0.3s forwards;
     }
+    
+    .toggle-div {
+        display: flex;
+        width: 30%;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 0.5em;
+        margin-right: auto;
+    }
+
+    .man-cost-input {
+        width: 50%;
+        height: 2.75em;
+        border: 0px;
+    }
+
+    .trip-form-manCost{
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: space-evenly;
+    }
+    .man-cost-input::-webkit-outer-spin-button,
+    .man-cost-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Firefox */
+    .man-cost-input[type=number] {
+    -moz-appearance: textfield;
+    }
+
 
     @keyframes slideLeftAndVanish {
         0% {
@@ -458,17 +499,77 @@ $data = $hm->get_transaction("U001");
     @media screen and (min-width: 768px) {
 
     }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #4caf50;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #4caf50;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
 
     @media screen and (max-width: 768px) {
 
+        .trip-form-2 {
+            margin-bottom: 1em;
+            width: 80%;
+        }
 
         .body-container{
             /* height: unset; */
         }
 
-        .trip-form-2 {
-            width: 80%;
-        }
         .home-destination-row{
         height: 10em;
         width: 100%;
@@ -549,6 +650,21 @@ $data = $hm->get_transaction("U001");
             justify-content: space-around;
         }
 
+        .trip-form-manCost {
+            flex-direction: column;
+            margin: 1em 0;
+            align-items: unset !important;
+        }
+        .trip-form-manCost > input {
+            height: 40%;
+        }
+        .toggle-div {
+            width: 100% !important;
+        }
+        .man-cost-input {
+            width: 100% !important;
+            font-size: larger;
+        }
     }
 
     
@@ -566,9 +682,7 @@ $data = $hm->get_transaction("U001");
             <!-- topbar -->
             <?php
             $showHome = true;
-            require_once(__DIR__."/topbar.php");
-            
-
+            require_once(__DIR__."/topbar.php"); 
             ?>
                 <div id="warningMessage" class="hidden">
                     <p>Select an option!!</p>
@@ -610,7 +724,7 @@ $data = $hm->get_transaction("U001");
                             <div class = "trip-form-1" onclick = "processSelection(event)" id = "formOption-2-4" value = "7"> About a week</div>
                         </div>
                         <div style = "display: flex;">
-                            <div class="form-button" onclick = "prevFormQuestion(2)">previous</div>
+                            <div class="form-button form-button-previous" onclick = "prevFormQuestion(2)">previous</div>
                             <div class="form-button" onclick = "nextFormQuestion(2)">Continue</div>
                         </div>
                     </div>
@@ -632,7 +746,7 @@ $data = $hm->get_transaction("U001");
                             <div class = "trip-form-1" onclick = "processSelection(event)" id = "formOption-3-4" value = "friends">Friends</div>
                         </div>
                         <div style = "display: flex;">
-                            <div class="form-button" onclick = "prevFormQuestion(3)">previous</div>
+                            <div class="form-button form-button-previous" onclick = "prevFormQuestion(3)">previous</div>
                             <div class="form-button" onclick = "nextFormQuestion(3)">Continue</div>
                         </div>
                     </div>
@@ -656,7 +770,7 @@ $data = $hm->get_transaction("U001");
                             <div class = "trip-form-2" onclick = "processMultiSelection(event)" id = "formOption-4-6" value = "Alternative experience"> Alternative experience</div>
                         </div>
                         <div style = "display: flex;">
-                            <div class="form-button" onclick = "prevFormQuestion(4)">previous</div>
+                            <div class="form-button form-button-previous" onclick = "prevFormQuestion(4)">previous</div>
                             <div class="form-button" onclick = "nextFormQuestion(4)">Continue</div>
                         </div>
                     </div>
@@ -676,8 +790,21 @@ $data = $hm->get_transaction("U001");
                             <div class = "trip-form-3" onclick = "processSelection(event)" id = "formOption-5-2" value = "4999"> GHS 1000 - GHS 4999</div>
                             <div class = "trip-form-3" onclick = "processSelection(event)" id = "formOption-5-3" value = "inf"> GHS 5000 and above </div>
                         </div>
+                        
+                        <div class = "trip-form-manCost" style = "display: flex; align-items: center; justify-content: space-evenly" >
+                            <div style ="" class = "toggle-div">
+                                <label class="switch">
+                                    <input type="checkbox" onchange= "handleCheckboxChange(this)" id = "manual-checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                                <div >Switch toggle to type exact amount</div>
+                            </div>
+                            
+                            <input class="man-cost-input" type= "number" oninput = "handleManInput(this)" name="tripMaxCost" id = "tripManualCost" inputmode="numeric" value="" disabled placeholder = "enter amount" />
+                            <span></span>
+                        </div>
                         <div style = "display: flex;">
-                            <div class="form-button" onclick = "prevFormQuestion(5)">previous</div>
+                            <div class="form-button form-button-previous" onclick = "prevFormQuestion(5)">previous</div>
                             <div class="form-button" onclick = "nextFormQuestion(5)">Continue</div>
                         </div>
                     </div>
@@ -693,149 +820,37 @@ $data = $hm->get_transaction("U001");
                 </div>
                 <div class = "itinerary-section ">
                     <div class = "itinerary-list">
-                       <?php
-                         echo"   <div class = 'itinerary-item'>
-                            <div class = 'itinerary-image'><img src =  '../assets/images/site_images/d-lab-expo.jpg' /> </div>
-                            <div class='itinerary-container'>
-                                <div class = 'itinerary-title'>
-                                    <div class='itinerary-name'> Chasing waterfalls</div> <div class='itinerary-cost'> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = 'itinerary-details'>
-                                    <div> Created by <span style= 'color: orange;'>Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = 'itinerary-highlights'>
-                                    <div class = 'itinerary-highlight-item'> Paintball</div> 
-                                    <div class = 'itinerary-highlight-item'> Darts</div>
-                                    <div class = 'itinerary-highlight-item'> Shopping</div>
-                                    <div class = 'itinerary-highlight-more'> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                            </div>"
+                        <?php
+                            foreach ($data as $row) {
+                                echo "<div class='itinerary-item'>
+                                        <div class='itinerary-image'><img src=". $row['image'] ." /></div>
+                                        <div class='itinerary-container'>
+                                            <div class='itinerary-title'>
+                                                <div class='itinerary-name'>" . $row['name'] . "</div>
+                                                <div class='itinerary-cost'>Estimated cost GHS " . $row['cost'] . "</div>
+                                            </div>
+                                            <div class='itinerary-details'>
+                                                <div>Created by <span style='color: orange;'>" . $row['creator'] . "</span></div>
+                                            </div>
+                                            <div class='itinerary-highlights'>";
+                                            
+                                            for ($x = 0; $x <= 2; $x++) {
+                                                if (isset($row['activities'][$x])) {
+                                                    echo "<div class='itinerary-highlight-item'>" . $row['activities'][$x] . "</div>";
+                                                }
+                                            }
+                                            
+                                echo "          <div class='itinerary-highlight-more'>+<span>4</span> more</div>
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }
                         ?>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "itinerary-item">
-                            <div class = "itinerary-image"><img src =  "../assets/images/site_images/d-lab-expo.jpg" /> </div>
-                            <div class="itinerary-container">
-                                <div class = "itinerary-title">
-                                    <div class="itinerary-name"> Chasing waterfalls</div> <div class="itinerary-cost"> Estimated cost GHS 600</div>
-                                </div>
-                                <div class = "itinerary-details">
-                                    <div> Created by <span style= "color: orange;">Kweku Acquaye</span></div> 
-                                </div>
-                                <div class = "itinerary-highlights">
-                                    <div class = "itinerary-highlight-item"> Paintball</div> 
-                                    <div class = "itinerary-highlight-item"> Darts</div>
-                                    <div class = "itinerary-highlight-item"> Shopping</div>
-                                    <div class = "itinerary-highlight-more"> +<span>4</span> more</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     
                 </div>
                 <div style = "display: flex;" class = "form-button-container">
-                          <div class="form-button" onclick = "prevFormQuestion(6)">previous</div>
+                          <div class="form-button form-button-previous" onclick = "prevFormQuestion(6)">previous</div>
                           <div class="form-button" onclick = "goto_page('trip_summary.php', false)">Continue</div>
                     </div>
             </div>
@@ -845,10 +860,63 @@ $data = $hm->get_transaction("U001");
 </body>
 
 <script>
-    var previouslySelected = null;
+    var previouslySelected = {};
     var responses = {};
     var nameIdPair = {};
-    var showHome = true
+    var showHome = true;
+    var manualCost = false;
+    const Manualchecked = document.getElementById('manual-checkbox');
+    Manualchecked.checked = false
+    
+
+
+    function handleManInput(event) {
+        const clickedElement = event;
+        const stringLength = clickedElement.value.length - 1;
+        if (clickedElement.value.trim() == ''){
+            clickedElement.value = '';
+            return;
+            
+        }
+        responses[clickedElement.getAttribute('name')] = clickedElement.value;
+        
+    }
+
+    function handleCheckboxChange(checkbox) {
+        tripCostDiv = document.getElementById("trip-form-5");
+        if (checkbox.checked) {
+            manualCost = true;
+            const costInput = document.getElementById('tripManualCost');
+            costInput.disabled = false;
+            tripCostDiv = document.getElementById("trip-form-5");
+            if (responses[tripCostDiv.getAttribute('name')]){
+                delete responses[tripCostDiv.getAttribute('name')];
+                document.getElementById(previouslySelected[tripCostDiv.getAttribute('name')]).classList.remove("selected");
+            }
+            tripCostDiv.classList.add("disable")
+            const children = tripCostDiv.children;
+            for (let i = 0; i < children.length; i++) {
+                children[i].classList.add('disable');
+            }
+
+        } else {
+            tripCostDiv.style.cursor = 'pointer';
+            manualCost = false;
+            const costInput = document.getElementById('tripManualCost');
+            costInput.disabled = true;
+            if (responses[tripCostDiv.getAttribute('name')]){
+                responses.remove(tripCostDiv.getAttribute('name'));
+            }
+            tripCostDiv = document.getElementById("trip-form-5");
+
+            tripCostDiv.classList.remove("disable")
+            const children = tripCostDiv.children;
+            for (let i = 0; i < children.length; i++) {
+                children[i].classList.remove('disable');
+            }
+            console.log("unchecked")
+        }
+    }
 
     function processMultiSelection(event) {
         const clickedElement = event.target;
@@ -856,7 +924,7 @@ $data = $hm->get_transaction("U001");
         
         if(responses[parentDiv.getAttribute('name')]){
             if (responses[parentDiv.getAttribute('name')].includes(clickedElement.getAttribute('value'))){
-                const index = responses[parentDiv.getAttribute('name')].indexOf(5);
+                const index = responses[parentDiv.getAttribute('name')].indexOf(clickedElement.getAttribute('value'));
                 responses[parentDiv.getAttribute('name')].splice(index, 1);
                 clickedElement.classList.remove("selected");
             } else{
@@ -865,6 +933,7 @@ $data = $hm->get_transaction("U001");
                 clickedElement.classList.add("selected");
             }   
         } else {
+            console.log("here 4")
             responses[parentDiv.getAttribute('name')] = [clickedElement.getAttribute('value')];
             clickedElement.classList.add("selected");
         }
@@ -873,21 +942,25 @@ $data = $hm->get_transaction("U001");
 
     function processSelection(event) {
         // Get the clicked element from the event object
+
         const clickedElement = event.target;
-        var parentDiv = clickedElement.parentElement
+        var parentDiv = clickedElement.parentElement;
+        console.log(clickedElement.getAttribute('name'));
+        if (clickedElement.getAttribute('name') === "tripMaxCost" && manualCost){
+            return;
+        }
         clickedElement.classList.add("selected");
         
-        if(previouslySelected){
-            document.getElementById(previouslySelected).classList.remove("selected")
+        if(previouslySelected[parentDiv.getAttribute('name')]){
+            document.getElementById(previouslySelected[parentDiv.getAttribute('name')]).classList.remove("selected")
         }
-        // Get the ID of the clicked element
-        previouslySelected = clickedElement.id;
+
 
         // this is to add the selected option to responses 
-        
+        previouslySelected[parentDiv.getAttribute('name')]=clickedElement.id
         responses[parentDiv.getAttribute('name')] = clickedElement.getAttribute('value');
         // console.log(JSON.stringify(responses, null, 4));
-
+        console.log(JSON.stringify(responses, null, 4));
     }
     function displayWarning() {
         // Get the warning message element
@@ -919,6 +992,7 @@ $data = $hm->get_transaction("U001");
         id = id + 1;
         nextFormSub(id);
     }
+
     async function nextFormSub(id = 2){
         console.log("slide 2 start")
         console.log(id)
