@@ -8,9 +8,9 @@
 	}
 
 	// Check the PATH_INFO or default to a specific redirection
-	if (!isset($_SERVER["PATH_INFO"]) || $_SERVER["PATH_INFO"] == "/travel_plan") {
-		header("Location: travel_plan/" . $queryString);
-	} else {
+	if (!isset($_SERVER["PATH_INFO"]) || $_SERVER["PATH_INFO"] == "/shared_experiences" || $_SERVER["PATH_INFO"] == "/shared_experience") {
 		header("Location: shared_experience/" . $queryString);
+	} else {
+		header("Location: travel_plan/" . $queryString);
 	}
 ?>

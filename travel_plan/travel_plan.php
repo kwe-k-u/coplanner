@@ -160,8 +160,11 @@ $mixpanel->log_page_view();
                                 </div>
                             </div>
                             <div class='trip-card-footer'>
+                            <div class='col'>
+                                <p class='mb-0 easygo-fs-5 text-grayl-1'>Price per person</p>
                                 <h3>$currency $price</h3>
-                                <a href='{$base_url}coplanner/itinerary_view.php?experience_id=$experience_id' class='easygo-btn-1'>View tour</a>
+                            </div>
+                                <a href='{$base_url}coplanner/experience_info.php?experience_id=$experience_id' class='easygo-btn-1'>View tour</a>
                             </div>
                         </div>
                     </div>

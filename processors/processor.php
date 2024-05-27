@@ -478,19 +478,39 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$data = get_invoice_by_id($invoice_id);
 			send_json(array("invoice"=>$data));
 			die();
+		case "/get_travel_plan_bill":
+			$seats = $_POST["seats"];
+			$itinerary_id = $_POST["itinerary_id"];
+			$data = get_travel_plan_bill($itinerary_id, $seats);
+
+			send_json(array("invoice"=> $data));
+			die();
 		case "/get_experience_invoice":
 			$experience_id = $_POST["experience_id"];
+			$seats = $_POST["seats"] ?? 1;
 			$invoice = get_shared_experience_by_id($experience_id);
 			$curator_id = $invoice["curator_id"];
 			$payout_account = get_curator_payout_account($curator_id);
-			$user_id = get_session_user_id();
-			$email = get_user_info($user_id)["email"];
-			$invoice["user_id"] = $user_id;
+			$invoice["booking_fee"] = $invoice["booking_fee"] * $seats;
+			$invoice["platform_fee"] = $invoice["booking_fee"] * 0.03;
+			$invoice["total_fee"] = $invoice["booking_fee"] + $invoice["platform_fee"];
+
+			if(is_session_logged_in()){
+				$user_id = get_session_user_id();
+				$email = get_user_info($user_id)["email"];
+				$invoice["user_id"] = $user_id;
+			}
 
 			if ($payout_account){
-				send_json(array("payout_account_number"=> $payout_account["account_id"], "user_email"=> $email, "invoice" => $invoice));
+				$invoice["payout_account_number"] = $payout_account["account_id"];
+				send_json(
+					array(
+						"payout_account_number"=> $payout_account["account_id"],
+						"invoice" => $invoice
+						)
+				);
 			}else{
-				send_json(array("invoice"=> $invoice, "user_email"=> $email));
+				send_json(array("invoice"=> $invoice));
 			}
 			die();
 		case "/paystack_callback":

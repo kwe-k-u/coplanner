@@ -209,8 +209,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 </div>
                             </div>
                             <div class='trip-card-footer'>
-                                <h3>$currency $fee</h3>
-                                <a href='{$base_url}coplanner/itinerary_view.php?experience_id=$id' class='easygo-btn-1'>View tour</a>
+                                <div class='col'>
+                                    <p class='mb-0 easygo-fs-5 text-grayl-1'>Price per person</p>
+                                    <h3>$currency $fee</h3>
+                                </div>
+                                <a href='{$base_url}coplanner/experience_info.php?experience_id=$id' class='easygo-btn-1'>View tour</a>
                             </div>
                         </div>
                     </div>

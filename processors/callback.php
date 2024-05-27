@@ -53,17 +53,30 @@
 							$provider_transaction_id = $data["id"];
 							$transaction_amount = $data["amount"] / 100;
 							$currency = $data["currency"];
-							$user_id = $metadata["user_id"];
+							if(isset($metadata["user_id"])){
+								$user_id = $metadata["user_id"];
+							}else{
+								// get_user_info();
+								$name = $metadata["user_name"];
+								$email = $metadata["user_email"];
+								$phone = $metadata["user_phone"];
+								$bypass = bypass_signup($name,$email,$phone);
+								$user_id = $bypass["user_id"];
+							}
+
+
 							$provider_charges = $data["fees"]/100;
 							$tax = 0;
 							$transaction_date = $data["paid_at"]; //TODO:: record
 							$amount = $transaction_amount - $provider_charges - $tax;
-							$seats = 1;
+							$seats = $metadata["number_of_seats"];
 							$description = $metadata["description"];
+							//todo change user_id to user email
 							$transaction_id = make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges);
+							$transaction_id = array_values($transaction_id)[0];
 							if($transaction_id){
 								$email = $data["customer"]["email"];
-								notify_slack_experience_payment($email,$transaction_id,$experience_id["transaction_i"]);
+								notify_slack_experience_payment($email,$transaction_id,$experience_id);
 								send_json(array("msg"=> "success", "data"=> $transaction_id));
 								$mixpanel->log_experience_booking($user_id,$experience_id,$transaction_amount);
 							}else{

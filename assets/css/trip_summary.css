@@ -2,6 +2,11 @@ body{
 	margin: 0;
 	height: 100vh;
 }
+
+main{
+	margin-top: 150px;
+}
+
 .body-container{
 	margin: 0;
 	/* margin-top: 5em; */
@@ -21,11 +26,11 @@ body{
 .content-container{
 	margin: 0;
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	overflow: auto;
+	/* overflow: auto; */
 }
 .home-destination-row{
 	height: 20%;
@@ -46,7 +51,6 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 	display: flex;
-	flex-direction: row-reverse;
 	justify-content: space-around;
 }
 .summary-content .left-summary{
@@ -91,6 +95,8 @@ body{
 }
 .itinerary-image img {
 	max-width: 40em;
+	max-height: 25em;
+	min-width: 20em;
 }
 
 @media screen and (min-width: 768px) {
@@ -165,8 +171,13 @@ body{
 	}
 }
 
+.itinerary-day-section{
+	display: block;
+}
+
 .summary-itinerary-day {
 	display: flex;
+	display:block;
 	flex-direction: column;
 	margin-top: 1em;
 	border-bottom: 1px #b8b1b1 solid;
@@ -198,7 +209,7 @@ body{
  .summary-itinerary-row .summary-itinerary-location {
 	 width: 25em;
 	 min-height: 7em;
-	 max-height: 10em;
+	 /* max-height: 10em; */
 	 display: flex;
 	 flex-direction: column;
 	 padding: 8px 4px;
@@ -215,6 +226,12 @@ body{
 		row-gap: 4px;
 		column-gap: 4px;
 		width: 85%;
+	}
+
+	@media screen and (max-width: 669px) {
+		.summary-itin-highlights{
+			grid-template-columns: 1fr 1fr 1fr;
+		}
 	}
 
 
@@ -250,6 +267,7 @@ body{
 .invoice-main {
 	border: 1px solid var(--easygo-blue);
 	background-color: white;
+	min-width: 330px;
 	border-radius: 10px;
 	padding-top: 4px;
 	padding-bottom: 12px;
@@ -282,6 +300,7 @@ body{
 
 .invoice-container {
 	width: 90%;
+	min-height: 10em;
 	margin-left:auto;
 	margin-right:auto;
 	padding-top: 2em;
@@ -322,7 +341,8 @@ body{
 	text-align-last: center;
 }
 .invoice-dets {
-	height: 6em;
+	min-height: 3em;
+	max-height: 6em;
 }
 .invoice-dets>div {
 	display: flex;
@@ -367,6 +387,8 @@ body{
 }
 .summary-itinerary-section{
 	width: 80%;
+	display: flex;
+	flex-direction: column;
 	margin-left: auto;
 	margin-right: auto;
 }

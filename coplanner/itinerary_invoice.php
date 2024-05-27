@@ -6,7 +6,7 @@ $mixpanel = new mixpanel_class();
 $mixpanel->log_page_view();
 if (isset($_GET["id"])) {
     $invoice_id = $_GET["id"];
-    $invoice = get_invoice_by_id($invoice_id);
+    $invoice = get_travel_plan_invoice_by_id($invoice_id);
     $itinerary_id = $_GET["id"];
     $itinerary = get_itinerary_by_id($itinerary_id);
     $user_id = get_session_user_id();

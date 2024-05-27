@@ -251,9 +251,20 @@
 		return $public->get_itinerary_invoices($itinerary_id);
 	}
 
+	/**Depracating */
 	function get_invoice_by_id($invoice_id){
 		$public = new public_class();
 		return $public->get_invoice_by_id($invoice_id);
+	}
+
+	function get_travel_plan_bill($itinerary_id,$seats=1){
+		$public = new public_class();
+		$data = $public->get_travel_plan_bill($itinerary_id);
+		//Add tax
+		$data["price"] = floatval($data["price"]) * intval($seats);
+		$data["platform_fee"] = $data["price"] * 0.03;
+		$data["total"] = $data["price"] + $data["platform_fee"];
+		return $data;
 	}
 
 	function get_invoice_activities($invoice_id){

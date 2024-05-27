@@ -260,6 +260,13 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_travel_plan_bill($itinerary_id){
+			$sql = "CALL get_travel_plan_bill(?)";
+			$this->prepare($sql);
+			$this->bind($itinerary_id);
+			return $this->db_fetch_one();
+		}
+
 		function get_invoice_activities($invoice_id){
 			$sql = "CALL get_invoice_activities(?)";
 			$this->prepare($sql);
@@ -366,7 +373,7 @@
 		}
 
 		function make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider){
-			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?) as transaction_id";
+			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?) ";
 			$this->prepare($sql);
 			$this->bind($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
 			return $this->db_fetch_one();

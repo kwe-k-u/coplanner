@@ -39,6 +39,7 @@
 				$types .= $this->get_type($value);
 			}
 			mysqli_stmt_bind_param($this->statement, $types, ...$data);
+			$this->logger->sql_query_log($this->string);
 		}
 
 		private function get_type($value){
@@ -59,7 +60,7 @@
 
 			/* bind result variables */
 			// mysqli_stmt_bind_result($this->statement, $result);
-			$this->logger->sql_query_log($this->string);
+			// $this->logger->sql_query_log($this->string);
 			return $this->statement->execute();
 
 			// /* fetch value */
@@ -69,10 +70,10 @@
 
 		function db_fetch_all(){
 			$result = array();
+			// $this->logger->sql_query_log($this->string);
 			/* execute query */
 			$this->statement->execute();
 
-			$this->logger->sql_query_log($this->string);
 
 
 			/* bind result variables */
@@ -92,8 +93,8 @@
 
 		function db_fetch_one(){
 			/* execute query */
+			// $this->logger->sql_query_log($this->string);
 			$this->statement->execute();
-			$this->logger->sql_query_log($this->string);
 
 			/* bind result variables */
 			// mysqli_stmt_bind_result($this->statement, $result);

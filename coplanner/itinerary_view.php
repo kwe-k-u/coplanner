@@ -299,17 +299,7 @@ if (isset($_GET["id"])) {
                         <div class="bypass-google">
                             <?php
                                 require_once(__DIR__."/../utils/core.php");
-                                if (!isset($auth_url)){
-                                    $google_auth = new GoogleAuthHandler(google_client_id(),google_client_secret(),google_redirect_url());
-                                    $auth_url = $google_auth->generate_login_url();
-                                }
-                                echo
-                                "<button class='easygo-btn-4 border-blue text-blue easygo-fs-5' onclick='goto_page(\"$auth_url\",false)'>
-                                    <img width='25px' src='https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA' alt='' srcset=''>
-                                    <span style='margin-left: 8px;'>
-                                        Continue With Google
-                                    </span>
-                                </button>";
+                                google_auth_btn();
                             ?>
                         </div>
                     </div>

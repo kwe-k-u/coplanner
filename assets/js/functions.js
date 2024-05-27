@@ -95,7 +95,8 @@ async function send_request(type, endpoint, data, onload = null, files = null) {
     }
   }
 
-  let response = await fetch(baseurl + endpoint, {
+  let url_to_visit = endpoint.startsWith('http') || endpoint.startsWith('www') ? endpoint : baseurl + endpoint;
+  let response = await fetch(url_to_visit, {
     method: type,
     body: type=="POST" ? formdata : null,
   });
@@ -105,9 +106,11 @@ async function send_request(type, endpoint, data, onload = null, files = null) {
   // try {
   // var caught = response.clone();
   // alert(await caught.clone().text());
+  let result = await response.json();
   if (onload != null) {
-    onload(await response.json());
+    onload(result);
   }
+  return result;
   // }catch (e){
   // 	alert("error "+await caught.text());
   // }
@@ -287,8 +290,17 @@ function payWithPaystack(currency, charge_amount,c_email,payload, split_account 
 
 			// TODO:: check status for payment and go to redirect page
 
-			console.log("callback",response);
-			window.location.href=response.redirecturl;
+			// console.log("callback",response);
+      send_request("POST",response.redirecturl,{},
+       (response) => {
+        if(response.status == 200){
+          showToast(response.data.msg);
+        }else{
+          showDialog(response.data.msg);
+        }
+       }
+      );
+			// window.location.href=response.redirecturl;
 		}
 		});
 

@@ -1334,7 +1334,8 @@ BEGIN
 	SELECT sa.*, a.activity_name, d.destination_name, d.location,d.rating FROM shared_experience_activities as sa
 	inner join destinations as d on d.destination_id = sa.destination_id
 	inner join activities as a on a.activity_id = sa.activity_id
-	where sa.experience_id = in_experience_id order by sa.visit_date, sa.destination_id;
+	where sa.experience_id = in_experience_id
+   order by sa.visit_date, sa.destination_id;
 END //
 DELIMITER ;
 
@@ -1641,7 +1642,7 @@ begin
   -- If user email exists send -1
   SELECT user_id into result from vw_users where email = in_email and account_status != 'by_pass';
   IF result IS NOT NULL THEN
-    return -1;
+    return result;
   end if;
 
   SELECT user_id into result from vw_users where email = in_email and account_status = 'by_pass';

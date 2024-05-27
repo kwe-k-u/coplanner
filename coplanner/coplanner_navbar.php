@@ -50,13 +50,9 @@
                     <img class='logo-medium' src='".server_base_url()."assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
                 </a>
                 <div class='justify-content-end'>
-                    <div class='d-flex gap-4'>
-                    <button class='easygo-btn-4 border-blue text-blue easygo-fs-5' onclick='goto_page(\"$auth_url\",false)'>
-                        <img width='25px' src='https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA' alt='' srcset=''>
-                        <span style='margin-left: 8px;'>
-                            Continue With Google
-                        </span>
-                    </button>
+                    <div class='d-flex gap-4'>";
+                    google_auth_btn();
+                echo "
                     <a href='".server_base_url()."coplanner/login.php' class='easygo-btn-5 bg-blue text-white easygo-fs-5'>Sign In</a>
                     </div>
                 </div>";
@@ -65,9 +61,3 @@
 
         </div>
     </nav>
-
-<nav class="navbar navbar-expand-md fixed-top easygo-nav-white" style="background: var(--easygo-orange); z-index: 1029; margin-top:80px;">
-    <div class="container-fluid justify-content-center">
-        <a target="_blank" style="text-decoration:underline!important; color:white;" href="https://us21.list-manage.com/survey?u=2bd1d8f7814d0d70eb78d4383&id=89f89dd0d7&attribution=false">Click here to tell us if something breaks</a>
-    </div>
-</nav>
