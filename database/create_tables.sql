@@ -701,12 +701,14 @@ CREATE VIEW vw_shared_experiences AS
 		currency.currency_name,
 		c.curator_name,
 		(SELECT 0) as remaining_seats,
+        (SELECT se.booking_fee * 0.03) as platform_fee,
+        (select platform_fee + se.booking_fee) as total_fee,
 		m.media_location
 	 from
 	shared_experiences as se
 	inner join curator as c on c.curator_id = se.curator_id
 	inner join currency on currency.currency_id = se.currency
-	left join media as m on m.media_id = se.media_id;
+	left join media as m on m.media_id = se.media_id;;
 
 
 

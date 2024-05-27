@@ -746,10 +746,15 @@ DELIMITER //
 CREATE PROCEDURE get_itinerary_by_id(
   IN in_itinerary_id VARCHAR(100)
 ) BEGIN
-SELECT * FROM vw_itinerary WHERE itinerary_id = in_itinerary_id;
+	SELECT
+	i.*,
+	m.media_location
+	 FROM vw_itinerary as i
+	left join travel_plan_media as tm on tm.itinerary_id = in_itinerary_id
+	left join media as m on m.media_id = tm.media_id
+	WHERE i.itinerary_id = in_itinerary_id;
 END //
 DELIMITER ;
-
 
 
 
@@ -1640,15 +1645,11 @@ CREATE FUNCTION bypass_signup(
 begin
   DECLARE result varchar(100);
   -- If user email exists send -1
-  SELECT user_id into result from vw_users where email = in_email and account_status != 'by_pass';
+  SELECT user_id into result from vw_users where email = in_email;
   IF result IS NOT NULL THEN
     return result;
   end if;
 
-  SELECT user_id into result from vw_users where email = in_email and account_status = 'by_pass';
-  IF result IS NOT NULL THEN
-    return result;
-  end if;
 
   SELECT generate_id() into result;
 
@@ -1658,4 +1659,22 @@ begin
   INSERT INTO email_users (user_id,email) VALUES (result,in_email);
   RETURN result;
 end //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_travel_plan_bill;
+DELIMITER //
+	CREATE PROCEDURE get_travel_plan_bill(
+		in in_itinerary_id VARCHAR(100)
+	) BEGIN
+		SELECT
+		tp.price,
+		c.currency_name,
+		(select count( destination_id) from vw_itinerary_destinations where itinerary_id = in_itinerary_id) as num_destinations
+		FROM
+		travel_plan as tp
+		inner join currency as c on c.currency_id = tp.currency_id
+		where tp.itinerary_id = in_itinerary_id;
+	END //
 DELIMITER ;
