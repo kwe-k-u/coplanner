@@ -3,21 +3,21 @@ require_once(__DIR__."/../utils/core.php");
 
 // Dummy array object
 $fullData = array(
-     array("id" => 1, "location" => "Item 1", "date" => "2024-04-15", "NoD" => 2, "status" => "Past"),
-     array("id" => 2, "location" => "Item 2", "date" => "2024-04-16", "NoD" => 4, "status" => "Past"),
-     array("id" => 3, "location" => "Item 3", "date" => "2024-04-17", "NoD" => 1, "status" => "Past"),
-     array("id" => 4, "location" => "Item 4", "date" => "2024-04-18", "NoD" => 6, "status" => "Past"),
-     array("id" => 5, "location" => "Item 5", "date" => "2024-04-19", "NoD" => 3, "status" => "Past"),
-     array("id" => 6, "location" => "Item 6", "date" => "2024-04-20", "NoD" => 3, "status" => "Past"),
-     array("id" => 7, "location" => "Item 7", "date" => "2024-04-21", "NoD" => 3, "status" => "Past"),
-     array("id" => 8, "location" => "Item 8", "date" => "2024-04-22", "NoD" => 2, "status" => "Past"),
-     array("id" => 9, "location" => "Item 9", "date" => "2024-04-23", "NoD" => 3, "status" => "Upcoming"),
-    array("id" => 10, "location" => "Item 10", "date" => "2024-04-24", "NoD" => 5, "status" => "Upcoming"),
-    array("id" => 11, "location" => "Item 11", "date" => "2024-04-15", "NoD" => 5, "status" => "Upcoming"),
-    array("id" => 12, "location" => "Item 12", "date" => "2024-04-16", "NoD" => 6, "status" => "Upcoming"),
-    array("id" => 13, "location" => "Item 13", "date" => "2024-04-17", "NoD" => 6, "status" => "Ongoing"),
-    array("id" => 14, "location" => "Item 14", "date" => "2024-04-18", "NoD" => 7, "status" => "Upcoming"),
-    array("id" => 15, "location" => "Item 15", "date" => "2024-04-19", "NoD" => 7, "status" => "Ongoing")
+     array("id" => 1, "name" => "Girls Trip", "location" => "Item 1", "date" => "2024-04-15", "NoD" => 2, "status" => "Past"),
+     array("id" => 2, "name" => "Girls Trip", "location" => "Item 2", "date" => "2024-04-16", "NoD" => 4, "status" => "Past"),
+     array("id" => 3, "name" => "Girls Trip", "location" => "Item 3", "date" => "2024-04-17", "NoD" => 1, "status" => "Past"),
+     array("id" => 4, "name" => "Girls Trip", "location" => "Item 4", "date" => "2024-04-18", "NoD" => 6, "status" => "Past"),
+     array("id" => 5, "name" => "Girls Trip", "location" => "Item 5", "date" => "2024-04-19", "NoD" => 3, "status" => "Past"),
+     array("id" => 6, "name" => "Girls Trip", "location" => "Item 6", "date" => "2024-04-20", "NoD" => 3, "status" => "Past"),
+     array("id" => 7, "name" => "Girls Trip", "location" => "Item 7", "date" => "2024-04-21", "NoD" => 3, "status" => "Past"),
+     array("id" => 8, "name" => "Girls Trip", "location" => "Item 8", "date" => "2024-04-22", "NoD" => 2, "status" => "Past"),
+     array("id" => 9, "name" => "Girls Trip", "location" => "Item 9", "date" => "2024-04-23", "NoD" => 3, "status" => "Upcoming"),
+    array("id" => 10, "name" => "Girls Trip", "location" => "Item 10", "date" => "2024-04-24", "NoD" => 5, "status" => "Upcoming"),
+    array("id" => 11, "name" => "Girls Trip", "location" => "Item 11", "date" => "2024-04-15", "NoD" => 5, "status" => "Upcoming"),
+    array("id" => 12, "name" => "Girls Trip", "location" => "Item 12", "date" => "2024-04-16", "NoD" => 6, "status" => "Upcoming"),
+    array("id" => 13, "name" => "Girls Trip", "location" => "Item 13", "date" => "2024-04-17", "NoD" => 6, "status" => "Ongoing"),
+    array("id" => 14, "name" => "Girls Trip", "location" => "Item 14", "date" => "2024-04-18", "NoD" => 7, "status" => "Upcoming"),
+    array("id" => 15, "name" => "Girls Trip", "location" => "Item 15", "date" => "2024-04-19", "NoD" => 7, "status" => "Ongoing")
 );
 
 function filterCompletedItems($status, $data) {
@@ -341,6 +341,7 @@ function filterCompletedItems($status, $data) {
 
         .tab-container {
             display: flex;
+            justify-content: center;
         }
 
         .tab {
@@ -531,93 +532,76 @@ function filterCompletedItems($status, $data) {
                             ?>
                         </div>
 
-                        <div class = "trans-cards">
 
-                            <!-- TODO: make dynamic -->
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
+
+
+                        <?php
+                            $status = "past";
+                            $data = filterCompletedItems("Past", $fullData);
+                            echo "<div class = 'trans-cards tabToHide' id= '". $status ."-trips-mobile'  >";
+                            foreach ($data as $row) {
+                                
+                            
+                                echo "<div class = 'trans-card' >";
+                                echo "<div class = 'trans-card-container'>";
+                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
+                                echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
+                                echo "   </div> ";
+                                echo "   </div> ";
+                            }
+                            echo "</div>";
+                            ?>
+                        <?php
+                            $status = "all";
+                            echo "<div class = 'trans-cards' id= '". $status ."-trips-mobile'  >";
+                            foreach ($fullData as $row) {
+                                
+                            
+                                echo "<div class = 'trans-card' >";
+                                echo "<div class = 'trans-card-container'>";
+                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
+                                echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
+                                echo "   </div> ";
+                                echo "   </div> ";
+                            }
+                            echo "</div>";
+                            ?>
+                        <?php
+                            $status = "up";
+                            $data = filterCompletedItems("Upcoming", $fullData);
+                            echo "<div class = 'trans-cards tabToHide' id= '". $status ."-trips-mobile'  >";
+                            foreach ($data as $row) {
+                                
+                            
+                                echo "<div class = 'trans-card' >";
+                                echo "<div class = 'trans-card-container'>";
+                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
+                                echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
+                                echo "   </div> ";
+                                echo "   </div> ";
+                            }
+                            echo "</div>";
+                            ?>
+                            
+                        <?php
+                            $status = "on";
+                            $data = filterCompletedItems("Ongoing", $fullData);
+                            echo "<div class = 'trans-cards tabToHide' id= '". $status ."-trips-mobile'  >";
+                            foreach ($data as $row) {
+  
+                                echo "<div class = 'trans-card' >";
+                                echo "<div class = 'trans-card-container'>";
+                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
+                                echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
+                                echo "   </div> ";
+                                echo "   </div> ";
+                            }
+                            echo "</div>";
+                            ?>
                         </div>
                     </div>
                     
@@ -642,8 +626,21 @@ function filterCompletedItems($status, $data) {
         tabTodisplay = tabs[id];
         tableDiv = document.getElementById("trip-table-section");
         const children = tableDiv.children;
+
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            for (let i = 0; i < children.length; i++) {
+                if (children[i].classList.contains("trans-cards")  && children[i].id === tabTodisplay+"-mobile"){
+                    children[i].classList.remove("tabToHide")
+                } else if (children[i].classList.contains("trans-cards") && !(children[i].classList.contains("tabToHide"))) {
+                    children[i].classList.add("tabToHide")
+                }
+            }
+            return;
+        }
+
         for (let i = 0; i < children.length; i++) {
             if (children[i].classList.contains("custom-table")  && children[i].id === tabTodisplay){
+                children[i].id 
                 children[i].classList.remove("tabToHide")
             } else if (children[i].classList.contains("custom-table") && !(children[i].classList.contains("tabToHide"))) {
                 children[i].classList.add("tabToHide")
