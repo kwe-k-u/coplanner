@@ -162,7 +162,7 @@ $logo = "";//$info["curator_logo"];
                                 </div>
                                 <div class='py-3 d-flex justify-content-between align-items-center easygo-fs-5'>
                                     <span><i class='fa-solid fa-tag'></i> $currency $fee</span>
-                                    <a class='btn px-3 py-1 border easygo-fs-5' href='./create_a_tour.php?id=$camp_id'>Edit</a>
+                                    <!-- <a class='btn px-3 py-1 border easygo-fs-5' href='../coplanner/edit_itinerary.php?id=$camp_id'>Edit</a> -->
                                 </div>
                             </div>
                         </div>

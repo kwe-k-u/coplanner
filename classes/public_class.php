@@ -323,10 +323,10 @@
 			return $this->db_fetch_all();
 		}
 
-		function create_shared_experience($itinerary_id,$name,$curator_id,$currency,$fee,$seats,$media_location,$media_type){
-			$sql = "SELECT create_shared_experience(?,?,?,?,?,?,?,?) as experience_id";
+		function create_shared_experience($itinerary_id,$name,$description,$curator_id,$currency,$fee,$seats,$media_location,$media_type){
+			$sql = "SELECT create_shared_experience(?,?,?,?,?,?,?,?,?) as experience_id";
 			$this->prepare($sql);
-			$this->bind($itinerary_id,$curator_id,$name,$currency,$fee,$seats,$media_location,$media_type);
+			$this->bind($itinerary_id,$curator_id,$name,$description,$currency,$fee,$seats,$media_location,$media_type);
 			return $this->db_fetch_one();
 		}
 

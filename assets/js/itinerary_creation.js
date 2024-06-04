@@ -658,16 +658,18 @@ function set_itinerary_visibility(itinerary_id, form){
 
 
  function create_shared_experience(form){
+	 event.preventDefault();
+	 
 	let flyer = document.getElementById("flyer_image").files;
 	if(flyer.length == 0){
 		openDialog("You need to add an image for your experience");
+		return false;
 	}
 
-	// return false;
-	event.preventDefault();
 
 	let start_time = form.start_time.value;
 	let price = form.price.value;
+	let description = form.description.value;
 	let seat_count = form.seat_count.value;
 	let experience_name = form.experience_name.value;
 	let itinerary_id = url_params("id");
@@ -677,6 +679,7 @@ function set_itinerary_visibility(itinerary_id, form){
 		"start_time" : start_time,
 		"price" : price,
 		"seat_count" : seat_count,
+		"description" : description,
 		"itinerary_id" : itinerary_id,
 		"experience_name" : experience_name,
 		"flyer" : flyer[0]

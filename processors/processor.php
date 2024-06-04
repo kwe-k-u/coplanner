@@ -26,6 +26,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 	require_once(__DIR__."/../utils/mailer/mailer_class.php");
 	require_once(__DIR__."/../utils/core.php");
+	require_once(__DIR__."/../utils/logger.php");
 	require_once(__DIR__."/../utils/paystack.php");
 	require_once(__DIR__."/../controllers/public_controller.php");
 	require_once(__DIR__."/../controllers/admin_controller.php");
@@ -608,10 +609,14 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$account_name = $_POST["account_name"];
 
 			$paystack = new paystack_custom();
-			$subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,7,"Curator bank account for $curator_name",$email,$username,$phone_number);
-			$subaccount_response = array(["status"] => true,array("data"=> array("subaccount_code"=>generate_id())));
+				// $subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,7,"Curator bank account for $curator_name",$email,$username,$phone_number);
+				$logger = new Logger();
+				$logger->write_log("payment_details.txt","$curator_name $bank_number $account_number $email");
 
-			if($subaccount_response["status"]){
+			// $subaccount_response = array(["status"] => true,array("data"=> array("subaccount_code"=>generate_id())));
+
+			if(true){
+			// if($subaccount_response["status"]){
 				// upload logo
 				$logo_image = $_FILES["company_logo"]["name"];
 				$logo_temp = $_FILES["company_logo"]["tmp_name"];
@@ -622,8 +627,8 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				$reg_doc_temp = $_FILES["inc_doc"]["tmp_name"];
 				$reg_doc_type = get_file_type($reg_doc_image);
 				$reg_doc_location = upload_file("uploads","confidential",$logo_temp,$logo_image);
-				// $result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,substr($username,5),$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
-				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"],$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
+				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,substr($username,5),$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
+				// $result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"],$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 				if($result){
 
 
@@ -763,6 +768,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$price = $_POST["price"];
 			$seats = $_POST["seat_count"];
 			$name = $_POST["experience_name"];
+			$description = $_POST["description"];
 			$curator = get_curator_account_by_user_id(get_session_user_id());
 			$curator_id = $curator["curator_id"];
 			$curator_name = $curator["curator_name"];
@@ -777,7 +783,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
 			}
 
-			$experience_id = create_shared_experience($itinerary_id,$name, $curator_id,1,$price,$seats,$media_location,$media_type);
+			$experience_id = create_shared_experience($itinerary_id,$name, $description, $curator_id,1,$price,$seats,$media_location,$media_type);
 
 			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);
 

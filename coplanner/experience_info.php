@@ -301,6 +301,7 @@ if (isset($_GET["experience_id"])) {
                                 $day_count += 1;
                                 $section_text .= "
                                     </div>
+                                    </div>
                                 </div>
                                 <div class='summary-itinerary-day'>
                                     <div class='summary-itinerary-title'> Day $day_count </div>

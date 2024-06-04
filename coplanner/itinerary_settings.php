@@ -252,30 +252,30 @@ $username = get_user_info($user_id)["user_name"];
                     </div>
                     <div class="modal-body easygo-scroll-bar">
                         <div class="container-fluid">
+                                    <form onsubmit="return create_shared_experience(this)">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="p-3">
-                                                <div class="file-input drag-n-drop type-img" data-display-target="#flyer-img" data-input-target="#flyer_image">
-                                        <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
-                                            <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
+                                        <div class="file-input drag-n-drop type-img" data-display-target="#flyer-img" data-input-target="#flyer_image">
+                                            <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
+                                                <img src="../assets/images/svgs/camera.svg" alt="upload symbol image">
+                                            </div>
+                                            <small class="easygo-fs-4 text-gray-1">Flyer or Image for Shared Experience</small>
+                                            <input id="flyer_image" name="flyer_image" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#flyer-img">
+                                            <div id="flyer-img" data-input-target="#flyer_image" class="img-display display-full"></div>
                                         </div>
-                                        <small class="easygo-fs-4 text-gray-1">Flyer or Image for Shared Experience</small>
-                                        <input id="flyer_image" name="flyer_image" class="img-upload" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#flyer-img" >
-                                        <div id="flyer-img" data-input-target="#flyer_image" class="img-display display-full"></div>
+
                                     </div>
 
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="p-3">
-                                        <h4 class="easygo-fw-1">Shared Experience Settings</h4 class="easygo-fw-1">
-                                        <form onsubmit="return create_shared_experience(this)">
+                                        <div class="p-3">
+                                            <h4 class="easygo-fw-1">Shared Experience Settings</h4 class="easygo-fw-1">
 
                                             <div class="col-12">
                                                 <div class="form-input-field">
                                                     <small>Name of Experience</small>
                                                     <?php
-                                                        $itinerary_name = $itinerary["itinerary_name"] ?? "";
-                                                        echo "<input class='rounded-end rounded-0' type='text' name='experience_name' value='$itinerary_name'>";
+                                                    $itinerary_name = $itinerary["itinerary_name"] ?? "";
+                                                    echo "<input class='rounded-end rounded-0' type='text' name='experience_name' value='$itinerary_name'>";
                                                     ?>
 
                                                 </div>
@@ -303,35 +303,42 @@ $username = get_user_info($user_id)["user_name"];
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="justify-content-end p-2">
-                                                <button type="submit" class="easygo-btn-5 bg-blue text-white">Create Shared Experience</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                </div>
 
+                                <div class="col-lg-6 p-3">
+                                    <div class="form-input-field">
+                                        <small>Experience Description</small>
+                                        <textarea name="description" id="" rows="7" cols="30"></textarea>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="justify-content-end p-2">
+                                <button type="submit" class="easygo-btn-5 bg-blue text-white">Create Shared Experience</button>
+                            </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Destination Modals [end] -->
+            <!--- ================================ -->
         </div>
-        <!-- Destination Modals [end] -->
-        <!--- ================================ -->
-    </div>
-    <!-- main content end -->
+        <!-- main content end -->
 
-    <!-- Bootstrap js -->
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <!-- paystack js -->
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-    <!-- JQuery js -->
-    <script src="../assets/js/jquery-3.6.1.min.js"></script>
-    <!-- easygo js -->
-    <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
-    <script src="../assets/js/general.js"></script>
-    <script src="../assets/js/functions.js"></script>
-    <script src="../assets/js/itinerary_creation.js"></script>
+        <!-- Bootstrap js -->
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <!-- paystack js -->
+        <script src="https://js.paystack.co/v1/inline.js"></script>
+        <!-- JQuery js -->
+        <script src="../assets/js/jquery-3.6.1.min.js"></script>
+        <!-- easygo js -->
+        <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+        <script src="../assets/js/general.js"></script>
+        <script src="../assets/js/functions.js"></script>
+        <script src="../assets/js/itinerary_creation.js"></script>
 </body>
 
 </html>
