@@ -16,7 +16,8 @@
 
 			// Add body to curl request if one is given
 			if ($body != null){
-				curl_setopt_array($curl, array(CURLOPT_POSTFIELDS => $body));
+				$encoded_body = json_encode($body);
+				curl_setopt_array($curl, array(CURLOPT_POSTFIELDS => $encoded_body));
 			}
 
 			curl_setopt_array($curl, array(

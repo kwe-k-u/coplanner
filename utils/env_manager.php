@@ -110,5 +110,12 @@ function mixpanel_token(){
 	return $_ENV["MIXPANEL_TOKEN"];
 }
 
+function whatsapp_token(){
+	return $_ENV["WHATSAPP_TOKEN"];
+}
+function whatsapp_phone_id(){
+	return $_ENV["WHATSAPP_PHONE_ID"];
+}
+
 
 ?>

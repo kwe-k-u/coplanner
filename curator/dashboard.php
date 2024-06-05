@@ -144,6 +144,7 @@ $logo = "";//$info["curator_logo"];
                             $currency = $entry["currency_name"];
                             $fee = $entry["booking_fee"];
                             $img = $entry["media_location"];//$entry["media"][0]["media_location"];
+                            $remaining_seats = intval($entry["number_of_seats"]) - intval($entry["remaining_seats"]);
 
                             $trip_list_display .="
 
@@ -155,7 +156,7 @@ $logo = "";//$info["curator_logo"];
                                 <h5 class='header'>$title</h5>
                                 <div class='easygo-fs-5 d-flex align-items-center justify-content-between'>
                                     <div><i class='fa-regular fa-calendar-days'></i>  $start_date</div>
-                                    <div><i class='fa-solid fa-pen-to-square'></i> 15 Booked Seats</div>
+                                    <div><i class='fa-solid fa-pen-to-square'></i> $remaining_seats Booked Seats</div>
                                 </div>
                                 <div class='easygo-fs-5'>
                                     <i class='fa-solid fa-map-pin'></i> Pickup coming soon

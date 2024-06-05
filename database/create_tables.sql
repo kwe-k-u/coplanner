@@ -697,18 +697,24 @@ CREATE VIEW vw_curators as
 DROP VIEW IF EXISTS vw_shared_experiences;
 CREATE VIEW vw_shared_experiences AS
 	SELECT
-		se.*,
-		currency.currency_name,
-		c.curator_name,
-		(SELECT 0) as remaining_seats,
-        (SELECT se.booking_fee * 0.03) as platform_fee,
-        (select platform_fee + se.booking_fee) as total_fee,
-		m.media_location
-	 from
-	shared_experiences as se
-	inner join curator as c on c.curator_id = se.curator_id
-	inner join currency on currency.currency_id = se.currency
-	left join media as m on m.media_id = se.media_id;;
+    se.*,
+    currency.currency_name,
+    c.curator_name,
+    (se.number_of_seats - IFNULL((SELECT SUM(in_seb.number_of_seats)
+                                  FROM shared_experience_bookings AS in_seb
+                                  WHERE in_seb.experience_id = se.experience_id), 0)) AS remaining_seats,
+    (se.booking_fee * 0.03) AS platform_fee,
+    (se.booking_fee * 1.03) AS total_fee,
+    m.media_location
+FROM
+    shared_experiences AS se
+INNER JOIN
+    curator AS c ON c.curator_id = se.curator_id
+INNER JOIN
+    currency ON currency.currency_id = se.currency
+LEFT JOIN
+    media AS m ON m.media_id = se.media_id;
+
 
 
 
