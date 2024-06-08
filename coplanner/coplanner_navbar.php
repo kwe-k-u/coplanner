@@ -6,6 +6,76 @@
     }
     require_once(__DIR__."/../utils/core.php");
 ?>
+
+<nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../index.php">
+            <img class="logo-medium" src="http://localhost/coplanner/assets/images/site_images/logo.png" onerror="this.onerror=null; this.remove();" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul id="navbar-links" class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href='#'> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href='#'> Experiences</a></li>
+                <li class="nav-item"><a class="nav-link" href='#'> About</a></li>
+                <li class="nav-item"><a class="nav-link" href='#'> Contact Us</a></li>
+                <li class="d-md-none d-sm-block nav-item dropdown">
+                    <a class="nav-link " href="#" onclick="toggle_signup_bypass()">
+                        Sign In
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="justify-content-end d-none d-lg-block">
+        <div class="d-flex gap-4">
+                    <a href="#" class="easygo-btn-5 bg-blue text-white easygo-fs-5" onclick="toggle_signup_bypass()">Sign In</a>
+                    </div>
+        </div>
+    </div>
+</nav>
+
+<!--
+
+<nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
+    <div class="container-fluid">
+
+                <a class="navbar-brand" href="../index.php">
+                    <img class="logo-medium" src="http://localhost/coplanner/assets/images/site_images/logo.png" onerror="this.onerror=null; this.remove();" alt="">
+                </a>
+                <div>
+                        <ul id="navbar-links">
+                            <li><a href='#'> Home</a></li>
+                            <li><a href='#'> Experiences</a></li>
+                            <li><a href='#'> About</a></li>
+                            <li><a href='#'> Contact Us</a></li>
+                        </ul>
+                    </div>
+                <div class="justify-content-end">
+                    <div class="d-flex gap-4"><button class="easygo-btn-4 border-blue text-blue easygo-fs-5" onclick="goto_page(&quot;https://accounts.google.com/o/oauth2/v2/auth?response_type=code&amp;access_type=online&amp;client_id=165362367823-itkfk45iedob56p8uj884jc41cmr26ep.apps.googleusercontent.com&amp;redirect_uri=http%3A%2F%2Flocalhost%2Fcoplanner%2Fprocessors%2Fcallback.php%2Fgoogle_oauth&amp;state&amp;scope=email%20profile&amp;approval_prompt=auto&quot;,false)">
+				<img width="25px" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="" srcset="">
+				<span style="margin-left: 8px;">
+					Continue With Google
+				</span>
+			</button>
+                    <a href="http://localhost/coplanner/coplanner/login.php" class="easygo-btn-5 bg-blue text-white easygo-fs-5">Sign In</a>
+                    </div>
+                </div>
+
+
+        </div>
+    </nav>
+
+
+
+
+
+ -->
+
+
+<!--
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
         <?php
@@ -29,6 +99,14 @@
                     <div class='user-icon bg-blue'>
                         <img src='".server_base_url()."assets/images/others/profile.jpeg' alt='Profile image'>
                     </div>
+                    <div id='header_links'>
+                        <ul>
+                            <li>Home</li>
+                            <li>Experiences</li>
+                            <li>About</li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
                     <div class='d-flex align-items-center gap-1'>
                         <h3 class='easygo-fs-3 m-0'>$username</h3>
                         <div class='dropdown'>
@@ -49,6 +127,14 @@
                 <a class='navbar-brand' href='../index.php'>
                     <img class='logo-medium' src='".server_base_url()."assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
                 </a>
+                <div id='header_links'>
+                        <ul>
+                            <li>Home</li>
+                            <li>Experiences</li>
+                            <li>About</li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
                 <div class='justify-content-end'>
                     <div class='d-flex gap-4'>";
                     google_auth_btn();
@@ -60,4 +146,4 @@
         ?>
 
         </div>
-    </nav>
+    </nav> -->

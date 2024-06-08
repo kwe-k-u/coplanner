@@ -74,42 +74,81 @@
   }
 }
 
-.carousel{
-  padding-top: 5rem;
-  /* margin-top: 3rem; */
-  padding-bottom: 15rem;
-  /* background-image: linear-gradient(white,blue); */
+.carousel-section{
+  width: 100vw;
+  height: 70vh;
+  margin-top: 45px;
+  position:relative;
 }
 
-.carousel-item > img{
-  object-fit: cover;
+.image-section
+{
+  width: 100%;
+  height: 100%;
+  position:relative;
+  overflow: hidden;
+  background-color: black;
+}
+
+.carousel-img{
+  width: 100%;
+  height: 100%;
+  /* position:fixed; */
+  top: 0;
+  left: 0;
+  background-position: top;
+  background-size: cover;
+  transition: opacity 1s ease-in-out, transform 1s ease-out;
+  transition: opacity 1s ease-in-out, transform 1s ease-out, background-image 0.7 ease-in-out;
+  }
+  #image-slide-desktop{
+    background-image: url("http://localhost/coplanner/assets/images/carousel/7I3A9298.jpg");
+}
+  #image-slide-mobile{
+    background-image: url("http://localhost/coplanner/assets/images/carousel/IMG_2115.jpg");
 }
 
 
-/** media query for carousel **/
-@media only screen and (max-width: 992px) {
-  .carousel{
-    padding-bottom: 0rem;
+.carousel-imge.fade-out{
+  opacity: 0.6;
+  transform: scale(1);
+}
 
+.carousel-img.fade-in{
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+
+.tint{
+  background-color: #000;
+  opacity: 0.3;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.carousel-body{
+  color: white;
+  padding: 2rem;
+  height: 50%;
+  width: 65vw;
+  position: absolute;
+  left: 15vw;
+  bottom: 5vh;
+}
+
+
+@media screen and (max-width: 699px) {
+  .carousel-body{
+    width: 100%;
+    left:0;
+    right:0;
   }
 
-  .home-background{
-    min-height: 80vh!important;
-    max-height: 85vh!important;
+  .search-btn{
+    width:100%;
+    margin-top: 0.5rem;
   }
-}
-/** main content **/
-.main-content {
-  flex-grow: 1;
-  overflow-y: auto;
-  max-height: 100vh;
-}
-
-/** components **/
-.del-btn{
-    border: none;
-    padding: 0.5rem 0.75rem;
-    background-color: var(--easygo-lred-1);
-    color: var(--easygo-red);
-    border-radius: var(--easygo-br-4);
 }

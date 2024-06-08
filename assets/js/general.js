@@ -61,58 +61,71 @@ $(document).ready(function () {
   $("#register-form-2 .back-btn").click(previousForm); // to previous form
   $(".profile_img-file").change(updateProfileImgDisp);
 
-/* Highlights the navbar link for the currently displayed page*/
-  function nav_check() {
-    var nav = document.getElementById("mynavbar");
-    if (nav != undefined) {
-      const nav_page = window.location.pathname;
-      if (nav_page.includes("home.php")) {
-        nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
-      } else if (nav_page.includes("tours.php")) {
-        nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
-      } else if (nav_page.includes("tour_description.php")) {
-        nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
-      } else if (nav_page.includes("book_tour.php")) {
-        nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
-      } else if (nav_page.includes("about.php")) {
-        nav.getElementsByClassName("nav-link")[3].classList.add("text-blue");
-      } else if (nav_page.includes("contact.php")) {
-        nav.getElementsByClassName("nav-link")[4].classList.add("text-blue");
-      } else {
-        nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
-      }
-    }
-  }
-/* Highlights the sidebar link for the currently displayed page*/
-  function sidebar_check() {
-    const select_style = "border-right: solid 2px var(--easygo-blue);";
-    var side = document.getElementById("curator_side_bar");
-    if (side != undefined) {
-      const page = window.location.pathname;
-      if (
-        page.includes("template_itineraries.php") ||
-        page.includes("private_tours.php")
-      ) {
-        document.getElementById("nav_trips").classList.toggle("text-blue");
-        document.getElementById("nav_trips").style = select_style;
-        // document.getElementById("nav_trips").classList.toggle("open");
-      } else if (page.includes("transactions.php")) {
-        document.getElementById("nav_finance").classList.toggle("text-blue");
-        document.getElementById("nav_finance").style = select_style;
-      } else if (page.includes("account_settings.php")) {
-        document.getElementById("nav_account").classList.toggle("text-blue");
-        document.getElementById("nav_account").style = select_style;
-      } else {
-        document.getElementById("nav_dash").classList.toggle("text-blue");
-        document.getElementById("nav_dash").style = select_style;
-      }
-    }
-  }
   nav_check();
   sidebar_check();
+  $(".trip-card").click(onTripCardClick);
 });
 
+function onTripCardClick(event){
+  // document.getElementById().closest(".trip-card")
+  let id = event.target.closest(".trip-card").getAttribute("data-trip-extension");
+  if(id != null){
+    goto_page("coplanner/experience_info.php?"+id);
+    console.log(id);
+  }else{
+    console.log("no id");
+  }
+
+}
 /*************** FUNCTIONS ****************/
+
+/* Highlights the navbar link for the currently displayed page*/
+function nav_check() {
+  var nav = document.getElementById("mynavbar");
+  if (nav != undefined) {
+    const nav_page = window.location.pathname;
+    if (nav_page.includes("home.php")) {
+      nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
+    } else if (nav_page.includes("tours.php")) {
+      nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
+    } else if (nav_page.includes("tour_description.php")) {
+      nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
+    } else if (nav_page.includes("book_tour.php")) {
+      nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");
+    } else if (nav_page.includes("about.php")) {
+      nav.getElementsByClassName("nav-link")[3].classList.add("text-blue");
+    } else if (nav_page.includes("contact.php")) {
+      nav.getElementsByClassName("nav-link")[4].classList.add("text-blue");
+    } else {
+      nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
+    }
+  }
+}
+/* Highlights the sidebar link for the currently displayed page*/
+function sidebar_check() {
+  const select_style = "border-right: solid 2px var(--easygo-blue);";
+  var side = document.getElementById("curator_side_bar");
+  if (side != undefined) {
+    const page = window.location.pathname;
+    if (
+      page.includes("template_itineraries.php") ||
+      page.includes("private_tours.php")
+    ) {
+      document.getElementById("nav_trips").classList.toggle("text-blue");
+      document.getElementById("nav_trips").style = select_style;
+      // document.getElementById("nav_trips").classList.toggle("open");
+    } else if (page.includes("transactions.php")) {
+      document.getElementById("nav_finance").classList.toggle("text-blue");
+      document.getElementById("nav_finance").style = select_style;
+    } else if (page.includes("account_settings.php")) {
+      document.getElementById("nav_account").classList.toggle("text-blue");
+      document.getElementById("nav_account").style = select_style;
+    } else {
+      document.getElementById("nav_dash").classList.toggle("text-blue");
+      document.getElementById("nav_dash").style = select_style;
+    }
+  }
+}
 //--- [utility] functions --//
 // toggle slide menu
 function toggleSlideMenu() {

@@ -143,7 +143,7 @@ $mixpanel->log_page_view();
                         $image = $entry["media_location"] ?? (server_base_url()."uploads/images/gokart.jpg");
                         $base_url = server_base_url();
                         echo "<div class='col-lg-4 col-md-6 p-3'>
-                        <div class='trip-card'>
+                        <div class='trip-card' data-trip-extension='experience_id=$experience_id'>
                             <img src='$image' alt='trip card image'>
                             <div class='trip-card-body'>
                                 <div class='trip-card-header'>
@@ -160,11 +160,10 @@ $mixpanel->log_page_view();
                                 </div>
                             </div>
                             <div class='trip-card-footer'>
-                            <div class='col'>
-                                <p class='mb-0 easygo-fs-5 text-grayl-1'>Price per person</p>
-                                <h3>$currency $price</h3>
-                            </div>
-                                <a href='{$base_url}coplanner/experience_info.php?experience_id=$experience_id' class='easygo-btn-1'>View tour</a>
+                                <div class='col'>
+                                    <p class='mb-0 easygo-fs-5 text-grayl-1'>Price per person</p>
+                                    <h3>$currency $price</h3>
+                                </div>
                             </div>
                         </div>
                     </div>

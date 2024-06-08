@@ -1,0 +1,26 @@
+
+
+/* footer{
+	color: grey;
+} */
+footer a {
+	color: grey;
+}
+
+footer h1,
+footer h2,
+footer h3,
+footer h4{
+	color: black;
+}
+
+
+.footer-address-card{
+	background-color: white;
+	height: 80%;
+	border-radius: 16px;
+	padding: 2rem;
+	overflow: hidden;
+	font-size: small;
+	text-align: start;
+}

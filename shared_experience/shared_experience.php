@@ -19,11 +19,13 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
     <!-- Fontawesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- easygo css -->
-    <link rel="stylesheet" href="../assets/css/general.css">
     <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/general.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <!-- <link rel="stylesheet" href="../assets/css/header.css"> -->
 </head>
 
-<body>
+<body >
 
     <!-- main content start -->
     <div class="main-wrapper">
@@ -34,122 +36,41 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
         ?>
         <!-- navbar [end] -->
         <!--- ================================ -->
-        <main>
+        <main >
             <!--- ================================ -->
             <!--- introduction section [start] -->
-            <section class="intro py-7 home-background">
-                <div class="d-none d-lg-block d-xl-block intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px); background-image: linear-gradient(transparent,#7283e9);">
-                    <h1>
-                    Traveling Ghana should be easy
-                        <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
-                    </h1>
-                    <p>
-                        easyGo connects you with seasoned tour curators who meticulously plan every aspect of the
-                        journey. Enjoy the simplicity of booking a spot on an open group tour, where you can explore
-                        new places alongside like-minded travelers.
-                    </p>
 
-                    <div class="d-flex gap-3 justify-content-center py-2">
-                        <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Explore</button>
-                        <!-- <a href="../coplanner/photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a> -->
-                    </div>
-                    <!-- <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./tours.php" style="min-width: 50%;">
-                        <div class="d-flex">
-                            <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
-                            <button class="easygo-btn-1 rounded-0">Search</button>
-                        </div>
-                    </form> -->
+            <section class=" carousel-section">
+                <div class="image-section">
+                    <div class="carousel-img d-block d-lg-none " id="image-slide-mobile" data-imgs="assets/images/carousel/IMG_2115.jpg,assets/images/carousel/IMG_2611.jpg,assets/images/carousel/IMG_2647.jpg,assets/images/carousel/IMG_2115.jpg"></div>
+                    <div class="carousel-img d-none d-md-block" id="image-slide-desktop" data-imgs="assets/images/carousel/7I3A9298.jpg,assets/images/carousel/7I3A9268.jpg,assets/images/carousel/IMG_7661.jpg,assets/images/carousel/IMG_7643.jpg"></div>
                 </div>
-                <div class="background-item home-background" style="z-index: 1;">
-                    <div id="background-slider" class="carousel slide carousel-fade rounded overflow-hidden bg-content" data-bs-ride="carousel">
-                        <div class="carousel-indicators easygo-carousel-indicators">
-                            <?php
-                            if (is_env_remote()) {
-                                $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/assets/images/carousel/*";
-                            } else {
-                                $dir = $_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/coplanner/assets/images/carousel/*";
-                            }
-                            $carousel = glob($dir);
-                            for ($i = 0; $i < count($carousel); $i++) {
-                                echo "
-                                    <button type='button' data-bs-target='#background-slider' data-bs-slide-to='$i' class='" . ($i == 0 ? "active" : "") . "' aria-current='true' aria-label='Slide " . ($i + 1) . ")'></button>
-                                    ";
-                            }
-                            ?>
-                        </div>
-                        <div class="carousel-inner w-100 h-100">
-                            <?php
-                            foreach ($carousel as $index => $image) {
-                                if (is_env_remote()) {
-                                    $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"], server_base_url(), $image);
-                                } else {
-                                    $image = str_replace($_SERVER["CONTEXT_DOCUMENT_ROOT"] . "/coplanner/", server_base_url(), $image);
-                                }
-                                echo "
-                            <div class='carousel-item " . ($index == 0 ? "active" : "") . " w-100 h-100'>
-                                <img class='h-100 w-100' src='$image' alt='carousel image'>
+                <div class="tint"></div>
+                <div class="carousel-body">
+                    <h1 class="easygo-fw-1">
+                        You don't need to hassle to find something to do
+                    </h1>
+                    <p> We host every tour curator in Ghana so you can easily find and book their tours </p>
+                    <!-- <form action="#experience_section"> -->
+                        <div class="carousel-search row align-items-center">
+                            <div class="form-input-field col-lg-9">
+                                <input type="text" class="border-blue"  placeholder="Find an Experience" data-eg-target="email-err">
+                                <p id="email-err" class="form-err-msg"></p>
                             </div>
-                            ";
-                            }
-                            ?>
+                            <div class="col-lg-3">
+                                <a  class="search-btn easygo-btn-1 bg-blue text-white easygo-fs-5" href="#experience_section">Search</a>
+                            </div>
                         </div>
-                    </div>
+                    <!-- </form> -->
                 </div>
 
             </section>
 
-            <div class="d-sm-block d-xl-none d-lg-none intro-card text-center text-white px-2 px-md-5 py-5" style="backdrop-filter: blur(20px); background-color: #7283e9;">
-                <h1>
-                    Traveling Ghana should be easy
-                    <img src="../assets/images/svgs/rocket.svg" alt="rocket image" class="logo-medium">
-                </h1>
-                <p>
-
-                easyGo connects you with seasoned tour curators who meticulously plan every aspect of the
-                journey. Enjoy the simplicity of booking a spot on an open group tour, where you can explore
-                 new places alongside like-minded travelers.
-                </p>
-                <div class="d-flex gap-3 justify-content-center">
-                    <button class="easygo-btn-5 py-2 px-3 easygo-fs-4">Book Now</button>
-                    <!-- <a href="../coplanner/photo_gallery.php" class="easygo-btn-4 py-2 px-3 easygo-fs-4">Photo Gallery <img src="../assets/images/svgs/arrow_45deg_white.svg" alt="45 degree arrow" class="d-inline-block ps-1"></a> -->
-                </div>
-                <!-- <form class="m-auto easygo-fs-5 rounded overflow-hidden" action="./tours.php" style="min-width: 50%;">
-                    <div class="d-flex">
-                        <input class="px-3 py-2 border-0" type="text" placeholder="Search a tour or an activity" style="flex: 1;" name='query'>
-                        <button class="easygo-btn-1 rounded-0">Search</button>
-                    </div>
-                </form> -->
-            </div>
             <!--- introduction section [end] -->
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- get started section [start] -->
-            <section class="get-started my-5">
-                <div class="container">
-                    <div class="row flex-column-reverse flex-lg-row">
-                        <div class="col-lg-6 p-3">
-                            <div class="px-lg-5">
-                                <div class="stacked-imgs">
-                                    <img src="../assets/images/site_images/home_1.jpg" alt="scenery">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 d-flex align-items-center p-3">
-                            <div class="container d-flex flex-column gap-2">
-                                <h1>Find the Best Tour For You And Your friends</h1>
-                                <p>
-                                    Tour curators on easyGo are the best people to create unique adventures for you and your friends.
-                                    Visit the most exciting destinations and create lasting friendships. Leave the planning and organising
-                                    to us, focus on enjoyment.
-                                </p>
-                                <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" onclick="goto_page('views/tours.php')" style="border-radius: 50px; word-spacing: 5px;">
-                                    Get Started
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
             <div class="container">
                 <hr class=" opacity-100 d-md-none">
             </div>
@@ -157,7 +78,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- Featured tours section [start] -->
-            <section class="suggested-locations my-5">
+            <section class="suggested-locations my-5" id="#experience_section">
                 <div class="container">
                     <div>
                         <h5 class="text-orange">Shared Experiences</h5>
@@ -195,7 +116,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 echo "
 
                         <div class='col-lg-4 col-md-6 p-3'>
-                        <div class='trip-card'>
+                        <div class='trip-card' data-trip-extension='experience_id=$id'>
                             <img src='$image' alt='trip card image'>
                             <div class='trip-card-body'>
                                 <div class='trip-card-header'>
@@ -203,17 +124,16 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                         <h5 class='easygo-fw-1'>$title</h5>
                                         <!-- <p class='text-gray-1 easygo-fs-5'>Accra, Ghana</p> -->
                                         <div class='text-gray-1 location easygo-fs-4'>
-                                            Curated by <a href='curator_profile.php?id=$curator_id'>$curator_name</a>
+                                            Curated by <span class='easygo-fw-1 text-black'>$curator_name</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class='trip-card-footer'>
-                                <div class='col'>
+                                <div class='col pt-1'>
                                     <p class='mb-0 easygo-fs-5 text-grayl-1'>Price per person</p>
-                                    <h3>$currency $fee</h3>
+                                    <h5>$currency$fee</h5>
                                 </div>
-                                <a href='{$base_url}coplanner/experience_info.php?experience_id=$id' class='easygo-btn-1'>View tour</a>
                             </div>
                         </div>
                     </div>
@@ -222,10 +142,10 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         }
                         ?>
                     </div>
-                    <div class='d-flex justify-content-end'>
+                    <!-- <div class='d-flex justify-content-end'>
                         <a class='text-black d-none d-md-block' href='./tours.php'>View all tours <img src='../assets/images/svgs/arrow_45deg_black.svg' alt='45 degree arrow' style='width: 0.7rem;'></a>
                         <a href='./tours.php' class='easygo-btn-1 d-block d-md-none w-100 text-center'>Go to tours &nbsp; <img src='../assets/images/svgs/arrow_45deg_white.svg' alt='45 degree arrow' style='width: 0.7rem;'></a>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <div class="container">
@@ -235,25 +155,27 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <!--- ================================ -->
             <!--- ================================ -->
             <!--- about us section [start] -->
-            <section class="about-us my-5">
+            <section class="get-started my-5">
                 <div class="container">
                     <div class="row flex-column-reverse flex-lg-row">
-                        <div class="col-lg-6">
-                            <div>
+                        <div class="col-lg-6 p-3">
+                            <div class="px-lg-5">
                                 <div class="stacked-imgs">
-                                    <img src="../assets/images/others/tour1.jpg" alt="scenery">
+                                    <img src="../assets/images/site_images/home_1.jpg" alt="scenery">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center p-3">
-                            <div class="container d-flex flex-column gap-4">
-                                <h5 class="text-orange">About Us</h5>
-                                <h1>Tour Curation platform</h1>
+                            <div class="container d-flex flex-column gap-2">
+                                <h1>Find the Best Tour For You And Your friends</h1>
                                 <p>
-                                    easyGo makes it easy for tourists to find and book tours to sites of attractions in Ghana.
-                                    Our platform allows us to tap into the experience of our growing community of tour curators to
-                                    provide you with the best tours in Ghana. Let us do the heavy lifting so you don't have to
+                                    Tour curators on easyGo are the best people to create unique adventures for you and your friends.
+                                    Visit the most exciting destinations and create lasting friendships. Leave the planning and organising
+                                    to us, focus on enjoyment.
                                 </p>
+                                <!-- <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" onclick="goto_page('views/tours.php')" style="border-radius: 50px; word-spacing: 5px;">
+                                    Get Started
+                                </button> -->
                             </div>
                         </div>
                     </div>
@@ -288,7 +210,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
                                 <?php
                                     $base_url = server_base_url();
-                                    echo "<button type='button' onclick='return goto_page(\"{$base_url}\",false)' class='easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5' style='border-radius: 50px; word-spacing: 5px;'> Choose a Travel Plan</button>";
+                                    echo "<button type='button' onclick='return goto_page(\"$base_url/travel_plan\",false)' class='easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5' style='border-radius: 50px; word-spacing: 5px;'> Choose a Travel Plan</button>";
                                 ?>
 
 
@@ -438,7 +360,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                             <img class="w-100 h-100" src="../assets/images/gallery_pictures/long_7.jpeg" alt="scenery 1">
                         </div>
                     </div>
-                    <div style="text-align: right" class="my-3"><a class="text-black easygo-fs-2" href="./photo_gallery.php">View Gallery &nbsp; <img src="../assets/images/svgs/arrow_45deg_black.svg" alt=" black 45 degree arrow"></a></div>
                 </div>
             </section>
             <!--- gallery section [wns] -->
@@ -458,6 +379,54 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             </section>
             <!--- News Letter section [end] -->
             <!--- ================================ -->
+
+            <div class="signup-bypass-window hide">
+                <div class="signup-bypass ">
+                    <div class="bypass-body">
+                        <div class="bypass-title">
+                            <h2>You haven't signed In!</h2>
+                            <h5>We'll need your details to proceed</h5>
+                        </div>
+                        <form action="#" onsubmit="signup_bypass(this);" method="post">
+                            <div class="bypass-email">
+                                <div class="input-field">
+                                    <label for="name">Your Name</label>
+                                    <div class="password-input-container">
+                                        <input name="name" type="text" placeholder="Kofi Manful" class="border-blue" data-eg-target="name-err">
+                                    </div>
+                                    <p id="name-err" class="form-err-msg">Password must be at least 8 characters long</p>
+                                </div>
+                                <div class="input-field">
+                                    <label for="name">Email</label>
+                                    <div class="password-input-container">
+                                        <input name="email" type="email" placeholder="main@easygo.com.gh" class="border-blue" data-eg-target="email-err">
+                                    </div>
+                                    <p id="email-err" class="form-err-msg">Please provide a valid email address</p>
+                                </div>
+                                <div class="input-field">
+                                    <label for="name">Phone Number</label>
+                                    <div class="password-input-container">
+                                        <input name="phone" type="text" placeholder="233559582518" class="border-blue" data-eg-target="number-err">
+                                    </div>
+                                    <p id="number-err" class="form-err-msg">Please provide a valid phone number</p>
+                                </div>
+                                <div class="input-field button-container">
+                                    <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Continue</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="bypass-or">
+                            OR
+                        </div>
+                        <div class="bypass-google">
+                            <?php
+                                require_once(__DIR__."/../utils/core.php");
+                                google_auth_btn();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
         <!--- ================================ -->
         <!--- footer [start] -->
@@ -471,6 +440,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Swiper bundle js -->

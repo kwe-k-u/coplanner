@@ -74,13 +74,14 @@ function pay_for_experience(bill){
 	let modified_bill = {...bill};
 
 
+
 	modified_bill["description"] = "Payment for experience "+ url_params("experience_id") + " by user<"+c_email+">";
 	modified_bill["payment_purpose"] = "experience_payment";
 	modified_bill["user_email"] = c_email;
 	modified_bill["user_phone"] = user_phone_field.value;
 	modified_bill["user_name"] = user_name_field.value;
 	if(bill.payout_account_number){
-		payWithPaystack(bill.currency_name, bill.total_fee*100,c_email,modified_bill, bill.payout_account_number)
+		payWithPaystack(bill.currency_name, bill.total_fee*100,c_email,modified_bill, bill.payout_account_id)
 	}else{
 		payWithPaystack(bill.currency_name, bill.total_fee*100,c_email,modified_bill);
 	}

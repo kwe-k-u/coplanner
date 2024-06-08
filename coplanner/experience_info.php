@@ -99,7 +99,7 @@ if (isset($_GET["experience_id"])) {
 
                         </div>
                         <div class="left-summary">
-                            <div class="bill-header">
+                            <div class="bill-header" style="opacity:0;">
                                 <p>Bill</p>
                             </div>
                             <div class="itinerary-image  d-sm-block d-md-none mb-4">
@@ -115,9 +115,6 @@ if (isset($_GET["experience_id"])) {
 
 
                                     echo "
-                                        <div class='invoice-id'>
-                                            Itinerary ID: <span>$experience_id </span>
-                                        </div>
                                         <div class='invoice-dest'>
                                             <div class='invoice-dets'>
                                                 <div>
