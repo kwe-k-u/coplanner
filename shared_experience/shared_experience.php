@@ -164,7 +164,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         <div class="col-lg-6 p-3">
                             <div class="px-lg-5">
                                 <div class="stacked-imgs">
-                                    <img src="../assets/images/site_images/home_1.jpg" alt="scenery">
+                                    <img class="lazy-loader" data-src="../assets/images/site_images/home_1.jpg" alt="scenery">
                                 </div>
                             </div>
                         </div>
@@ -196,9 +196,9 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="container-fluid position-relative h-100">
-                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block" src="../assets/images/site_images/home_3.jpg" alt="background image">
+                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block lazy-loader" data-src="../assets/images/site_images/home_3.jpg" alt="background image">
                                 <div class="d-block d-lg-none pt-5">
-                                    <img class="img-fluid" src="../assets/images/site_images/home_3.jpg" alt="background image">
+                                    <img class="img-fluid lazy-loader" data-src="../assets/images/site_images/home_3.jpg" alt="background image">
                                 </div>
                             </div>
                         </div>
@@ -345,22 +345,22 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
                     <div class="grid-2">
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100" src="../assets/images/gallery_pictures/long_1.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_1.jpeg" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100" src="../assets/images/gallery_pictures/long_11.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_11.jpeg" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100" src="../assets/images/gallery_pictures/tall_2.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/tall_2.jpeg" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100" src="../assets/images/gallery_pictures/long_10.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_10.jpeg" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100" src="../assets/images/gallery_pictures/long_4.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_4.jpeg" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100" src="../assets/images/gallery_pictures/long_7.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_7.jpeg" alt="scenery 1">
                         </div>
                     </div>
                 </div>
@@ -447,7 +447,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Swiper bundle js -->
-    <script src="../assets/js/swiper-bundle.min.js"></script>
+    <!-- <script src="../assets/js/swiper-bundle.min.js"></script> -->
     <!-- easygo js -->
     <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
     <script src="../assets/js/general.js"></script>

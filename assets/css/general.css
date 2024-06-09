@@ -2188,3 +2188,15 @@ input:disabled {
   border-bottom: 1px solid grey;
 }
 
+
+
+.lazy-loader {
+  background: #f0f0f0; /* or a loading spinner */
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.lazy-loader.lazy-loaded {
+  background: none; /* Remove the placeholder when image is loaded */
+}

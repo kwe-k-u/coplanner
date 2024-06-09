@@ -710,3 +710,56 @@ function testInput(type, value,compare_val = null) {
 
 
 
+// Function to load images lazily
+document.addEventListener("DOMContentLoaded", function() {
+  const lazyLoadImages = document.querySelectorAll('.lazy-loader');
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.add('lazy-loaded');
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyLoadImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Fallback for older browsers
+    let lazyLoadThrottleTimeout;
+    function lazyload () {
+      if(lazyLoadThrottleTimeout) {
+        clearTimeout(lazyLoadThrottleTimeout);
+      }
+
+      lazyLoadThrottleTimeout = setTimeout(function() {
+        let scrollTop = window.pageYOffset;
+        lazyLoadImages.forEach(function(img) {
+          if(img.offsetTop < (window.innerHeight + scrollTop)) {
+            img.src = img.dataset.src;
+            img.classList.add('lazy-loaded');
+          }
+        });
+        if(lazyLoadImages.length == 0) {
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+      }, 20);
+    }
+
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+  }
+});
+
+
+
+
+
