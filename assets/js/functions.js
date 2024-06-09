@@ -358,3 +358,25 @@ function signup_bypass(form){
   }
 
 }
+
+function contact_support(form){
+  let name = form.name.value;
+  let email = form.email.value;
+  let message = form.message.value;
+
+  send_request("POST","processors/processor.php/contact_support",
+    {
+
+      "message" : message,
+      "email" : email,
+      "name" : name
+    },
+    (response) => {
+      if (response.status == 200){
+        showToast(response.data.msg);
+      }else{
+        openDialog(response.data.msg);
+      }
+    }
+  )
+}

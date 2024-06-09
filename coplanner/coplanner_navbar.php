@@ -1,10 +1,12 @@
 <?php
+    require_once(__DIR__."/../utils/core.php");
+
     $user_id = get_session_user_id();
     if($user_id){
         require_once(__DIR__."/../controllers/public_controller.php");
         $username = get_user_info($user_id)["user_name"];
     }
-    require_once(__DIR__."/../utils/core.php");
+    $base_url = server_base_url();
 ?>
 
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
@@ -18,10 +20,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul id="navbar-links" class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href='#'> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href='#'> Experiences</a></li>
-                <li class="nav-item"><a class="nav-link" href='#'> About</a></li>
-                <li class="nav-item"><a class="nav-link" href='#'> Contact Us</a></li>
+                <?php
+                 echo "
+                 <li class='nav-item'><a class='nav-link' href='$base_url'> Home</a></li>
+                 <li class='nav-item'><a class='nav-link' href='$base_url'> Experiences</a></li>
+                 <li class='nav-item'><a class='nav-link' href='{$base_url}coplanner/about.php'> About</a></li>
+                 <li class='nav-item'><a class='nav-link' href='{$base_url}coplanner/about.php#contact-us'> Contact Us</a></li>
+                 "
+                ?>
                 <li class="d-md-none d-sm-block nav-item dropdown">
                     <a class="nav-link " href="#" onclick="toggle_signup_bypass()">
                         Sign In

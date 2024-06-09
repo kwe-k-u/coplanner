@@ -796,6 +796,14 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			session_log_in($user_id);
 			send_json(array("msg"=> "success"));
 			die();
+		case "/contact_support":
+
+			$email = $_POST["email"];
+			$name = $_POST["name"];
+			$message = $_POST["message"];
+
+			notify_slack_support_msg("$name<$email> left a messagin saying ->> $message");
+			die();
 		case "/test":
 			// $mailer = new mailer();
 			// $mailer->curator_signup($_GET["email"],$_GET["name"]);

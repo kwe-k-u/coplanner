@@ -86,6 +86,11 @@
 		return $slack->notify_user_log($message);
 	}
 
+	function notify_slack_support_msg($message){
+		$slack = new slack_bot_class();
+		return $slack->notify_support_log($message);
+	}
+
 
 
 ?>
