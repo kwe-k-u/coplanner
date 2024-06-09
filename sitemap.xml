@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<!-- [start] Homepages  -->
+	<!-- Tourist homepage  -->
+	<url>
+		<loc>https://www.easygo.com.gh</loc>
+		<lastmod>2022-06-09</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<!-- Curator homepage  -->
+	<url>
+		<loc>https://www.easygo.com.gh/curator/index.php</loc>
+		<lastmod>2022-06-09</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<!-- [end] homepages  -->
+	<!-- [start] Trip pages  -->
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experiences.php</loc>
+		<lastmod>2024-06-09</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a9f173e0c0b3f11efaab78ed206f829ea</loc>
+		<lastmod>2024-06-09</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a689166db222611efaab78ed206f829ea</loc>
+		<lastmod>2024-06-09</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<!-- [end] Trip pages  -->
+	<!-- [start] Other pages  -->
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/about.php</loc>
+		<lastmod>2024-06-09</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<!-- [end] Otehr pages  -->
+	<!-- Add more URLs for your website here -->
+</urlset>

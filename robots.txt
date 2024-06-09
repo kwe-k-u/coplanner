@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /curator/
+Disallow: /assets/
+Disallow: /coplanner/dashboard/
+Allow: /
+Allow: /coplanner/
+Allow: /curator/index.php
+
+Sitemap: https://www.easygo.com.gh/sitemap.xml

@@ -16,6 +16,9 @@ if (isset($_GET["invite_token"])) {
     <?php include_once(__DIR__ . "/../utils/analytics/google_tag.php") ?>
     <link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Manage your tour business and easily receive payments from mobile money and bank accounts. List your adventure and soft life tours with us">
+    <meta name="keywords" content="Ghana tours, tour booking platform, tourism management system">
+    <meta name="author" content="easyGo Tours Ltd">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyGo - Curator Sign Up</title>
     <!-- Bootstrap css -->
