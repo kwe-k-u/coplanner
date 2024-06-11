@@ -1,4 +1,5 @@
 <?php
+
 ?>
 
 <style>
@@ -12,7 +13,7 @@
     }
     .card-regular{
         margin: 0;
-        width: 22.5%;
+        width: 25.0%;
         height: 100%;
         place-content: center;
         background: white;
@@ -22,7 +23,7 @@
     }
     .card-long{
         margin: 0;
-        width: 45%;
+        width: 40%;
         height: 100%;        
         place-content: center;
         background: white;
@@ -72,7 +73,7 @@
     }
 
     .destination-row .card-footer-long{
-        width: 50%;
+        width: 80%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -137,16 +138,17 @@
 
         .destination-row .card-footer {
             width: 100%;
-            margin: unset;
+            margin: 0 auto;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            font-size: 1.2em
+            font-size: 1.2em;
         }
 
         .destination-row .card-footer-long {
             width: 100%;
             margin: 0 auto;
+            font-size: 1.2em;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -162,40 +164,74 @@
             <div class= "card-title"> Travel Date </div>
             <div class = "card-content">
                 <div class = "card-details">
-                    5 days
+                <?php
+                    $dateOfDeparture = new DateTime($trip_details['dateOfDeparture']);
+                    $dateOfReturn = new DateTime($trip_details['dateOfReturn']);
+                    $interval = $dateOfDeparture->diff($dateOfReturn);
+                    echo "". $interval->days . " days";
+                    ?>
                 </div>
                 <div class = "card-footer"> 
-                   <div> 01.09.2024 </div> <i class="fa-solid fa-right-left"></i> <div> 01.09.2024 </div>
+                   <div>
+                    <?php
+                    $dateTodisplay = $trip_details['dateOfDeparture'];
+                    echo "$dateTodisplay";
+                    ?>
+                    </div> <i class="fa-solid fa-right-left"></i> <div>
+                    <?php
+                    $dateTodisplay = $trip_details['dateOfReturn'];
+                    echo "$dateTodisplay";
+                    ?>
+                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <div class = "card-regular">
         <!-- Date details -->
         <div class = "card-container">
-            <div class= "card-title"> Travel Date </div>
+            <div class= "card-title"> People</div>
             <div class = "card-content">
                 <div class = "card-details">
-                    5 days
+                <?php
+                    $dataTodisplay = $trip_details['people'];
+                    echo "$dataTodisplay";
+                    ?>
                 </div>
-                <div class = "card-footer"> 
-                   <div> 01.09.2024 </div> <i class="fa-solid fa-right-left"></i> <div> 01.09.2024 </div>
-                </div>
+                
             </div>
+            <!-- <div class = "card-footer"> 
+                   <div> 01.09.2024 </div> <i class="fa-solid fa-right-left"></i> <div> 01.09.2024 </div>
+                </div> -->
         </div>
     </div>
     <div class = "card-long">
         <!-- Date details -->
         <div class = "card-container ">
-            <div class= "card-title card-content-long"> Travel Date </div>
+            <div class= "card-title card-content-long"> Destination </div>
             <div class = "card-content card-content-long">
                 <div class = "card-details">
-                    5 days
+                <?php
+                    $dataTodisplay = $trip_details['name'];
+                    echo "$dataTodisplay";
+                ?>
                 </div>
                 <div class = "card-footer-long"> 
-                   <div> 01.09.2024 </div> <i class="fa-solid fa-right-left"></i> <div> 01.09.2024 </div>
+                   <div> 
+                    <?php
+                        $dataTodisplay = $trip_details['locationOfDeparture'];
+                        echo "$dataTodisplay";
+                    ?>
+                   </div> <i class="fa-solid fa-right-left"></i> <div> 
+                    <?php
+                        $dataTodisplay = $trip_details['nameOfTrip'];
+                        echo "$dataTodisplay";
+                    ?>
+                   </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>

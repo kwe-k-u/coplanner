@@ -8,23 +8,23 @@ $links = array(
         </span>"
     ),
     "My trips" => array(
-        "link" => "mytrips",
+        "link" => "my_trips",
         "icon" => "<span class=\"material-symbols-outlined\">
         trip
         </span>"
     ),
-    "Explore destinations" => array(
-        "link" => "#",
-        "icon" => "<span class=\"material-symbols-outlined\">
-        location_on
-        </span>"
-    ),
-    "Wishlist" => array(
-        "link" => "#",
-        "icon" => "<span class=\"material-symbols-outlined\">
-        bookmark
-        </span>"
-    ),
+    // "Explore destinations" => array(
+    //     "link" => "#",
+    //     "icon" => "<span class=\"material-symbols-outlined\">
+    //     location_on
+    //     </span>"
+    // ),
+    // "Wishlist" => array(
+    //     "link" => "#",
+    //     "icon" => "<span class=\"material-symbols-outlined\">
+    //     bookmark
+    //     </span>"
+    // ),
     "Transaction" => array(
         "link" => "#",
         "icon" => "    <span class=\"material-symbols-outlined\">
@@ -37,12 +37,12 @@ $links = array(
         help
         </span>"
     ),
-    "Settings" => array(
-        "link" => "#",
-        "icon" => "<span class=\"material-symbols-outlined\">
-        settings
-        </span>"
-    )
+    // "Settings" => array(
+    //     "link" => "#",
+    //     "icon" => "<span class=\"material-symbols-outlined\">
+    //     settings
+    //     </span>"
+    // )
 );
 
 ?>
@@ -283,11 +283,11 @@ $links = array(
 </div>
 <script>
      function toggleSidebar(show) {
-    var sidebar = document.getElementById('sidebar');
-    if (show) {
-        sidebar.classList.remove('sidebar-hidden');
-    } else {
-        sidebar.classList.add('sidebar-hidden');
+        var sidebar = document.getElementById('sidebar');
+        if (show) {
+            sidebar.classList.remove('sidebar-hidden');
+        } else {
+            sidebar.classList.add('sidebar-hidden');
+        }
     }
-}
 </script>

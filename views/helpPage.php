@@ -4,7 +4,11 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
 $hm = new public_class();
 $data = $hm->get_transaction("U001");
-// echo json_encode($hi);
+//Uncomment after connection
+// $user_id = get_session_user_id();
+// $username = get_user_info($user_id)["user_name"];
+
+$username = "Kwame";
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +78,7 @@ const customButton =
     document.querySelector('.fileupload');
 
 customButton.addEventListener('click', () => {
-    console.log("hi")
+    console.log("hi");
 fileInput.click();
 });
 

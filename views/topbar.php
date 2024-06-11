@@ -1,7 +1,12 @@
 <?php
+//Uncomment after connection
+// $user_id = get_session_user_id();
+// $username = get_user_info($user_id)["user_name"];
+
+$username = "Kwame";
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
     .top-bar{
         height: 10%;
@@ -60,6 +65,16 @@
         display: none;
         align-self: center;
     }
+    .home-button {
+        align-self: center;
+        margin-left: 1em;
+        cursor: pointer;
+        font-size: xx-large !important;
+    }
+
+    .topbar-with-home {
+        justify-content: space-between;
+    }
 
     @media screen and (max-width: 768px) {
         .user-menu{
@@ -78,15 +93,24 @@
 
 </style>
 
-<div class="top-bar">
-    <div  onclick = "toggleSidebar(true)" class="burger-button" ><i class="fa-solid fa-bars fa-lg"></i></div>
+    <?php
+        if (isset($showHome) && $showHome){
+            echo "<div class='top-bar topbar-with-home'>";
+            echo "<div   onclick = 'goto_page(\"" . 'newhome' . ".php\", false)' class='home-button' ><span class='material-symbols-outlined'>home</span></div>";
+        } else {
+            echo "<div class='top-bar'>";
+            echo "<div  onclick = 'toggleSidebar(true)' class='burger-button' ><i class='fa-solid fa-bars fa-lg'></i></div>";
+        }
+    ?>
     <div class="user-menu">
         <div class="notifs">
             <i class="fa-regular fa-bell fa-lg"></i>
         </div>
         <div class="profile-details">
             <div class="profile-name">
-                Kwame Irene
+                <?php
+                    echo "$username";
+                ?>
             </div>
             <div class="profile-picture">
                 <?php

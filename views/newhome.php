@@ -3,9 +3,26 @@ require_once(__DIR__."/../utils/core.php");
 require_once(__DIR__ . "/../controllers/public_controller.php");
 require_once(__DIR__ . "/../controllers/admin_controller.php");
 
+
+//Uncomment after connection
+// $user_id = get_session_user_id();
+// $username = get_user_info($user_id)["user_name"];
+
 $hm = new public_class();
 $data = $hm->get_transaction("U001");
 // echo json_encode($hi);
+
+//should be replaced by fetching upcoming trip
+$trip_details = [
+    "name" => "John Doe",
+    "dateOfDeparture" => "2024-06-01",
+    "dateOfReturn" => "2024-06-15",
+    "typeOfTrip" => "Girls days Out",
+    "nameOfTrip" => "Waterfalls",
+    "people" => "Friends",
+    "locationOfDeparture" => "Accra Mall",
+    "locationOfArrival" => "Aburi"
+];
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +52,7 @@ $data = $hm->get_transaction("U001");
             <div class = "content-container">
                 <!-- main content here -->
                 <div class = "welcome-section">
-                    <!-- TODO: Maake name dynamic -->
-                    <div class = "welcome-title"> Welcome back, Irene </div>
+                <div class = "welcome-title"> Welcome back, <?php echo "$username" ?> </div>
                     <div class = "welcome-subtitle"> Manage all activities about your trip</div>
                 </div>
                 <div class = "home-destination-row">
@@ -74,20 +90,19 @@ $data = $hm->get_transaction("U001");
                         <div class = "trans-cards">
 
                             <!-- TODO: make dynamic -->
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
-                            <div class = "trans-card">
-                                <div class = "trans-card-container">
-                                    <div class = "trans-card-id">#234thfk</div>
-                                    <div class = "trans-card-detail"><div>Girls trip - Western Region</div><div style = "font-weight:bold;">GHS 500</div></div>
-                                    <div class = "trans-card-datetime">Apr 21st 2023 - 10:29PM</div>
-                                </div>
-                            </div>
+                             <?php
+                            for ($x = 0; $x <= 10; $x++) {
+                                if (isset($data[$x])) {
+                                    echo "<div class = 'trans-card'>";
+                                    echo "<div class = 'trans-card-container'>";
+                                    echo "<div class = 'trans-card-id'>" . $data[$x]['provider_transaction_id'] . "</div>";
+                                    echo "<div class = 'trans-card-detail'><div>Girls trip - Western Region</div><div style = 'font-weight:bold;'>GHS". $data[$x]['total_transaction_amount'] ."</div></div>";
+                                    echo "    <div class = 'trans-card-datetime'> " . $data[$x]['date_created'] . "</div>";
+                                    echo "    </div>
+                                    </div>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="upcoming-trip">

@@ -285,6 +285,24 @@
 			return $this->db_fetch_one();
 		}
 
+		function get_transaction($id){
+
+			$sql = "SELECT * FROM transactions ";
+
+			if($id){
+				$sql .=" where sending_user like ? ";
+			}
+
+			$this->prepare($sql);
+
+			if($id){
+				$this->bind("%$id%");
+			}
+
+			return $this->db_fetch_all();
+
+		}
+
 		function get_curator_account_by_user_id($user_id){
 			$sql = "CALL get_curator_account_by_user_id(?)";
 			$this->prepare($sql);
