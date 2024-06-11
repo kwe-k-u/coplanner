@@ -6,6 +6,7 @@
 	top: 0;
 	bottom: 0;
 	right: 0;
+	z-index: 2;
 
 }
 .signup-bypass{
@@ -23,6 +24,7 @@
 	border-radius: 16px;
 	z-index: 1031;
 	box-shadow: 1px 1px 4px grey;
+	transition: height 1s ease;
 }
 .signup-bypass button{
 	margin-left: auto;
@@ -69,6 +71,49 @@
 .bypass-or{
 	padding: 16px;
 	color: grey;
+}
+
+.signup-bypass .tab-content
+{
+	width: 100%;
+	transition: height 1s ease;
+}
+
+.signup-bypass .tab-button{
+	margin-left:0;
+	margin-right: 0;
+	padding: 0.5rem;
+	color:grey;
+	min-width: 8rem;
+	max-width:50%;
+	border: 1px solid grey;
+	background-color: var(--easygo-lblue-2);
+	transition: background-color 0.5s ease, border 0.5s ease, color 0.5s ease;
+}
+
+
+.signup-bypass .tab-button-box {
+	justify-content: space-around;
+	margin-bottom: 12px;
+}
+
+.signup-bypass .tab-pane{
+	background-color: var(--easygo-lblue-2);
+}
+
+.signup-bypass .tab-button-box .active{
+	color:white;
+	background-color: var(--easygo-blue);
+
+}
+
+.signup-bypass .tab-button:first-child{
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+.signup-bypass .tab-button:last-child{
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
 }
 
 

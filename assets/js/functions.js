@@ -380,3 +380,46 @@ function contact_support(form){
     }
   )
 }
+
+
+function email_login(form){
+	event.preventDefault()
+	let email = form.email.value;
+	let password = form.password.value;
+
+	// [start] input validation
+	let isEmailValid = validateFormInputs(
+		{
+			type: "email",
+			value: email,
+			message_target: form.email.getAttribute("data-eg-target"),
+			message: "Enter a valid Email Address"
+		}
+	);
+	// [end] Input validaton
+
+	if (isEmailValid){
+
+		send_request("POST","processors/processor.php/login",
+		{
+			"email" : email,
+			"password" : password,
+			"method" : "email"
+		},
+		(response) =>{
+			if(response.status == 200){
+        console.log(response);
+				let redirect_url = url_params("redirect_url",true);
+				if(redirect_url){
+					//go to the redirect url if one exists
+					window.location.href = redirect_url;
+				}else{
+					goto_page("./index.php")
+				}
+			}else{
+				openDialog(response.data.msg);
+			}
+		}
+		);
+	}
+}

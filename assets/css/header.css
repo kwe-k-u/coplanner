@@ -19,16 +19,6 @@
     color: var(--easygo-blue);
 }
 
-/* #navbar-links li:hover::after,
-#navbar-links li a:hover::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 100%;
-    height: 2px;
-    background-color: var(--easygo-orange);
-} */
 
 /* Navbar toggler */
 .navbar-toggler {
@@ -39,6 +29,7 @@
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
+
 
 .navbar-toggler:hover,
 .navbar-toggler:focus {

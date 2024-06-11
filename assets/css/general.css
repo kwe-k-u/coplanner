@@ -883,6 +883,7 @@ input:disabled {
   background-color: var(--easygo-orange);
   height: 500px;
   border-radius: 12px;
+  z-index:1;
 }
 
 .stacked-imgs img {
@@ -1816,13 +1817,21 @@ input:disabled {
 .dropdown-toggle-alt {
   padding: 0;
 }
-.dropdown-toggle-alt::after {
-  border: none;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  content: url("../images/svgs/arrow_down_alt.svg");
+
+.account-link{
+  margin-left: auto;
 }
+
+/* .dropdown-toggle-alt::after {
+  border: none;
+  padding-top: auto;
+  padding-bottom: auto;
+  height: 100%;
+  display: inline-block;
+  align-items: center;
+  justify-self: center;
+  content: url("../images/svgs/arrow_down_alt.svg");
+} */
 
 /** trip cards **/
 .trip-card {

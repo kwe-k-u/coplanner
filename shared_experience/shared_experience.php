@@ -383,53 +383,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <!--- News Letter section [end] -->
             <!--- ================================ -->
 
-            <div class="signup-bypass-window hide">
-                <div class="signup-bypass ">
-                    <div class="bypass-body">
-                        <div class="bypass-title">
-                            <h2>You haven't signed In!</h2>
-                            <h5>We'll need your details to proceed</h5>
-                        </div>
-                        <form action="#" onsubmit="signup_bypass(this);" method="post">
-                            <div class="bypass-email">
-                                <div class="input-field">
-                                    <label for="name">Your Name</label>
-                                    <div class="password-input-container">
-                                        <input name="name" type="text" placeholder="Kofi Manful" class="border-blue" data-eg-target="name-err">
-                                    </div>
-                                    <p id="name-err" class="form-err-msg">Password must be at least 8 characters long</p>
-                                </div>
-                                <div class="input-field">
-                                    <label for="name">Email</label>
-                                    <div class="password-input-container">
-                                        <input name="email" type="email" placeholder="main@easygo.com.gh" class="border-blue" data-eg-target="email-err">
-                                    </div>
-                                    <p id="email-err" class="form-err-msg">Please provide a valid email address</p>
-                                </div>
-                                <div class="input-field">
-                                    <label for="name">Phone Number</label>
-                                    <div class="password-input-container">
-                                        <input name="phone" type="text" placeholder="233559582518" class="border-blue" data-eg-target="number-err">
-                                    </div>
-                                    <p id="number-err" class="form-err-msg">Please provide a valid phone number</p>
-                                </div>
-                                <div class="input-field button-container">
-                                    <button class="easygo-btn-5 bg-blue text-white easygo-fs-5">Continue</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="bypass-or">
-                            OR
-                        </div>
-                        <div class="bypass-google">
-                            <?php
-                                require_once(__DIR__."/../utils/core.php");
-                                google_auth_btn();
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
         <!--- ================================ -->
         <!--- footer [start] -->

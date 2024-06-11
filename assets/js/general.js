@@ -526,6 +526,7 @@ function openDialog(message) {
     // document body
     const dialogWindow = document.createElement("div");
     dialogWindow.classList.add("dialog-window");
+    dialogWindow.style.setProperty("z-index", 3);
     const dialogBox = document.createElement("div");
     dialogBox.classList.add("dialog-box");
     const exclamationSign = document.createElement("div");
