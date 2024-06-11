@@ -225,8 +225,6 @@ function filterCompletedItems($status, $data) {
         
     }
 
-
-
     .tabToHide {
         display: none !important;
     }
@@ -544,7 +542,7 @@ function filterCompletedItems($status, $data) {
                             
                                 echo "<div class = 'trans-card' >";
                                 echo "<div class = 'trans-card-container'>";
-                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                
                                 echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
                                 echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
                                 echo "   </div> ";
@@ -560,7 +558,7 @@ function filterCompletedItems($status, $data) {
                             
                                 echo "<div class = 'trans-card' >";
                                 echo "<div class = 'trans-card-container'>";
-                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                
                                 echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
                                 echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
                                 echo "   </div> ";
@@ -577,7 +575,7 @@ function filterCompletedItems($status, $data) {
                             
                                 echo "<div class = 'trans-card' >";
                                 echo "<div class = 'trans-card-container'>";
-                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                
                                 echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
                                 echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
                                 echo "   </div> ";
@@ -594,7 +592,7 @@ function filterCompletedItems($status, $data) {
   
                                 echo "<div class = 'trans-card' >";
                                 echo "<div class = 'trans-card-container'>";
-                                echo "<div class = 'trans-card-id'>" . $row['id'] . "</div>";
+                                
                                 echo "<div class = 'trans-card-detail'><div>" . $row['location'] . "</div><div style = 'font-weight:bold;'>GHS 500</div></div>";
                                 echo "<div class = 'trans-card-datetime'>" . $row['date'] . "</div>";
                                 echo "   </div> ";
