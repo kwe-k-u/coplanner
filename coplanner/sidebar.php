@@ -37,12 +37,12 @@ $links = array(
         help
         </span>"
     ),
-    "Settings" => array(
-        "link" => "#",
-        "icon" => "<span class=\"material-symbols-outlined\">
-        settings
-        </span>"
-    )
+    // "Settings" => array(
+    //     "link" => "#",
+    //     "icon" => "<span class=\"material-symbols-outlined\">
+    //     settings
+    //     </span>"
+    // )
 );
 
 ?>
