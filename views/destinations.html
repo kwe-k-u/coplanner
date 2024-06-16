@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- easygo css -->
+    <link rel="stylesheet" href="../assets/css/general.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dash.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/destinations.css">
+</head>
+<body>
+	<header class="dashboard-header">
+
+		<button class="burger-btn  blue-burger" data-target="dash-sidebar">
+			<div class="bg-blue"></div>
+			<div class="bg-blue"></div>
+			<div class="bg-blue"></div>
+		</button>
+
+		<div class="profile-pill dropdown">
+			<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+				<p class="text-gray-1">Hi, <span class="text-black">Name</span></p>
+
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+					<li><a class="dropdown-item" href="#">New Trip</a></li>
+					<li><a class="dropdown-item" href="#">Settings</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Sign out</a></li>
+				  </ul>
+		</div>
+
+	</header>
+
+	<aside class=" d-md-flex flex-column flex-shrink-0 p-3 bg-light" id="dash-sidebar">
+		<a class="navbar-brand d-flex justify-content-center" href="./home.php">
+            <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="">
+        </a>
+		<hr>
+		<ul class="nav nav-pills flex-column mb-auto">
+		  <li class="nav-item">
+			<a href="#" class="nav-link active" aria-current="page">
+				<i class="fa-solid fa-home"></i>
+			  Dashboard
+			</a>
+		  </li>
+		  <li>
+			<a href="#" class="nav-link link-dark">
+			  <i class="fa-solid fa-route"></i>
+			  Your Trips
+			</a>
+		  </li>
+		  <li>
+			<a href="#" class="nav-link link-dark">
+				<i class="fa-solid fa-receipt"></i>
+			  Bookings
+			</a>
+		  </li>
+		</ul>
+		<hr>
+		  <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
+			<i class="fa-solid fa-gear"></i>
+			<strong>Settings</strong>
+		  </a>
+	</aside>
+	<main>
+
+		<section class="destination-section">
+			<div class="modify-destination-options d-flex justify-content-between">
+				<h5>Can't Find a destination?</h5>
+				<button class="btn easygo-btn-6">Add Desination</button>
+			</div>
+			<div class="destination-search justify-content-between">
+				<div class="day-buttons">
+					<button class="btn">Day 1</button>
+					<button class="btn">Day 2</button>
+					<button class="btn">Add Day</button>
+				</div>
+				<div class="form-input-field">
+					<input type="text" name="" id="">
+				</div>
+			</div>
+			<div class="destination-list">
+				<div class="card" >
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">Destination Name</h5>
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+					<ul class="list-group list-group-flush">
+					  <li class="list-group-item">Accra, Ghana</li>
+					  <li class="list-group-item">Hiking, Kayaking, Swimming, Dancing</li>
+					</ul>
+					<div class="card-body">
+					  <a href="#" class="card-link">Card link</a>
+					  <a href="#" class="card-link" data-bs-toggle='modal' data-bs-target="#destination-modal">Add Destination</a>
+					</div>
+				  </div>
+				  <div class="card" >
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">Destination Name</h5>
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+					<ul class="list-group list-group-flush">
+					  <li class="list-group-item">Accra, Ghana</li>
+					  <li class="list-group-item">Hiking, Kayaking, Swimming, Dancing</li>
+					</ul>
+					<div class="card-body">
+					  <a href="#" class="card-link">Card link</a>
+					  <a href="#" class="card-link">Another link</a>
+					</div>
+				  </div>
+
+				  <div class="card" >
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">Destination Name</h5>
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+					<ul class="list-group list-group-flush">
+					  <li class="list-group-item">Accra, Ghana</li>
+					  <li class="list-group-item">Hiking, Kayaking, Swimming, Dancing</li>
+					</ul>
+					<div class="card-body">
+					  <a href="#" class="card-link">Card link</a>
+					  <a href="#" class="card-link">Another link</a>
+					</div>
+				  </div>
+
+				  <div class="card" >
+					<img src="..." class="card-img-top" alt="...">
+					<div class="card-body">
+					  <h5 class="card-title">Destination Name</h5>
+					  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					</div>
+					<ul class="list-group list-group-flush">
+					  <li class="list-group-item">Accra, Ghana</li>
+					  <li class="list-group-item">Hiking, Kayaking, Swimming, Dancing</li>
+					</ul>
+					<div class="card-body">
+					  <a href="#" class="card-link">Card link</a>
+					  <a href="#" class="card-link">Another link</a>
+					</div>
+				  </div>
+			</div>
+		</section>
+
+
+
+
+
+
+
+		<nav id="bottom-selection-info" class="bottom-selection-info">
+			<div class="day-info">
+				<h3 class="mb-0">Day One</h3>
+				<p class="m-0">15th May 2024 * 5 destinations Selected </p>
+			</div>
+			<div class="d-flex ">
+				<div>
+					<button class="btn outline-btn easygo-btn-1">Preview</button>
+				</div><br>
+				<div>
+					<button class="btn easygo-btn-1">Continue</button>
+				</div>
+			</div>
+		</nav>
+
+	</main>
+
+	<div id="destination-modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+			  <div class="modal-header">
+				  <h5>Add destination to your plan</h5>
+			  </div>
+			<div class="destination-modal-info row">
+				<div class="col-lg-6">
+					<div id="main-image">
+						<img src="" alt="">
+					</div>
+
+					<h5 id="destination-name" class="mb-0">Destiantion Name</h5>
+					<p id="destination-location"><i class="fa-solid fa-location-pin"></i> Accra, Ghana</p>
+
+					<div class="destination-tag row">
+						<div class="">Hot tubs</div>
+						<div class="">Breakfast</div>
+						<div class="">Pool</div>
+					</div>
+					<div id="destination-description">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+						 Ab recusandae voluptas, dolore quod impedit adipisci expedita
+						 optio illo, aut dolorum ullam aspernatur corrupti placeat voluptatibus
+						  iure obcaecati labore cupiditate voluptatem.
+					</div>
+
+				</div>
+
+
+				<div class="col-lg-6">
+					<div id="other-images">
+
+					</div>
+
+					<div id="activities-selection">
+						<h5>Activities available</h5>
+						<div class="pill-select-group">
+							<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined1" autocomplete="off">
+							<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined1">
+								Adventure
+							</label>
+							<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined2" autocomplete="off">
+							<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined2">
+								Soft Life
+							</label>
+							<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined2" autocomplete="off">
+							<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined2">
+								Arts
+							</label>
+
+							<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined3" autocomplete="off">
+							<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined3">
+								History & Culture
+							</label>
+							<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined3" autocomplete="off">
+							<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined3">
+								Nature & Wildlife
+							</label>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button class="btn easygo-btn-1" >Cancel</button>
+				<button class="btn easygo-btn-1">Confirm</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+<!-- Bootstrap js -->
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<!-- JQuery js -->
+<script src="../assets/js/jquery-3.6.1.min.js"></script>
+<!-- easygo js -->
+<!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
+<script src="../assets/js/general.js"></script>
+<script src="../assets/js/functions.js"></script>
+<script src="../assets/js/dash.js"></script>
+<script src="../assets/js/destinations.js"></script>
+</body>
+
+</html>

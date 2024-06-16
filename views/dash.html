@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- easygo css -->
+    <link rel="stylesheet" href="../assets/css/general.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/dash.css">
+</head>
+<body>
+	<header class="dashboard-header">
+
+		<button class="burger-btn  blue-burger" data-target="dash-sidebar">
+			<div class="bg-blue"></div>
+			<div class="bg-blue"></div>
+			<div class="bg-blue"></div>
+		</button>
+
+		<div class="profile-pill dropdown">
+			<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+				<p class="text-gray-1">Hi, <span class="text-black">Name</span></p>
+
+				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+					<li><a class="dropdown-item" href="#">New Trip</a></li>
+					<li><a class="dropdown-item" href="#">Settings</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Sign out</a></li>
+				  </ul>
+		</div>
+
+	</header>
+
+	<aside class=" d-md-flex flex-column flex-shrink-0 p-3 bg-light" id="dash-sidebar">
+		<a class="navbar-brand d-flex justify-content-center" href="./home.php">
+            <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="">
+        </a>
+		<hr>
+		<ul class="nav nav-pills flex-column mb-auto">
+		  <li class="nav-item">
+			<a href="#" class="nav-link active" aria-current="page">
+				<i class="fa-solid fa-home"></i>
+			  Dashboard
+			</a>
+		  </li>
+		  <li>
+			<a href="#" class="nav-link link-dark">
+			  <i class="fa-solid fa-route"></i>
+			  Your Trips
+			</a>
+		  </li>
+		  <li>
+			<a href="#" class="nav-link link-dark">
+				<i class="fa-solid fa-receipt"></i>
+			  Bookings
+			</a>
+		  </li>
+		</ul>
+		<hr>
+		  <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
+			<i class="fa-solid fa-gear"></i>
+			<strong>Settings</strong>
+		  </a>
+	</aside>
+	<main>
+
+
+		<div class="bg-color-box">
+
+			<div class="mt-n22 topbar justify-content-space-between">
+				<h2>Your Trips</h2>
+				<a class="btn easygo-btn-5">Create  New Tour</a>
+			</div>
+
+			<div class="row card-list ">
+				<div class="dashcard">
+					<div class="dashcard-header mb-3">
+						<h4 class="dashcard-title mb-0">Bookings</h3>
+						<div class="icon-box">
+							<i class="fa fa-receipt"></i>
+						</div>
+
+					</div>
+					<div class="dashcard-body">
+						<h1 class="easygo-fw-1 mb-0">15</h1>
+					</div>
+					<div class="dashcard-footer">
+						<p class="mb-0">Upcoming Tour Bookings</p>
+					</div>
+				</div>
+				<div class="dashcard">
+					<div class="dashcard-header mb-3">
+						<h4 class="dashcard-title mb-0">Upcoming Tours</h3>
+						<div class="icon-box">
+							<i class="fa fa-bus"></i>
+						</div>
+					</div>
+					<div class="dashcard-body">
+						<h1 class="easygo-fw-1 mb-0">15</h1>
+					</div>
+					<div class="dashcard-footer">
+						<p class="mb-0">15 Trips</p>
+					</div>
+				</div>
+				<div class="dashcard">
+					<div class="dashcard-header mb-3">
+						<h4 class="dashcard-title mb-0">Revenue</h3>
+						<div class="icon-box">
+							<i class="fa fa-cedi-sign"></i>
+						</div>
+					</div>
+					<div class="dashcard-body">
+						<h1 class="easygo-fw-1 mb-0">15</h1>
+					</div>
+					<div class="dashcard-footer">
+						<p class="mb-0">Revenue From Upcoming Tour</p>
+					</div>
+				</div>
+				<div class="dashcard">
+					<div class="dashcard-header mb-3">
+						<h4 class="dashcard-title mb-0">Gross Revenue</h3>
+						<div class="icon-box">
+							<i class="fa fa-cedi-sign"></i>
+						</div>
+					</div>
+					<div class="dashcard-body">
+						<h1 class="easygo-fw-1 mb-0">15</h1>
+					</div>
+					<div class="dashcard-footer">
+						<p class="mb-0">Lifetime Revenue</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="dash-table">
+			<h4 class="table-title">Tours Available</h4>
+			<table class="table">
+				<thead>
+				  <tr>
+					<th scope="col">Trip Name</th>
+					<th scope="col">Date</th>
+					<th scope="col">Members</th>
+					<th scope="col">Seats Left</th>
+					<th scope="col">Trip Fee</th>
+					<th scope="col">Options</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<th scope="row">1</th>
+					<td>12th March 2024</td>
+					<td>
+						<div class="member-stack" data-member-count="5" data-member-max="3">
+						</div>
+					</td>
+					<td>3</td>
+					<td>GHS 500</td>
+					<td><a href="#">Edit</a></td>
+				  </tr>
+				</tbody>
+			  </table>
+			  <div class="table-footer">
+				<a href="#">View All Trips</a>
+			  </div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="dash-table">
+					<h4 class="table-title">Bookings</h4>
+					<table class="table">
+						<thead>
+						  <tr>
+							<th scope="col">Booking number</th>
+							<th scope="col">Member Name</th>
+							<th scope="col">Date & Time</th>
+							<th scope="col">Status</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<th scope="row">
+									<p class=" easygo-fs-4">alskjdf;lakjdlfkja;ldkfj;lakdfj;lak</p>
+							</th>
+							<td>
+								<div class="col">
+									<p class="m-0 easygo-fs-3">Mark Calusi</p>
+									<p class="easygo-fs-5">Trip Name</p>
+								</div>
+							</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						  </tr>
+						  <tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						  </tr>
+						  <tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						  </tr>
+						  </tbody>
+						  </table>
+						  <div class="table-footer">
+							<a href="#">View All Bookings</a>
+						  </div>
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="dash-table">
+					<h4 class="table-title">Your Team</h4>
+					<table class="table">
+						<thead>
+						  <tr>
+							<th scope="col">#</th>
+							<th scope="col">First</th>
+							<th scope="col">Last</th>
+							<th scope="col">Handle</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						  </tr>
+						  <tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						  </tr>
+						  <tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						  </tr>
+						  </tbody>
+						  </table>
+						  <div class="table-footer">
+							  <button class="btn easygo-btn-1">Add Team Member</button>
+						  </div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+
+<!-- Bootstrap js -->
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<!-- JQuery js -->
+<script src="../assets/js/jquery-3.6.1.min.js"></script>
+<!-- easygo js -->
+<!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
+<script src="../assets/js/general.js"></script>
+<script src="../assets/js/functions.js"></script>
+<script src="../assets/js/dash.js"></script>
+</body>
+
+</html>

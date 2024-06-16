@@ -63,6 +63,7 @@ $(document).ready(function () {
 
   nav_check();
   sidebar_check();
+  member_display();
   $(".trip-card").click(onTripCardClick);
 });
 
@@ -759,6 +760,57 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("orientationChange", lazyload);
   }
 });
+
+
+function member_display() {
+  let member_stacks = Array.from(document.getElementsByClassName("member-stack"));
+
+  // For every member stack on the page, render the display
+  member_stacks.forEach((current_stack) => {
+    let member_stack_avatars = Array.from(current_stack.children);
+    let max_displayed_avatars= current_stack.getAttribute("data-member-max") ?? 3;
+    let number_available_avatars = current_stack.getAttribute("data-member-count") ?? 0;
+    let extra_avatar_label = null;
+
+
+    //If there are more avatars than the maximum, set the display count to the max
+    if (max_displayed_avatars < number_available_avatars){
+      extra_avatar_label =  number_available_avatars- max_displayed_avatars;
+      number_available_avatars = max_displayed_avatars;
+      }
+
+      // Show Avatars up to the the maximum number of displayable avatars
+    for (let avatar_index = 0; avatar_index < number_available_avatars; avatar_index++) {
+      let avatar = document.createElement("div");
+      avatar.style.transform = `translate(${avatar_index * 8}px, 0px)`;
+      avatar.className = "fa fa-person-walking";
+      avatar.style.backgroundColor = `hsl(${(avatar_index*50.508) % 360}, 70%, 50%)`;
+      current_stack.appendChild(avatar);
+    }
+
+    // If other avatars were hidden, show a summary avatar with the number of hidden avatars
+    if (extra_avatar_label){
+      let extra_avatar = document.createElement("div");
+      extra_avatar.innerText = `+${extra_avatar_label}`;
+      extra_avatar.style.transform = `translate(${max_displayed_avatars * 8}px, 0px)`;
+      extra_avatar.style.backgroundColor = `hsl(${(max_displayed_avatars*50.508) % 360}, 70%, 50%)`;
+      current_stack.appendChild(extra_avatar);
+    }
+
+
+
+
+
+    // Convert HTMLCollection to array
+    // member_stack_avatars.forEach((avatar, index) => {
+    //   if (member_stack_avatars.length && min_display_count == index+1){
+    //     avatar.innerText = "3+";
+    //   }
+
+    // });
+
+  });
+}
 
 
 
