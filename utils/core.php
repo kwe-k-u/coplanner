@@ -247,7 +247,7 @@ if (session_status() == PHP_SESSION_NONE){
 			// return compressed file path
 			if ($return_var == 0){
 				unlink("../$folder");
-				return $webp_folder;
+				return server_base_url().$webp_folder;
 			}
 		}
 
