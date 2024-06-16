@@ -11,18 +11,33 @@ require_once(__DIR__."/../utils/google_auth.php");
 // $clientSecret = '';
 // $redirectUri = 'http://localhost/coplanner/test/test.php';
 
-$google_auth = new GoogleAuthHandler(google_client_id(),google_client_secret(),google_redirect_url());
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $target_dir = "uploads";
+    $subdir = "images"; // You can change this to any subdirectory you want
+    $file = $_FILES["fileToUpload"];
+    $uploadResult = upload_file($target_dir, $subdir, $file["tmp_name"], $file["name"]);
 
-// authenticate code from Google OAuth Flow
-if (isset($_GET['code'])) {
-	$code = $_GET["code"];
-	$result = $google_auth->get_user_data($code);
-	var_dump($result);
-	die();
-
-  // now you can use this profile info to create account in your website and make user logged in.
-} else {
-	$login_url = $google_auth->generate_login_url();
-  echo "<a href='$login_url'>Google Login</a>";
+    if ($uploadResult) {
+        echo "File uploaded successfully: <a href='$uploadResult'>$uploadResult</a>";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Test</title>
+</head>
+<body>
+
+<h2>Upload File</h2>
+<form action="test.php" method="post" enctype="multipart/form-data">
+    Select file to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload File" name="submit">
+</form>
+</body>
+</html>

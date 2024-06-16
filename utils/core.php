@@ -226,19 +226,34 @@ if (session_status() == PHP_SESSION_NONE){
 		$ext = explode(".",$image); //file extension
 		$ext = $ext[count($ext)-1]; //file extension
 		$form_name = $temp_id.'.'. $ext;
+		$webp_name = "$temp_id.webp";
 		$folder = "$directory/$subdir/".$form_name;
+		$webp_folder = "$directory/$subdir/".$webp_name;
 
 		//create folder if it does not exist
 		if (!file_exists("../$directory/$subdir/")){
 			mkdir("../$directory/$subdir/",0777);
-			move_uploaded_file($tempname,"../".$folder);
-			return server_base_url().$folder;
 		}
-		else{
-			move_uploaded_file($tempname,"../".$folder);
-			return server_base_url().$folder;
+
+		//upload original file
+		move_uploaded_file($tempname,"../".$folder);
+
+		if ("image" == get_file_type($form_name)){
+			//compress
+			$command = "cwebp -q 80 ../$folder -o ../$webp_folder";
+            exec($command, $output, $return_var);
+
+			//If compression was successful, delete original and
+			// return compressed file path
+			if ($return_var == 0){
+				unlink("../$folder");
+				return $webp_folder;
+			}
 		}
-		return false;
+
+		// Runs if compression was not completed
+		return server_base_url().$folder;
+		// return false;
 
 	}
 
