@@ -1,3 +1,29 @@
+<?php
+	require_once(__DIR__ . "/../utils/core.php");
+	require_once(__DIR__ . "/../controllers/public_controller.php");
+
+	// if (!is_session_user_curator()) {
+	// 	header("Location: ../index.php");
+	// 	die();
+	// }
+
+
+	$info =get_curator_account_by_user_id(get_session_user_id());//get_collaborator_info(get_session_user_id());
+	$user_info = get_user_info(get_session_user_id());
+	$curator_id = $info["curator_id"];
+	$user_name = $user_info["user_name"];
+	$curator_name = $info["curator_name"];
+	$logo = "https://github.com/mdo.png";//$info["curator_logo"];
+
+
+	$experience_id = $_GET["experience_id"];
+	$experience = get_shared_experience_by_id($experience_id);
+	$days = get_shared_experience_days($experience_id);
+	if (count ($days) == 0){
+		$days = [$experience["start_date"]];
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,59 +40,12 @@
 	<link rel="stylesheet" type="text/css" href="../assets/css/experience_preview.css">
 </head>
 <body>
-	<header class="dashboard-header">
 
-		<button class="burger-btn  blue-burger" data-target="dash-sidebar">
-			<div class="bg-blue"></div>
-			<div class="bg-blue"></div>
-			<div class="bg-blue"></div>
-		</button>
+	<?php
+		require_once(__DIR__."/../components/new_dash_header.php");
+		require_once(__DIR__."/../components/new_dash_sidebar.php");
+	?>
 
-		<div class="profile-pill dropdown">
-			<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-				<p class="text-gray-1">Hi, <span class="text-black">Name</span></p>
-
-				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-					<li><a class="dropdown-item" href="#">New Trip</a></li>
-					<li><a class="dropdown-item" href="#">Settings</a></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Sign out</a></li>
-				  </ul>
-		</div>
-
-	</header>
-
-	<aside class=" d-md-flex flex-column flex-shrink-0 p-3 bg-light" id="dash-sidebar">
-		<a class="navbar-brand d-flex justify-content-center" href="./home.php">
-            <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="">
-        </a>
-		<hr>
-		<ul class="nav nav-pills flex-column mb-auto">
-		  <li class="nav-item">
-			<a href="#" class="nav-link active" aria-current="page">
-				<i class="fa-solid fa-home"></i>
-			  Dashboard
-			</a>
-		  </li>
-		  <li>
-			<a href="#" class="nav-link link-dark">
-			  <i class="fa-solid fa-route"></i>
-			  Your Trips
-			</a>
-		  </li>
-		  <li>
-			<a href="#" class="nav-link link-dark">
-				<i class="fa-solid fa-receipt"></i>
-			  Bookings
-			</a>
-		  </li>
-		</ul>
-		<hr>
-		  <a href="#" class="d-flex align-items-center link-dark text-decoration-none">
-			<i class="fa-solid fa-gear"></i>
-			<strong>Settings</strong>
-		  </a>
-	</aside>
 	<main class=" ">
 
 		<div class="right-body-container">
@@ -76,27 +55,27 @@
 					<div class="right-summary">
 
 
-						<div class="right-summary-title">
+						<?php
+							$experience_description = $experience["experience_description"];
+							$title = $experience["experience_name"];
+							$curator_name = $experience["curator_name"];
+							echo "
+							<div class='right-summary-title'>
 
-							<h2>Deon because why not</h2>
-							<small>by easyGo Tours Ltd</small>
+							<h2>$title</h2>
+							<small>by $curator_name</small>
 						</div>
-						<div class="itinerary-image d-none d-lg-block d-md-block">
-							<img src="http://localhost/coplanner/uploads/images/3df8f55c55eeabf64f9f725adb6fdd64.jpg">                            </div>
+						<div class='itinerary-image d-none d-lg-block d-md-block'>
+							<img src='http://localhost/coplanner/uploads/images/3df8f55c55eeabf64f9f725adb6fdd64.jpg'>                            </div>
 						<div >
-							<h3 class="mb-0">Itinerary Description</h3>
+							<h3 class='mb-0'>Itinerary Description</h3>
 						</div>
 						<div >
-							<p class="mb-0" id="destination-description">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-								been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-								galley of type and scrambled it to make a type specimen book. It has survived not only five
-								centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-								It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-								passages, and more recently with desktop publishing software like Aldus PageMaker including
-								versions of Lorem Ipsum.
+							<p class='mb-0' id='destination-description'>
+								$experience_description
 							</p>
-						</div>
+						</div>";
+						?>
 
 
 						<div class="itinerary-summary-details mt-5">
@@ -123,8 +102,9 @@
 									</button>
 								  </h2>
 								  <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-									<div class="accordion-body">
-										<div class="day-summary-group">
+									<div class="accordion-body" id="itinerary-accordion-body">
+
+									<!-- <div class="day-summary-group">
 											<p class="day-label">Day 1 - 25th June 2024</p>
 											<div class="list-tile d-flex justify-content-between" id="day_one">
 												<div class="destination-info">
@@ -145,28 +125,8 @@
 												</div>
 											</div>
 										</div>
-										<div class="day-summary-group">
-											<p class="day-label">Day 1 - 25th June 2024</p>
-											<div class="list-tile d-flex justify-content-between" id="day_one">
-												<div class="destination-info">
-													<p class="m-0">Destination name</p>
-													<p class="m-0">Hiking, Kayaking, Swimming, Dancing</p>
-												</div>
-												<div>
-													<p>Accra, Ghana</p>
-												</div>
-											</div>
-											<div class="list-tile d-flex justify-content-between" id="day_one">
-												<div class="destination-info">
-													<p class="m-0">Destination name</p>
-													<p class="m-0">Hiking, Kayaking, Swimming, Dancing</p>
-												</div>
-												<div>
-													<p>Accra, Ghana</p>
-												</div>
-											</div>
-										</div>
-									</div>
+
+									</div> -->
 								  </div>
 								</div>
 								<div class="accordion-item">
@@ -234,14 +194,22 @@
 									<div class="invoice-header">
 										<strong>What the tourist pays</strong>
 									</div>
-											<div>
-												<div><p class="mb-1">Booking Fee</p> </div>
-												<div><p>GHS <span>100</span></p></div>
-											</div>
-											<div>
-												<div><p>Platform fee</p> </div>
-												<div><p>GHS <span>3</span></p></div>
-											</div>
+									<?php
+									$price = $experience["booking_fee"];
+									$currency = $experience["currency_name"];
+									$platform_fee = $experience["platform_fee"];
+									echo "
+										<div>
+											<div><p class='mb-1'>Booking Fee</p> </div>
+											<div><p>$currency <span>$price</span></p></div>
+										</div>
+										<div>
+											<div><p>Platform fee</p> </div>
+											<div><p>$currency <span>$platform_fee</span></p></div>
+										</div>
+									";
+									?>
+
 										</div>
 									</div>
                                     <div class="agreement-check">
@@ -254,8 +222,12 @@
                                         </p>
                                     </div>
 									<div class="invoice-total pb-1">
-										<div><p>You receive</p></div>
-										<div> <p>GHS 103</p></div>
+									<div><p>You receive</p></div>
+										<?php
+											echo "<div> <p>$currency $price</p></div>"
+										?>
+
+
 									</div>
 
 							</div>
@@ -264,7 +236,7 @@
 
 						<div class="d-flex gap-4 payment-btn-section">
 							<!-- <a class="btn easygo-btn-6">Save For Later</a> -->
-							<button class="btn easygo-btn-1 w-100" onclick="payment_btn_click(this)">Publish</button>
+							<button class="btn easygo-btn-1 w-100" onclick="">Publish</button>
 						</div>
 					</div>
 
@@ -280,10 +252,11 @@
 <!-- JQuery js -->
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <!-- easygo js -->
-<!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
+<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
 <script src="../assets/js/general.js"></script>
 <script src="../assets/js/functions.js"></script>
 <script src="../assets/js/dash.js"></script>
+<script src="../assets/js/experience_preview.js"></script>
 </body>
 
 </html>

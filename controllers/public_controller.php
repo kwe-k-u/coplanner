@@ -312,14 +312,29 @@
 		return $public->get_curator_collaborators($curator_id);
 	}
 
-	function create_shared_experience($itinerary_id,$name,$description,$curator_id,$currency,$fee,$seats,$media_location,$media_type){
+	function create_shared_experience($name,$description,$curator_id,$start_date,$currency,$fee,$seats,$media_location,$media_type){
 		$public = new public_class();
-		return $public->create_shared_experience($itinerary_id,$name,$description,$curator_id,$currency,$fee,$seats,$media_location,$media_type)["experience_id"];
+		return $public->create_shared_experience($name,$description,$curator_id,$start_date,$currency,$fee,$seats,$media_location,$media_type)["experience_id"];
+	}
+
+	function get_shared_experience_days($experience_id){
+		$public = new public_class();
+		return $public->get_shared_experience_days($experience_id);
 	}
 
 	function get_shared_experiences($show_all = false){
 		$public = new public_class();
 		return $public->get_shared_experiences($show_all);
+	}
+
+	function get_shared_experience_activities_by_day($experience_id,$day){
+		$public = new public_class();
+		return $public->get_shared_experience_activities_by_day($experience_id,$day);
+	}
+
+	function add_experience_activity($experience_id,$activity_id,$destination_id,$visit_date){
+		$public = new public_class();
+		return $public->add_experience_activity($experience_id,$activity_id,$destination_id,$visit_date);
 	}
 
 	function get_shared_experience_by_id($experience_id){
@@ -367,5 +382,10 @@
 		return $public->create_curator_manager($token,$user_name,$email,$password,$phone);
 	}
 
+
+	function toggle_experience_visbility($experience_id,$status){
+		$public = new public_class();
+		return $public->toggle_experience_visibility($experience_id,$status ? "1" : "0");
+	}
 
 ?>

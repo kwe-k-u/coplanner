@@ -20,5 +20,46 @@ function showDashTab(){
 
 
 
+}
+
+
+function create_experience(){
+	// function get_experience_tags(){
+	// 	let experienceType = [];
+	// 	const checkboxes = document.querySelectorAll('input[name="experience_type"]:checked');
+	// 	checkboxes.forEach((checkbox) => {
+	// 		experienceType.push(checkbox.value);
+	// 	});
+	// 	return experienceType;
+	// }
+	event.preventDefault();
+	let name = document.getElementsByName("experience_name")[0].value;
+	let description = document.getElementsByName("experience_description")[0].value;
+	let flyer = document.getElementsByName("company_logo")[0].files;
+	let start_date = document.getElementsByName("start_date")[0].value;
+	let booking_fee = document.getElementsByName("booking_fee")[0].value;
+	let num_seats = document.getElementsByName("num_seats")[0].value;
+
+	send_request("POST",
+		"processors/processor.php/create_shared_experience",
+		{
+			"experience_name" : name,
+			"start_date" : start_date,
+			"description" : description,
+			"flyer" : flyer[0],
+			"price" : booking_fee,
+			"seat_count" : num_seats
+		},
+		(response) => {
+			if (response.status == 200){
+				goto_page("views/destinations.php?experience_id="+response.data.experience_id);
+			}else{
+				openDialog(response.data.msg);
+			}
+		}
+	)
+
+
+
 
 }

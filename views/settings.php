@@ -1,3 +1,23 @@
+<?php
+	require_once(__DIR__ . "/../utils/core.php");
+	require_once(__DIR__ . "/../controllers/public_controller.php");
+
+	// if (!is_session_user_curator()) {
+	// 	header("Location: ../index.php");
+	// 	die();
+	// }
+
+
+	$info =get_curator_account_by_user_id(get_session_user_id());//get_collaborator_info(get_session_user_id());
+	$user_info = get_user_info(get_session_user_id());
+	$curator_id = $info["curator_id"];
+	$user_name = $user_info["user_name"];
+	$curator_name = $info["curator_name"];
+	$logo = "https://github.com/mdo.png";//$info["curator_logo"];
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,77 +33,12 @@
 	<link rel="stylesheet" type="text/css" href="../assets/css/settings.css">
 </head>
 <body>
-	<header class="dashboard-header">
-		<div></div>
 
-		<div class="profile-pill dropdown">
-				<div class="image-container"></div>
-				<p class="text-gray-1">Hi, <span class="text-black">Name</span></p>
 
-				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-					<li><a class="dropdown-item" href="#">New project...</a></li>
-					<li><a class="dropdown-item" href="#">Settings</a></li>
-					<li><a class="dropdown-item" href="#">Profile</a></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Sign out</a></li>
-				  </ul>
-		</div>
-
-	</header>
-
-	<aside class=" d-none d-md-flex flex-column flex-shrink-0 p-3 bg-light">
-		<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-		  <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-		  <span class="fs-4">Sidebar</span>
-		</a>
-		<hr>
-		<ul class="nav nav-pills flex-column mb-auto">
-		  <li class="nav-item">
-			<a href="#" class="nav-link active" aria-current="page">
-			  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-			  Home
-			</a>
-		  </li>
-		  <li>
-			<a href="#" class="nav-link link-dark">
-			  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-			  Dashboard
-			</a>
-		  </li>
-		  <li>
-			<a href="#" class="nav-link link-dark">
-			  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-			  Orders
-			</a>
-		  </li>
-		  <li>
-			<a href="#" class="nav-link link-dark">
-			  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-			  Products
-			</a>
-		  </li>
-		  <li>
-			<a href="#" class="nav-link link-dark">
-			  <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-			  Customers
-			</a>
-		  </li>
-		</ul>
-		<hr>
-		<div class="dropdown">
-		  <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-			<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-			<strong>mdo</strong>
-		  </a>
-		  <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-			<li><a class="dropdown-item" href="#">New project...</a></li>
-			<li><a class="dropdown-item" href="#">Settings</a></li>
-			<li><a class="dropdown-item" href="#">Profile</a></li>
-			<li><hr class="dropdown-divider"></li>
-			<li><a class="dropdown-item" href="#">Sign out</a></li>
-		  </ul>
-		</div>
-	</aside>
+	<?php
+		require_once(__DIR__."/../components/new_dash_header.php");
+		require_once(__DIR__."/../components/new_dash_sidebar.php");
+	?>
 	<main>
 
 
@@ -161,7 +116,6 @@
 						</div>
 					</div>
 					<div class="settings-row">
-
 						<div><p>Confirm Password</p></div>
 							<div class="form-input-field">
 								<input type="password" name="" id="">
@@ -187,30 +141,29 @@
 						<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">First</th>
-							<th scope="col">Last</th>
-							<th scope="col">Handle</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Settings</th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
+						<?php
+								$collaborators = get_curator_collaborators($curator_id);
+								$count = 0;
+								foreach($collaborators as $entry){
+									$name = $entry["user_name"];
+									$email = $entry["email"];
+									$count +=1;
+									echo "
+									<tr>
+										<th scope='row w-100'>$count</th>
+										<td>$name</td>
+										<td>$email</td>
+										<td><a href='#'>Options</a></td>
+									</tr>
+									";
+								}
+							?>
 						</tbody>
 						</table>
 						<div class="table-footer">
@@ -236,7 +189,7 @@
 <!-- JQuery js -->
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <!-- easygo js -->
-<!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
+<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
 <script src="../assets/js/general.js"></script>
 <script src="../assets/js/functions.js"></script>
 </body>

@@ -1,3 +1,22 @@
+<?php
+	require_once(__DIR__ . "/../utils/core.php");
+	require_once(__DIR__ . "/../controllers/public_controller.php");
+
+	// if (!is_session_user_curator()) {
+	// 	header("Location: ../index.php");
+	// 	die();
+	// }
+
+
+	$info =get_curator_account_by_user_id(get_session_user_id());//get_collaborator_info(get_session_user_id());
+	$user_info = get_user_info(get_session_user_id());
+	$curator_id = $info["curator_id"];
+	$user_name = $user_info["user_name"];
+	$curator_name = $info["curator_name"];
+	$logo = "https://github.com/mdo.png";//$info["curator_logo"];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,94 +36,11 @@
 </head>
 
 <body>
-	<header class="dashboard-header">
-		<div></div>
 
-		<div class="profile-pill dropdown">
-			<div class="image-container"></div>
-			<p class="text-gray-1">Hi, <span class="text-black">Name</span></p>
-
-			<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-				<li><a class="dropdown-item" href="#">New project...</a></li>
-				<li><a class="dropdown-item" href="#">Settings</a></li>
-				<li><a class="dropdown-item" href="#">Profile</a></li>
-				<li>
-					<hr class="dropdown-divider">
-				</li>
-				<li><a class="dropdown-item" href="#">Sign out</a></li>
-			</ul>
-		</div>
-
-	</header>
-
-	<aside class=" d-none d-md-flex flex-column flex-shrink-0 p-3 bg-light">
-		<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-			<svg class="bi me-2" width="40" height="32">
-				<use xlink:href="#bootstrap"></use>
-			</svg>
-			<span class="fs-4">Sidebar</span>
-		</a>
-		<hr>
-		<ul class="nav nav-pills flex-column mb-auto">
-			<li class="nav-item">
-				<a href="#" class="nav-link active" aria-current="page">
-					<svg class="bi me-2" width="16" height="16">
-						<use xlink:href="#home"></use>
-					</svg>
-					Home
-				</a>
-			</li>
-			<li>
-				<a href="#" class="nav-link link-dark">
-					<svg class="bi me-2" width="16" height="16">
-						<use xlink:href="#speedometer2"></use>
-					</svg>
-					Dashboard
-				</a>
-			</li>
-			<li>
-				<a href="#" class="nav-link link-dark">
-					<svg class="bi me-2" width="16" height="16">
-						<use xlink:href="#table"></use>
-					</svg>
-					Orders
-				</a>
-			</li>
-			<li>
-				<a href="#" class="nav-link link-dark">
-					<svg class="bi me-2" width="16" height="16">
-						<use xlink:href="#grid"></use>
-					</svg>
-					Products
-				</a>
-			</li>
-			<li>
-				<a href="#" class="nav-link link-dark">
-					<svg class="bi me-2" width="16" height="16">
-						<use xlink:href="#people-circle"></use>
-					</svg>
-					Customers
-				</a>
-			</li>
-		</ul>
-		<hr>
-		<div class="dropdown">
-			<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-				id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-				<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-				<strong>mdo</strong>
-			</a>
-			<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-				<li><a class="dropdown-item" href="#">New project...</a></li>
-				<li><a class="dropdown-item" href="#">Settings</a></li>
-				<li><a class="dropdown-item" href="#">Profile</a></li>
-				<li>
-					<hr class="dropdown-divider">
-				</li>
-				<li><a class="dropdown-item" href="#">Sign out</a></li>
-			</ul>
-		</div>
-	</aside>
+	<?php
+		require_once(__DIR__."/../components/new_dash_header.php");
+		require_once(__DIR__."/../components/new_dash_sidebar.php");
+	?>
 	<main>
 
 
@@ -132,38 +68,31 @@
 						<div class="col">
 							<form action="">
 								<div class="form-input-field">
-									<label for="">Name of Experience</label>
-									<input type="text" name="" id="">
+									<label for="experience_name">Name of Experience</label>
+									<input type="text" name="experience_name" id="experience_name">
 								</div>
 								<div class="form-input-field">
-									<label for="">Experience Description</label>
-									<textarea name="" rows="10" id=""></textarea>
+									<label for="experience_description">Experience Description</label>
+									<textarea name="experience_description" rows="10" id="experience_description"></textarea>
 								</div>
 
 
 								<label for="">Type of trip</label>
 								<div class="pill-select-group">
-									<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined1" autocomplete="off">
-									<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined1">
-										Adventure
-									</label>
-									<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined2" autocomplete="off">
-									<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined2">
-										Soft Life
-									</label>
-									<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined2" autocomplete="off">
-									<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined2">
-										Arts
-									</label>
+									<?php
+										$experience_tags = ["Adventure","Soft Life","Arts","History & Culture","Nature & Wildlife"];
+										foreach ($experience_tags as $entry){
+											$tag_name = $entry;
+											$tag_id = $entry[3];
+											echo "
+											<input type='checkbox' class='btn-check ' name='experience_type' id='$tag_id' autocomplete='off'>
+											<label class='btn btn-outline-primary pill-select-option' for='$tag_id'>
+												$tag_name
+											</label>";
+										}
+									?>
 
-									<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined3" autocomplete="off">
-									<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined3">
-										History & Culture
-									</label>
-									<input type="checkbox" class="btn-check " name="activity" id="btn-check-outlined3" autocomplete="off">
-									<label class="btn btn-outline-primary pill-select-option" for="btn-check-outlined3">
-										Nature & Wildlife
-									</label>
+
 								</div>
 							</form>
 						</div>
@@ -231,22 +160,22 @@
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-input-field">
-											<label for="">Start Date</label>
-											<input type="text" name="" id="">
+											<label for="start_date">Start Date</label>
+											<input type="date" name="start_date" id="start_date">
 										</div>
 									</div>
 									<div class="col-md-4">
 
 										<div class="form-input-field">
 											<label for="">Booking Fee</label>
-											<input type="text" name="" id="">
+											<input type="number" name="booking_fee" id="">
 										</div>
 									</div>
 									<div class="col-md-4">
 
 										<div class="form-input-field">
 											<label for="">Number of seats</label>
-											<input type="text" name="" id="">
+											<input type="number" name="num_seats" id="">
 										</div>
 									</div>
 								</div>
@@ -292,7 +221,7 @@
 					<div class="dashcard-footer">
 						<p>View the full curator <a href="#">Terms & Conditions</a></a></p>
 						<div class="d-flex justify-content-end">
-							<button class="btn easygo-btn-1">Continue</button>
+							<button class="btn easygo-btn-1" type="submit" onclick="create_experience()">Continue</button>
 						</div>
 					</div>
 				</div>
@@ -315,7 +244,7 @@
 	<!-- JQuery js -->
 	<script src="../assets/js/jquery-3.6.1.min.js"></script>
 	<!-- easygo js -->
-	<!-- <?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?> -->
+	<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
 	<script src="../assets/js/general.js"></script>
 	<script src="../assets/js/functions.js"></script>
 	<script src="../assets/js/experience_settings.js"></script>

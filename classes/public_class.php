@@ -323,10 +323,10 @@
 			return $this->db_fetch_all();
 		}
 
-		function create_shared_experience($itinerary_id,$name,$description,$curator_id,$currency,$fee,$seats,$media_location,$media_type){
+		function create_shared_experience($name,$description,$curator_id,$start_date,$currency,$fee,$seats,$media_location,$media_type){
 			$sql = "SELECT create_shared_experience(?,?,?,?,?,?,?,?,?) as experience_id";
 			$this->prepare($sql);
-			$this->bind($itinerary_id,$curator_id,$name,$description,$currency,$fee,$seats,$media_location,$media_type);
+			$this->bind($curator_id,$name,$description,$currency,$fee,$seats,$media_location,$media_type,$start_date);
 			return $this->db_fetch_one();
 		}
 
@@ -335,6 +335,27 @@
 			$this->prepare($sql);
 			$this->bind($show_all ? 1 :0);
 			return $this->db_fetch_all();
+		}
+
+		function get_shared_experience_days($experience_id){
+			$sql = "CALL get_experience_days(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_shared_experience_activities_by_day($experience_id,$day){
+			$sql = "CALL get_experience_activities_by_day(?,?);";
+			$this->prepare($sql);
+			$this->bind($experience_id,$day);
+			return $this->db_fetch_all();
+		}
+
+		function add_experience_activity($experience_id,$activity_id,$destination_id,$visit_date){
+			$sql = "CALL add_experience_activity(?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$activity_id,$destination_id,$visit_date);
+			return $this->db_query();
 		}
 
 		function get_shared_experience_by_id($experience_id){
@@ -419,6 +440,13 @@
 			$this->prepare($sql);
 			$this->bind($collection_id);
 			return $this->db_fetch_all();
+		}
+
+		function toggle_experience_visibility($experience_id,$status){
+			$sql = "CALL toggle_experience_visibility(?,?);";
+			$this->prepare($sql);
+			$this->bind($experience_id,$status);
+			return $this->db_query();
 		}
 
 	}

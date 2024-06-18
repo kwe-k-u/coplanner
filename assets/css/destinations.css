@@ -31,7 +31,8 @@ main{
 	margin: 4px;
 }
 
-.card .card-img-top{
+.card .card-img-top,
+#modal-image{
 	min-width: 100%;
 	max-width: 100%;
 	min-height: 180px;
