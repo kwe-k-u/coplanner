@@ -1296,7 +1296,7 @@ DELIMITER //
 CREATE PROCEDURE get_curator_collaborators(IN in_curator_id VARCHAR(100))
 BEGIN
 	SELECT cm.*, u.user_name, u.email, cm.date_added FROM curator_manager as cm
-	inner join vw_users as u on u.user_id = cm.user_id WHERE cm.curator_i = in_curator_id;
+	inner join vw_users as u on u.user_id = cm.user_id WHERE cm.curator_id = in_curator_id;
 END//
 DELIMITER ;
 

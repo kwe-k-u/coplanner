@@ -406,6 +406,16 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				die();
 			}
 			die();
+		case "/toggle_experience_visibility":
+			$experience_id = $_POST["experience_id"];
+
+			$success = toggle_experience_visbility($experience_id,true);
+			if($success){
+				send_json(array("msg"=> "Your tour has been published!"));
+			}else{
+				send_json(array("msg"=> "We couldn't publish your tour. Kindly try again or reach out to our team"),201);
+			}
+			die();
 		case "/toggle_experience_wishlist":
 			$experience_id = $_POST["experience_id"];
 			$user_id = get_session_user_id();
@@ -764,13 +774,14 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				send_json(array("msg"=> "You need to be a curator to create shared experiences. Contact support at support@easygo.com.gh"),201);
 				die();
 			}
-			$itinerary_id = $_POST["itinerary_id"];
+			// $itinerary_id = $_POST["itinerary_id"];
 			$price = $_POST["price"];
 			$seats = $_POST["seat_count"];
 			$name = $_POST["experience_name"];
 			$description = $_POST["description"];
 			$curator = get_curator_account_by_user_id(get_session_user_id());
 			$curator_id = $curator["curator_id"];
+			$start_date = $_POST["start_date"];
 			$curator_name = $curator["curator_name"];
 			$media_location = null;
 			$media_type= null;
@@ -783,7 +794,8 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
 			}
 
-			$experience_id = create_shared_experience($itinerary_id,$name, $description, $curator_id,1,$price,$seats,$media_location,$media_type);
+
+			$experience_id = create_shared_experience($name, $description, $curator_id,$start_date,1,$price,$seats,$media_location,$media_type);
 
 			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);
 
@@ -795,6 +807,53 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$user_id = $_POST["user_id"];
 			session_log_in($user_id);
 			send_json(array("msg"=> "success"));
+			die();
+		case "/get_shared_experience_activities":
+			$experience_id = $_POST["experience_id"];
+			// $activities = get_shared_experience_activities($experience_id);
+			$days = get_shared_experience_days($experience_id);
+			for($index = 0 ; $index < count($days); $index++){
+				$day = $days[$index];
+				$days[$index]["activities"] = get_shared_experience_activities_by_day($experience_id,$day['visit_date']);
+			}
+			send_json(array("days"=> $days));
+			die();
+		case "/get_shared_experience_activities_by_day":
+			$experience_id = $_POST["experience_id"];
+			$day = $_POST["day"];
+			$activities = get_shared_experience_activities_by_day($experience_id,$day);
+			$destinations = array();
+			foreach ($activities as $entry) {
+				$destination_id = $entry["destination_id"];
+				if (!array_search($destination_id,array_keys($destinations))){
+					$destination = get_destination_by_id($destination_id);
+					array_push($destinations,$destination);
+				}
+			}
+			send_json(array(
+				"activities"=> $activities,
+				"destinations" => $destinations
+				)
+			);
+			die();
+		case "/notify_no_destination":
+			$curator_name = $_POST["curator_name"];
+			$success = notify_slack_support_msg("$curator_name has requested to add a destination");
+			if($success){
+				send_json(array("msg"=> "Our team has been notified. Someone will contact you shortly"));
+			}else{
+				send_json(array("msg"=> "Something must have gone wrong."),201);
+			}
+			die();
+		case "/add_experience_activities":
+			$day = $_POST["day"];
+			$destination_id = $_POST["destination_id"];
+			$activities = $_POST["activities"];
+			$experience_id = $_POST["experience_id"];
+			foreach ($activities as $activity_id) {
+				add_experience_activity($experience_id,$activity_id,$destination_id,$day);
+			}
+			send_json(array("msg"=> "received"));
 			die();
 		case "/contact_support":
 

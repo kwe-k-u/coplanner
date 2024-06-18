@@ -1,0 +1,80 @@
+
+
+main{
+	padding-bottom: 4rem;
+	margin-top: 5vh;
+	padding-right: 7vw;
+}
+
+.accordion-item{
+	border-radius: 12px;
+margin-top: 8px;
+}
+.accordion-button{
+	background-color: #E7F1FF;
+	border-top-right-radius: 12px;
+	border-top-left-radius: 12px;
+}
+
+.accordion-button[aria-expanded="true"]{
+	background-color: var(--easygo-blue);
+	color:white;
+}
+
+#destination-description{
+	text-align: justify;
+	margin-top: 8px;
+}
+
+.day-summary-group{
+	border-bottom: 1px dotted blue ;
+	padding: 12px;
+	position: relative;
+}
+
+
+.day-summary-group:last-of-type{
+	border-bottom: none;
+}
+
+.list-tile {
+	padding-top: 8px;
+	border-bottom: 1px solid lightgrey;
+}
+
+.list-tile .destination-name{
+	font-weight: bold;
+	font-size: var(--font-size-3);
+}
+
+.list-tile .destination-activities{
+	font-size: var(--font-size-4);
+}
+
+
+
+.day-label{
+	text-transform: uppercase;
+}
+
+
+
+.add-on-card{
+	margin: 4px;
+	min-height: 20vh;
+	min-width: 80%;
+	border-radius: 12px;
+	border: 1px solid lightgrey;
+}
+
+.add-on-card-header{
+	background-color: var(--easygo-orange);
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+	height: 3rem;
+	padding: 1rem;
+}
+
+.add-on-card-body{
+	padding: 1rem;
+}

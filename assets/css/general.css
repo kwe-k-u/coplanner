@@ -49,6 +49,10 @@
   --box-shadow-2: 0px 4px 18px rgba(209, 209, 209, 0.25);
   --box-shadow-3: 0 4px 10px 3px rgba(0, 0, 0, 0.3);
   --box-shadow-4: 1px 1px 4px 2px rgba(0, 0, 0, 0.3);
+  --box-shadow-5: 0px 0px 2px rgba(209, 209, 209, 0.5);
+
+  /** Box Borders  **/
+  --box-border-1: solid rgba(128, 128, 128, 0.33) 1px;
 
   /** logo sizes **/
   --logo-small: 4rem;
@@ -104,6 +108,9 @@ svg {
 }
 .text-red {
   color: var(--easygo-red);
+}
+.text-black {
+  color: black;
 }
 .text-gray-1 {
   color: var(--easygo-gray-1) !important;
@@ -208,18 +215,19 @@ svg {
 .easygo-btn-2,
 .easygo-btn-3,
 .easygo-btn-4,
-.easygo-btn-6,
-.easygo-btn-5 {
+.easygo-btn-5,
+.easygo-btn-6 {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
   transition: var(--trans-time-1);
 }
 
 .easygo-btn-1 {
   border: none;
-  padding: 0.75rem 1rem;
   background-color: var(--easygo-blue);
   color: white;
   border-radius: 8px;
@@ -264,14 +272,37 @@ svg {
   padding: 0.75rem 1rem;
   margin: 4px;
   background-color: rgba(255, 165, 0, 0.2);
-  color: white;
   border-radius: 5px;
   color:black;
+  align-items: center;
+  justify-content: center;
 }
 
 .easygo-btn-6:hover{
   border: 1px solid var(--easygo-orange);
   color: var(--easygo-orange);
+}
+
+.outline-btn{
+  border: 1px solid var(--easygo-blue);
+  border-radius: 8px;
+  margin: 4px;
+  padding: 0.5rem 0.75rem;
+  color: var(--easygo-blue);
+}
+
+.no-outline-btn{
+  padding: 0.5rem 0.75rem;
+
+}
+
+.no-outline-btn:hover{
+  border: 1px solid var(--easygo-blue);
+}
+
+.outline-btn:hover{
+  background-color: var(--easygo-blue);
+  color: white;
 }
 
 .burger-btn {
@@ -289,6 +320,7 @@ svg {
   border-radius: 50px;
   margin: 0.1rem 0rem;
 }
+
 
 .three-dots-btn {
   border: none;

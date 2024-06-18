@@ -1,0 +1,20 @@
+main{
+	padding-left: 2rem;
+	padding-right: 2rem;
+	padding-top: 7rem;
+}
+
+section .dashcard{
+	padding: 2rem;
+}
+
+
+.tab-pane{
+	padding: 2rem;
+}
+
+#page-info h1,
+#page-info p
+{
+	display: block;
+}

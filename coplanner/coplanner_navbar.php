@@ -40,7 +40,6 @@
                  <li class='nav-item'><a class='nav-link' href='{$base_url}coplanner/about.php#contact-us'> Contact Us</a></li>
                  <div class='additional-options d-none d-lg-flex mr-5'>
                     $additional_options
-                    <li class='nav-item'><a class='nav-link' href='$base_url' onclick='logout()'> Sign Out</a></li>
                  </div>
                  ";
 
@@ -168,67 +167,3 @@
 
 
 
-
-<!--
-<nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
-    <div class="container-fluid">
-        <?php
-
-
-            if ($user_id){ //show logged in user info
-                echo "
-                <a class='navbar-brand' href='../index.php'>
-                    <img class='logo-medium' src='".server_base_url()."assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
-                </a>
-                <div class='d-flex gap-2 align-items-center'  id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
-                    <div class='user-icon bg-blue'>
-                        <img src='".server_base_url()."assets/images/others/profile.jpeg' alt='Profile image'>
-                    </div>
-                    <div id='header_links'>
-                        <ul>
-                            <li>Home</li>
-                            <li>Experiences</li>
-                            <li>About</li>
-                            <li>Contact Us</li>
-                        </ul>
-                    </div>
-                    <div class='d-flex align-items-center gap-1'>
-                        <h3 class='easygo-fs-3 m-0'>$username</h3>
-                        <div class='dropdown'>
-                            <button class='btn btn-secondary dropdown-toggle dropdown-toggle-alt bg-transparent border-0' type='button'></button>
-                            <ul class='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownMenuButton1'>
-                                <!-- <li><a class='dropdown-item' href='#' onclick='goto_page(\"coplanner/dashboard/dashboard.php\")'>Profile</a></li> -->
-                                $additional_options
-                                <li><a class='dropdown-item' href='".server_base_url()."index.php' onclick='logout()'>Sign out</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>";
-            }else{ // show logged out part of navbar
-
-                $google_auth = new GoogleAuthHandler(google_client_id(),google_client_secret(),google_redirect_url());
-                $auth_url = $google_auth->generate_login_url();
-                echo "
-                <a class='navbar-brand' href='../index.php'>
-                    <img class='logo-medium' src='".server_base_url()."assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
-                </a>
-                <div id='header_links'>
-                        <ul>
-                            <li>Home</li>
-                            <li>Experiences</li>
-                            <li>About</li>
-                            <li>Contact Us</li>
-                        </ul>
-                    </div>
-                <div class='justify-content-end'>
-                    <div class='d-flex gap-4'>";
-                    google_auth_btn();
-                echo "
-                    <a href='".server_base_url()."coplanner/login.php' class='easygo-btn-5 bg-blue text-white easygo-fs-5'>Sign In</a>
-                    </div>
-                </div>";
-            }
-        ?>
-
-        </div>
-    </nav> -->

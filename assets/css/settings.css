@@ -1,0 +1,40 @@
+.main{
+	padding: 12px;
+}
+
+section .dashcard{
+	padding: 2rem;
+}
+
+.settings-row  >div{
+	display: inline-flex;
+	margin: 4px;
+}
+
+.settings-row .form-input-field{
+	width: 100%;
+}
+
+@media screen and (max-width: 669px){
+	main{
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+
+@media screen and (min-width: 992px) {
+		.settings-row > div:first-child{
+			max-width: 30%;
+			min-width:29%;
+			margin-right:12px;
+		}
+
+		.settings-row > div:last-child{
+			min-width: 65%;
+			max-width: 67%;
+		}
+
+
+
+}

@@ -17,7 +17,7 @@ require_once(__DIR__."/logger.php");
 
 			/** Don't send notification to slack if function is initated on local host */
 			if (!is_env_remote()){
-				return null;
+				return true;
 			}
 			$curl = curl_init();
 

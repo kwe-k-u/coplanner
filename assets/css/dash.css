@@ -1,0 +1,300 @@
+body{
+	background-color: var(--easygo-lblue-1);
+	}
+
+main{
+	padding-top: 8vh;
+	margin-left: 15vw;
+
+}
+
+/* Dashboard Sidebar  */
+
+aside{
+	left: 0;
+	top: 0;
+	bottom: 0;
+	position: fixed;
+	display: flex;
+	min-width: 15vw;
+	box-shadow: var(--box-shadow-4);
+	z-index: 1;
+}
+
+aside .nav-pills .active{
+	background-color: var(--easygo-blue)!important;
+
+}
+
+aside .nav-link{
+	margin-top: 12px;
+}
+
+aside i {
+	margin-right: 0.25rem;
+}
+
+
+
+
+/* Dashboard header  */
+
+.dashboard-header{
+	display: flex;
+	position: fixed;
+	justify-content: space-between;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--easygo-gray-3);
+	min-height: 7vh;
+	max-height: 8vh;
+	padding-left: 12px ;
+	padding-top: 12px ;
+	box-shadow: var(--box-shadow-4);
+	z-index: 1;
+}
+
+
+.dashboard-header .profile-pill >* {
+	display: inline-block;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+}
+.dashboard-header .profile-pill{
+	padding:12px;
+}
+.dashboard-header .image-container{
+	background-color: grey;
+	min-width: 2rem;
+	min-height: 2rem;
+	max-width: 2rem;
+	max-height: 2rem;
+	border-radius: 1rem;
+}
+
+
+
+.main{
+	padding: 12px;
+}
+
+.bg-color-box{
+	width: 100%;
+	height: 12vw;
+	background-color: blue;
+	margin-bottom: 16vh;
+	padding-top: 3rem;
+}
+
+.bg-color-box .topbar h2{
+	color: white;
+}
+
+.bg-color-box .easygo-btn-5:hover,
+.bg-color-box .easygo-btn-5:active
+{
+	color: white;
+	border: solid white 1px;
+}
+
+.topbar h1,
+.topbar h2,
+.topbar h3,
+.topbar h4,
+.topbar h5
+{
+	display: inline;
+
+}
+
+.topbar button{
+	display: inline-block;
+}
+
+.topbar{
+	justify-content: space-between;
+	margin: 1rem;
+	display: flex;
+}
+
+.icon-box{
+	background-color: var(--easygo-lblue-1);
+	max-width: 2.5rem;
+	max-height: 2.5rem;
+	min-width: 2.5rem;
+	max-width: 2.5rem;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	color: var(--easygo-blue);
+	font-size: large;
+}
+.card-list{
+	justify-content: space-around;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding-left: 12px;
+	padding-right: 12px;
+	column-gap: 1rem;
+	overflow-y: hidden;
+}
+
+@media screen and (max-width: 668px){
+	.card-list{
+		grid-template-columns: 1fr;
+	}
+}
+
+.card-list .dashcard{
+	max-width: 90%!important;
+	padding: 12px;
+}
+
+.card-list .dashcard-footer{
+	color: grey;
+	font-size: var(--font-size-5);
+}
+
+
+
+
+
+.dashcard{
+	background-color: white;
+	border-radius: 12px;
+	border: var(--box-border-1);
+	padding: 12px;
+	padding-bottom: 4px;
+	box-shadow:var(--box-shadow-5);
+	margin: 1rem;
+}
+
+.dashcard-header{
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+.dash-table{
+	margin: 12px;
+	border-radius: 8px;
+	box-shadow: var(--box-shadow-5) ;
+	border: var(--box-border-1);
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: white;
+	overflow-x: auto;
+	}
+
+.dash-table table{
+	overflow-x: scroll;
+}
+
+
+.dash-table thead{
+	background-color: var(--easygo-lblue-1);
+}
+
+.dash-table .table-title{
+	padding: 12px;
+}
+.dash-table .table-footer{
+	display: flex;
+	justify-content: center;
+}
+
+.dash-table tr:hover{
+	background-color: var(--easygo-lblue-1);
+}
+.dash-table tr{
+	border-bottom: 1px solid lightgrey;
+}
+.dash-table tr:last-child{
+	border-bottom: none;
+}
+
+.dash-table td {
+	min-width: 7em;
+	border-bottom: none;
+}
+.dash-table th{
+	border-bottom: none;
+}
+
+
+.member-stack{
+	/* align-items: center; */
+	justify-content: center;
+	position: relative;
+	/* margin:4px; */
+
+	min-width: 2.5rem;;
+	min-height: 2.5rem;
+}
+
+.member-stack > div:hover{
+	z-index: 1;
+}
+
+.member-stack > div{
+	position: absolute;
+	/* display: flex; */
+	min-width: 2rem;
+	max-width: 2rem;
+	min-height: 2rem;
+	max-height: 2rem;
+	background-color: grey;
+	border: solid white 1px;
+	border-radius: 1rem;
+	padding: 4px;
+	align-content: center;
+	justify-content: center;
+	font-size: var(--font-size-4);
+	/* left: 0; */
+}
+
+.pill-select-group .pill-select-option{
+	border-radius: 16px;
+	margin-right: 4px;
+	color:grey;
+	border-color: grey;
+}
+/* Style when pill is checked  */
+.pill-select-group input[type="checkbox"]:checked
++ .pill-select-option {
+	background-color:var(--easygo-blue-faded);
+	color: var(--easygo-blue);
+	border: solid var(--easygo-blue) 1px;
+}
+
+/* Pill select elements  */
+
+
+/* pill-select */
+
+@media screen and (max-width: 669px) {
+	.bg-color-box{
+		margin-bottom: 80vh;
+		height: 25vh;
+	}
+	aside{
+		display: none;
+		position: fixed;
+		width: 100%;
+	}
+	.dashcard{
+		min-width: 85%;
+		min-height: 18vh;
+		/* display: ; */
+	}
+	main{
+
+		margin-left:0px;
+	}
+
+}
