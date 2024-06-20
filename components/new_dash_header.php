@@ -14,10 +14,16 @@
 				?>
 
 				<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-					<li><a class="dropdown-item" href="#">New Trip</a></li>
-					<li><a class="dropdown-item" href="#">Settings</a></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Sign out</a></li>
+					<?php
+					$server_base = server_base_url();
+						echo "
+					<li><a class='dropdown-item' href='{$server_base}curator/experience_settings.php'>New Trip</a></li>
+					<!-- <li><a class='dropdown-item' href='#'>Settings</a></li> -->
+					<li><hr class='dropdown-divider'></li>
+					<li><a class='dropdown-item' onclick='return logout()' href='#'>Sign out</a></li>
+						"
+					?>
+
 				  </ul>
 		</div>
 

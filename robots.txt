@@ -1,6 +1,13 @@
 User-agent: *
 Disallow: /admin/
-Disallow: /curator/
+Disallow: /curator/experience_preview.php
+Disallow: /curator/settings.php
+Disallow: /curator/trips.php
+Disallow: /curator/destinations.php
+Disallow: /curator/dashboard.php
+Disallow: /curator/bookings.php
+Disallow: /curator/experience_settings.php
+Disallow: /curator/preview.php
 Disallow: /assets/
 Disallow: /coplanner/dashboard/
 Allow: /

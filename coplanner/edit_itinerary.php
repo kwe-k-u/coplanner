@@ -366,13 +366,13 @@ $first_day = $itinerary["first_day"];
                                                             <div class='col-8'>
                                                                 <div class='row'>
                                                                     <div class='col-4'>
-                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt=''>
+                                                                        <img src='../assets/images/others/tour2.webp' class='img-fluid' alt=''>
                                                                     </div>
                                                                     <div class='col-4'>
-                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt=''>
+                                                                        <img src='../assets/images/others/tour2.webp' class='img-fluid' alt=''>
                                                                     </div>
                                                                     <div class='col-4'>
-                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt=''>
+                                                                        <img src='../assets/images/others/tour2.webp' class='img-fluid' alt=''>
                                                                     </div>
                                                                 </div>
                                                                 <div class='mt-3'>
@@ -408,13 +408,13 @@ $first_day = $itinerary["first_day"];
                                                 <div class="col-8">
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                            <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="">
                                                         </div>
                                                         <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                            <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="">
                                                         </div>
                                                         <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                            <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="mt-3">
@@ -443,13 +443,13 @@ $first_day = $itinerary["first_day"];
                                                 <div class="col-8">
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                            <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="">
                                                         </div>
                                                         <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                            <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="">
                                                         </div>
                                                         <div class="col-4">
-                                                            <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="">
+                                                            <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="mt-3">
@@ -707,7 +707,7 @@ $first_day = $itinerary["first_day"];
                                                             <div class='p-3'>
                                                                 <div class='row'>
                                                                     <div class='col-5'>
-                                                                        <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt='' style='max-height: 150px;'>
+                                                                        <img src='../assets/images/others/tour2.webp' class='img-fluid' alt='' style='max-height: 150px;'>
                                                                     </div>
                                                                     <div class='col-7'>
                                                                         <h4 class='m-0'>$name</h4>
@@ -847,7 +847,7 @@ $first_day = $itinerary["first_day"];
         <div class="offcanvas offcanvas-start" id='mobileMenuCanvas'>
             <div class="offcanvas-header">
                 <a class='navbar-brand' href='../index.php'>
-                    <img class='logo-medium' src='../assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
+                    <img class='logo-medium' src='../assets/images/site_images/logo.webp' onerror='this.onerror=null; this.remove();' alt=''>
                 </a>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -903,7 +903,7 @@ $first_day = $itinerary["first_day"];
         <div class="offcanvas offcanvas-start" id="destinationSearchCanvas" aria-labelledby="">
             <div class="offcanvas-header">
                 <a class='navbar-brand' href='../index.php'>
-                    <img class='logo-medium' src='../assets/images/site_images/logo.png' onerror='this.onerror=null; this.remove();' alt=''>
+                    <img class='logo-medium' src='../assets/images/site_images/logo.webp' onerror='this.onerror=null; this.remove();' alt=''>
                 </a>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -949,7 +949,7 @@ $first_day = $itinerary["first_day"];
                                     <div class='p-3'>
                                         <div class='row'>
                                             <div class='col-5'>
-                                                <img src='../assets/images/others/tour2.jpg' class='img-fluid' alt='' style='max-height: 150px;'>
+                                                <img src='../assets/images/others/tour2.webp' class='img-fluid' alt='' style='max-height: 150px;'>
                                             </div>
                                             <div class='col-7'>
                                                 <h4 class='m-0'>$name</h4>
@@ -1122,14 +1122,14 @@ $first_day = $itinerary["first_day"];
                                     <div class="p-3">
                                         <div class="d-flex gap-2" style="max-height: 200px;">
                                             <div class="" style="flex:1;">
-                                                <img src="../assets/images/others/tour2.jpg" class="img-fluid" alt="" style="height: 100%;">
+                                                <img src="../assets/images/others/tour2.webp" class="img-fluid" alt="" style="height: 100%;">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center gap-2" style="flex:1;">
                                                 <div style="max-height: 50%;">
-                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
+                                                    <img src="../assets/images/others/tour2.webp" class="h-100 w-100" alt="">
                                                 </div>
                                                 <div style="max-height: 50%;">
-                                                    <img src="../assets/images/others/tour2.jpg" class="h-100 w-100" alt="">
+                                                    <img src="../assets/images/others/tour2.webp" class="h-100 w-100" alt="">
                                                 </div>
                                             </div>
                                         </div>

@@ -78,7 +78,7 @@ if (isset($_GET["id"])) {
                         <div class='col-lg-6 p-3 border-lg-end border-blue'>
                             <?php
                             if (isset($_GET["id"])) {
-                                echo "<img style='height: 300px; background-color: var(--easygo-gray-2);' src='../assets/images/others/long_1.jpeg' alt='' srcset=''>";
+                                echo "<img style='height: 300px; background-color: var(--easygo-gray-2);' src='../assets/images/others/long_1.webp' alt='' srcset=''>";
                             } else {
                                 echo "<img style='height: 300px; background-color: var(--easygo-gray-2);' src='$media_location' alt='' srcset=''>";
                             }

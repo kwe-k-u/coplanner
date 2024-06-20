@@ -6,6 +6,9 @@ if (isset($_GET["invite_token"])) {
 
     $hash = $_GET["invite_token"];
 }
+
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view("Curator Register");
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +45,11 @@ if (isset($_GET["invite_token"])) {
                 <div class="form-header">
                     <script>
                         function goHome() {
-                            window.location.href = "../views/home.php";
+                            window.location.href = "index.php";
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
-                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.webp" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your credentials</p>
                 </div>
@@ -133,7 +136,7 @@ if (isset($_GET["invite_token"])) {
                 <!-- <button type="button" class="back-btn btn" style="position: absolute; top: 3%; left: 0"><i class="fa-solid fa-arrow-left easygo-fs-1"></i></button> -->
                 <div class="form-header">
                     <div class="logo">
-                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.webp" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your credentials</p>
                 </div>

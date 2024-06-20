@@ -44,7 +44,7 @@
     <div class="main-wrapper">
         <header class="dashboard-header d-none d-lg-flex py-4 bg-gray-3" style="box-shadow: none;">
             <div class="dashlogo logo logo-medium">
-                <img class="img-fluid" src="../assets/images/site_images/logo.png" alt="easygo logo">
+                <img class="img-fluid" src="../assets/images/site_images/logo.webp" alt="easygo logo">
             </div>
             <?php
             $greeting = greet();
@@ -55,7 +55,7 @@
             // <div class='right-sec'>
             //     <div class='user-menu d-flex gap-1'>
             //         <div class='user-icon'>
-            //             <img src='../assets/images/others/profile.jpeg' alt=''>
+            //             <img src='../assets/images/others/profile.webp' alt=''>
             //         </div>
             //         <div class='d-flex flex-column justify-content-center'>
             //             <h5 class='easygo-fs-3'>$curator_name</h5>

@@ -5,7 +5,7 @@
     }
 
 $mixpanel = new mixpanel_class();
-$mixpanel->log_page_view();
+$mixpanel->log_page_view("Login");
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $mixpanel->log_page_view();
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
-                        <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="easy go logo">
+                        <img class="logo-medium" src="../assets/images/site_images/logo.webp" alt="easy go logo">
                     </div>
                     <div class="easygo-fs-1">Welcome</div>
                     <p class="instruction easygo-fs-4">Please enter your credentials to sign up</p>

@@ -113,7 +113,7 @@ $mixpanel->log_page_view();
                     </div>
                     <div class="col-lg-6 p-3">
                         <div class="w-100 h-100 d-flex justify-content-center">
-                            <img class="img-fluid" src="../assets/images/others/long_11.jpeg" alt="coplanner image">
+                            <img class="img-fluid" src="../assets/images/others/long_11.webp" alt="coplanner image">
                         </div>
                     </div>
                 </div>
@@ -243,16 +243,16 @@ $mixpanel->log_page_view();
                         <div class="col-lg-6 d-flex justify-content-center align-items-center">
                             <div class="grid-3" style="max-height: 500px">
                                 <div class="grid-item">
-                                    <img src="../assets/images/others/tall_10.jpeg" alt="scenery" class="w-100 h-100">
+                                    <img src="../assets/images/others/tall_10.webp" alt="scenery" class="w-100 h-100">
                                 </div>
                                 <div class="grid-item">
-                                    <img src="../assets/images/others/long_1.jpeg" alt="scenery" class="w-100 h-100">
+                                    <img src="../assets/images/others/long_1.webp" alt="scenery" class="w-100 h-100">
                                 </div>
                                 <div class="grid-item">
-                                    <img src="../assets/images/others/tall_3.jpeg" alt="scenery" class="w-100 h-100">
+                                    <img src="../assets/images/others/tall_3.webp" alt="scenery" class="w-100 h-100">
                                 </div>
                                 <div class="grid-item">
-                                    <img src="../assets/images/others/tall_7.jpeg" alt="scenery" class="w-100 h-100">
+                                    <img src="../assets/images/others/tall_7.webp" alt="scenery" class="w-100 h-100">
                                 </div>
                             </div>
                         </div>

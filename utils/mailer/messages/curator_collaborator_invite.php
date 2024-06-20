@@ -667,7 +667,7 @@
 																							<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
 																								<tbody>
 																									<tr>
-																										<td style="padding-top:12px;padding-bottom:12px;padding-right:48px;padding-left:48px" class="mceBlockContainer" align="center" valign="top"><img data-block-id="2" width="236" height="auto" style="width:236px;height:auto;max-width:236px !important;display:block" alt="Logo" src="https://www.easygo.com.gh/assets/images/site_images/logo.png" class="mceLogo"></td>
+																										<td style="padding-top:12px;padding-bottom:12px;padding-right:48px;padding-left:48px" class="mceBlockContainer" align="center" valign="top"><img data-block-id="2" width="236" height="auto" style="width:236px;height:auto;max-width:236px !important;display:block" alt="Logo" src="https://www.easygo.com.gh/assets/images/site_images/logo.webp" class="mceLogo"></td>
 																									</tr>
 																									<tr>
 																										<td style="padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:0" class="mceBlockContainer" align="center" valign="top"><img data-block-id="4" width="344" height="auto" style="width:344px;height:auto;max-width:1080px !important;display:block" alt="" <?php echo "src='$image_url'"; ?> role="presentation" class="imageDropZone mceImage"></td>
@@ -792,7 +792,7 @@ Contact Support
 																																			<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
 																																				<tbody>
 																																					<tr>
-																																						<td style="padding-top:12px;padding-bottom:12px;padding-right:48px;padding-left:48px" class="mceBlockContainer" align="center" valign="top"><img data-block-id="8" width="130" height="auto" style="width:130px;height:auto;max-width:130px !important;display:block" alt="Logo" src="https://www.easygo.com.gh/assets/images/site_images/logo.png" class="mceLogo"></td>
+																																						<td style="padding-top:12px;padding-bottom:12px;padding-right:48px;padding-left:48px" class="mceBlockContainer" align="center" valign="top"><img data-block-id="8" width="130" height="auto" style="width:130px;height:auto;max-width:130px !important;display:block" alt="Logo" src="https://www.easygo.com.gh/assets/images/site_images/logo.webp" class="mceLogo"></td>
 																																					</tr>
 																																					<tr>
 																																						<td style="padding-top:12px;padding-bottom:12px;padding-right:16px;padding-left:16px" class="mceBlockContainer" align="center" valign="top">

@@ -57,7 +57,7 @@ $username = get_user_info($user_id)["user_name"];
                         </div>
 
                         <div class='col-lg-6 p-3 border-lg-end border-blue'>
-                            <img style='max-height: 350px; background-color: var(--easygo-gray-2);' src="../assets/images/others/long_1.jpeg" alt="" srcset="">
+                            <img style='max-height: 350px; background-color: var(--easygo-gray-2);' src="../assets/images/others/long_1.webp" alt="" srcset="">
                             <div class="mt-3 bm-1 justify-content-between">
                                 <div class="form-input-field">
                                     <label for="">Share your itinerary with the community?</label>

@@ -128,7 +128,7 @@ function create_itinerary_card_item(des_id,name,activities, action_required = fa
 		image_col.className = "col-4";
 		let image_element = document.createElement("img");
 		image_element.className = "img-fluid";
-		image_element.src = "../assets/images/others/tour2.jpg";
+		image_element.src = "../assets/images/others/tour2.webp";
 		//Append image
 		image_col.appendChild(image_element);
 		image_row.append(image_col);
@@ -188,7 +188,7 @@ function create_destination_search_result_card(id,name,location,rating,num_ratin
 	let image_div = document.createElement("div");
 	image_div.className = "col-5";
 	let image_element = document.createElement("img");
-	image_element.src = '../assets/images/others/tour2.jpg';
+	image_element.src = '../assets/images/others/tour2.webp';
 	image_element.className = "img-fluid";
 	image_element.style = "max-height: 150px;";
 	image_div.appendChild(image_element);
@@ -659,7 +659,7 @@ function set_itinerary_visibility(itinerary_id, form){
 
  function create_shared_experience(form){
 	 event.preventDefault();
-	 
+
 	let flyer = document.getElementById("flyer_image").files;
 	if(flyer.length == 0){
 		openDialog("You need to add an image for your experience");

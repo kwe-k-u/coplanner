@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="./home.php">
-            <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="">
+            <img class="logo-medium" src="../assets/images/site_images/logo.webp" alt="">
         </a>
         <button class="navbar-toggler sidebar-toggler" type="button" data-target="main-sidebar">
             <span class="navbar-toggler-icon"></span>
@@ -75,7 +75,7 @@
 <aside id="main-sidebar" class="sidebar sidebar-right bg-white d-md-none">
     <div class="sidebar-header py-3">
         <div class="log">
-            <img class="logo-small" src="../assets/images/site_images/logo.png" alt="easygo logo">
+            <img class="logo-small" src="../assets/images/site_images/logo.webp" alt="easygo logo">
         </div>
         <button class="crossbars close-sidebar btn" data-target="main-sidebar">
             <span class="bar"></span>

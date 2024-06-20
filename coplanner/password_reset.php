@@ -29,7 +29,7 @@
             <form onsubmit="return request_password_reset(this)">
                 <div class="form-header">
                     <div class="logo">
-                        <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="easygo logo">
+                        <img class="logo-medium" src="../assets/images/site_images/logo.webp" alt="easygo logo">
                     </div>
                     <p class="easygo-fs-2 easygo-fw-1">Forgot Password</p>
                     <p class="easygo-fs-4">Enter your email, we'll send a verification link to your email address</p>

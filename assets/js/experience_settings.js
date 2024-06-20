@@ -52,7 +52,7 @@ function create_experience(){
 		},
 		(response) => {
 			if (response.status == 200){
-				goto_page("views/destinations.php?experience_id="+response.data.experience_id);
+				goto_page("curator/destinations.php?experience_id="+response.data.experience_id);
 			}else{
 				openDialog(response.data.msg);
 			}

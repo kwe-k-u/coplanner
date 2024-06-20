@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-6">
                         <?php
-                            echo "<img class='logo-medium' src='{$base_url}assets/images/site_images/logo.png' alt='easygo logo'>";
+                            echo "<img class='logo-medium' src='{$base_url}assets/images/site_images/logo.webp' alt='easygo logo'>";
                         ?>
                         </div>
                         <div class="col-6 align-items-right">

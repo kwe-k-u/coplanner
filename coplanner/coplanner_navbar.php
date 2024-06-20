@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
         <a class="navbar-brand" href="../index.php">
-            <img class="logo-medium" src="http://localhost/coplanner/assets/images/site_images/logo.png" onerror="this.onerror=null; this.remove();" alt="">
+            <img class="logo-medium" src="http://localhost/coplanner/assets/images/site_images/logo.webp" onerror="this.onerror=null; this.remove();" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 

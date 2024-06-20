@@ -46,7 +46,7 @@ if (session_status() == PHP_SESSION_NONE){
 	}
 
 	function get_default_profile_img(){
-		return server_base_url()."assets/images/others/profile.jpeg";
+		return server_base_url()."assets/images/others/profile.webp";
 	}
 
 	/**Logs in users with special access */

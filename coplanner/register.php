@@ -37,13 +37,13 @@
             <form onsubmit="return email_signup(this)">
                 <div class="form-header">
                     <div class="logo" onclick="return goHome()">
-                        <img class="logo-medium" src="../assets/images/site_images/logo.png" alt="easy go logo">
+                        <img class="logo-medium" src="../assets/images/site_images/logo.webp" alt="easy go logo">
                     </div>
                     <p class="instruction easygo-fs-4">Please enter your credentials to sign up</p>
                 </div>
                 <!-- <div class="profile_img-upload">
                     <div class="profile_img-disp">
-                        <img id="register-profile_img" class="image-display" src="../assets/images/others/tour2.jpg" alt="profile image">
+                        <img id="register-profile_img" class="image-display" src="../assets/images/others/tour2.webp" alt="profile image">
                         <label class="profile_img-upload-btn" for="profile_img"><img src="../assets/images/svgs/pen_line.svg" alt="pen line image"></label>
                         <input display-target="register-profile_img" class="profile_img-file" id="profile_img" type="file" accept=".jpg, .jpeg, .png">
                     </div>

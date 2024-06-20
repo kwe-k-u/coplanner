@@ -5,6 +5,9 @@ require_once(__DIR__."/../utils/core.php");
 if(is_session_user_curator()){
     header("Location: dashboard.php");
 }
+
+$mixpanel = new mixpanel_class();
+$mixpanel->log_page_view("Curator Login");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +44,7 @@ if(is_session_user_curator()){
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">
-                        <img src="../assets/images/site_images/logo.png" alt="easy go logo">
+                        <img src="../assets/images/site_images/logo.webp" alt="easy go logo">
                     </div>
                     <p class="instruction">Please enter your login credentials</p>
                 </div>

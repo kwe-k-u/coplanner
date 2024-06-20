@@ -53,7 +53,7 @@ $profile = ""; //get_user_profile_img($user_id);
 							}
 						</script>
 						<div class="logo m-md-auto" onclick="return goHome()">
-							<img class="logo-medium" src="../../assets/images/site_images/logo.png" alt="easygo logo">
+							<img class="logo-medium" src="../../assets/images/site_images/logo.webp" alt="easygo logo">
 						</div>
 						<button class="crossbars close-sidebar btn d-md-none" data-target="userdashboard-sidebar">
 							<span class="bar"></span>

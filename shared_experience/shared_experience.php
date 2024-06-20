@@ -16,7 +16,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 	<meta name="description" content="easyGo connects you to tour experiences created by Ghanaian curators. Find the best things to do and book tours by locals">
     <meta name="keywords" content="things to do Ghana, Accra, tourism, tours, December in Ghana, experience Ghana">
     <meta name="author" content="easyGo Tours Ltd">
-    <title>easyGo - Home</title>
+    <title>easyGo - Things to do in Ghana</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -45,15 +45,18 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
             <section class=" carousel-section">
                 <div class="image-section">
-                    <div class="carousel-img d-block d-lg-none " id="image-slide-mobile" data-imgs="assets/images/carousel/IMG_2115.jpg,assets/images/carousel/IMG_2611.jpg,assets/images/carousel/IMG_2647.jpg,assets/images/carousel/IMG_2115.jpg"></div>
+                    <div class="carousel-img d-block d-lg-none " id="image-slide-mobile" data-imgs="assets/images/carousel/IMG_2115.webp,assets/images/carousel/IMG_2611.webp,assets/images/carousel/IMG_2647.webp"></div>
                     <div class="carousel-img d-none d-md-block" id="image-slide-desktop" data-imgs="assets/images/carousel/7I3A9298.jpg,assets/images/carousel/7I3A9268.jpg,assets/images/carousel/IMG_7661.jpg,assets/images/carousel/IMG_7643.jpg"></div>
                 </div>
                 <div class="tint"></div>
                 <div class="carousel-body">
                     <h1 class="easygo-fw-1">
-                        You don't need to hassle to find something to do
+                        Don't hassle to find things to do in Ghana
                     </h1>
-                    <p> We host every tour curator in Ghana so you can easily find and book their tours </p>
+                    <p>
+                        Find tour curators from all over Ghana sharing their unique experiences for
+                        every budget, vacation plan and group size.
+                         </p>
                     <!-- <form action="#experience_section"> -->
                         <div class="carousel-search row align-items-center">
                             <div class="form-input-field col-lg-9">
@@ -84,21 +87,12 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
             <section class="suggested-locations my-5" id="#experience_section">
                 <div class="container">
                     <div>
-                        <h5 class="text-orange">Shared Experiences</h5>
-                        <?php
-
-                        $tours = get_shared_experiences();
-                        $label_text = "Upcoming Tours";
-                        if (empty($tours)) {
-                            // $tours = get_past_campaigns();
-                            $label_text = "Featured Tours";
-                        }
-                        echo "<h1>Shared Experiences</h1>";
-                        ?>
+                        <h2>Shared Experiences</h2>
 
                     </div>
                     <div class="row">
                         <?php
+                        $tours = get_shared_experiences();
 
                         if (!empty($tours)) {
                             foreach ($tours as $entry) {
@@ -164,7 +158,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         <div class="col-lg-6 p-3">
                             <div class="px-lg-5">
                                 <div class="stacked-imgs">
-                                    <img class="lazy-loader" data-src="../assets/images/site_images/home_1.jpg" alt="scenery">
+                                    <img class="lazy-loader" data-src="../assets/images/site_images/home_1.webp" alt="scenery">
                                 </div>
                             </div>
                         </div>
@@ -172,9 +166,9 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                             <div class="container d-flex flex-column gap-2">
                                 <h1>Find the Best Tour For You And Your friends</h1>
                                 <p>
-                                    Tour curators on easyGo are the best people to create unique adventures for you and your friends.
-                                    Visit the most exciting destinations and create lasting friendships. Leave the planning and organising
-                                    to us, focus on enjoyment.
+                                Whether you are looking for an adrenaline-pumping excursion, an cularual immersion or a relaxing getaway,
+                                 there is certainly a tour for you. Benefit from the experience of curators on our website to enjoy trips designed
+                                 to provide unforgettable experiences at unique destinations and with world-class guides.
                                 </p>
                                 <!-- <button class="easygo-btn-1 align-self-start px-5 easygo-fs-4" onclick="goto_page('views/tours.php')" style="border-radius: 50px; word-spacing: 5px;">
                                     Get Started
@@ -196,24 +190,24 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="container-fluid position-relative h-100">
-                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block lazy-loader" data-src="../assets/images/site_images/home_3.jpg" alt="background image">
+                                <img style="height: 120%; position: absolute; bottom: 0; left: 0;" class="img-fluid d-none d-lg-block lazy-loader" data-src="../assets/images/site_images/home_3.webp" alt="background image">
                                 <div class="d-block d-lg-none pt-5">
-                                    <img class="img-fluid lazy-loader" data-src="../assets/images/site_images/home_3.jpg" alt="background image">
+                                    <img class="img-fluid lazy-loader" data-src="../assets/images/site_images/home_3.webp" alt="background image">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 py-5">
                             <div class="container-fluid">
-                                <h1>Just between friends</h1>
+                                <h3>Just between friends</h3>
                                 <p>
                                     Some moments are best shared only with friends. Receive a travel plan that meets your
-                                    preferences for your next trip with friends. With our travel plans, you get to choose
+                                    preferences for your next trip with friends. With our travel plans, you have control over
                                     who gets invited to the trip because sometimes, you want to be with just friends
                                 </p>
 
                                 <?php
                                     $base_url = server_base_url();
-                                    echo "<button type='button' onclick='return goto_page(\"$base_url/travel_plan\",false)' class='easygo-btn-2 easygo-fs-4 easygo-fw-3 px-5' style='border-radius: 50px; word-spacing: 5px;'> Choose a Travel Plan</button>";
+                                    echo "<button type='button' onclick='return goto_page(\"https://wa.me/233506899883\",false)' class='easygo-btn-2 easygo-fs-4 easygo-fw-2 px-5' style='border-radius: 50px; color:black; word-spacing: 5px;'> Contact Our Team</button>";
                                 ?>
 
 
@@ -234,7 +228,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                     <div class="grid-1 d-flex flex-column d-lg-grid" style="min-height: 80vh;">
                         <div class="grid-item">
                             <div class="d-flex flex-column">
-                                <img class="img-fluid" src="../assets/images/others/background.jpg" alt="scenery">
+                                <img class="img-fluid" src="../assets/images/others/background.webp" alt="scenery">
                                 <div>
                                     <h6 class="border-3 border-bottom py-3 easygo-fs-1">Breath-taking view of the kwame Nkrumah park in Ghana</h6>
                                     <p class="easygo-fs-2">
@@ -248,7 +242,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         </div>
                         <div class="d-flex grid-item gap-1 flex-column flex-lg-row">
                             <div class="h-100" style="flex: 1 2 50%;">
-                                <img class="img-fluid h-100" src="../assets/images/others/background.jpg" alt="scenery">
+                                <img class="img-fluid h-100" src="../assets/images/others/background.webp" alt="scenery">
                             </div>
                             <div style="flex: 2 1 50%;">
                                 <h6 class="border-3 border-bottom py-3 easygo-fs-1">Breath-taking view of the kwame Nkrumah park in Ghana</h6>
@@ -262,7 +256,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         </div>
                         <div class="d-flex grid-item gap-1 flex-column flex-lg-row">
                             <div class="h-100" style="flex: 1 2 50%;">
-                                <img class="img-fluid h-100" src="../assets/images/others/background.jpg" alt="scenery">
+                                <img class="img-fluid h-100" src="../assets/images/others/background.webp" alt="scenery">
                             </div>
                             <div style="flex: 2 1 50%;">
                                 <h6 class="border-3 border-bottom py-3 easygo-fs-1">Breath-taking view of the kwame Nkrumah park in Ghana</h6>
@@ -345,16 +339,16 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
                     <div class="grid-2">
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_1.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_1.webp" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_11.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_11.webp" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/tall_2.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/tall_2.webp" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
-                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_10.jpeg" alt="scenery 1">
+                            <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_10.webp" alt="scenery 1">
                         </div>
                         <div class="grid-item rounded overflow-hidden">
                             <img class="w-100 h-100 lazy-loader" loading="lazy" data-src="../assets/images/gallery_pictures/long_4.jpeg" alt="scenery 1">
@@ -366,21 +360,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                 </div>
             </section>
             <!--- gallery section [wns] -->
-            <!--- ================================ -->
-            <!--- ================================ -->
-            <!--- News letter section [start] -->
-            <section class="nl-subscribe my-5">
-                <div class="container">
-                    <form class="nl-subscription-form py-5">
-                        <h4 class="title text-white">Subscribe to our newsletter for monthly travel plans and tour destination pricing</h4>
-                        <div class="input-field">
-                            <input id="newsletter_email_field" type="text" placeholder="Your email address">
-                            <button class="bg-orange text-white">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
-            <!--- News Letter section [end] -->
             <!--- ================================ -->
 
         </main>
@@ -396,7 +375,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
     <!-- Bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
     <!-- JQuery js -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Swiper bundle js -->

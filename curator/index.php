@@ -53,8 +53,8 @@
 			</div>
 			<div class="right-intro col-md-5">
 				<div class="stacked-img-pill">
-					<img src="../assets/images/carousel/IMG_2647.jpg" alt="">
-					<img src="../assets/images/carousel/IMG_2115.jpg" alt="">
+					<img src="../assets/images/carousel/IMG_2647.webp" alt="">
+					<img src="../assets/images/carousel/IMG_2115.webp" alt="">
 				</div>
 			</div>
 		</div>

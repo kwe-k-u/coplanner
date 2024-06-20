@@ -68,7 +68,7 @@ if (isset($_GET["id"])) {
                 <section>
                     <div class="row">
                         <div class='col-lg-6 p-3 border-lg-end border-blue'>
-                            <img style='height: 350px; background-color: var(--easygo-gray-2);' src="../assets/images/others/long_1.jpeg" alt="" srcset="">
+                            <img style='height: 350px; background-color: var(--easygo-gray-2);' src="../assets/images/others/long_1.webp" alt="" srcset="">
 
 
                             <?php
