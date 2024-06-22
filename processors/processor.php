@@ -867,6 +867,25 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			// $mailer = new mailer();
 			// $mailer->curator_signup($_GET["email"],$_GET["name"]);
 			die();
+		case "/get_affiliate_url":
+			$name = $_POST['name'];
+			$contact = $_POST["contact"];
+			$experience = $_POST["experience"];
+			$payment_details = $_POST["payment_details"];
+
+			$experience_id = "a689166db222611efaab78ed206f829ea";
+
+
+			notify_slack_support_msg("Affiliate Sign up: name:$name; contact: $contact; Experience:$experience. Payment details: $payment_details");
+
+			$data = array(
+				"snapchat_link" => server_base_url()."coplanner/experience_info.php?id=$experience_id=&campaign=affiliates&channel=snapchat&referred_by=$name",
+				"instagram_link" => server_base_url()."coplanner/experience_info.php?id=$experience_id=&campaign=affiliates&channel=instagram&referred_by=$name",
+				"twitter_link" => server_base_url()."coplanner/experience_info.php?id=$experience_id=&campaign=affiliates&channel=twitter&referred_by=$name",
+				"whatsapp_link" => server_base_url()."coplanner/experience_info.php?id=$experience_id=&campaign=affiliates&channel=whatsapp&referred_by=$name"
+			);
+			send_json($data);
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

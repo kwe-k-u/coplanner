@@ -5,8 +5,10 @@
 	class mixpanel_class{
 		private $panel = null;
 		private $report_to_server;
+		private $cookie_name;
 
 		function __construct(){
+			$this->cookie_name = "mixpanel_anon_id";
 			$this->panel = Mixpanel::getInstance(
 				mixpanel_token(),
 				array(
@@ -17,14 +19,16 @@
 
 			$this->report_to_server = true;
 			if(is_session_logged_in()){
-				// if(get_mixpanel_anon_id()){
-				// 	$this->panel->createAlias(get_session_user_id(),get_mixpanel_anon_id());
-				// }else{
 					$this->panel->identify(get_session_user_id());
-				// }
 			}else{
-				set_mixpanel_anon_id();
-				$this->panel->identify(get_mixpanel_anon_id());
+				if(!isset($_COOKIE[$this->cookie_name])){
+					setcookie(
+						$this->cookie_name,
+						generate_id(),
+						time() + (90 * 24 * 60 * 60), "/"
+					);
+				}
+				$this->panel->identify($_COOKIE[$this->cookie_name]);
 			}
 
 
@@ -36,8 +40,7 @@
 				return false;
 			}
 			// $this->panel->identify($user_id);
-			$this->panel->createAlias(get_mixpanel_anon_id(),$user_id);
-			remove_mixpanel_anon_id();
+			$this->panel->createAlias($_COOKIE[$this->cookie_name],$user_id);
 			$this->panel->people->setOnce($user_id,
 				array(
 					"email" => $email
@@ -50,8 +53,7 @@
 			if(!$this->report_to_server){
 				return false;
 			}
-			$this->panel->createAlias(get_mixpanel_anon_id(),$user_id);
-			remove_mixpanel_anon_id();
+			$this->panel->createAlias($_COOKIE[$this->cookie_name],$user_id);
 			$this->panel->track("User login", array("method"=> $method));
 		}
 
@@ -163,6 +165,10 @@
 
 			if(isset($_GET["campaign"])){
 				$data["campaign"] = $_GET["campaign"];
+			}
+
+			if(isset($_GET["channel"])){
+				$data["channel"] = $_GET["channel"];
 			}
 
 			if($pagename){
