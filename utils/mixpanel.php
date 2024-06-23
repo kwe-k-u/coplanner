@@ -22,13 +22,16 @@
 					$this->panel->identify(get_session_user_id());
 			}else{
 				if(!isset($_COOKIE[$this->cookie_name])){
+					$cookie_value = generate_id();
 					setcookie(
 						$this->cookie_name,
-						generate_id(),
+						$cookie_value,
 						time() + (90 * 24 * 60 * 60), "/"
 					);
+				}else{
+					$cookie_value = $_COOKIE[$this->cookie_name];
 				}
-				$this->panel->identify($_COOKIE[$this->cookie_name]);
+				$this->panel->identify($cookie_value);
 			}
 
 

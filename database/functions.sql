@@ -1237,40 +1237,40 @@ DROP FUNCTION IF EXISTS create_shared_experience;
 
 DELIMITER //
 CREATE FUNCTION create_shared_experience(
-	in_itinerary_id VARCHAR(100),
 	in_curator_id VARCHAR(100),
-  in_experience_name VARCHAR(60),
+	in_experience_name VARCHAR(60),
+	in_experience_description TEXT,
 	in_currency INT,
 	in_fee DOUBLE,
 	in_seats INT,
 	in_media_location TEXT,
-	in_media_type VARCHAR(30)
+	in_media_type VARCHAR(30),
+	in_start_date DATETIME
 ) returns varchar(100)
 begin
 	DECLARE in_experience_id varchar(100);
-	DECLARE in_start_date DATETIME;
 	DECLARE in_media_id VARCHAR(100);
 
-	SELECT generate_id() into in_experience_id;
-	SELECT visit_date into in_start_date from itinerary_day where itinerary_id = in_itinerary_id  ORDER BY visit_date ASC LIMIT 1;
 
-	INSERT INTO shared_experiences(experience_id,experience_name,curator_id,start_date,booking_fee,number_of_seats)
-	VALUES (in_experience_id, in_experience_name, in_curator_id,in_start_date,in_fee,in_seats);
+	SELECT generate_id() into in_experience_id;
+
+	INSERT INTO shared_experiences(experience_id,experience_name,experience_description,curator_id,start_date,booking_fee,number_of_seats)
+	VALUES (in_experience_id, in_experience_name, in_experience_description, in_curator_id,in_start_date,in_fee,in_seats);
 
 	IF in_media_location IS NOT NULL THEN
 		SELECT upload_media(in_media_location, in_media_type,0) INTO in_media_id;
-
 		UPDATE shared_experiences SET media_id = in_media_id where experience_id = in_experience_id;
-
 	END IF;
 
 
-	CALL generate_shared_experience(in_itinerary_id,in_experience_id);
+
+
 
 	return in_experience_id;
 
 end//
 DELIMITER ;
+
 
 
 DROP PROCEDURE IF EXISTS get_curator_listings;
@@ -1678,3 +1678,72 @@ DELIMITER //
 		where tp.itinerary_id = in_itinerary_id;
 	END //
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_experience_days;
+DELIMITER //
+CREATE PROCEDURE get_experience_days(IN in_experience_id VARCHAR(100))
+begin
+	SELECT distinct visit_date FROM `shared_experience_activities`
+	where experience_id = in_experience_id;
+end //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_experience_activities_by_day;
+DELIMITER //
+CREATE PROCEDURE get_experience_activities_by_day(IN in_experience_id VARCHAR(100), IN in_day DATETIME)
+begin
+	SELECT sea.*, a.activity_name, d.destination_name, d.location
+	FROM `shared_experience_activities` as sea
+	inner join activities as a on a.activity_id = sea.activity_id
+	inner join destinations as d on d.destination_id = sea.destination_id
+	where sea.experience_id = in_experience_id and sea.visit_date = in_day
+	order by visit_date , sea.destination_id;
+
+end //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS add_experience_destination;
+DELIMITER //
+CREATE PROCEDURE add_experience_destination(IN in_experience_id VARCHAR(100), IN in_destination_id VARCHAR(100))
+BEGIN
+	DECLARE temp_id VARCHAR(100);
+	SELECT destination_id into temp_id FROM shared_experience_destinations
+	where destination_id = in_destination_id and experience_id = in_experience_id;
+
+	IF temp_id is null then
+		INSERT INTO `shared_experience_destinations`(`experience_id`, `destination_id`)
+		VALUES (in_experience_id, in_destination_id);
+	end if;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS add_experience_activity;
+DELIMITER //
+CREATE PROCEDURE add_experience_activity(
+	IN in_experience_id VARCHAR(100),
+	IN in_activity_id VARCHAR(100),
+	IN in_destination_id VARCHAR(100),
+	IN in_visit_date DATETIME
+)
+begin
+	call add_experience_destination(in_experience_id,in_destination_id);
+	INSERT INTO `shared_experience_activities`(`experience_id`, `activity_id`, `destination_id`,`visit_date`)
+	VALUES (in_experience_id,in_activity_id,in_destination_id,in_visit_date);
+end //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS toggle_experience_visibility;
+DELIMITER //
+CREATE PROCEDURE toggle_experience_visibility(IN in_experience_id VARCHAR(100), IN in_status TINYINT(1))
+BEGIN
+	UPDATE shared_experiences SET is_visible = in_status
+	where experience_id = in_experience_id;
+END //
+DELIMITER ;
+

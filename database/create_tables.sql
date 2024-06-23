@@ -421,6 +421,7 @@ CREATE TABLE curator_payout_account(
 CREATE TABLE shared_experiences(
 	experience_id VARCHAR(100) PRIMARY KEY,
 	experience_name VARCHAR(60),
+	experience_description TEXT,
 	curator_id VARCHAR(100),
 	date_uploaded DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
@@ -681,6 +682,7 @@ CREATE VIEW vw_invoice_activities AS
 DROP VIEW IF EXISTS vw_curators;
 CREATE VIEW vw_curators as
 	SELECT c.*,
+	m.media_location as logo_location,
 	pa.account_id as payout_account_id,
 	pa.account_number as payout_account_number,
 	pa.account_name as payout_account_name,
@@ -691,6 +693,7 @@ CREATE VIEW vw_curators as
 	(SELECT 0) as booking_count
 	 from curator as c
 	left join curator_payout_account as cpa on cpa.curator_id = c.curator_id
+	left join media as m on m.media_id = c.curator_id
 	left join payout_accounts as pa on pa.account_id = cpa.payout_account_id;
 
 

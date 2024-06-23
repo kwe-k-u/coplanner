@@ -6,29 +6,6 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 $mixpanel = new mixpanel_class();
 $mixpanel->log_page_view("easyGo affiliates");
 
-// $info = get_curator_account_by_user_id(get_session_user_id()); //get_collaborator_info(get_session_user_id());
-// $user_info = get_user_info(get_session_user_id());
-// $curator_id = $info["curator_id"];
-// $user_name = $user_info["user_name"];
-// $curator_name = $info["curator_name"];
-
-// $logo = $info["logo_location"]; //$info["curator_logo"];
-
-// $experience_id = $_GET["experience_id"];
-// $experience = get_shared_experience_by_id($experience_id);
-// $date_created = "";
-// $owner_name = $experience["curator_name"];
-// $total = $experience["total_fee"];
-// $platform_fee = $experience["platform_fee"];
-// $listing_fee = $experience["booking_fee"];
-
-// $media_location = $experience["media_location"];
-// $experience_name = $experience["experience_name"];
-// $experience_description = $experience["experience_description"];
-// $experience_image = $experience["media_location"];
-// $currency = $experience["currency_name"];
-// $activities = get_shared_experience_activities($experience_id);
-
 
 ?>
 <!DOCTYPE html>
