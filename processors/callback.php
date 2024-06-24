@@ -69,10 +69,12 @@
 							$tax = 0;
 							$transaction_date = $data["paid_at"]; //TODO:: record
 							$amount = $transaction_amount - $provider_charges - $tax;
-							$seats = $metadata["number_of_seats"];
+							$seats = $metadata["seats_booked"];
+							notify_slack_support_msg(implode($_POST));
 							$description = $metadata["description"];
+							$package = $_POST["package_id"];
 							//todo change user_id to user email
-							$transaction_id = make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges);
+							$transaction_id = make_experience_payment($experience_id,$package, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges);
 							$transaction_id = array_values($transaction_id)[0];
 							if($transaction_id){
 								$email = $data["customer"]["email"];

@@ -272,9 +272,9 @@
 		return $public->get_invoice_activities($invoice_id);
 	}
 
-	function make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider = "paystack"){
+	function make_experience_payment($experience_id, $package_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider = "paystack"){
 		$public = new public_class();
-		return $public->make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
+		return $public->make_experience_payment($experience_id, $package_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
 	}
 
 	function set_itinerary_visibility($itinerary_id,$visibility){
@@ -386,6 +386,16 @@
 	function toggle_experience_visbility($experience_id,$status){
 		$public = new public_class();
 		return $public->toggle_experience_visibility($experience_id,$status ? "1" : "0");
+	}
+
+	function get_experience_tags($experience_id = null){
+		$public = new public_class();
+		return $public->get_experience_tags($experience_id);
+	}
+
+	function add_experience_tag($experience_id,$tag){
+		$public = new public_class();
+		return $public->add_experience_tag($experience_id,$tag);
 	}
 
 ?>

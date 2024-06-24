@@ -1234,7 +1234,6 @@ DELIMITER ;
 
 
 DROP FUNCTION IF EXISTS create_shared_experience;
-
 DELIMITER //
 CREATE FUNCTION create_shared_experience(
 	in_curator_id VARCHAR(100),
@@ -1250,12 +1249,17 @@ CREATE FUNCTION create_shared_experience(
 begin
 	DECLARE in_experience_id varchar(100);
 	DECLARE in_media_id VARCHAR(100);
+	DECLARE in_plan_id VARCHAR(100);
 
 
 	SELECT generate_id() into in_experience_id;
+	SELECT generate_id() into in_plan_id;
 
-	INSERT INTO shared_experiences(experience_id,experience_name,experience_description,curator_id,start_date,booking_fee,number_of_seats)
-	VALUES (in_experience_id, in_experience_name, in_experience_description, in_curator_id,in_start_date,in_fee,in_seats);
+	INSERT INTO shared_experiences(experience_id,experience_name,experience_description,curator_id,start_date,number_of_seats)
+	VALUES (in_experience_id, in_experience_name, in_experience_description, in_curator_id,in_start_date,in_seats);
+
+	INSERT INTO `shared_experience_payment_package`(`plan_id`, `experience_id`,  `currency_id`, `min_amount`, `expires_on`)
+	VALUES (in_plan_id,in_experience_id,in_currency,in_fee,in_start_date);
 
 	IF in_media_location IS NOT NULL THEN
 		SELECT upload_media(in_media_location, in_media_type,0) INTO in_media_id;
@@ -1518,9 +1522,11 @@ DELIMITER ;
 
 
 
+drop procedure if exists make_experience_payment;
 DELIMITER //
 CREATE  PROCEDURE `make_experience_payment`(
 	IN in_experience_id VARCHAR(100),
+	IN in_package_id VARCHAR(100),
 	IN in_seat_count INT,
     IN in_provider_id VARCHAR(100),
     IN in_sending_user VARCHAR(100),
@@ -1536,13 +1542,16 @@ begin
 
 	SELECT record_transaction(in_sending_user,in_provider_id ,in_description ,in_transaction_amount ,in_amount ,in_tax ,in_charges ,in_provider) INTO in_transaction_id;
 
-	INSERT INTO shared_experience_bookings(`experience_id`, `user_id`, `transaction_id`, `number_of_seats`)
-	VALUES (in_experience_id,in_sending_user,in_transaction_id,in_seat_count);
+	IF in_package_id is null then
+		SELECT plan_id into in_package_id FROM shared_experience_payment_package where experience_id = in_experience_id and is_default = 1;
+	end if;
+
+	INSERT INTO shared_experience_bookings(`experience_id`,experience_package, `user_id`, `transaction_id`, `number_of_seats`)
+	VALUES (in_experience_id, in_package_id,in_sending_user,in_transaction_id,in_seat_count);
 
 	SELECT in_transaction_id;
 end //
 DELIMITER ;
-
 
 DROP FUNCTION IF EXISTS invite_curator_collaborator;
 DELIMITER //
@@ -1747,3 +1756,36 @@ BEGIN
 END //
 DELIMITER ;
 
+
+
+DROP PROCEDURE IF EXISTS add_experience_tag;
+
+DELIMITER //
+CREATE PROCEDURE add_experience_tag(
+	IN in_experience_id VARCHAR(100),
+	IN in_tag_name VARCHAR(50)
+) BEGIN
+	DECLARE in_tag_id INT;
+	SELECT tag_id INTO in_tag_id FROM experience_tags where tag_name = in_tag_name;
+
+	INSERT INTO shared_experience_tags (experience_id,tag_id) VALUES (in_experience_id,in_tag_id);
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_experience_tags;
+DELIMITER //
+CREATE PROCEDURE get_experience_tags(
+	IN in_experience_id VARCHAR(100)
+)
+BEGIN
+	IF in_experience_id IS NULL THEN
+		SELECT * FROM experience_tags;
+	ELSE
+		SELECT et.tag_id,et.tag_name FROM shared_experience_tags as st
+		inner join experience_tags as et on et.tag_id = st.tag_id
+		where st.experience_id = in_experience_id;
+	END IF;
+END //
+DELIMITER ;

@@ -146,7 +146,7 @@
 			<div class="destination-modal-info row">
 				<div class="col-lg-6">
 					<div>
-						<img  id="modal-image" src="../assets/images/site_images/sorry_1.jpg" alt="">
+						<img  id="modal-image" src="../assets/images/site_images/sorry_1.webp" alt="">
 					</div>
 
 					<h5 id="destination-name" class="mb-0">Destination Name</h5>

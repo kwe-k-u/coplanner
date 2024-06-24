@@ -22,7 +22,21 @@ function showDashTab(){
 
 }
 
+function get_experience_tags(){
+	let checkboxes = document.getElementsByName("experience_tag");
+    // Initialize an array to hold the selected tag IDs
+    let selectedTags = [];
 
+    // Iterate through the checkboxes
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            selectedTags.push(checkbox.value);
+        }
+    });
+
+	return selectedTags;
+
+}
 function create_experience(){
 	// function get_experience_tags(){
 	// 	let experienceType = [];
@@ -33,6 +47,7 @@ function create_experience(){
 	// 	return experienceType;
 	// }
 	event.preventDefault();
+	let tags = get_experience_tags();
 	let name = document.getElementsByName("experience_name")[0].value;
 	let description = document.getElementsByName("experience_description")[0].value;
 	let flyer = document.getElementsByName("company_logo")[0].files;
@@ -48,7 +63,8 @@ function create_experience(){
 			"description" : description,
 			"flyer" : flyer[0],
 			"price" : booking_fee,
-			"seat_count" : num_seats
+			"seat_count" : num_seats,
+			"experience_tags" : tags
 		},
 		(response) => {
 			if (response.status == 200){

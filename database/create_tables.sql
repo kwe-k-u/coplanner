@@ -459,12 +459,34 @@ CREATE TABLE shared_experience_activities(
   CREATE TABLE shared_experience_bookings(
 	experience_id VARCHAR(100),
 	user_id VARCHAR(100),
+	experience_package VARCHAR(100),
 	transaction_id VARCHAR(100),
 	number_of_seats INT,
 	PRIMARY KEY (experience_id, user_id),
 	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id),
 	FOREIGN KEY (user_id) REFERENCES users(user_id),
-	FOREIGN KEY (transaction_id ) REFERENCES transactions(transaction_id)
+	FOREIGN KEY (transaction_id ) REFERENCES transactions(transaction_id),
+	FOREIGN KEY (experience_package) REFERENCES shared_experience_payment_package(plan_id)
+);
+
+
+-- Allows curator to create different booking packages
+-- Couple packages, early bird
+DROP TABLE IF EXISTS shared_experience_payment_package;
+CREATE TABLE shared_experience_payment_package(
+	plan_id VARCHAR(100),
+	experience_id VARCHAR(100),
+	package_name VARCHAR(50) DEFAULT "Standard", -- Installment plans can be called "installment plan"
+	is_default TINYINT(1) DEFAULT 1, -- 1: standard package,
+	seats INT DEFAULT 1 NOT NULL, -- Number of seats that this gets you
+	currency_id INT DEFAULT 1 NOT NULL,
+	min_amount DOUBLE, -- deposit amount
+	max_amount DOUBLE, --
+	expires_on DATE, -- Date the option isn't available (if its empty hide it when the trip ends)
+	order_index INT DEFAULT 0, -- order to arrange them
+	PRIMARY KEY (plan_id),
+	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id),
+	FOREIGN KEY (currency_id) REFERENCES currency(currency_id)
 );
 
 
@@ -521,6 +543,21 @@ CREATE TABLE travel_plan_media(
 	FOREIGN KEY (media_id) REFERENCES media(media_id)
 );
 
+
+
+CREATE TABLE experience_tags(
+	tag_id INT PRIMARY KEY AUTO_INCREMENT,
+	tag_name VARCHAR(50)
+);
+
+
+
+CREATE TABLE shared_experience_tags(
+	experience_id VARCHAR(100),
+	tag_id INT,
+	PRIMARY KEY(experience_id,tag_id),
+	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id)
+);
 
 
 
@@ -700,19 +737,29 @@ CREATE VIEW vw_curators as
 DROP VIEW IF EXISTS vw_shared_experiences;
 CREATE VIEW vw_shared_experiences AS
 	SELECT
-		se.*,
+		se.experience_id,
+        se.experience_name,
+		se.experience_description,
+        se.date_uploaded,
+        se.media_id,
+        se.is_visible,
+		se.curator_id,
+        se.number_of_seats,
+		se.start_date,
 		currency.currency_name,
+        p.min_amount as booking_fee,
 		c.curator_name,
 		(SELECT 0) as remaining_seats,
-        (SELECT se.booking_fee * 0.03) as platform_fee,
-        (select platform_fee + se.booking_fee) as total_fee,
+        (SELECT p.min_amount * 0.03) as platform_fee,
+        (select platform_fee + p.min_amount) as total_fee,
 		m.media_location
 	 from
 	shared_experiences as se
 	inner join curator as c on c.curator_id = se.curator_id
-	inner join currency on currency.currency_id = se.currency
-	left join media as m on m.media_id = se.media_id;;
-
+    inner join shared_experience_payment_package as p on p.experience_id = se.experience_id
+	inner join currency on currency.currency_id = p.currency_id
+	left join media as m on m.media_id = se.media_id
+    where p.is_default = 1;
 
 
 DROP VIEW IF EXISTS vw_payout_accounts;
@@ -742,6 +789,7 @@ AS
 	inner join vw_users as u on u.user_id = seb.user_id
 	inner join transactions as t on t.transaction_id = seb.transaction_id
 	;
+
 
 
 DROP VIEW IF EXISTS vw_curator_managers;
@@ -799,3 +847,15 @@ INSERT INTO types_of_bed (type_name) VALUES
 ('Double Bed'),
 ('Queen Bed'),
 ('King Bed');
+
+
+INSERT experience_tags(tag_name) VALUES
+("Adventure"),
+("Arts"),
+("Softlife & Wellness"),
+("History & Culture"),
+("Waterfalls"),
+("Hikes"),
+("Nature & Wildlife");
+
+

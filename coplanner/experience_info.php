@@ -20,6 +20,7 @@ if (isset($_GET["experience_id"])) {
     $currency = $itinerary["currency_name"];
     $activities = get_shared_experience_activities($experience_id);
     $mixpanel->log_shared_experience_view($experience_id, $itinerary_name);
+    $experience_description = $itinerary["experience_description"];
 } else {
     echo "url broken";
     die();
@@ -87,18 +88,18 @@ if (isset($_GET["experience_id"])) {
                                 echo "<img src='$itinerary_image' />";
                                 ?>
                             </div>
-                            <!-- <div class="itin-summary-title">
-                                Itinerary Description
-                            </div>
-                            <div class="right-summary-main">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley of type and scrambled it to make a type specimen book. It has survived not only five
-                                centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                passages, and more recently with desktop publishing software like Aldus PageMaker including
-                                versions of Lorem Ipsum.
-                            </div> -->
+                            <?php
+                                if($experience_description){
+
+                                echo "
+                                <div class='itin-summary-title'>
+                                    Experience Description
+                                </div>
+                                <div class='right-summary-main'>
+                                    $experience_description
+                                </div>";
+                                }
+                            ?>
 
                         </div>
                         <div class="left-summary">

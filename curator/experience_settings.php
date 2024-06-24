@@ -86,12 +86,12 @@ $mixpanel->log_page_view("Curator Experience Settings");
 								<label for="">Type of trip</label>
 								<div class="pill-select-group">
 									<?php
-										$experience_tags = ["Adventure","Soft Life","Arts","History & Culture","Nature & Wildlife"];
+										$experience_tags = get_experience_tags();
 										foreach ($experience_tags as $entry){
-											$tag_name = $entry;
-											$tag_id = $entry[3];
+											$tag_name = $entry["tag_name"];
+											$tag_id = $entry["tag_id"];
 											echo "
-											<input type='checkbox' class='btn-check ' name='experience_type' id='$tag_id' autocomplete='off'>
+											<input type='checkbox' class='btn-check ' name='experience_tag' id='$tag_id' value='$tag_name' autocomplete='off'>
 											<label class='btn btn-outline-primary pill-select-option' for='$tag_id'>
 												$tag_name
 											</label>";
@@ -144,11 +144,11 @@ $mixpanel->log_page_view("Curator Experience Settings");
 			<div class="col-lg-9">
 				<div class="dashcard">
 					<div class="dashcard-header">
+						<div class="btn-group" role="group" aria-label="Tags for the experience">
 
-						<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-							<input type="radio" class="btn-check" data-toggle-target="shared-experience-tab"
-								name="btnradio" id="btnradio1" autocomplete="off" checked>
-							<label class="btn btn-outline-primary" for="btnradio1">Shared Experience</label>
+							<input type='radio' class='btn-check' data-toggle-target='shared-experience-tab'
+								name='btnradio' id='btnradio1' autocomplete='off' checked>
+							<label class='btn btn-outline-primary' for='btnradio1'>Shared Experience</label>
 
 							<input type="radio" class="btn-check" data-toggle-target="tab2" name="btnradio"
 								id="btnradio2" autocomplete="off" disabled>

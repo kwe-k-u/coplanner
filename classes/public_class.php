@@ -393,10 +393,10 @@
 			return $this->db_fetch_one();
 		}
 
-		function make_experience_payment($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider){
-			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?) ";
+		function make_experience_payment($experience_id,$package_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider){
+			$sql = "CALL make_experience_payment(?,?,?,?,?,?,?,?,?,?,?) ";
 			$this->prepare($sql);
-			$this->bind($experience_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
+			$this->bind($experience_id, $package_id, $seats,$provider_transaction_id,$user_id,$description,$transaction_amount,$amount,$tax,$provider_charges,$provider);
 			return $this->db_fetch_one();
 		}
 
@@ -446,6 +446,21 @@
 			$sql = "CALL toggle_experience_visibility(?,?);";
 			$this->prepare($sql);
 			$this->bind($experience_id,$status);
+			return $this->db_query();
+		}
+
+
+		function get_experience_tags($experience_id){
+			$sql = "CALL get_experience_tags(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_all();
+		}
+
+		function add_experience_tag($experience_id,$tag){
+			$sql = "CALL add_experience_tag(?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$tag);
 			return $this->db_query();
 		}
 

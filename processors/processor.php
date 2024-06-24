@@ -187,58 +187,6 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			send_json(array("msg"=> "Added destination"));
 			die();
-		case "/google_maps_upload":
-			// $type_association = array(
-			// 	"amusement_park"=> "Amusement Park",
-			// 	"aquarium"=> "Aquarium",
-			// 	"art_gallery"=> "Art Gallery",
-			// 	"bowling_alley"=> "Bowling Alley",
-			// 	"cafe"=> "Cafe",
-			// 	"campground"=> "Campground",
-			// 	"library"=> "Library",
-			// 	"lodging"=> "Accommodation",
-			// 	"movie_theater"=> "Movie Theater",
-			// 	"musem"=> "Museum",
-			// 	"night_club"=> "Night Club",
-			// 	"park"=> "Park",
-			// 	"casino"=> "Casino",
-			// 	"stadium"=> "Stadium",
-			// 	"shopping_mall"=> "Shopping Mall",
-			// 	"restaurant"=> "Restaurant",
-			// 	"zoo"=> "Zoo",
-			// 	"tourist_attraction"=> "Tourist Attraction"
-
-			// );
-			// $data = json_decode(file_get_contents('php://input'),true)["data"];
-			// foreach($data as $_ => $json){
-			// 	// $json = json_decode($value,true);
-			// 	$name = ucfirst(strtolower($json["name"]));
-			// 	$rating = $json["rating"];
-			// 	$num_rating = $json["user_ratings_total"];
-			// 	$location = $json["vicinity"];
-			// 	$latitude = $json["location"]["lat"];
-			// 	$longitude = $json["location"]["lng"];
-			// 	$types = $json["types"];
-
-			// 	if($num_rating > 100){
-			// 		$destination_id = create_destination($name,$location,$latitude,$longitude,$rating,$num_rating)["destination_id"];
-			// 		if(!$destination_id){
-			// 			// echo("Destination with same name<$name> exists! Additions skipped");
-			// 			continue;
-			// 		}
-
-			// 		foreach ($types as $key){
-			// 			if(key_exists($key,$type_association)){
-			// 				add_destination_utility($destination_id,$type_association[$key]);
-			// 			}
-			// 		}
-			// 		// echo"$name added\n";
-			// 	}
-
-			// }
-			// send_json(array("msg"=> "Received"));
-			send_json(array("msg"=> "Endpoint closed"),201);
-			die();
 		case "/get_destination_info":
 			$id = $_GET["id"];
 			$data = get_destination_by_id($id);
@@ -505,6 +453,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$invoice["booking_fee"] = $invoice["booking_fee"] * $seats;
 			$invoice["platform_fee"] = $invoice["booking_fee"] * 0.03;
 			$invoice["total_fee"] = $invoice["booking_fee"] + $invoice["platform_fee"];
+			$invoice["seats_booked"] = $seats;
 
 			if(is_session_logged_in()){
 				$user_id = get_session_user_id();
@@ -783,6 +732,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$curator_id = $curator["curator_id"];
 			$start_date = $_POST["start_date"];
 			$curator_name = $curator["curator_name"];
+			$tags = $_POST["experience_tags"];
 			$media_location = null;
 			$media_type= null;
 
@@ -796,6 +746,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 
 			$experience_id = create_shared_experience($name, $description, $curator_id,$start_date,1,$price,$seats,$media_location,$media_type);
+
+			foreach($tags as $tag){
+				add_experience_tag($experience_id,$tag);
+			}
 
 			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);
 
