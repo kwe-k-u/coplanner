@@ -1099,7 +1099,6 @@ DELIMITER ;
 
 
 
-
 DROP FUNCTION IF EXISTS create_curator;
 DELIMITER //
 CREATE FUNCTION create_curator(
@@ -1126,9 +1125,12 @@ BEGIN
 
 
 	SELECT generate_id() INTO temp_curator_id;
-
-	SELECT upload_media(in_logo_location,in_logo_type,0) INTO in_logo_id;
-	SELECT upload_media(in_doc_location,in_doc_type,0) INTO in_company_doc;
+	if in_logo_location is not null then
+		SELECT upload_media(in_logo_location,in_logo_type,0) INTO in_logo_id;
+	end if;
+	if in_doc_location is not null then
+		SELECT upload_media(in_doc_location,in_doc_type,0) INTO in_company_doc;
+	end if ;
 
 	-- Create a user account
 	SELECT user_id INTO temp_user_id FROM vw_users WHERE email = in_email;
@@ -1151,6 +1153,8 @@ BEGIN
 	RETURN temp_curator_id;
 END //
 DELIMITER ;
+
+
 
 
 

@@ -577,15 +577,26 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			if(true){
 			// if($subaccount_response["status"]){
 				// upload logo
-				$logo_image = $_FILES["company_logo"]["name"];
-				$logo_temp = $_FILES["company_logo"]["tmp_name"];
-				$logo_type = get_file_type($logo_image);
-				$logo_location = upload_file("uploads","images",$logo_temp,$logo_image);
+				if(isset($_FILES["company_logo"])){
+					$logo_image = $_FILES["company_logo"]["name"];
+					$logo_temp = $_FILES["company_logo"]["tmp_name"];
+					$logo_type = get_file_type($logo_image);
+					$logo_location = upload_file("uploads","images",$logo_temp,$logo_image);
+				}else{
+					$logo_location = null;
+					$logo_type = null;
+				}
 				//upload registration document
-				$reg_doc_image = $_FILES["inc_doc"]["name"];
-				$reg_doc_temp = $_FILES["inc_doc"]["tmp_name"];
-				$reg_doc_type = get_file_type($reg_doc_image);
-				$reg_doc_location = upload_file("uploads","confidential",$logo_temp,$logo_image);
+				if(isset($_FILES["inc_doc"])){
+
+					$reg_doc_image = $_FILES["inc_doc"]["name"];
+					$reg_doc_temp = $_FILES["inc_doc"]["tmp_name"];
+					$reg_doc_type = get_file_type($reg_doc_image);
+					$reg_doc_location = upload_file("uploads","confidential",$logo_temp,$logo_image);
+				}else{
+					$reg_doc_type = null;
+					$reg_doc_location == null;
+				}
 				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,substr($username,5),$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 				// $result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"],$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 				if($result){

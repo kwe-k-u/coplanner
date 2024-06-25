@@ -145,7 +145,7 @@ $mixpanel->log_page_view("Curator Register");
                 if (!isset($hash)) {
                 ?>
                     <div class="input-field">
-                        <small class="text-gray-1">Upload company logo<span class="text-gray-2"></span></small>
+                        <small class="">Upload company logo<span class="text-gray-1">(Optional)</span></small>
                         <div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo"  >
                             <div class="upload-symbol">
                                 <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
@@ -161,7 +161,7 @@ $mixpanel->log_page_view("Curator Register");
                 //=====================[END] Hide if invited================================
                 ?>
                 <div class="input-field">
-                    <small class="text-gray-1">Government Issued Identification Card</small>
+                    <small class="">Government Issued Identification Card</small>
                     <div class="inline-inputs">
                         <div class="file-input drag-n-drop type-img" data-display-target="#id-front" data-input-target="#gov_id_front">
                             <div class="upload-symbol" style="border-radius: 0; background-color: transparent;">
@@ -186,7 +186,7 @@ $mixpanel->log_page_view("Curator Register");
                 if (!isset($hash)) {
                 ?>
                     <div class="input-field">
-                        <small class="text-gray-1">Upload any valid incorporation document <span class="text-gray-2"></span></small>
+                        <small class="">Upload any valid incorporation document <span class="text-gray-1">(Optional)</span></small>
                         <div class="file-input drag-n-drop type-doc" data-display-target="#gov-doc-display" data-name-display="#gov-doc-name" data-input-target="#inc_doc">
                             <div class="upload-symbol">
                                 <img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
@@ -208,7 +208,7 @@ $mixpanel->log_page_view("Curator Register");
                 //=====================[END] Hide if invited================================
                 ?>
                 <div class="agreement-check">
-                    <input type="checkbox" required><span>By creating an account, you agree to these <a target="_blank" href="https://drive.google.com/file/d/1mN0bLyGvmf2jduiWCbs_yId-FOVWGz_p/view?usp=sharing">terms and conditions</a></span>
+                    <!-- <input type="checkbox" ><span>By creating an account, you agree to these <a target="_blank" href="https://drive.google.com/file/d/1mN0bLyGvmf2jduiWCbs_yId-FOVWGz_p/view?usp=sharing">terms and conditions</a></span> -->
                 </div>
                 <div class="input-field button-container">
                     <button class="easygo-btn-1" type="submit">Register</button>

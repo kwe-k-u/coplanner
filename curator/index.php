@@ -202,8 +202,11 @@
 			  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
 				<div class="accordion-body">
 					<p>
-						To get signed up, you will need to provide your personal information, payment details and
-						upload pictures of a government issued Identification card and your business certificate.<a href="../curator/register.php"> Click here to get started </a>.
+						To get signed up you will have to provide your personal information, payment details and
+						upload pictures of a governemtn issued identification card.
+						<a href="../curator/register.php"> Click here to get started </a>.
+						If you are a registered company, you can upload your business certificate as this will help speed up your
+						account verification.
 						If you're yet to register your company, you can reach out to our support team to make alternative arrangements. <a href="https://www.wa.me/233506899883">Contact Support here</a>
 					</p>
 				</div>

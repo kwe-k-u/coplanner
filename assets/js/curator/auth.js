@@ -47,10 +47,10 @@ function signup(form2){
 		);
 	}else{ // if creating a new account
 
-		if (form2.inc_doc.files.length == 0){
-			alert("Kindly upload an incorporation document to proceed. You may contact support@easygo.com.gh if you have not registered your company");
-			return false;
-		}
+		// if (form2.inc_doc.files.length == 0){
+		// 	alert("Kindly upload an incorporation document to proceed. You may contact support@easygo.com.gh if you have not registered your company");
+		// 	return false;
+		// }
 
 
 		var bank_name = form1.payout_bank.value.split("=")[0];
