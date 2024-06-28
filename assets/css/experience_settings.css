@@ -18,3 +18,15 @@ section .dashcard{
 {
 	display: block;
 }
+
+.package-box{
+	border: 1px solid lightgrey;
+	padding: 12px;
+	border-radius: 12px;
+	background-color: rgba(211, 211, 211, 0.025);
+	margin-bottom: 12px;
+}
+
+.package-box  input{
+	background-color: white;
+}

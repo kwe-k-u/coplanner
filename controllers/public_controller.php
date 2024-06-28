@@ -398,4 +398,19 @@
 		return $public->add_experience_tag($experience_id,$tag);
 	}
 
+	function add_experience_package($experience_id,$name,$description,$currency,$min_amount,$max_amount,$seats,$start,$end,$is_default){
+		$public = new public_class();
+		return $public->add_experience_package($experience_id,$name,$description,$currency,$min_amount,$max_amount,$seats,$start,$end,$is_default);
+	}
+
+	function get_experience_packages($experience_id){
+		$public = new public_class();
+		return $public->get_experience_packages($experience_id);
+	}
+
+	function get_experience_package_by_id($package_id){
+		$public = new public_class();
+		return $public->get_experience_package_by_id($package_id);
+	}
+
 ?>

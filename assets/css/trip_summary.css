@@ -392,3 +392,63 @@ main{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+
+
+
+
+
+
+
+.package-option{
+	min-height: 15vh;
+}
+
+.package-option > label{
+	max-width: 95%;
+	min-height: inherit;
+	overflow:hidden;
+	border: 1px solid grey;
+	padding: 8px;
+	margin: 8px 0px;
+	max-width: 100% ;
+	border-radius: 12px;
+	padding: 8px;
+}
+
+.package-option input[type="radio"]{
+	display: none;
+}
+
+
+.package-option input[type="radio"]:checked + label{
+	background-color: var(--easygo-blue-faded);
+	color: var(--easygo-blue) !important;
+	border: 2px solid var(--easygo-blue);
+  }
+
+
+.package-option-description{
+	word-wrap: break-word;
+	font-size: var(--font-size-4);
+}
+
+.package-option-name{
+	font-weight: 500;
+	max-lines: 1;
+	line-break: strict;
+	word-wrap: break-word;
+	text-overflow: ellipsis;
+}
+
+.package-option-price{
+	font-weight: bolder;
+}
+
+.package-option .package-option-footer{
+	display: flex;
+	position: relative;
+	bottom: 0;
+	margin-top: auto;
+}
+

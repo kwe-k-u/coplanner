@@ -1,4 +1,5 @@
 
+document.addEventListener("DOMContentLoaded", package_select_listener);
 
 
 const invoice_section = document.getElementById("invoice_section");
@@ -99,11 +100,13 @@ async function get_shared_experience_bill(){
 		"processors/processor.php/get_experience_invoice",
 		{
 			"experience_id" : url_params("experience_id"),
-			"seats" : booking_seats
+			"seats" : booking_seats,
+			"package" : document.querySelector('input[name="package"]:checked').value
 		},(response) => {
 			// let invoice = response.data;
 			// payWithPaystack(invoice.currency, charge_amount,c_email,payload, split_account = null)
 			// return 1;
+			console.log(response);
 			if(response.status ==200){
 				let invoice = response.data.invoice;
 				//update screen invoice
@@ -120,4 +123,29 @@ async function get_shared_experience_bill(){
 		}
 	);
 	return result;
+}
+
+
+
+
+
+function package_select_listener(){
+	const packageRadios = document.getElementsByName("package");
+	const seat_field = document.getElementById("number_seats_field");
+
+	for(let index = 0; index < packageRadios.length; index++) {
+		let radio = packageRadios[index];
+
+
+
+		radio.addEventListener("change", () => {
+			const package_id = radio.value;
+			// update_max_seats and steps
+			if(index == 0){
+				seat_field.style.display = "block";
+			}else{
+				seat_field.style.display = "none";
+			}
+		});
+	};
 }

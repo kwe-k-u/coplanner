@@ -37,7 +37,7 @@ RewriteRule .*confidential.* - [F]
 # </IfModule>
 
 # Default error page
-# ErrorDocument 404 /easygo_v2/views/home.php
+# ErrorDocument 404 /easygo_v2/views/index.php
 
 
 # Block access to hidden files and directories

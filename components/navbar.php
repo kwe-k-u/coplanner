@@ -16,7 +16,7 @@
 ?>
 <nav class="navbar navbar-expand-md fixed-top easygo-nav-white">
     <div class="container-fluid">
-        <a class="navbar-brand" href="./home.php">
+        <a class="navbar-brand" href="./index.php">
             <img class="logo-medium" src="../assets/images/site_images/logo.webp" alt="">
         </a>
         <button class="navbar-toggler sidebar-toggler" type="button" data-target="main-sidebar">
@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home.php">Home</a>
+                    <a class="nav-link" href="./index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./tours.php">Tours</a>
@@ -86,7 +86,7 @@
         <div>
             <ul class="sidebar-nav-menu">
                 <li class="s-nav-item border-top">
-                    <a class="nav-link text-blue py-2 px-2 d-flex justify-content-between align-items-center" href="./home.php">Home <i class="fa-solid fa-angle-right"></i></a>
+                    <a class="nav-link text-blue py-2 px-2 d-flex justify-content-between align-items-center" href="./index.php">Home <i class="fa-solid fa-angle-right"></i></a>
                 </li>
                 <li class="s-nav-item  border-top">
                     <a class="nav-link py-2 px-2 d-flex justify-content-between align-items-center" href="./tours.php">Tours <i class="fa-solid fa-angle-right"></i></a>

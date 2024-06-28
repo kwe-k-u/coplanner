@@ -245,13 +245,16 @@ if (session_status() == PHP_SESSION_NONE){
 
 			//If compression was successful, delete original and
 			// return compressed file path
-			if ($return_var == 0){
+			if ($return_var == 0 && filesize($webp_folder) < filesize($folder)){
 				unlink("../$folder");
 				return server_base_url().$webp_folder;
 			}
 		}
 
-		// Runs if compression was not completed
+		// Runs if compression was not completed or a larger file was recreated
+		if (file_exists("../$webp_folder")){
+			unlink("../$webp_folder");
+		}
 		return server_base_url().$folder;
 		// return false;
 

@@ -4,7 +4,7 @@
     // require_once(__DIR__ . "/../controllers/curator_interraction_controller.php");
 
     // if (!is_session_user_admin()) {
-    //     header("Location: ../views/home.php");
+    //     header("Location: ../views/index.php");
     //     die();
     // }
 

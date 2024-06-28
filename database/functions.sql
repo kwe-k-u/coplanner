@@ -1162,7 +1162,9 @@ DROP PROCEDURE IF EXISTS get_curator_account_by_user_id;
 DELIMITER //
 CREATE PROCEDURE get_curator_account_by_user_id(IN in_user_id varchar(100))
 begin
-	SELECT * from vw_curators as c inner join curator_manager as cm where cm.user_id = in_user_id;
+	SELECT * from vw_curators as c
+  inner join curator_manager as cm on cm.curator_id = c.curator_id
+  where cm.user_id = in_user_id ;
 end//
 DELIMITER ;
 

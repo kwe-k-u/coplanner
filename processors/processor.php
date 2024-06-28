@@ -446,14 +446,21 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			die();
 		case "/get_experience_invoice":
 			$experience_id = $_POST["experience_id"];
-			$seats = $_POST["seats"] ?? 1;
+			$package_id = $_POST["package"];
 			$invoice = get_shared_experience_by_id($experience_id);
 			$curator_id = $invoice["curator_id"];
+			$seats = $_POST["seats"] ?? 1;
+			$package = get_experience_package_by_id($package_id);
+
+			$seats = $package["seats"] == 1 ? $_POST["seats"] : $package["seats"];
 			$payout_account = get_curator_payout_account($curator_id);
-			$invoice["booking_fee"] = $invoice["booking_fee"] * $seats;
-			$invoice["platform_fee"] = $invoice["booking_fee"] * 0.03;
-			$invoice["total_fee"] = $invoice["booking_fee"] + $invoice["platform_fee"];
+
+			$invoice["booking_fee"] = round((float)$package["min_amount"] * $seats,2);
+			$invoice["platform_fee"] = round((float)$invoice["booking_fee"] * 0.03,2);
+			$invoice["total_fee"] = round((float)$invoice["booking_fee"] + $invoice["platform_fee"],2);
 			$invoice["seats_booked"] = $seats;
+			$invoice["package_id"] = $package_id;
+			$invoice["package_name"] = $package["package_name"];
 
 			if(is_session_logged_in()){
 				$user_id = get_session_user_id();
@@ -595,7 +602,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 					$reg_doc_location = upload_file("uploads","confidential",$logo_temp,$logo_image);
 				}else{
 					$reg_doc_type = null;
-					$reg_doc_location == null;
+					$reg_doc_location = null;
 				}
 				$result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,substr($username,5),$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
 				// $result = create_curator($username,$email,$password,$phone_number,$account_number,$curator_name,$bank_number,$bank_name,$account_name,$subaccount_response["data"]["subaccount_code"],$logo_location,$logo_type,$reg_doc_location,$reg_doc_type);
@@ -743,9 +750,11 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$curator_id = $curator["curator_id"];
 			$start_date = $_POST["start_date"];
 			$curator_name = $curator["curator_name"];
-			$tags = $_POST["experience_tags"];
+			$tags = isset($_POST["experience_tags"])? $_POST["experience_tags"] : array();
 			$media_location = null;
 			$media_type= null;
+			$currency = 1;
+			$packages = isset($_POST["packages"]) ? json_decode($_POST["packages"],true) : array();
 
 			if ($_FILES){
 
@@ -756,10 +765,25 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			}
 
 
-			$experience_id = create_shared_experience($name, $description, $curator_id,$start_date,1,$price,$seats,$media_location,$media_type);
+			$experience_id = create_shared_experience($name, $description, $curator_id,$start_date,$currency,$price,$seats,$media_location,$media_type);
 
+			//Add tags for the trip
 			foreach($tags as $tag){
 				add_experience_tag($experience_id,$tag);
+			}
+
+
+			// Add the different packages for the trip
+			foreach($packages as $entry){
+				$package_name = $entry["package_name"];
+				$package_fee = $entry["fee"];
+				$package_seats = $entry["seats"];
+				$package_start_date = $entry["start_date"];
+				$package_end_date = $entry["end_date"];
+				$package_description = $entry["package_description"];
+
+				add_experience_package($experience_id,$package_name,$package_description,$currency,$package_fee,$package_fee,
+				$package_seats,$package_start_date,$package_end_date,0);
 			}
 
 			$mixpanel->log_shared_experience_creation($curator_id,$experience_id);

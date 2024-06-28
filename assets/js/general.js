@@ -72,9 +72,6 @@ function onTripCardClick(event){
   let id = event.target.closest(".trip-card").getAttribute("data-trip-extension");
   if(id != null){
     goto_page("coplanner/experience_info.php?"+id);
-    console.log(id);
-  }else{
-    console.log("no id");
   }
 
 }
@@ -85,7 +82,7 @@ function nav_check() {
   var nav = document.getElementById("mynavbar");
   if (nav != undefined) {
     const nav_page = window.location.pathname;
-    if (nav_page.includes("home.php")) {
+    if (nav_page.includes("index.php")) {
       nav.getElementsByClassName("nav-link")[0].classList.add("text-blue");
     } else if (nav_page.includes("tours.php")) {
       nav.getElementsByClassName("nav-link")[1].classList.add("text-blue");

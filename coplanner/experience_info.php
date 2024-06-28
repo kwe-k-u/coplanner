@@ -18,6 +18,7 @@ if (isset($_GET["experience_id"])) {
     $itinerary_name = $itinerary["experience_name"];
     $itinerary_image = $itinerary["media_location"];
     $currency = $itinerary["currency_name"];
+    $package_id = $itinerary["plan_id"];
     $activities = get_shared_experience_activities($experience_id);
     $mixpanel->log_shared_experience_view($experience_id, $itinerary_name);
     $experience_description = $itinerary["experience_description"];
@@ -113,7 +114,7 @@ if (isset($_GET["experience_id"])) {
                             </div>
 
 
-                            <div class="invoice-main " id="invoice_section">
+                            <div class="invoice-main hide " id="invoice_section">
                                 <div class="invoice-container ">
                                     <?php
 
@@ -143,7 +144,7 @@ if (isset($_GET["experience_id"])) {
                                 </div>
                             </div>
 
-                            <div class="invoice-main hide" id="user_info_section">
+                            <div class="invoice-main " id="user_info_section">
                                 <div class="invoice-container">
                                     <?php
                                     if (is_session_logged_in()) {
@@ -191,7 +192,54 @@ if (isset($_GET["experience_id"])) {
 
                             <div class="invoice-main hide" id="booking_info_section">
                                 <div class="invoice-container">
-                                    <div class="form-input-field">
+
+                                    <?php
+                                    echo "
+                                        <div class='package-option d-flex'>
+                                            <input type='radio' name='package' value='$package_id' id='package_$package_id' checked>
+                                            <label for='package_$package_id' class='w-100'>
+                                                    <div class='col d-flex justify-content-between w-100'>
+                                                        <p class='mb-0 package-option-name'>Standard Package</p>
+                                                        <p class='d-inline-flex package-option-price'>$currency $listing_fee</p>
+                                                    </div>
+                                                    <div class='col'>
+                                                        <p class='mb-0 package-option-description'>
+                                                            This is the standard package for the trip. You can select multiple seats
+                                                        </p>
+                                                    </div>
+                                            </label>
+                                        </div>";
+                                        $packages = get_experience_packages($experience_id);
+                                        foreach($packages as $package){
+                                            $package_name = $package["package_name"];
+                                            $package_id = $package["plan_id"];
+                                            $package_description = $package["package_description"];
+                                            $min_amount = $package["min_amount"];
+                                            $package_seats = $package["seats"];
+                                            echo
+                                            "
+                                            <div class='package-option d-flex'>
+                                                <input type='radio' name='package' value='$package_id' id='package_$package_id'>
+                                                <label for='package_$package_id' class='w-100'>
+                                                        <div class='col d-flex justify-content-between w-100'>
+                                                            <p class='mb-0 package-option-name'>$package_name</p>
+                                                            <p class='d-inline-flex package-option-price'>$currency $min_amount</p>
+                                                        </div>
+                                                        <div class='col'>
+                                                            <p class='mb-0 package-option-description'>
+                                                                $package_description
+                                                            </p>
+                                                        </div>
+                                                        <div class='package-option-footer'>
+                                                            $package_seats Seats
+                                                        </div>
+                                                </label>
+                                            </div>
+                                            ";
+                                        }
+                                    ?>
+
+                                    <div class="form-input-field" id="number_seats_field">
                                         <label for="name">Number of seats</label>
                                         <input type="number" id="number_seats" min="1" value="1">
                                     </div>
@@ -270,7 +318,7 @@ if (isset($_GET["experience_id"])) {
                             </div>
 
                             <div class="d-flex gap-4 payment-btn-section">
-                                <a class="btn easygo-btn-6">Remind me</a>
+                                <button class="btn easygo-btn-6">Remind me</button>
                                 <button class="btn easygo-btn-1" onclick="payment_btn_click(this)">Book A Seat</button>
                             </div>
                         </div>

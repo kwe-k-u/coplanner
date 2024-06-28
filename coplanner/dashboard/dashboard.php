@@ -49,7 +49,7 @@ $profile = ""; //get_user_profile_img($user_id);
 					<div class="sidebar-header py-3">
 						<script>
 							function goHome() {
-								window.location.href = "../home.php";
+								window.location.href = "../index.php";
 							}
 						</script>
 						<div class="logo m-md-auto" onclick="return goHome()">

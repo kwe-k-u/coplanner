@@ -163,28 +163,82 @@ $mixpanel->log_page_view("Curator Experience Settings");
 						<div class="tab-content">
 							<div class="tab-pane active" id="shared-experience-tab">
 
-								<div class="row">
-									<div class="col-md-4">
+								<div>
+									<div>
 										<div class="form-input-field">
-											<label for="start_date">Start Date</label>
-											<input type="date" name="start_date" id="start_date">
+											<label for="">Package Name</label>
+											<input type="text" name="package_name" id="">
 										</div>
 									</div>
-									<div class="col-md-4">
-
-										<div class="form-input-field">
-											<label for="">Booking Fee</label>
-											<input type="number" name="booking_fee" id="">
+									<div class="row mt-3">
+										<div class="col-md-4">
+											<div class="form-input-field">
+												<label for="start_date">Start Date</label>
+												<input type="date" name="start_date" id="start_date">
+											</div>
 										</div>
-									</div>
-									<div class="col-md-4">
+										<div class="col-md-4">
 
-										<div class="form-input-field">
-											<label for="">Number of seats</label>
-											<input type="number" name="num_seats" id="">
+											<div class="form-input-field">
+												<label for="">Booking Fee</label>
+												<input type="number" name="booking_fee" id="">
+											</div>
+										</div>
+										<div class="col-md-4">
+
+											<div class="form-input-field">
+												<label for="">Number of seats</label>
+												<input type="number" name="num_seats" id="">
+											</div>
 										</div>
 									</div>
 								</div>
+
+								<div class="mt-5 package-box hide" id="package-1">
+									<div class="form-input-field">
+										<label for="">Package Name</label>
+										<input type="text" name="package_name">
+									</div>
+									<div class="form-input-field">
+										<label for="">Package Description <span class="text-gray-1">(Short Description of what the package is)</span></label>
+										<input type="text" name="package_description" placeholder="Package books two seats for couples">
+									</div>
+
+									<div class="row mt-3">
+										<div class="col-md-3">
+											<div class="form-input-field">
+												<label for="start_date">Available From</label>
+												<input type="date" name="end_date" id="start_date">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-input-field">
+												<label for="start_date">Available Until</label>
+												<input type="date" name="start_date" id="start_date">
+											</div>
+										</div>
+										<div class="col-md-3">
+
+											<div class="form-input-field">
+												<label for="">Booking Fee</label>
+												<input type="number" name="booking_fee" id="">
+											</div>
+										</div>
+										<div class="col-md-3">
+
+											<div class="form-input-field">
+												<label for="">Seats Per Booking</label>
+												<input type="number" name="num_seats" id="">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-input mt-5" id="add-package-button-parent">
+									<button class="btn easygo-btn-1" onclick="duplicate_package_box()">Add package</button>
+								</div>
+
+
 
 						</div>
 						<div class="tab-pane hide" id="tab2">second</div>

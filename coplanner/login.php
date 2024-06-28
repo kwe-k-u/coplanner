@@ -38,7 +38,7 @@ $mixpanel->log_page_view("Login");
 
                     <script>
                         function goHome(){
-                            window.location.href = "../views/coplanner_home.php";
+                            window.location.href = "../views/coplanner_index.php";
                         }
                     </script>
                     <div class="logo" onclick="return goHome()">

@@ -464,5 +464,26 @@
 			return $this->db_query();
 		}
 
+		function add_experience_package($experience_id,$name,$description,$currency,$min_amount,$max_amount,$seats,$start,$end,$is_default){
+			$sql = "CALL add_experience_package(?,?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$name,$description,$currency,$min_amount,$max_amount,$seats,$start,$end,$is_default);
+			return $this->db_query();
+		}
+
+
+		function get_experience_packages($experience_id){
+			$sql = "CALL get_experience_packages(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_experience_package_by_id($package_id){
+			$sql = "CALL get_experience_package_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($package_id);
+			return  $this->db_fetch_one();
+		}
 	}
 ?>

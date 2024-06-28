@@ -1,5 +1,5 @@
 <aside class=" d-md-flex flex-column flex-shrink-0 p-3 bg-light" id="dash-sidebar">
-		<a class="navbar-brand d-flex justify-content-center" href="./home.php">
+		<a class="navbar-brand d-flex justify-content-center" href="./index.php">
             <img class="logo-medium" src="../assets/images/site_images/logo.webp" alt="">
         </a>
 		<hr>
