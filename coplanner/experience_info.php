@@ -51,6 +51,10 @@ if (isset($_GET["experience_id"])) {
     <title>
         <?php echo "easyGo - $itinerary_name" ?>
     </title>
+    <script type="module" src="">
+        import mixpanel from 'mixpanel-browser';
+    </script>
+
 </head>
 <link rel="stylesheet" href="../assets/css/trip_summary.css">
 <!-- Bootstrap css -->
@@ -220,7 +224,7 @@ if (isset($_GET["experience_id"])) {
                                             "
                                             <div class='package-option d-flex'>
                                                 <input type='radio' name='package' value='$package_id' id='package_$package_id'>
-                                                <label for='package_$package_id' class='w-100'>
+                                                <label for='package_$package_id' class='package-label w-100'>
                                                         <div class='col d-flex justify-content-between w-100'>
                                                             <p class='mb-0 package-option-name'>$package_name</p>
                                                             <p class='d-inline-flex package-option-price'>$currency $min_amount</p>
@@ -318,8 +322,8 @@ if (isset($_GET["experience_id"])) {
                             </div>
 
                             <div class="d-flex gap-4 payment-btn-section">
-                                <button class="btn easygo-btn-6">Remind me</button>
-                                <button class="btn easygo-btn-1" onclick="payment_btn_click(this)">Book A Seat</button>
+                                <button class="btn easygo-btn-6" id="remind-me-btn">Remind me</button>
+                                <button class="btn easygo-btn-1" id="payment_btn" onclick="payment_btn_click(this)">Book A Seat</button>
                             </div>
                         </div>
                     </div>

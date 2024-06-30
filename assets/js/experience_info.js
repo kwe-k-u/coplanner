@@ -1,5 +1,21 @@
 
-document.addEventListener("DOMContentLoaded", package_select_listener);
+$(document).ready(function (){
+	package_select_listener();
+	$("#remind-me-btn").click(()=> mixpanel.track("Remind me button clicked"));
+	$(".package-label").click(() => {
+		const packageName = $(this).find(".package-option-name").text();
+		mixpanel.track("Package Selected", { "package_name": packageName });
+	});
+
+	$("#payment_btn").click(() => {
+		const buttonText = $("#payment_btn").text();
+		mixpanel.track("Payment Button Clicked", { "button_text": buttonText });
+	});
+
+	$(".summary-itin-name").click(()=> mixpanel.track("Experience Destination Name Clicked"));
+
+
+});
 
 
 const invoice_section = document.getElementById("invoice_section");
@@ -72,11 +88,18 @@ async function payment_btn_click(button){
 
 function pay_for_experience(bill){
 	let c_email = user_email_field.value;
+	const experience_id = url_params("experience_id");
 	let modified_bill = {...bill};
 
+	mixpanel.track("Attempted Experience Booking",{
+		"experience_id" : experience_id,
+		"user_email" : c_email,
+		"user_name" : user_name_field.value,
+		"user_phone" : user_phone_field.value
+	});
 
 
-	modified_bill["description"] = "Payment for experience "+ url_params("experience_id") + " by user<"+c_email+">";
+	modified_bill["description"] = "Payment for experience "+ experience_id + " by user<"+c_email+">";
 	modified_bill["payment_purpose"] = "experience_payment";
 	modified_bill["user_email"] = c_email;
 	modified_bill["user_phone"] = user_phone_field.value;

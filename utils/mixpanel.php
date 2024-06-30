@@ -6,6 +6,7 @@
 		private $panel = null;
 		private $report_to_server;
 		private $cookie_name;
+		private $distinct_id;
 
 		function __construct(){
 			$this->cookie_name = "mixpanel_anon_id";
@@ -20,6 +21,7 @@
 			$this->report_to_server = true;
 			if(is_session_logged_in()){
 					$this->panel->identify(get_session_user_id());
+					$this->distinct_id = get_session_user_id();
 			}else{
 				if(!isset($_COOKIE[$this->cookie_name])){
 					$cookie_value = generate_id();
@@ -32,9 +34,14 @@
 					$cookie_value = $_COOKIE[$this->cookie_name];
 				}
 				$this->panel->identify($cookie_value);
+				$this->distinct_id = $cookie_value;
 			}
 
 
+		}
+
+		function get_distinct_id(){
+			return $this->distinct_id;
 		}
 
 

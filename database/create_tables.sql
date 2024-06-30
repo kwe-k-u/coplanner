@@ -426,7 +426,7 @@ CREATE TABLE shared_experiences(
 	date_uploaded DATETIME DEFAULT CURRENT_TIMESTAMP,
 	start_date DATETIME,
 	number_of_seats INT,
-	is_visible TINYINT (1) DEFAULT 1,
+	is_visible TINYINT (1) DEFAULT 0,
 	media_id VARCHAR(100),
 	FOREIGN KEY (curator_id) REFERENCES curator(curator_id),
 	FOREIGN KEY (media_id) REFERENCES  media(media_id)

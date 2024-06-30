@@ -1,43 +1,44 @@
 <?php
 
 
-require_once(__DIR__."/../utils/env_manager.php");
-require_once(__DIR__."/../utils/core.php");
-require_once(__DIR__."/../utils/google_auth.php");
+require_once(__DIR__ . "/../utils/env_manager.php");
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../utils/google_auth.php");
 
 
-// init configuration
-// $clientID = '';
-// $clientSecret = '';
-// $redirectUri = 'http://localhost/coplanner/test/test.php';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $target_dir = "uploads";
-    $subdir = "images"; // You can change this to any subdirectory you want
-    $file = $_FILES["fileToUpload"];
-    $uploadResult = upload_file($target_dir, $subdir, $file["tmp_name"], $file["name"]);
-
-    if ($uploadResult) {
-        echo "File uploaded successfully: <a href='$uploadResult'>$uploadResult</a>";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload Test</title>
-</head>
-<body>
+    <!-- Paste this right before your closing </head> tag -->
+    <script type="module" src="">
+        import mixpanel from 'mixpanel-browser';
+    </script>
 
-<h2>Upload File</h2>
-<form action="test.php" method="post" enctype="multipart/form-data">
-    Select file to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload File" name="submit">
-</form>
+</head>
+
+<body>
+    <form action="#" id="test">
+        <input type="text" name="age"  value="test user" >
+        <button type="submit" onclick="mixpanel_button()">mixpanel button test</button>
+    </form>
+
+
+<script src="../assets/js/jquery-3.6.1.min.js"></script>
+
+
+<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+<script src="../assets/js/general.js"></script>
+<script src="../assets/js/functions.js"></script>
+<script>
+    function mixpanel_button(){
+        mixpanel.track_forms("#test","user email",{"age" : document.getElementsByName("age")[0].value});
+    }
+</script>
 </body>
+
 </html>
