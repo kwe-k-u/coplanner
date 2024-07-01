@@ -1,6 +1,9 @@
 
 
 function toggle_experience_visibility(){
+	mixpanel.track("Curator Time to Create Experience",{"experience_id" : url_params("experience_id")});
+
+	
 	send_request("POST",
 		"processors/processor.php/toggle_experience_visibility",
 		{

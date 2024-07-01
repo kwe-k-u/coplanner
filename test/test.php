@@ -24,7 +24,8 @@ require_once(__DIR__ . "/../utils/google_auth.php");
 <body>
     <form action="#" id="test">
         <input type="text" name="age"  value="test user" >
-        <button type="submit" onclick="mixpanel_button()">mixpanel button test</button>
+        <button onclick="mixpanel_button()">mixpanel button test</button>
+        <button onclick="mixpanel_time()">time</button>
     </form>
 
 
@@ -35,8 +36,16 @@ require_once(__DIR__ . "/../utils/google_auth.php");
 <script src="../assets/js/general.js"></script>
 <script src="../assets/js/functions.js"></script>
 <script>
+    // $(document).ready(()=>);
+
+    function mixpanel_time(){
+        mixpanel.time_event("test timer")
+    }
+
     function mixpanel_button(){
-        mixpanel.track_forms("#test","user email",{"age" : document.getElementsByName("age")[0].value});
+        mixpanel.track("test timer", {"finis": "timed fiined"});
+
+        // mixpanel.track_forms("#test","user email",{"age" : document.getElementsByName("age")[0].value});
     }
 </script>
 </body>

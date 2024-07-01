@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	radios.forEach((radio)=> {
 		radio.addEventListener("click",showDashTab);
 	});
+
+	mixpanel.time_event("Curator Time to Create Experience");
 });
 
 function showDashTab(){

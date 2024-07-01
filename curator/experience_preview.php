@@ -242,7 +242,7 @@ $mixpanel->log_page_view("Curator Experience Preview");
 
 						<div class="d-flex gap-4 payment-btn-section">
 							<!-- <a class="btn easygo-btn-6">Save For Later</a> -->
-							<button class="btn easygo-btn-1 w-100" onclick="">Publish</button>
+							<button class="btn easygo-btn-1 w-100" onclick="toggle_experience_visibility()">Publish</button>
 						</div>
 					</div>
 

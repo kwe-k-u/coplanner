@@ -1,14 +1,29 @@
+$(document).ready(function (){
+	mixpanel.time_event("Curator Signup Time");
+
+});
+
+
 
 function signup(form2){
 	event.preventDefault();
+	var form1 = document.getElementById("register-form-1");
 
+
+	mixpanel.track("curator signup attempt",{
+		"user_name" : form1.user_name.value,
+		"email" : form1.email.value,
+		"phone_number" : form1.phone.value,
+		"curator_name" : form1.company_name.value,
+	});
 
 	if(form2.gov_id_back.files.length == 0 || form2.gov_id_front.files.length == 0){
 		alert("Kindly upload a picture of both the front and back of your Government issued ID card");
 		return false;
 	}
 
-	var form1 = document.getElementById("register-form-1");
+	mixpanel.track("Curator Signup Time");
+
 
 	let hash = url_params('invite_token');
 
@@ -18,6 +33,8 @@ function signup(form2){
 	var password = form1.pswd.value;
 	var c_password = form1.con_pswd.value;
 	var phone = form1.phone.value;
+
+
 
 	let payload = {
 		"user_name" : name,
@@ -64,7 +81,8 @@ function signup(form2){
 		payload["payout_bank_number"] = bank_number;
 		payload["account_number"] = form1.account_number.value;
 		payload["account_name"] = form1.account_name.value;
-		payload["curator_name"] = form1.company_name.value;
+
+
 
 		send_request(
 			"POST",
