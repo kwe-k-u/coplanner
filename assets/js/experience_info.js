@@ -38,36 +38,74 @@ function validate_user_info(){
 );
 }
 
-async function payment_btn_click(button){
-
-	if(!invoice_section.classList.contains("hide")){
-		button.innerText = "Continue";
-		invoice_section.classList.toggle("hide");
-		user_info_section.classList.toggle("hide");
-	}else if (!user_info_section.classList.contains('hide')){
-		let is_input_valid = validate_user_info();
-		if (is_input_valid){
-			button.innerText = "Confirm Choices";
-			user_info_section.classList.toggle("hide");
-			booking_info_section.classList.toggle("hide");
-		}
-	}else if (!booking_info_section.classList.contains('hide')){
-		get_shared_experience_bill();
-		booking_info_section.classList.toggle("hide");
-		tc_section.classList.toggle("hide");
-		button.innerText = "Agree";
-		//create_invoice
-	}else if (!tc_section.classList.contains('hide')){
-		button.innerText = "Make Payment";
-		tc_section.classList.toggle("hide");
-		//disable pay button
-		// populate final invoice
-		//enable pay button
-		final_invoice_section.classList.toggle("hide");
-	}else{
-		const bill = await get_shared_experience_bill();
-		pay_for_experience(bill.data.invoice);
+// Toggles the display of the different sections of the invoice car
+//returns the id of the now displayed card after a toggle
+function switch_invoice_card(){
+	let current_invoice = document.querySelectorAll(".invoice-main:not(.hide)")[0]
+	let next_id = current_invoice.getAttribute("data-next-target");
+	if(next_id){
+		document.getElementById(next_id).classList.remove("hide");
+		current_invoice.classList.add("hide");
 	}
+	return next_id;
+
+}
+// switch_invoice_card();
+
+async function payment_btn_click(button){
+	// return switch_invoice_card();
+	let now_visible = switch_invoice_card();
+	switch (now_visible) {
+		case "invoice_section":
+			button.innerText = "Continue";
+			break;
+		case "tc_section":
+			button.innerText = "I Agree";
+			break;
+		case "user_info_section":
+			await get_shared_experience_bill();
+			button.innerText = "Continue";
+			break;
+		case "final_invoice_section":
+			button.innerText = "Make Payment";
+			break;
+
+		default:
+			const bill = await get_shared_experience_bill();
+			pay_for_experience(bill.data.invoice);
+			break;
+	}
+
+
+
+	// if(!invoice_section.classList.contains("hide")){
+	// 	button.innerText = "Continue";
+	// 	invoice_section.classList.toggle("hide");
+	// 	user_info_section.classList.toggle("hide");
+	// }else if (!user_info_section.classList.contains('hide')){
+	// 	let is_input_valid = validate_user_info();
+	// 	if (is_input_valid){
+	// 		button.innerText = "Confirm Choices";
+	// 		user_info_section.classList.toggle("hide");
+	// 		booking_info_section.classList.toggle("hide");
+	// 	}
+	// }else if (!booking_info_section.classList.contains('hide')){
+	// 	get_shared_experience_bill();
+	// 	booking_info_section.classList.toggle("hide");
+	// 	tc_section.classList.toggle("hide");
+	// 	button.innerText = "Agree";
+	// 	//create_invoice
+	// }else if (!tc_section.classList.contains('hide')){
+	// 	button.innerText = "Make Payment";
+	// 	tc_section.classList.toggle("hide");
+	// 	//disable pay button
+	// 	// populate final invoice
+	// 	//enable pay button
+	// 	final_invoice_section.classList.toggle("hide");
+	// }else{
+	// 	const bill = await get_shared_experience_bill();
+	// 	pay_for_experience(bill.data.invoice);
+	// }
 }
 
 function pay_for_experience(bill){
@@ -138,8 +176,9 @@ function package_select_listener(){
 
 
 
-		radio.addEventListener("change", () => {
+		radio.addEventListener("change", async () => {
 			const package_id = radio.value;
+
 			// update_max_seats and steps
 			if(index == 0){
 				seat_field.style.display = "block";
@@ -148,4 +187,27 @@ function package_select_listener(){
 			}
 		});
 	};
+}
+
+function remind_me(){
+	user_email_field.value
+	if (validate_user_info()){
+		send_request("POST",
+			"processors/processor.php/shared_experience_reminder",
+			{
+				"experience_id" : url_params("experience_id"),
+				"user_name" : user_name_field.value,
+				"email" : user_email_field.value,
+				"phone" : user_phone_field.value
+			},
+			(response)=>{
+				if(response.status == 200){
+					showToast(response.data.msg);
+				}else{
+					showDialog(response.data.msg);
+				}
+		});
+	}
+
+	//check if the user provided their details.
 }
