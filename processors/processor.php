@@ -1,12 +1,14 @@
 <?php
+try {
+	// Your existing code here
+
+
 // Show php errors
-	ini_set('display_errors', 1);
+	ini_set('display_errors',  1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
 $allowedDomains = array(
-    'https://www.ai.easygo.com.gh',
-    'https://ai.easygo.com.gh',
     'https://easygo.com.gh',
     'https://www.easygo.com.gh'
 );
@@ -741,6 +743,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				send_json(array("msg"=> "You need to be a curator to create shared experiences. Contact support at support@easygo.com.gh"),201);
 				die();
 			}
+			$logger = new Logger();
+			$logger->write_log("trips/trip_upload.log",json_encode($_POST, JSON_PRETTY_PRINT));
+
+			// log the contents of the request
 			// $itinerary_id = $_POST["itinerary_id"];
 			$price = $_POST["price"];
 			$seats = $_POST["seat_count"];
@@ -875,9 +881,33 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			);
 			send_json($data);
 			die();
+		case "/shared_experience_reminder":
+			$username = $_POST["user_name"];
+			$email = $_POST["email"];
+			$phone = $_POST["phone"];
+			$experience_id = $_POST["experience_id"];
+			notify_slack_support_msg(" A user wants a reminder of the shared experience $experience_id. User information is $username<$email>  $phone");
+			send_json(array("msg"=> "Hello $username. Our team will send a reminder a few days before the start of the trip"));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;
 	}
 	die();
+} catch (Exception $e) {
+	require_once(__DIR__."/../utils/core.php");
+	require_once(__DIR__."/../controllers/slack_controller.php");
+	$errorMessage = $e->getMessage();
+	error_log($errorMessage, 3);
+	$user_id = get_session_user_id();
+	notify_slack_support_msg("An error occured for user $user_id. The error message is $error_message.");
+
+	send_json(array("msg"=> "Something went wrong but our team is on it. You can try again one last time"));
+
+	// $response = [
+	// 	'message' => 'Something went wrong but our team is on it'
+	// ];
+	// header('Content-Type: application/json');
+	// echo json_encode($response);
+}
 ?>

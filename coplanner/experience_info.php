@@ -19,6 +19,7 @@ if (isset($_GET["experience_id"])) {
     $itinerary_image = $itinerary["media_location"];
     $currency = $itinerary["currency_name"];
     $package_id = $itinerary["plan_id"];
+    $start_date = $itinerary["start_date"];
     $activities = get_shared_experience_activities($experience_id);
     $mixpanel->log_shared_experience_view($experience_id, $itinerary_name);
     $experience_description = $itinerary["experience_description"];
@@ -103,7 +104,9 @@ if (isset($_GET["experience_id"])) {
                                 <div class='right-summary-main'>
                                     $experience_description
                                 </div>";
-                                }
+                            }
+
+
                             ?>
 
                         </div>
@@ -118,7 +121,7 @@ if (isset($_GET["experience_id"])) {
                             </div>
 
 
-                            <div class="invoice-main hide " id="invoice_section">
+                            <div class="invoice-main  hide" id="invoice_section" data-previous-target="user_info_section" data-next-target="tc_section">
                                 <div class="invoice-container ">
                                     <?php
 
@@ -148,7 +151,7 @@ if (isset($_GET["experience_id"])) {
                                 </div>
                             </div>
 
-                            <div class="invoice-main " id="user_info_section">
+                            <div class="invoice-main hide" id="user_info_section" data-previous-target="booking_info_section" data-next-target="tc_section">
                                 <div class="invoice-container">
                                     <?php
                                     if (is_session_logged_in()) {
@@ -194,7 +197,7 @@ if (isset($_GET["experience_id"])) {
                                 </div>
                             </div>
 
-                            <div class="invoice-main hide" id="booking_info_section">
+                            <div class="invoice-main " id="booking_info_section" data-next-target="user_info_section">
                                 <div class="invoice-container">
 
                                     <?php
@@ -205,7 +208,7 @@ if (isset($_GET["experience_id"])) {
                                                     <div class='col d-flex justify-content-between w-100'>
                                                         <p class='mb-0 package-option-name'>Standard Package</p>
                                                         <p class='d-inline-flex package-option-price'>$currency $listing_fee</p>
-                                                    </div>
+                                                        </div>
                                                     <div class='col'>
                                                         <p class='mb-0 package-option-description'>
                                                             This is the standard package for the trip. You can select multiple seats
@@ -250,7 +253,7 @@ if (isset($_GET["experience_id"])) {
                                 </div>
                             </div>
 
-                            <div class="invoice-main hide" id="tc_section">
+                            <div class="invoice-main hide" id="tc_section" data-previous-target="user_info_section" data-next-target="final_invoice_section">
                                 <div class="invoice-container">
                                     <div class="agreement-check">
                                         <h6>Marketing</h6>
@@ -285,7 +288,7 @@ if (isset($_GET["experience_id"])) {
 
                             </div>
 
-                            <div class="invoice-main hide" id="final_invoice_section">
+                            <div class="invoice-main hide" id="final_invoice_section" data-previous-target="tc_section" >
                                 <div class="invoice-container">
                                     <h4>Final Invoice</h4>
                                     <div class='invoice-dest'>
@@ -322,8 +325,8 @@ if (isset($_GET["experience_id"])) {
                             </div>
 
                             <div class="d-flex gap-4 payment-btn-section">
-                                <button class="btn easygo-btn-6" id="remind-me-btn">Remind me</button>
-                                <button class="btn easygo-btn-1" id="payment_btn" onclick="payment_btn_click(this)">Book A Seat</button>
+                                <button class="btn easygo-btn-6" onclick="remind_me()">Remind me</button>
+                                <button class="btn easygo-btn-1" onclick="payment_btn_click(this)">Select Package</button>
                             </div>
                         </div>
                     </div>

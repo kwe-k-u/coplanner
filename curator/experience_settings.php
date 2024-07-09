@@ -50,11 +50,18 @@ $mixpanel->log_page_view("Curator Experience Settings");
 	<main>
 
 
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-9">
+			<div class="d-flex col justify-content-center" id="page-info">
+			<h1>Share your Experience</h1><br>
+		</div>
 		<div class="d-flex col justify-content-center" id="page-info">
-			<h1>Share your Experience</h1>
-			<p>Let's get started with sharing your trip with the
+			<p class="d-block">Let's get started with sharing your trip with the
 				rest of the world.
 			</p>
+		</div>
+			</div>
 		</div>
 
 
@@ -166,14 +173,14 @@ $mixpanel->log_page_view("Curator Experience Settings");
 								<div>
 									<div>
 										<div class="form-input-field">
-											<label for="">Package Name</label>
-											<input type="text" name="package_name" id="">
+											<label for="">Package Name <span class="text-gray-1">(Optional)</span></label>
+											<input type="text" name="package_name" id="" placeholder="Will be displayed as 'Standard' if you leave this blank">
 										</div>
 									</div>
 									<div class="row mt-3">
 										<div class="col-md-4">
 											<div class="form-input-field">
-												<label for="start_date">Start Date</label>
+												<label for="start_date">When does the tour start</label>
 												<input type="date" name="start_date" id="start_date">
 											</div>
 										</div>
@@ -187,7 +194,7 @@ $mixpanel->log_page_view("Curator Experience Settings");
 										<div class="col-md-4">
 
 											<div class="form-input-field">
-												<label for="">Number of seats</label>
+												<label for="">Number of seats available</label>
 												<input type="number" name="num_seats" id="">
 											</div>
 										</div>
@@ -195,6 +202,9 @@ $mixpanel->log_page_view("Curator Experience Settings");
 								</div>
 
 								<div class="mt-5 package-box hide" id="package-1">
+									<div class="d-flex justify-content-end">
+										<button style="width: 4rem;" type="button" class="py-2 btn border easygo-fs-5 easygo-fw-2" onclick="remove_package(this)">Remove</button>
+									</div>
 									<div class="form-input-field">
 										<label for="">Package Name</label>
 										<input type="text" name="package_name">

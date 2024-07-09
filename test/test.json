@@ -1,20 +1,7 @@
 {
-    "0": "a",
-    "1": "i",
-    "2": "-",
-    "3": "s",
-    "4": "e",
-    "5": "l",
-    "6": "e",
-    "7": "c",
-    "8": "t",
-    "type": "couple-select",
-    "duration": "2-to-3-days-select",
-    "accommodation": "individual-select",
-    "acitivities": [
-        "relaxation",
-        "nightlife",
-        "swimming"
-    ],
-    "budget": "500-to-2000-select"
+    "background_image" : "C:\\Users\\KWAKU\\Desktop\\0a2095c8a56dd2c459b18da7b7683c99.jpeg",
+    "foreground_image" : "C:\\Users\\KWAKU\\Desktop\\o.jpg",
+    "experience_name" : "The Volta Experience",
+    "date" : "26th July 2024",
+    "price" : "GHS 1,000"
 }

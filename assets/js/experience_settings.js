@@ -28,6 +28,14 @@ function showDashTab(){
 
 }
 
+function remove_package(button){
+	let parent_id = button.parentNode.parentNode.id;
+	// let result = get_packages(parent_id)[parent_id];
+	if (confirm(" Are you sure you want to delete this package")){
+		document.getElementById(parent_id).remove();
+	}
+}
+
 function get_experience_tags(){
 	let checkboxes = document.getElementsByName("experience_tag");
     // Initialize an array to hold the selected tag IDs
@@ -41,8 +49,8 @@ function get_experience_tags(){
     });
 
 	return selectedTags;
-
 }
+
 function create_experience(){
 	event.preventDefault();
 	let tags = get_experience_tags();
@@ -96,8 +104,14 @@ function duplicate_package_box( ){
 	newBox.id = "package-"+(document.getElementsByClassName("package-box").length+1);
 	shared_experience_tab.insertBefore(newBox,document.getElementById("add-package-button-parent"))
 }
-function get_packages() {
-    let package_boxes = document.getElementsByClassName("package-box");
+function get_packages(package_id = null) {
+
+    let package_boxes = null;
+	if(package_id == null){
+		package_boxes = document.getElementsByClassName("package-box");
+	} else{
+		package_boxes = [document.getElementById(package_id)];
+	}
     let result = {};
 
     for (const box of package_boxes) {
@@ -113,6 +127,7 @@ function get_packages() {
 
 	return result;
 }
+
 
 
 // function duplicateChildNodes (parentId){

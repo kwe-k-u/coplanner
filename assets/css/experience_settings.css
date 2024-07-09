@@ -30,3 +30,7 @@ section .dashcard{
 .package-box  input{
 	background-color: white;
 }
+
+.pill-select-group > .pill-select-option{
+	margin-bottom: 8px;
+}
