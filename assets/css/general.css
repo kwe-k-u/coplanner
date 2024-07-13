@@ -216,7 +216,8 @@ svg {
 .easygo-btn-3,
 .easygo-btn-4,
 .easygo-btn-5,
-.easygo-btn-6 {
+.easygo-btn-6,
+.easygo-btn-7 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -282,6 +283,37 @@ svg {
   border: 1px solid var(--easygo-orange);
   color: var(--easygo-orange);
 }
+
+.easygo-btn-7{
+  border: 1px solid grey;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.easygo-btn-7:hover{
+  border: 1px solid var(--easygo-blue);
+  color:var(--easygo-blue);
+  background-color: white;
+}
+
+.img-display-2 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* max-height: 20vh; */
+}
+
+.img-display-2 .remove-btn{
+  color: red;
+  border-color:red;
+}
+
+.img-display-2 .btn {
+  margin-bottom:4px;
+  font-size: small;
+  padding: 0.5rem 0.75rem;
+}
+
 
 .outline-btn{
   border: 1px solid var(--easygo-blue);
@@ -581,40 +613,6 @@ input:disabled {
   padding-left: 0.5rem;
 }
 
-/* custom number input */
-.easygo-num-input {
-  position: relative;
-}
-.easygo-num-input input {
-  padding-left: 1.75rem !important;
-  padding-right: 1.75rem !important;
-}
-.easygo-num-input input::-webkit-outer-spin-button,
-.easygo-num-input input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-} /**removing arrows/spinners [Chrome, Safari, Edge, Opera]**/
-
-.easygo-num-input input[type="number"] {
-  -moz-appearance: textfield;
-} /**removing arrows/spinners [Firefox] **/
-
-.easygo-num-input .icon-left,
-.easygo-num-input .icon-right {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--easygo-blue);
-  cursor: pointer;
-}
-.easygo-num-input .icon-left {
-  left: 0;
-  padding-left: 0.5rem;
-}
-.easygo-num-input .icon-right {
-  right: 0;
-  padding-right: 0.5rem;
-}
 
 .easygo-text-input-1 {
   border: solid 1px var(--easygo-blue);
@@ -2153,6 +2151,18 @@ input:disabled {
 .dialog-window.dialog-show .dialog-box {
   transform: translateY(0);
 }
+
+
+
+.text-pill-group .text-pill,
+.text-pill-group .text-pill:hover{
+  border-radius: 16px;
+  margin-right: 4px;
+  margin-bottom: 8px;
+  color: black;
+  border-color: var(--easygo-blue);
+}
+
 
 /******************** MORE SPECIFIC STYLES (PAGE SPECIFIC) ********************/
 

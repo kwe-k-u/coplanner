@@ -485,5 +485,19 @@
 			$this->bind($package_id);
 			return  $this->db_fetch_one();
 		}
+
+		function add_experience_media($experience_id,$media_location,$media_type){
+			$sql = "CALL add_experience_media(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$media_location,$media_type);
+			return $this->db_query();
+		}
+
+		function get_experience_media($experience_id){
+			$sql = "CALL get_experience_media(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_fetch_all();
+		}
 	}
 ?>

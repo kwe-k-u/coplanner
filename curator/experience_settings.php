@@ -82,11 +82,15 @@ $mixpanel->log_page_view("Curator Experience Settings");
 							<form action="">
 								<div class="form-input-field">
 									<label for="experience_name">Name of Experience</label>
-									<input type="text" name="experience_name" id="experience_name">
+									<p id='name-err' class='form-err-msg'></p>
+									<input type="text" value="Many things to see" name="experience_name" id="experience_name">
 								</div>
-								<div class="form-input-field">
-									<label for="experience_description">Experience Description</label>
-									<textarea name="experience_description" rows="10" id="experience_description"></textarea>
+								<div class="form-input-field mt-3">
+									<label for="experience_description">Experience Overview</label>
+									<p id='description-err' class='form-err-msg'></p>
+									<textarea name="experience_description"  rows="10" id="experience_description">
+									We created this trip because we are adding new functionality and want to be able to see the amazing pictures on our trips
+									</textarea>
 								</div>
 
 
@@ -137,6 +141,41 @@ $mixpanel->log_page_view("Curator Experience Settings");
 								<div data-input-target="#company_logo" id="logo-display" class="img-display"></div>
 							</div>
 						</div>
+						<div class="row mt-4 " id="additional-image-row">
+							<small class="text-gray-1">Upload additional Images (We recommend images of activities)</small>
+							<div class="col-md-3 col-6">
+								<div class="input-field mb-2">
+									<div class="file-input drag-n-drop type-img img-display-2" data-input-target="#additional-img-input-1" data-display-target="#additional-img-1" id="additional-img-1">
+										<input type="file" class="img-upload" accept=".png, .jpg, .jpeg, .svg" id="additional-img-input-1" data-display-target="#additional-img-1">
+										<button class="btn easygo-btn-7">Upload</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-6">
+								<div class="input-field mb-2">
+									<div class="file-input drag-n-drop type-img img-display-2" data-input-target="additional-img-input-2" data-display-target="#additional-img-2" id="additional-img-2">
+										<input type="file" class="img-upload" accept=".png, .jpg, .jpeg, .svg" id="additional-img-input-2" data-display-target="#additional-img-2">
+										<button class="btn easygo-btn-7">Upload</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-6">
+								<div class="input-field mb-2">
+									<div class="file-input drag-n-drop type-img img-display-2" data-input-target="additional-img-input-3" data-display-target="#additional-img-3" id="additional-img-3">
+										<input type="file" class="img-upload" accept=".png, .jpg, .jpeg, .svg" id="additional-img-input-3" data-display-target="#additional-img-3">
+										<button class="btn easygo-btn-7">Upload</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-6">
+								<div class="input-field mb-2">
+									<div class="file-input drag-n-drop type-img img-display-2" data-input-target="additional-img-input-4" data-display-target="#additional-img-4" id="additional-img-4">
+										<input type="file" class="img-upload" accept=".png, .jpg, .jpeg, .svg" id="additional-img-input-4" data-display-target="#additional-img-4">
+										<button class="btn easygo-btn-7">Upload</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -172,9 +211,9 @@ $mixpanel->log_page_view("Curator Experience Settings");
 
 								<div>
 									<div>
-										<div class="form-input-field">
+										<div class="form-input-field hide" id="standard-package-field">
 											<label for="">Package Name <span class="text-gray-1">(Optional)</span></label>
-											<input type="text" name="package_name" id="" placeholder="Will be displayed as 'Standard' if you leave this blank">
+											<input type="text" name="package_name" placeholder="Will be displayed as 'Standard' if you leave this blank">
 										</div>
 									</div>
 									<div class="row mt-3">

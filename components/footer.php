@@ -55,9 +55,9 @@
                         ?>
                         </div>
                         <div class="col-6 align-items-right">
-                            <p>support@easygo.com.gh</p>
-                            <p>Greater Accra</p>
-                            <p>Ghana</p>
+                            <p class="mb-1">support@easygo.com.gh</p>
+                            <p class="mb-1">Greater Accra</p>
+                            <p class="mb-1">Ghana</p>
                         </div>
 
                     </div>

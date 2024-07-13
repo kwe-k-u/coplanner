@@ -1355,6 +1355,23 @@ END //
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS get_experience_packages;
+DELIMITER //
+CREATE PROCEDURE get_experience_packages(IN in_experience_id VARCHAR(100))
+BEGIN
+	SELECT * from shared_experience_payment_package where experience_id = in_experience_id and is_default = 0;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_experience_package_by_id;
+DELIMITER //
+CREATE PROCEDURE get_experience_package_by_id( IN in_package_id VARCHAR(100))
+BEGIN
+	SELECT * from shared_experience_payment_package where plan_id = in_package_id;
+END//
+DELIMITER ;
+
+
 DROP PROCEDURE IF EXISTS create_travel_plan;
 
 DELIMITER //
@@ -1793,5 +1810,61 @@ BEGIN
 		inner join experience_tags as et on et.tag_id = st.tag_id
 		where st.experience_id = in_experience_id;
 	END IF;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS add_experience_package;
+DELIMITER //
+CREATE PROCEDURE add_experience_package(
+	IN in_experience_id VARCHAR(100),
+	IN in_name VARCHAR(50),
+	IN in_description VARCHAR(200),
+	IN in_currency_id INT,
+	IN in_min DOUBLE,
+	IN in_max DOUBLE,
+	IN in_seats INT,
+	IN in_start DATETIME,
+	IN in_end DATETIME,
+	IN in_default TINYINT(1)
+) BEGIN
+	DECLARE in_plan_id VARCHAR(100);
+	DECLARE in_index VARCHAR(100);
+	DECLARE in_currency_id INT;
+
+
+	SELECT generate_id() into in_plan_id;
+	SELECT count(*) INTO in_index from shared_experience_payment_package where experience_id = in_experience_id;
+
+	INSERT INTO `shared_experience_payment_package`
+	(`plan_id`, `experience_id`, `package_name`, `package_description`,`is_default`, `seats`, `currency_id`, `min_amount`, `max_amount`, `order_index`)
+	VALUES (in_plan_id,in_experience_id,in_name, in_description,in_default, in_seats,in_currency_id, in_min,in_max,in_index);
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS add_experience_media;
+DELIMITER //
+CREATE PROCEDURE add_experience_media(
+	IN in_experience_id VARCHAR(100),
+	IN in_media_location TEXT,
+	IN in_media_type VARCHAR(30)
+	)
+BEGIN
+	DECLARE in_media_id VARCHAR(100);
+	SELECT upload_media(in_media_location, in_media_type,0) INTO in_media_id;
+
+	INSERT INTO `shared_experience_media`(`experience_id`, `media_id`) VALUES (in_experience_id,in_media_id);
+END//
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_experience_media;
+DELIMITER //
+CREATE PROCEDURE get_experience_media (IN in_experience_id VARCHAR(100))
+BEGIN
+	SELECT * from shared_experience_media as sm inner join media as m on m.media_id = sm.media_id
+	where sm.experience_id = in_experience_id;
 END //
 DELIMITER ;

@@ -71,6 +71,9 @@ function destination_modal_confirm(){
 		.filter(child => child.tagName === 'INPUT' && child.checked)
 		.map(checkbox => checkbox.getAttribute('id').replace('checkbox-for-', ''));
 	console.log(checkedActivities);
+	if(checkedActivities == []){
+		return;
+	}
 	let destination_id = destination_modal.getAttribute("data-destination-id");
 	let experience_id = url_params("experience_id");
 	let day = document.getElementById("day-buttons").getElementsByClassName("outline-btn")[0].getAttribute("data-day-id");

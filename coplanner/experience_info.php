@@ -19,10 +19,11 @@ if (isset($_GET["experience_id"])) {
     $itinerary_image = $itinerary["media_location"];
     $currency = $itinerary["currency_name"];
     $package_id = $itinerary["plan_id"];
-    $start_date = $itinerary["start_date"];
+    $start_date = format_string_as_date_fn($itinerary["start_date"]);
     $activities = get_shared_experience_activities($experience_id);
     $mixpanel->log_shared_experience_view($experience_id, $itinerary_name);
     $experience_description = $itinerary["experience_description"];
+    $experience_tags = get_experience_tags($experience_id);
 } else {
     echo "url broken";
     die();
@@ -42,9 +43,6 @@ if (isset($_GET["experience_id"])) {
 	<meta name="description" content="easyGo connects you to tour experiences created by Ghanaian curators. Find the best things to do and book tours by locals">
     <meta name="keywords" content="things to do Ghana, Accra, tourism, tours, December in Ghana, experience Ghana">
     <meta name="author" content="easyGo Tours Ltd">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <!-- Bootstrap css -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <!-- Fontawesome css -->
@@ -81,44 +79,37 @@ if (isset($_GET["experience_id"])) {
                         <div class="right-summary">
 
 
-                            <div class="right-summary-title">
-                                <?php
-                                echo "
-                                    <h2>$itinerary_name</h2>
-                                    <small>by $owner_name</small>
-                                    "
-                                ?>
-                            </div>
-                            <div class="itinerary-image d-none d-lg-block d-md-block">
-                                <?php
-                                echo "<img src='$itinerary_image' />";
-                                ?>
-                            </div>
-                            <?php
-                                if($experience_description){
 
-                                echo "
-                                <div class='itin-summary-title'>
-                                    Experience Description
+                                <div class="mb-4 row d-lg-flex d-md-flex image-group">
+
+                                    <div class="itinerary-image" data-imgs=''>
+                                        <?php
+                                        echo "<img src='$itinerary_image' />";
+                                        ?>
+                                    </div>
+                                    <div class="col additional-image-group">
+                                        <?php
+                                            $additional_images = get_experience_media($experience_id);
+                                            foreach($additional_images as $image){
+                                                $image_location = $image["media_location"];
+                                                echo "<img class='additional-image' src='$image_location' alt='' srcset=''>";
+                                            }
+                                        ?>
+                                    </div>
                                 </div>
-                                <div class='right-summary-main'>
-                                    $experience_description
-                                </div>";
-                            }
+                                <?php
+                                echo "
+                                    <h2 class='mb-1'>$itinerary_name</h2>
+                                    <small>by $owner_name</small>
+                                    <h4 class='mb-0 mt-3'>Date</h4>
+                                    <p>$start_date</p>
+                                    ";
 
 
                             ?>
 
-                        </div>
+                        </div >
                         <div class="left-summary">
-                            <div class="bill-header" style="opacity:0;">
-                                <p>Bill</p>
-                            </div>
-                            <div class="itinerary-image  d-sm-block d-md-none mb-4">
-                                <?php
-                                echo "<img src='$itinerary_image' />";
-                                ?>
-                            </div>
 
 
                             <div class="invoice-main  hide" id="invoice_section" data-previous-target="user_info_section" data-next-target="tc_section">
@@ -199,6 +190,7 @@ if (isset($_GET["experience_id"])) {
 
                             <div class="invoice-main " id="booking_info_section" data-next-target="user_info_section">
                                 <div class="invoice-container">
+                                    <h4>Select A Package</h4>
 
                                     <?php
                                     echo "
@@ -330,7 +322,42 @@ if (isset($_GET["experience_id"])) {
                             </div>
                         </div>
                     </div>
+                    <div class="mt-3 mb-4" style="margin-left: auto;" >
+                        <?php
+
+                            if($experience_description){
+
+                                echo "
+                                <h3 class='experience-title'>About this Experience</h3>
+                                    <p class='experience-description'>
+                                        $experience_description
+                                    </p>
+                                    ";
+                            }
+
+
+                            if($experience_tags){
+                                $tag_text= "";
+                                foreach($experience_tags as $tag){
+                                    $tag_name = $tag["tag_name"];
+                                    $tag_id = $tag["tag_id"];
+                                    $tag_text .="
+                                    <input type='checkbox' class='btn-check ' name='experience_tag' id='$tag_id' value='$tag_name' autocomplete='off' disabled>
+                                    <label class='btn btn-outline-primary text-pill' for='7'>
+                                        $tag_name
+                                    </label>
+                                    ";
+                                }
+                                echo "
+                                <div class='text-pill-group'>
+                                    $tag_text
+                                </div>";
+                            }
+
+                        ?>
+                    </div>
                     <div class="summary-itinerary-section">
+
                         <?php
                         $activity = $activities[0];
                         $current_day = $activity["visit_date"];
@@ -390,56 +417,6 @@ if (isset($_GET["experience_id"])) {
                     </div>";
                         echo $section_text;
 
-                        // foreach($days as $current_day){
-                        //     $day_id = $current_day["day_id"];
-                        //     $day = get_itinerary_day_info($day_id);
-                        //     $destinations = $day["destinations"];
-
-                        //     // ===== [start] day =====
-                        //     echo "
-                        //     <div class='summary-itinerary-day'>
-                        //         <div class='summary-itinerary-title'> Day 1 </div>
-                        //         <div class='summary-itinerary-row'>
-                        //     ";
-                        //     // ===== [start] day =====
-                        //     // ===== [start] destinations =====
-
-                        //     foreach($destinations as $destination){
-                        //         $destination_name = $destination["destination_name"];
-                        //         $location = $destination["location"];
-                        //         echo "
-                        //         <div class='summary-itinerary-location'>
-                        //             <div class='summary-itin-title'> Destination 1 </div>
-                        //             <div class='summary-itin-name'> $destination_name </div>
-                        //             <div class='summary-itin-specloc'> $location </div>
-                        //             <div class='summary-itin-highlights'>";
-                        //             $activities = $destination["activities"];
-                        //             for ($index=0; $index < min(count($activities),3); $index++) {
-
-                        //                 $activity= $activities[$index];
-                        //                 $activity_name = $activity["activity_name"];
-                        //                 echo "
-                        //                 <div class='activity-span'> $activity_name</div>
-                        //                 ";
-                        //             }
-                        //             if(count($activities) > 3){
-                        //                 $count = count($activities) - 3;
-                        //                 echo "<div class='summary-itin-highlight-more'> +<span>$count</span> more</div>";
-                        //             }
-                        //         echo "</div>
-                        //         </div>
-                        //         ";
-                        //     }
-
-
-                        //     // ===== [END] destinations =====
-                        //     // ===== [END] day =====
-                        //     echo "
-                        //         </div>
-                        //     </div>
-                        //     ";
-                        //     // ===== [END] day =====
-                        // }
                         ?>
 
                     </div>
@@ -447,6 +424,15 @@ if (isset($_GET["experience_id"])) {
             </div>
         </main>
     </div>
+
+
+<div class="modal" id="image-modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+            <img class="modal-image"  id="modal-image" src="" alt="" srcset="">
+    </div>
+</div>
+
+
 
     <?php require_once(__DIR__."/../components/footer.php") ?>
 

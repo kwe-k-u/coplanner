@@ -15,11 +15,20 @@ $(document).ready(function () {
   $(".file-input.drag-n-drop.type-img").on("drop", processDroppedFiles);
   $(".file-input.drag-n-drop.type-doc").on("drop", showDroppedDocName);
   $(".file-input input[type=file].img-upload").change(function (event) {
-    displayUpload(
-      $(this).attr("data-display-target"),
+    if(event.target.parentNode.classList.contains("img-display-2")){
+      newDisplayUpload(
+        $(this).attr("data-display-target"),
       $(this).prop("files")[0]
     );
+    }else{
+      displayUpload(
+        $(this).attr("data-display-target"),
+        $(this).prop("files")[0]
+      );
+
+    }
   });
+  $(".img-display-2 .remove-btn").click(removeImageUpload);
   $(".file-input input[type=file].file-upload").change(function (event) {
     showDocName(
       $(this).prop("files")[0],
@@ -51,8 +60,6 @@ $(document).ready(function () {
   $(".input-enabler").click(enableInputs);
   $(".input-disabler").click(disableInputs);
   $(".visibility-changer").click(changeVisibility);
-  $(".easygo-num-input .plus").click(changeNumInputVal);
-  $(".easygo-num-input .minus").click(changeNumInputVal);
   $(".img-display .item-remove");
   // $(".file-input.w-popup").click(updateUploadPopup);
 
@@ -284,12 +291,21 @@ function receiveDraggedFiles(event) {
 
 // function to process dropped files
 function processDroppedFiles(event) {
+  console.log("drop");
   event.preventDefault();
   event.stopPropagation();
-  displayUpload(
-    $(this).attr("data-display-target"),
-    event.originalEvent.dataTransfer.files[0]
-  );
+  let file = event.originalEvent.dataTransfer.files[0];
+  let targetDisplay = $(this).attr("data-display-target");
+  if($(this).hasClass('img-display-2')){
+    newDisplayUpload(targetDisplay,file)
+  }else{
+
+    displayUpload(
+      targetDisplay,
+      file
+    );
+  }
+  console.log(this);
 
   let fileInput = $(this).attr("data-input-target");
   $(`${fileInput}`).prop("files", event.originalEvent.dataTransfer.files);
@@ -326,39 +342,30 @@ function displayUpload(targetDisplay, file) {
   }
 }
 
-// to change input[type='number'] value when plus or minus buttons clicked
-function changeNumInputVal() {
-  let targetSelector = $(this).attr("data-input-target");
-  let targetEl = $(`${targetSelector}`);
-  let min_val = targetEl.attr("min")
-    ? parseInt(targetEl.attr("min"))
-    : Number.MIN_SAFE_INTEGER;
-  let max_val = targetEl.attr("max")
-    ? targetEl.attr("max")
-    : Number.MAX_SAFE_INTEGER;
-  let cur_val = targetEl.val() ? parseInt(targetEl.val()) : 0;
+function newDisplayUpload(targetDisplay,file){
+  if(file){
+    let fileurl = URL.createObjectURL(file);
+    $(`${targetDisplay}`).css("background-image", `url(${fileurl})`);
+    // add the remove button
+    $(`${targetDisplay}`).get(0).firstChild.innerText = "Replace";
+    if($(`${targetDisplay}`).find('.remove-btn').length == 0){
+      $(`${targetDisplay}`).append('<button class="btn easygo-btn-7 remove-btn">Remove</button>');
+      $(`${targetDisplay}`).find('.remove-btn')[0].addEventListener('click',removeImageUpload);
+    }
 
-  // setting the current value of the input element
-  targetEl.val(cur_val);
-
-  // adding or subtracting
-  // adding
-  if ($(this).hasClass("plus")) {
-    targetEl.val(
-      parseInt(targetEl.val()) + 1 > max_val
-        ? parseInt(targetEl.val())
-        : parseInt(targetEl.val()) + 1
-    );
-  }
-  // subtracting
-  if ($(this).hasClass("minus")) {
-    targetEl.val(
-      parseInt(targetEl.val()) - 1 < min_val
-        ? parseInt(targetEl.val())
-        : parseInt(targetEl.val()) - 1
-    );
   }
 }
+
+function removeImageUpload(){
+  event.stopPropagation();
+  let target = event.target;
+  target.parentNode.style.backgroundImage = "";
+  target.parentNode.getElementsByTagName("input")[0].files = null;
+  target.parentNode.getElementsByTagName("input")[0].value = "";
+  target.remove();
+}
+
+
 
 // // to open popup for file upload
 // function updateUploadPopup() {
@@ -874,7 +881,7 @@ function initialise_mixpanel(){
   mixpanel.identify(mixpanel_id);
 
   if(typeof setup_mixpanel_page == "function"){
-    setup_mixpanel_page()
+    setup_mixpanel_page();
   }
 }
 

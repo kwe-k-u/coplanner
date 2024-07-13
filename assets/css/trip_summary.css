@@ -66,22 +66,6 @@ main{
 	display: flex;
 	flex-direction: column;
 }
-.right-summary-title {
-	height: 15%;
-	justify-content: space-around;
-	display: flex;
-	flex-direction: column;
-}
-.summary-title {
-	font-size: x-large;
-	margin-bottom: 0.25em;
-}
-.summary-by {
-	font-size: large;
-	color: blue;
-	font-weight: bold;
-	margin-bottom: 1em;
-}
 .right-summary-main {
 	height: 30%;
 	align-content: center;
@@ -92,12 +76,66 @@ main{
 	border-radius: 1em;
 	overflow:hidden;
 	width: fit-content;
+	padding: 0px;
 }
 .itinerary-image img {
 	max-width: 40em;
 	max-height: 25em;
+	min-height: 25em;
 	min-width: 20em;
+	object-fit: cover;
 }
+
+.addditional-image-group{
+	max-height: 25em;
+	min-height: 20em;
+	min-width: 15em;
+	padding: 0px;
+	max-width: 15em;
+}
+
+.additional-image{
+	/* min-height: 5em;; */
+	border-radius: 0.5em;
+	min-width: 10em;
+	margin-bottom:4px;
+	max-height: 6em;
+	max-width: 10em;
+	background-color: grey;
+	display: inline;
+}
+.additional-image-group img{
+	display: block;
+}
+
+@media screen and (max-width: 768px) {
+	.additional-image-group img{
+		display: inline-block;
+	}
+}
+
+
+.modal-content{
+	max-height: 75vh;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 90vw;
+}
+.modal-dialog{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 90vw;
+}
+.modal img{
+
+	object-fit: contain;
+	border-radius: 12px;
+	max-height: 75vh;
+	max-width: 90vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 
 @media screen and (min-width: 768px) {
 	.trans-cards{
@@ -204,6 +242,10 @@ main{
 	display: flex;
 }
 
+.text-pill{
+	font-size: small;
+}
+
 
  /*[start] Destination information box styling  */
  .summary-itinerary-row .summary-itinerary-location {
@@ -221,13 +263,18 @@ main{
 	.summary-itin-highlights {
 		/* display: flex;
 		justify-content: space-between; */
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		display: flex;
+		/* grid-template-columns: 1fr 1fr 1fr 1fr; */
 		row-gap: 4px;
 		column-gap: 4px;
 		width: 85%;
 	}
 
+	.text-pill-group input[type="checkbox"][disabled]
+	+ .text-pill{
+	  color: black;
+	  opacity: 1;
+	}
 	@media screen and (max-width: 669px) {
 		.summary-itin-highlights{
 			grid-template-columns: 1fr 1fr 1fr;

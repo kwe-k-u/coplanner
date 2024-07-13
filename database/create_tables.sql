@@ -474,6 +474,7 @@ CREATE TABLE shared_experience_payment_package(
 	plan_id VARCHAR(100),
 	experience_id VARCHAR(100),
 	package_name VARCHAR(50) DEFAULT "Standard", -- Installment plans can be called "installment plan"
+	package_description VARCHAR(200),
 	is_default TINYINT(1) DEFAULT 1, -- 1: standard package,
 	seats INT DEFAULT 1 NOT NULL, -- Number of seats that this gets you
 	currency_id INT DEFAULT 1 NOT NULL,
@@ -557,6 +558,14 @@ CREATE TABLE shared_experience_tags(
 );
 
 
+CREATE TABLE shared_experience_media (
+	experience_id VARCHAR(100),
+	media_id VARCHAR(100),
+	is_visible TINYINT(1) DEFAULT 1,
+	PRIMARY KEY (experience_id,media_id),
+	FOREIGN KEY (experience_id) REFERENCES shared_experiences(experience_id),
+	FOREIGN KEY (media_id) REFERENCES media(media_id)
+);
 
 
 
@@ -731,6 +740,7 @@ CREATE VIEW vw_curators as
 	left join payout_accounts as pa on pa.account_id = cpa.payout_account_id;
 
 
+
 DROP VIEW IF EXISTS vw_shared_experiences;
 CREATE VIEW vw_shared_experiences AS
 	SELECT
@@ -745,6 +755,7 @@ CREATE VIEW vw_shared_experiences AS
 		se.start_date,
 		currency.currency_name,
         p.min_amount as booking_fee,
+		p.plan_id,
 		c.curator_name,
 		(SELECT 0) as remaining_seats,
         (SELECT p.min_amount * 0.03) as platform_fee,

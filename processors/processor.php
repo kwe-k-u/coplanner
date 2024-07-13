@@ -744,7 +744,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				die();
 			}
 			$logger = new Logger();
-			$logger->write_log("trips/trip_upload.log",json_encode($_POST, JSON_PRETTY_PRINT));
+			$logger->write_log("trip_upload.log",json_encode($_POST, JSON_PRETTY_PRINT));
 
 			// log the contents of the request
 			// $itinerary_id = $_POST["itinerary_id"];
@@ -764,6 +764,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			if ($_FILES){
 
+
 				$flyer_image = $_FILES["flyer"]["name"];
 				$flyer_tmp = $_FILES["flyer"]["tmp_name"];
 				$media_type = get_file_type($flyer_image);
@@ -772,6 +773,19 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 
 			$experience_id = create_shared_experience($name, $description, $curator_id,$start_date,$currency,$price,$seats,$media_location,$media_type);
+
+			if($_FILES){
+				foreach(array_keys($_FILES) as $key){
+					if ($key != "flyer"){
+						$additional_image = $_FILES[$key]["name"];
+						$additional_tmp = $_FILES[$key]["tmp_name"];
+						$media_type = get_file_type($additional_image);
+						$media_location = upload_file("uploads","images",$additional_tmp,$additional_image);
+						add_experience_media($experience_id,$media_location,$media_type);
+					}
+				}
+			}
+
 
 			//Add tags for the trip
 			foreach($tags as $tag){

@@ -413,4 +413,14 @@
 		return $public->get_experience_package_by_id($package_id);
 	}
 
+	function add_experience_media($experience_id,$media_location,$media_type){
+		$public = new public_class();
+		return $public->add_experience_media($experience_id,$media_location,$media_type);
+	}
+
+	function get_experience_media($experience_id){
+		$public = new public_class();
+		return $public->get_experience_media($experience_id);
+	}
+
 ?>

@@ -1,6 +1,8 @@
 
 $(document).ready(function (){
 	package_select_listener();
+
+
 	$("#remind-me-btn").click(()=> mixpanel.track("Remind me button clicked"));
 	$(".package-label").click(() => {
 		const packageName = $(this).find(".package-option-name").text();
@@ -13,6 +15,15 @@ $(document).ready(function (){
 	});
 
 	$(".summary-itin-name").click(()=> mixpanel.track("Experience Destination Name Clicked"));
+
+	let images = document.getElementsByClassName("additional-image");
+	for(let i = 0; i < images.length; i++) {
+		// document.getElementById("")
+		let image = images[i];
+		// console.log("prev",image.getAttribute("src"),image.src);
+		image.onclick = ()=> display_image_modal(image.src);
+
+	}
 
 
 });
@@ -213,24 +224,39 @@ function package_select_listener(){
 }
 
 function remind_me(){
-	user_email_field.value
-	if (validate_user_info()){
-		send_request("POST",
-			"processors/processor.php/shared_experience_reminder",
-			{
-				"experience_id" : url_params("experience_id"),
-				"user_name" : user_name_field.value,
-				"email" : user_email_field.value,
-				"phone" : user_phone_field.value
-			},
-			(response)=>{
-				if(response.status == 200){
-					showToast(response.data.msg);
-				}else{
-					showDialog(response.data.msg);
-				}
-		});
+	if ((document.getElementById("booking_info_section").classList.contains("hide") &&
+		document.getElementById("user_info_section").classList.contains("hide")) ||
+		!document.getElementById("user_info_section").classList.contains("hide")
+	){
+		// if user has advanced beyond entering their name do the reminder
+		if (validate_user_info()){
+			send_request("POST",
+				"processors/processor.php/shared_experience_reminder",
+				{
+					"experience_id" : url_params("experience_id"),
+					"user_name" : user_name_field.value,
+					"email" : user_email_field.value,
+					"phone" : user_phone_field.value
+				},
+				(response)=>{
+					if(response.status == 200){
+						showToast(response.data.msg);
+					}else{
+						showDialog(response.data.msg);
+					}
+			});
+		}
+	}else{
+		openDialog("Kindly proceed with selecting a package and providing contact information");
 	}
 
+
 	//check if the user provided their details.
+}
+
+
+function display_image_modal(source){
+	$('#image-modal').modal('show');
+	document.getElementById("modal-image").src = source;
+
 }
