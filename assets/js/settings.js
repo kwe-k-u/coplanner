@@ -64,4 +64,5 @@ function update_payment_info(form){
 			}
 		}
 	)
+
 }

@@ -91,6 +91,11 @@
 		return $slack->notify_support_log($message);
 	}
 
+	function notify_slack_travel_plan_creation($curator_name,$experience_name){
+		$slack = new slack_bot_class();
+		$message = "$curator_name just created a travel plan <$experience_name>";
+		return $slack->notify_info_log($message);
+	}
 
 
 ?>

@@ -34,3 +34,13 @@ section .dashcard{
 .pill-select-group > .pill-select-option{
 	margin-bottom: 8px;
 }
+
+.whats-included-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.whats-included-row input[type="checkbox"]{
+	display: inline;
+	padding: 8px;
+}

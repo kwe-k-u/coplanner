@@ -142,6 +142,16 @@
 		}
 
 
+		function log_travel_plan_creation($curator_id,$curator_name,$plan_id){
+			if(!$this->report_to_server){
+				return false;
+			}
+			$this->panel->track("Travel Plan Created", array("curator_id"=> $curator_id,"curator_name"=> $curator_name,"travel_plan_id"=>$plan_id));
+
+		}
+
+
+
 
 
 		// This funnel tracks page view statistics across the platform

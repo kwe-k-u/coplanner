@@ -316,5 +316,6 @@ $mixpanel->log_page_view("Curator preview");
 <script src="../assets/js/general.js"></script>
 <script src="../assets/js/functions.js"></script>
 <script src="../assets/js/experience_preview.js"></script>
+<script src="../assets/js/dash.js"></script>
 
 </html>

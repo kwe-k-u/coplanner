@@ -359,63 +359,104 @@ if (isset($_GET["experience_id"])) {
                     <div class="summary-itinerary-section">
 
                         <?php
-                        $activity = $activities[0];
-                        $current_day = $activity["visit_date"];
-                        $current_destination = $activity["destination_id"];
-                        $day_count = 1;
-                        $destination_count = 1;
-                        $destination_name = $activity["destination_name"];
-                        $location = $activity["location"];
-                        $section_text = "
-                            <div class='summary-itinerary-title'> Day $day_count </div>
-                            <div class='summary-itinerary-row'>
-                                <div class='summary-itinerary-location'>
-                                    <div class='summary-itin-title'> Destination $destination_count </div>
-                                    <div class='summary-itin-name'> $destination_name </div>
-                                    <div class='summary-itin-specloc'> $location </div>
-                                        <div class='summary-itin-highlights'>";
+                        $groupedPlans = array();
 
-                        foreach ($activities as $activity) { //activities sorted by date and then destination
+                        foreach ($activities as $plan) {
+                            $visitDate = date("Y-m-d", strtotime($plan["visit_date"]));
 
-                            //Print a new day if the date has changed
-                            if ($activity["visit_date"] != $current_day) {
-                                $current_day = $activity["visit_date"];
-                                $current_destination = null;
-                                $day_count += 1;
-                                $section_text .= "
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class='summary-itinerary-day'>
-                                    <div class='summary-itinerary-title'> Day $day_count </div>
-                                    <div class='summary-itinerary-row'>";
+                            if (!isset($groupedPlans[$visitDate])) {
+                                $groupedPlans[$visitDate] = array();
                             }
 
-                            // print a new destination if destination has changed
-                            if ($activity["destination_id"] != $current_destination) {
-                                $destination_count += 1;
-                                $current_destination = $activity["destination_id"];
-                                $destination_name = $activity["destination_name"];
-                                $location = $activity["location"];
-                                $section_text .= "
-                                    </div>
-                                </div>
-                                <div class='summary-itinerary-location'>
-                                    <div class='summary-itin-title'> Destination $destination_count </div>
-                                    <div class='summary-itin-name'> $destination_name </div>
-                                    <div class='summary-itin-specloc'> $location </div>
-                                        <div class='summary-itin-highlights'>";
-                            }
-
-                            //print new activity
-                            $activity_name = $activity["activity_name"];
-                            $section_text .= "
-                            <div class='activity-span'> $activity_name</div>";
+                            $groupedPlans[$visitDate][] = $plan;
                         }
-                        $section_text .="
-                        </div>
-                    </div>";
-                        echo $section_text;
+
+                        // Start generating the HTML
+                        $html = "";
+
+
+foreach ($groupedPlans as $visitDate => $plans) {
+    $html .= "<h5>" . date("jS F Y", strtotime($visitDate)) . "</h5>";
+    $html .= "<ul class=''>";
+
+    $previousDestination = '';
+
+    foreach ($plans as $plan) {
+        if ($plan["destination_name"] !== $previousDestination) {
+            if ($previousDestination !== '') {
+                $html .= "</ul>"; // Close previous destination's activity list
+            }
+            $html .= "<li class='d-flex'>" . $plan["destination_name"] . "</li>";
+            $html .= "<ul>";
+            $previousDestination = $plan["destination_name"];
+        }
+        $html .= "<li>" . $plan["activity_name"] . "</li>";
+    }
+
+    $html .= "</ul>"; // Close the last destination's activity list
+    $html .= "</ul>";
+}
+
+
+                        // Output the HTML
+                        echo $html;
+                    //     $activity = $activities[0];
+                    //     $current_day = $activity["visit_date"];
+                    //     $current_destination = $activity["destination_id"];
+                    //     $day_count = 1;
+                    //     $destination_count = 1;
+                    //     $destination_name = $activity["destination_name"];
+                    //     $location = $activity["location"];
+                    //     $section_text = "
+                    //         <div class='summary-itinerary-title'> Day $day_count </div>
+                    //         <div class='summary-itinerary-row'>
+                    //             <div class='summary-itinerary-location'>
+                    //                 <div class='summary-itin-title'> Destination $destination_count </div>
+                    //                 <div class='summary-itin-name'> $destination_name </div>
+                    //                 <div class='summary-itin-specloc'> $location </div>
+                    //                     <div class='summary-itin-highlights'>";
+
+                    //     foreach ($activities as $activity) { //activities sorted by date and then destination
+
+                    //         //Print a new day if the date has changed
+                    //         if ($activity["visit_date"] != $current_day) {
+                    //             $current_day = $activity["visit_date"];
+                    //             $current_destination = null;
+                    //             $day_count += 1;
+                    //             $section_text .= "
+                    //                 </div>
+                    //                 </div>
+                    //             </div>
+                    //             <div class='summary-itinerary-day'>
+                    //                 <div class='summary-itinerary-title'> Day $day_count </div>
+                    //                 <div class='summary-itinerary-row'>";
+                    //         }
+
+                    //         // print a new destination if destination has changed
+                    //         if ($activity["destination_id"] != $current_destination) {
+                    //             $destination_count += 1;
+                    //             $current_destination = $activity["destination_id"];
+                    //             $destination_name = $activity["destination_name"];
+                    //             $location = $activity["location"];
+                    //             $section_text .= "
+                    //                 </div>
+                    //             </div>
+                    //             <div class='summary-itinerary-location'>
+                    //                 <div class='summary-itin-title'> Destination $destination_count </div>
+                    //                 <div class='summary-itin-name'> $destination_name </div>
+                    //                 <div class='summary-itin-specloc'> $location </div>
+                    //                     <div class='summary-itin-highlights'>";
+                    //         }
+
+                    //         //print new activity
+                    //         $activity_name = $activity["activity_name"];
+                    //         $section_text .= "
+                    //         <div class='activity-span'> $activity_name</div>";
+                    //     }
+                    //     $section_text .="
+                    //     </div>
+                    // </div>";
+                    //     echo $section_text;
 
                         ?>
 

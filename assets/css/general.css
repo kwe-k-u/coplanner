@@ -1,12 +1,13 @@
 /******************** IMPORTS ********************/
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poppins|Roboto|Montserrat&display=swap");
 @import url(header.css);
 @import url(footer.css);
 @import url(signup_bypass.css);
 /******************** GLOBAL VARIABLES ********************/
 :root {
   /** typography **/
-  --primary-font-family: Roboto,Poppins, sans-serif;
+  --primary-font-family: Poppins,Roboto,sans-serif;
+  --header-font-family: Montserrat,sans-serif;
 
   --header-size-1: 96px;
   --header-size-2: 64px;
@@ -162,6 +163,16 @@ svg {
 }
 .easygo-fw-4 {
   font-weight: var(--font-weight-4) !important;
+}
+
+
+/* Header fonts  */
+/* h1,h2,h3,h4,h5{
+  font-family: var(--header-font-family);
+} */
+
+p{
+  font-family: var(--primary-font-family);
 }
 
 .s-title-1 {
@@ -456,6 +467,21 @@ form .inline-inputs {
 
 form .inline-inputs > * {
   flex: 1;
+}
+
+.form-input-display{
+  padding: 0.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-input-display label{
+  font-weight: lighter;
+  font-size: small;
+}
+
+.form-input-display p{
+  margin-bottom: 0px;
 }
 
 .form-input-field input {

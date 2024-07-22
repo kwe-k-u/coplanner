@@ -57,7 +57,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                         Find tour curators from all over Ghana sharing their unique experiences for
                         every budget, vacation plan and group size.
                          </p>
-                    <!-- <form action="#experience_section"> -->
+                    <!-- <form action="#experience_section">
                         <div class="carousel-search row align-items-center">
                             <div class="form-input-field col-lg-9">
                                 <input type="text" class="border-blue"  placeholder="Find an Experience" data-eg-target="email-err">
@@ -67,7 +67,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 <a  class="search-btn easygo-btn-1 bg-blue text-white easygo-fs-5" href="#experience_section">Search</a>
                             </div>
                         </div>
-                    <!-- </form> -->
+                     </form> -->
                 </div>
 
             </section>

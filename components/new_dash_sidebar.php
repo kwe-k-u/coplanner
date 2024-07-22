@@ -25,6 +25,12 @@
 			  Bookings
 			</a>
 		  </li>
+		  <li>
+			<a href='{$server_baseurl}curator/travel_plan_requests.php' class='nav-link link-dark'>
+				<i class='fa-solid fa-receipt'></i>
+			  Travel Plan requests
+			</a>
+		  </li>
 		</ul>
 		<hr>
 		  <a href='{$server_baseurl}curator/settings.php' class='d-flex align-items-center link-dark text-decoration-none'>

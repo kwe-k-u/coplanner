@@ -68,7 +68,7 @@ function validate_user_info(){
 // Toggles the display of the different sections of the invoice car
 //returns the id of the now displayed card after a toggle
 function switch_invoice_card(){
-	let current_invoice = document.querySelectorAll(".invoice-main:not(.hide)")[0]
+	let current_invoice = document.querySelectorAll(".invoice-main:not(.hide)")[0];
 	let next_id = current_invoice.getAttribute("data-next-target");
 	if(next_id){
 		document.getElementById(next_id).classList.remove("hide");

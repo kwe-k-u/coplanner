@@ -57,7 +57,7 @@
 
 	<section class="why-us-section bg-lblue-2 row ">
 		<div class="col-lg-6">
-			<h5 class="section-header">What use easyGo?</h5>
+			<h5 class="section-header">Why use easyGo?</h5>
 			<h2>Find tours from trusted curators with ease</h2>
 		</div>
 		<div class="col-lg-6">

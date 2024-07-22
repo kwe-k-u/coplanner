@@ -1,12 +1,51 @@
 <?php
+require_once(__DIR__."/../utils/core.php");
+require_once(__DIR__."/../utils/logger.php");
+require_once(__DIR__."/../utils/mailer/mailer_class.php");
+require_once(__DIR__."/../utils/paystack.php");
+require_once(__DIR__."/../controllers/public_controller.php");
+require_once(__DIR__."/../controllers/admin_controller.php");
+require_once(__DIR__."/../controllers/slack_controller.php");
+
 try {
 	// Your existing code here
+	// function customErrorHandler($errno, $errstr, $errfile, $errline) {
+	// 	// Handle the error
+	// 	echo "Custom error handler: [$errno] $errstr - $errfile:$errline\n";
+	// 	// Make sure that the error does not get reported elsewhere
+	// 	return true;
+	// }
+
+	function shutdownFunction() {
+		$error = error_get_last();
+		if ($error && ($error['type'] & (E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_PARSE))) {
+			// Handle the fatal error
+			$error_logger = new Logger();
+			$error_logger->write_log("fatal_error.log","[{$error['type']}] {$error['message']} - {$error['file']}:{$error['line']}");
+			$error_logger->write_log("fatal_error_details.log",json_encode($_SERVER));
+			notify_slack_support_msg("An error occured [{$error['type']}] {$error['message']} - {$error['file']}:{$error['line']}");
+			send_json(array("Something went terribly wrong. Our support team has been notified and it will be resolved within a day"));
+		}
+	}
+
+	// Set custom error handler
+	// set_error_handler('customErrorHandler');
+
+	// Register shutdown function
+	register_shutdown_function('shutdownFunction');
 
 
 // Show php errors
-	ini_set('display_errors',  1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	if(is_env_remote()){
+		ini_set('display_errors',  0);
+		ini_set('display_startup_errors', 0);
+		error_reporting(E_ALL);
+	}else{
+		ini_set('display_errors',  1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+
+	}
 
 $allowedDomains = array(
     'https://easygo.com.gh',
@@ -26,13 +65,6 @@ if (in_array($requestOrigin, $allowedDomains)) {
 }
 
 
-	require_once(__DIR__."/../utils/mailer/mailer_class.php");
-	require_once(__DIR__."/../utils/core.php");
-	require_once(__DIR__."/../utils/logger.php");
-	require_once(__DIR__."/../utils/paystack.php");
-	require_once(__DIR__."/../controllers/public_controller.php");
-	require_once(__DIR__."/../controllers/admin_controller.php");
-	require_once(__DIR__."/../controllers/slack_controller.php");
 	$mixpanel = new mixpanel_class();
 
 
@@ -576,6 +608,9 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			die();
 		case "/curator_signup":
 
+			$logger = new Logger();
+			$logger->write_log("curator_post.log", json_encode($_POST));
+
 			$username = $_POST["user_name"];
 			$email = $_POST["email"];
 			$password = encrypt($_POST["password"]);
@@ -587,9 +622,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$account_name = $_POST["account_name"];
 
 			$paystack = new paystack_custom();
-				// $subaccount_response = $paystack->add_sub_account($curator_name,$bank_number,$account_number,7,"Curator bank account for $curator_name",$email,$username,$phone_number);
-				$logger = new Logger();
-				$logger->write_log("payment_details.txt","$curator_name $bank_number $account_number $email");
+			$logger->write_log("payment_details.txt","$curator_name $bank_number $account_number $email");
 
 			// $subaccount_response = array(["status"] => true,array("data"=> array("subaccount_code"=>generate_id())));
 
@@ -822,6 +855,72 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			send_json(array("msg"=> "Experience Created", "experience_id" => $experience_id));
 			die();
+
+		case "/create_travel_plan":
+
+			if (!is_session_user_curator()){
+				send_json(array("msg"=> "You need to be a curator to create Travel Plans. Contact support at support@easygo.com.gh"),201);
+				die();
+			}
+			$logger = new Logger();
+			$logger->write_log("trip_upload.log",json_encode($_POST, JSON_PRETTY_PRINT));
+
+			// log the contents of the request
+			// $itinerary_id = $_POST["itinerary_id"];
+			$price = $_POST["price"];
+			$min_size = $_POST["min_size"];
+			$name = $_POST["experience_name"];
+			$description = $_POST["description"];
+			$curator = get_curator_account_by_user_id(get_session_user_id());
+			$curator_id = $curator["curator_id"];
+			$curator_name = $curator["curator_name"];
+			$tags = isset($_POST["experience_tags"])? $_POST["experience_tags"] : array();
+			$media_location = null;
+			$media_type= null;
+			$gen_location = $_POST["gen_location"];
+			$what_expect = $_POST["what_to_expect"];
+			$currency = 1;
+
+			if ($_FILES){
+				$flyer_image = $_FILES["flyer"]["name"];
+				$flyer_tmp = $_FILES["flyer"]["tmp_name"];
+				$media_type = get_file_type($flyer_image);
+				$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
+			}
+
+
+			$experience_id = create_travel_plan($name,$description,$curator_id,$currency,$price,$min_size,$media_location,$media_type,$gen_location,$what_expect);
+
+			if($_FILES){
+				foreach(array_keys($_FILES) as $key){
+					if ($key != "flyer"){
+						$additional_image = $_FILES[$key]["name"];
+						$additional_tmp = $_FILES[$key]["tmp_name"];
+						$media_type = get_file_type($additional_image);
+						$media_location = upload_file("uploads","images",$additional_tmp,$additional_image);
+						add_travel_plan_media($experience_id,$media_location,$media_type);
+					}
+				}
+			}
+
+
+			//Add tags for the trip
+			foreach($tags as $tag){
+				// add_experience_tag($experience_id,$tag);
+				add_travel_plan_tag($experience_id,$tag);
+			}
+
+
+
+			$mixpanel->log_travel_plan_creation($curator_id,$curator_name,$curator_id,$experience_id);
+
+			notify_slack_travel_plan_creation($curator_name,$name);
+
+			send_json(array("msg"=> "Experience Created", "travel_plan_id" => $experience_id));
+			die();
+
+
+			die();
 		case "/login_as_user":
 			$user_id = $_POST["user_id"];
 			session_log_in($user_id);
@@ -872,7 +971,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			foreach ($activities as $activity_id) {
 				add_experience_activity($experience_id,$activity_id,$destination_id,$day);
 			}
-			send_json(array("msg"=> "received"));
+			send_json(array("msg"=> "Destinations and Activity Added"));
 			die();
 		case "/contact_support":
 
@@ -925,6 +1024,66 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			notify_slack_support_msg("$curator_name updated their payment information");
 			send_json(array("msg"=> "Payment info updated"));
 			die();
+		case "/add_travel_plan_activity":
+			$travel_plan_id = $_POST["travel_plan_id"];
+			$day = $_POST["day"];
+			$activities = $_POST["activities"];
+			$destination_id = $_POST["destination_id"];
+			foreach($activities as $activity){
+				add_travel_plan_activity($travel_plan_id,$destination_id,$activity,$day);
+			}
+			send_json(array("msg"=> "Destinations and Activity Added"));
+			die();
+		case "/publish_travel_plan":
+			$plan_id = $_POST["travel_plan_id"];
+			publish_travel_plan($plan_id);
+			send_json(array("msg"=> "Published Travel Plan"));
+			die();
+		case "/request_travel_plan":
+			$name = $_POST["name"];
+			$phone = $_POST["phone"];
+			$email = $_POST["email"];
+			$additional = $_POST["additional_services"];
+			$note = $_POST["notes"];
+			$date = $_POST["preferred_date"];
+			$size = $_POST["num_people"];
+			$accomodation = in_array("accomodation",$additional) ? 1 : 0;
+			$airport = in_array("airport-pickup",$additional) ? 1 : 0;
+			$plan = $_POST["travel_plan_id"];
+
+			$status = create_travel_plan_request($plan,$name,$email,$phone,$size,$note,$date,$airport,$accomodation);
+			if ($status){
+				send_json(array("msg"=> "Your travel plan request has been placed. The curator may contact you soon"));
+			}else{
+
+				send_json(array("msg"=> "Something went wrong with your request. Kindly try again or contact support"),201);
+			}
+			die();
+		case "/get_travel_plan_request":
+			$request_id = $_POST["request_id"];
+			$data = get_travel_plan_request_by_id($request_id);
+			send_json(array("request"=>$data));
+			die();
+		case "/respond_travel_plan":
+			$request_id = $_POST["request_id"];
+			$accept_status = $_POST["accept_status"];
+
+			if($accept_status == "accept"){
+				$notes = $_POST["curator_notes"];
+				$quote = $_POST["quote_price"];
+				$result = accept_travel_plan_request($request_id,$notes,$quote);
+			}else{
+				$result = reject_travel_plan_request($request_id);
+			}
+
+			if($result){
+				send_json(array("msg"=> "Your Quote has been submitted"));
+			}else{
+				send_json(array("msg"=> "Something went wrong please try again"),201);
+			}
+
+
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;
@@ -935,11 +1094,11 @@ if (in_array($requestOrigin, $allowedDomains)) {
 	require_once(__DIR__."/../controllers/slack_controller.php");
 	$errorMessage = $e->getMessage();
 	// error_log($errorMessage, 3,__DIR__."\\...\\logs\\php_error.log");
-	var_dump($errorMessage);
+	error_log("$errorMessage\n", 3,__DIR__."/../logs/php_error.log");
 	$user_id = get_session_user_id();
 	notify_slack_support_msg("An error occured for user $user_id. The error message is $errorMessage.");
 
-	send_json(array("msg"=> "Something went wrong but our team is on it. You can try again one last time"));
+	send_json(array("msg"=> "Something went wrong but our team is on it. You can try again one last time"),201);
 
 	// $response = [
 	// 	'message' => 'Something went wrong but our team is on it'

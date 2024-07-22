@@ -569,6 +569,94 @@ CREATE TABLE shared_experience_media (
 
 
 
+CREATE TABLE travel_plan(
+	travel_plan_id VARCHAR(100) PRIMARY KEY,
+	curator_id VARCHAR(100),
+	experience_name VARCHAR(100),
+	description TEXT,
+	min_size INT,
+	currency_id INT,
+	price DOUBLE,
+	flyer VARCHAR(100),
+	what_to_expect TEXT,
+	general_location VARCHAR(50),
+	is_visible TINYINT(1) DEFAULT 0,
+	FOREIGN KEY (currency_id) REFERENCES currency(currency_id),
+	FOREIGN KEY (flyer) REFERENCES media(media_id),
+	FOREIGN KEY (curator_id) REFERENCES  curator(curator_id)
+);
+
+CREATE TABLE collections(
+	collection_id INT PRIMARY KEY,
+	collection_name VARCHAR(30)
+);
+
+CREATE TABLE travel_plan_collections(
+	travel_plan_id VARCHAR(100),
+	collection_id INT,
+	primary key (travel_plan_id,collection_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id),
+	FOREIGN KEY (collection_id) REFERENCES collections(collection_id)
+);
+
+CREATE TABLE travel_plan_media(
+	media_id VARCHAR(100),
+	travel_plan_id VARCHAR(100),
+	PRIMARY KEY (media_id,travel_plan_id),
+	FOREIGN KEY (media_id) REFERENCES media(media_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id)
+);
+
+CREATE TABLE travel_plan_tag(
+	travel_plan_id VARCHAR(100),
+	tag_id INT,
+	PRIMARY KEY (travel_plan_id,tag_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id)
+);
+
+
+CREATE TABLE travel_plan_activities(
+	travel_plan_id VARCHAR(100),
+	activity_id INT,
+	destination_id VARCHAR(100),
+	day_index INT,
+	activity_index INT,
+	FOREIGN KEY (activity_id) REFERENCES activities(activity_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id),
+	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id)
+);
+
+CREATE TABLE travel_plan_destination(
+	travel_plan_id VARCHAR(100),
+	destination_id VARCHAR(100),
+	booking_status ENUM ("pending","rejected","accepted") DEFAULT "pending",
+	PRIMARY KEY (travel_plan_id,destination_id),
+	FOREIGN KEY (destination_id) REFERENCES destinations(destination_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id)
+);
+
+
+
+CREATE TABLE travel_plan_requests(
+	request_id VARCHAR(100) PRIMARY KEY,
+	travel_plan_id VARCHAR(100),
+	user_id VARCHAR(100),
+	group_size INT,
+	date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+	preferred_date DATETIME,
+	curator_quote DOUBLE,
+	currency_id INT,
+	additional_notes TEXT,
+	curator_quote_notes TEXT,
+	airport_pickup_requested TINYINT(1) DEFAULT 0,
+	accommodation_requested TINYINT(1) DEFAULT 0,
+	status enum("pending","accepted","rejected","completed") DEFAULT "pending",
+	FOREIGN KEY (user_id) REFERENCES users(user_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id)
+);
+
+
+
 
 
 
@@ -811,7 +899,47 @@ CREATE VIEW vw_curator_managers AS
 	inner join vw_users as u on u.user_id = cm.user_id
 	inner join vw_curators as c on c.curator_id = cm.curator_id;
 
+DROP VIEW IF EXISTS vw_travel_plans;
+CREATE VIEW vw_travel_plans AS SELECT
+	t.*,
+	c.currency_name,
+	cc.curator_name,
+	m.media_location,
+	m.media_type
+	from travel_plan as t
+	inner join media as m on m.media_id = t.flyer
+	inner join currency as c on c.currency_id = t.currency_id
+	inner join curator as cc on cc.curator_id = t.curator_id;
 
+DROP VIEW IF EXISTS vw_travel_plan_media;
+CREATE VIEW vw_travel_plan_media AS SELECT
+	t.*, m.media_location, m.media_type FROM travel_plan_media as t
+	inner join media as m on m.media_id = t.media_id;
+
+DROP VIEW IF EXISTS vw_travel_plan_activities;
+CREATE VIEW vw_travel_plan_activities AS SELECT
+	ta.*,
+	a.activity_name,
+	d.destination_name
+	 FROM travel_plan_activities as ta
+	inner join activities as a on a.activity_id = ta.activity_id
+	inner join destinations as d on d.destination_id = ta.destination_id;
+
+-- Drop the view if it exists and create a new view
+DROP VIEW IF EXISTS vw_travel_plan_requests;
+CREATE VIEW vw_travel_plan_requests AS
+SELECT
+    r.*,
+    u.user_name,
+	cn.currency_name,
+    t.experience_name,
+    c.curator_name,
+	t.curator_id
+FROM travel_plan_requests AS r
+INNER JOIN travel_plan AS t ON t.travel_plan_id = r.travel_plan_id
+INNER JOIN vw_users AS u ON u.user_id = r.user_id
+LEFT JOIN currency as cn ON r.currency_id = cn.currency_id
+INNER JOIN vw_curators AS c ON c.curator_id = t.curator_id;
 
 
 

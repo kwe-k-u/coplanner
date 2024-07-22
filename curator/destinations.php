@@ -16,11 +16,24 @@
 	$logo = $info["logo_location"];//$info["curator_logo"];
 
 
-	$experience_id = $_GET["experience_id"];
-	$experience = get_shared_experience_by_id($experience_id);
-	$days = get_shared_experience_days($experience_id);
-	if (count ($days) == 0){
-		$days = [array("visit_date"=>$experience["start_date"])];
+	if(isset($_GET["experience_id"])){
+		$experience_id = $_GET["experience_id"];
+		$experience = get_shared_experience_by_id($experience_id);
+		$days = get_shared_experience_days($experience_id);
+		if (count ($days) == 0){
+			$days = [array("visit_date"=>$experience["start_date"])];
+		}
+	}else if(isset($_GET["travel_plan_id"])){
+		$days = get_travel_plan_days($_GET["travel_plan_id"]);
+		if(count($days) == 0){
+			$days = [array("visit_date"=>1)];
+		}else{
+			$days_temp = $days;
+			$days = [];
+			foreach ($days_temp as $temp){
+				array_push($days,array("visit_date"=> $temp["day_index"]));
+			}
+		}
 	}
 
 ?>
@@ -127,8 +140,13 @@
 				</div> -->
 				<div>
 					<?php
+					if(isset($_GET["experience_id"])){
+						$url = "curator/preview.php?experience_id=$experience_id";
+					}else{
+						$url = "curator/travel_plan_preview.php?travel_plan_id=".$_GET["travel_plan_id"];
+					}
 						echo "
-						<button class='btn easygo-btn-1' onclick='goto_page(\"curator/preview.php?experience_id=$experience_id\")'>Continue</button>
+						<button class='btn easygo-btn-1' onclick='goto_page(\"$url\")'>Continue</button>
 						";
 					?>
 				</div>

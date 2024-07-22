@@ -76,29 +76,35 @@ function destination_modal_confirm(){
 	}
 	let destination_id = destination_modal.getAttribute("data-destination-id");
 	let experience_id = url_params("experience_id");
+	let request_url=null;
 	let day = document.getElementById("day-buttons").getElementsByClassName("outline-btn")[0].getAttribute("data-day-id");
 	let payload = {
 		"destination_id" : destination_id,
 		"activities" : checkedActivities,
-		"experience_id" : experience_id,
 		"day": day
 	}
-	console.log(payload);
+	if(url_params("experience_id")){
+		payload["experience_id"] = experience_id;
+		request_url = "processors/processor.php/add_experience_activities";
+
+	}else if (url_params("travel_plan_id")){
+		payload["travel_plan_id"] = url_params("travel_plan_id");
+		request_url = "processors/processor.php/add_travel_plan_activity";
+	}
+	// console.log(payload);
 	bs_info_bar.style.display = "flex";
 	send_request("POST",
-		"processors/processor.php/add_experience_activities",
+		request_url,
 		payload,
 		(response)=> {
 			if(response.status == 200){
 				console.log(response.data);
+				showToast(response.data.msg);
 			}else{
 				openDialog(response.data.msg);
 			}
 		}
-	)
-	// send_request("POST",
-	// 	"processors/processor.php/add_"
-	// )
+	);
 }
 
 
@@ -110,9 +116,14 @@ function add_day(){
 	let count = day_buttons.children.length;
 	let prev_day_btn = day_buttons.children[day_buttons.children.length - 2];
 	let prev_day = prev_day_btn.getAttribute("data-day-id");
-	let next_day = new Date(prev_day);
-	next_day.setDate(next_day.getDate()+1);
-	next_day = next_day.toISOString().slice(0, 19).replace("T", " ");
+	let next_day = null;
+	if(url_params("experience_id")){
+		next_day = new Date(prev_day);
+		next_day.setDate(next_day.getDate()+1);
+		next_day = next_day.toISOString().slice(0, 19).replace("T", " ");
+	}else{
+		next_day = count;
+	}
 
 
 	//disable the previous day button
@@ -157,7 +168,7 @@ function filter_destinations(input){
 }
 
 
-function day_button_clicked(event){
+function day_button_clicked(){
 
 	const clickedButton = event.target;
 	const dayId = clickedButton.getAttribute("data-day-id");
@@ -176,16 +187,20 @@ function day_button_clicked(event){
 		}
 
 		console.log('update days'+ dayId);
-		send_request("POST",
-			"processors/processor.php/get_shared_experience_activities_by_day",
-			{
-				"day" : dayId,
-				"experience_id" : url_params("experience_id")
-			},
-			(response)=> {
-				console.log(response);
-			}
-		);
+		if(url_params("experience_id")){
+			send_request("POST",
+				"processors/processor.php/get_shared_experience_activities_by_day",
+				{
+					"day" : dayId,
+					"experience_id" : url_params("experience_id")
+				},
+				(response)=> {
+					console.log(response);
+				}
+			);
+		}else{
+			// send_request("POST","processors/processor.php/add")
+		}
 	}
 }
 

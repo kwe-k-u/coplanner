@@ -1,0 +1,311 @@
+
+
+main{
+	margin-top: 12vh;
+}
+
+.image-section{
+	display: flex;
+}
+
+.image-section .additional-images > div{
+
+	border-radius: 0.5em;
+	min-width: 10em;
+	max-width: 10em;
+	margin-bottom:4px;
+	max-height: 6em;
+	background-color: grey;
+	display: flex;
+}
+
+.image-section .additional-images > div img{
+	min-width: 100%;
+	min-height: 100%;
+	max-height: 100%;
+	max-width: 100%;
+	/* max-height: 15vh; */
+	object-fit: cover;
+}
+
+
+/* .image-section .additional-images{
+	min-width:20%;
+	min-height: 100%;
+} */
+
+
+.image-section .image-container{
+	width: 80%;
+	margin-left: 8px;
+}
+
+@media screen and (max-width: 669px) {
+	.image-section{
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.additional-images{
+		display: flex;
+		flex-wrap: nowrap;
+		overflow: scroll;
+		margin-bottom: 12px;
+	}
+	.image-section .additional-images > div{
+		display: inline-block;
+	}
+}
+
+
+.curator-info-card{
+	min-height: 55vh;
+	max-height: 55vh;
+	min-width: 80%;
+	max-width: 100%;
+	padding: 12px;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	border-radius: 12px;
+	border: 1px solid var(--easygo-blue);
+	background-color: white;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+.accordion-button{
+	font-size: var(--font-size-3);
+}
+.share-row{
+	display:flex;
+	justify-content: space-between;
+	padding: 0.5rem;
+
+}
+
+.share-row .review-group i{
+	color: gold;
+}
+
+.share-row .review-group p{
+	margin-left: 12px;
+	margin-bottom: 0px;
+}
+
+.share-row .button-group button{
+	border: 1px solid black;
+	padding: 0.5rem 1rem;
+	border-radius: 24px;
+	background-color: white;
+	font-size: small;
+}
+
+@media screen and (max-width: 669px) {
+	.share-row {
+		flex-direction: column;
+		justify-content: start;
+		align-items: start;
+	}
+
+	.share-row > div{
+		margin: 0.25rem 1rem;
+
+	}
+
+}
+
+.share-row{
+	align-items: center;
+}
+
+.quick-info-section{
+	display: flex;
+	gap: 2rem;
+	padding: 0.25rem 1rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	justify-content: center;
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+}
+
+@media screen and (max-width: 669px) {
+	.quick-info-section{
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+	.quick-info-section p{
+		margin-bottom: 0px;
+	}
+}
+
+
+.quick-info-section p{
+	margin-bottom: 0px
+}
+
+.quick-info-section .label{
+	font-weight: bold;
+}
+
+
+.image-container{
+	width: 100%;
+	height: 100%;
+	min-height: 55vh;
+	max-height: 55vh;
+}
+
+.image-container img{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.stuff-card{
+	margin-top: 1rem;
+	/* margin: 12px 0px; */
+}
+
+.stuff-card > div >div{
+	max-height: 45vh;
+	min-width:  100%;
+	min-height: 45vh;
+	padding: 1rem;
+	margin: 8px;
+	border: 1px solid lightgrey;
+	border-radius: 12px;
+
+}
+
+.review-summary-card{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+.review-summary-card p{
+	/* display: block; */
+	margin-bottom: 0px;
+}
+.review-summary-card .review-number{
+	font-size: xx-large;
+}
+
+.curator-tile{
+	display: flex;
+	justify-content: space-between;
+	padding-left: 1.5rem;
+	padding-top: 0.5rem;
+}
+
+@media screen and (max-width: 669px) {
+	.curator-tile{
+		flex-direction: column;
+	}
+}
+
+.curator-tile button{
+	max-height: 2.5rem;
+}
+
+.curator-tile .profile-image{
+	background-color: grey;
+	border-radius: 2rem;
+	height: 3rem;
+	width: 3rem;
+	margin-right: 12px;
+}
+
+
+.travel-plan-card{
+	min-height: 60vh;
+	max-height: 60vh;
+	min-width: 30vw;
+	max-width: 30vw;
+	background-color: white;
+	border: 1px solid lightgray;
+	border-radius: 12px;
+	box-shadow: var(--box-shadow-4);
+	/* display: flex; */
+	/* position: relative; */
+}
+
+
+.travel-plan-card .card-body{
+	padding: 12px;
+	position: relative;
+	/* min-width: 100%; */
+	/* min-width: inherit; */
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	min-height: max-content;
+	/* min-height: 30vh;
+	max-height: 30vh; */
+	border-radius: 12px;
+}
+
+.travel-plan-card .card-body p{
+	margin-bottom: 4px;
+}
+.travel-plan-card .image-section{
+	min-height: 27vh;
+	max-height: 30vh;
+	min-width: 100%;
+	position: relative;
+	max-width: 100%;
+	background-color: red;
+}
+
+.travel-plan-card .ratings{
+	font-size: small;
+}
+
+.travel-plan-card .card-footer{
+	display: flex;
+	justify-content: space-between;
+	margin: 12px;
+}
+
+.travel-plan-card .card-footer p{
+	margin-right: 4px;
+}
+
+.curator-info-card .rating{
+	font-size: small;
+}
+
+
+.check-option{
+	display: flex;
+	align-items: start;
+	padding: 4px;
+}
+
+.check-option input[type="checkbox"]{
+	margin-right: 8px;
+	padding: 8px;
+	display: inline-block;
+}
+.check-option label{
+	display: inline-block;
+}
+
+.bottom-bar{
+
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	position: fixed;
+	background-color: white;
+	padding: 12px;
+	min-height: 10vh;
+	z-index: 3;
+	box-shadow: var(--box-shadow-4);
+	justify-content: space-between;
+}

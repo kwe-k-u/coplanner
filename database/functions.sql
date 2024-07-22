@@ -1780,7 +1780,6 @@ END //
 DELIMITER ;
 
 
-
 DROP PROCEDURE IF EXISTS add_experience_tag;
 
 DELIMITER //
@@ -1866,5 +1865,252 @@ CREATE PROCEDURE get_experience_media (IN in_experience_id VARCHAR(100))
 BEGIN
 	SELECT * from shared_experience_media as sm inner join media as m on m.media_id = sm.media_id
 	where sm.experience_id = in_experience_id;
+END //
+DELIMITER ;
+
+
+
+
+DROP FUNCTION IF EXISTS create_travel_plan;
+DELIMITER //
+CREATE FUNCTION create_travel_plan(
+		in_curator_id VARCHAR(100),
+		in_experience_name VARCHAR(100),
+		in_description TEXT,
+		in_min_size INT,
+		in_currency_id INT,
+		in_price DOUBLE,
+		in_media_location TEXT,
+		in_media_type VARCHAR(30),
+		in_location VARCHAR(50),
+		in_expect_text TEXT
+	) RETURNS VARCHAR(100)
+begin
+	DECLARE in_experience_id VARCHAR(100);
+	DECLARE in_media_id VARCHAR(100);
+	SELECT generate_id() INTO in_experience_id;
+
+	SELECT upload_media(in_media_location,in_media_type,0) INTO in_media_id;
+
+	INSERT INTO `travel_plan`(`travel_plan_id`, `curator_id`, `experience_name`, `description`, `min_size`, `currency_id`, `price`, `flyer`,`general_location`,`what_to_expect`)
+	VALUES (in_experience_id,in_curator_id,in_experience_name,in_description,in_min_size,in_currency_id,in_price,in_media_id, in_location, in_expect_text);
+
+	RETURN in_experience_id;
+end //
+DELIMITER ;
+
+
+
+
+
+
+DROP PROCEDURE IF EXISTS add_travel_plan_media;
+DELIMITER //
+CREATE PROCEDURE add_travel_plan_media(
+	in in_plan_id VARCHAR(100),
+	in in_media_location TEXT,
+	in in_media_type VARCHAR(30)
+)
+begin
+	DECLARE in_media_id VARCHAR(100);
+
+	SELECT upload_media(in_media_location,in_media_type,0) INTO in_media_id;
+
+	INSERT INTO travel_plan_media(travel_plan_id,media_id ) VALUES (in_plan_id,in_media_id);
+end //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS add_travel_plan_tag;
+DELIMITER //
+CREATE PROCEDURE add_travel_plan_tag(in in_plan_id VARCHAR(100), IN in_tag VARCHAR(50))
+begin
+	DECLARE in_tag_id INT;
+	SELECT tag_id INTO in_tag_id FROM experience_tags where tag_name = in_tag;
+
+	INSERT INTO travel_plan_tag(travel_plan_id,tag_id) VALUES (in_plan_id, in_tag_id);
+
+end //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS add_travel_plan_activity;
+DELIMITER //
+CREATE PROCEDURE add_travel_plan_activity(
+	IN in_travel_plan_id VARCHAR(100),
+	IN in_destination_id VARCHAR(100),
+	IN in_activity_id INT,
+	IN in_day_index INT
+) BEGIN
+	DECLARE temp_des VARCHAR(100);
+	DECLARE in_activity_index INT;
+
+	-- //insert destination if its already not there;
+	SELECT destination_id into temp_des FROM travel_plan_destination
+	where destination_id = in_destination_id and travel_plan_id = in_travel_plan_id;
+
+	IF temp_des IS NULL THEN
+		INSERT INTO `travel_plan_destination`(`travel_plan_id`, `destination_id`)
+		VALUES (in_travel_plan_id,in_destination_id);
+	END IF;
+
+
+	SELECT count(*) into in_activity_index FROM travel_plan_activities where travel_plan_id = in_travel_plan_id
+	and destination_id = in_destination_id and day_index = in_day_index;
+
+	INSERT INTO `travel_plan_activities`(`travel_plan_id`, `activity_id`, `destination_id`, `day_index`, `activity_index`)
+	VALUES (in_travel_plan_id,in_activity_id,in_destination_id,in_day_index,in_activity_index);
+
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_travel_plan_days;
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_days(IN in_plan_id VARCHAR(100))
+BEGIN
+	SELECT distinct day_index from travel_plan_activities where travel_plan_id = in_plan_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS publish_travel_plan;
+DELIMITER //
+CREATE PROCEDURE publish_travel_plan(IN in_plan_id VARCHAR(100))
+BEGIN
+	UPDATE travel_plan SET is_visible = 1 where travel_plan_id = in_plan_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_travel_plan_by_id;
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_by_id (IN in_plan_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_travel_plans where travel_plan_id = in_plan_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_travel_plan_media;
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_media (IN in_plan_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_travel_plan_media where travel_plan_id = in_plan_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_travel_plan_activities;
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_activities(IN in_plan_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_travel_plan_activities where travel_plan_id = in_plan_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS create_travel_plan_request;
+DELIMITER //
+CREATE PROCEDURE create_travel_plan_request(
+	IN in_plan_id VARCHAR(100),
+	IN in_user_name VARCHAR(50),
+	IN in_email VARCHAR(50),
+	IN in_number VARCHAR(20),
+	IN in_group INT,
+	IN in_notes TEXT,
+	IN in_preferred_date DATETIME,
+	IN in_airport TINYINT(1),
+	IN in_accomodation TINYINT(1)
+) BEGIN
+	-- Get the user's info if they already have an account
+	-- create one if otherwise
+	-- generate a plan_id
+	-- insert data into the travel_plan_request table
+	DECLARE in_user_id VARCHAR(100);
+	DECLARE in_plan_request_id VARCHAR(100);
+
+	SELECT generate_id() INTO in_plan_request_id;
+
+	-- Check if the user already exists
+	SELECT user_id INTO in_user_id FROM vw_users WHERE (email = in_email or phone = in_number) and phone is not null;
+
+
+	-- If user does not exist, create a new user
+	IF in_user_id IS NULL THEN
+		SELECT bypass_signup(in_user_name, in_email, in_number) into in_user_id;
+	END IF;
+
+	-- Insert data into the travel_plan_requests table
+	INSERT INTO travel_plan_requests(request_id, travel_plan_id, user_id, group_size,  preferred_date, additional_notes, airport_pickup_requested, accommodation_requested)
+	VALUES (in_plan_request_id, in_plan_id, in_user_id, in_group,  in_preferred_date,   in_notes, in_airport, in_accomodation);
+
+END //
+DELIMITER ;
+
+
+-- Drop the procedure if it exists and create a new procedure
+DROP PROCEDURE IF EXISTS get_curator_travel_plan_requests;
+DELIMITER //
+CREATE PROCEDURE get_curator_travel_plan_requests(IN in_curator_id VARCHAR(100))
+BEGIN
+    SELECT * FROM vw_travel_plan_requests WHERE curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+-- Drop the procedure if it exists and create a new procedure
+DROP PROCEDURE IF EXISTS get_travel_plan_request_by_id;
+DELIMITER //
+CREATE PROCEDURE get_travel_plan_request_by_id(IN in_request_id VARCHAR(100))
+BEGIN
+    SELECT * FROM vw_travel_plan_requests WHERE request_id = in_request_id;
+END //
+DELIMITER ;
+
+
+DROP FUNCTION IF EXISTS reset_user_password;
+DELIMITER //
+CREATE FUNCTION reset_user_password(in_user_id VARCHAR(100), in_current VARCHAR(100), in_new VARCHAR(100))
+RETURNS INT
+BEGIN
+    DECLARE in_temp VARCHAR(100);
+    DECLARE current_password VARCHAR(100);
+
+    -- Check if the user exists
+    SELECT user_id INTO in_temp FROM vw_users WHERE user_id = in_user_id;
+    IF in_temp IS NULL THEN
+        RETURN 1; -- User does not exist
+    END IF;
+
+    -- Check if the current password matches
+    SELECT password_hash INTO current_password FROM vw_users WHERE user_id = in_user_id;
+    IF current_password != in_current THEN
+        RETURN 2; -- Current password does not match
+    END IF;
+
+    -- Update the password
+    UPDATE email_users SET password_hash = in_new WHERE user_id = in_user_id;
+    RETURN 0; -- Password reset successful
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS accept_travel_plan_request;
+DELIMITER //
+CREATE PROCEDURE accept_travel_plan_request(IN in_request_id VARCHAR(100),IN in_notes TEXT, IN in_price DOUBLE)
+BEGIN
+	UPDATE travel_plan_requests set curator_quote = in_price, curator_quote_notes = in_notes, status="accepted" where request_id = in_request_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS reject_travel_plan_request;
+DELIMITER //
+CREATE PROCEDURE reject_travel_plan_request(IN in_request_id VARCHAR(100))
+BEGIN
+	UPDATE travel_plan_requests SET status ="rejected" WHERE request_id = in_request_id;
 END //
 DELIMITER ;

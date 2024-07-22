@@ -506,5 +506,105 @@
 			$this->bind($user_id,$current,$new);
 			return $this->db_fetch_one();
 		}
+		function add_travel_plan_tag($experience_id,$tag){
+			$sql = "CALL add_travel_plan_tag(?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$tag);
+			return $this->db_query();
+		}
+
+		function add_travel_plan_media($experience_id,$media_location,$media_type){
+			$sql = "CALL add_travel_plan_media(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$media_location,$media_type);
+			return $this->db_query();
+		}
+
+		function create_travel_plan($curator_id,$name,$description,$min_size,$currency,$price,$media_location,$media_type,$gen_location,$what_expect){
+			$sql = "SELECT create_travel_plan(?,?,?,?,?,?,?,?,?,?) as experience_id";
+			$this->prepare($sql);
+			$this->bind($curator_id,$name,$description,$min_size,$currency,$price,$media_location,$media_type,$gen_location,$what_expect);
+			return $this->db_fetch_one();
+		}
+
+		function add_travel_plan_activity($plan_id,$destination_id,$activity_name,$day_index){
+			$sql = "CALL add_travel_plan_activity(?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($plan_id,$destination_id,$activity_name,$day_index);
+			return $this->db_query();
+		}
+
+		function get_travel_plan_days($plan_id){
+			$sql = "CALL get_travel_plan_days(?)";
+			$this->prepare($sql);
+			$this->bind($plan_id);
+			return $this->db_fetch_all();
+		}
+
+		function publish_travel_plan($plan_id){
+			$sql = "CALL publish_travel_plan(?)";
+			$this->prepare($sql);
+			$this->bind($plan_id);
+			return $this->db_query();
+		}
+
+		function get_travel_plan_by_id($plan_id){
+			// $sql = "SELECT * FROM vw_travel_plans";
+			// $this->prepare($sql);
+			// return $this->db_fetch_one();
+			$sql = "CALL get_travel_plan_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($plan_id);
+			return $this->db_fetch_one();
+		}
+
+		function get_travel_plan_media($plan_id){
+			$sql = "CALL get_travel_plan_media(?)";
+			$this->prepare($sql);
+			$this->bind($plan_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_travel_plan_activities($plan_id){
+			$sql = "CALL get_travel_plan_activities(?)";
+			$this->prepare($sql);
+			$this->bind($plan_id);
+			return $this->db_fetch_all();
+		}
+
+		function create_travel_plan_request($plan,$name,$email,$phone,$group,$notes,$date,$aiport,$accomodation){
+			$sql = "CALL create_travel_plan_request(?,?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($plan,$name,$email,$phone,$group,$notes,$date,$aiport,$accomodation);
+			return $this->db_query();
+		}
+
+		function get_curator_travel_plan_requests($curator_id){
+			$sql = "CALL get_curator_travel_plan_requests(?)";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_travel_plan_request_by_id($request_id){
+			$sql = "CALL get_travel_plan_request_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($request_id);
+			return $this->db_fetch_one();
+		}
+
+		function accept_travel_plan_request($request_id,$notes,$price){
+			$sql = "CALL accept_travel_plan_request(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($request_id,$notes,$price);
+			return $this->db_query();
+		}
+
+		function reject_travel_plan_request($request_id){
+			$sql = "CALL reject_travel_plan_request(?)";
+			$this->prepare($sql);
+			$this->bind($request_id);
+			return $this->db_query();
+		}
 	}
 ?>

@@ -50,15 +50,22 @@ function get_experience_tags(){
 	return selectedTags;
 }
 
-function create_experience(){
+function submit_experience(){
 	event.preventDefault();
+	let selected_type = document.querySelector('input[name="btnradio"]:checked').id;
+	console.log(selected_type);
+	if (selected_type == "shared-experience"){
+		create_experience();
+	}else{
+		create_travel_plan();
+	}
+}
+
+function get_base_data(){
 	let tags = get_experience_tags();
 	let name = document.getElementsByName("experience_name")[0].value;
 	let description = document.getElementsByName("experience_description")[0].value;
 	let flyer = document.getElementsByName("company_logo")[0].files[0];
-	let start_date = document.getElementsByName("start_date")[0].value;
-	let booking_fee = document.getElementsByName("booking_fee")[0].value;
-	let num_seats = document.getElementsByName("num_seats")[0].value;
 
 	if(!validate_experience_info(name,description)){
 		openDialog("Please confirm if you have provided all the relevant information")
@@ -66,23 +73,14 @@ function create_experience(){
 	}else if (!flyer){
 		openDialog("You need to add an image for your flyer")
 	}
-	console.log(flyer);
 
 	let payload = {
 		"experience_name" : name,
-		"start_date" : start_date,
 		"description" : description,
 		"flyer" : flyer,
-		"price" : booking_fee,
-		"seat_count" : num_seats,
 		"experience_tags" : tags
 	};
 
-	if (!package_box.classList.contains("hide")){
-		payload["packages"] = get_packages();
-	}
-
-	// Get the additional images uploaded for the trip
 	let additional_img_inputs = document.getElementById("additional-image-row").getElementsByClassName('img-upload');
 	for(let i =0; i < additional_img_inputs.length; i++){
 		let current_img_field = additional_img_inputs[i];
@@ -90,6 +88,31 @@ function create_experience(){
 			payload["additional-images-"+i.toString()] = current_img_field.files[0];
 		}
 	}
+
+	return payload;
+
+}
+
+function create_experience(){
+	let booking_fee = document.getElementsByName("booking_fee")[0].value;
+	let num_seats = document.getElementsByName("num_seats")[0].value;
+	let start_date = document.getElementsByName("start_date")[0].value;
+
+	let payload = get_base_data();
+	if (!payload){
+		return ;
+	}
+
+	if (!package_box.classList.contains("hide")){
+		payload["packages"] = get_packages();
+	}
+
+	payload["seat_count"] = num_seats;
+	payload["start_date"] = start_date;
+	payload["price"] = booking_fee;
+
+	// Get the additional images uploaded for the trip
+
 
 
 	mixpanel.track("Create Shared Experience",payload);
@@ -113,6 +136,33 @@ function create_experience(){
 
 }
 
+
+function create_travel_plan(){
+	let payload = get_base_data();
+	if(!payload){
+		return;
+	}
+
+
+	payload["min_size"] = document.getElementById("min-group-size").value;
+	payload["gen_location"] = document.getElementById("general-location").value;
+	payload["what_to_expect"] = document.getElementById("what-to-expect").value;
+	payload["price"] = document.getElementById("price-estimate").value;
+
+
+	send_request("POST",
+		"processors/processor.php/create_travel_plan",
+		payload,
+		(response)=> {
+			if (response.status == 200){
+				goto_page("curator/destinations.php?travel_plan_id="+response.data.travel_plan_id);
+			}else{
+				openDialog(response.data.msg);
+			}
+		}
+	);
+
+}
 
 function validate_experience_info(name,description){
 	return validateFormInputs({
@@ -153,7 +203,7 @@ function get_packages(package_id = null) {
     let result = {};
 
     for (const box of package_boxes) {
-        result[box.id] ={
+        result[box.id] = {
             "package_name" : box.querySelector("input[name='package_name']").value,
             "fee" : box.querySelector("input[name='booking_fee']").value,
             "seats" : box.querySelector("input[name='num_seats']").value,

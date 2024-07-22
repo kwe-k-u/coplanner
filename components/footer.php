@@ -39,7 +39,7 @@
                      <?php
                         echo "
                         <a class=' easygo-fs-4 ' href='{$base_url}coplanner/about.php'>About us</a>
-                        <a class=' easygo-fs-4 ' href='https://www.wa.me/233506899883'>Contact us</a>
+                        <a class=' easygo-fs-4 ' href='https://wa.me/233506899883'>Contact us</a>
                         <a class=' easygo-fs-4 ' href='https://drive.google.com/file/d/1mN0bLyGvmf2jduiWCbs_yId-FOVWGz_p/view?usp=sharing'>Terms and conditions</a>
                         ";
                      ?>
