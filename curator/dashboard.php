@@ -253,11 +253,62 @@ $mixpanel->log_page_view("Curator Dashboard");
 						  </tbody>
 						  </table>
 						  <div class="table-footer">
-							  <button class="btn easygo-btn-1">Add Team Member</button>
+							  <button class="btn easygo-btn-1"  data-bs-target="#invite-collaborator-modal" data-bs-toggle="modal">Add Team Member</button>
 						  </div>
 				</div>
 			</div>
 		</div>
+
+
+
+    <!-- ============================== -->
+    <!-- Curator invite modal [start] -->
+    <div class="modal fade" id="invite-collaborator-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content p-5">
+                <div class="col">
+                    <div>
+                        <div style='overflow-x: auto;'>
+                        </div>
+                        <h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
+                        <small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
+                        <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+                        <form onsubmit='invite_collaborator(this)'>
+                            <input type="hidden" name="curator_id" id="invite_modal_curator_id">
+                            <div class="col-lg-7 d-flex flex-column gap-4">
+                                <div class="form-input-field">
+                                    <div class="text-gray-1 easygo-fs-4">Collaborator Email</div>
+                                    <input type="email" name="email" placeholder="example@easygo.com">
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-7 d-flex flex-column gap-4">
+                                <div class="form-input-field">
+                                    <div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
+
+                                    <select name="collaborator_role">
+                                        <option value="admin">Admin</option>
+                                        <option value="edit">Edit</option>
+                                        <option value="view">View</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+                                <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Invite_collaborator_modal modal [end] -->
+        <!-- ============================== -->
+    </div>
+
+    <!-- Curator invite modal [end] -->
+    <!-- ============================== -->
 
 
 	</main>
@@ -271,6 +322,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 <script src="../assets/js/general.js"></script>
 <script src="../assets/js/functions.js"></script>
 <script src="../assets/js/dash.js"></script>
+<script src="../assets/js/settings.js"></script>
 </body>
 
 </html>

@@ -499,5 +499,12 @@
 			$this->bind($experience_id);
 			return $this->db_fetch_all();
 		}
+
+		function reset_user_password($user_id,$current,$new){
+			$sql = "SELECT reset_user_password(?,?,?) AS status";
+			$this->prepare($sql);
+			$this->bind($user_id,$current,$new);
+			return $this->db_fetch_one();
+		}
 	}
 ?>

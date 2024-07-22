@@ -486,7 +486,17 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$_POST = json_decode(file_get_contents("php://input"),true);
 			die();
 		case "/request_password_reset":
-			send_json(array("msg"=> "Kindly send an email to main.easygo@gmail.com for help regaining your account!"),201);
+			$current_password = encrypt($_POST["current_password"]);
+			$new_password = encrypt($_POST["new_password"]);
+			$user_id = get_session_user_id();
+
+			$success = reset_user_password($user_id,$current_password,$new_password);
+			if($success == 0){
+				send_json(array('msg'=> "Password Successfully changed"));
+			}else if ($success == 2){
+				send_json(array("msg"=> "Your Current Password is not correct. Please try again"),201);
+			}
+
 			die();
 		case "/get_itinerary_invoices":
 			$itinerary_id = $_POST["itinerary_id"];
@@ -903,6 +913,18 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			notify_slack_support_msg(" A user wants a reminder of the shared experience $experience_id. User information is $username<$email>  $phone");
 			send_json(array("msg"=> "Hello $username. Our team will send a reminder a few days before the start of the trip"));
 			die();
+		case "/update_payment_info":
+			$account_name = $_POST["account_name"];
+			$account_number = $_POST["account_number"];
+			$bank_number =$_POST["bank_name"];
+			$curator_account = get_curator_account_by_user_id(get_session_user_id());
+			$curator_name = $curator_account["curator_name"];
+
+			$logger = new Logger();
+			$logger->write_log("payment_details.txt","$curator_name $account_name $bank_number $account_number");
+			notify_slack_support_msg("$curator_name updated their payment information");
+			send_json(array("msg"=> "Payment info updated"));
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;
@@ -912,9 +934,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 	require_once(__DIR__."/../utils/core.php");
 	require_once(__DIR__."/../controllers/slack_controller.php");
 	$errorMessage = $e->getMessage();
-	error_log($errorMessage, 3);
+	// error_log($errorMessage, 3,__DIR__."\\...\\logs\\php_error.log");
+	var_dump($errorMessage);
 	$user_id = get_session_user_id();
-	notify_slack_support_msg("An error occured for user $user_id. The error message is $error_message.");
+	notify_slack_support_msg("An error occured for user $user_id. The error message is $errorMessage.");
 
 	send_json(array("msg"=> "Something went wrong but our team is on it. You can try again one last time"));
 

@@ -423,4 +423,8 @@
 		return $public->get_experience_media($experience_id);
 	}
 
+	function reset_user_password($user_id,$current,$new){
+		$public = new public_class();
+		return $public->reset_user_password($user_id,$current,$new)["status"];
+	}
 ?>

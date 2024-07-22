@@ -10,12 +10,6 @@ function signup(form2){
 	var form1 = document.getElementById("register-form-1");
 
 
-	mixpanel.track("curator signup attempt",{
-		"user_name" : form1.user_name.value,
-		"email" : form1.email.value,
-		"phone_number" : form1.phone.value,
-		"curator_name" : form1.company_name.value,
-	});
 
 	if(form2.gov_id_back.files.length == 0 || form2.gov_id_front.files.length == 0){
 		alert("Kindly upload a picture of both the front and back of your Government issued ID card");
@@ -68,6 +62,13 @@ function signup(form2){
 		// 	alert("Kindly upload an incorporation document to proceed. You may contact support@easygo.com.gh if you have not registered your company");
 		// 	return false;
 		// }
+
+	mixpanel.track("curator signup attempt",{
+		"user_name" : form1.user_name.value,
+		"email" : form1.email.value,
+		"phone_number" : form1.phone.value,
+		"curator_name" : form1.company_name.value,
+	});
 
 
 		var bank_name = form1.payout_bank.value.split("=")[0];
