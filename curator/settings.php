@@ -18,6 +18,9 @@ $curator_id = $info["curator_id"];
 $user_name = $user_info["user_name"];
 $curator_name = $info["curator_name"];
 $logo = $info["logo_location"]; //$info["curator_logo"];
+$bank_code = $info["payout_bank_id"];
+$account_name = $info["payout_account_name"];
+$account_number = $info["payout_account_number"];
 
 
 ?>
@@ -77,15 +80,18 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 											$paystack = new paystack_custom();
 											$banks = $paystack->get_banks();
 
-											var_dump($banks);
 											foreach ($banks as $entry) {
 												$name = $entry["name"];
 												$code = $entry["code"];
-												echo "<option value='$name=$code'>$name</option>";
+												if ($code== $bank_code){
+
+													echo "<option value='$name=$code' selected>$name</option>";
+												}else{
+													echo "<option value='$name=$code'>$name</option>";
+
+												}
 											}
 										?>
-										<option value="">Ecobank</option>
-										<option value="">Stanbic</option>
 									</select>
 								</div>
 							</div>
@@ -95,7 +101,10 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 									<p>Account Number</p>
 								</div>
 								<div class="form-input-field">
-									<input type="text" name="account_number" >
+
+									<?php
+										echo "<input type='text' name='account_number' value='$account_number'>"
+									?>
 								</div>
 							</div>
 
@@ -104,7 +113,10 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 									<p>Name on Account</p>
 								</div>
 								<div class="form-input-field">
-									<input type="text" name="account_name" >
+
+									<?php
+										echo "<input type='text' name='account_name' value='$account_name'>";
+									?>
 								</div>
 							</div>
 							<div class="d-flex justify-content-end">

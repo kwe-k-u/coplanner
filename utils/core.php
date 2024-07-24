@@ -304,6 +304,10 @@ if (session_status() == PHP_SESSION_NONE){
 			</button>";
 	}
 
+	function is_array_associative($array) {
+		return is_array($array) && array_keys($array) !== range(0, count($array) - 1);
+	}
+
 
 
 ?>

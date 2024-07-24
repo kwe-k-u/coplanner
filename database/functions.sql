@@ -1346,11 +1346,12 @@ DROP PROCEDURE IF EXISTS get_shared_experience_activities;
 DELIMITER //
 CREATE PROCEDURE get_shared_experience_activities(IN in_experience_id VARCHAR(100))
 BEGIN
-	SELECT sa.*, a.activity_name, d.destination_name, d.location,d.rating FROM shared_experience_activities as sa
+	SELECT sa.*, a.activity_name, d.destination_name, d.location,d.rating
+  FROM shared_experience_activities as sa
 	inner join destinations as d on d.destination_id = sa.destination_id
 	inner join activities as a on a.activity_id = sa.activity_id
 	where sa.experience_id = in_experience_id
-   order by sa.visit_date, sa.destination_id;
+   order by sa.visit_date, sa.date_updated;
 END //
 DELIMITER ;
 
@@ -1359,7 +1360,7 @@ DROP PROCEDURE IF EXISTS get_experience_packages;
 DELIMITER //
 CREATE PROCEDURE get_experience_packages(IN in_experience_id VARCHAR(100))
 BEGIN
-	SELECT * from shared_experience_payment_package where experience_id = in_experience_id and is_default = 0;
+	SELECT * from shared_experience_payment_package where experience_id = in_experience_id and is_default = 0 order by order_index;
 END //
 DELIMITER ;
 

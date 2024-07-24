@@ -344,7 +344,13 @@ function displayUpload(targetDisplay, file) {
 
 function newDisplayUpload(targetDisplay,file){
   if(file){
-    let fileurl = URL.createObjectURL(file);
+    let fileurl = null
+    if(file instanceof File){
+      fileurl = URL.createObjectURL(file);
+      console.log("new file system");
+    }else{
+      fileurl = file;
+    }
     $(`${targetDisplay}`).css("background-image", `url(${fileurl})`);
     // add the remove button
     $(`${targetDisplay}`).get(0).firstChild.innerText = "Replace";

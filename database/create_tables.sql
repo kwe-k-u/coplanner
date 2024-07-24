@@ -844,6 +844,7 @@ CREATE VIEW vw_shared_experiences AS
 		currency.currency_name,
         p.min_amount as booking_fee,
 		p.plan_id,
+		p.plan_name
 		c.curator_name,
 		(SELECT 0) as remaining_seats,
         (SELECT p.min_amount * 0.03) as platform_fee,

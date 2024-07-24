@@ -517,3 +517,35 @@ function reject_travel_plan_request($request_id){
 	$public = new public_class();
 	return $public->reject_travel_plan_request($request_id);
 }
+
+function remove_experience_tags($experience_id,$tag_id=null){
+	$public = new public_class();
+	return $public->remove_experience_tags($experience_id,$tag_id);
+}
+
+function remove_experience_flyer($experience_id){
+	$public = new public_class();
+	return $public->remove_experience_flyer($experience_id);
+}
+
+function remove_experience_media($experience_id,$media_id){
+	$public = new public_class();
+	return $public->remove_experience_media($experience_id,$media_id);
+}
+
+function update_shared_experience_flyer($experience_id,$media_location,$media_type){
+	$public = new public_class();
+	return $public->update_shared_experience_flyer($experience_id,$media_location,$media_type);
+}
+
+function edit_shared_experience($experience_id,$name, $description,$start_date,$currency,$price,$seats){
+	$public = new public_class();
+	return $public->edit_shared_experience($experience_id,$name, $description,$start_date,$currency,$price,$seats);
+}
+
+function edit_shared_experience_package($experience_id,$package_name,$package_description,$currency,$min_fee,$max_fee,
+$package_seats,$package_start_date,$package_end_date){
+	$public = new public_class(0);
+	return $public->edit_shared_experience_package($experience_id,$package_name,$package_description,$currency,$min_fee,$max_fee,
+	$package_seats,$package_start_date,$package_end_date);
+}

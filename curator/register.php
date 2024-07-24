@@ -101,7 +101,6 @@ $mixpanel->log_page_view("Curator Register");
                             $paystack = new paystack_custom();
                             $banks = $paystack->get_banks();
 
-                            var_dump($banks);
                             foreach ($banks as $entry) {
                                 $name = $entry["name"];
                                 $code = $entry["code"];

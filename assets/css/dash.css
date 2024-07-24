@@ -17,8 +17,10 @@ aside{
 	position: fixed;
 	display: flex;
 	min-width: 15vw;
+	max-width: 15vw;
 	box-shadow: var(--box-shadow-4);
 	z-index: 1;
+	overflow-x: hidden;
 }
 
 aside .nav-pills .active{

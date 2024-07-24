@@ -25,11 +25,11 @@
 			}else{
 				if(!isset($_COOKIE[$this->cookie_name])){
 					$cookie_value = generate_id();
-					setcookie(
-						$this->cookie_name,
-						$cookie_value,
-						time() + (90 * 24 * 60 * 60), "/"
-					);
+					// setcookie(
+					// 	$this->cookie_name,
+					// 	$cookie_value,
+					// 	time() + (90 * 24 * 60 * 60), "/"
+					// );
 				}else{
 					$cookie_value = $_COOKIE[$this->cookie_name];
 				}
@@ -198,6 +198,27 @@
 			$this->panel->track("Page View", $data);
 		}
 
+		function export_data($api_key,$start,$end,$path = null){
+			$http = new http_handler();
+			$response = $http->get("https://data.mixpanel.com/api/2.0/export?from_date=$start&to_date=$end",
+			null, array("authorization"=>"Basic ". base64_encode($api_key)));
+
+			$lines = explode("\n", trim($response));
+
+			// Process each line as JSON
+			$data = [];
+			foreach ($lines as $line) {
+				if (!empty($line)) {
+					$data[] = json_decode($line, true);
+				}
+			}
+
+
+			file_put_contents($path ?? __DIR__."/../logs/mixpanel$end.json", json_encode($data, JSON_PRETTY_PRINT));
+
+			return $path ?? __DIR__."/../logs/mixpanel$end.json";
+
+		}
 
 
 

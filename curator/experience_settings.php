@@ -46,6 +46,7 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 	require_once(__DIR__ . "/../components/new_dash_sidebar.php");
 	?>
 	<main>
+		<div class="loader"></div>
 
 
 		<div class="row">
@@ -127,7 +128,7 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 					<div class="dashcard-body">
 						<div class="input-field">
 							<small class="text-gray-1">This will be the first image people see<span class="text-gray-2"></span></small>
-							<div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo">
+							<!-- <div class="file-input drag-n-drop type-img" data-display-target="#logo-display" data-input-target="#company_logo">
 								<div class="upload-symbol">
 									<img src="../assets/images/svgs/upload-symbol.svg" alt="upload symbol image">
 								</div>
@@ -135,7 +136,11 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 								<span class="text-gray-1">JPG,PNG</span>
 								<input class="img-upload" name="company_logo" id="company_logo" accept=".png, .jpg, .jpeg, .svg" type="file" data-display-target="#logo-display">
 								<div data-input-target="#company_logo" id="logo-display" class="img-display"></div>
-							</div>
+							</div> -->
+							<div class="file-input drag-n-drop type-img img-display-2" data-input-target="#company_logo" data-display-target="#company_logo_target" id="company_logo_target">
+										<input type="file" class="img-upload" name="company_logo" accept=".png, .jpg, .jpeg, .svg" id="company_logo" data-display-target="#company_logo_target">
+										<button class="btn easygo-btn-7">Upload</button>
+									</div>
 						</div>
 						<div class="row mt-4 " id="additional-image-row">
 							<small class="text-gray-1">Upload additional Images (We recommend images of activities)</small>
@@ -208,7 +213,7 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 									<div>
 										<div class="form-input-field hide" id="standard-package-field">
 											<label for="">Package Name <span class="text-gray-1">(Optional)</span></label>
-											<input type="text" name="package_name" placeholder="Will be displayed as 'Standard' if you leave this blank">
+											<input type="text" id="package_name" name="package_name" placeholder="Will be displayed as 'Standard' if you leave this blank">
 										</div>
 									</div>
 									<div class="row mt-3">
@@ -222,14 +227,14 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 
 											<div class="form-input-field">
 												<label for="">Booking Fee</label>
-												<input type="number" name="booking_fee" id="">
+												<input type="number" name="booking_fee" id="booking_fee">
 											</div>
 										</div>
 										<div class="col-md-4">
 
 											<div class="form-input-field">
 												<label for="">Number of seats available</label>
-												<input type="number" name="num_seats" id="">
+												<input type="number" name="num_seats" id="num_seats">
 											</div>
 										</div>
 									</div>
@@ -245,20 +250,20 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 									</div>
 									<div class="form-input-field">
 										<label for="">Package Description <span class="text-gray-1">(Short Description of what the package is)</span></label>
-										<input type="text" name="package_description" placeholder="Package books two seats for couples">
+										<input type="text" name="package_description" placeholder="EG: Package books two seats for couples">
 									</div>
 
 									<div class="row mt-3">
 										<div class="col-md-3">
 											<div class="form-input-field">
-												<label for="start_date">Available From</label>
-												<input type="date" name="end_date" id="start_date">
+												<label for="package_start_date">Available From</label>
+												<input type="date" name="start_date" id="package_start_date">
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-input-field">
-												<label for="start_date">Available Until</label>
-												<input type="date" name="start_date" id="start_date">
+												<label for="package_end_date">Available Until</label>
+												<input type="date" name="end_date" id="package_end_date">
 											</div>
 										</div>
 										<div class="col-md-3">

@@ -24,7 +24,7 @@ try {
 			$error_logger->write_log("fatal_error.log","[{$error['type']}] {$error['message']} - {$error['file']}:{$error['line']}");
 			$error_logger->write_log("fatal_error_details.log",json_encode($_SERVER));
 			notify_slack_support_msg("An error occured [{$error['type']}] {$error['message']} - {$error['file']}:{$error['line']}");
-			send_json(array("Something went terribly wrong. Our support team has been notified and it will be resolved within a day"));
+			send_json(array("msg"=>"Something went terribly wrong. Our support team has been notified and it will be resolved within a day"),201);
 		}
 	}
 
@@ -478,6 +478,119 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 			send_json(array("invoice"=> $data));
 			die();
+		case "/edit_shared_experience":
+			$logger = new Logger();
+			$logger->write_log("edit_trip_upload.log",json_encode($_POST, JSON_PRETTY_PRINT));
+
+			// log the contents of the request
+			$price = $_POST["price"];
+			$seats = $_POST["seat_count"];
+			$name = $_POST["experience_name"];
+			$description = $_POST["description"];
+			$curator = get_curator_account_by_user_id(get_session_user_id());
+			$curator_id = $curator["curator_id"];
+			$start_date = $_POST["start_date"];
+			$curator_name = $curator["curator_name"];
+			$tags = isset($_POST["experience_tags"])? $_POST["experience_tags"] : array();
+			$media_location = null;
+			$media_type= null;
+			$experience_id = $_POST["experience_id"];
+			$currency = 1;
+			$packages = isset($_POST["packages"]) ? json_decode($_POST["packages"],true) : array();
+
+			$additional_images = array();
+			for($i = 0; $i < 10; $i++){
+				$i_key = "additional-images-$i";
+				if(isset($_POST[$i_key])){
+					if (preg_match('/"(.*?)"/', $_POST[$i_key], $matches)) {
+					array_push($additional_images,$matches[1]);
+					}
+				}
+			}
+			//check if an added image has been removed
+			$current_additional_images = get_experience_media($experience_id);
+			if(count($current_additional_images) != $additional_images){
+				foreach($current_additional_images as $current){
+					if (in_array($current["media_location"],$additional_images)){
+						remove_experience_media($experience_id,$current["media_id"]);
+					}
+				}
+			}
+
+			if(!isset($_POST["flyer"])){
+				remove_experience_flyer($experience_id);
+			}
+
+
+			if ($_FILES){
+				foreach(array_keys($_FILES) as $key){
+					if ($key == "flyer"){
+						$flyer_image = $_FILES["flyer"]["name"];
+						$flyer_tmp = $_FILES["flyer"]["tmp_name"];
+						$media_type = get_file_type($flyer_image);
+						$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
+						update_shared_experience_flyer($experience_id,$media_location,$media_type);
+
+					} else  {
+						$additional_image = $_FILES[$key]["name"];
+						$additional_tmp = $_FILES[$key]["tmp_name"];
+						$media_type = get_file_type($additional_image);
+						$media_location = upload_file("uploads","images",$additional_tmp,$additional_image);
+						add_experience_media($experience_id,$media_location,$media_type);
+					}
+				}
+			}
+
+
+
+			edit_shared_experience($experience_id,$name, $description,$start_date,$currency,$price,$seats);
+
+
+
+
+
+			//remove previous tags
+			remove_experience_tags($experience_id);
+			//Add tags for the trip
+			foreach($tags as $tag){
+				add_experience_tag($experience_id,$tag);
+			}
+
+
+			// Add the different packages for the trip
+			//TODO:: remove packages that no longer exists
+			foreach($packages as $key=>$entry){
+				$package_id = $key;
+				$package_name = $entry["package_name"];
+				$package_fee = $entry["fee"];
+				$package_seats = $entry["seats"];
+				$package_start_date = $entry["start_date"];
+				$package_end_date = $entry["end_date"];
+				$package_description = $entry["package_description"];
+
+				// $exists = get_shared_experience_package($package_id);
+				// if($exists){
+					edit_shared_experience_package($package_id,$package_name,$package_description,$currency,$package_fee,$package_fee,
+					$package_seats,$package_start_date,$package_end_date);
+				// }else{
+					// add_experience_package()
+				// }
+			}
+
+			// $mixpanel->log_shared_experience_creation($curator_id,$experience_id);
+
+			// notify_slack_shared_experience_creation($curator_name,$experience_id);
+
+			send_json(array("msg"=> "Experience Edited", "experience_id" => $experience_id));
+			die();
+		case "/get_experience_details":
+			$experience_id = $_POST["experience_id"];
+			$data = get_shared_experience_by_id($experience_id);
+			$data["tags"] = get_experience_tags($experience_id);
+			$data["packages"] = get_experience_packages($experience_id);
+			$data["media"] = get_experience_media($experience_id);
+			send_json($data);
+			die();
 		case "/get_experience_invoice":
 			$experience_id = $_POST["experience_id"];
 			$package_id = $_POST["package"];
@@ -782,10 +895,10 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			die();
 		case "/create_shared_experience":
 
-			if (!is_session_user_curator()){
-				send_json(array("msg"=> "You need to be a curator to create shared experiences. Contact support at support@easygo.com.gh"),201);
-				die();
-			}
+			// if (!is_session_user_curator()){
+			// 	send_json(array("msg"=> "You need to be a curator to create shared experiences. Contact support at support@easygo.com.gh"),201);
+			// 	die();
+			// }
 			$logger = new Logger();
 			$logger->write_log("trip_upload.log",json_encode($_POST, JSON_PRETTY_PRINT));
 

@@ -60,7 +60,6 @@ if (isset($_GET["experience_id"])) {
 <link rel="preconnect" href="../assets/css/bootstrap.min.css">
 <!-- Fontawesome css -->
 <link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- <link rel="stylesheet" href="top_bar.css"> -->
 <link rel="stylesheet" href="../assets/css/general.css">
 
 
@@ -87,7 +86,7 @@ if (isset($_GET["experience_id"])) {
                                         echo "<img src='$itinerary_image' />";
                                         ?>
                                     </div>
-                                    <div class="col additional-image-group">
+                                    <div class="col-12 additional-image-group">
                                         <?php
                                             $additional_images = get_experience_media($experience_id);
                                             foreach($additional_images as $image){
@@ -322,7 +321,7 @@ if (isset($_GET["experience_id"])) {
                             </div>
                         </div>
                     </div>
-                    <div class="mt-3 mb-4" style="margin-left: auto;" >
+                    <div class="mt-3 mb-4" id="experience-description-div" >
                         <?php
 
                             if($experience_description){

@@ -64,7 +64,9 @@
 	<main>
 
 		<section class="destination-section">
-			<div class="modify-destination-options d-flex justify-content-end">
+			<div class="modify-destination-options d-flex justify-content-between">
+
+			<a href='javascript:history.go(-1)'>Go Back</a>
 				<?php
 					echo "<p>Can't find a destination? <a href='#' onclick='notify_no_destination(\"$curator_name\")'>Add a new destination</a></p>";
 				?>

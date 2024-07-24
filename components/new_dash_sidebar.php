@@ -8,7 +8,7 @@
 			echo "
 			<ul class='nav nav-pills flex-column mb-auto'>
 		  <li class='nav-item'>
-			<a href='{$server_baseurl}curator/dashboard.php' class='nav-link active' aria-current='page'>
+			<a href='{$server_baseurl}curator/dashboard.php' class='nav-link link-dark' aria-current='page'>
 				<i class='fa-solid fa-home'></i>
 			  Dashboard
 			</a>
@@ -26,9 +26,9 @@
 			</a>
 		  </li>
 		  <li>
-			<a href='{$server_baseurl}curator/travel_plan_requests.php' class='nav-link link-dark'>
-				<i class='fa-solid fa-receipt'></i>
-			  Travel Plan requests
+			<a href='{$server_baseurl}curator/travel_plan_requests.php' class='nav-link link-dark easygo-fs-3'>
+				<i class='fa-solid fa-receipt '></i>
+			  Travel Plans Requests
 			</a>
 		  </li>
 		</ul>

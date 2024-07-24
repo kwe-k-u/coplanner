@@ -11,8 +11,72 @@ $(document).ready(function () {
 		radio.addEventListener("click",showDashTab);
 	});
 
-	mixpanel.time_event("Create Shared Experience");
+	if(url_params("experience_id")){
+		show_loader();
+		prefill_details();
+		showToast("Loading Itinerary information");
+	}else{
+		mixpanel.time_event("Create Shared Experience");
+	}
 });
+
+function prefill_details(){
+	let experience_id = url_params("experience_id");
+	send_request("POST",
+		"processors/processor.php/get_experience_details",
+		{
+			"experience_id" : experience_id
+		}, (response)=> {
+			console.log(response);
+
+			if(response.status == 200){
+				document.getElementById("experience_name").value = response.data.experience_name;
+				document.getElementById("experience_description").value = response.data.experience_description;
+				document.getElementById("package_name").value = response.data.package_name;
+				if(response.data.start_date != "0000-00-00"){
+					document.getElementById('start_date').value = new Date(response.data.start_date).toISOString().split('T')[0];
+				}
+				document.getElementById('booking_fee').value = response.data.booking_fee;
+				document.getElementById('num_seats').value = response.data.number_of_seats;
+				newDisplayUpload(document.getElementById("company_logo").getAttribute("data-display-target"),response.data.media_location);
+				toggle_tags(response.data.tags);
+				populate_packages(response.data.packages);
+				populate_images(response.data.media);
+				// response.data.media_location;
+			}else{
+				showDialog("Something went wrong. Please reload and try again");
+			}
+		}
+	);
+}
+function populate_images(images){
+
+	for(let index = 0; index < images.length; index++){
+		let image = images[index];
+		let inputfield = document.getElementById("additional-img-input-"+(index+1).toString());
+		newDisplayUpload(inputfield.getAttribute("data-display-target"),image.media_location);
+	}
+}
+function populate_packages(packages){
+	packages.forEach(package => {
+		let package_box_id = duplicate_package_box();
+		document.getElementById(package_box_id).querySelector("input[name='package_name']").value = package.package_name;
+		document.getElementById(package_box_id).querySelector("input[name='package_description']").value = package.package_description;
+		if(package.expires_on != "0000-00-00"){
+		document.getElementById(package_box_id).querySelector("input[name='end_date']").value = new Date(package.expires_on).toISOString().split('T')[0];
+		}
+		document.getElementById(package_box_id).querySelector("input[name='num_seats']").value = package.seats;
+		document.getElementById(package_box_id).querySelector("input[name='booking_fee']").value = package.min_amount;
+		document.getElementById(package_box_id).id = package.plan_id;
+	});
+}
+
+
+function toggle_tags(tags){
+	tags.forEach(tag => {
+		document.getElementById(tag.tag_id).checked = true;
+	});
+}
 
 function showDashTab(){
 	let selectedTab = document.querySelector('input[name="btnradio"]:checked').getAttribute("data-toggle-target");
@@ -53,39 +117,72 @@ function get_experience_tags(){
 function submit_experience(){
 	event.preventDefault();
 	let selected_type = document.querySelector('input[name="btnradio"]:checked').id;
-	console.log(selected_type);
-	if (selected_type == "shared-experience"){
-		create_experience();
+	if(url_params("experience_id")){
+		edit_experience();
 	}else{
-		create_travel_plan();
+		if (selected_type == "shared-experience"){
+			create_experience();
+		}else{
+			create_travel_plan();
+		}
 	}
 }
+
+function edit_experience(){
+	let payload= get_shared_experience_submission();
+	if(!payload){
+		return;
+	}
+	payload["experience_id"] = url_params("experience_id");
+
+	send_request("POST",
+		"processors/processor.php/edit_shared_experience",
+		payload,
+		(response)=>{
+			if(response.status == 200){
+				goto_page("curator/destinations.php?experience_id="+url_params("experience_id"));
+			}else{
+				openDialog(response.data.msg);
+			}
+			console.log(response);
+		}
+	);
+
+}
+
 
 function get_base_data(){
 	let tags = get_experience_tags();
 	let name = document.getElementsByName("experience_name")[0].value;
 	let description = document.getElementsByName("experience_description")[0].value;
-	let flyer = document.getElementsByName("company_logo")[0].files[0];
+	// let flyer = document.getElementsByName('company_logo')[0].getAttribute("data-display-target");
+	let flyer_input = document.getElementsByName("company_logo")[0];
+	let flyer = flyer_input.files[0];
+	// flyer = document.querySelector(flyer).style.backgroundImage;
+	let flyer_background = document.querySelector(flyer_input.getAttribute("data-display-target")).style.backgroundImage;
 
 	if(!validate_experience_info(name,description)){
 		openDialog("Please confirm if you have provided all the relevant information")
 		return;
-	}else if (!flyer){
+	}else if (!flyer && flyer_background == ''){
 		openDialog("You need to add an image for your flyer")
+		return;
 	}
 
 	let payload = {
 		"experience_name" : name,
 		"description" : description,
-		"flyer" : flyer,
+		"flyer" : flyer ?? flyer_background,
 		"experience_tags" : tags
 	};
 
 	let additional_img_inputs = document.getElementById("additional-image-row").getElementsByClassName('img-upload');
 	for(let i =0; i < additional_img_inputs.length; i++){
 		let current_img_field = additional_img_inputs[i];
-		if(current_img_field.files.length > 0){
-			payload["additional-images-"+i.toString()] = current_img_field.files[0];
+		let current_img_bg = document.querySelector(current_img_field.getAttribute("data-display-target")).style.backgroundImage;
+		if(current_img_field.files.length > 0 || current_img_bg != ''){
+			// payload["additional-images-"+i.toString()] = current_img_field.files[0] ?? current_img_bg;
+			payload["additional-images-"+i.toString()] = current_img_field.files[0] ?? current_img_bg;
 		}
 	}
 
@@ -93,7 +190,9 @@ function get_base_data(){
 
 }
 
-function create_experience(){
+
+function get_shared_experience_submission(){
+
 	let booking_fee = document.getElementsByName("booking_fee")[0].value;
 	let num_seats = document.getElementsByName("num_seats")[0].value;
 	let start_date = document.getElementsByName("start_date")[0].value;
@@ -111,6 +210,16 @@ function create_experience(){
 	payload["start_date"] = start_date;
 	payload["price"] = booking_fee;
 
+	return payload;
+}
+
+
+function create_experience(){
+	let payload = get_shared_experience_submission();
+
+	if(!payload){
+		return;
+	}
 	// Get the additional images uploaded for the trip
 
 
@@ -183,12 +292,13 @@ function duplicate_package_box( ){
 	if (package_box.classList.contains("hide")){
 		document.getElementById("standard-package-field").classList.remove("hide");
 		package_box.classList.remove("hide");
-		return;
+		return package_box.id;
 	}
 	//todo check that the previous package box is filled before adding a new one
 	let newBox = package_box_clone.cloneNode(true);
 	newBox.id = "package-"+(document.getElementsByClassName("package-box").length+1);
 	shared_experience_tab.insertBefore(newBox,document.getElementById("add-package-button-parent"))
+	return newBox.id;
 }
 
 

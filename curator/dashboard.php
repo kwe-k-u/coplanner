@@ -136,8 +136,8 @@ $mixpanel->log_page_view("Curator Dashboard");
 					<th scope="col">Trip Name</th>
 					<th scope="col">Tour Date</th>
 					<th scope="col">Members</th>
-					<th scope="col">Seats Left</th>
 					<th scope="col">Trip Fee</th>
+					<th scope="col">Status</th>
 					<th scope="col">Options</th>
 				  </tr>
 				</thead>
@@ -151,7 +151,9 @@ $mixpanel->log_page_view("Curator Dashboard");
 						$start_date = format_string_as_date_fn($entry["start_date"]);
 						$currency = $entry["currency_name"];
 						$fee = $entry["booking_fee"];
-						$seats = $entry["remaining_seats"];
+						$publish = $entry["is_visible"] == 1? "published" : "draft";
+						// $seats = $entry["remaining_seats"];
+						$url = server_base_url()."curator/experience_settings.php?experience_id=$camp_id";
 						echo "<tr>
 								<th scope='row'>$title</th>
 								<td>$start_date</td>
@@ -159,9 +161,10 @@ $mixpanel->log_page_view("Curator Dashboard");
 									<div class='member-stack' data-member-count='0' data-member-max='3'>
 									</div>
 								</td>
-								<td>$seats</td>
 								<td>$currency $fee</td>
-								<td><a href='#'>Edit</a></td>
+								<td>$publish</td>
+
+								<td><a href='$url'>Edit</a></td>
 							</tr>
 						";
 					}

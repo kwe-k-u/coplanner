@@ -6,12 +6,21 @@
 
 		private function http_request($url, $request_type, $body = null ,array $header = null){
 
+
+
 			$curl = curl_init();
 
-
 			// Add header to curl request if one is given
-			if ($header != null){
-				curl_setopt_array($curl, array(CURLOPT_HTTPHEADER => $header));
+			if ($header != null){// Format headers correctly
+				if(is_array_associative($header)){
+					$formatted_headers = [];
+					foreach ($header as $key => $value) {
+						$formatted_headers[] = "{$key}: {$value}";
+					}
+					curl_setopt($curl, CURLOPT_HTTPHEADER, $formatted_headers);
+				}else{
+					curl_setopt_array($curl,array(CURLOPT_HTTPHEADER=>$header));
+				}
 			}
 
 			// Add body to curl request if one is given

@@ -606,5 +606,50 @@
 			$this->bind($request_id);
 			return $this->db_query();
 		}
+
+		function remove_experience_tags($experience_id,$tag_id){
+			$sql = "CALL remove_experience_tags(?,?)";
+			$this->prepare($sql);
+			 $this->bind($experience_id,$tag_id);
+			return $this->db_query();
+		}
+
+
+		function edit_shared_experience_package($experience_id,$package_name,$package_description,$currency,$min_fee,
+		$max_fee,$package_seats,$package_start_date,$package_end_date){
+			$sql = "CALL edit_shared_experience_package(?,?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$package_name,$package_description,$currency,$min_fee,$max_fee,
+			$package_seats,$package_end_date);
+			return $this->db_query();
+		}
+
+		function edit_shared_experience($experience_id,$name, $description,$start_date,$currency,$price,$seats){
+			$sql = " CALL edit_shared_experience(?,?,?,?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$name, $description,$start_date,$currency,$price,$seats);
+			return $this->db_query();
+		}
+
+		function remove_experience_media($experience_id,$media_location){
+			$sql = "CALL remove_experience_media_by_location(?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$media_location);
+			return $this->db_query();
+		}
+
+		function remove_experience_flyer($experience_id){
+			$sql = "CALL remove_experience_flyer(?)";
+			$this->prepare($sql);
+			$this->bind($experience_id);
+			return $this->db_query();
+		}
+
+		function update_shared_experience_flyer($experience_id,$location,$type){
+			$sql = "CALL update_shared_experience_flyer(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$location,$type);
+			return $this->db_query();
+		}
 	}
 ?>
