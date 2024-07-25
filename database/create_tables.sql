@@ -449,6 +449,7 @@ CREATE TABLE shared_experience_activities(
 	currency VARCHAR(15),
 	price DOUBLE,
 	visit_date DATETIME, --  The date that the person will be visiting
+	date_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
 	primary key (experience_id,activity_id,destination_id),
 	FOREIGN KEY (experience_id,destination_id) REFERENCES shared_experience_destinations(experience_id,destination_id)
 );
@@ -844,7 +845,7 @@ CREATE VIEW vw_shared_experiences AS
 		currency.currency_name,
         p.min_amount as booking_fee,
 		p.plan_id,
-		p.plan_name
+		p.package_name,
 		c.curator_name,
 		(SELECT 0) as remaining_seats,
         (SELECT p.min_amount * 0.03) as platform_fee,

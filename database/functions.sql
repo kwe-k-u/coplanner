@@ -1765,9 +1765,14 @@ CREATE PROCEDURE add_experience_activity(
 	IN in_visit_date DATETIME
 )
 begin
+	DECLARE temp_id VARCHAR(100);
+
 	call add_experience_destination(in_experience_id,in_destination_id);
-	INSERT INTO `shared_experience_activities`(`experience_id`, `activity_id`, `destination_id`,`visit_date`)
-	VALUES (in_experience_id,in_activity_id,in_destination_id,in_visit_date);
+	SELECT experience_id into temp_id FROM shared_experience_activities where experience_id = in_experience_id and  destination_id = in_destination_id and activity_id = in_activity_id;
+	IF temp_id IS NULL THEN
+		INSERT INTO `shared_experience_activities`(`experience_id`, `activity_id`, `destination_id`,`visit_date`)
+		VALUES (in_experience_id,in_activity_id,in_destination_id,in_visit_date);
+	END IF;
 end //
 DELIMITER ;
 
@@ -2113,5 +2118,84 @@ DELIMITER //
 CREATE PROCEDURE reject_travel_plan_request(IN in_request_id VARCHAR(100))
 BEGIN
 	UPDATE travel_plan_requests SET status ="rejected" WHERE request_id = in_request_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS remove_experience_tags;
+DELIMITER //
+CREATE PROCEDURE remove_experience_tags(IN in_experience_id VARCHAR(100), IN in_tag_id int)
+BEGIN
+	IF in_tag_id IS NULL THEN
+		DELETE FROM shared_experience_tags where experience_id = in_experience_id;
+	ELSE
+		DELETE FROM shared_experience_tags where experience_id = in_experience_id and tag_id = in_tag_id;
+	END IF;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS remove_experience_flyer;
+DELIMITER //
+CREATE PROCEDURE remove_experience_flyer(IN in_experience_id VARCHAR(100))
+BEGIN
+	DECLARE in_media_id VARCHAR(100);
+
+	SELECT media_id into in_media_id FROM shared_experiences where experience_id = in_experience_id;
+	IF in_media_id IS NOT NULL THEN
+		UPDATE shared_experiences SET media_id = NULL where experience_id = in_experience_id;
+		DELETE FROM media where media_id = in_media_id;
+	END IF;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS update_shared_experience_flyer;
+DELIMITER //
+CREATE PROCEDURE update_shared_experience_flyer(IN in_experience_id VARCHAR(100), IN in_location TEXT, in in_type VARCHAR(50))
+BEGIN
+	DECLARE in_media_id VARCHAR(100);
+	SELECT upload_media(in_location,in_type,0) INTO in_media_id;
+	UPDATE shared_experiences SET media_id = in_media_id WHERE experience_id = in_experience_id;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS remove_experience_media_by_location;
+DELIMITER //
+CREATE PROCEDURE remove_experience_media_by_location(IN in_experience_id VARCHAR(100),in in_location TEXT)
+BEGIN
+	DECLARE  in_media_id VARCHAR(100);
+	SELECT media_id INTO in_media_id FROM media where media_location = in_location;
+	DELETE FROM shared_experience_media where media_id = in_media_id and experience_id = in_experience_id;
+	DELETE FROM media where media_id = in_media_id;
+END  //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS edit_shared_experience;
+DELIMITER //
+CREATE PROCEDURE edit_shared_experience(
+	IN in_experience_id VARCHAR(100),
+	IN in_name VARCHAR(100),
+	IN in_description TEXT,
+	in in_start DATETIME,
+	in in_currency INT,
+	in in_price double,
+	IN in_seats INT
+)BEGIN
+	DECLARE in_plan_id VARCHAR(100);
+	UPDATE `shared_experiences` SET `experience_name`= in_name,`experience_description`=in_description,`start_date`=in_start,`number_of_seats`=in_seats WHERE experience_id = in_experience_id;
+
+	SELECT plan_id into in_plan_id from vw_shared_experiences where experience_id = in_experience_id;
+
+	UPDATE `shared_experience_payment_package` SET `seats`=in_seats,`currency_id`=in_currency,`min_amount`=in_price WHERE experience_id = in_experience_id AND is_default = 1;
+
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS edit_shared_experience_package;
+DELIMITER //
+CREATE PROCEDURE edit_shared_experience_package(IN in_plan_id VARCHAR(100), IN in_name VARCHAR(100), IN in_description TEXT,IN in_currency INT,IN in_min_price DOUBLE, in in_max_price DOUBLE, in in_seats INT,  in in_end DATETIME)
+BEGIN
+	UPDATE `shared_experience_payment_package` SET `package_name`=in_name,`package_description`=in_description,`seats`=in_seats,`currency_id`=in_currency,`min_amount`=in_min_price,`max_amount`=in_max_price,`expires_on`=in_end WHERE plan_id = in_plan_id;
 END //
 DELIMITER ;

@@ -89,13 +89,17 @@ main{
 	max-height: 25em;
 	min-width: 15em;
 	padding: 0px;
-	max-width: 15em;
+	/* max-width: 25em; */
 	margin-top: 4px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	display: flex;
+	flex-direction: row;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 968px) {
 	.additional-image-group{
-		min-height: 20em;
+		/* min-height: 20em; */
 	}
 }
 
