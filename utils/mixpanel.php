@@ -203,6 +203,7 @@
 			$response = $http->get("https://data.mixpanel.com/api/2.0/export?from_date=$start&to_date=$end",
 			null, array("authorization"=>"Basic ". base64_encode($api_key)));
 
+
 			$lines = explode("\n", trim($response));
 
 			// Process each line as JSON

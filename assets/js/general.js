@@ -881,7 +881,7 @@ function member_display() {
 function initialise_mixpanel(){
   mixpanel.init(mixpanel_token,{
     debug: server_mode == "LOCALHOST",
-    track_pageview: false,
+    track_pageview: true,
     persistence: "localStorage"
   });
   mixpanel.identify(mixpanel_id);

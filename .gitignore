@@ -4,3 +4,5 @@ logs/*
 .env
 *.env
 uploads/*
+test/*.json
+test/*.csv

@@ -3,7 +3,9 @@ $(document).ready(function (){
 	package_select_listener();
 
 
-	$("#remind-me-btn").click(()=> mixpanel.track("Remind me button clicked"));
+	// $("#remind-me-btn").click(()=> mixpanel.track("Remind me button clicked",{
+	// 	"user_name":
+	// }));
 	$(".package-label").click(() => {
 		const packageName = $(this).find(".package-option-name").text();
 		mixpanel.track("Package Selected", { "package_name": packageName });
@@ -230,14 +232,18 @@ function remind_me(){
 	){
 		// if user has advanced beyond entering their name do the reminder
 		if (validate_user_info()){
+			let payload ={
+				"experience_id" : url_params("experience_id"),
+				"user_name" : user_name_field.value,
+				"email" : user_email_field.value,
+				"phone" : user_phone_field.value
+			};
+
+			
+			mixpanel.track("Remind me button clicked",payload);
 			send_request("POST",
 				"processors/processor.php/shared_experience_reminder",
-				{
-					"experience_id" : url_params("experience_id"),
-					"user_name" : user_name_field.value,
-					"email" : user_email_field.value,
-					"phone" : user_phone_field.value
-				},
+				payload,
 				(response)=>{
 					if(response.status == 200){
 						showToast(response.data.msg);
