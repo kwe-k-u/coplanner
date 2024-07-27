@@ -53,3 +53,55 @@ function show_dash_sidebar(){
 		}
 	});
 }
+
+function quick_edit_prep(){
+	let target = event.target;
+	let id = target.getAttribute("data-experience-id");
+	send_request("POST","processors/processor.php/get_experience_details",
+		{
+			"experience_id" : id
+		}, (response)=>{
+			if (response.status == 200){
+				document.getElementById("quick-edit-seats").value = response.data.number_of_seats;
+				document.getElementById("quick-edit-fee").value = response.data.booking_fee;
+				document.getElementById("quick-edit-status").value = response.data.is_visible;
+				document.getElementById("quick-edit-modal").setAttribute("experience_id",id);
+				newDisplayUpload(document.getElementById("company_logo").getAttribute("data-display-target"),response.data.media_location);
+			}else{
+				$("quick-edit-modal").modal("hide");
+				openDialog(response.data.msg);
+			}
+		}
+	)
+	console.log(id);
+	document.getElementById("adv-edit-btn").setAttribute("href",baseurl+"curator/experience_settings.php?experience_id="+id);
+}
+
+function quick_edit_submit(){
+	let experience_id = document.getElementById("quick-edit-modal").getAttribute("experience_id");
+	let seats = document.getElementById("quick-edit-seats").value;
+	let fee = document.getElementById("quick-edit-fee").value;
+	let status = document.getElementById("quick-edit-status").value;
+	let flyer = document.getElementById("company_logo").files[0];
+
+	send_request("POST","processors/processor.php/quick_edit_experience",{
+		"experience_id" : experience_id,
+		"seats" : seats,
+		"fee" : fee,
+		"status" : status,
+		"flyer" : flyer
+	},(response)=> {
+		if (response.status == 200){
+			// Hide modal
+			$("#quick-edit-modal").modal("hide");
+			//Update table row for experience
+			let row = document.getElementById("trip_row_"+experience_id);
+			row.children[3].innerText = "GHS "+fee;
+			row.children[4].innerText = status == 1 ? "Published" : "Draft";
+			// #show success toast
+			showToast(response.data.msg);
+		}else{
+			openDialog(response.data.msg);
+		}
+	});
+}

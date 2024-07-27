@@ -207,7 +207,7 @@
 						<a href="../curator/register.php"> Click here to get started </a>.
 						If you are a registered company, you can upload your business certificate as this will help speed up your
 						account verification.
-						If you're yet to register your company, you can reach out to our support team to make alternative arrangements. <a href="https://www.wa.me/233506899883">Contact Support here</a>
+						If you're yet to register your company, you can reach out to our support team to make alternative arrangements. <a href="https://wa.me/233506899883">Contact Support here</a>
 					</p>
 				</div>
 			  </div>

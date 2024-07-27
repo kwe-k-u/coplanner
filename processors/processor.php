@@ -1197,6 +1197,29 @@ if (in_array($requestOrigin, $allowedDomains)) {
 
 
 			die();
+		case "/quick_edit_experience":
+			$experience_id = $_POST["experience_id"];
+			$seats = $_POST["seats"];
+			$fee = $_POST["fee"];
+			$status = $_POST["status"];
+
+			if (isset($_FILES["flyer"])){
+				$flyer_image = $_FILES["flyer"]["name"];
+				$flyer_tmp = $_FILES["flyer"]["tmp_name"];
+				$media_type = get_file_type($flyer_image);
+				$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
+				update_shared_experience_flyer($experience_id,$media_location,$media_type);
+
+			}
+
+			$success = quick_edit_experience($experience_id,$seats,$fee,$status);
+			if($success){
+				send_json(array('msg'=> "Successfully updated your experience"));
+			}else{
+				send_json(array("msg"=> "Something went wrong. Please try again"),201);
+			}
+
+			die();
 		default:
 			send_json(array("msg"=> "Method not implemented"));
 			break;

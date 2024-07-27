@@ -1,19 +1,19 @@
 <?php
-	require_once(__DIR__ . "/../utils/core.php");
-	require_once(__DIR__ . "/../controllers/public_controller.php");
+require_once(__DIR__ . "/../utils/core.php");
+require_once(__DIR__ . "/../controllers/public_controller.php");
 
-	if (!is_session_user_curator()) {
-		header("Location: ../index.php");
-		die();
-	}
+if (!is_session_user_curator()) {
+	header("Location: ../index.php");
+	die();
+}
 
 
-	$info =get_curator_account_by_user_id(get_session_user_id());//get_collaborator_info(get_session_user_id());
-	$user_info = get_user_info(get_session_user_id());
-	$curator_id = $info["curator_id"];
-	$user_name = $user_info["user_name"];
-	$curator_name = $info["curator_name"];
-	$logo = $info["logo_location"];//$info["curator_logo"];
+$info = get_curator_account_by_user_id(get_session_user_id()); //get_collaborator_info(get_session_user_id());
+$user_info = get_user_info(get_session_user_id());
+$curator_id = $info["curator_id"];
+$user_name = $user_info["user_name"];
+$curator_name = $info["curator_name"];
+$logo = $info["logo_location"]; //$info["curator_logo"];
 
 $mixpanel = new mixpanel_class();
 $mixpanel->log_page_view("Curator Dashboard");
@@ -23,28 +23,30 @@ $mixpanel->log_page_view("Curator Dashboard");
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-	<?php include_once(__DIR__."/../utils/analytics/google_tag.php") ?>
+	<meta charset="UTF-8">
+	<?php include_once(__DIR__ . "/../utils/analytics/google_tag.php") ?>
 	<link rel="icon" href="../assets/images/site_images/favicon.ico" type="image/x-icon">
-	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Curator - Dashboard</title>
-    <!-- Bootstrap css -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <!-- Fontawesome css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- easygo css -->
-    <link rel="stylesheet" href="../assets/css/general.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="noindex, nofollow" />
+	<title>Curator - Dashboard</title>
+	<!-- Bootstrap css -->
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<!-- Fontawesome css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- easygo css -->
+	<link rel="stylesheet" href="../assets/css/general.css">
 	<link rel="stylesheet" type="text/css" href="../assets/css/dash.css">
 </head>
+
 <body>
 
 
 	<?php
-		require_once(__DIR__."/../components/new_dash_header.php");
-		require_once(__DIR__."/../components/new_dash_sidebar.php");
+	require_once(__DIR__ . "/../components/new_dash_header.php");
+	require_once(__DIR__ . "/../components/new_dash_sidebar.php");
 	?>
 	<main>
 
@@ -53,7 +55,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 
 			<div class="mt-n22 topbar justify-content-space-between">
 				<h2>Your Trips</h2>
-				<a class="btn easygo-btn-5" onclick="goto_page('curator/experience_settings.php')">Create  New Tour</a>
+				<a class="btn easygo-btn-5" onclick="goto_page('curator/experience_settings.php')">Create New Tour</a>
 			</div>
 
 			<?php
@@ -62,7 +64,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 			$booking_count = $info["booking_count"];
 			$upcoming_revenue = 0;
 			$revenue = format_string_as_currency_fn($info["revenue"]);
-				echo "
+			echo "
 				<div class='row card-list '>
 				<div class='dashcard'>
 					<div class='dashcard-header mb-3'>
@@ -132,29 +134,29 @@ $mixpanel->log_page_view("Curator Dashboard");
 			<table class="table">
 
 				<thead>
-				  <tr>
-					<th scope="col">Trip Name</th>
-					<th scope="col">Tour Date</th>
-					<th scope="col">Members</th>
-					<th scope="col">Trip Fee</th>
-					<th scope="col">Status</th>
-					<th scope="col">Options</th>
-				  </tr>
+					<tr>
+						<th scope="col">Trip Name</th>
+						<th scope="col">Tour Date</th>
+						<th scope="col">Members</th>
+						<th scope="col">Trip Fee</th>
+						<th scope="col">Status</th>
+						<th scope="col">Options</th>
+					</tr>
 				</thead>
 				<tbody>
-				<?php
+					<?php
 					$trips = get_curator_listings($curator_id);
-					$trips = array_slice($trips,0,3);
-					foreach($trips as $entry){
+					$trips = array_slice($trips, 0, 3);
+					foreach ($trips as $entry) {
 						$title = $entry["experience_name"];
 						$camp_id = $entry["experience_id"];
 						$start_date = format_string_as_date_fn($entry["start_date"]);
 						$currency = $entry["currency_name"];
 						$fee = $entry["booking_fee"];
-						$publish = $entry["is_visible"] == 1? "published" : "draft";
+						$publish = $entry["is_visible"] == 1 ? "published" : "draft";
 						// $seats = $entry["remaining_seats"];
-						$url = server_base_url()."curator/experience_settings.php?experience_id=$camp_id";
-						echo "<tr>
+						$url = server_base_url() . "curator/experience_settings.php?experience_id=$camp_id";
+						echo "<tr id='trip_row_$camp_id'>
 								<th scope='row'>$title</th>
 								<td>$start_date</td>
 								<td>
@@ -164,17 +166,17 @@ $mixpanel->log_page_view("Curator Dashboard");
 								<td>$currency $fee</td>
 								<td>$publish</td>
 
-								<td><a href='$url'>Edit</a></td>
+								<td><a href='#' data-bs-toggle='modal' data-bs-target='#quick-edit-modal' data-experience-id='$camp_id' onclick='quick_edit_prep()'>Edit</a></td>
 							</tr>
 						";
 					}
-				?>
+					?>
 
 				</tbody>
-			  </table>
-			  <div class="table-footer">
-				<a href="#">View All Trips</a>
-			  </div>
+			</table>
+			<div class="table-footer">
+				<a href="trips.php">View All Trips</a>
+			</div>
 		</div>
 
 		<div class="row">
@@ -183,26 +185,26 @@ $mixpanel->log_page_view("Curator Dashboard");
 					<h4 class="table-title">Bookings</h4>
 					<table class="table">
 						<thead>
-						  <tr>
-							<th scope="col">Member Name</th>
-							<th scope="col">Trip Name</th>
-							<th scope="col">Booking Date</th>
-							<th scope="col">Seats</th>
-						  </tr>
+							<tr>
+								<th scope="col">Member Name</th>
+								<th scope="col">Trip Name</th>
+								<th scope="col">Booking Date</th>
+								<th scope="col">Seats</th>
+							</tr>
 						</thead>
 						<tbody>
 							<?php
-								$bookings = get_curator_bookings($curator_id);
-								foreach ($bookings as $entry){
+							$bookings = get_curator_bookings($curator_id);
+							foreach ($bookings as $entry) {
 
-									$name = $entry["user_name"];
-									$date_booked = format_string_as_date_fn($entry["date_booked"]);
-									$transaction_amount = $entry["amount"];
-									$currency = $entry["currency_name"];
-									$seats = $entry["seats_booked"];
-									$trip_date = format_string_as_date_fn($entry["start_date"]);
-									$trip_name = $entry["experience_name"];
-									echo "
+								$name = $entry["user_name"];
+								$date_booked = format_string_as_date_fn($entry["date_booked"]);
+								$transaction_amount = $entry["amount"];
+								$currency = $entry["currency_name"];
+								$seats = $entry["seats_booked"];
+								$trip_date = format_string_as_date_fn($entry["start_date"]);
+								$trip_name = $entry["experience_name"];
+								echo "
 									<tr>
 										<th scope='row'>
 												<p class=' easygo-fs-4'>$name</p>
@@ -216,15 +218,15 @@ $mixpanel->log_page_view("Curator Dashboard");
 										<td>$seats</td>
 									</tr>
 									";
-								}
+							}
 							?>
 
 
-						  </tbody>
-						  </table>
-						  <div class="table-footer">
-							<a href="#">View All Bookings</a>
-						  </div>
+						</tbody>
+					</table>
+					<div class="table-footer">
+						<a href="#">View All Bookings</a>
+					</div>
 				</div>
 			</div>
 
@@ -233,99 +235,153 @@ $mixpanel->log_page_view("Curator Dashboard");
 					<h4 class="table-title">Your Team</h4>
 					<table class="table">
 						<thead>
-						  <tr>
-							<th scope="col w-100">Name</th>
-							<td>Email</td>
-						  </tr>
+							<tr>
+								<th scope="col w-100">Name</th>
+								<td>Email</td>
+							</tr>
 						</thead>
 						<tbody>
 							<?php
-								$collaborators = get_curator_collaborators($curator_id);
-								foreach($collaborators as $entry){
-									$name = $entry["user_name"];
-									$email = $entry["email"];
-									echo "
+							$collaborators = get_curator_collaborators($curator_id);
+							foreach ($collaborators as $entry) {
+								$name = $entry["user_name"];
+								$email = $entry["email"];
+								echo "
 									<tr>
 										<th scope='row w-100'>$name</th>
 										<td>$email</td>
 									</tr>
 									";
-								}
+							}
 							?>
 
-						  </tbody>
-						  </table>
-						  <div class="table-footer">
-							  <button class="btn easygo-btn-1"  data-bs-target="#invite-collaborator-modal" data-bs-toggle="modal">Add Team Member</button>
-						  </div>
+						</tbody>
+					</table>
+					<div class="table-footer">
+						<button class="btn easygo-btn-1" data-bs-target="#invite-collaborator-modal" data-bs-toggle="modal">Add Team Member</button>
+					</div>
 				</div>
 			</div>
 		</div>
 
 
+		<!-- ============================== -->
+		<!-- Quick Edit modal [start] -->
+		<div class="modal fade" id="quick-edit-modal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content p-5">
+					<div class="">
+						<h4>Quick Edit</h4>
+						<p>Experience Name</p>
+					</div>
 
-    <!-- ============================== -->
-    <!-- Curator invite modal [start] -->
-    <div class="modal fade" id="invite-collaborator-modal">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content p-5">
-                <div class="col">
-                    <div>
-                        <div style='overflow-x: auto;'>
-                        </div>
-                        <h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
-                        <small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
-                        <div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
-                        <form onsubmit='invite_collaborator(this)'>
-                            <input type="hidden" name="curator_id" id="invite_modal_curator_id">
-                            <div class="col-lg-7 d-flex flex-column gap-4">
-                                <div class="form-input-field">
-                                    <div class="text-gray-1 easygo-fs-4">Collaborator Email</div>
-                                    <input type="email" name="email" placeholder="example@easygo.com">
-                                </div>
-                            </div>
+					<div class="input-field">
+						<small class="text-gray-1">Change the flyer Image<span class="text-gray-2"></span></small>
+						<div class="file-input drag-n-drop type-img img-display-2" data-input-target="#company_logo" data-display-target="#company_logo_target" id="company_logo_target">
+							<input type="file" class="img-upload" name="company_logo" accept=".png, .jpg, .jpeg, .svg" id="company_logo" data-display-target="#company_logo_target">
+							<button class="btn easygo-btn-7">Upload</button>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-4">
+							<div class="form-input-field">
+								<label for="">Seats</label>
+								<input type="text" name="" id="quick-edit-seats">
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-input-field">
+								<label for="">Price</label>
+								<input type="text" name="" id="quick-edit-fee">
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-input-field">
+								<label for="">Status</label>
+								<select name="" id="quick-edit-status">
+									<option value="1">Publish</option>
+									<option value="0">Draft</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-between mt-4">
+						<div>
+							<a class="btn easygo-btn-4 outline-btn" id='adv-edit-btn'>Advanced Edits</a>
+						</div>
+						<div>
+							<button class="btn easygo-btn-1" onclick="quick_edit_submit()">Save Changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Quick Edit modal [end] -->
+		<!-- ============================== -->
+
+		<!-- ============================== -->
+		<!-- Curator invite modal [start] -->
+		<div class="modal fade" id="invite-collaborator-modal">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content p-5">
+					<div class="col">
+						<div>
+							<div style='overflow-x: auto;'>
+							</div>
+							<h6 class="easygo-fw-1 m-0">Invite A Collaborator</h6>
+							<small class="text-gray-1 easygo-fs-6">(Add another person to manage your account)</small>
+							<div class="bg-gray-2 flex-grow-1" style="height: 1px;"></div>
+							<form onsubmit='invite_collaborator(this)'>
+								<input type="hidden" name="curator_id" id="invite_modal_curator_id">
+								<div class="col-lg-7 d-flex flex-column gap-4">
+									<div class="form-input-field">
+										<div class="text-gray-1 easygo-fs-4">Collaborator Email</div>
+										<input type="email" name="email" placeholder="example@easygo.com">
+									</div>
+								</div>
 
 
-                            <div class="col-lg-7 d-flex flex-column gap-4">
-                                <div class="form-input-field">
-                                    <div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
+								<div class="col-lg-7 d-flex flex-column gap-4">
+									<div class="form-input-field">
+										<div class="text-gray-1 easygo-fs-4">Collaborator Role</div>
 
-                                    <select name="collaborator_role">
-                                        <option value="admin">Admin</option>
-                                        <option value="edit">Edit</option>
-                                        <option value="view">View</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end gap-2 align-items-center mt-4">
-                                <button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Invite_collaborator_modal modal [end] -->
-        <!-- ============================== -->
-    </div>
+										<select name="collaborator_role">
+											<option value="admin">Admin</option>
+											<option value="edit">Edit</option>
+											<option value="view">View</option>
+										</select>
+									</div>
+								</div>
+								<div class="d-flex justify-content-end gap-2 align-items-center mt-4">
+									<button style="width: 5rem;" type="button" class="py-2 btn btn-default border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Close</button>
+									<button type="submit" class="py-2 easygo-btn-1 border easygo-fs-5 easygo-fw-2" data-bs-dismiss="modal">Send Invite</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Invite_collaborator_modal modal [end] -->
+			<!-- ============================== -->
+		</div>
 
-    <!-- Curator invite modal [end] -->
-    <!-- ============================== -->
+		<!-- Curator invite modal [end] -->
+		<!-- ============================== -->
 
 
 	</main>
 
-<!-- Bootstrap js -->
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
-<!-- JQuery js -->
-<script src="../assets/js/jquery-3.6.1.min.js"></script>
-<!-- easygo js -->
-<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
-<script src="../assets/js/general.js"></script>
-<script src="../assets/js/functions.js"></script>
-<script src="../assets/js/dash.js"></script>
-<script src="../assets/js/settings.js"></script>
+	<!-- Bootstrap js -->
+	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+	<!-- JQuery js -->
+	<script src="../assets/js/jquery-3.6.1.min.js"></script>
+	<!-- easygo js -->
+	<?php require_once(__DIR__ . "/../utils/js_env_variables.php"); ?>
+	<script src="../assets/js/general.js"></script>
+	<script src="../assets/js/functions.js"></script>
+	<script src="../assets/js/dash.js"></script>
+	<script src="../assets/js/settings.js"></script>
 </body>
 
 </html>

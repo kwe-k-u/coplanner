@@ -651,5 +651,12 @@
 			$this->bind($experience_id,$location,$type);
 			return $this->db_query();
 		}
+
+		function quick_edit_experience($experience_id,$seats,$fee,$status){
+			$sql = "CALL quick_edit_experience(?,?,?,?)";
+			$this->prepare($sql);
+			$this->bind($experience_id,$seats,$fee,$status);
+			return $this->db_query();
+		}
 	}
 ?>

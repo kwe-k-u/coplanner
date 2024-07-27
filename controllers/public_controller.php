@@ -545,7 +545,12 @@ function edit_shared_experience($experience_id,$name, $description,$start_date,$
 
 function edit_shared_experience_package($experience_id,$package_name,$package_description,$currency,$min_fee,$max_fee,
 $package_seats,$package_start_date,$package_end_date){
-	$public = new public_class(0);
+	$public = new public_class();
 	return $public->edit_shared_experience_package($experience_id,$package_name,$package_description,$currency,$min_fee,$max_fee,
 	$package_seats,$package_start_date,$package_end_date);
+}
+
+function quick_edit_experience($experience_id,$seats,$fee,$status){
+	$public = new public_class();
+	return $public->quick_edit_experience($experience_id,$seats,$fee,$status);
 }

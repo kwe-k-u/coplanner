@@ -25,7 +25,6 @@ function populate_destination_modal(button){
 		{},
 		(response)=> {
 			if (response.status == 200){
-				console.log(response.data.data);
 				update_modal(response.data.data);
 			}else{
 				showDialog("Something went wrong");

@@ -77,7 +77,7 @@ $mixpanel->log_page_view("Curator Trips");
 							$camp_id = $entry["experience_id"];
 							$url = server_base_url()."curator/experience_settings.php?experience_id=$camp_id";
 							echo "
-							<tr>
+							<tr id='trip_row_$camp_id'>
 								<th scope='row'>$name</th>
 								<td>$start_date</td>
 								<td>
@@ -86,7 +86,7 @@ $mixpanel->log_page_view("Curator Trips");
 								</td>
 								<td>$currency $fee</td>
 								<td>$publish</td>
-								<td><a href='$url'>Edit</a></td>
+								<td><a href='#' data-bs-toggle='modal' data-bs-target='#quick-edit-modal' data-experience-id='$camp_id' onclick='quick_edit_prep()'>Edit</a></td>
 							</tr>
 							";
 						}
@@ -96,6 +96,60 @@ $mixpanel->log_page_view("Curator Trips");
 			  </table>
 		</div>
 
+		<!-- ============================== -->
+		<!-- Quick Edit modal [start] -->
+		<div class="modal fade" id="quick-edit-modal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content p-5">
+					<div class="">
+						<h4>Quick Edit</h4>
+						<p>Experience Name</p>
+					</div>
+
+					<div class="input-field">
+						<small class="text-gray-1">Change the flyer Image<span class="text-gray-2"></span></small>
+						<div class="file-input drag-n-drop type-img img-display-2" data-input-target="#company_logo" data-display-target="#company_logo_target" id="company_logo_target">
+							<input type="file" class="img-upload" name="company_logo" accept=".png, .jpg, .jpeg, .svg" id="company_logo" data-display-target="#company_logo_target">
+							<button class="btn easygo-btn-7">Upload</button>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-4">
+							<div class="form-input-field">
+								<label for="">Seats</label>
+								<input type="text" name="" id="quick-edit-seats">
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-input-field">
+								<label for="">Price</label>
+								<input type="text" name="" id="quick-edit-fee">
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="form-input-field">
+								<label for="">Status</label>
+								<select name="" id="quick-edit-status">
+									<option value="1">Publish</option>
+									<option value="0">Draft</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-between mt-4">
+						<div>
+							<a class="btn easygo-btn-4 outline-btn" id='adv-edit-btn'>Advanced Edits</a>
+						</div>
+						<div>
+							<button class="btn easygo-btn-1" onclick="quick_edit_submit()">Save Changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Quick Edit modal [end] -->
+		<!-- ============================== -->
 
 
 	</main>

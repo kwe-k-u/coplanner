@@ -2199,3 +2199,19 @@ BEGIN
 	UPDATE `shared_experience_payment_package` SET `package_name`=in_name,`package_description`=in_description,`seats`=in_seats,`currency_id`=in_currency,`min_amount`=in_min_price,`max_amount`=in_max_price,`expires_on`=in_end WHERE plan_id = in_plan_id;
 END //
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS quick_edit_experience;
+DELIMITER //
+CREATE PROCEDURE quick_edit_experience(IN in_experience_id VARCHAR(100),IN in_seats INT, in in_fee DOUBLE, in in_status TINYINT)
+BEGIN
+	DECLARE package_id VARCHAR(100);
+	UPDATE shared_experiences SET number_of_seats = in_seats, is_visible = in_status  where experience_id = in_experience_id;
+
+	SELECT plan_id into package_id FROM shared_experience_payment_package WHERE is_default = 1 and experience_id = in_experience_id;
+
+	UPDATE shared_experience_payment_package SET min_amount = in_fee where plan_id = package_id;
+
+END //
+DELIMITER ;

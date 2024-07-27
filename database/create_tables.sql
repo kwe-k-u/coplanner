@@ -857,7 +857,7 @@ CREATE VIEW vw_shared_experiences AS
     inner join shared_experience_payment_package as p on p.experience_id = se.experience_id
 	inner join currency on currency.currency_id = p.currency_id
 	left join media as m on m.media_id = se.media_id
-    where p.is_default = 1;
+    where p.is_default = 1 order by se.start_date DESC;
 
 
 DROP VIEW IF EXISTS vw_payout_accounts;
