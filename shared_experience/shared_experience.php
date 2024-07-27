@@ -103,6 +103,7 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
                                 $currency = $entry["currency_name"];
                                 $fee = $entry["booking_fee"];
                                 $base_url = server_base_url();
+                                $date = format_string_as_date_fn($entry["start_date"]);
 
                                 // $next = get_campaign_tours($id)[0];
                                 // $tour_id = $next["tour_id"];
@@ -114,7 +115,12 @@ require_once(__DIR__ . "/../controllers/public_controller.php");
 
                         <div class='col-lg-4 col-md-6 p-3'>
                         <div class='trip-card' data-trip-extension='experience_id=$id'>
+                            <div class='trip-card-image'>
                             <img src='$image' alt='trip card image'>
+                                <div class='trip-card-date-pill'>
+                                    <p>$date</p>
+                                </div>
+                            </div>
                             <div class='trip-card-body'>
                                 <div class='trip-card-header'>
                                     <div class='title'>

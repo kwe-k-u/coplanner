@@ -19,7 +19,8 @@ if (isset($_GET["experience_id"])) {
     $itinerary_image = $itinerary["media_location"];
     $currency = $itinerary["currency_name"];
     $package_id = $itinerary["plan_id"];
-    $start_date = format_string_as_date_fn($itinerary["start_date"]);
+    $start_date = $itinerary["start_date"];
+    $start_date_str = format_string_as_date_fn($start_date);
     $activities = get_shared_experience_activities($experience_id);
     $mixpanel->log_shared_experience_view($experience_id, $itinerary_name);
     $experience_description = $itinerary["experience_description"];
@@ -101,16 +102,83 @@ if (isset($_GET["experience_id"])) {
                                     <h2 class='mb-1'>$itinerary_name</h2>
                                     <small>by $owner_name</small>
                                     <h4 class='mb-0 mt-3'>Date</h4>
-                                    <p>$start_date</p>
+                                    <p>$start_date_str</p>
                                     ";
 
 
                             ?>
 
                         </div >
+                        <?php
+                            if ($start_date < date("Y-m-d")){
+                        ?>
                         <div class="left-summary">
+                            <div class="invoice-main " id="sold-out-label" data-next-target='sold-out-details'>
+                                <div class="invoice-container">
+                                    <p>This experience is currently unavailable for booking, but you can still enjoy it as a private tour!
+                                    Please note that the cost might change depending on the size of your group and the prevailing rates for your chosen date
+                                    </p>
+                                    <div class='d-flex justify-content-center'>
+                                        <button class="btn outline-btn" onclick="sold_out_toggle();">
+                                            I understand
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="invoice-main hide" id="sold-out-details" data-next-target='sold-out-personal-info' data-previous-target='sold-out-label'>
+                                <div class="invoice-container">
+                                    <h4>Details</h4>
+                                    <p>Provide details about your private tour request</p>
+                                    <div class="mt-1 form-input-field">
+                                        <label for="">Preferred Date</label>
+                                        <input type="date" name="" id="sold-out-input-date">
+                                    </div>
+                                    <div class="mt-1 form-input-field">
+                                        <label for="">Number of People </label>
+                                        <input type="number" name="" id="sold-out-input-seats">
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn outline-btn" onclick="sold_out_toggle();">
+                                            Request a private trip
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="invoice-main hide" id="sold-out-personal-info" data-next-target='sold-out-complete' data-previous-target='sold-out-details'>
+                                <div class="invoice-container">
+                                    <p>Your personal information so the curator can reach out to you</p>
+                                    <div class="form-input-field">
+                                        <label for="">Your Name</label>
+                                        <input type="text" name="" id="sold-out-input-name">
+                                    </div>
+                                    <div class="form-input-field">
+                                        <label for="">Your Email</label>
+                                        <input type="text" name="" id="sold-out-input-email">
+                                    </div>
+                                    <div class="form-input-field">
+                                        <label for="">Phone Number</label>
+                                        <input type="text" name="" id="sold-out-input-number">
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn outline-btn" onclick="sold_out_toggle();">
+                                            Request a private trip
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="invoice-main hide" id="sold-out-complete" data-previous-target='sold-out-info'>
+                                <div class="invoice-container">
+                                    <p>Your request has been submitted. The curator may reach out to you soon</p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                            }else{ // expiry date else start
+                        ?>
+                        <div class="left-summary">
                             <div class="invoice-main  hide" id="invoice_section" data-previous-target="user_info_section" data-next-target="tc_section">
                                 <div class="invoice-container ">
                                     <?php
@@ -320,6 +388,9 @@ if (isset($_GET["experience_id"])) {
                                 <button class="btn easygo-btn-1" onclick="payment_btn_click(this)">Select Package</button>
                             </div>
                         </div>
+                        <?php
+                            } //expiry date else end
+                        ?>
                     </div>
                     <div class="mt-3 mb-4" id="experience-description-div" >
                         <?php

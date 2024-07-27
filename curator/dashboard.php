@@ -62,7 +62,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 
 			$upcoming = $info["active_listings"];
 			$booking_count = $info["booking_count"];
-			$upcoming_revenue = 0;
+			$upcoming_revenue = $info["upcoming_revenue"];
 			$revenue = format_string_as_currency_fn($info["revenue"]);
 			echo "
 				<div class='row card-list '>
@@ -92,7 +92,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 						<h1 class='easygo-fw-1 mb-0'>$upcoming</h1>
 					</div>
 					<div class='dashcard-footer'>
-						<p class='mb-0'>Active tours you have listed (Coming Soon)</p>
+						<p class='mb-0'>Active tours you have listed </p>
 					</div>
 				</div>
 				<div class='dashcard'>
@@ -106,7 +106,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 						<h1 class='easygo-fw-1 mb-0'>GHS $upcoming_revenue</h1>
 					</div>
 					<div class='dashcard-footer'>
-						<p class='mb-0'>Revenue From Upcoming Tour(Coming soon)</p>
+						<p class='mb-0'>Revenue From Upcoming Tour</p>
 					</div>
 				</div>
 				<div class='dashcard'>
@@ -195,6 +195,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 						<tbody>
 							<?php
 							$bookings = get_curator_bookings($curator_id);
+							$bookings = array_slice($bookings,0,3);
 							foreach ($bookings as $entry) {
 
 								$name = $entry["user_name"];
@@ -237,19 +238,25 @@ $mixpanel->log_page_view("Curator Dashboard");
 						<thead>
 							<tr>
 								<th scope="col w-100">Name</th>
-								<td>Email</td>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							$collaborators = get_curator_collaborators($curator_id);
+							$collaborators = array_slice($collaborators,0,3);
 							foreach ($collaborators as $entry) {
 								$name = $entry["user_name"];
 								$email = $entry["email"];
 								echo "
 									<tr>
-										<th scope='row w-100'>$name</th>
-										<td>$email</td>
+										<td scope='row w-100'>
+										<div class='col'>
+
+											<p class='mb-0'>$name</p>
+											<p class='mb-0 easygo-fs-4'>$email</p>
+										</div>
+										</td>
+
 									</tr>
 									";
 							}

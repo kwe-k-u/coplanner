@@ -1220,8 +1220,18 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			}
 
 			die();
+		case "/sold_out_request":
+			$experience_id = $_POST["experience_id"];
+			$user_name = $_POST["user_name"];
+			$email = $_POST["email"];
+			$number = $_POST["number"];
+			$seats = $_POST["seats"];
+			$date = $_POST["date"];
+			notify_slack_support_msg("Sold out request <$experience_id>: $user_name->$email,$number->$seats seats -> $date");
+			send_json(array("msg"=> "Your request has been submitted"));
+			die();
 		default:
-			send_json(array("msg"=> "Method not implemented"));
+			send_json(array("msg"=> "Method not implemented"),201);
 			break;
 	}
 	die();

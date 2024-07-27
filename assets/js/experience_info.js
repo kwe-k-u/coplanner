@@ -201,8 +201,6 @@ async function get_shared_experience_bill(){
 
 
 
-
-
 function package_select_listener(){
 	const packageRadios = document.getElementsByName("package");
 	const seat_field = document.getElementById("number_seats_field");
@@ -239,7 +237,7 @@ function remind_me(){
 				"phone" : user_phone_field.value
 			};
 
-			
+
 			mixpanel.track("Remind me button clicked",payload);
 			send_request("POST",
 				"processors/processor.php/shared_experience_reminder",
@@ -265,4 +263,39 @@ function display_image_modal(source){
 	$('#image-modal').modal('show');
 	document.getElementById("modal-image").src = source;
 
+}
+
+
+function sold_out_toggle(){
+	let  current_box = document.querySelectorAll(".invoice-main:not(.hide)")[0];
+	let current_id =  current_box.id;
+	let next_id = current_box.getAttribute("data-next-target");
+
+	if (next_id != "sold-out-complete"){
+		document.getElementById(current_id).classList.add("hide");
+		document.getElementById(next_id).classList.remove("hide");
+	}else{
+		let payload = {
+			"experience_id" : url_params("experience_id"),
+			"user_name" : document.getElementById("sold-out-input-name").value,
+			"email" : document.getElementById("sold-out-input-email").value,
+			"number" : document.getElementById("sold-out-input-number").value,
+			"seats" : document.getElementById("sold-out-input-seats").value,
+			"date" : document.getElementById("sold-out-input-date").value,
+		}
+		//submit to server
+		console.log("do");
+		mixpanel.track("Sold out request",payload);
+		send_request("POST","processors/processor.php/sold_out_request",
+			payload,
+			(response)=> {
+				if(response.status == 200){
+					document.getElementById(current_id).classList.add("hide");
+					document.getElementById(next_id).classList.remove("hide");
+				}else{
+					openDialog(response.data.msg);
+				}
+			}
+		)
+	}
 }

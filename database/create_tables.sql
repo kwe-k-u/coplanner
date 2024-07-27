@@ -820,12 +820,23 @@ CREATE VIEW vw_curators as
 	pa.account_name as payout_account_name,
 	pa.bank_name as payout_bank_name,
 	pa.bank_id as payout_bank_id,
-	(SELECT 0) as revenue,
-	(SELECT 0) as active_listings,
-	(SELECT 0) as booking_count
+	(SELECT COALESCE(SUM(tranc.amount),0) from shared_experience_bookings as bookings
+		inner join shared_experiences as shared on shared.experience_id = bookings.experience_id
+		inner join transactions as tranc on tranc.transaction_id = bookings.transaction_id
+		where shared.curator_id = c.curator_id
+	) as revenue,
+	(select count(*) from shared_experiences where is_visible = 1 and start_date > CURRENT_TIMESTAMP and curator_id = c.curator_id) as active_listings,
+	(SELECT count(*) from shared_experience_bookings as bookings
+		inner join shared_experiences as shared on shared.experience_id = bookings.experience_id where
+		shared.curator_id = c.curator_id
+	) as booking_count,
+	(SELECT COALESCE(sum(tranc.amount),0) from shared_experience_bookings as bookings
+		inner join shared_experiences as shared on shared.experience_id = bookings.experience_id
+		inner join transactions as tranc on tranc.transaction_id = bookings.transaction_id
+		where shared.curator_id = c.curator_id and shared.start_date > CURRENT_TIMESTAMP) as upcoming_revenue
 	 from curator as c
 	left join curator_payout_account as cpa on cpa.curator_id = c.curator_id
-	left join media as m on m.media_id = c.curator_id
+	left join media as m on m.media_id = c.logo_id
 	left join payout_accounts as pa on pa.account_id = cpa.payout_account_id;
 
 
