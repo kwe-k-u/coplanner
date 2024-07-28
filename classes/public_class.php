@@ -658,5 +658,32 @@
 			$this->bind($experience_id,$seats,$fee,$status);
 			return $this->db_query();
 		}
+
+		function get_currency_by_name($currency_name){
+			$sql = "CALL get_currency_by_name(?)";
+			$this->prepare($sql);
+			$this->bind($currency_name);
+			return $this->db_fetch_one($currency_name);
+		}
+
+
+		function get_currencies(){
+			$sql = "CALL get_currencies()";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
+
+		function get_curator_travel_plans($curator_id){
+			$sql = "CALL get_curator_travel_plans(?)";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_all();
+		}
+
+		function get_travel_plans(){
+			$sql = "CALL get_travel_plans()";
+			$this->prepare($sql);
+			return $this->db_fetch_all();
+		}
 	}
 ?>

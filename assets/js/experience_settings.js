@@ -38,6 +38,7 @@ function prefill_details(){
 				}
 				document.getElementById('booking_fee').value = response.data.booking_fee;
 				document.getElementById('num_seats').value = response.data.number_of_seats;
+				document.getElementById("price-currency").value = response.data.currency_id;
 				newDisplayUpload(document.getElementById("company_logo").getAttribute("data-display-target"),response.data.media_location);
 				toggle_tags(response.data.tags);
 				populate_packages(response.data.packages);
@@ -220,6 +221,8 @@ function create_experience(){
 	if(!payload){
 		return;
 	}
+
+	payload["currency"] = document.getElementById("price-currency").value;
 	// Get the additional images uploaded for the trip
 
 
@@ -257,6 +260,7 @@ function create_travel_plan(){
 	payload["gen_location"] = document.getElementById("general-location").value;
 	payload["what_to_expect"] = document.getElementById("what-to-expect").value;
 	payload["price"] = document.getElementById("price-estimate").value;
+	payload["currency"] = document.getElementById("estimate-currency").value;
 
 
 	send_request("POST",
@@ -264,7 +268,8 @@ function create_travel_plan(){
 		payload,
 		(response)=> {
 			if (response.status == 200){
-				goto_page("curator/destinations.php?travel_plan_id="+response.data.travel_plan_id);
+				console.log("curator/destinations.php?travel_plan_id="+response.data.travel_plan_id);
+				// goto_page("curator/destinations.php?travel_plan_id="+response.data.travel_plan_id);
 			}else{
 				openDialog(response.data.msg);
 			}

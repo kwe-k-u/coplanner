@@ -915,7 +915,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$tags = isset($_POST["experience_tags"])? $_POST["experience_tags"] : array();
 			$media_location = null;
 			$media_type= null;
-			$currency = 1;
+			$currency = $_POST["currency"];
 			$packages = isset($_POST["packages"]) ? json_decode($_POST["packages"],true) : array();
 
 			if ($_FILES){
@@ -992,7 +992,7 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			$media_type= null;
 			$gen_location = $_POST["gen_location"];
 			$what_expect = $_POST["what_to_expect"];
-			$currency = 1;
+			$currency = $_POST["currency"];
 
 			if ($_FILES){
 				$flyer_image = $_FILES["flyer"]["name"];
@@ -1230,7 +1230,24 @@ if (in_array($requestOrigin, $allowedDomains)) {
 			notify_slack_support_msg("Sold out request <$experience_id>: $user_name->$email,$number->$seats seats -> $date");
 			send_json(array("msg"=> "Your request has been submitted"));
 			die();
+		case "/get_exchange_rate":
+			$currency = $_POST["currency"];
+			$amount = $_POST["amount"];
+			$entry = get_currency_by_name($currency);
+			send_json(array("amount"=> $entry["rate"]*$amount,"currency"=> "GHS"));
+			die();
+		case "/update_exchange_rate":
+			$id = $_POST["currency_id"];
+			$new_rate = $_POST["new_rate"];
+			$success = update_currency_rate($id,$new_rate);
+			if ($success){
+				send_json(array("msg"=> "Updated Exchange rate"));
+			}else{
+				send_json(array("msg"=> "Something went wrong"),201);
+			}
+			die();
 		default:
+			notify_slack_support_msg("Received request for none implement endpoint ".$_SERVER["PATH_INFO"]);
 			send_json(array("msg"=> "Method not implemented"),201);
 			break;
 	}

@@ -107,34 +107,6 @@ async function payment_btn_click(button){
 
 
 
-	// if(!invoice_section.classList.contains("hide")){
-	// 	button.innerText = "Continue";
-	// 	invoice_section.classList.toggle("hide");
-	// 	user_info_section.classList.toggle("hide");
-	// }else if (!user_info_section.classList.contains('hide')){
-	// 	let is_input_valid = validate_user_info();
-	// 	if (is_input_valid){
-	// 		button.innerText = "Confirm Choices";
-	// 		user_info_section.classList.toggle("hide");
-	// 		booking_info_section.classList.toggle("hide");
-	// 	}
-	// }else if (!booking_info_section.classList.contains('hide')){
-	// 	get_shared_experience_bill();
-	// 	booking_info_section.classList.toggle("hide");
-	// 	tc_section.classList.toggle("hide");
-	// 	button.innerText = "Agree";
-	// 	//create_invoice
-	// }else if (!tc_section.classList.contains('hide')){
-	// 	button.innerText = "Make Payment";
-	// 	tc_section.classList.toggle("hide");
-	// 	//disable pay button
-	// 	// populate final invoice
-	// 	//enable pay button
-	// 	final_invoice_section.classList.toggle("hide");
-	// }else{
-	// 	const bill = await get_shared_experience_bill();
-	// 	pay_for_experience(bill.data.invoice);
-	// }
 }
 
 function pay_for_experience(bill){
@@ -155,6 +127,7 @@ function pay_for_experience(bill){
 	modified_bill["user_email"] = c_email;
 	modified_bill["user_phone"] = user_phone_field.value;
 	modified_bill["user_name"] = user_name_field.value;
+	console.log(bill.currency_name);
 	if(bill.payout_account_number){
 		payWithPaystack(bill.currency_name, bill.total_fee*100,c_email,modified_bill, bill.payout_account_id)
 	}else{

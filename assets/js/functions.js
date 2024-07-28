@@ -255,56 +255,67 @@ function showToast(msg = "Test toast",timeout = 3000){
 
 
 
-function payWithPaystack(currency, charge_amount,c_email,payload, split_account = null, multiplit = null){
-	let handler = PaystackPop.setup({
-		key: paystack_public_key,
-		email: c_email,
-		amount: charge_amount,
-		currency: currency,
-		metadata : payload,
-    subaccount: split_account,
-		// ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-		// label: "Optional string that replaces customer email"
+function payWithPaystack(in_currency, in_charge_amount,c_email,payload, split_account = null, multiplit = null){
+  function paystack_handler(final_currency,final_amount,final_email,final_payload, final_split_account = null){
+    console.log(final_currency,final_amount);
+    let handler = PaystackPop.setup({
+      key: paystack_public_key,
+      email: final_email,
+      amount: final_amount,
+      currency: final_currency,
+      metadata : final_payload,
+      subaccount: final_split_account,
+      // ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      // label: "Optional string that replaces customer email"
 
-		onClose: function(){
-			alert('Window closed.');
-		},
+      onClose: function(){
+        mixpanel.track("Paystack popup closed",{"email" : final_email,"amount" : final_amount,"metadata":final_payload});
+      },
 
-		callback: function(response){
-			// Confirm payment receipt
-			// send_request(
-			// 	"POST",
-			// 	"processors/processor.php",
-			// 	{
-			// 		"action" : "book_standard_tour",
-			// 		"provider" : "paystack",
-			// 		"amount_expected" : charge_amount,
-			// 		"currency_expected" : currency,
-			// 		"payload": JSON.stringify(payload),
-			// 		"response" : JSON.stringify(response)
-			// 	},
-			// 	(res)=>{
-			// 		console.log(res);
-			// 	}
-			// )
+      callback: function(response){
+        // TODO:: check status for payment and go to redirect page
 
-			// TODO:: check status for payment and go to redirect page
+        // console.log("callback",response);
+        send_request("POST",response.redirecturl,{},
+         (response) => {
+          if(response.status == 200){
+            showToast(response.data.msg);
+          }else{
+            showDialog(response.data.msg);
+          }
+         }
+        );
+        // window.location.href=response.redirecturl;
+      }
+      });
 
-			// console.log("callback",response);
-      send_request("POST",response.redirecturl,{},
-       (response) => {
-        if(response.status == 200){
-          showToast(response.data.msg);
-        }else{
-          showDialog(response.data.msg);
-        }
-       }
-      );
-			// window.location.href=response.redirecturl;
-		}
-		});
 
 		handler.openIframe();
+
+  }
+  let charge_amount = in_charge_amount;
+  let currency = in_currency;
+  if(currency != "GHS"){
+    alert("Due to banking regulations in Ghana, we will process your payment in the Ghanaian equivalent of the charged amount");
+    send_request("POST","processors/processor.php/get_exchange_rate",
+      {
+        "currency" : currency,
+        "amount" : charge_amount
+      },(response)=>{
+        if (response.status == 200){
+          currency = response.data.currency;
+          charge_amount = parseInt(response.data.amount);
+          paystack_handler(currency,charge_amount,c_email,payload, split_account);
+        }else{
+          openDialog(response.data.msg);
+        }
+      }
+    )
+  }else{
+    paystack_handler(currency,charge_amount,c_email,payload, split_account);
+
+  }
+
 }
 
 function toggle_signup_bypass(){

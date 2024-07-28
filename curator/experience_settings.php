@@ -217,24 +217,35 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 										</div>
 									</div>
 									<div class="row mt-3">
-										<div class="col-md-4">
+										<div class="col-md-6">
 											<div class="form-input-field">
 												<label for="start_date">When does the tour start</label>
 												<input type="date" name="start_date" id="start_date">
 											</div>
 										</div>
-										<div class="col-md-4">
-
-											<div class="form-input-field">
-												<label for="">Booking Fee</label>
-												<input type="number" name="booking_fee" id="booking_fee">
-											</div>
-										</div>
-										<div class="col-md-4">
+										<div class="col-md-6">
 
 											<div class="form-input-field">
 												<label for="">Number of seats available</label>
 												<input type="number" name="num_seats" id="num_seats">
+											</div>
+										</div>
+										<div class="col-md-6 mt-3">
+
+											<div class="form-input-field">
+												<label for="">Currency</label>
+												<select name="price-currency" id="price-currency">
+													<option value="1" selected>GHS (Ghanaian cedi)</option>
+													<option value="2">USD (US Dollar)</option>
+												</select>
+											</div>
+
+										</div>
+										<div class="col-md-6 mt-3">
+
+											<div class="form-input-field">
+												<label for="">Booking Fee</label>
+												<input type="number" name="booking_fee" id="booking_fee">
 											</div>
 										</div>
 									</div>
@@ -260,7 +271,7 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 												<input type="date" name="start_date" id="package_start_date">
 											</div>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-6">
 											<div class="form-input-field">
 												<label for="package_end_date">Available Until</label>
 												<input type="date" name="end_date" id="package_end_date">
@@ -295,22 +306,32 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 							<div class="tab-pane hide" id="travel-plan-tab">
 								<label for="" class="section-label">Travel Plans are tours that people can book with friends as a single booking</label>
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="form-input-field">
 											<label for="min-group-size">Minimum Group Size</label>
 											<input type="text" name="min-group-size" id="min-group-size">
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="form-input-field">
-											<label for="price-estimate">Price Estimate</label>
-											<input type="text" name="price-estimate" id="price-estimate">
-										</div>
-									</div>
-									<div class="col-md-4">
+									<div class="col-md-6">
 										<div class="form-input-field">
 											<label for="general-location">General Location</label>
 											<input type="text" name="general-location" id="general-location">
+										</div>
+									</div>
+
+									<div class="col-md-6 mt-3">
+										<div class="form-input-field">
+											<label for="price-estimate">Currency</label>
+											<select name="estimate-currency" id="estimate-currency">
+												<option value="1" selected>GHS (Ghanaian cedi)</option>
+												<option value="2">USD (US Dollar)</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6 mt-3">
+										<div class="form-input-field">
+											<label for="general-location">Price Estimate</label>
+											<input type="number" name="price-estimate" id="price-estimate">
 										</div>
 									</div>
 								</div>

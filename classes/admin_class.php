@@ -150,5 +150,13 @@
 			$this->bind($itinerary_id,$price,$currency,$collection,$image_location,$image_type);
 			return $this->db_query();
 		}
+
+
+		function update_currency_rate($currency_id,$new_rate){
+			$sql = "CALL update_currency_rate(?,?)";
+			$this->prepare($sql);
+			$this->bind($currency_id,$new_rate);
+			return $this->db_query();
+		}
 	}
 ?>

@@ -554,3 +554,18 @@ function quick_edit_experience($experience_id,$seats,$fee,$status){
 	$public = new public_class();
 	return $public->quick_edit_experience($experience_id,$seats,$fee,$status);
 }
+
+function get_currency_by_name($currency_name){
+	$public = new public_class();
+	return $public->get_currency_by_name($currency_name);
+}
+
+function get_currencies(){
+	$public = new public_class();
+	return $public->get_currencies();
+}
+
+function get_curator_travel_plans($curator_id){
+	$public = new public_class();
+	return $public->get_curator_travel_plans($curator_id);
+}

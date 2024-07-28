@@ -112,4 +112,11 @@
 		$admin = new admin_class();
 		return $admin->create_travel_plan_recommendation($itinerary_id,$collection,$price,$currency,$image_location,$image_type);
 	}
+
+
+
+	function update_currency_rate($currency_id,$new_rate){
+		$admin = new admin_class();
+		return $admin->update_currency_rate($currency_id,$new_rate);
+	}
 ?>

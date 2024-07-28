@@ -72,6 +72,9 @@
 					<li>
 						<a href="destination_requests.php" id="nav_settings_destination_requests">Destination Requests</a>
 					</li>
+					<li>
+						<a href="currency.php" id="nav_settings_destination_requests">Currencies</a>
+					</li>
 				</ul>
 			</div>
 		</li>

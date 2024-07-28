@@ -4,7 +4,7 @@
 	require_once(__DIR__."/../controllers/public_controller.php");
 	require_once(__DIR__."/../utils/mixpanel.php");
 	$mixpanel = new mixpanel_class();
-	$mixpanel->log_page_view("Travel Plan");
+	$mixpanel->log_page_view("Travel Plan View");
 
 	$plan_id = $_GET["travel_plan_id"];
 	$travel_plan = get_travel_plan_by_id($plan_id);

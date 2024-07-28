@@ -131,49 +131,105 @@ $mixpanel->log_page_view("Curator Dashboard");
 
 		<div class="dash-table">
 			<h4 class="table-title">Tours Available</h4>
-			<table class="table">
+			<div class="tab-container">
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" id="general-trips-tab" data-bs-toggle="tab" href="#general-trips">General Trips</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="private-trips-tab" data-bs-toggle="tab" href="#private-trips">Private Trips</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade show active" id="general-trips">
+						<table class="table">
 
-				<thead>
-					<tr>
-						<th scope="col">Trip Name</th>
-						<th scope="col">Tour Date</th>
-						<th scope="col">Members</th>
-						<th scope="col">Trip Fee</th>
-						<th scope="col">Status</th>
-						<th scope="col">Options</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					$trips = get_curator_listings($curator_id);
-					$trips = array_slice($trips, 0, 3);
-					foreach ($trips as $entry) {
-						$title = $entry["experience_name"];
-						$camp_id = $entry["experience_id"];
-						$start_date = format_string_as_date_fn($entry["start_date"]);
-						$currency = $entry["currency_name"];
-						$fee = $entry["booking_fee"];
-						$publish = $entry["is_visible"] == 1 ? "published" : "draft";
-						// $seats = $entry["remaining_seats"];
-						$url = server_base_url() . "curator/experience_settings.php?experience_id=$camp_id";
-						echo "<tr id='trip_row_$camp_id'>
-								<th scope='row'>$title</th>
-								<td>$start_date</td>
-								<td>
-									<div class='member-stack' data-member-count='0' data-member-max='3'>
-									</div>
-								</td>
-								<td>$currency $fee</td>
-								<td>$publish</td>
+							<thead>
+								<tr>
+									<th scope="col">Trip Name</th>
+									<th scope="col">Tour Date</th>
+									<th scope="col">Members</th>
+									<th scope="col">Trip Fee</th>
+									<th scope="col">Status</th>
+									<th scope="col">Options</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								$trips = get_curator_listings($curator_id);
+								$trips = array_slice($trips, 0, 3);
+								foreach ($trips as $entry) {
+									$title = $entry["experience_name"];
+									$camp_id = $entry["experience_id"];
+									$start_date = format_string_as_date_fn($entry["start_date"]);
+									$currency = $entry["currency_name"];
+									$fee = $entry["booking_fee"];
+									$publish = $entry["is_visible"] == 1 ? "published" : "draft";
+									// $seats = $entry["remaining_seats"];
+									$url = server_base_url() . "curator/experience_settings.php?experience_id=$camp_id";
+									echo "<tr id='trip_row_$camp_id'>
+				<th scope='row'>$title</th>
+				<td>$start_date</td>
+				<td>
+					<div class='member-stack' data-member-count='0' data-member-max='3'>
+					</div>
+				</td>
+				<td>$currency $fee</td>
+				<td>$publish</td>
 
-								<td><a href='#' data-bs-toggle='modal' data-bs-target='#quick-edit-modal' data-experience-id='$camp_id' onclick='quick_edit_prep()'>Edit</a></td>
-							</tr>
-						";
-					}
-					?>
+				<td><a href='#' data-bs-toggle='modal' data-bs-target='#quick-edit-modal' data-experience-id='$camp_id' onclick='quick_edit_prep()'>Edit</a></td>
+			</tr>
+		";
+								}
+								?>
 
-				</tbody>
-			</table>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane fade" id="private-trips">
+						<table class="table">
+
+							<thead>
+								<tr>
+									<th scope="col">Trip Name</th>
+									<th scope="col">Minimum Group Size</th>
+									<th scope="col">Est Fee</th>
+									<th scope="col">Status</th>
+									<!-- <th scope="col">Options</th> -->
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								$trips = get_curator_travel_plans($curator_id);
+								$trips = array_slice($trips, 0, 3);
+								foreach ($trips as $entry) {
+									$title = $entry["experience_name"];
+									$camp_id = $entry["travel_plan_id"];
+									$currency = $entry["currency_name"];
+									$fee = $entry["price"];
+									$min_size = $entry["min_size"];
+									$publish = $entry["is_visible"] == 1 ? "published" : "draft";
+									// $seats = $entry["remaining_seats"];
+									$url = server_base_url() . "curator/experience_settings.php?experience_id=$camp_id";
+									echo "<tr id='trip_row_$camp_id'>
+											<th scope='row'>$title</th>
+											<td>$min_size</td>
+											<td>$currency $fee</td>
+											<td>$publish</td>
+
+										</tr>
+									";
+								}
+								?>
+
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+
+
 			<div class="table-footer">
 				<a href="trips.php">View All Trips</a>
 			</div>
@@ -195,7 +251,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 						<tbody>
 							<?php
 							$bookings = get_curator_bookings($curator_id);
-							$bookings = array_slice($bookings,0,3);
+							$bookings = array_slice($bookings, 0, 3);
 							foreach ($bookings as $entry) {
 
 								$name = $entry["user_name"];
@@ -243,7 +299,7 @@ $mixpanel->log_page_view("Curator Dashboard");
 						<tbody>
 							<?php
 							$collaborators = get_curator_collaborators($curator_id);
-							$collaborators = array_slice($collaborators,0,3);
+							$collaborators = array_slice($collaborators, 0, 3);
 							foreach ($collaborators as $entry) {
 								$name = $entry["user_name"];
 								$email = $entry["email"];

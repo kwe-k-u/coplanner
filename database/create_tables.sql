@@ -522,25 +522,7 @@ CREATE TABLE travel_plan_collections(
 	PRIMARY KEY (collection_id)
 );
 
-CREATE TABLE travel_plan (
-	itinerary_id VARCHAR(100),
-	collection_id VARCHAR(100),
-	price DOUBLE,
-	currency_id INT,
-	PRIMARY KEY (itinerary_id,collection_id),
-	FOREIGN KEY (itinerary_id) REFERENCES itinerary(itinerary_id),
-	FOREIGN KEY (collection_id) REFERENCES travel_plan_collections(collection_id),
-	FOREIGN KEY (currency_id) REFERENCES currency(currency_id)
-);
 
-
-CREATE TABLE travel_plan_media(
-	itinerary_id VARCHAR(100),
-	media_id VARCHAR(100),
-	PRIMARY KEY (itinerary_id, media_id),
-	FOREIGN KEY (itinerary_id) REFERENCES itinerary(itinerary_id),
-	FOREIGN KEY (media_id) REFERENCES media(media_id)
-);
 
 
 

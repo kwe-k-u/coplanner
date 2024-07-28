@@ -12,7 +12,7 @@ $curator_id = $info["curator_id"];
 $user_name = $user_info["user_name"];
 $curator_name = $info["curator_name"];
 
-$logo = $info["logo_location"]; //$info["curator_logo"];
+$logo = $info["logo_location"]; 
 
 $experience_id = $_GET["experience_id"];
 $experience = get_shared_experience_by_id($experience_id);
@@ -168,6 +168,19 @@ $activities = get_shared_experience_activities($experience_id);
                                         our payment provider processes cashouts on a T+1 schedule. The payment will only be made to the
                                         account you provided during sign up.
                                     </p>
+                                    <?php
+                                        if ($currency == "USD"){
+                                            echo "
+                                            <p class='tc-text'>
+                                        <strong>Note:</strong> listings made in USD will be paid out in the Ghanaian Cedi
+                                        equivalent as determined by our <a href='https://paystack.com/gh'>Payment Provider</a>.
+                                        This is to stay compliant with the <a href='https://www.bog.gov.gh/wp-content/uploads/2019/07/Prohibition-of-Pricing-Payment-for-Goods-and-Services-in-Foreign-Currency.pdf'>Foreign Exchange Act, 2006 (Act 723)</a>
+                                        For avoidance of doubt, your clients with foreign currency accounts will be pilled the fee for your
+                                        trip in USD. But you willl receive Ghanaian Cedis when payouts are processed by our Payment Provider
+                                    </p>";
+                                        }
+                                    ?>
+
                                 </div>
                                 <div class="invoice-total pb-1">
                                     <div>
