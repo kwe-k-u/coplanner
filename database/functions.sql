@@ -1285,9 +1285,14 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS get_curator_listings;
 DELIMITER //
-CREATE PROCEDURE get_curator_listings(IN in_curator_id VARCHAR(100))
+CREATE PROCEDURE get_curator_listings(IN in_curator_id VARCHAR(100), in visible VARCHAR(10))
 BEGIN
+	IF visible is null then
 	SELECT * FROM vw_shared_experiences where curator_id = in_curator_id;
+	else
+	SELECT * FROM vw_shared_experiences where curator_id = in_curator_id and is_visible = 1;
+	end if;
+
 END //
 DELIMITER ;
 
@@ -2213,5 +2218,67 @@ BEGIN
 
 	UPDATE shared_experience_payment_package SET min_amount = in_fee where plan_id = package_id;
 
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS get_currency_by_name;
+DELIMITER //
+CREATE PROCEDURE get_currency_by_name(IN in_currency_name VARCHAR(100))
+BEGIN
+	SELECT * FROM currency where currency_name = in_currency_name;
+END //
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS update_currency_rate;
+DELIMITER //
+CREATE PROCEDURE update_currency_rate(IN in_currency_id INT, IN in_rate DOUBLE)
+BEGIN
+	 UPDATE currency SET rate = in_rate WHERE in_currency_id = currency_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_currencies;
+DELIMITER //
+CREATE PROCEDURE  get_currencies()
+begin
+	select * from currency;
+end //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_curator_travel_plans;
+DELIMITER //
+CREATE PROCEDURE get_curator_travel_plans(IN in_curator_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_travel_plans where curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_curator_by_id;
+DELIMITER //
+CREATE PROCEDURE get_curator_by_id(IN in_curator_id VARCHAR(100))
+BEGIN
+	SELECT * FROM vw_curators where curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS update_curator_profile;
+DELIMITER //
+CREATE PROCEDURE update_curator_profile(IN in_curator_id VARCHAR(100), IN in_curator_name VARCHAR(50),IN in_bio TEXT)
+BEGIN
+	UPDATE curator set curator_name = in_curator_name, bio = in_bio where curator_id = in_curator_id;
+END //
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS update_curator_logo;
+DELIMITER //
+CREATE PROCEDURE update_curator_logo(IN in_curator_id VARCHAR(100),IN logo_path TEXT, in logo_type VARcHAR(20))
+BEGIN
+	DECLARE media_id VARCHAR(100);
+	SELECT upload_media(logo_path,logo_type,0) INTO media_id;
+	UPDATE curator SET  logo_id = media_id;
 END //
 DELIMITER ;

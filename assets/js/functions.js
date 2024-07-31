@@ -434,3 +434,8 @@ function email_login(form){
 		);
 	}
 }
+
+function share_profile(id){
+  navigator.clipboard.writeText(baseurl+"coplanner/curator_profile.php?curator_id="+id);
+  showToast('Copied your profile URL to clipboard');
+}

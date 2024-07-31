@@ -297,9 +297,9 @@ function get_curator_account_by_user_id($user_id) {
 	return $public->get_curator_account_by_user_id($user_id);
 }
 
-function get_curator_listings($curator_id) {
+function get_curator_listings($curator_id,$visible=null) {
 	$public = new public_class();
-	return $public->get_curator_listings($curator_id);
+	return $public->get_curator_listings($curator_id,$visible);
 }
 
 function get_curator_bookings($curator_id) {
@@ -568,4 +568,19 @@ function get_currencies(){
 function get_curator_travel_plans($curator_id){
 	$public = new public_class();
 	return $public->get_curator_travel_plans($curator_id);
+}
+
+function get_curator_by_id($curator_id){
+	$public = new public_class();
+	return $public->get_curator_by_id($curator_id);
+}
+
+function update_curator_profile($curator_id,$curator_name,$bio){
+	$public = new public_class();
+	return $public->update_curator_profile($curator_id,$curator_name,$bio);
+}
+
+function update_curator_logo($curator_id,$location,$type){
+	$public = new public_class();
+	return $public->update_curator_logo($curator_id,$location,$type);
 }

@@ -1246,6 +1246,30 @@ if (in_array($requestOrigin, $allowedDomains)) {
 				send_json(array("msg"=> "Something went wrong"),201);
 			}
 			die();
+		case "/update_curator_profile":
+			$curator = get_curator_account_by_user_id(get_session_user_id());
+			$curator_id = $curator["curator_id"];
+			$bio = $_POST["bio"];
+			$new_name = $_POST["curator_name"];
+
+			if (isset($_FILES["logo"])){
+				$flyer_image = $_FILES["logo"]["name"];
+				$flyer_tmp = $_FILES["logo"]["tmp_name"];
+				$media_type = get_file_type($flyer_image);
+				$media_location = upload_file("uploads","images",$flyer_tmp,$flyer_image);
+				update_curator_logo($curator_id,$media_location,$media_type);
+
+			}
+
+			$success = update_curator_profile($curator_id,$new_name,$bio);
+
+			if($success){
+				send_json(array("msg"=> "Profile updated"));
+			}else{
+				send_json(array("msg"=>  "Something went wrong. Try again"),201);
+			}
+
+			die();
 		default:
 			notify_slack_support_msg("Received request for none implement endpoint ".$_SERVER["PATH_INFO"]);
 			send_json(array("msg"=> "Method not implemented"),201);

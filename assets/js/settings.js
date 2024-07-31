@@ -66,3 +66,25 @@ function update_payment_info(form){
 	)
 
 }
+
+
+function update_curator_profile(){
+	event.preventDefault();
+	let logo = document.getElementById("curator_logo").files[0];
+	let curator_name = document.getElementById("curator_name").value;
+	let bio = document.getElementById("bio").value;
+	send_request("POST","processors/processor.php/update_curator_profile",
+		{
+			"curator_name" : curator_name,
+			"logo" : logo,
+			"bio" : bio
+		},
+		(response)=> {
+			if (response.status == 200){
+				showToast(response.data.msg);
+			}else {
+				openDialog(response.data.msg);
+			}
+		}
+	)
+}

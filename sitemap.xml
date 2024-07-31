@@ -19,19 +19,43 @@
 	<!-- [start] Trip pages  -->
 	<url>
 		<loc>https://www.easygo.com.gh/coplanner/experiences.php</loc>
-		<lastmod>2024-06-09</lastmod>
+		<lastmod>2024-07-29</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a9f173e0c0b3f11efaab78ed206f829ea</loc>
-		<lastmod>2024-06-09</lastmod>
+		<lastmod>2024-07-29</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.6</priority>
 	</url>
 	<url>
 		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a689166db222611efaab78ed206f829ea</loc>
-		<lastmod>2024-06-09</lastmod>
+		<lastmod>2024-07-29</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a204be591353811ef86938ed206f829ea</loc>
+		<lastmod>2024-07-29</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a689166db222611efaab78ed206f829ea</loc>
+		<lastmod>2024-07-29</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=aa7d213564d3611ef86938ed206f829ea</loc>
+		<lastmod>2024-07-29</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.easygo.com.gh/coplanner/experience_info.php?experience_id=a6469240a48ff11ef86938ed206f829ea</loc>
+		<lastmod>2024-07-29</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.6</priority>
 	</url>
@@ -39,7 +63,7 @@
 	<!-- [start] Other pages  -->
 	<url>
 		<loc>https://www.easygo.com.gh/coplanner/about.php</loc>
-		<lastmod>2024-06-09</lastmod>
+		<lastmod>2024-07-29</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.6</priority>
 	</url>

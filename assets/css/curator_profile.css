@@ -1,0 +1,153 @@
+body{
+	padding-top:6rem;
+	padding-left:1rem;
+	padding-bottom:5rem;
+}
+
+section{
+	margin-right: 12px;
+	margin-left: 12px;
+}
+
+.banner-image{
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 20vh;
+	max-height: 20vh;
+	background-image: url("../images/carousel/7I3A9268.jpg");
+}
+
+.banner-image img{
+	height: inherit;
+	width: inherit;
+	object-fit: contain;
+}
+
+.logo-image-div{
+	min-height: 5rem;
+	min-width: 5rem;
+	max-width: 5rem;
+	max-height: 5rem;
+	background-color: white;
+	border: 1px solid grey;
+	border-radius: 1rem;
+	object-fit: fill;
+	position: relative;
+	top: -3rem;
+	overflow:hidden;
+	display: flex;
+	justify-content: center;
+}
+
+.logo-image-div  >img{
+	object-fit: contain;
+	min-height: 5rem;
+	min-width: 5rem;
+	max-width: 5rem;
+	max-height: 5rem;
+	/* max-width: 1rem;
+	max-height: 1rem; */
+}
+
+.profile-card{
+	border: 1px lightgray solid;
+	border-radius: 12px;
+	padding: 8px;
+	box-shadow: var(--box-shadow-2);
+	margin: 12px 0px;
+}
+
+.profile-card .card-heading{
+	font-weight: 500;
+}
+
+.tab-body > div:first-child{
+	width: 65%;
+	margin-right: 12px;
+}
+
+.tab-body > div:last-child{
+	width: 30%;
+}
+
+@media screen and (max-width: 669px) {
+	section{
+		margin-left: 2px;
+		margin-right: 2px;
+	}
+
+	.tab-body{
+		flex-direction: column;
+	}
+
+	.tab-body > div:first-child{
+		width: 100%;
+	}
+
+	.tab-body > div:last-child{
+		width: 100%;
+	}
+}
+
+
+
+.review-card{
+	border: 1px lightgray solid;
+	border-radius: 12px;
+	padding: 12px;
+	box-shadow: var(--box-shadow-2);
+	margin: 12px;
+}
+
+.list-item{
+	display: flex;
+	flex-direction: row;
+}
+
+.middle-div{
+	width: 75vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media screen and (max-width: 668px) {
+	.middle-div{
+		width: 95%;
+		margin-left: none;
+		margin-right: none;
+	}
+
+	.rev-mobile{
+		flex-direction: column-reverse;
+	}
+}
+
+.social-buttons svg{
+	height: 2.5rem;
+	width:2rem;
+}
+
+.social-buttons{
+	display: flex;
+	justify-content: center;
+}
+
+.social-buttons a{
+	margin-right: 12px;
+}
+
+.rating-stars{
+  display: flex;
+  justify-content: flex-end;
+  font-size: large;
+  flex-direction: row-reverse;
+  margin-left: 12px;
+}
+.rating-stars label{
+	color: grey;
+	margin: 4px;
+}
+.rating-stars input[type="radio"]:checked ~ label {
+	color: gold;
+	content: "\2605";
+  }

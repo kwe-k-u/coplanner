@@ -21,6 +21,7 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 $bank_code = $info["payout_bank_id"];
 $account_name = $info["payout_account_name"];
 $account_number = $info["payout_account_number"];
+$bio = $info["bio"];
 
 
 ?>
@@ -56,7 +57,86 @@ $account_number = $info["payout_account_number"];
 
 
 
-		<section class="row" id="account-settings">
+
+
+		<section class="row" id="curator-bio">
+			<div class="col-lg-3">
+				<h4>Curator Bio</h4>
+				<!-- <p>Stuff about you</p> -->
+			</div>
+
+			<div class="col-lg-9">
+				<div class="dashcard">
+					<div class="dashcard-header">
+						<h5>Your Curator bio</h5>
+					</div>
+						<div class="dashcard-body">
+							<div class="settings-row">
+								<div class="">
+									<p>Your company logo</p>
+								</div>
+									<div class="file-input drag-n-drop type-img img-display-2" data-input-target="#curator_logo" data-display-target="#curator_logo_target" id="curator_logo_target">
+										<input type="file" id='curator_logo' class="img-upload" name="curator_logo" accept=".png, .jpg, .jpeg, .svg" id="curator_logo" data-display-target="#curator_logo_target">
+										<button class="btn easygo-btn-7">Upload</button>
+									</div>
+
+							</div>
+
+							<div class="settings-row">
+								<div>
+									<p>Curator Name</p>
+								</div>
+								<div class="form-input-field">
+
+									<?php
+										echo "<input type='text' id='curator_name' name='curator_name' value='$curator_name'>"
+									?>
+								</div>
+							</div>
+
+							<div class="settings-row">
+								<div>
+									<p>Curator Bio</p>
+								</div>
+								<div class="form-input-field mb-2">
+
+									<?php
+										echo "<textarea rows='7' name='bio' id='bio' placeholder='Provide a description of who you are and why tourists should book with you'>$bio</textarea>";
+									?>
+
+								</div>
+							</div>
+
+							<div class="settings-row">
+								<div>
+									<p>Share your profile</p>
+								</div>
+							<div class="row">
+								<div class="col-10">
+									<div class="form-input-field">
+									<?php
+										echo "<input type='text'  value='www.easygo.com.gh/coplanner/curator_profile.php?curator_id=$curator_id' disabled>"
+									?>
+									</div>
+								</div>
+								<div class="col-2">
+									<?php
+										echo "<button class='btn easygo-icon-btn' onclick='share_profile(\"$curator_id\");'><i class='fa-solid fa-copy'></i></button>";
+									?>
+								</div>
+							</div>
+							</div>
+							<div class="d-flex justify-content-end">
+								<button class="easygo-btn-1 btn" onclick="update_curator_profile();">Save Changes</button>
+							</div>
+						</div>
+				</div>
+
+			</div>
+		</section>
+
+
+		<section class="row" id="payment-info">
 			<div class="col-lg-3">
 				<h4>Payment Information</h4>
 			</div>
@@ -287,6 +367,15 @@ $account_number = $info["payout_account_number"];
 	<script src="../assets/js/general.js"></script>
 	<script src="../assets/js/functions.js"></script>
 	<script src="../assets/js/settings.js"></script>
+	<?php
+		echo "
+		<script>
+			$(document).ready(function (){
+				newDisplayUpload(document.getElementById('curator_logo').getAttribute('data-display-target'),'$logo');
+			});
+		</script>
+		";
+	?>
 </body>
 
 </html>

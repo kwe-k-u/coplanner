@@ -138,9 +138,9 @@ $logo = $info["logo_location"]; //$info["curator_logo"];
 								<div data-input-target="#company_logo" id="logo-display" class="img-display"></div>
 							</div> -->
 							<div class="file-input drag-n-drop type-img img-display-2" data-input-target="#company_logo" data-display-target="#company_logo_target" id="company_logo_target">
-										<input type="file" class="img-upload" name="company_logo" accept=".png, .jpg, .jpeg, .svg" id="company_logo" data-display-target="#company_logo_target">
-										<button class="btn easygo-btn-7">Upload</button>
-									</div>
+								<input type="file" class="img-upload" name="company_logo" accept=".png, .jpg, .jpeg, .svg" id="company_logo" data-display-target="#company_logo_target">
+								<button class="btn easygo-btn-7">Upload</button>
+							</div>
 						</div>
 						<div class="row mt-4 " id="additional-image-row">
 							<small class="text-gray-1">Upload additional Images (We recommend images of activities)</small>

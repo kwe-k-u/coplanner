@@ -1,4 +1,13 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <?php include_once(__DIR__ . "/../utils/analytics/google_tag.php") ?>
+    <link rel="icon" href="assets/images/site_images/favicon.ico" type="image/x-icon">
+</head>
+</html>
 <?php
+
 	// Capture any existing query string from the current URL
 	$queryString = $_SERVER['QUERY_STRING'];
 

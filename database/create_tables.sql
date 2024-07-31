@@ -15,7 +15,8 @@ USE coplanner;
 -- Table to allow for multiple currencies to exist
 CREATE TABLE currency(
 	currency_id INT PRIMARY KEY AUTO_INCREMENT,
-	currency_name VARCHAR(5) UNIQUE
+	currency_name VARCHAR(5) UNIQUE,
+	rate DOUBLE
 );
 
 
@@ -376,6 +377,7 @@ DROP TABLE IF EXISTS curator;
 CREATE TABLE curator(
 	curator_id VARCHAR(100) PRIMARY KEY,
 	curator_name VARCHAR(100),
+	 bio TEXT,
 	date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
 	logo_id VARCHAR(100),
 	registration_doc_id VARCHAR(100),
@@ -583,11 +585,11 @@ CREATE TABLE travel_plan_collections(
 );
 
 CREATE TABLE travel_plan_media(
-	media_id VARCHAR(100),
 	travel_plan_id VARCHAR(100),
-	PRIMARY KEY (media_id,travel_plan_id),
-	FOREIGN KEY (media_id) REFERENCES media(media_id),
-	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id)
+	media_id VARCHAR(100),
+	PRIMARY KEY (travel_plan_id, media_id),
+	FOREIGN KEY (travel_plan_id) REFERENCES travel_plan(travel_plan_id),
+	FOREIGN KEY (media_id) REFERENCES media(media_id)
 );
 
 CREATE TABLE travel_plan_tag(
@@ -791,6 +793,7 @@ CREATE VIEW vw_invoice_activities AS
  inner join activities as a on a.activity_id = iia.activity_id
  inner join destinations as d on d.destination_id = iia.destination_id
   ORDER BY iia.visit_date, iia.destination_id;
+
 
 
 DROP VIEW IF EXISTS vw_curators;

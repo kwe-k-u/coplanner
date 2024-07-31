@@ -168,18 +168,18 @@ $mixpanel->log_page_view("Curator Dashboard");
 									// $seats = $entry["remaining_seats"];
 									$url = server_base_url() . "curator/experience_settings.php?experience_id=$camp_id";
 									echo "<tr id='trip_row_$camp_id'>
-				<th scope='row'>$title</th>
-				<td>$start_date</td>
-				<td>
-					<div class='member-stack' data-member-count='0' data-member-max='3'>
-					</div>
-				</td>
-				<td>$currency $fee</td>
-				<td>$publish</td>
+									<th scope='row'>$title</th>
+									<td>$start_date</td>
+									<td>
+										<div class='member-stack' data-member-count='0' data-member-max='3'>
+										</div>
+									</td>
+									<td>$currency $fee</td>
+									<td>$publish</td>
 
-				<td><a href='#' data-bs-toggle='modal' data-bs-target='#quick-edit-modal' data-experience-id='$camp_id' onclick='quick_edit_prep()'>Edit</a></td>
-			</tr>
-		";
+									<td><a href='#' data-bs-toggle='modal' data-bs-target='#quick-edit-modal' data-experience-id='$camp_id' onclick='quick_edit_prep()'>Edit</a></td>
+								</tr>
+								";
 								}
 								?>
 

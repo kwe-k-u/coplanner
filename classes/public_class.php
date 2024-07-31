@@ -302,10 +302,10 @@
 			return $this->db_fetch_one();
 		}
 
-		function get_curator_listings($curator_id){
-			$sql = 'CALL get_curator_listings(?)';
+		function get_curator_listings($curator_id,$visible){
+			$sql = 'CALL get_curator_listings(?,?)';
 			$this->prepare($sql);
-			$this->bind($curator_id);
+			$this->bind($curator_id,$visible);
 			return $this->db_fetch_all();
 		}
 
@@ -684,6 +684,27 @@
 			$sql = "CALL get_travel_plans()";
 			$this->prepare($sql);
 			return $this->db_fetch_all();
+		}
+
+		function get_curator_by_id($curator_id){
+			$sql = "CALL get_curator_by_id(?)";
+			$this->prepare($sql);
+			$this->bind($curator_id);
+			return $this->db_fetch_one();
+		}
+
+		function update_curator_profile($curator_id,$curator_name,$bio){
+			$sql = "CALL update_curator_profile(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($curator_id,$curator_name,$bio);
+			return $this->db_query();
+		}
+
+		function update_curator_logo($curator_id,$location,$type){
+			$sql = "CALL update_curator_logo(?,?,?)";
+			$this->prepare($sql);
+			$this->bind($curator_id,$location,$type);
+			return $this->db_query();
 		}
 	}
 ?>

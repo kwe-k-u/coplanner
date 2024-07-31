@@ -18,7 +18,7 @@
 					$server_base = server_base_url();
 						echo "
 					<li><a class='dropdown-item' href='{$server_base}curator/experience_settings.php'>New Trip</a></li>
-					<!-- <li><a class='dropdown-item' href='#'>Settings</a></li> -->
+					<li><a class='dropdown-item' href='#'onclick='share_profile(\"$curator_id\")'>Share Profile</a></li>
 					<li><hr class='dropdown-divider'></li>
 					<li><a class='dropdown-item' onclick='return logout()' href='#'>Sign out</a></li>
 						"

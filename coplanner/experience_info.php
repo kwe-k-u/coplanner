@@ -100,7 +100,7 @@ if (isset($_GET["experience_id"])) {
                                 <?php
                                 echo "
                                     <h2 class='mb-1'>$itinerary_name</h2>
-                                    <small>by $owner_name</small>
+                                    <small>by <a href='curator_profile.php?curator_id=$owner_id'>$owner_name</a></small>
                                     <h4 class='mb-0 mt-3'>Date</h4>
                                     <p>$start_date_str</p>
                                     ";

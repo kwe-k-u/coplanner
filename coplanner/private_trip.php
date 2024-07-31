@@ -75,8 +75,10 @@
 
 
 			<?php
-				echo "<h1>$name</h1>"
+				echo "<h1>$name</h1>
+				<p>Hosted by <a href='curator_profile.php?curator_id=$curator_id'>$curator_name</a></p>";
 			?>
+
 			<div class="share-row hide">
 				<div class="review-group">
 					<i class="fa-solid fa-star"></i>
